@@ -1,6 +1,5 @@
 import { Stack } from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
-import { Code } from "../components/Code";
 import gql from "graphql-tag";
 import { print } from "@genqlx/cli/dist/printer";
 import { useDebouncedCallback } from "use-debounce";
@@ -12,7 +11,7 @@ function Page({}) {
   const onCodeChange = useDebouncedCallback(() => {
     setInvalid("");
     try {
-      const query = gql(code);
+      const query = gql(code) as any;
       console.log("parsed");
       setGenqlxTranslation("\n" + print(query, {}));
     } catch (e) {
@@ -48,9 +47,9 @@ function Page({}) {
                 {invalid}
               </Stack>
             )}
-            <Code value={code} onChange={setCode} />
+            <textarea>{code}</textarea>
           </Stack>
-          <Code hideLinesNumbers flex="1" readOnly value={genqlxTranslation} />
+          <textarea>{genqlxTranslation}</textarea>
         </Stack>
       </Stack>
     </Stack>
