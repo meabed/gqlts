@@ -2,8 +2,8 @@ name: Npm Packages
 
 on:
   push:
-    # branches:
-    #   - master
+  # branches:
+  #   - master
 
 jobs:
   build:
@@ -31,10 +31,9 @@ jobs:
       # - run: yarn buildall
       # - name: Publish
       #   run: |
-      #     cd genql-cli && npm publish --verbose --access public --tag beta
-      #     cd ../genql-runtime && npm publish --verbose --access public --tag beta
+      #     cd genqlx-cli && npm publish --verbose --access public --tag beta
+      #     cd ../genqlx-runtime && npm publish --verbose --access public --tag beta
       #   if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/fields-selection'
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
 
-          

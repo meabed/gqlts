@@ -1,5 +1,5 @@
-const withTM = require('next-transpile-modules')(['@genql/runtime'])
+const withTM = require("next-transpile-modules")(["@genqlx/runtime"]);
 
 // Tell webpack to compile the "bar" package
 // https://www.npmjs.com/package/next-transpile-modules
-module.exports = withTM({})
+module.exports = withTM({});

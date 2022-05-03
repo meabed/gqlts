@@ -1,30 +1,30 @@
 {
-    "name": "genql",
-    "private": true,
-    "version": "2.0.0",
-    "workspaces": [
-        "cli",
-        "runtime",
-        "website",
-        "example-usage",
-        "try-clients",
-        "integration-tests"
-    ],
-    "scripts": {
-        "genall": "ultra -r gen",
-        "tscall": "ultra -r --filter '@genql/*' tsc",
-        "buildall": "ultra -r --filter '@genql/*' --topology build",
-        "test": "ultra -r test",
-        "watch": "ultra -r watch",
-        "play": "node -r sucrase/register cli/src/cli.ts",
-        "integration": "cd integration-tests && yarn gen && tsc && yarn test",
-        "examplecli": "yarn play -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
-        "publ": "yarn buildall && lerna publish minor",
-        "runexample": "node -r sucrase/register example/example.ts"
-    },
-    "devDependencies": {
-        "typescript": "^4.1.5",
-        "lerna": "^3.22.1",
-        "ultra-runner": "^3.9.0"
-    }
+  "name": "genqlx",
+  "version": "3.0.0",
+  "private": true,
+  "workspaces": [
+    "cli",
+    "runtime",
+    "website",
+    "example-usage",
+    "try-clients",
+    "integration-tests"
+  ],
+  "scripts": {
+    "buildall": "ultra -r --filter '@genqlx/*' --topology build",
+    "examplecli": "yarn play -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
+    "genall": "ultra -r gen",
+    "integration": "cd integration-tests && yarn gen && tsc && yarn test",
+    "play": "node -r sucrase/register cli/src/cli.ts",
+    "publ": "yarn buildall && lerna publish minor",
+    "runexample": "node -r sucrase/register example/example.ts",
+    "test": "ultra -r test",
+    "tscall": "ultra -r --filter '@genqlx/*' tsc",
+    "watch": "ultra -r watch"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "typescript": "^4.6.4",
+    "ultra-runner": "^3.10.5"
+  }
 }

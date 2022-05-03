@@ -1,23 +1,20 @@
-
-export const RUNTIME_LIB_NAME = '@genql/runtime'
-
+export const RUNTIME_LIB_NAME = "@genqlx/runtime";
 
 export interface Config {
-    verbose?: boolean
-    endpoint?: string
-    useGet?: boolean
-    // the schema string
-    schema?: string
-    // the output dir
-    output?: string
-    // options?: Options
-    headers?: Record<string, string>
-    scalarTypes?: { [k: string]: string }
-    onlyEsModules?: boolean
-    onlyCJSModules?: boolean
-    sortProperties?: boolean
+  verbose?: boolean;
+  endpoint?: string;
+  useGet?: boolean;
+  // the schema string
+  schema?: string;
+  // the output dir
+  output?: string;
+  // options?: Options
+  headers?: Record<string, string>;
+  scalarTypes?: { [k: string]: string };
+  onlyEsModules?: boolean;
+  onlyCJSModules?: boolean;
+  sortProperties?: boolean;
 }
-
 
 // export interface Options {
 //     schemaValidation?: GraphQLSchemaValidationOptions

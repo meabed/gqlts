@@ -1136,9 +1136,9 @@ functions-have-names@^1.2.0:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.1.tgz#a981ac397fa0c9964551402cdc5533d7a4d52f91"
   integrity sha512-j48B/ZI7VKs3sgeI2cZp7WXWmZXu7Iq5pl5/vptV5N2mq+DGFuS/ulaDjtaoLpYzuD6u8UgrUKHfgo7fDTSiBA==
 
-genql-cli@*:
+genqlx-cli@*:
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/genql-cli/-/genql-cli-0.0.1.tgz#5abb75ad7f4b0052ac1b8864108e3294fae9720d"
+  resolved "https://registry.yarnpkg.com/genqlx-cli/-/genqlx-cli-0.0.1.tgz#5abb75ad7f4b0052ac1b8864108e3294fae9720d"
   integrity sha512-1F/JyeT67BrEIiiOrCv1FctIOs9m4U2rDoSbo5U4yZywjFW4hpyIxQxfnejLdEHm4WFMK7p6/DZjFSbTER9aLA==
   dependencies:
     "@types/graphql" "^14.5.0"
@@ -1156,9 +1156,9 @@ genql-cli@*:
     qs "^6.9.1"
     rimraf "^2.6.3"
 
-genql-runtime@*:
+genqlx-runtime@*:
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/genql-runtime/-/genql-runtime-0.0.1.tgz#a0cebf8b788eb1a1e6f7fc492b40df5609c21120"
+  resolved "https://registry.yarnpkg.com/genqlx-runtime/-/genqlx-runtime-0.0.1.tgz#a0cebf8b788eb1a1e6f7fc492b40df5609c21120"
   integrity sha512-sxCzHo5E3HVEh6Lamo1HzE/vLwFV6bUnYt2CbCXJq7mh5z9IeO3nJxEF1gwVK8lLMYshiChc0/pmVUUvzvrIEQ==
   dependencies:
     "@types/graphql" "^14.5.0"

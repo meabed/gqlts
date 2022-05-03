@@ -1,11 +1,6 @@
-import {
-  FieldsSelection,
-  GraphqlOperation,
-  ClientOptions,
-  Observable,
-} from '@genql/runtime'
-import { SubscriptionClient } from 'subscriptions-transport-ws'
-export * from './schema'
+import { FieldsSelection, GraphqlOperation, ClientOptions, Observable } from "@genqlx/runtime";
+import { SubscriptionClient } from "subscriptions-transport-ws";
+export * from "./schema";
 import {
   QueryRequest,
   QueryPromiseChain,
@@ -13,52 +8,41 @@ import {
   SubscriptionRequest,
   SubscriptionObservableChain,
   Subscription,
-} from './schema'
-export declare const createClient: (options?: ClientOptions) => Client
-export declare const everything: { __scalar: boolean }
-export declare const version: string
+} from "./schema";
+export declare const createClient: (options?: ClientOptions) => Client;
+export declare const everything: { __scalar: boolean };
+export declare const version: string;
 
 export interface Client {
-  wsClient?: SubscriptionClient
+  wsClient?: SubscriptionClient;
 
-  query<R extends QueryRequest>(
-    request: R & { __name?: string },
-  ): Promise<FieldsSelection<Query, R>>
+  query<R extends QueryRequest>(request: R & { __name?: string }): Promise<FieldsSelection<Query, R>>;
 
   subscription<R extends SubscriptionRequest>(
-    request: R & { __name?: string },
-  ): Observable<FieldsSelection<Subscription, R>>
+    request: R & { __name?: string }
+  ): Observable<FieldsSelection<Subscription, R>>;
 
   chain: {
-    query: QueryPromiseChain
+    query: QueryPromiseChain;
 
-    subscription: SubscriptionObservableChain
-  }
+    subscription: SubscriptionObservableChain;
+  };
 }
 
-export type QueryResult<fields extends QueryRequest> = FieldsSelection<
-  Query,
-  fields
->
+export type QueryResult<fields extends QueryRequest> = FieldsSelection<Query, fields>;
 
-export declare const generateQueryOp: (
-  fields: QueryRequest & { __name?: string },
-) => GraphqlOperation
-export type SubscriptionResult<
-  fields extends SubscriptionRequest
-> = FieldsSelection<Subscription, fields>
+export declare const generateQueryOp: (fields: QueryRequest & { __name?: string }) => GraphqlOperation;
+export type SubscriptionResult<fields extends SubscriptionRequest> = FieldsSelection<Subscription, fields>;
 
-export declare const generateSubscriptionOp: (
-  fields: SubscriptionRequest & { __name?: string },
-) => GraphqlOperation
+export declare const generateSubscriptionOp: (fields: SubscriptionRequest & { __name?: string }) => GraphqlOperation;
 
 export declare const enumSomeEnum: {
-  readonly X: 'X'
-  readonly Y: 'Y'
-  readonly Z: 'Z'
-}
+  readonly X: "X";
+  readonly Y: "Y";
+  readonly Z: "Z";
+};
 
 export declare const enumSomeEnum2: {
-  readonly hello: 'hello'
-  readonly world: 'world'
-}
+  readonly hello: "hello";
+  readonly world: "world";
+};

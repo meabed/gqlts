@@ -1,3 +1,3 @@
-import { GraphQLNamedType } from 'graphql'
+import { GraphQLNamedType } from "graphql";
 
-export const requestTypeName = (type: GraphQLNamedType) => `${type.name}Request`
+export const requestTypeName = (type: GraphQLNamedType) => `${type.name}Request`;

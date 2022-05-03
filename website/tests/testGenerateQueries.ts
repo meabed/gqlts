@@ -1,25 +1,25 @@
-import { buildSchema } from 'graphql'
-import { generateQueries } from '../support/generateQueries'
+import { buildSchema } from "graphql";
+import { generateQueries } from "../support/generateQueries";
 
-it('generateQueries', async () => {
-    const q = generateQueries({
-        schema,
-        packageName: 'genql',
-    })
-    console.log(q)
-})
+it("generateQueries", async () => {
+  const q = generateQueries({
+    schema,
+    packageName: "genqlx",
+  });
+  console.log(q);
+});
 
 const schema = buildSchema(`
 interface Node {
     id: ID
   }
-  
+
   enum Choice {
     ONE,
     TWO,
     THREE
   }
-  
+
   type User implements Node {
     name: String
     company(id: String): Company
@@ -27,16 +27,16 @@ interface Node {
     pastEmployers(max: Int! = 1): [Company]
     id: ID
   }
-  
+
   type DirectorConnection {
     ceos: [User],
     cursor: ID
   }
-  
+
   type Nested {
     user: User
   }
-  
+
   type Company implements Node {
     name: String
     nested: Nested
@@ -47,7 +47,7 @@ interface Node {
     directors(limit: Int! = 1): DirectorConnection,
     choice: Choice
   }
-  
+
   type Query {
     user(username: String!, choice: Choice!): User
     users(limit: Int! = 1, first: Int = 1, last: Int = 1): [User]
@@ -55,7 +55,7 @@ interface Node {
     node(id: ID): Node
     other(_id: ID!): String
   }
-  
+
   schema {
     query: Query
-  }`)
+  }`);

@@ -1,7 +1,7 @@
 <div align='center'>
     <br/>
     <br/>
-    <img src='https://genql.now.sh/banner.jpg' width='420px'>
+    <img src='https://genqlx.now.sh/banner.jpg' width='420px'>
     <br/>
     <br/>
     <h3>Type safe Graphql query builder</h3>
@@ -10,7 +10,7 @@
     <br/>
 </div>
 
-Read the [quick start guide](https://genql.now.sh/docs) to generate a client locally
+Read the [quick start guide](https://genqlx.now.sh/docs) to generate a client locally
 
 🔥 **Features**
 
@@ -27,9 +27,9 @@ Read the [quick start guide](https://genql.now.sh/docs) to generate a client loc
 First generate your client executing
 
 ```sh
-npm i -D @genql/cli # cli to generate the client code
-npm i @genql/runtime graphql # runtime dependencies
-genql --schema ./schema.graphql --output ./generated
+npm i -D @genqlx/cli # cli to generate the client code
+npm i @genqlx/runtime graphql # runtime dependencies
+genqlx --schema ./schema.graphql --output ./generated
 ```
 
 Then you can use your client as follow
@@ -70,7 +70,7 @@ query {
 
 ## Sponsors
 
-[![Vercel](https://genql.now.sh/vercel-logo.svg)](https://vercel.com?utm_source=genql)
+[![Vercel](https://genqlx.now.sh/vercel-logo.svg)](https://vercel.com?utm_source=genqlx)
 
 ---
 

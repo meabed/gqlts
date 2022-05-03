@@ -1,24 +1,20 @@
-import { GraphQLNamedType } from 'graphql'
-import { typeComment } from '../common/comment'
-import { RenderContext } from '../common/RenderContext'
+import { GraphQLNamedType } from "graphql";
+import { RenderContext } from "../common/RenderContext";
 
 const knownTypes: {
-    [name: string]: string
+  [name: string]: string;
 } = {
-    Int: 'number',
-    Float: 'number',
-    String: 'string',
-    Boolean: 'boolean',
-    ID: 'string',
-}
+  Int: "number",
+  Float: "number",
+  String: "string",
+  Boolean: "boolean",
+  ID: "string",
+};
 
-export const getTypeMappedAlias = (
-    type: GraphQLNamedType,
-    ctx: RenderContext,
-) => {
-    const map = { ...knownTypes, ...(ctx?.config?.scalarTypes || {}) }
-    return map?.[type.name] || 'any'
-}
+export const getTypeMappedAlias = (type: GraphQLNamedType, ctx: RenderContext) => {
+  const map = { ...knownTypes, ...(ctx?.config?.scalarTypes || {}) };
+  return map?.[type.name] || "any";
+};
 
 // export const renderTypeMappedAlias = (
 //     type: GraphQLNamedType,

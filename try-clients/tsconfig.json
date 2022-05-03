@@ -1,10 +1,10 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "module": "CommonJS",
-        "sourceMap": true,
-        "noEmit": true,
-        "resolveJsonModule": true,
-        "skipLibCheck": false
-    }
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "sourceMap": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": false
+  }
 }
