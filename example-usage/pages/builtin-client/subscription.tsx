@@ -1,10 +1,8 @@
-import { Stack, Box, Spinner, Input } from "@chakra-ui/core";
-import { Hero, SectionTitle, PageContainer } from "landing-blocks";
-import React, { useState } from "react";
-import useSWR from "swr";
+import { Box, Spinner, Stack } from "@chakra-ui/core";
+import { Hero, PageContainer, SectionTitle } from "landing-blocks";
+import React from "react";
 import { expectType } from "tsd";
-import { createClient, user } from "../../hasura/index.js";
-import { useObservable } from "react-extra-hooks";
+import { createClient, user } from "../../hasura";
 import { useSubscription } from "../../client";
 
 const client = createClient({

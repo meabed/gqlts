@@ -1,10 +1,9 @@
-import { Box, Spinner, Input } from "@chakra-ui/core";
-import { Hero, SectionTitle, PageContainer } from "landing-blocks";
+import { Box, Input, Spinner } from "@chakra-ui/core";
+import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import { Stack } from "layout-kit-react";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { client } from "./_app";
-import { everything } from "../generated/";
 
 const Page = () => {
   const [regex, setRegex] = useState(".*");

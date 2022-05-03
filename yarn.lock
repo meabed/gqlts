@@ -8267,7 +8267,7 @@ jest-util@^27.0.0:
     graceful-fs "^4.2.9"
     picomatch "^2.2.3"
 
-jest-util@^28.0.2:
+jest-util@^28.0.0, jest-util@^28.0.2:
   version "28.0.2"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-28.0.2.tgz#8e22cdd6e0549e0a393055f0e2da7eacc334b143"
   integrity sha512-EVdpIRCC8lzqhp9A0u0aAKlsFIzufK6xKxNK7awsnebTdOP4hpyQW5o6Ox2qPl8gbeUKYF+POLyItaND53kpGA==
@@ -9554,14 +9554,6 @@ next-cookies@2.0.3:
   integrity sha512-YVCQzwZx+sz+KqLO4y9niHH9jjz6jajlEQbAKfsYVT6DOfngb/0k5l6vFK4rmpExVug96pGag8OBsdSRL9FZhQ==
   dependencies:
     universal-cookie "^4.0.2"
-
-next-transpile-modules@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-4.1.0.tgz#b2d4bd29f3d4179014f7615720f360fdeec67ff7"
-  integrity sha512-brb9S2Dq7l01fV0fdZw1pO2cWMu7fFTclIV2nccmX2Jzwtz1c9iScPMqGyWP6/wglOPOColoJlHzOrSG6cnEIQ==
-  dependencies:
-    micromatch "^4.0.2"
-    slash "^3.0.0"
 
 next-transpile-modules@9.0.0:
   version "9.0.0"
@@ -12563,6 +12555,20 @@ ts-jest@27.1.4:
     semver "7.x"
     yargs-parser "20.x"
 
+ts-jest@28.0.0:
+  version "28.0.0"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-28.0.0.tgz#8a696cd1696c471154f7f0c81184ac99b526f400"
+  integrity sha512-JOUGExRO4vNaQdc920/sJjFZxe9lBGa6WIuNWkvtZoORGI9dyHTBqhuaJUdBVWIfqj+vaK3TRt/B1T0hQ0ROaA==
+  dependencies:
+    bs-logger "0.x"
+    fast-json-stable-stringify "2.x"
+    jest-util "^28.0.0"
+    json5 "2.x"
+    lodash.memoize "4.x"
+    make-error "1.x"
+    semver "7.x"
+    yargs-parser "^20.x"
+
 ts-node@10.7.0:
   version "10.7.0"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.7.0.tgz#35d503d0fab3e2baa672a0e94f4b40653c2463f5"
@@ -13499,7 +13505,7 @@ yargs-parser@20.2.4, yargs-parser@^20.2.2:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
   integrity sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
 
-yargs-parser@20.x, yargs-parser@^20.2.3:
+yargs-parser@20.x, yargs-parser@^20.2.3, yargs-parser@^20.x:
   version "20.2.9"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
   integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==

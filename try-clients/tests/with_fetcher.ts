@@ -1,5 +1,3 @@
-import { prettify } from "@genqlx/cli/dist/helpers/prettify";
-import { parse } from "graphql";
 import assert from "assert";
 import { createClient } from "../hasura/generated";
 import fetch from "isomorphic-unfetch";

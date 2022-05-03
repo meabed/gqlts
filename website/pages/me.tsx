@@ -5,9 +5,9 @@ import admin from "firebase-admin";
 import { Banner, Button, Link, PageContainer, SectionTitle } from "landing-blocks";
 import { GetServerSidePropsContext } from "next";
 import React from "react";
-import { MainForm } from "../components/MainForm";
 import { getFirebaseDecodedToken } from "../support/server";
 import { Package } from "./api/publish";
+
 dayjs.extend(relativeTime);
 
 type Props = {

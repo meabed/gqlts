@@ -1,10 +1,7 @@
-import { Stack, Box, Spinner, Input, Link } from "@chakra-ui/core";
+import { Box, Link, Stack } from "@chakra-ui/core";
 import NextLink from "next/link";
-import { Hero, SectionTitle, PageContainer } from "landing-blocks";
-import React, { useState } from "react";
-import useSWR from "swr";
-import { client } from "./_app";
-import { everything } from "../generated/";
+import { Hero, PageContainer } from "landing-blocks";
+import React from "react";
 
 const paths: Record<any, any> = {
   "react-query": "/react-query",

@@ -1,8 +1,6 @@
-import { Stack, Box, Spinner, Input } from "@chakra-ui/core";
-import { Hero, SectionTitle, PageContainer } from "landing-blocks";
-import React, { useState, FormEvent } from "react";
-import useSWR from "swr";
-import { client } from "../_app";
+import { Box, Input, Spinner, Stack } from "@chakra-ui/core";
+import { Hero, PageContainer, SectionTitle } from "landing-blocks";
+import React, { useState } from "react";
 import { everything } from "../../generated";
 import { useQuery } from "../../client";
 

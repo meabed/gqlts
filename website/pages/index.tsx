@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Box, Image } from "@chakra-ui/core";
-import { css, jsx } from "@emotion/core";
+import { css } from "@emotion/core";
 import { Faded } from "baby-i-am-faded";
 
 import {
@@ -15,8 +15,8 @@ import {
   PatternBackground,
   Section,
   SectionTitle,
-  TestimonialsLogos,
   Stack,
+  TestimonialsLogos,
 } from "landing-blocks";
 import NextLink from "next/link";
 import React, { Fragment } from "react";
@@ -26,9 +26,7 @@ import {
   FaNode as NodeIcon,
   FaReact as ReactIcon,
 } from "react-icons/fa";
-import { MainForm } from "../components/MainForm";
 import { BG } from "../constants";
-jsx;
 
 const jsQueryCode = `
 import { createClient, everything } from '@genqlx/my-lib'

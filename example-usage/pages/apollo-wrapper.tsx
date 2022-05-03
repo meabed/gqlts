@@ -1,10 +1,10 @@
-import { useQuery, ApolloProvider, QueryHookOptions } from "@apollo/react-hooks";
+import { ApolloProvider, QueryHookOptions, useQuery } from "@apollo/react-hooks";
 import { Box, Spinner, Stack } from "@chakra-ui/core";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import React from "react";
-import { generateQueryOp, QueryResult, QueryRequest } from "../generated/";
+import { generateQueryOp, QueryRequest, QueryResult } from "../generated/";
 
 function tuple<T1, T2>(data: [T1, T2]): typeof data;
 function tuple(data: Array<any>) {

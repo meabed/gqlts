@@ -1,16 +1,13 @@
-import { ApolloServer, PubSub, makeExecutableSchema } from "apollo-server";
+import { ApolloServer, makeExecutableSchema, PubSub } from "apollo-server";
 import sleep from "await-sleep";
 import assert from "assert";
-import deepEq from "deep-equal";
 import fs from "fs";
 import path from "path";
 import { expectType } from "tsd";
+import { DeepPartial } from "tsdef";
+import { Account, createClient, everything, isHouse, isUser, Point, User } from "../generated";
 
 const id = () => null;
-import { DeepPartial, MaybeUndefined } from "tsdef";
-import { createClient, User, everything, isHouse, Account, isBank, Point, isUser } from "../generated";
-import { GraphqlOperation } from "@genqlx/runtime";
-import { isClientErrorNameInvalid } from "../generated/guards.cjs";
 
 const PORT = 8099;
 const URL = `http://localhost:` + PORT;

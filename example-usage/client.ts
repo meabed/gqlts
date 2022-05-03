@@ -1,4 +1,4 @@
-import useSWR, { responseInterface } from "swr";
+import useSWR from "swr";
 import { useLazyPromise, useObservable, useLazyPromiseOutput } from "react-extra-hooks";
 
 import { FieldsSelection, ClientError } from "@genqlx/runtime";
@@ -12,6 +12,7 @@ import {
   subscription_root as Subscription,
 } from "./hasura";
 import { UseObservableOutput } from "react-extra-hooks/dist/useLazyObservable";
+import { SWRResponse } from "swr/dist/types";
 
 const client = createClient({
   subscription: {
@@ -22,7 +23,7 @@ const client = createClient({
 export const useQuery = <R extends QueryRequest>(
   q: R,
   options = {}
-): responseInterface<FieldsSelection<Query, R>, ClientError> => {
+): SWRResponse<FieldsSelection<Query, R>, ClientError> => {
   return useSWR<any>(JSON.stringify(q), {
     fetcher: (q) => q && client.query(JSON.parse(q)),
 
