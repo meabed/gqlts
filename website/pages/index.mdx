@@ -1,0 +1,66 @@
+---
+name: Quick Start
+---
+
+> Introducing Genqlx
+# Type safe Graphql query builder
+
+Genql generates a typed graphql client for your graphql api to use in browser or node.
+
+To use genqlx you first need to generate a sdk client
+
+```ts
+import { createClient, everything } from '@genql/my-lib'
+await createClient().query({
+    User: {
+        name: true,
+        surname: true,
+        address: {
+            ...everything,
+        }
+    }
+})
+```
+## works in browser and node
+
+
+## Graphql queries written in code
+
+### Genql generates a graphql client with typescript types, giving you type safety and auto-completion
+
+```ts
+import { createClient, everything } from '@genqlx/my-lib'
+
+await createClient().query({
+    User: {
+        name: true,
+        surname: true,
+        address: {
+            ...everything,
+        }
+    }
+})`;
+```
+
+```ts
+query {
+    User {
+        name
+        surname
+        address {
+            city
+            state
+        }
+    }
+}`;
+```
+
+![Hello](../apollo-logo.svg)
+![Hello](../nextjs-logo.svg)
+![Hello](../nextjs-logo.svg)
+![Hello](../banner.jpg)
+
+> <video loop autoPlay muted src="../completion.mp4" />
+> <video loop autoPlay muted src="../validation.mp4" />
+
+

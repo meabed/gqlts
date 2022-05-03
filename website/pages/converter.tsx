@@ -1,4 +1,4 @@
-import { Stack } from "layout-kit-react";
+import { Stack } from "@chakra-ui/core";
 import React, { useEffect, useState } from "react";
 import { Code } from "../components/Code";
 import gql from "graphql-tag";
@@ -9,7 +9,7 @@ import { SectionTitle } from "landing-blocks";
 
 function Page({}) {
   const [code, setCode] = useState(DEFAULT_QUERY);
-  const [onCodeChange] = useDebouncedCallback(() => {
+  const onCodeChange = useDebouncedCallback(() => {
     setInvalid("");
     try {
       const query = gql(code);

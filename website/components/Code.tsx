@@ -1,10 +1,10 @@
-// @jsx jsx
-import { Box, Flex } from "layout-kit-react";
+import { Box, Flex } from "@chakra-ui/core";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/duotoneLight";
 import React, { useCallback } from "react";
 import Editor from "react-simple-code-editor";
-import { css, jsx } from "@emotion/core";
+import { css } from "@emotion/react";
+
 const CODE_FONT = `'Fira code','Fira Mono',monospace`;
 
 export const Code = ({
@@ -85,7 +85,7 @@ export const Code = ({
       bg="gray.50"
       // align='stretch'
       borderRadius="8px"
-      css={css`
+      style={css`
         textarea {
           border: none;
           overflow: auto;

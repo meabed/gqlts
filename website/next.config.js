@@ -1,5 +1,6 @@
-const withTM = require("next-transpile-modules")(["@genqlx", "landing-blocks"]);
-const { withDokz } = require("dokz/dist/plugin");
-// Tell webpack to compile the "bar" package
-// https://www.npmjs.com/package/next-transpile-modules
-module.exports = withTM(withDokz({ pageExtensions: ["js", "jsx", "mdx", "tsx", "ts"] }));
+const withNextra = require("nextra")({
+  theme: "nextra-theme-docs",
+  themeConfig: "./theme.config.js",
+  // optional: add `unstable_staticImage: true` to enable Nextra's auto image import
+});
+module.exports = withNextra();
