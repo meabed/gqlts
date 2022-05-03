@@ -7,7 +7,7 @@
     "url": "https://github.com/meabed/genqlx"
   },
   "license": "ISC",
-  "author": "Tommaso De Rossi, morse <beats.by.morse@gmail.com>",
+  "author": "Meabed <mo@meabed.com>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
@@ -59,7 +59,7 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@genqlx/runtime": "^2.10.0",
+    "@genqlx/runtime": "^3.0.0",
     "@graphql-tools/graphql-file-loader": "^7.3.11",
     "@graphql-tools/load": "^7.5.10",
     "chalk": "^5.0.1",

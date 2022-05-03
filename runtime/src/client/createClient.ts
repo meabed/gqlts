@@ -31,7 +31,7 @@ export const createClient = ({
   mutationRoot?: LinkedType;
   subscriptionRoot?: LinkedType;
 }) => {
-  const fetcher = createFetcher(fetchOptions);
+  const fetcher = createFetcher({ ...options, ...(fetchOptions ?? {}) });
   const client: {
     wsClient?: WSClient;
     query?: Function;

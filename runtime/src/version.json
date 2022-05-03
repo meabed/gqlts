@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "description": "Genqlx runtime client",
   "keywords": [],
-  "homepage": "https://genqlx.now.sh",
+  "homepage": "https://genqlx.vercel.app",
   "repository": {
     "url": "https://github.com/meabed/genqlx"
   },
@@ -70,7 +70,6 @@
     "lodash.assign": "^4.2.0",
     "lodash.get": "^4.4.2",
     "lodash.startswith": "^4.2.1",
-    "tslib": "^2.4.0",
     "ws": "^8.6.0",
     "zen-observable-ts": "^1.1.0"
   },
@@ -90,6 +89,7 @@
     "jest": "^28",
     "sucrase": "^3.21.0",
     "ts-jest": "^27.1.4",
+    "tslib": "^2.4.0",
     "utility-types": "^3.10.0"
   },
   "_": "[bump]"

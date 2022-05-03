@@ -1,7 +1,7 @@
 ## 3.0.0
-Upgrade all dependancy packages
+Upgrade all dependency packages
 Migrate from graphql-subscriptions-transport-ws to graphql-ws
-Imporovment and enhancement
+General Improvement and enhancement
 
 Fixed problem generating interfaces without any implementation
 ## 2.10.0
@@ -43,10 +43,10 @@ Added `enumGraphqlEnumName` exports to get access to enum strings
 -   you can now add an operation name to a query using `__name`
 -   only generate commonjs code by default (using require and module.exports) to prevent people from importing from `index.esm`, use the `--esm` flag if you want to use esm
 -   response types only include requested fields
--   added built in batching (see https://genqlx.now.sh/docs/usage/batching-queries)
+-   added built in batching (see https://genqlx.vercel.app/docs/usage/batching-queries)
 -   `--sort` flag
 -   generated `types.json` now is `types.js`
 -   smaller `types.js` and hence smaller bundle size
--   made the website page converter to convert from graphql queries to genqlx code: https://genqlx.now.sh/converter
+-   made the website page converter to convert from graphql queries to genqlx code: https://genqlx.vercel.app/converter
 -   custom `fetcher` now has type `(operation: GraphqlOperation | GraphqlOperation[], ) => Promise<ExecutionResult>` to support built in batching
 -   added a `@genqlx/cli/printer` module to print a graphql query AST to genqlx code

@@ -2750,14 +2750,14 @@
   resolved "https://registry.yarnpkg.com/@shitty-scope-name/dsfxxxxxaxaxa/-/dsfxxxxxaxaxa-1.1.0.tgz#e09e6dfe3f298a24e0d5f3e150c273c4a15c6281"
   integrity sha512-7Z5ZNRtMf5FWwuzvcH6Dn5vzu8DWKsgEXFG4d3Rf2KtP/4oDl/P5DZ4FhXYdjTaF4PKQr3uufvoR6CoSvOtv+g==
   dependencies:
-    genqlx-runtime latest
+    genql-runtime latest
 
 "@shitty-scope-name/hasura-testing-client-example-for-tests@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@shitty-scope-name/hasura-testing-client-example-for-tests/-/hasura-testing-client-example-for-tests-1.3.0.tgz#1c45300d8598f0a8f8ba51b430823afa97d82a19"
   integrity sha512-rc8y+AL63qSB71yxFPDPw2jm7qpXNI3xH2sFgYiDgOwHygJUcY6K2g0vdvbfQvHBCtBs3pUafPo6Qhvt42YQ4w==
   dependencies:
-    genqlx-runtime latest
+    genql-runtime latest
 
 "@sinclair/typebox@^0.23.3":
   version "0.23.5"
@@ -6568,10 +6568,10 @@ gcp-metadata@^4.2.0:
     gaxios "^4.0.0"
     json-bigint "^1.0.0"
 
-genqlx-runtime@latest:
-  version "1.1.22"
-  resolved "https://registry.yarnpkg.com/genqlx-runtime/-/genqlx-runtime-1.1.22.tgz#4f4a95fc55f610b09a1ba0988fbc76b26cb2fb2e"
-  integrity sha512-l2Db29axAzApbeY7Cer6mjp7jDUjN23CjB/OW0H2gQxcsVoEdNHuxoNdzcjVHC+baVf2iPfFv0eRS8qLpDvpdA==
+genql-runtime@latest:
+  version "1.1.28"
+  resolved "https://registry.yarnpkg.com/genql-runtime/-/genql-runtime-1.1.28.tgz#0d94ccc1ee07073447950185cd1085382be3a458"
+  integrity sha512-nsC/rAGhtfBQd8hC8OCkhAgK8+Os7iwOSaqjy0uai70HNDxtlO2GqZAeBnEfNuRqcECQPG9X3zNJcZawjdEEuQ==
   dependencies:
     "@types/lodash.assign" "^4.2.6"
     "@types/lodash.get" "^4.4.6"

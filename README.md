@@ -1,7 +1,7 @@
 <div align='center'>
     <br/>
     <br/>
-    <img src='https://genqlx.now.sh/banner.jpg' width='420px'>
+    <img src='https://genqlx.vercel.app/banner.jpg' width='420px'>
     <br/>
     <br/>
     <h3>Type safe Graphql query builder</h3>
@@ -10,7 +10,11 @@
     <br/>
 </div>
 
-Read the [quick start guide](https://genqlx.now.sh/docs) to generate a client locally
+> This package is forked version from [genql](https://github.com/remorses/genql/)
+> 
+> It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
+
+Read the [quick start guide](https://genqlx.vercel.app/docs) to generate a client locally
 
 🔥 **Features**
 
@@ -70,7 +74,7 @@ query {
 
 ## Sponsors
 
-[![Vercel](https://genqlx.now.sh/vercel-logo.svg)](https://vercel.com?utm_source=genqlx)
+[![Vercel](https://genqlx.vercel.app/vercel-logo.svg)](https://vercel.com?utm_source=genqlx)
 
 ---
 
