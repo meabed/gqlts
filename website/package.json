@@ -5,6 +5,7 @@
   "scripts": {
     "build": "yarn --cwd .. buildall && next build",
     "dev": "next dev",
+    "export": "next build && next export",
     "start": "next start",
     "test": "mocha"
   },

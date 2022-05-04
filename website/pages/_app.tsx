@@ -6,6 +6,6 @@ require("prismjs/components/prism-tsx");
 require("prismjs/components/prism-typescript");
 require("prismjs/components/prism-javascript");
 
-export default function Nextra({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
