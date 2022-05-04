@@ -15,6 +15,7 @@
     "allowJs": true,
     "sourceMap": true,
     "resolveJsonModule": true,
+    "downlevelIteration": true,
     "lib": [
       "dom",
       "esnext.asynciterable"

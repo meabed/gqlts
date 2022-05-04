@@ -1,6 +1,6 @@
 {
   "name": "@genqlx/runtime",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Genqlx runtime client",
   "keywords": [],
   "homepage": "https://genqlx.vercel.app",
@@ -65,6 +65,7 @@
   "dependencies": {
     "graphql-query-batcher": "^1.0.1",
     "graphql-ws": "^5.8.1",
+    "is-plain-obj": "^4.0.0",
     "isomorphic-unfetch": "^3.1.0",
     "isomorphic-ws": "^4.0.1",
     "lodash.assign": "^4.2.0",
