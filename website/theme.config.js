@@ -1,5 +1,6 @@
 // theme.config.js
 export default {
+  github: "https://github.com/meabed/genqlx",
   projectLink: "https://github.com/meabed/genqlx",
   docsRepositoryBase: "https://github.com/meabed/genqlx/blob/master",
   titleSuffix: " – Genqlx",
