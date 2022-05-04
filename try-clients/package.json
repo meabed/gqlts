@@ -3,22 +3,22 @@
   "version": "3.0.0",
   "private": true,
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "Meabed <mo@meabed.com>",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
     "gen": "yarn hasura && yarn github && yarn simple && tsc --noEmit",
-    "simple": "yarn --cwd .. play --esm-and-cjs --sort --schema try-clients/simple.graphql -o try-clients/simple/generated",
+    "github": "yarn --cwd .. play --schema try-clients/github.graphql -o try-clients/github/generated -S HTML:string -S URI:string ",
     "hasura": "yarn --cwd .. play -e https://hasura-2334534.herokuapp.com/v1/graphql -o try-clients/hasura/generated",
-    "github": "yarn --cwd .. play --schema try-clients/github.graphql -o try-clients/github/generated -S HTML:string -S URI:string "
+    "simple": "yarn --cwd .. play --esm-and-cjs --sort --schema try-clients/simple.graphql -o try-clients/simple/generated",
+    "test": "mocha"
   },
   "mocha": {
     "require": "tests/init",
     "spec": "tests/**.ts",
     "timeout": 9999999999
   },
-  "keywords": [],
-  "author": "Meabed <mo@meabed.com>",
-  "license": "ISC",
   "dependencies": {
     "@shitty-scope-name/dsfxxxxxaxaxa": "1.1.0",
     "@shitty-scope-name/hasura-testing-client-example-for-tests": "1.3.0",

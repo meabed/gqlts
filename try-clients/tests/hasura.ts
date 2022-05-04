@@ -5,13 +5,13 @@ describe("hasura", () => {
   const name = "John";
   const id = "4";
   it("simple normal syntax", async () => {
-    var res3 = await client.chain.mutation
+    const res3 = await client.chain.mutation
       .delete_user({
         where: { id: { _eq: id } },
       })
       .get({ ...everything });
     console.log(res3);
-    var res4 = client
+    const res4 = client
       .subscription({
         user: {
           __scalar: true,
@@ -23,7 +23,7 @@ describe("hasura", () => {
         complete: () => console.log("complete1"),
       });
 
-    var res5 = client.chain.subscription
+    const res5 = client.chain.subscription
       .user({ limit: 4 })
       .get({ ...everything })
       .subscribe({
@@ -32,7 +32,7 @@ describe("hasura", () => {
         complete: () => console.log("complete2"),
       });
 
-    var res1 = await client.chain.mutation
+    const res1 = await client.chain.mutation
       .insert_user({
         objects: [
           {
@@ -45,7 +45,7 @@ describe("hasura", () => {
       .get({ ...everything, returning: { ...everything } });
     console.log(res1);
 
-    var res2 = await client.query({
+    const res2 = await client.query({
       user: {
         ...everything,
       },
@@ -54,7 +54,6 @@ describe("hasura", () => {
 
     res4.unsubscribe();
     res5.unsubscribe();
-    client.wsClient.close();
-    console.log(client.wsClient.operations);
+    client.wsClient.terminate();
   });
 });

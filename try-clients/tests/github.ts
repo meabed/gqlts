@@ -12,7 +12,7 @@ describe("github", () => {
     },
   });
   it("simple normal syntax", async () => {
-    var res1 = await client.query({
+    const res1 = await client.query({
       repository: [
         {
           name: "genqlx",

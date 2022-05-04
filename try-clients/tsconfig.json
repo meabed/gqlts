@@ -5,6 +5,11 @@
     "sourceMap": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "skipLibCheck": false
-  }
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "../node_modules"
+  ]
 }
