@@ -1,21 +1,43 @@
-name: Npm Packages
+name: CI
 
 on:
   push:
-  # branches:
-  #   - master
+    paths:
+      - 'cli/**'
+      - 'integration-tests/**'
+      - 'runtime/**'
+      - 'try-clients/**'
+      - 'website/**'
+      - 'yarn.lock'
+      - 'package.json'
+    branches:
+      - 'develop'
+      - 'stage'
+      - 'master'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          workflow_id: ci.yml
+          access_token: ${{ github.token }}
+
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm i -g npm@latest
-      - run: yarn
-      - run: yarn buildall
-      - run: yarn test
+        with:
+          fetch-depth: 30
+          persist-credentials: false
+
+      - name: Yarn install
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile --silent
+
+      - name: Test
+        run: |
+          yarn test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Bump version
