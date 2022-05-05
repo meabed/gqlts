@@ -1,6 +1,6 @@
 {
   "name": "@genqlx/cli",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "Generate a client sdk from your GraphQl API",
   "keywords": [],
   "repository": {
@@ -59,7 +59,7 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@genqlx/runtime": "^3.0.5",
+    "@genqlx/runtime": "^3.0.7",
     "@graphql-tools/graphql-file-loader": "^7.3.11",
     "@graphql-tools/load": "^7.5.10",
     "chalk": "^5.0.1",

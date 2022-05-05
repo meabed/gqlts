@@ -49,7 +49,7 @@ export async function baseFetch(body, url = "", options: FetcherRuntimeOptions =
   let headersObject = headerOptions ?? {};
   const res = await fetch(url, {
     headers: {
-      ...(!!files?.size && { "Content-Type": "application/json" }),
+      ...(!files?.size && { "Content-Type": "application/json" }),
       ...headersObject,
     },
     method: "POST",
