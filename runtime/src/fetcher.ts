@@ -22,7 +22,7 @@ const DEFAULT_BATCH_OPTIONS = {
   batchInterval: 40,
 };
 
-export async function baseFetch(body, url = "", options: FetcherRuntimeOptions = {}) {
+export async function baseFetch(body, url = "/", options: FetcherRuntimeOptions = {}) {
   const { clone, files } = extractFiles(body);
 
   const formData = new FormData();

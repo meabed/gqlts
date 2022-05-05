@@ -1,6 +1,6 @@
 {
   "name": "@genqlx/runtime",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "description": "Genqlx runtime client",
   "keywords": [],
   "homepage": "https://genqlx.vercel.app",

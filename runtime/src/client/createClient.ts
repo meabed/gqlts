@@ -11,19 +11,16 @@ export type Headers = HeadersInit | (() => HeadersInit) | (() => Promise<Headers
 
 export type ClientOptions = {
   url?: string;
+  fetchOptions?: FetcherRuntimeOptions | ((...params: any) => FetcherRuntimeOptions | Promise<FetcherRuntimeOptions>);
   batch?: BatchOptions | boolean;
   fetcher?: BaseFetcher;
   subscription?: { url?: string; headers?: Headers } & WSClientOptions;
-  fetchOptions?: FetcherRuntimeOptions;
   queryRoot?: LinkedType;
   mutationRoot?: LinkedType;
   subscriptionRoot?: LinkedType;
 };
 
 export interface ICreateClient {
-  url?: string | ((...params: any) => string | Promise<string>);
-  fetchOptions?: FetcherRuntimeOptions | ((...params: any) => FetcherRuntimeOptions | Promise<FetcherRuntimeOptions>);
-  //
   wsClient?: WSClient;
   query?: Function;
   mutation?: Function;
@@ -41,19 +38,17 @@ export function createClient({ queryRoot, mutationRoot, subscriptionRoot, ...opt
   if (queryRoot) {
     client.query = async (request) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
-      const url = typeof client.url === "function" ? await client.url() : client.url;
       const fetchOptions =
-        typeof client.fetchOptions === "function" ? await client.fetchOptions() : client.fetchOptions;
-      return baseFetch(generateGraphqlOperation("query", queryRoot, request), url, fetchOptions);
+        typeof options.fetchOptions === "function" ? await options.fetchOptions() : options.fetchOptions;
+      return baseFetch(generateGraphqlOperation("query", queryRoot, request), options.url, fetchOptions);
     };
   }
   if (mutationRoot) {
     client.mutation = async (request) => {
       if (!mutationRoot) throw new Error("mutationRoot argument is missing");
-      const url = typeof client.url === "function" ? await client.url() : client.url;
       const fetchOptions =
-        typeof client.fetchOptions === "function" ? await client.fetchOptions() : client.fetchOptions;
-      return baseFetch(generateGraphqlOperation("mutation", mutationRoot, request), url, fetchOptions);
+        typeof options.fetchOptions === "function" ? await options.fetchOptions() : options.fetchOptions;
+      return baseFetch(generateGraphqlOperation("mutation", mutationRoot, request), options.url, fetchOptions);
     };
   }
 
