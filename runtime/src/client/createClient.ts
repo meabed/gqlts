@@ -20,32 +20,36 @@ export type ClientOptions = {
   subscriptionRoot?: LinkedType;
 };
 
-export function createClient({ queryRoot, mutationRoot, subscriptionRoot, ...options }) {
-  const client: {
-    setUrl?: Function;
-    url?: string;
-    setFetchOptions?: Function;
-    fetchOptions?: FetcherRuntimeOptions;
-    //
-    wsClient?: WSClient;
+export interface Client {
+  setUrl?: (url: string) => Client;
+  url?: string;
+  setFetchOptions?: (options: FetcherRuntimeOptions) => Client;
+  fetchOptions?: FetcherRuntimeOptions;
+  //
+  wsClient?: WSClient;
+  query?: Function;
+  mutation?: Function;
+  subscription?: Function;
+  chain?: {
     query?: Function;
     mutation?: Function;
     subscription?: Function;
-    chain?: {
-      query?: Function;
-      mutation?: Function;
-      subscription?: Function;
-    };
-  } = {};
+  };
+}
+
+export function createClient({ queryRoot, mutationRoot, subscriptionRoot, ...options }) {
+  const client: Client = {};
 
   client.url = options?.url;
   client.setUrl = (newUrl: string) => {
     client.url = newUrl;
+    return client;
   };
 
   client.fetchOptions = options?.fetchOptions ?? {};
   client.setFetchOptions = (newFetchOptions: FetcherRuntimeOptions) => {
     client.fetchOptions = newFetchOptions;
+    return client;
   };
 
   if (queryRoot) {
