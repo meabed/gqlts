@@ -15,7 +15,7 @@ export const renderClientDefinition = (schema: GraphQLSchema, ctx: RenderContext
     import { Client as WSClient } from "graphql-ws"
     export * from './schema'
     ${renderClientTypesImports({ mutationType, queryType, subscriptionType })}
-    export declare const createClient:(options?: ClientOptions) => ICreateClient
+    export declare const createClient:(options?: ClientOptions) => Client
     export declare const everything: { __scalar: boolean }
     export declare const version: string
   `);
