@@ -5,6 +5,7 @@ type Query = {
   operationName?: string;
 };
 type QueryError = {
+  name: string;
   message: string;
   locations?: {
     line: number;
@@ -151,7 +152,7 @@ export class QueryBatcher {
    *      console.log(human);
    *    });
    */
-  fetch(query: string, variables?: Variables, operationName?: string, overrides: Options = {}): Promise<Array<Result>> {
+  fetch(query: string, variables?: Variables, operationName?: string, overrides: Options = {}): Promise<Result[]> {
     const request: Query = {
       query,
     };

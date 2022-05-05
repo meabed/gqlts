@@ -2,56 +2,60 @@ import get from "lodash.get";
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from "graphql-ws";
 import { Observable } from "zen-observable-ts";
 import { ClientError } from "../error";
-import { baseFetch, BaseFetcher, BatchOptions, FetcherRuntimeOptions } from "../fetcher";
+import { BatchOptions, createFetcher } from "../fetcher";
 import { ExecutionResult, LinkedType } from "../types";
 import { chain } from "./chain";
-import { generateGraphqlOperation } from "./generateGraphqlOperation";
+import { generateGraphqlOperation, GraphqlOperation } from "./generateGraphqlOperation";
 
 export type Headers = HeadersInit | (() => HeadersInit) | (() => Promise<HeadersInit>);
+export type BaseFetcher = (operation: GraphqlOperation | GraphqlOperation[]) => Promise<any>;
 
-export type ClientOptions = {
+export type ClientOptions = Omit<RequestInit, "body" | "headers"> & {
   url?: string;
-  fetchOptions?: FetcherRuntimeOptions | ((...params: any) => FetcherRuntimeOptions | Promise<FetcherRuntimeOptions>);
   batch?: BatchOptions | boolean;
   fetcher?: BaseFetcher;
+  headers?: Headers;
   subscription?: { url?: string; headers?: Headers } & WSClientOptions;
+};
+
+export const createClient = ({
+  queryRoot,
+  mutationRoot,
+  subscriptionRoot,
+  ...options
+}: ClientOptions & {
   queryRoot?: LinkedType;
   mutationRoot?: LinkedType;
   subscriptionRoot?: LinkedType;
-};
-
-export interface ICreateClient {
-  wsClient?: WSClient;
-  query?: Function;
-  mutation?: Function;
-  subscription?: Function;
-  chain?: {
+}) => {
+  const fetcher = createFetcher(options);
+  const client: {
+    wsClient?: WSClient;
+    setOption?: Function;
     query?: Function;
     mutation?: Function;
     subscription?: Function;
-  };
-}
-
-export function createClient({ queryRoot, mutationRoot, subscriptionRoot, ...options }) {
-  const client: ICreateClient = {};
+    chain?: {
+      query?: Function;
+      mutation?: Function;
+      subscription?: Function;
+    };
+  } = {};
 
   if (queryRoot) {
-    client.query = async (request) => {
+    client.query = (request) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
-      const fetchOptions =
-        typeof options.fetchOptions === "function" ? await options.fetchOptions() : options.fetchOptions;
-      return baseFetch(generateGraphqlOperation("query", queryRoot, request), options.url, fetchOptions);
+
+      return fetcher(generateGraphqlOperation("query", queryRoot, request));
     };
   }
   if (mutationRoot) {
-    client.mutation = async (request) => {
+    client.mutation = (request) => {
       if (!mutationRoot) throw new Error("mutationRoot argument is missing");
-      const fetchOptions =
-        typeof options.fetchOptions === "function" ? await options.fetchOptions() : options.fetchOptions;
-      return baseFetch(generateGraphqlOperation("mutation", mutationRoot, request), options.url, fetchOptions);
+
+      return fetcher(generateGraphqlOperation("mutation", mutationRoot, request));
     };
   }
-
   if (subscriptionRoot) {
     client.subscription = (request) => {
       if (!subscriptionRoot) {
@@ -110,7 +114,7 @@ export function createClient({ queryRoot, mutationRoot, subscriptionRoot, ...opt
     }),
   };
   return client;
-}
+};
 
 const mapResponse =
   (path: string[], defaultValue: any = undefined) =>
