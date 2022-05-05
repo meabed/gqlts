@@ -1,6 +1,6 @@
 {
   "name": "@genqlx/cli",
-  "version": "3.0.5yarn ",
+  "version": "3.0.5",
   "description": "Generate a client sdk from your GraphQl API",
   "keywords": [],
   "repository": {
