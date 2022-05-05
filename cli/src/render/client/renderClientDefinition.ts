@@ -11,11 +11,11 @@ export const renderClientDefinition = (schema: GraphQLSchema, ctx: RenderContext
   const subscriptionType = schema.getSubscriptionType();
 
   ctx.addCodeBlock(`
-    import { FieldsSelection, GraphqlOperation, ClientOptions, Observable } from '${RUNTIME_LIB_NAME}'
+    import { FieldsSelection, GraphqlOperation, ClientOptions, Observable, ICreateClient } from '${RUNTIME_LIB_NAME}'
     import { Client as WSClient } from "graphql-ws"
     export * from './schema'
     ${renderClientTypesImports({ mutationType, queryType, subscriptionType })}
-    export declare const createClient:(options?: ClientOptions)=>Client
+    export declare const createClient:(options?: ClientOptions) => ICreateClient
     export declare const everything: { __scalar: boolean }
     export declare const version: string
   `);
@@ -95,7 +95,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
   }
 
   return `
-    export interface Client {
+    export interface Client extends ICreateClient {
         wsClient?: WSClient
         ${interfaceContent}
         chain: {

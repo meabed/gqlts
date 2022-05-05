@@ -20,10 +20,10 @@ export type ClientOptions = {
   subscriptionRoot?: LinkedType;
 };
 
-export interface Client {
-  setUrl?: (url: string) => Client;
+export interface ICreateClient {
+  setUrl?: (url: string) => void;
   url?: string;
-  setFetchOptions?: (options: FetcherRuntimeOptions) => Client;
+  setFetchOptions?: (options: FetcherRuntimeOptions) => void;
   fetchOptions?: FetcherRuntimeOptions;
   //
   wsClient?: WSClient;
@@ -38,18 +38,16 @@ export interface Client {
 }
 
 export function createClient({ queryRoot, mutationRoot, subscriptionRoot, ...options }) {
-  const client: Client = {};
+  const client: ICreateClient = {};
 
   client.url = options?.url;
   client.setUrl = (newUrl: string) => {
     client.url = newUrl;
-    return client;
   };
 
   client.fetchOptions = options?.fetchOptions ?? {};
   client.setFetchOptions = (newFetchOptions: FetcherRuntimeOptions) => {
     client.fetchOptions = newFetchOptions;
-    return client;
   };
 
   if (queryRoot) {
