@@ -2,14 +2,12 @@ import get from "lodash.get";
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from "graphql-ws";
 import { Observable } from "zen-observable-ts";
 import { ClientError } from "../error";
-import { BatchOptions, createFetcher } from "../fetcher";
+import { BaseFetcher, BatchOptions, createFetcher } from "../fetcher";
 import { ExecutionResult, LinkedType } from "../types";
 import { chain } from "./chain";
-import { generateGraphqlOperation, GraphqlOperation } from "./generateGraphqlOperation";
+import { generateGraphqlOperation } from "./generateGraphqlOperation";
 
 export type Headers = HeadersInit | (() => HeadersInit) | (() => Promise<HeadersInit>);
-
-export type BaseFetcher = (operation: GraphqlOperation | GraphqlOperation[]) => Promise<ExecutionResult>;
 
 export type ClientOptions = Omit<RequestInit, "body" | "headers"> & {
   url?: string;
@@ -34,6 +32,7 @@ export const createClient = ({
   const fetcher = createFetcher({ ...options, ...(fetchOptions ?? {}) });
   const client: {
     wsClient?: WSClient;
+    setOption?: Function;
     query?: Function;
     mutation?: Function;
     subscription?: Function;
@@ -45,21 +44,17 @@ export const createClient = ({
   } = {};
 
   if (queryRoot) {
-    client.query = (request) => {
+    client.query = (request, options) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
 
-      const resultPromise = fetcher(generateGraphqlOperation("query", queryRoot, request));
-
-      return resultPromise;
+      return fetcher(generateGraphqlOperation("query", queryRoot, request), options);
     };
   }
   if (mutationRoot) {
     client.mutation = (request) => {
       if (!mutationRoot) throw new Error("mutationRoot argument is missing");
 
-      const resultPromise = fetcher(generateGraphqlOperation("mutation", mutationRoot, request));
-
-      return resultPromise;
+      return fetcher(generateGraphqlOperation("mutation", mutationRoot, request));
     };
   }
   if (subscriptionRoot) {
@@ -71,7 +66,7 @@ export const createClient = ({
       if (!client.wsClient) {
         client.wsClient = getSubscriptionClient(options);
       }
-      const obs = new Observable((observer) => {
+      return new Observable((observer) => {
         // TODO check that unsubscribing wrapper obs calls unsubscribe on the wrapped one
         const obs = client.wsClient?.subscribe(op, {
           next: (x) => {
@@ -88,7 +83,8 @@ export const createClient = ({
         });
         return () => {
           console.log("unsubscribed");
-          // obs?.unsubscribe();
+          client.wsClient?.terminate();
+          client.wsClient?.dispose();
         };
       }).map((val: ExecutionResult<any>): any => {
         if (val?.errors?.length) {
@@ -96,7 +92,6 @@ export const createClient = ({
         }
         return val?.data;
       });
-      return obs;
     };
   }
 

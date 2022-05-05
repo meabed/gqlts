@@ -1,13 +1,16 @@
-import QueryBatcher from "graphql-query-batcher";
 import fetch from "isomorphic-unfetch";
 import { ClientOptions } from "./client/createClient";
 import { GraphqlOperation } from "./client/generateGraphqlOperation";
 import { ClientError } from "./error";
 import { extractFiles } from "./extract-files/extract-files";
+import { ExecutionResult } from "./types";
 
-export interface Fetcher {
-  (gql: GraphqlOperation): Promise<any>;
-}
+export type FetcherRuntimeOptions = Omit<RequestInit, "body" | "method">;
+
+export type BaseFetcher = (
+  operation: GraphqlOperation | GraphqlOperation[],
+  options?: FetcherRuntimeOptions
+) => Promise<ExecutionResult>;
 
 export type BatchOptions = {
   batchInterval?: number; // ms
@@ -19,12 +22,18 @@ const DEFAULT_BATCH_OPTIONS = {
   batchInterval: 40,
 };
 
-export const createFetcher = ({ url = "", headers = {}, fetcher, batch = false, ...rest }: ClientOptions): Fetcher => {
+export const createFetcher = ({
+  url = "",
+  headers = {},
+  fetcher,
+  batch = false,
+  ...rest
+}: ClientOptions): BaseFetcher => {
   if (!url && !fetcher) {
     throw new Error("url or fetcher is required");
   }
   if (!fetcher) {
-    fetcher = async (body) => {
+    fetcher = async (body, options: FetcherRuntimeOptions = {}) => {
       const { clone, files } = extractFiles(body);
 
       const formData = new FormData();
@@ -47,8 +56,9 @@ export const createFetcher = ({ url = "", headers = {}, fetcher, batch = false, 
         formData.append(`${j++}`, file, file.name);
       }
 
+      const { headers: headerOptions, ...restOptions } = options;
       let headersObject = typeof headers == "function" ? await headers() : headers;
-      headersObject = headersObject || {};
+      headersObject = { ...(headersObject || {}), ...(headerOptions || {}) };
       const res = await fetch(url, {
         headers: {
           ...(!!files?.size && { "Content-Type": "application/json" }),
@@ -57,7 +67,12 @@ export const createFetcher = ({ url = "", headers = {}, fetcher, batch = false, 
         method: "POST",
         body: !!files.size ? formData : JSON.stringify(body),
         ...rest,
+        ...restOptions,
       });
+      // todo add support for batching
+      // if (batch) {
+      //   return { data: await res.json(), errors: [] };
+      // }
       if (!res.ok) {
         throw new Error(`${res.statusText}: ${await res.text()}`);
       }
@@ -65,35 +80,12 @@ export const createFetcher = ({ url = "", headers = {}, fetcher, batch = false, 
     };
   }
 
-  if (!batch) {
-    return async (body) => {
-      if (!fetcher) {
-        throw new Error("fetcher is required");
-      }
-      const json = await fetcher(body);
-      if (json?.errors?.length) {
-        throw new ClientError(json.errors);
-      }
-      if (json?.data) {
-        return json.data;
-      }
-      throw new Error("fetcher returned unexpected result " + JSON.stringify(json));
-    };
-  }
-
-  const batcher = new QueryBatcher(
-    async (batchedQuery: GraphqlOperation[]) => {
-      // console.log(batchedQuery) // [{ query: 'query{user{age}}', variables: {} }, ...]
-      if (!fetcher) {
-        throw new Error("fetcher is not defined");
-      }
-      return await fetcher(batchedQuery);
-    },
-    batch === true ? DEFAULT_BATCH_OPTIONS : batch
-  );
-
-  return async ({ query, variables }) => {
-    const json = await batcher.fetch(query, variables);
+  // if (!batch) {
+  return async (body, options?: RequestInit) => {
+    if (!fetcher) {
+      throw new Error("fetcher is required");
+    }
+    const json = await fetcher(body, options);
     if (json?.errors?.length) {
       throw new ClientError(json.errors);
     }
@@ -102,4 +94,28 @@ export const createFetcher = ({ url = "", headers = {}, fetcher, batch = false, 
     }
     throw new Error("fetcher returned unexpected result " + JSON.stringify(json));
   };
+  // }
+
+  // todo: add support for batching
+  // const batcher = new QueryBatcher(
+  //   async (batchedQuery: GraphqlOperation[], options?: RequestInit) => {
+  //     // console.log(batchedQuery) // [{ query: 'query{user{age}}', variables: {} }, ...]
+  //     if (!fetcher) {
+  //       throw new Error("fetcher is not defined");
+  //     }
+  //     return await fetcher(batchedQuery, options);
+  //   },
+  //   batch === true ? DEFAULT_BATCH_OPTIONS : batch
+  // );
+  //
+  // return async ({ query, variables }, options?: RequestInit) => {
+  //   const json = await batcher.fetch(query, variables);
+  //   if (json?.errors?.length) {
+  //     throw new ClientError(json.errors);
+  //   }
+  //   if (json?.data) {
+  //     return json.data;
+  //   }
+  //   throw new Error("fetcher returned unexpected result " + JSON.stringify(json));
+  // };
 };

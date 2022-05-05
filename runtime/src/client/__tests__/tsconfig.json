@@ -4,7 +4,8 @@
     "strict": false,
     "strictNullChecks": true,
     "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "downlevelIteration": true
   },
   "include": [
     "typeSelection.test.ts"
