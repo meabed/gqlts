@@ -54,6 +54,7 @@ export async function baseFetch(body, url = "", options: FetcherRuntimeOptions =
     },
     method: "POST",
     body: !!files.size ? formData : JSON.stringify(body),
+    credentials: "include",
     ...restOptions,
   });
   // todo add support for batching

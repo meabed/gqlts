@@ -21,10 +21,8 @@ export type ClientOptions = {
 };
 
 export interface ICreateClient {
-  setUrl?: (url: string) => void;
-  url?: string;
-  setFetchOptions?: (options: FetcherRuntimeOptions) => void;
-  fetchOptions?: FetcherRuntimeOptions;
+  url?: string | ((...params: any) => string | Promise<string>);
+  fetchOptions?: FetcherRuntimeOptions | ((...params: any) => FetcherRuntimeOptions | Promise<FetcherRuntimeOptions>);
   //
   wsClient?: WSClient;
   query?: Function;
@@ -40,28 +38,22 @@ export interface ICreateClient {
 export function createClient({ queryRoot, mutationRoot, subscriptionRoot, ...options }) {
   const client: ICreateClient = {};
 
-  client.url = options?.url;
-  client.setUrl = (newUrl: string) => {
-    client.url = newUrl;
-  };
-
-  client.fetchOptions = options?.fetchOptions ?? {};
-  client.setFetchOptions = (newFetchOptions: FetcherRuntimeOptions) => {
-    client.fetchOptions = newFetchOptions;
-  };
-
   if (queryRoot) {
-    client.query = (request) => {
+    client.query = async (request) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
-
-      return baseFetch(generateGraphqlOperation("query", queryRoot, request), client.url, client.fetchOptions);
+      const url = typeof client.url === "function" ? await client.url() : client.url;
+      const fetchOptions =
+        typeof client.fetchOptions === "function" ? await client.fetchOptions() : client.fetchOptions;
+      return baseFetch(generateGraphqlOperation("query", queryRoot, request), url, fetchOptions);
     };
   }
   if (mutationRoot) {
-    client.mutation = (request) => {
+    client.mutation = async (request) => {
       if (!mutationRoot) throw new Error("mutationRoot argument is missing");
-
-      return baseFetch(generateGraphqlOperation("mutation", mutationRoot, request), client.url, client.fetchOptions);
+      const url = typeof client.url === "function" ? await client.url() : client.url;
+      const fetchOptions =
+        typeof client.fetchOptions === "function" ? await client.fetchOptions() : client.fetchOptions;
+      return baseFetch(generateGraphqlOperation("mutation", mutationRoot, request), url, fetchOptions);
     };
   }
 
