@@ -14,7 +14,7 @@
     "dependencies": {
         "@genqlx/cli": "^3.0.1",
         "@genqlx/runtime": "^3.0.1",
-        "apollo-server": "3.6.7",
+        "apollo-server": "3.7.0",
         "await-sleep": "0.0.1",
         "deep-equal": "2.0.5",
         "graphql": "16.4.0",
