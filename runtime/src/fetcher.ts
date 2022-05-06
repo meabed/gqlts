@@ -4,7 +4,6 @@ import { GraphqlOperation } from "./client/generateGraphqlOperation";
 import { ClientError } from "./error";
 import { extractFiles } from "./extract-files/extract-files";
 import { QueryBatcher } from "./client/batcher";
-import AbortController from "isomorphic-abort-controller";
 
 export interface Fetcher {
   (gql: GraphqlOperation): Promise<any>;
@@ -52,11 +51,6 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
       }
       let headersObject = typeof headers == "function" ? await headers() : headers;
       headersObject = headersObject || {};
-      const abortController = new AbortController();
-      const signal = abortController.signal;
-      setTimeout(() => {
-        abortController.abort();
-      }, timeout);
 
       const res = await fetch(url, {
         headers: {
@@ -64,9 +58,8 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
           ...headersObject,
         },
         method: "POST",
-        body: !!files.size ? formData : JSON.stringify(body),
+        body: !files.size ? formData : JSON.stringify(body),
         credentials: "include",
-        signal,
         ...rest,
       });
       if (!res.ok) {
