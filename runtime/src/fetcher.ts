@@ -58,7 +58,7 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
           ...headersObject,
         },
         method: "POST",
-        body: !files.size ? formData : JSON.stringify(body),
+        body: !!files.size ? formData : JSON.stringify(body),
         credentials: "include",
         ...rest,
       });
