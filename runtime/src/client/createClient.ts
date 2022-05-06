@@ -12,6 +12,7 @@ export type BaseFetcher = (operation: GraphqlOperation | GraphqlOperation[]) => 
 
 export type ClientOptions = Omit<RequestInit, "body" | "headers"> & {
   url?: string;
+  timeout?: number;
   batch?: BatchOptions | boolean;
   fetcher?: BaseFetcher;
   headers?: Headers;

@@ -4,6 +4,7 @@ import { GraphqlOperation } from "./client/generateGraphqlOperation";
 import { ClientError } from "./error";
 import { extractFiles } from "./extract-files/extract-files";
 import { QueryBatcher } from "./client/batcher";
+import AbortController from "isomorphic-abort-controller";
 
 export interface Fetcher {
   (gql: GraphqlOperation): Promise<any>;
@@ -19,36 +20,44 @@ const DEFAULT_BATCH_OPTIONS = {
   batchInterval: 40,
 };
 
-export const createFetcher = ({ url = "", headers = {}, fetcher, batch = false, ...rest }: ClientOptions): Fetcher => {
+export const createFetcher = (params: ClientOptions): Fetcher => {
+  const { url = "", timeout = 100000, headers = {}, batch = false, ...rest } = params;
+  let { fetcher } = params;
+
   if (!url && !fetcher) {
     throw new Error("url or fetcher is required");
   }
+
   if (!fetcher) {
     fetcher = async (body) => {
       const { clone, files } = extractFiles(body);
 
-      const formData = new FormData();
-
-      // 1. First document is graphql query with variables
-      formData.append("operations", JSON.stringify(clone));
-
-      // 2. Second document maps files to variable locations
-      const map: any = {};
-      let i = 0;
-      files.forEach((paths) => {
-        map[i++] = paths;
-      });
-
-      formData.append("map", JSON.stringify(map));
-
-      // 3. all files not (same index as in map)
-      let j = 0;
-      for (const [file] of files) {
-        formData.append(`${j++}`, file, file.name);
+      let formData: FormData;
+      if (files.size) {
+        formData = new FormData();
+        // 1. First document is graphql query with variables
+        formData.append("operations", JSON.stringify(clone));
+        // 2. Second document maps files to variable locations
+        const map: any = {};
+        let i = 0;
+        files.forEach((paths) => {
+          map[i++] = paths;
+        });
+        formData.append("map", JSON.stringify(map));
+        // 3. all files not (same index as in map)
+        let j = 0;
+        for (const [file] of files) {
+          formData.append(`${j++}`, file, file.name);
+        }
       }
-
       let headersObject = typeof headers == "function" ? await headers() : headers;
       headersObject = headersObject || {};
+      const abortController = new AbortController();
+      const signal = abortController.signal;
+      setTimeout(() => {
+        abortController.abort();
+      }, timeout);
+
       const res = await fetch(url, {
         headers: {
           ...(!files?.size && { "Content-Type": "application/json" }),
@@ -57,6 +66,7 @@ export const createFetcher = ({ url = "", headers = {}, fetcher, batch = false, 
         method: "POST",
         body: !!files.size ? formData : JSON.stringify(body),
         credentials: "include",
+        signal,
         ...rest,
       });
       if (!res.ok) {
