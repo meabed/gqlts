@@ -12,8 +12,8 @@
         "flame": "node --prof-process --preprocess -j isolate*.log | flamebearer && open flamegraph.html"
     },
     "dependencies": {
-        "@genqlx/cli": "^3.0.1",
-        "@genqlx/runtime": "^3.0.1",
+        "@genqlx/cli": "^3.0.15",
+        "@genqlx/runtime": "^3.0.15",
         "apollo-server": "3.7.0",
         "await-sleep": "0.0.1",
         "deep-equal": "2.0.5",

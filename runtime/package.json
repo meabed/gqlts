@@ -85,7 +85,7 @@
     "@types/qs": "6.9.7",
     "@types/ws": "8.5.3",
     "common-tags": "1.8.2",
-    "dotenv": "16.0.0",
+    "dotenv": "16.0.1",
     "jest": "28.1.0",
     "sucrase": "3.21.0",
     "ts-jest": "28.0.2",
