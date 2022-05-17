@@ -1,7 +1,6 @@
 import fetch from "isomorphic-unfetch";
 import { ClientOptions } from "./client/createClient";
 import { GraphqlOperation } from "./client/generateGraphqlOperation";
-import { ClientError } from "./error";
 import { extractFiles } from "./extract-files/extract-files";
 import { QueryBatcher } from "./client/batcher";
 
@@ -31,7 +30,7 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
     fetcher = async (body) => {
       const { clone, files } = extractFiles(body);
 
-      let formData: FormData;
+      let formData: FormData | null = null;
       if (files.size) {
         formData = new FormData();
         // 1. First document is graphql query with variables
@@ -74,14 +73,7 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
       if (!fetcher) {
         throw new Error("fetcher is required");
       }
-      const json = await fetcher(body);
-      if (json?.errors?.length) {
-        throw new ClientError(json.errors);
-      }
-      if (json?.data) {
-        return json.data;
-      }
-      throw new Error("fetcher returned unexpected result " + JSON.stringify(json));
+      return fetcher(body);
     };
   }
 
@@ -97,16 +89,6 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
   );
 
   return async ({ query, variables }) => {
-    const json = await batcher.fetch(query, variables);
-    json.some((result) => {
-      if (result.errors) {
-        throw new ClientError(result?.errors);
-      }
-    });
-    const errors = json.map((result) => result.errors).flat();
-    if (errors.length) {
-      throw new ClientError(errors);
-    }
-    return json.map((result) => result.data);
+    return batcher.fetch(query, variables);
   };
 };

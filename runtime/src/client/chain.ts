@@ -1,14 +1,14 @@
 interface Chain {
-  (): void;
-
   path: string[][];
+
+  (): void;
 }
 
-const newChain = (path: string[][] = []) => {
+function newChain(path: string[][] = []) {
   const chain = <Chain>(() => {});
   chain.path = path;
   return chain;
-};
+}
 
 const pathToRequest = (path: string[][], executeFields: any): any => {
   if (path.length === 0) return undefined;
@@ -51,5 +51,6 @@ const wrapInProxy = (chain: Chain, onExecute: (path: string[], request: any, def
     },
   });
 
-export const chain = (onExecute: (path: string[], request: any, defaultValue: any) => any) =>
-  wrapInProxy(newChain(), onExecute);
+export function chain(onExecute: (path: string[], request: any, defaultValue: any) => any) {
+  return wrapInProxy(newChain(), onExecute);
+}

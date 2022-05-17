@@ -8,7 +8,7 @@ export interface PartialLinkedFieldMap {
   };
 }
 
-export const linkTypeMap = (typeMap: CompressedTypeMap<number>): LinkedTypeMap => {
+export function linkTypeMap(typeMap: CompressedTypeMap<number>): LinkedTypeMap {
   const indexToName: Record<number, string> = assign({}, ...Object.keys(typeMap.types).map((k, i) => ({ [i]: k })));
 
   // add the name value
@@ -67,7 +67,7 @@ export const linkTypeMap = (typeMap: CompressedTypeMap<number>): LinkedTypeMap =
   );
   const res = resolveConcreteTypes(intermediaryTypeMap);
   return res;
-};
+}
 
 // replace typename with concrete type
 export const resolveConcreteTypes = (linkedTypeMap: LinkedTypeMap) => {

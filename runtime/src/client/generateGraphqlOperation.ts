@@ -31,7 +31,7 @@ export interface GraphqlOperation {
   variables: { [name: string]: any };
 }
 
-const parseRequest = (request: Request | undefined, ctx: Context, path: string[]): string => {
+function parseRequest(request: Request | undefined, ctx: Context, path: string[]): string {
   if (Array.isArray(request)) {
     const [args, fields] = request;
     const argNames = Object.keys(args);
@@ -114,13 +114,13 @@ const parseRequest = (request: Request | undefined, ctx: Context, path: string[]
   } else {
     return "";
   }
-};
+}
 
-export const generateGraphqlOperation = (
+export function generateGraphqlOperation(
   operation: "query" | "mutation" | "subscription",
   root: LinkedType,
   fields: Fields
-): GraphqlOperation => {
+): GraphqlOperation {
   const ctx: Context = {
     root,
     varCounter: 0,
@@ -150,4 +150,4 @@ export const generateGraphqlOperation = (
       return r;
     }, {}),
   };
-};
+}

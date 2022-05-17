@@ -19,7 +19,7 @@ export type ClientOptions = Omit<RequestInit, "body" | "headers"> & {
   subscription?: { url?: string; headers?: Headers } & WSClientOptions;
 };
 
-export const createClient = ({
+export function createClient({
   queryRoot,
   mutationRoot,
   subscriptionRoot,
@@ -28,7 +28,7 @@ export const createClient = ({
   queryRoot?: LinkedType;
   mutationRoot?: LinkedType;
   subscriptionRoot?: LinkedType;
-}) => {
+}) {
   const fetcher = createFetcher(options);
   const client: {
     wsClient?: WSClient;
@@ -115,7 +115,7 @@ export const createClient = ({
     }),
   };
   return client;
-};
+}
 
 const mapResponse =
   (path: string[], defaultValue: any = undefined) =>

@@ -1,7 +1,7 @@
 import { LinkedField, LinkedType } from "../types";
 import startsWith from "lodash.startswith";
 
-export const getFieldFromPath = (root: LinkedType | undefined, path: string[]) => {
+export function getFieldFromPath(root: LinkedType | undefined, path: string[]) {
   let current: LinkedField | undefined;
 
   if (!root) throw new Error("root type is not provided");
@@ -37,4 +37,4 @@ export const getFieldFromPath = (root: LinkedType | undefined, path: string[]) =
   });
 
   return <LinkedField>current;
-};
+}
