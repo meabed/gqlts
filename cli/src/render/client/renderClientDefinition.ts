@@ -102,11 +102,18 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
             line: number
             column: number
         }[]
-        path?: string[]
-        [key: string]: any
+        path?: string | number[]
+        extensions?: {
+          [key: string]: unknown
+        }
+        [key: string]: unknown
     }
 
-    export interface GraphqlResponse<D = any, E = GraphqQLError[], X = any> {
+    export interface Extensions {
+        [key: string]: unknown
+    }
+
+    export interface GraphqlResponse<D = any, E = GraphqQLError[], X = Extensions> {
       data?: D;
       errors?: E;
       extensions?: X;
