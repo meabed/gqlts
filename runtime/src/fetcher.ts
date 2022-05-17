@@ -30,7 +30,7 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
     fetcher = async (body) => {
       const { clone, files } = extractFiles(body);
 
-      let formData: FormData | null = null;
+      let formData: FormData | undefined = undefined;
       if (files.size) {
         formData = new FormData();
         // 1. First document is graphql query with variables
@@ -51,7 +51,7 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
       let headersObject = typeof headers == "function" ? await headers() : headers;
       headersObject = headersObject || {};
 
-      const res = await fetch(url, {
+      return fetch(url, {
         headers: {
           ...(!files?.size && { "Content-Type": "application/json" }),
           ...headersObject,
@@ -60,11 +60,16 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
         body: !!files.size && formData ? formData : JSON.stringify(body),
         credentials: "include",
         ...rest,
-      });
-      if (!res.ok) {
-        throw new Error(`${res.statusText}: ${await res.text()}`);
-      }
-      return await res.json();
+      })
+        .then((res) => {
+          if (!res.ok) {
+            return { data: null, errors: [{ message: res.statusText, code: res.status, path: ["fetcher"] }] };
+          }
+          return res.json();
+        })
+        .catch((err) => {
+          return { data: null, errors: [{ message: err.message, code: err.code, path: ["fetcher"] }] };
+        });
     };
   }
 
