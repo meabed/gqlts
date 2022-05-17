@@ -65,7 +65,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         query<R extends ${requestTypeName(queryType)}>(
             request: R & { __name?: string },
-        ): Promise<FieldsSelectionResult<FieldsSelection<${queryType.name}, R>>>
+        ): Promise<GraphqlResponse<FieldsSelection<${queryType.name}, R>>>
         `;
     chainTypeContent += `
         query: ${chainTypeName(queryType, "Promise")}
@@ -76,7 +76,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         mutation<R extends ${requestTypeName(mutationType)}>(
             request: R & { __name?: string },
-        ): Promise<FieldsSelectionResult<FieldsSelection<${mutationType.name}, R>>>
+        ): Promise<GraphqlResponse<FieldsSelection<${mutationType.name}, R>>>
         `;
     chainTypeContent += `
         mutation: ${chainTypeName(mutationType, "Promise")}
@@ -87,7 +87,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         subscription<R extends ${requestTypeName(subscriptionType)}>(
             request: R & { __name?: string },
-        ): Observable<FieldsSelectionResult<FieldsSelection<${subscriptionType.name}, R>>>
+        ): Observable<GraphqlResponse<FieldsSelection<${subscriptionType.name}, R>>>
         `;
     chainTypeContent += `
         subscription: ${chainTypeName(subscriptionType, "Observable")}
@@ -95,10 +95,21 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
   }
 
   return `
-    export interface FieldsSelectionResult<D = any, E = any[], X = any> {
-      data: D;
-      errors: E;
-      extensions: X;
+    export interface GraphqQLError {
+        message: string
+        code?: string
+        locations?: {
+            line: number
+            column: number
+        }[]
+        path?: string[]
+        [key: string]: any
+    }
+
+    export interface GraphqlResponse<D = any, E = GraphqQLError[], X = any> {
+      data?: D;
+      errors?: E;
+      extensions?: X;
     }
 
     export interface Client {
@@ -115,7 +126,7 @@ function renderSupportFunctionsTypes({ queryType, mutationType, subscriptionType
   let code = "";
   if (queryType) {
     code += `
-        export type QueryResult<fields extends ${requestTypeName(queryType)}> = FieldsSelectionResult<FieldsSelection<${
+        export type QueryResult<fields extends ${requestTypeName(queryType)}> = GraphqlResponse<FieldsSelection<${
       queryType.name
     }, fields>>
 
@@ -125,9 +136,9 @@ function renderSupportFunctionsTypes({ queryType, mutationType, subscriptionType
   }
   if (mutationType) {
     code += `
-        export type MutationResult<fields extends ${requestTypeName(
-          mutationType
-        )}> = FieldsSelectionResult<FieldsSelection<${mutationType.name}, fields>>
+        export type MutationResult<fields extends ${requestTypeName(mutationType)}> = GraphqlResponse<FieldsSelection<${
+      mutationType.name
+    }, fields>>
 
         export declare const generateMutationOp: (fields: ${requestTypeName(
           mutationType
@@ -137,7 +148,7 @@ function renderSupportFunctionsTypes({ queryType, mutationType, subscriptionType
     code += `
         export type SubscriptionResult<fields extends ${requestTypeName(
           subscriptionType
-        )}> = FieldsSelectionResult<FieldsSelection<${subscriptionType.name}, fields>>
+        )}> = GraphqlResponse<FieldsSelection<${subscriptionType.name}, fields>>
 
         export declare const generateSubscriptionOp: (fields: ${requestTypeName(
           subscriptionType
