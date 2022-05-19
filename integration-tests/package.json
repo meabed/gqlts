@@ -12,8 +12,8 @@
     "flame": "node --prof-process --preprocess -j isolate*.log | flamebearer && open flamegraph.html"
   },
   "dependencies": {
-    "@genqlx/cli": "^3.0.16",
-    "@genqlx/runtime": "^3.0.15",
+    "@genqlx/cli": "^3.1.7",
+    "@genqlx/runtime": "^3.1.7",
     "apollo-server": "3.7.0",
     "await-sleep": "0.0.1",
     "deep-equal": "2.0.5",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.1",
     "@types/mocha": "9.1.1",
-    "@types/node": "17.0.31",
+    "@types/node": "17.0.34",
     "mocha": "10.0.0",
     "snap-shot-it": "7.9.6",
     "sucrase": "3.21.0"
