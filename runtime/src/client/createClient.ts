@@ -11,7 +11,7 @@ export type BaseFetcher = (
   config?: AxiosRequestConfig
 ) => Promise<any>;
 
-export type ClientOptions = Omit<AxiosRequestHeaders, "body" | "headers"> & {
+export type ClientOptions = Omit<AxiosRequestConfig, "body" | "headers"> & {
   url?: string;
   timeout?: number;
   batch?: BatchOptions | boolean;
