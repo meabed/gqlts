@@ -1,15 +1,15 @@
-import get from "lodash.get";
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from "graphql-ws";
 import { Observable } from "zen-observable-ts";
-import { ClientError } from "../error";
 import { BatchOptions, createFetcher } from "../fetcher";
 import { ExecutionResult, LinkedType } from "../types";
-import { chain } from "./chain";
 import { generateGraphqlOperation, GraphqlOperation } from "./generateGraphqlOperation";
-import { AxiosRequestHeaders } from "axios";
+import { AxiosRequestConfig, AxiosRequestHeaders } from "axios";
 
-export type Headers = HeadersInit | (() => AxiosRequestHeaders) | (() => Promise<AxiosRequestHeaders>);
-export type BaseFetcher = (operation: GraphqlOperation | GraphqlOperation[]) => Promise<any>;
+export type Headers = AxiosRequestHeaders | (() => AxiosRequestHeaders) | (() => Promise<AxiosRequestHeaders>);
+export type BaseFetcher = (
+  operation: GraphqlOperation | GraphqlOperation[],
+  config?: AxiosRequestConfig
+) => Promise<any>;
 
 export type ClientOptions = Omit<AxiosRequestHeaders, "body" | "headers"> & {
   url?: string;
@@ -37,35 +37,30 @@ export function createClient({
     query?: Function;
     mutation?: Function;
     subscription?: Function;
-    chain?: {
-      query?: Function;
-      mutation?: Function;
-      subscription?: Function;
-    };
   } = {};
 
   if (queryRoot) {
-    client.query = (request) => {
+    client.query = (request, config) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
 
-      return fetcher(generateGraphqlOperation("query", queryRoot, request));
+      return fetcher(generateGraphqlOperation("query", queryRoot, request), config);
     };
   }
   if (mutationRoot) {
-    client.mutation = (request) => {
+    client.mutation = (request, config) => {
       if (!mutationRoot) throw new Error("mutationRoot argument is missing");
 
-      return fetcher(generateGraphqlOperation("mutation", mutationRoot, request));
+      return fetcher(generateGraphqlOperation("mutation", mutationRoot, request), config);
     };
   }
   if (subscriptionRoot) {
-    client.subscription = (request) => {
+    client.subscription = (request, config) => {
       if (!subscriptionRoot) {
         throw new Error("subscriptionRoot argument is missing");
       }
       const op = generateGraphqlOperation("subscription", subscriptionRoot, request);
       if (!client.wsClient) {
-        client.wsClient = getSubscriptionClient(options);
+        client.wsClient = getSubscriptionClient(options, config);
       }
       return new Observable((observer) => {
         // TODO check that unsubscribing wrapper obs calls unsubscribe on the wrapped one
@@ -88,49 +83,16 @@ export function createClient({
           client.wsClient?.dispose();
         };
       }).map((val: ExecutionResult<any>): any => {
-        if (val?.errors?.length) {
-          throw new ClientError(val?.errors);
-        }
-        return val?.data;
+        // todo test subscription
+        return val;
       });
     };
   }
 
-  client.chain = {
-    query: chain((path, request, defaultValue) =>
-      client?.query
-        ? client.query(request).then(mapResponse(path, defaultValue))
-        : () => Promise.reject(new Error("query is not defined"))
-    ),
-    mutation: chain((path, request, defaultValue) =>
-      client?.mutation
-        ? client.mutation(request).then(mapResponse(path, defaultValue))
-        : () => Promise.reject(new Error("mutation is not defined"))
-    ),
-    subscription: chain((path, request, defaultValue) => {
-      const obs = client?.subscription
-        ? client.subscription(request)
-        : () => Promise.reject(new Error("subscription is not defined"));
-      const mapper = mapResponse(path, defaultValue);
-      return Observable.from(obs).map(mapper);
-    }),
-  };
   return client;
 }
 
-const mapResponse =
-  (path: string[], defaultValue: any = undefined) =>
-  (response: any) => {
-    const result = get(response, [...path], defaultValue);
-
-    if (result === undefined) {
-      throw new Error(`Response path \`${path.join(".")}\` is empty`);
-    }
-
-    return result;
-  };
-
-function getSubscriptionClient(opts: ClientOptions = {}): WSClient {
+function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
   let { url, headers = {} } = opts.subscription || {};
   // by default use the top level url
   if (!url) {
@@ -153,5 +115,6 @@ function getSubscriptionClient(opts: ClientOptions = {}): WSClient {
       };
     },
     ...opts,
+    ...config,
   });
 }

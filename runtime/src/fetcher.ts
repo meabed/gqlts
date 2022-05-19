@@ -2,11 +2,11 @@ import { ClientOptions } from "./client/createClient";
 import { GraphqlOperation } from "./client/generateGraphqlOperation";
 import { extractFiles } from "./extract-files/extract-files";
 import { QueryBatcher } from "./client/batcher";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import FormData from "form-data";
 
 export interface Fetcher {
-  (gql: GraphqlOperation): Promise<any>;
+  (gql: GraphqlOperation, config?: AxiosRequestConfig): Promise<any>;
 }
 
 export type BatchOptions = {
@@ -28,7 +28,7 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
   }
 
   if (!fetcher) {
-    fetcher = async (body) => {
+    fetcher = async (body, config: AxiosRequestConfig) => {
       const { clone, files } = extractFiles(body);
 
       let formData: FormData | undefined = undefined;
@@ -53,17 +53,18 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
       const headersObject = {
         "Content-Type": "application/json",
         ...(typeof headers == "function" ? await headers() : headers),
-        ...formData?.getHeaders(),
+        ...(!!formData?.getHeaders && formData?.getHeaders()),
       };
       const fetchBody = files.size && formData ? formData : JSON.stringify(body);
 
       return axios
         .post(url, fetchBody, {
           method: "POST",
-          headers: headersObject as any,
+          headers: headersObject,
           timeout,
           withCredentials: true,
           ...rest,
+          ...config,
         })
         .then((res) => {
           if (res.status === 200) {
@@ -81,26 +82,27 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
   }
 
   if (!batch) {
-    return async (body) => {
+    return async (body, config) => {
       if (!fetcher) {
         throw new Error("fetcher is required");
       }
-      return fetcher(body);
+      return fetcher(body, config);
     };
   }
 
+  // todo test batcher
   const batcher = new QueryBatcher(
-    async (batchedQuery: GraphqlOperation[]) => {
+    async (batchedQuery: GraphqlOperation[], config) => {
       // console.log(batchedQuery) // [{ query: 'query{user{age}}', variables: {} }, ...]
       if (!fetcher) {
         throw new Error("fetcher is not defined");
       }
-      return await fetcher(batchedQuery);
+      return fetcher(batchedQuery, config);
     },
     batch === true ? DEFAULT_BATCH_OPTIONS : batch
   );
 
-  return async ({ query, variables }) => {
-    return batcher.fetch(query, variables);
+  return async ({ query, variables }, config) => {
+    return batcher.fetch({ query, variables, config });
   };
 };

@@ -1,5 +1,4 @@
 import { GraphQLSchema } from "graphql";
-import { chainTypeName } from "../chain/objectType";
 import { RenderContext } from "../common/RenderContext";
 import { requestTypeName } from "../requestTypes/requestTypeName";
 import { RUNTIME_LIB_NAME } from "../../config";
@@ -38,18 +37,14 @@ export const renderClientDefinition = (schema: GraphQLSchema, ctx: RenderContext
 function renderClientTypesImports({ queryType, mutationType, subscriptionType }) {
   const imports: string[] = [];
   if (queryType) {
-    imports.push(requestTypeName(queryType), chainTypeName(queryType, "Promise"), queryType.name);
+    imports.push(requestTypeName(queryType), queryType.name);
   }
 
   if (mutationType) {
-    imports.push(requestTypeName(mutationType), chainTypeName(mutationType, "Promise"), mutationType.name);
+    imports.push(requestTypeName(mutationType), mutationType.name);
   }
   if (subscriptionType) {
-    imports.push(
-      requestTypeName(subscriptionType),
-      chainTypeName(subscriptionType, "Observable"),
-      subscriptionType.name
-    );
+    imports.push(requestTypeName(subscriptionType), subscriptionType.name);
   }
   if (imports.length > 0) {
     return `import {${imports.join(",")}} from './schema'`;
@@ -59,16 +54,13 @@ function renderClientTypesImports({ queryType, mutationType, subscriptionType })
 
 function renderClientType({ queryType, mutationType, subscriptionType }) {
   let interfaceContent = "";
-  let chainTypeContent = "";
 
   if (queryType) {
     interfaceContent += `
         query<R extends ${requestTypeName(queryType)}>(
             request: R & { __name?: string },
+            config?: AxiosRequestConfig,
         ): Promise<GraphqlResponse<FieldsSelection<${queryType.name}, R>>>
-        `;
-    chainTypeContent += `
-        query: ${chainTypeName(queryType, "Promise")}
         `;
   }
 
@@ -76,10 +68,8 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         mutation<R extends ${requestTypeName(mutationType)}>(
             request: R & { __name?: string },
+            config?: AxiosRequestConfig,
         ): Promise<GraphqlResponse<FieldsSelection<${mutationType.name}, R>>>
-        `;
-    chainTypeContent += `
-        mutation: ${chainTypeName(mutationType, "Promise")}
         `;
   }
 
@@ -88,9 +78,6 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
         subscription<R extends ${requestTypeName(subscriptionType)}>(
             request: R & { __name?: string },
         ): Observable<GraphqlResponse<FieldsSelection<${subscriptionType.name}, R>>>
-        `;
-    chainTypeContent += `
-        subscription: ${chainTypeName(subscriptionType, "Observable")}
         `;
   }
 
@@ -122,9 +109,6 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     export interface Client {
         wsClient?: WSClient
         ${interfaceContent}
-        chain: {
-            ${chainTypeContent}
-        }
     }
     `;
 } // TODO add the close method that closes the ws client

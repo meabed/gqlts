@@ -21,7 +21,7 @@ type Result = {
   data: Record<string, any>;
   errors: QueryError[];
 };
-type Fetcher = (batchedQuery: Query[] | Query, options?: AxiosRequestConfig) => Promise<Result[]>;
+type Fetcher = (batchedQuery: Query[] | Query, config?: AxiosRequestConfig) => Promise<Result[]>;
 type Options = {
   batchInterval?: number;
   shouldBatch?: boolean;
@@ -39,8 +39,9 @@ type Queue = {
  * @private
  * @param {QueryBatcher}   client - the client to use
  * @param {Queue} queue  - the list of requests to batch
+ * @param {AxiosRequestConfig} config  - AxiosRequestConfig
  */
-function dispatchQueueBatch(client: QueryBatcher, queue: Queue): void {
+function dispatchQueueBatch(client: QueryBatcher, queue: Queue, config?: AxiosRequestConfig): void {
   let batchedQuery = queue.map((item) => item.request);
 
   if (batchedQuery.length === 1) {
@@ -48,7 +49,7 @@ function dispatchQueueBatch(client: QueryBatcher, queue: Queue): void {
     batchedQuery = batchedQuery[0];
   }
 
-  client.fetcher(batchedQuery).then((responses) => {
+  client.fetcher(batchedQuery, config).then((responses) => {
     if (queue.length === 1 && !Array.isArray(responses)) {
       // @ts-ignore
       if (responses.errors && responses.errors.length) {
@@ -77,18 +78,19 @@ function dispatchQueueBatch(client: QueryBatcher, queue: Queue): void {
  * @private
  * @param {QueryBatcher} client - the client to create list of requests from from
  * @param {Options} options - the options for the batch
+ * @param {AxiosRequestConfig} config - AxiosRequestConfig
  */
-function dispatchQueue(client: QueryBatcher, options: Options): void {
+function dispatchQueue(client: QueryBatcher, options: Options, config?: AxiosRequestConfig): void {
   const queue = client._queue;
   const maxBatchSize = options.maxBatchSize || 0;
   client._queue = [];
 
   if (maxBatchSize > 0 && maxBatchSize < queue.length) {
     for (let i = 0; i < queue.length / maxBatchSize; i++) {
-      dispatchQueueBatch(client, queue.slice(i * maxBatchSize, (i + 1) * maxBatchSize));
+      dispatchQueueBatch(client, queue.slice(i * maxBatchSize, (i + 1) * maxBatchSize), config);
     }
   } else {
-    dispatchQueueBatch(client, queue);
+    dispatchQueueBatch(client, queue, config);
   }
 }
 
@@ -97,8 +99,8 @@ function dispatchQueue(client: QueryBatcher, options: Options): void {
  * @param {Fetcher} fetcher                 - A function that can handle the network requests to graphql endpoint
  * @param {Options} options                 - the options to be used by client
  * @param {boolean} options.shouldBatch     - should the client batch requests. (default true)
- * @param {integer} options.batchInterval   - duration (in MS) of each batch window. (default 6)
- * @param {integer} options.maxBatchSize    - max number of requests in a batch. (default 0)
+ * @param {number} options.batchInterval   - duration (in MS) of each batch window. (default 6)
+ * @param {number} options.maxBatchSize    - max number of requests in a batch. (default 0)
  * @param {boolean} options.defaultHeaders  - default headers to include with every request
  *
  * @example
@@ -138,6 +140,7 @@ export class QueryBatcher {
    * @param {[string]}    operationName  - the graphql operationName.
    * @param {Options}     overrides      - the client options overrides.
    *
+   * @param config
    * @return {promise} resolves to parsed json of server response
    *
    * @example
@@ -154,7 +157,19 @@ export class QueryBatcher {
    *      console.log(human);
    *    });
    */
-  fetch(query: string, variables?: Variables, operationName?: string, overrides: Options = {}): Promise<Result[]> {
+  fetch({
+    query,
+    variables,
+    operationName,
+    overrides = {},
+    config = {},
+  }: {
+    query: string;
+    variables?: Variables;
+    operationName?: string;
+    overrides?: Options;
+    config?: AxiosRequestConfig;
+  }): Promise<Result[]> {
     const request: Query = {
       query,
     };
@@ -177,9 +192,9 @@ export class QueryBatcher {
 
       if (this._queue.length === 1) {
         if (options.shouldBatch) {
-          setTimeout(() => dispatchQueue(this, options), options.batchInterval);
+          setTimeout(() => dispatchQueue(this, options, config), options.batchInterval);
         } else {
-          dispatchQueue(this, options);
+          dispatchQueue(this, options, config);
         }
       }
     });

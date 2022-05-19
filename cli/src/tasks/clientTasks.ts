@@ -1,7 +1,6 @@
 import Listr, { ListrTask } from "listr";
 import { Config } from "../config";
 import { ensurePath, writeFileToPath } from "../helpers/files";
-import { renderChainTypes } from "../render/chain/renderChainTypes";
 import { renderClientCjs, renderClientEsm } from "../render/client/renderClient";
 import { renderClientDefinition } from "../render/client/renderClientDefinition";
 import { RenderContext } from "../render/common/RenderContext";
@@ -44,7 +43,6 @@ export const clientTasks = (config: Config): ListrTask[] => {
         renderResponseTypes(ctx.schema, renderCtx);
         renderRequestTypes(ctx.schema, renderCtx);
         renderTypeGuards(ctx.schema, renderCtx);
-        renderChainTypes(ctx.schema, renderCtx);
 
         await writeFileToPath([output, schemaTypesFile], renderCtx.toCode("typescript"));
       },
