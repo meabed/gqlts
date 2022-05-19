@@ -1,8 +1,9 @@
-import fetch from "isomorphic-unfetch";
 import { ClientOptions } from "./client/createClient";
 import { GraphqlOperation } from "./client/generateGraphqlOperation";
 import { extractFiles } from "./extract-files/extract-files";
 import { QueryBatcher } from "./client/batcher";
+import axios from "axios";
+import FormData from "form-data";
 
 export interface Fetcher {
   (gql: GraphqlOperation): Promise<any>;
@@ -31,7 +32,7 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
       const { clone, files } = extractFiles(body);
 
       let formData: FormData | undefined = undefined;
-      if (files.size) {
+      if (files.size > 0) {
         formData = new FormData();
         // 1. First document is graphql query with variables
         formData.append("operations", JSON.stringify(clone));
@@ -48,27 +49,33 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
           formData.append(`${j++}`, file, file.name);
         }
       }
-      let headersObject = typeof headers == "function" ? await headers() : headers;
-      headersObject = headersObject || {};
 
-      return fetch(url, {
-        headers: {
-          ...(!files?.size && { "Content-Type": "application/json" }),
-          ...headersObject,
-        },
-        method: "POST",
-        body: !!files.size && formData ? formData : JSON.stringify(body),
-        credentials: "include",
-        ...rest,
-      })
+      const headersObject = {
+        "Content-Type": "application/json",
+        ...(typeof headers == "function" ? await headers() : headers),
+        ...formData?.getHeaders(),
+      };
+      const fetchBody = files.size && formData ? formData : JSON.stringify(body);
+
+      return axios
+        .post(url, fetchBody, {
+          method: "POST",
+          headers: headersObject as any,
+          timeout,
+          withCredentials: true,
+          ...rest,
+        })
         .then((res) => {
-          if (!res.ok) {
-            return { data: null, errors: [{ message: res.statusText, code: res.status, path: ["fetcher"] }] };
+          if (res.status === 200) {
+            return res.data;
           }
-          return res.json();
+          return {
+            data: null,
+            errors: [{ message: res.statusText, code: res.status, path: ["clientResponseNotOk"] }],
+          };
         })
         .catch((err) => {
-          return { data: null, errors: [{ message: err.message, code: err.code, path: ["fetcher"] }] };
+          return { data: null, errors: [{ message: err.message, code: err.code, path: ["clientResponseError"] }] };
         });
     };
   }

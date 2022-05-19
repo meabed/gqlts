@@ -6,11 +6,12 @@ import { BatchOptions, createFetcher } from "../fetcher";
 import { ExecutionResult, LinkedType } from "../types";
 import { chain } from "./chain";
 import { generateGraphqlOperation, GraphqlOperation } from "./generateGraphqlOperation";
+import { AxiosRequestHeaders } from "axios";
 
-export type Headers = HeadersInit | (() => HeadersInit) | (() => Promise<HeadersInit>);
+export type Headers = HeadersInit | (() => AxiosRequestHeaders) | (() => Promise<AxiosRequestHeaders>);
 export type BaseFetcher = (operation: GraphqlOperation | GraphqlOperation[]) => Promise<any>;
 
-export type ClientOptions = Omit<RequestInit, "body" | "headers"> & {
+export type ClientOptions = Omit<AxiosRequestHeaders, "body" | "headers"> & {
   url?: string;
   timeout?: number;
   batch?: BatchOptions | boolean;

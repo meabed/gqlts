@@ -1,3 +1,5 @@
+import { AxiosRequestConfig } from "axios";
+
 type Variables = Record<string, any>;
 type Query = {
   query: string;
@@ -19,7 +21,7 @@ type Result = {
   data: Record<string, any>;
   errors: QueryError[];
 };
-type Fetcher = (batchedQuery: Query[] | Query, options?: RequestInit) => Promise<Result[]>;
+type Fetcher = (batchedQuery: Query[] | Query, options?: AxiosRequestConfig) => Promise<Result[]>;
 type Options = {
   batchInterval?: number;
   shouldBatch?: boolean;
