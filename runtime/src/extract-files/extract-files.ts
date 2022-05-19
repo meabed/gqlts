@@ -17,7 +17,7 @@ export function isExtractableFile(value) {
   return (
     (typeof File !== "undefined" && value instanceof File) ||
     (typeof Blob !== "undefined" && value instanceof Blob) ||
-    (typeof ReadStream !== "undefined" && value instanceof ReadStream) ||
+    (ReadStream && typeof ReadStream !== "undefined" && value instanceof ReadStream) ||
     value instanceof ReactNativeFile
   );
 }
