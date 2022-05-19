@@ -1,4 +1,6 @@
 const fs = typeof window === "object" ? null : eval('require("node:fs")');
+const ReadStream = fs ? fs.ReadStream : null;
+
 export class ReactNativeFile {
   uri: string;
   name?: string;
@@ -15,7 +17,7 @@ export function isExtractableFile(value) {
   return (
     (typeof File !== "undefined" && value instanceof File) ||
     (typeof Blob !== "undefined" && value instanceof Blob) ||
-    (typeof fs.ReadStream !== "undefined" && value instanceof fs.ReadStream) ||
+    (typeof ReadStream !== "undefined" && value instanceof ReadStream) ||
     value instanceof ReactNativeFile
   );
 }
