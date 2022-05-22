@@ -3,7 +3,7 @@ import Listr from "listr";
 import { clientTasks } from "./tasks/clientTasks";
 import { schemaTask } from "./tasks/schemaTask";
 
-export const generate = (config: Config): Promise<void> => {
+export function generate(config: Config): Promise<void> {
   if (!config.output) {
     throw new Error("`output` must be defined in the config");
   }
@@ -22,4 +22,4 @@ export const generate = (config: Config): Promise<void> => {
       // cconsole.log(e)
       throw e?.errors?.[0];
     });
-};
+}

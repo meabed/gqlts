@@ -11,10 +11,10 @@ import { RenderContext } from "../common/RenderContext";
 import { ArgMap, Field, FieldMap } from "@genqlx/runtime/dist/types";
 import { isEmpty } from "./support";
 
-export const objectType = (
+export function objectType(
   type: GraphQLObjectType | GraphQLInterfaceType | GraphQLInputObjectType,
   ctx: RenderContext
-) => {
+) {
   const typeObj: FieldMap<string> = Object.keys(type.getFields()).reduce<FieldMap<string>>((r, f) => {
     const field = type.getFields()[f];
     const namedType = getNamedType(field.type);
@@ -58,4 +58,4 @@ export const objectType = (
   // if (scalar.length > 0) typeObj.scalar = scalar
 
   return typeObj;
-};
+}

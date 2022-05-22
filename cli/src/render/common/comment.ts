@@ -1,6 +1,6 @@
 import { GraphQLArgument, GraphQLEnumValue, GraphQLField, GraphQLInputField, GraphQLNamedType } from "graphql";
 
-export const comment = (comment: { text?: string | null; deprecated?: string | null }) => {
+export function comment(comment: { text?: string | null; deprecated?: string | null }) {
   const lines: string[] = [];
 
   if (comment.deprecated) {
@@ -16,20 +16,21 @@ export const comment = (comment: { text?: string | null; deprecated?: string | n
       ? `\n/** ${lines[0]} */\n`
       : `\n/**\n${lines.map((l) => ` * ${l}`).join("\n")}\n */\n`
     : "";
-};
+}
 
-export const typeComment = (type: GraphQLNamedType) =>
-  comment({
+export function typeComment(type: GraphQLNamedType) {
+  return comment({
     text: type.description,
   });
-
-export const fieldComment = (field: GraphQLEnumValue | GraphQLField<any, any, any>) =>
-  comment({
+}
+export function fieldComment(field: GraphQLEnumValue | GraphQLField<any, any, any>) {
+  return comment({
     deprecated: field.deprecationReason,
     text: field.description,
   });
-
-export const argumentComment = (arg: GraphQLArgument | GraphQLInputField) =>
-  comment({
+}
+export function argumentComment(arg: GraphQLArgument | GraphQLInputField) {
+  return comment({
     text: arg.description,
   });
+}

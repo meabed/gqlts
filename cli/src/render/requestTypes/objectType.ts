@@ -14,7 +14,7 @@ import { sortKeys } from "../common/support";
 
 const INDENTATION = "    ";
 
-export const objectType = (type: GraphQLObjectType | GraphQLInterfaceType, ctx: RenderContext) => {
+export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: RenderContext) {
   let fields = type.getFields();
 
   if (ctx.config?.sortProperties) {
@@ -71,4 +71,4 @@ export const objectType = (type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
   );
 
   ctx.addCodeBlock(`${typeComment(type)}export interface ${requestTypeName(type)}{\n${fieldStrings.join("\n")}\n}`);
-};
+}

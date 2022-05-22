@@ -4,7 +4,7 @@ import { requestTypeName } from "../requestTypes/requestTypeName";
 import { RUNTIME_LIB_NAME } from "../../config";
 import { renderEnumsMaps } from "./renderClient";
 
-export const renderClientDefinition = (schema: GraphQLSchema, ctx: RenderContext) => {
+export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext) {
   const queryType = schema.getQueryType();
   const mutationType = schema.getMutationType();
   const subscriptionType = schema.getSubscriptionType();
@@ -32,7 +32,7 @@ export const renderClientDefinition = (schema: GraphQLSchema, ctx: RenderContext
   );
 
   ctx.addCodeBlock(renderEnumsMaps(schema, "type"));
-};
+}
 
 function renderClientTypesImports({ queryType, mutationType, subscriptionType }) {
   const imports: string[] = [];
@@ -82,6 +82,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
   }
 
   return `
+    export type Head<T extends unknown | unknown[]> = T extends [infer H, ...unknown[]] ? H : never
     export interface GraphqQLError {
         message: string
         code?: string
@@ -111,7 +112,9 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
         ${interfaceContent}
     }
     `;
-} // TODO add the close method that closes the ws client
+}
+
+// TODO add the close method that closes the ws client
 
 function renderSupportFunctionsTypes({ queryType, mutationType, subscriptionType }) {
   let code = "";

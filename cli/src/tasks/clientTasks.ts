@@ -19,7 +19,7 @@ const typeMapFileEsm = "types.esm.js";
 const clientFileCjs = "index.js";
 const clientTypesFile = "index.d.ts";
 
-export const clientTasks = (config: Config): ListrTask[] => {
+export function clientTasks(config: Config): ListrTask[] {
   const clientFileEsm = config.onlyEsModules ? "index.js" : "index.esm.js";
 
   if (!config.output) throw new Error("`output` must be defined in the config");
@@ -121,4 +121,4 @@ export const clientTasks = (config: Config): ListrTask[] => {
       task: () => new Listr(tasks.filter((x) => Boolean(x)) as ReadonlyArray<ListrTask>, { concurrent: true }),
     },
   ];
-};
+}

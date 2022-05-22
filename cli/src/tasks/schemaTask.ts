@@ -5,7 +5,7 @@ import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 import { fetchSchema } from "../schema/fetchSchema";
 import { loadSchema } from "@graphql-tools/load";
 
-export const schemaTask = (config: Config): ListrTask => {
+export function schemaTask(config: Config): ListrTask {
   const processSchema = (schema) => {
     if (config.sortProperties) {
       return lexicographicSortSchema(schema);
@@ -51,4 +51,4 @@ export const schemaTask = (config: Config): ListrTask => {
   } else {
     throw new Error("either `endpoint`, `fetcher` or `schema` must be defined in the config");
   }
-};
+}

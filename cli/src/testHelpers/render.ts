@@ -18,7 +18,7 @@ export interface SchemaRenderer {
   (schema: GraphQLSchema, ctx: RenderContext): void;
 }
 
-export const toClientSchema = async (schemaGql: string) => {
+export async function toClientSchema(schemaGql: string) {
   const schema = buildSchema(schemaGql);
 
   const introspectionResponse = await graphql(schema, getIntrospectionQuery());
@@ -28,9 +28,9 @@ export const toClientSchema = async (schemaGql: string) => {
   }
 
   return buildClientSchema(introspectionResponse.data as any);
-};
+}
 
-export const schemaRenderTest = async (schemaGql: string, renderer: SchemaRenderer, parser?: BuiltInParserName) => {
+export async function schemaRenderTest(schemaGql: string, renderer: SchemaRenderer, parser?: BuiltInParserName) {
   const schema = await toClientSchema(schemaGql);
 
   const ctx = new RenderContext(schema);
@@ -38,14 +38,14 @@ export const schemaRenderTest = async (schemaGql: string, renderer: SchemaRender
   renderer(schema, ctx);
 
   return ctx.toCode(parser, true);
-};
+}
 
-export const typeRenderTest = async (
+export async function typeRenderTest(
   schemaGql: string,
   renderer: TypeRenderer,
   typeNames: string[],
   parser?: BuiltInParserName
-) => {
+) {
   const schema = await toClientSchema(schemaGql);
 
   const ctx = new RenderContext(schema);
@@ -61,15 +61,15 @@ export const typeRenderTest = async (
   });
 
   return ctx.toCode(parser, true);
-};
+}
 
-export const typeRenderTestCase = async (
+export async function typeRenderTestCase(
   dirName: string,
   file: string,
   renderer: TypeRenderer,
   typeNames: string[],
   output = false
-) => {
+) {
   const [gql, ts] = await Promise.all([
     readFileFromPath([dirName, `cases/${file}.graphql`]),
     readFileFromPath([dirName, `cases/${file}.case.ts`]),
@@ -83,4 +83,4 @@ export const typeRenderTestCase = async (
   } else {
     expect(actualTs).toBe(ts);
   }
-};
+}

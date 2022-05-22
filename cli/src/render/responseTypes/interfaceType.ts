@@ -3,7 +3,7 @@ import { RenderContext } from "../common/RenderContext";
 import { typeComment } from "../common/comment";
 import { objectType } from "./objectType";
 
-export const interfaceType = (type: GraphQLInterfaceType, ctx: RenderContext) => {
+export function interfaceType(type: GraphQLInterfaceType, ctx: RenderContext) {
   if (!ctx.schema) {
     throw new Error("schema is required to render unionType");
   }
@@ -15,7 +15,7 @@ export const interfaceType = (type: GraphQLInterfaceType, ctx: RenderContext) =>
       `${typeComment(type)}export type ${type.name} = (${typeNames.join(" | ")}) & { __isUnion?: true }`
     );
   }
-};
+}
 
 // interface should produce an object like
 // export type Nameable = {

@@ -13,7 +13,7 @@ import { RenderContext } from "../common/RenderContext";
 import { objectType } from "./objectType";
 import { unionType } from "./unionType";
 
-export const renderTypeMap = (schema: GraphQLSchema, ctx: RenderContext) => {
+export function renderTypeMap(schema: GraphQLSchema, ctx: RenderContext) {
   // remove fields key,
   // remove the Type.type and Type.args, replace with [type, args]
   // reverse args.{name}
@@ -58,7 +58,7 @@ export const renderTypeMap = (schema: GraphQLSchema, ctx: RenderContext) => {
   }
 
   ctx.addCodeBlock(JSON.stringify(replaceTypeNamesWithIndexes(result), null, 4));
-};
+}
 
 export function replaceTypeNamesWithIndexes(typeMap: TypeMap<string>): CompressedTypeMap<number> {
   const nameToIndex: Record<string, number> = Object.assign(

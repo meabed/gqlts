@@ -17,7 +17,7 @@ import { unionType } from "./unionType";
 import { interfaceType } from "./interfaceType";
 import { sortKeys } from "../common/support";
 
-export const renderResponseTypes = (schema: GraphQLSchema, ctx: RenderContext) => {
+export function renderResponseTypes(schema: GraphQLSchema, ctx: RenderContext) {
   let typeMap = schema.getTypeMap();
   if (ctx.config?.sortProperties) {
     typeMap = sortKeys(typeMap);
@@ -48,7 +48,7 @@ export const renderResponseTypes = (schema: GraphQLSchema, ctx: RenderContext) =
     .filter(Boolean)
     .join("\n");
   ctx.addCodeBlock(aliases);
-};
+}
 
 function renderAlias({ type, name }: { type?: GraphQLObjectType | null; name: string }) {
   if (type && type.name !== name) {

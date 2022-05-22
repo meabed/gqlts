@@ -19,7 +19,7 @@ ${mode === "esm" ? "export var " : "module.exports."}is${target} = function(obj)
 }
 `;
 
-export const renderTypeGuards = (schema: GraphQLSchema, ctx: RenderContext, isJs: "ts" | "esm" | "cjs" = "ts") => {
+export function renderTypeGuards(schema: GraphQLSchema, ctx: RenderContext, isJs: "ts" | "esm" | "cjs" = "ts") {
   const typeMap = schema.getTypeMap();
   for (const name in typeMap) {
     if (excludedTypes.includes(name)) continue;
@@ -36,4 +36,4 @@ export const renderTypeGuards = (schema: GraphQLSchema, ctx: RenderContext, isJs
       ctx.addCodeBlock(renderTypeGuard(type.name, [type.name], isJs));
     }
   }
-};
+}

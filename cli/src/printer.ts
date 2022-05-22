@@ -14,8 +14,7 @@ export type PrintOptions = {
 };
 
 export function print(ast: ASTNode, options: PrintOptions = {}): string {
-  const str = visit(ast, { leave: printDocASTReducer(options) });
-  return str;
+  return visit(ast, { leave: printDocASTReducer(options) });
 }
 
 const printDocASTReducer = ({

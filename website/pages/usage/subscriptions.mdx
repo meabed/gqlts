@@ -30,14 +30,4 @@ const { unsubscribe } = await client
         error: console.error,
     })
 
-// using chain syntax
-const { unsubscribe } = await client.chain.subscription
-    .user({ where: { name: { _eq: 'John' } } })
-    .get({ ...everything })
-    .subscribe({
-        next: (x) => console.log('next', x),
-        error: console.error,
-    })
-
-unsubscribe()
 ```

@@ -13,7 +13,7 @@ import { objectType } from "./objectType";
 import { unionType } from "./unionType";
 import { sortKeys } from "../common/support";
 
-export const renderRequestTypes = (schema: GraphQLSchema, ctx: RenderContext) => {
+export function renderRequestTypes(schema: GraphQLSchema, ctx: RenderContext) {
   let typeMap = schema.getTypeMap();
 
   if (ctx.config?.sortProperties) {
@@ -40,7 +40,7 @@ export const renderRequestTypes = (schema: GraphQLSchema, ctx: RenderContext) =>
     .join("\n");
 
   ctx.addCodeBlock(aliases);
-};
+}
 
 function renderAlias({ type, name }: { type?: GraphQLObjectType | null; name: string }) {
   if (type && type.name + "Request" !== name) {

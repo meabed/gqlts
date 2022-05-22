@@ -4,7 +4,7 @@ import { RenderContext } from "../common/RenderContext";
 import { renderTyping } from "../common/renderTyping";
 import { sortKeys } from "../common/support";
 
-export const inputObjectType = (type: GraphQLInputObjectType, ctx: RenderContext) => {
+export function inputObjectType(type: GraphQLInputObjectType, ctx: RenderContext) {
   let fields = type.getFields();
 
   if (ctx.config?.sortProperties) {
@@ -17,4 +17,4 @@ export const inputObjectType = (type: GraphQLInputObjectType, ctx: RenderContext
   });
 
   ctx.addCodeBlock(`${typeComment(type)}export interface ${type.name} {${fieldStrings.join(",")}}`);
-};
+}

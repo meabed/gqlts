@@ -59,10 +59,12 @@ const render = (
   return render((<GraphQLNonNull<any>>type).ofType, true, false, undefinableValues, undefinableFields, wrap);
 };
 
-export const renderTyping = (
+export function renderTyping(
   type: GraphQLOutputType | GraphQLInputType,
   undefinableValues: boolean,
   undefinableFields: boolean,
   root = true,
   wrap: any = undefined
-) => render(type, false, root, undefinableValues, undefinableFields, wrap);
+) {
+  return render(type, false, root, undefinableValues, undefinableFields, wrap);
+}

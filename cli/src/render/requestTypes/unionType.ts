@@ -4,7 +4,7 @@ import { typeComment } from "../common/comment";
 import { RenderContext } from "../common/RenderContext";
 import { requestTypeName } from "./requestTypeName";
 
-export const unionType = (type: GraphQLUnionType, ctx: RenderContext) => {
+export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
   let types = type.getTypes();
   if (ctx.config?.sortProperties) {
     types = types.sort();
@@ -25,4 +25,4 @@ export const unionType = (type: GraphQLUnionType, ctx: RenderContext) => {
       .map((x) => "    " + x)
       .join(",\n")}\n}`
   );
-};
+}

@@ -7,7 +7,7 @@ export interface SchemaFetcher {
   (query: string, fetchImpl: typeof fetch, qsImpl: typeof qs): Promise<ExecutionResult>;
 }
 
-export const fetchSchema = async ({
+export async function fetchSchema({
   endpoint,
   usePost = false,
   headers,
@@ -17,7 +17,7 @@ export const fetchSchema = async ({
   usePost: boolean;
   headers?: Record<string, string>;
   options?: GraphQLSchemaValidationOptions;
-}) => {
+}) {
   const response = await fetch(
     usePost ? endpoint : `${endpoint}?${qs.stringify({ query: getIntrospectionQuery() })}`,
     usePost
@@ -49,9 +49,9 @@ export const fetchSchema = async ({
   // console.log(JSON.stringify(result.data, null, 4))
 
   return buildClientSchema(result.data, options);
-};
+}
 
-export const customFetchSchema = async (fetcher: SchemaFetcher, options?: GraphQLSchemaValidationOptions) => {
+export async function customFetchSchema(fetcher: SchemaFetcher, options?: GraphQLSchemaValidationOptions) {
   const result = await fetcher(getIntrospectionQuery(), fetch, qs);
 
   if (!result.data) {
@@ -59,4 +59,4 @@ export const customFetchSchema = async (fetcher: SchemaFetcher, options?: GraphQ
   }
 
   return buildClientSchema(result.data as any, options);
-};
+}

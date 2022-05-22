@@ -11,10 +11,10 @@ const knownTypes: {
   ID: "string",
 };
 
-export const getTypeMappedAlias = (type: GraphQLNamedType, ctx: RenderContext) => {
+export function getTypeMappedAlias(type: GraphQLNamedType, ctx: RenderContext) {
   const map = { ...knownTypes, ...(ctx?.config?.scalarTypes || {}) };
   return map?.[type.name] || "any";
-};
+}
 
 // export const renderTypeMappedAlias = (
 //     type: GraphQLNamedType,

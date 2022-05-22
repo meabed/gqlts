@@ -6,7 +6,7 @@ import camelCase from "lodash/camelCase";
 
 const { version } = require("../../../package.json");
 
-const renderClientCode = (ctx: RenderContext) => {
+function renderClientCode(ctx: RenderContext) {
   const url = ctx.config?.endpoint ? `"${ctx.config.endpoint}"` : "undefined";
   return `
 function(options) {
@@ -22,7 +22,7 @@ function(options) {
     }
     return createClientOriginal(optionsCopy)
 }`;
-};
+}
 
 export function renderEnumsMaps(schema: GraphQLSchema, moduleType: "esm" | "cjs" | "type") {
   let typeMap = schema.getTypeMap();
@@ -66,7 +66,7 @@ export function renderEnumsMaps(schema: GraphQLSchema, moduleType: "esm" | "cjs"
     .join("\n");
 }
 
-export const renderClientCjs = (schema: GraphQLSchema, ctx: RenderContext) => {
+export function renderClientCjs(schema: GraphQLSchema, ctx: RenderContext) {
   ctx.addCodeBlock(`
   const {
       linkTypeMap,
@@ -103,9 +103,9 @@ export const renderClientCjs = (schema: GraphQLSchema, ctx: RenderContext) => {
     module.exports[k] = schemaExports[k];
   }
   `);
-};
+}
 
-export const renderClientEsm = (schema: GraphQLSchema, ctx: RenderContext) => {
+export function renderClientEsm(schema: GraphQLSchema, ctx: RenderContext) {
   ctx.addCodeBlock(`
   import {
       linkTypeMap,
@@ -137,4 +137,4 @@ export const renderClientEsm = (schema: GraphQLSchema, ctx: RenderContext) => {
     __scalar: true
   }
   `);
-};
+}

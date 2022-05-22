@@ -6,7 +6,7 @@ import { sortKeys } from "../common/support";
 
 const INDENTATION = "    ";
 
-export const objectType = (type: GraphQLObjectType | GraphQLInterfaceType, ctx: RenderContext) => {
+export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: RenderContext) {
   let fieldsMap = type.getFields();
 
   if (ctx.config?.sortProperties) {
@@ -40,4 +40,4 @@ export const objectType = (type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
   // let extensions =
   //     interfaceNames.length > 0 ? ` extends ${interfaceNames.join(',')}` : ''
   ctx.addCodeBlock(`${typeComment(type)}export interface ${type.name} {\n${fieldStrings.join("\n")}\n}`);
-};
+}

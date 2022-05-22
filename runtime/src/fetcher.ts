@@ -57,15 +57,16 @@ export const createFetcher = (params: ClientOptions): Fetcher => {
       };
       const fetchBody = files.size && formData ? formData : JSON.stringify(body);
 
-      return axios
-        .post(url, fetchBody, {
-          method: "POST",
-          headers: headersObject,
-          timeout,
-          withCredentials: true,
-          ...rest,
-          ...config,
-        })
+      return axios({
+        url,
+        data: fetchBody,
+        method: "POST",
+        headers: headersObject,
+        timeout,
+        withCredentials: true,
+        ...rest,
+        ...config,
+      })
         .then((res) => {
           if (res.status === 200) {
             return res.data;

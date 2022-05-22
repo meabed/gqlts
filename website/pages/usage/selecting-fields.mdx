@@ -94,17 +94,3 @@ client
     })
     .then((x) => console.log(JSON.stringify(x)))
 ```
-
-# Using the chain syntax
-
-Genqlx has an alternative way of executing queries called `chain` mode.
-
-The chain mode let you access fields using dot notation instead of an object:
-
-```js
-import { createClient } from './generated'
-
-const client = createClient()
-
-const name = await client.chain.mutation.createUser({ name: 'john' }).name.get()
-```

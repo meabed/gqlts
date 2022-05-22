@@ -3,7 +3,7 @@ import { RenderContext } from "../common/RenderContext";
 import { FieldMap } from "@genqlx/runtime/dist/types";
 import { flatten, uniq } from "lodash";
 
-export const unionType = (type: GraphQLUnionType, _: RenderContext) => {
+export function unionType(type: GraphQLUnionType, _: RenderContext) {
   const types = type.getTypes();
   const typeObj: FieldMap<string> = types.reduce<FieldMap<string>>((r, t) => {
     r[`on_${t.name}`] = { type: t.name };
@@ -18,4 +18,4 @@ export const unionType = (type: GraphQLUnionType, _: RenderContext) => {
   typeObj.__typename = { type: "String" };
 
   return typeObj;
-};
+}
