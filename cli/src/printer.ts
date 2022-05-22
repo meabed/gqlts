@@ -1,4 +1,4 @@
-import { visit } from "graphql/language/visitor";
+import { ASTReducer, ASTVisitFn, ASTVisitor, visit } from "graphql/language/visitor";
 import { ASTNode } from "graphql/language/ast";
 import { prettify } from "./helpers/prettify";
 
@@ -14,95 +14,102 @@ export type PrintOptions = {
 };
 
 export function print(ast: ASTNode, options: PrintOptions = {}) {
-  return visit(ast, { leave: printDocASTReducer(options) });
+  return visit(ast, {
+    leave: (node) => {
+      const fn = printDocASTReducer(options);
+      const visitor = fn[node.kind];
+      if (visitor) {
+        return visitor(node);
+      }
+      return null;
+    },
+  });
 }
 
-const printDocASTReducer = ({
-  clientVarName = "client",
-  transformVariableName = (x) => x,
-  thenCode,
-}: PrintOptions): any => ({
-  Name: (node) => node.value,
-  Variable: (node) => transformVariableName(node.name),
-  NamedType: ({ name }) => name,
-  ListType: ({ type }) => "[" + type + "]",
-  NonNullType: ({ type }) => type,
-  Directive: ({ name, arguments: args }) => "",
+function printDocASTReducer({ clientVarName = "client", transformVariableName = (x) => x, thenCode }: PrintOptions) {
+  return {
+    Name: (node) => node.value,
+    Variable: (node) => transformVariableName(node.name),
+    NamedType: ({ name }) => name,
+    ListType: ({ type }) => "[" + type + "]",
+    NonNullType: ({ type }) => type,
+    Directive: ({ name, arguments: args }) => "",
 
-  IntValue: ({ value }) => value,
-  FloatValue: ({ value }) => value,
-  StringValue: ({ value, block: isBlockString }, key) => JSON.stringify(value),
-  BooleanValue: ({ value }) => (value ? "true" : "false"),
-  NullValue: () => "null",
-  EnumValue: ({ value }) => `'${value}'`,
-  ListValue: ({ values }) => "[" + join(values, ", ") + "]",
-  ObjectValue: ({ fields }) => "{" + join(fields, ", ") + "}",
-  ObjectField: ({ name, value }) => name + ": " + value,
+    IntValue: ({ value }) => value,
+    FloatValue: ({ value }) => value,
+    StringValue: ({ value, block: isBlockString }, key) => JSON.stringify(value),
+    BooleanValue: ({ value }) => (value ? "true" : "false"),
+    NullValue: () => "null",
+    EnumValue: ({ value }) => `'${value}'`,
+    ListValue: ({ values }) => "[" + join(values, ", ") + "]",
+    ObjectValue: ({ fields }) => "{" + join(fields, ", ") + "}",
+    ObjectField: ({ name, value }) => name + ": " + value,
 
-  // Document
+    // Document
 
-  Document: (node) => join(node.definitions, "\n\n") + "\n",
+    Document: (node) => join(node.definitions, "\n\n") + "\n",
 
-  OperationDefinition(node) {
-    const selectionSet = node.selectionSet;
-    // Anonymous queries with no directives or variable definitions can use
-    // the query short form.
-    let code = join(node.variableDefinitions, "\n");
-    if (node.variableDefinitions.length) {
-      code = "// variables\n" + code;
-      code += "\n\n";
-    }
-    code += `${clientVarName}.${node.operation}(` + selectionSet + ")";
-    if (thenCode) {
-      code += `.then(${thenCode})`;
-    }
-    return prettify(code, "typescript");
-  },
+    OperationDefinition(node) {
+      const selectionSet = node.selectionSet;
+      // Anonymous queries with no directives or variable definitions can use
+      // the query short form.
+      let code = join(node.variableDefinitions, "\n");
+      if (node.variableDefinitions.length) {
+        code = "// variables\n" + code;
+        code += "\n\n";
+      }
+      code += `${clientVarName}.${node.operation}(` + selectionSet + ")";
+      if (thenCode) {
+        code += `.then(${thenCode})`;
+      }
+      return prettify(code, "typescript");
+    },
 
-  VariableDefinition: ({ variable, type, defaultValue, directives }) => {
-    return "var " + variable.replace("$", "");
-  },
-  SelectionSet: ({ selections }) => block(selections),
+    VariableDefinition: ({ variable, type, defaultValue, directives }) => {
+      return "var " + variable.replace("$", "");
+    },
+    SelectionSet: ({ selections }) => block(selections),
 
-  Field: ({ alias, name, arguments: args, directives, selectionSet }) => {
-    if (args.length == 0 && !join([selectionSet])) {
-      return name + ": true";
-    }
-    if (args.length == 0) {
-      return name + ": " + join([selectionSet]);
-    }
-    const argsAndFields = join([block(args), ",", selectionSet]);
-    return name + ": " + wrap("[", argsAndFields, "]");
-  },
-  // join(directives, ' '),
+    Field: ({ alias, name, arguments: args, directives, selectionSet }) => {
+      if (args.length == 0 && !join([selectionSet])) {
+        return name + ": true";
+      }
+      if (args.length == 0) {
+        return name + ": " + join([selectionSet]);
+      }
+      const argsAndFields = join([block(args), ",", selectionSet]);
+      return name + ": " + wrap("[", argsAndFields, "]");
+    },
+    // join(directives, ' '),
 
-  Argument: ({ name, value = "" }) => {
-    if (typeof value === "string") {
-      return name + ": " + transformVariableName(value.replace("$", ""));
-    }
-    console.error(`unhandled type, received ${JSON.stringify(value)} as Argument`);
-    return "";
-  },
-  // Fragments
+    Argument: ({ name, value = "" }) => {
+      if (typeof value === "string") {
+        return name + ": " + transformVariableName(value.replace("$", ""));
+      }
+      console.error(`unhandled type, received ${JSON.stringify(value)} as Argument`);
+      return "";
+    },
+    // Fragments
 
-  FragmentSpread: ({ name, directives }) => {
-    // TODO FragmentSpread
-    return "..." + name + ",";
-  },
+    FragmentSpread: ({ name, directives }) => {
+      // TODO FragmentSpread
+      return "..." + name + ",";
+    },
 
-  InlineFragment: ({ typeCondition, directives, selectionSet }) => {
-    console.log({ selectionSet, directives, typeCondition });
-    return join(["", wrap("on_", typeCondition), ":", selectionSet], " ");
-  },
+    InlineFragment: ({ typeCondition, directives, selectionSet }) => {
+      console.log({ selectionSet, directives, typeCondition });
+      return join(["", wrap("on_", typeCondition), ":", selectionSet], " ");
+    },
 
-  FragmentDefinition: ({ name, typeCondition, variableDefinitions, directives, selectionSet }) => {
-    // TODO FragmentDefinition
-    // Note: fragment variable definitions are experimental and may be changed
-    // or removed in the future.
-    return `const ${name} = ` + selectionSet;
-  },
-  // Directive
-});
+    FragmentDefinition: ({ name, typeCondition, variableDefinitions, directives, selectionSet }) => {
+      // TODO FragmentDefinition
+      // Note: fragment variable definitions are experimental and may be changed
+      // or removed in the future.
+      return `const ${name} = ` + selectionSet;
+    },
+    // Directive
+  };
+}
 
 /**
  * Given maybeArray, print an empty string if it is null or empty, otherwise

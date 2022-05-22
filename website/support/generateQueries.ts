@@ -10,7 +10,15 @@ export function generateQueries(p: { packageName: string; number?: number; schem
     code += "\n\n\n";
     const { queryDocument, variableValues, seed } = generateRandomQuery(p.schema, {
       // seed: 2,
+      providerMap: {
+        "*__*__limit": "number",
+        "*__*__max": "number",
+        "*__*__id": "string",
+        "*__*__username": "string",
+        "*__*__*": "string",
+      },
     });
+
     code += print(queryDocument, {
       clientVarName: "client",
       transformVariableName,

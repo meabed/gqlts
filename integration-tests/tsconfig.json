@@ -12,9 +12,10 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "allowJs": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "noImplicitThis": false,
     "resolveJsonModule": true,
+    "skipDefaultLibCheck": true,
     "lib": [
       "dom",
       "es2017",

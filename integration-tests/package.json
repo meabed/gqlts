@@ -1,31 +1,33 @@
 {
   "name": "integration-tests",
-  "private": true,
   "version": "2.10.0",
-  "main": "index.js",
-  "author": "remorses",
+  "private": true,
   "license": "MIT",
+  "author": "remorses",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register",
+    "flame": "node --prof-process --preprocess -j isolate*.log | flamebearer && open flamegraph.html",
     "gen": "node -r sucrase/register generate.ts && tsc --noEmit",
     "genprof": "node -r sucrase/register --prof generate.ts",
-    "flame": "node --prof-process --preprocess -j isolate*.log | flamebearer && open flamegraph.html"
-  },
-  "dependencies": {
-    "@genqlx/cli": "^3.1.12",
-    "@genqlx/runtime": "^3.1.12",
-    "apollo-server": "3.7.0",
-    "await-sleep": "0.0.1",
-    "deep-equal": "2.0.5",
-    "graphql": "16.5.0",
-    "graphql-easy-mocks": "1.1.1",
-    "tsd": "0.20.0",
-    "tsdef": "0.0.14"
+    "test": "mocha -r ts-node/register"
   },
   "mocha": {
     "require": "sucrase/register",
     "spec": "tests/**.ts",
     "timeout": 9999999999
+  },
+  "dependencies": {
+    "@genqlx/cli": "^3.1.12",
+    "@genqlx/runtime": "^3.1.12",
+    "apollo-server-express": "3.7.0",
+    "await-sleep": "0.0.1",
+    "axios": "^0.27.2",
+    "deep-equal": "2.0.5",
+    "express": "^4.18.1",
+    "graphql": "16.5.0",
+    "graphql-easy-mocks": "1.1.1",
+    "tsd": "0.20.0",
+    "tsdef": "0.0.14"
   },
   "devDependencies": {
     "@types/deep-equal": "1.0.1",

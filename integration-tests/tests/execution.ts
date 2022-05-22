@@ -1,4 +1,4 @@
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from "apollo-server-express";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { PubSub } from "graphql-subscriptions";
 import sleep from "await-sleep";
@@ -8,14 +8,16 @@ import path from "path";
 import { expectType } from "tsd";
 import { DeepPartial } from "tsdef";
 import { Account, createClient, everything, isHouse, isUser, Point, User } from "../generated";
-import { SubscriptionServer } from "subscriptions-transport-ws";
+import { WebSocketServer } from "ws";
+import { useServer } from "graphql-ws/lib/use/ws";
 import { createServer } from "http";
 import express from "express";
+import axios from "axios";
 
 const id = () => null;
 
 const PORT = 8099;
-const URL = `http://localhost:` + PORT;
+const URL = `http://localhost:` + PORT + "/graphql";
 const SUB_URL = `ws://localhost:` + PORT + "/graphql";
 type Maybe<T> = T | undefined | null;
 
@@ -24,6 +26,7 @@ async function server({ resolvers, port = PORT }) {
     const app = express();
     const httpServer = createServer(app);
     const typeDefs = fs.readFileSync(path.join(__dirname, "..", "schema.graphql")).toString();
+
     const schema = makeExecutableSchema({
       typeDefs,
       resolvers,
@@ -31,6 +34,14 @@ async function server({ resolvers, port = PORT }) {
         requireResolversForResolveType: "ignore",
       },
     });
+
+    const wsServer = new WebSocketServer({
+      server: httpServer,
+      path: "/graphql",
+    });
+
+    const subscriptionServer = useServer({ schema }, wsServer);
+
     const server = new ApolloServer({
       schema,
       plugins: [
@@ -38,34 +49,19 @@ async function server({ resolvers, port = PORT }) {
           async serverWillStart() {
             return {
               async drainServer() {
-                subscriptionServer.close();
+                subscriptionServer.dispose();
               },
             };
           },
         },
       ],
     });
-    const subscriptionServer = SubscriptionServer.create(
-      {
-        schema,
-        async onDisconnect(connectionParams: Object, webSocket: WebSocket, context: any) {
-          console.log(`Subscription client disconnected.`);
-        },
-        async onConnect(connectionParams: Object, webSocket: WebSocket, context: any) {
-          console.log(`Subscription client connected using Apollo server's built-in SubscriptionServer.`);
-        },
-      },
-      {
-        server: httpServer,
-        path: server.graphqlPath,
-      }
-    );
-
-    // The `listen` method launches a web server.
+    await server.start();
+    server.applyMiddleware({ app, path: "/graphql" });
     await httpServer.listen(port).on("listening", () => {
       console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
-    return () => server.stop();
+    return async () => httpServer.close() && (await server.stop());
   } catch (e) {
     console.error("server had an error: " + e);
     return () => null;
@@ -121,6 +117,7 @@ describe("execute queries", async function () {
       await func();
     } catch (e) {
       console.log("catch");
+      console.error({ e });
       throw e;
     } finally {
       await stop();
@@ -210,9 +207,9 @@ describe("execute queries", async function () {
         ],
       });
       console.log(JSON.stringify(res, null, 2));
-      // // @ts-expect-error because top level fields are filtered based on query
-      // res?.account;
-      // no optional chaining because repository is non null
+      // @ts-expect-error because top level fields are filtered based on query
+      res?.account;
+      // no optional chaining because repository is non-null
       expectType<string | undefined>(res?.repository.createdAt);
       expectType<Maybe<string>>(res?.repository.__typename);
       expectType<Maybe<Maybe<string>[]>>(res?.repository?.forks?.edges?.map((x) => x?.node?.name));
@@ -268,7 +265,7 @@ describe("execute queries", async function () {
         },
       });
       // @ts-expect-error because on_User should be removed
-      account?.on_User;
+      res?.account?.on_User;
 
       let account = res?.account;
       assert(account?.__typename);
@@ -293,8 +290,8 @@ describe("execute queries", async function () {
     withServer(async () => {
       const { data: res } = await client.query({ repository: [{ name: "" }, { createdAt: 1 }] });
       expectType<string | undefined>(res?.repository?.createdAt);
-      // // @ts-expect-error
-      // res?.forks;
+      // @ts-expect-error
+      res?.forks;
     })
   );
   it(
@@ -467,18 +464,20 @@ describe("execute queries", async function () {
         url: URL,
         batch: true,
         fetcher: async (body) => {
-          console.log(body);
+          console.log({ body });
           batchedQueryLength = Array.isArray(body) ? body.length : -1;
-          const res = await fetch(URL, {
+          const res = await axios({
+            url: URL,
             headers: {
               "Content-Type": "application/json",
             },
             method: "POST",
-            body: JSON.stringify(body),
+            data: JSON.stringify(body),
           });
-          return await res.json();
+          return res.data;
         },
       });
+
       const res = await Promise.all([
         client.query({
           coordinates: {
@@ -493,7 +492,8 @@ describe("execute queries", async function () {
           },
         }),
       ]);
-      assert.strictEqual(res.length, 2);
+      console.log(JSON.stringify(res, null, 2));
+      assert.strictEqual(res?.length, 2);
       assert.strictEqual(batchedQueryLength, 2);
     })
   );
@@ -593,6 +593,7 @@ describe("execute subscriptions", async function () {
       })
       .subscribe({
         next: ({ data: x }) => {
+          console.log(JSON.stringify(x, null, 2));
           expectType<Maybe<string>>(x?.user?.name);
           expectType<Maybe<string>>(x?.user?.__typename);
           expectType<Maybe<number>>(x?.user?.common);
@@ -602,7 +603,7 @@ describe("execute subscriptions", async function () {
         error: console.error,
       });
 
-    // await sleep(1000)
+    await sleep(1000);
     await pubsub.publish(USER_EVENT, { user: x });
     // console.log(JSON.stringify(res, null, 2))
     sub.unsubscribe();

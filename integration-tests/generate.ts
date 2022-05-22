@@ -1,10 +1,10 @@
 import { generate } from "@genqlx/cli/src/main";
-import fs from "fs";
-import path from "path";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 generate({
-  schema: fs.readFileSync(path.join(__dirname, "schema.graphql")).toString(),
-  output: path.join(__dirname, "generated"),
+  schema: readFileSync(join(__dirname, "schema.graphql")).toString(),
+  output: join(__dirname, "generated"),
   scalarTypes: {
     MongoID: "string",
   },

@@ -28,6 +28,7 @@
     "ultra-runner": "3.10.5"
   },
   "resolutions": {
-    "graphql": "^16.5.0"
+    "graphql": "^16.5.0",
+    "ws": "^8.6.0"
   }
 }
