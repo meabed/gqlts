@@ -11,7 +11,7 @@ export function generateQueries(p: { packageName: string; number?: number; schem
     const { queryDocument, variableValues, seed } = generateRandomQuery(p.schema, {
       // seed: 2,
     });
-    code += print(queryDocument as any, {
+    code += print(queryDocument, {
       clientVarName: "client",
       transformVariableName,
       thenCode,

@@ -21,7 +21,7 @@ export interface SchemaRenderer {
 export async function toClientSchema(schemaGql: string) {
   const schema = buildSchema(schemaGql);
 
-  const introspectionResponse = await graphql(schema, getIntrospectionQuery());
+  const introspectionResponse = await graphql({ schema, source: getIntrospectionQuery() });
 
   if (!introspectionResponse.data) {
     throw new Error(JSON.stringify(introspectionResponse.errors));

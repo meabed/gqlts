@@ -1,3 +1,4 @@
+const WebSocketNode = typeof window !== "undefined" ? null : eval('require("ws")');
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from "graphql-ws";
 import { Observable } from "zen-observable-ts";
 import { BatchOptions, createFetcher } from "../fetcher";
@@ -103,6 +104,7 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
   }
 
   return createWSClient({
+    ...(typeof window === "undefined" && { webSocketImpl: WebSocketNode }),
     url,
     lazy: true,
     shouldRetry: () => true,

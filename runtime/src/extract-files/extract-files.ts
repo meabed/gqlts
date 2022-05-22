@@ -1,4 +1,4 @@
-const fs = typeof window === "object" ? null : eval('require("node:fs")');
+const fs = typeof window !== "undefined" ? null : eval('require("node:fs")');
 const ReadStream = fs ? fs.ReadStream : null;
 
 export class ReactNativeFile {

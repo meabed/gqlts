@@ -12,6 +12,7 @@ export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext
   ctx.addCodeBlock(`
     import { FieldsSelection, GraphqlOperation, ClientOptions, Observable } from '${RUNTIME_LIB_NAME}'
     import { Client as WSClient } from "graphql-ws"
+    import { AxiosRequestConfig } from 'axios'
     export * from './schema'
     ${renderClientTypesImports({ mutationType, queryType, subscriptionType })}
     export declare const createClient:(options?: ClientOptions) => Client
@@ -83,7 +84,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
 
   return `
     export type Head<T extends unknown | unknown[]> = T extends [infer H, ...unknown[]] ? H : never
-    export interface GraphqQLError {
+    export interface GraphQLError {
         message: string
         code?: string
         locations?: {
@@ -101,7 +102,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
         [key: string]: unknown
     }
 
-    export interface GraphqlResponse<D = any, E = GraphqQLError[], X = Extensions> {
+    export interface GraphqlResponse<D = any, E = GraphQLError[], X = Extensions> {
       data?: D;
       errors?: E;
       extensions?: X;

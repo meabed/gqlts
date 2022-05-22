@@ -13,7 +13,7 @@ export type PrintOptions = {
   thenCode?: string;
 };
 
-export function print(ast: ASTNode, options: PrintOptions = {}): string {
+export function print(ast: ASTNode, options: PrintOptions = {}) {
   return visit(ast, { leave: printDocASTReducer(options) });
 }
 

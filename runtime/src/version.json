@@ -1,6 +1,6 @@
 {
   "name": "@genqlx/runtime",
-  "version": "3.1.10",
+  "version": "3.1.11",
   "description": "Genqlx runtime client",
   "keywords": [],
   "homepage": "https://genqlx.vercel.app",
@@ -21,10 +21,10 @@
   "scripts": {
     "build": "rm -rf dist esm *.tsbuildinfo && cp ./package.json src/version.json && tsc && tsc -m ESNext --outDir esm",
     "compile": "sucrase -q ./src -d ./dist --transforms typescript,imports",
-    "dev": "yarn compile && node dist",
     "start": "tsdx watch",
     "test": "yarn typesTests && jest",
-    "typesTests": "tsc -b src/client/__tests__/tsconfig.json"
+    "typesTests": "tsc -b src/client/__tests__/tsconfig.json",
+    "dev": "yarn compile && node dist"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -71,6 +71,7 @@
     "lodash.assign": "^4.2.0",
     "lodash.get": "^4.4.2",
     "lodash.startswith": "^4.2.1",
+    "ws": "^8.6.0",
     "zen-observable-ts": "^1.1.0"
   },
   "devDependencies": {

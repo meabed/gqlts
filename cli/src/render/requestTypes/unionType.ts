@@ -7,7 +7,8 @@ import { requestTypeName } from "./requestTypeName";
 export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
   let types = type.getTypes();
   if (ctx.config?.sortProperties) {
-    types = types.sort();
+    // todo fix in new graphql version
+    // types = types.sort();
   }
   const fieldStrings = types.map((t) => `on_${t.name}?:${requestTypeName(t)}`);
 

@@ -21,7 +21,7 @@ export function objectType(
     const fieldObj: Field<string> = { type: namedType.name };
     r[f] = fieldObj;
 
-    const args: GraphQLArgument[] = (<GraphQLField<any, any>>field).args || [];
+    const args = (<GraphQLField<any, any>>field).args || [];
 
     if (args.length > 0) {
       fieldObj.args = args.reduce<ArgMap<string>>((r, a) => {
