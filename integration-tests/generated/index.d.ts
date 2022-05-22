@@ -1,48 +1,86 @@
-import { FieldsSelection, GraphqlOperation, ClientOptions, Observable } from "@genqlx/runtime";
-import { SubscriptionClient } from "subscriptions-transport-ws";
-export * from "./schema";
+import {
+  FieldsSelection,
+  GraphqlOperation,
+  ClientOptions,
+  Observable,
+} from '@genqlx/runtime'
+import { Client as WSClient } from 'graphql-ws'
+import { AxiosRequestConfig } from 'axios'
+export * from './schema'
 import {
   QueryRequest,
-  QueryPromiseChain,
   Query,
   SubscriptionRequest,
-  SubscriptionObservableChain,
   Subscription,
-} from "./schema";
-export declare const createClient: (options?: ClientOptions) => Client;
-export declare const everything: { __scalar: boolean };
-export declare const version: string;
+} from './schema'
+export declare const createClient: (options?: ClientOptions) => Client
+export declare const everything: { __scalar: boolean }
+export declare const version: string
 
-export interface Client {
-  wsClient?: SubscriptionClient;
-
-  query<R extends QueryRequest>(request: R & { __name?: string }): Promise<FieldsSelection<Query, R>>;
-
-  subscription<R extends SubscriptionRequest>(
-    request: R & { __name?: string }
-  ): Observable<FieldsSelection<Subscription, R>>;
-
-  chain: {
-    query: QueryPromiseChain;
-
-    subscription: SubscriptionObservableChain;
-  };
+export type Head<T extends unknown | unknown[]> = T extends [
+  infer H,
+  ...unknown[],
+]
+  ? H
+  : never
+export interface GraphQLError {
+  message: string
+  code?: string
+  locations?: {
+    line: number
+    column: number
+  }[]
+  path?: string | number[]
+  extensions?: {
+    [key: string]: unknown
+  }
+  [key: string]: unknown
 }
 
-export type QueryResult<fields extends QueryRequest> = FieldsSelection<Query, fields>;
+export interface Extensions {
+  [key: string]: unknown
+}
 
-export declare const generateQueryOp: (fields: QueryRequest & { __name?: string }) => GraphqlOperation;
-export type SubscriptionResult<fields extends SubscriptionRequest> = FieldsSelection<Subscription, fields>;
+export interface GraphqlResponse<D = any, E = GraphQLError[], X = Extensions> {
+  data?: D
+  errors?: E
+  extensions?: X
+}
 
-export declare const generateSubscriptionOp: (fields: SubscriptionRequest & { __name?: string }) => GraphqlOperation;
+export interface Client {
+  wsClient?: WSClient
+
+  query<R extends QueryRequest>(
+    request: R & { __name?: string },
+    config?: AxiosRequestConfig,
+  ): Promise<GraphqlResponse<FieldsSelection<Query, R>>>
+
+  subscription<R extends SubscriptionRequest>(
+    request: R & { __name?: string },
+  ): Observable<GraphqlResponse<FieldsSelection<Subscription, R>>>
+}
+
+export type QueryResult<fields extends QueryRequest> = GraphqlResponse<
+  FieldsSelection<Query, fields>
+>
+
+export declare const generateQueryOp: (
+  fields: QueryRequest & { __name?: string },
+) => GraphqlOperation
+export type SubscriptionResult<fields extends SubscriptionRequest> =
+  GraphqlResponse<FieldsSelection<Subscription, fields>>
+
+export declare const generateSubscriptionOp: (
+  fields: SubscriptionRequest & { __name?: string },
+) => GraphqlOperation
 
 export declare const enumSomeEnum: {
-  readonly X: "X";
-  readonly Y: "Y";
-  readonly Z: "Z";
-};
+  readonly X: 'X'
+  readonly Y: 'Y'
+  readonly Z: 'Z'
+}
 
 export declare const enumSomeEnum2: {
-  readonly hello: "hello";
-  readonly world: "world";
-};
+  readonly hello: 'hello'
+  readonly world: 'world'
+}

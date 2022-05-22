@@ -18,7 +18,7 @@ export type ClientOptions = Omit<AxiosRequestConfig, "body" | "headers"> & {
   batch?: BatchOptions | boolean;
   fetcher?: BaseFetcher;
   headers?: Headers;
-  subscription?: { url?: string; headers?: Headers } & WSClientOptions;
+  subscription?: { url?: string; headers?: Headers } & Partial<WSClientOptions>;
 };
 
 export function createClient({

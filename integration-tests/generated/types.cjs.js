@@ -6,7 +6,7 @@ module.exports = {
         4,
         10,
         15,
-        24
+        25
     ],
     "types": {
         "SomeEnum": {},
@@ -59,7 +59,7 @@ module.exports = {
                 }
             ],
             "InterfaceNotImplemented": [
-                25
+                24
             ],
             "__typename": [
                 3
@@ -268,10 +268,9 @@ module.exports = {
                 3
             ]
         },
-        "ID": {},
         "InterfaceNotImplemented": {
             "id": [
-                24
+                25
             ],
             "title": [
                 3
@@ -283,11 +282,12 @@ module.exports = {
                 3
             ],
             "entry_id": [
-                24
+                25
             ],
             "__typename": [
                 3
             ]
-        }
+        },
+        "ID": {}
     }
 }

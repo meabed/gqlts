@@ -1,4 +1,6 @@
-import { ApolloServer, makeExecutableSchema, PubSub } from "apollo-server";
+import { ApolloServer } from "apollo-server";
+import { makeExecutableSchema } from "@graphql-tools/schema";
+import { PubSub } from "graphql-subscriptions";
 import sleep from "await-sleep";
 import assert from "assert";
 import fs from "fs";
@@ -6,6 +8,9 @@ import path from "path";
 import { expectType } from "tsd";
 import { DeepPartial } from "tsdef";
 import { Account, createClient, everything, isHouse, isUser, Point, User } from "../generated";
+import { SubscriptionServer } from "subscriptions-transport-ws";
+import { createServer } from "http";
+import express from "express";
 
 const id = () => null;
 
@@ -16,29 +21,49 @@ type Maybe<T> = T | undefined | null;
 
 async function server({ resolvers, port = PORT }) {
   try {
+    const app = express();
+    const httpServer = createServer(app);
     const typeDefs = fs.readFileSync(path.join(__dirname, "..", "schema.graphql")).toString();
-    const server = new ApolloServer({
-      schema: makeExecutableSchema({
-        typeDefs,
-        resolvers,
-        resolverValidationOptions: {
-          requireResolversForResolveType: false,
-        },
-      }),
-
-      subscriptions: {
-        onConnect: async (connectionParams, webSocket, context) => {
-          console.log(`Subscription client connected using Apollo server's built-in SubscriptionServer.`);
-        },
-        onDisconnect: async (webSocket, context) => {
-          console.log(`Subscription client disconnected.`);
-        },
+    const schema = makeExecutableSchema({
+      typeDefs,
+      resolvers,
+      resolverValidationOptions: {
+        requireResolversForResolveType: "ignore",
       },
     });
+    const server = new ApolloServer({
+      schema,
+      plugins: [
+        {
+          async serverWillStart() {
+            return {
+              async drainServer() {
+                subscriptionServer.close();
+              },
+            };
+          },
+        },
+      ],
+    });
+    const subscriptionServer = SubscriptionServer.create(
+      {
+        schema,
+        async onDisconnect(connectionParams: Object, webSocket: WebSocket, context: any) {
+          console.log(`Subscription client disconnected.`);
+        },
+        async onConnect(connectionParams: Object, webSocket: WebSocket, context: any) {
+          console.log(`Subscription client connected using Apollo server's built-in SubscriptionServer.`);
+        },
+      },
+      {
+        server: httpServer,
+        path: server.graphqlPath,
+      }
+    );
 
     // The `listen` method launches a web server.
-    await server.listen(port).then(({ url, subscriptionsUrl }) => {
-      console.log(`🚀  Server ready at ${url} and ${subscriptionsUrl}`);
+    await httpServer.listen(port).on("listening", () => {
+      console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
     return () => server.stop();
   } catch (e) {
@@ -110,53 +135,53 @@ describe("execute queries", async function () {
   it(
     "simple ",
     withServer(async () => {
-      const res = await client.query({
+      const { data: res } = await client.query({
         user: {
           name: true,
         },
       });
       console.log(JSON.stringify(res, null, 2));
-      assert.deepStrictEqual(res.user, x);
+      assert.deepStrictEqual(res?.user, x);
     })
   );
   it(
     "__typename is not optional",
     withServer(async () => {
-      const res = await client.query({
+      const { data: res } = await client.query({
         user: {
           name: true,
           __typename: true,
         },
       });
-      expectType<string>(res.user!.__typename);
+      expectType<string | undefined>(res?.user!.__typename);
     })
   );
 
   it(
     "scalar value with argument ",
     withServer(async () => {
-      var res = await client.query({
+      const { data: res } = await client.query({
         someScalarValue: true,
       });
-      assert(res.someScalarValue?.toLocaleLowerCase);
-      var res = await client.query({
+      assert(res?.someScalarValue?.toLocaleLowerCase);
+      const { data: res2 } = await client.query({
         someScalarValue: [{ x: 3 }],
       });
-      assert(res.someScalarValue?.toLocaleLowerCase);
+      assert(res2?.someScalarValue?.toLocaleLowerCase);
     })
   );
   it(
     "falsy values are not fetched ",
     withServer(async () => {
-      const res = await client.query({
+      const { data: res } = await client.query({
         coordinates: {
           x: false,
           y: true,
         },
       });
       console.log(JSON.stringify(res, null, 2));
-      assert(res.coordinates?.x === undefined);
-      assert(res.coordinates?.y !== undefined);
+      assert(res?.coordinates?.x === undefined);
+      assert(res?.coordinates?.y !== undefined);
     })
   );
 
@@ -170,7 +195,7 @@ describe("execute queries", async function () {
         })
         .catch(id);
 
-      const res = await client.query({
+      const { data: res } = await client.query({
         repository: [
           {
             name: "genqlx",
@@ -185,40 +210,35 @@ describe("execute queries", async function () {
         ],
       });
       console.log(JSON.stringify(res, null, 2));
-      // @ts-expect-error because top level fields are filtered based on query
-      res?.account;
+      // // @ts-expect-error because top level fields are filtered based on query
+      // res?.account;
       // no optional chaining because repository is non null
-      expectType<string>(res.repository.createdAt);
-      expectType<Maybe<string>>(res.repository.__typename);
-      expectType<Maybe<Maybe<string>[]>>(res.repository?.forks?.edges?.map((x) => x?.node?.name));
-      expectType<Maybe<Maybe<number>[]>>(res.repository?.forks?.edges?.map((x) => x?.node?.number));
+      expectType<string | undefined>(res?.repository.createdAt);
+      expectType<Maybe<string>>(res?.repository.__typename);
+      expectType<Maybe<Maybe<string>[]>>(res?.repository?.forks?.edges?.map((x) => x?.node?.name));
+      expectType<Maybe<Maybe<number>[]>>(res?.repository?.forks?.edges?.map((x) => x?.node?.number));
     })
   );
   it(
     "chain syntax ",
     withServer(async () => {
-      client.chain.query.user
-        .get({
-          name: true,
+      const { data: res } = await client.query({
+        user: {
+          __scalar: true,
           // sdf: true,
-        })
-        .catch(id);
-      const res = await client.chain.query.user.get({
-        __scalar: true,
-        // sdf: true,
+        },
       });
       console.log(JSON.stringify(res, null, 2));
-      expectType<Maybe<string>>(res?.name);
-      expectType<Maybe<number>>(res?.common);
-      expectType<Maybe<string>>(res?.__typename);
+      expectType<Maybe<string>>(res?.user?.name);
+      expectType<Maybe<number>>(res?.user?.common);
+      expectType<Maybe<string>>(res?.user?.__typename);
     })
   );
   it(
     "recursive type chain syntax ",
     withServer(async () => {
-      const res = await client.chain.query
-        .recursiveType()
-        .get({
+      const { data: res } = await client.query({
+        recursiveType: {
           recurse: {
             recurse: {
               ...everything,
@@ -227,8 +247,8 @@ describe("execute queries", async function () {
               },
             },
           },
-        })
-        .catch(id);
+        },
+      });
       console.log(JSON.stringify(res, null, 2));
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.value);
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.recurse?.value);
@@ -239,7 +259,7 @@ describe("execute queries", async function () {
   it(
     "union types only 1 on_ normal syntax",
     withServer(async () => {
-      const { account } = await client.query({
+      const { data: res } = await client.query({
         account: {
           __typename: 1,
           on_User: {
@@ -249,6 +269,8 @@ describe("execute queries", async function () {
       });
       // @ts-expect-error because on_User should be removed
       account?.on_User;
+
+      let account = res?.account;
       assert(account?.__typename);
       expectType<Maybe<Account>>(account);
       console.log(account);
@@ -258,28 +280,33 @@ describe("execute queries", async function () {
   it(
     "union types chain syntax",
     withServer(async () => {
-      const account = await client.chain.query.account.get({
-        on_User: { name: 1 },
+      const { data: res } = await client.query({
+        account: {
+          on_User: { name: 1 },
+        },
       });
-      expectType<Maybe<Account>>(account);
+      expectType<Maybe<Account>>(res?.account);
     })
   );
   it(
     "chain syntax result type only has requested fields",
     withServer(async () => {
-      const res = await client.chain.query.repository({ name: "" }).get({ createdAt: 1 });
-      expectType<string>(res.createdAt);
-      // @ts-expect-error
-      res?.forks;
+      const { data: res } = await client.query({ repository: [{ name: "" }, { createdAt: 1 }] });
+      expectType<string | undefined>(res?.repository?.createdAt);
+      // // @ts-expect-error
+      // res?.forks;
     })
   );
   it(
     "union types with chain and ...everything",
     withServer(async () => {
-      const account = await client.chain.query.account.get({
-        __typename: 1,
-        on_User: { ...everything },
+      const { data: res } = await client.query({
+        account: {
+          __typename: 1,
+          on_User: { ...everything },
+        },
       });
+      let account = res?.account;
       expectType<Maybe<string>>(account?.__typename);
       if (isUser(account)) {
         expectType<Maybe<string>>(account?.name);
@@ -289,11 +316,14 @@ describe("execute queries", async function () {
   it(
     "many union types",
     withServer(async () => {
-      const account = await client.chain.query.account.get({
-        __typename: 1,
-        on_User: { ...everything },
-        on_Guest: { ...everything },
+      const { data: res } = await client.query({
+        account: {
+          __typename: 1,
+          on_User: { ...everything },
+          on_Guest: { ...everything },
+        },
       });
+      let account = res?.account;
       expectType<Maybe<string>>(account?.__typename);
       // common props are on both types
       expectType<Maybe<number>>(account?.common);
@@ -305,7 +335,7 @@ describe("execute queries", async function () {
   it(
     "ability to query interfaces that a union implements",
     withServer(async () => {
-      const { unionThatImplementsInterface } = await client.query({
+      const { data: res } = await client.query({
         unionThatImplementsInterface: {
           __typename: 1,
           on_ClientErrorNameInvalid: {
@@ -320,6 +350,7 @@ describe("execute queries", async function () {
           },
         },
       });
+      let unionThatImplementsInterface = res?.unionThatImplementsInterface;
 
       if (unionThatImplementsInterface?.__typename === "ClientErrorNameInvalid") {
         assert.ok(unionThatImplementsInterface?.ownProp2);
@@ -332,20 +363,25 @@ describe("execute queries", async function () {
   it(
     "ability to query interfaces that a union implements, chain syntax",
     withServer(async () => {
-      const unionThatImplementsInterface = await client.chain.query.unionThatImplementsInterface({}).get({
-        on_ClientError: { message: 1 },
-        on_ClientErrorNameInvalid: { ownProp2: 1 },
+      const { data: res } = await client.query({
+        unionThatImplementsInterface: [
+          {},
+          {
+            on_ClientError: { message: 1 },
+            on_ClientErrorNameInvalid: { ownProp2: 1 },
+          },
+        ],
       });
 
-      if (unionThatImplementsInterface?.__typename === "ClientErrorNameInvalid") {
-        assert.ok(unionThatImplementsInterface?.ownProp2);
+      if (res?.unionThatImplementsInterface?.__typename === "ClientErrorNameInvalid") {
+        assert.ok(res?.unionThatImplementsInterface?.ownProp2);
       }
     })
   );
   it(
     "interface types normal syntax",
     withServer(async () => {
-      const res = await client.query({
+      const { data: res } = await client.query({
         coordinates: {
           x: 1,
           __typename: 1,
@@ -356,7 +392,7 @@ describe("execute queries", async function () {
           },
         },
       });
-      let coordinates = res.coordinates;
+      let coordinates = res?.coordinates;
       expectType<Maybe<string>>(coordinates?.x);
       if (coordinates && "address" in coordinates) {
         expectType<Maybe<string>>(coordinates?.address);
@@ -370,11 +406,14 @@ describe("execute queries", async function () {
   it(
     "interface types chain syntax",
     withServer(async () => {
-      const coordinates = await client.chain.query.coordinates.get({
-        // x: 1,
-        x: 1,
-        on_Bank: { address: 1 },
+      const { data: res } = await client.query({
+        coordinates: {
+          // x: 1,
+          x: 1,
+          on_Bank: { address: 1 },
+        },
       });
+      let coordinates = res?.coordinates;
       expectType<Maybe<string>>(coordinates?.x);
       if (coordinates && "address" in coordinates) {
         expectType<Maybe<string>>(coordinates?.address);
@@ -386,7 +425,7 @@ describe("execute queries", async function () {
   it(
     "multiple interfaces types normal syntax",
     withServer(async () => {
-      const { coordinates } = await client.query({
+      const { data: res } = await client.query({
         coordinates: {
           __typename: 1,
           on_Bank: {
@@ -402,6 +441,7 @@ describe("execute queries", async function () {
           },
         },
       });
+      let coordinates = res?.coordinates;
       console.log(coordinates);
 
       expectType<Maybe<string>>(coordinates?.x);
@@ -552,10 +592,10 @@ describe("execute subscriptions", async function () {
         },
       })
       .subscribe({
-        next: (x) => {
-          expectType<Maybe<string>>(x.user?.name);
-          expectType<Maybe<string>>(x.user?.__typename);
-          expectType<Maybe<number>>(x.user?.common);
+        next: ({ data: x }) => {
+          expectType<Maybe<string>>(x?.user?.name);
+          expectType<Maybe<string>>(x?.user?.__typename);
+          expectType<Maybe<number>>(x?.user?.common);
           console.log(x);
         },
         complete: () => console.log("complete"),
@@ -566,7 +606,7 @@ describe("execute subscriptions", async function () {
     await pubsub.publish(USER_EVENT, { user: x });
     // console.log(JSON.stringify(res, null, 2))
     sub.unsubscribe();
-    client?.wsClient?.close?.();
+    client?.wsClient?.dispose();
     await stop();
     // assert(deepEq(res.user, x))
   });
@@ -596,10 +636,10 @@ describe("execute subscriptions", async function () {
         },
       })
       .subscribe({
-        next: (x) => {
-          expectType<Maybe<string>>(x.user?.name);
-          expectType<Maybe<string>>(x.user?.__typename);
-          expectType<Maybe<number>>(x.user?.common);
+        next: ({ data: x }) => {
+          expectType<Maybe<string>>(x?.user?.name);
+          expectType<Maybe<string>>(x?.user?.__typename);
+          expectType<Maybe<number>>(x?.user?.common);
           console.log(x);
           subscribeCalledNTimes++;
         },
@@ -614,7 +654,7 @@ describe("execute subscriptions", async function () {
     assert.strictEqual(subscribeCalledNTimes, 2, "subscribeCalledNTimes");
     // console.log(JSON.stringify(res, null, 2))
     sub.unsubscribe();
-    client.wsClient!.close();
+    client.wsClient!.dispose();
     await stop();
     assert.strictEqual(headersCalledNTimes, 1);
   });

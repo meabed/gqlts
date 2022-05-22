@@ -3,53 +3,53 @@ const {
   createClient: createClientOriginal,
   generateGraphqlOperation,
   assertSameVersion,
-} = require("@genqlx/runtime");
-var typeMap = linkTypeMap(require("./types.cjs"));
+} = require('@genqlx/runtime')
+var typeMap = linkTypeMap(require('./types.cjs'))
 
-var version = "2.9.0";
-assertSameVersion(version);
+var version = '3.1.12'
+assertSameVersion(version)
 
-module.exports.version = version;
+module.exports.version = version
 
 module.exports.createClient = function (options) {
-  options = options || {};
+  options = options || {}
   var optionsCopy = {
     url: undefined,
     queryRoot: typeMap.Query,
     mutationRoot: typeMap.Mutation,
     subscriptionRoot: typeMap.Subscription,
-  };
-  for (var name in options) {
-    optionsCopy[name] = options[name];
   }
-  return createClientOriginal(optionsCopy);
-};
+  for (var name in options) {
+    optionsCopy[name] = options[name]
+  }
+  return createClientOriginal(optionsCopy)
+}
 
 module.exports.enumSomeEnum = {
-  X: "X",
-  Y: "Y",
-  Z: "Z",
-};
+  X: 'X',
+  Y: 'Y',
+  Z: 'Z',
+}
 
 module.exports.enumSomeEnum2 = {
-  hello: "hello",
-  world: "world",
-};
+  hello: 'hello',
+  world: 'world',
+}
 
 module.exports.generateQueryOp = function (fields) {
-  return generateGraphqlOperation("query", typeMap.Query, fields);
-};
+  return generateGraphqlOperation('query', typeMap.Query, fields)
+}
 module.exports.generateMutationOp = function (fields) {
-  return generateGraphqlOperation("mutation", typeMap.Mutation, fields);
-};
+  return generateGraphqlOperation('mutation', typeMap.Mutation, fields)
+}
 module.exports.generateSubscriptionOp = function (fields) {
-  return generateGraphqlOperation("subscription", typeMap.Subscription, fields);
-};
+  return generateGraphqlOperation('subscription', typeMap.Subscription, fields)
+}
 module.exports.everything = {
   __scalar: true,
-};
+}
 
-var schemaExports = require("./guards.cjs");
+var schemaExports = require('./guards.cjs')
 for (var k in schemaExports) {
-  module.exports[k] = schemaExports[k];
+  module.exports[k] = schemaExports[k]
 }
