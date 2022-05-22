@@ -59,9 +59,9 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@genqlx/runtime": "^3.1.8",
-    "@graphql-tools/graphql-file-loader": "^7.3.12",
-    "@graphql-tools/load": "^7.5.11",
+    "@genqlx/runtime": "^3.1.9",
+    "@graphql-tools/graphql-file-loader": "^7.3.14",
+    "@graphql-tools/load": "^7.5.13",
     "chalk": "^5.0.1",
     "fs-extra": "^10.1.0",
     "graphql": "*",
@@ -82,7 +82,7 @@
     "@types/listr": "0.14.4",
     "@types/lodash": "4.14.182",
     "@types/mkdirp": "1.0.2",
-    "@types/node": "17.0.34",
+    "@types/node": "17.0.35",
     "@types/prettier": "2.6.1",
     "@types/qs": "6.9.7",
     "@types/rimraf": "3.0.2",
