@@ -3929,12 +3929,12 @@ babel-preset-jest@^28.0.2:
     babel-plugin-jest-hoist "^28.0.2"
     babel-preset-current-node-syntax "^1.0.0"
 
-baby-i-am-faded@4.0.10:
-  version "4.0.10"
-  resolved "https://registry.yarnpkg.com/baby-i-am-faded/-/baby-i-am-faded-4.0.10.tgz#dedacb768cd96933111a2d08a5226ae45018b478"
-  integrity sha512-swk8IE5r8DXSOlUT+XeAov9HAGJXgCEXid7jVFpRzbf8unnCJYN0ISTIZ1iEqDxYM9hFoHdPc2yYxvVgrm3Fpg==
+baby-i-am-faded@4.0.11:
+  version "4.0.11"
+  resolved "https://registry.yarnpkg.com/baby-i-am-faded/-/baby-i-am-faded-4.0.11.tgz#40dc51dc6657464525dc0b9096c00c86d9cc11e9"
+  integrity sha512-NO5YsLPh0uc9BAYuDJ+Q62UeRQPdCtzxtvgPO8jDZWB6d456jHhvr2bM4Lkoz3G8DqTb3MPOwDPKIa1iy6kijQ==
   dependencies:
-    react-intersection-observer "^8.32.2"
+    react-intersection-observer "^9.1.0"
 
 baby-i-am-faded@^2.0.1:
   version "2.0.1"
@@ -10728,10 +10728,15 @@ react-innertext@^1.1.5:
   resolved "https://registry.yarnpkg.com/react-innertext/-/react-innertext-1.1.5.tgz#8147ac54db3f7067d95f49e2d2c05a720d27d8d0"
   integrity sha512-PWAqdqhxhHIv80dT9znP2KvS+hfkbRovFp4zFYHFFlOoQLRiawIic81gKb3U1wEyJZgMwgs3JoLtwryASRWP3Q==
 
-react-intersection-observer@^8.31.0, react-intersection-observer@^8.32.2:
+react-intersection-observer@^8.31.0:
   version "8.34.0"
   resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.34.0.tgz#6f6e67831c52e6233f6b6cc7eb55814820137c42"
   integrity sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==
+
+react-intersection-observer@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-9.1.0.tgz#27e66be9113fdf6fc6d745e849e1ad6ef20f97f1"
+  integrity sha512-XSDWQGzgJ4/B4eW39+qa3S+uc4Gb+m6lxXR54m/uD5lqeL5sLrgYdntbjl4BlTYAblgUhz+JB5obINhZaD+c0Q==
 
 react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   version "16.13.1"
@@ -12551,10 +12556,10 @@ types-pkg-json@^1.1.0:
     types-eslintrc "^1.0.3"
     types-json "^1.2.2"
 
-typescript@4.6.4:
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
-  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
+typescript@4.7.2:
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
+  integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
 
 uglify-js@^3.1.4:
   version "3.10.1"
