@@ -89,7 +89,7 @@
     "dotenv": "16.0.1",
     "jest": "28.1.0",
     "sucrase": "3.21.0",
-    "ts-jest": "28.0.2",
+    "ts-jest": "28.0.3",
     "tslib": "2.4.0",
     "utility-types": "3.10.0"
   },
