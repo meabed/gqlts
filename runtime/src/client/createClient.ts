@@ -38,11 +38,12 @@ export function createClient({
     query?: Function;
     mutation?: Function;
     subscription?: Function;
-    fetcherInstance?: BaseFetcher["fetcherInstance"];
-    fetcherMethod?: BaseFetcher["fetcherMethod"];
-  } = {};
-  client.fetcherInstance = fetcherInstance;
-  client.fetcherMethod = fetcherMethod;
+    fetcherInstance: BaseFetcher["fetcherInstance"];
+    fetcherMethod: BaseFetcher["fetcherMethod"];
+  } = {
+    fetcherInstance,
+    fetcherMethod,
+  };
   if (queryRoot) {
     client.query = (request, config) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
@@ -96,7 +97,7 @@ export function createClient({
 }
 
 function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
-  const { url: httpClientUrl, ...restOpts } = opts;
+  const { url: httpClientUrl, ...restOpts } = opts || {};
   let { url, headers = {} } = opts.subscription || {};
   // by default use the top level url
   if (!url) {
