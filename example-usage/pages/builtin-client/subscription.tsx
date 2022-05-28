@@ -8,12 +8,31 @@ import { useSubscription } from "../../client";
 const client = createClient({
   subscription: {
     url: "wss://hasura-2334534.herokuapp.com/v1/graphql",
+    lazy: false,
   },
 });
 
 console.log("client", client);
 
 const Page = () => {
+  // const subscription = client
+  //   .subscription({
+  //     user: {
+  //       name: true,
+  //     },
+  //   })
+  //   .subscribe({
+  //     next: (data) => {
+  //       console.log("data", data);
+  //     },
+  //     error: (error) => {
+  //       console.log("error", error);
+  //     },
+  //     complete() {
+  //       console.log("complete");
+  //     },
+  //   });
+
   const {
     result: data,
     loading,

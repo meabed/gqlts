@@ -2,7 +2,7 @@ const WebSocketNode = typeof window !== "undefined" ? null : eval('require("ws")
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from "graphql-ws";
 import { Observable } from "zen-observable-ts";
 import { BatchOptions, createFetcher } from "../fetcher";
-import { ExecutionResult, LinkedType } from "../types";
+import { LinkedType } from "../types";
 import { generateGraphqlOperation, GraphqlOperation } from "./generateGraphqlOperation";
 import { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders } from "axios";
 
@@ -67,29 +67,13 @@ export function createClient({
       if (!client.wsClient) {
         client.wsClient = getSubscriptionClient(options, config);
       }
-      return new Observable((observer) => {
-        // TODO check that unsubscribing wrapper obs calls unsubscribe on the wrapped one
-        const obs = client.wsClient?.subscribe(op, {
-          next: (x) => {
-            // if (observer.closed) return
-            observer.next(x);
-          },
-          error: (x) => {
-            // if (observer.closed) return
-            observer.error(x);
-          },
-          complete: () => {
-            observer.complete();
-          },
-        });
-        return () => {
-          client.wsClient?.terminate();
-          client.wsClient?.dispose();
-        };
-      }).map((val: ExecutionResult<any>): any => {
-        // todo test subscription
-        return val;
-      });
+      return new Observable((observer) =>
+        client.wsClient?.subscribe(op, {
+          next: (data) => observer.next(data),
+          error: (err) => observer.error(err),
+          complete: () => observer.complete(),
+        })
+      );
     };
   }
 
@@ -97,11 +81,11 @@ export function createClient({
 }
 
 function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
-  const { url: httpClientUrl, ...restOpts } = opts || {};
-  let { url, headers = {} } = opts.subscription || {};
+  const { url: httpClientUrl, subscription = {} } = opts || {};
+  let { url, headers = {}, ...restOpts } = opts.subscription || {};
   // by default use the top level url
-  if (!url) {
-    url = opts?.url?.replace(/^http/, "ws");
+  if (!url && httpClientUrl) {
+    url = httpClientUrl?.replace(/^http/, "ws");
   }
 
   if (!url) {

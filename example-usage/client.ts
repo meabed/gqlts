@@ -50,6 +50,5 @@ export const useSubscription = <R extends SubscriptionRequest, ReducedType = Fie
   return useObservable<any>((q) => client.subscription(q), {
     args: [q],
     reducer,
-    // TODO react: pass the accumulator to useObservable
-  }); // TODO react: change result to data
+  });
 };

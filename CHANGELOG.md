@@ -1,4 +1,10 @@
 
+## 3.2.3
+Fix subscription parameters
+
+## 3.2.2
+Fix optional parameters in client 
+
 ## 3.2.1
 Allow re-assigning client fetcherMethod 
 Use client.fetcherMethod from client to fetch the data
