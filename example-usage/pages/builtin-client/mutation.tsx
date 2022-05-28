@@ -1,4 +1,4 @@
-import { Box, Button, Input, Stack, useToast } from "@chakra-ui/core";
+import { Box, Button, Input, Stack, useToast } from "@chakra-ui/react";
 import { Hero, PageContainer } from "landing-blocks";
 import React, { useState } from "react";
 import { everything } from "../../generated";

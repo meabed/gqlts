@@ -1,4 +1,4 @@
-import { Box, Link, Stack } from "@chakra-ui/core";
+import { Box, Link, Stack } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { Hero, PageContainer } from "landing-blocks";
 import React from "react";

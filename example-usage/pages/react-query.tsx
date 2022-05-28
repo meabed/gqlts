@@ -1,19 +1,21 @@
-import { Box, Input, Spinner } from "@chakra-ui/core";
+import { Box, Input, Spinner } from "@chakra-ui/react";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
-import { Stack } from "layout-kit-react";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { client } from "./_app";
 
-const Page = () => {
+const Component = () => {
   const [regex, setRegex] = useState(".*");
   const func = (_: any, regex: string) =>
     client.query({
       countries: [{ filter: { continent: { regex: regex } } }, { name: 1, code: 1 }],
     });
-  const { data, error } = useQuery(["countries", regex], func);
+  const { data: gqlData = {}, error } = useQuery(["countries", regex], (context) => {
+    return func(context, regex);
+  });
+  const { data, errors, extensions } = gqlData;
   return (
-    <Stack spacing="40px" mt="40px">
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <Hero
         bullet="Genqlx lets you write graphql queries as code"
         heading="Example use of Genqlx"
@@ -24,25 +26,36 @@ const Page = () => {
         <Input variant="filled" value={regex} onChange={(e: any) => setRegex(e.target.value)} placeholder=".*" />
       </PageContainer>
       <PageContainer>
-        <SectionTitle heading="Countries" />
-        {!data && (
-          <Stack justify="center" align="center">
-            <Spinner />
-          </Stack>
-        )}
-        {data && (
-          <Stack spacing="20px">
-            {data?.countries?.map((x) => (
-              <Box borderRadius="10px" p="20px" borderWidth="1px">
-                {x.name}
-              </Box>
-            ))}
-          </Stack>
-        )}
-        {error && <Box color="red">{error.message}</Box>}
+        <>
+          <SectionTitle heading="Countries" />
+          {!data && (
+            <div>
+              <Spinner />
+            </div>
+          )}
+          {data && (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              {data?.countries?.map((x: any) => (
+                <Box borderRadius="10px" p="20px" borderWidth="1px">
+                  {x.name}
+                </Box>
+              ))}
+            </div>
+          )}
+          {error && <Box color="red">{(error as Error).message}</Box>}
+        </>
       </PageContainer>
-    </Stack>
+    </div>
   );
 };
+import { QueryClient, QueryClientProvider } from "react-query";
 
-export default Page;
+const queryClient = new QueryClient();
+
+export default function Page() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Component />
+    </QueryClientProvider>
+  );
+}

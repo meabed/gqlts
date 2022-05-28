@@ -1,4 +1,4 @@
-import { Box, Input, Spinner, Stack } from "@chakra-ui/core";
+import { Box, Input, Spinner, Stack } from "@chakra-ui/react";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import React, { useState } from "react";
 import { everything } from "../../generated";
@@ -41,7 +41,7 @@ const Page = () => {
         )}
         {data && (
           <Stack spacing="20px">
-            {data?.user?.map((x) => (
+            {data?.user?.map((x: any) => (
               <Box borderRadius="10px" p="20px" borderWidth="1px">
                 {x.name}
               </Box>

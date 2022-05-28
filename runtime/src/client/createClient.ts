@@ -47,14 +47,14 @@ export function createClient({
     client.query = (request, config) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
 
-      return fetcherMethod(generateGraphqlOperation("query", queryRoot, request), config);
+      return client.fetcherMethod(generateGraphqlOperation("query", queryRoot, request), config);
     };
   }
   if (mutationRoot) {
     client.mutation = (request, config) => {
       if (!mutationRoot) throw new Error("mutationRoot argument is missing");
 
-      return fetcherMethod(generateGraphqlOperation("mutation", mutationRoot, request), config);
+      return client.fetcherMethod(generateGraphqlOperation("mutation", mutationRoot, request), config);
     };
   }
   if (subscriptionRoot) {
@@ -96,11 +96,13 @@ export function createClient({
 }
 
 function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
+  const { url: httpClientUrl, ...restOpts } = opts;
   let { url, headers = {} } = opts.subscription || {};
   // by default use the top level url
   if (!url) {
-    url = opts?.url;
+    url = opts?.url?.replace(/^http/, "ws");
   }
+
   if (!url) {
     throw new Error("Subscription client error: missing url parameter");
   }
@@ -118,7 +120,7 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
         headers: headersObject,
       };
     },
-    ...opts,
+    ...restOpts,
     ...config,
   });
 }

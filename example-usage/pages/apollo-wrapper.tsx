@@ -1,10 +1,9 @@
-import { ApolloProvider, QueryHookOptions, useQuery } from "@apollo/react-hooks";
-import { Box, Spinner, Stack } from "@chakra-ui/core";
-import ApolloClient from "apollo-boost";
-import gql from "graphql-tag";
+import { QueryHookOptions } from "@apollo/react-hooks";
+import { Box, Spinner, Stack } from "@chakra-ui/react";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import React from "react";
 import { generateQueryOp, QueryRequest, QueryResult } from "../generated/";
+import { ApolloClient, ApolloProvider, gql, useQuery, InMemoryCache } from "@apollo/client";
 
 function tuple<T1, T2>(data: [T1, T2]): typeof data;
 function tuple(data: Array<any>) {
@@ -20,7 +19,7 @@ function useGenqlxQuery<Q extends QueryRequest>(q: Q, options?: QueryHookOptions
 }
 
 const Page = () => {
-  const { data, error } = useGenqlxQuery({
+  const { data: gqlData = {}, error } = useGenqlxQuery({
     countries: [
       { filter: { continent: { nin: [] } } },
       {
@@ -29,6 +28,7 @@ const Page = () => {
       },
     ],
   });
+  const { data, errors, extensions } = gqlData;
   return (
     <Stack spacing="40px" mt="40px">
       <Hero
@@ -45,7 +45,7 @@ const Page = () => {
         )}
         {data && (
           <Stack spacing="20px">
-            {data?.countries?.map((x) => (
+            {data?.countries?.map((x: any) => (
               <Box borderRadius="10px" p="20px" borderWidth="1px">
                 {x.name}
               </Box>
@@ -60,6 +60,7 @@ const Page = () => {
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
+  cache: new InMemoryCache(),
 });
 
 const PageWrapped = () => {

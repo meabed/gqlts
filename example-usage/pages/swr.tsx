@@ -1,4 +1,4 @@
-import { Box, Input, Spinner, Stack } from "@chakra-ui/core";
+import { Box, Input, Spinner, Stack } from "@chakra-ui/react";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import React, { useState } from "react";
 import useSWR from "swr";
@@ -10,7 +10,8 @@ const Page = () => {
     client.query({
       countries: [{ filter: { continent: { regex: regex } } }, { name: 1, code: 1 }],
     });
-  const { data, error } = useSWR([regex], f);
+  const { data: gqlData = {}, error } = useSWR([regex], f);
+  const { data, errors, extensions } = gqlData;
 
   return (
     <Stack spacing="40px" mt="40px">
@@ -32,7 +33,7 @@ const Page = () => {
         )}
         {data && (
           <Stack spacing="20px">
-            {data?.countries?.map((x) => (
+            {data?.countries?.map((x: any) => (
               <Box borderRadius="10px" p="20px" borderWidth="1px">
                 {x.name}
               </Box>

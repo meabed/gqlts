@@ -6,7 +6,7 @@ const {
 } = require('@genqlx/runtime')
 var typeMap = linkTypeMap(require('./types.cjs'))
 
-var version = '3.2.0'
+var version = '3.2.1'
 assertSameVersion(version)
 
 module.exports.version = version

@@ -1,3 +1,8 @@
+
+## 3.2.1
+Allow re-assigning client fetcherMethod 
+Use client.fetcherMethod from client to fetch the data
+
 ## 3.2.0
 Expose axios client outside the library to enable adding interceptors
 Replace fetch with axios

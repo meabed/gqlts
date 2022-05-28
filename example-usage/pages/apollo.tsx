@@ -1,10 +1,8 @@
-import { ApolloProvider, useQuery } from "@apollo/react-hooks";
-import { Box, Spinner, Stack } from "@chakra-ui/core";
-import ApolloClient from "apollo-boost";
-import gql from "graphql-tag";
+import { Box, Spinner, Stack } from "@chakra-ui/react";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import React from "react";
 import { generateQueryOp, QueryResult } from "../generated/";
+import { ApolloClient, ApolloProvider, gql, InMemoryCache, useQuery } from "@apollo/client";
 
 function tuple<T1, T2>(data: [T1, T2]): typeof data;
 function tuple(data: Array<any>) {
@@ -22,9 +20,10 @@ const Page = () => {
     ]),
   };
   const { query, variables } = generateQueryOp(q);
-  const { data, error } = useQuery<QueryResult<typeof q>>(gql(query), {
+  const { data: gqlData = {}, error } = useQuery<QueryResult<typeof q>>(gql(query), {
     variables,
   });
+  const { data, errors, extensions } = gqlData;
   return (
     <Stack spacing="40px" mt="40px">
       <Hero
@@ -56,6 +55,7 @@ const Page = () => {
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
+  cache: new InMemoryCache(),
 });
 
 const PageWrapped = () => {

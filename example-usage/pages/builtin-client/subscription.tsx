@@ -1,8 +1,8 @@
-import { Box, Spinner, Stack } from "@chakra-ui/core";
+import { Box, Spinner, Stack } from "@chakra-ui/react";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import React from "react";
-import { expectType } from "tsd";
-import { createClient, user } from "../../hasura";
+// import { expectType } from "tsd";
+import { createClient } from "../../hasura";
 import { useSubscription } from "../../client";
 
 const client = createClient({
@@ -26,7 +26,7 @@ const Page = () => {
     }
     // (a: any[], b) => [...a, b],
   );
-  expectType<Partial<user>[] | undefined>(data?.user);
+  // expectType<Partial<user>[] | undefined>(data?.user);
   return (
     <Stack spacing="40px" mt="40px">
       <Hero
