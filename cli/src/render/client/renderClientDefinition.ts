@@ -12,7 +12,7 @@ export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext
   ctx.addCodeBlock(`
     import { FieldsSelection, GraphqlOperation, ClientOptions, Observable } from '${RUNTIME_LIB_NAME}'
     import { Client as WSClient } from "graphql-ws"
-    import { AxiosRequestConfig } from 'axios'
+    import { AxiosRequestConfig, AxiosInstance } from 'axios'
     export * from './schema'
     ${renderClientTypesImports({ mutationType, queryType, subscriptionType })}
     export declare const createClient:(options?: ClientOptions) => Client
@@ -60,7 +60,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         query<R extends ${requestTypeName(queryType)}>(
             request: R & { __name?: string },
-            config?: AxiosRequestConfig,
+            config?: AxiosRequestConfig | unknown,
         ): Promise<GraphqlResponse<FieldsSelection<${queryType.name}, R>>>
         `;
   }
@@ -69,7 +69,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         mutation<R extends ${requestTypeName(mutationType)}>(
             request: R & { __name?: string },
-            config?: AxiosRequestConfig,
+            config?: AxiosRequestConfig | unknown,
         ): Promise<GraphqlResponse<FieldsSelection<${mutationType.name}, R>>>
         `;
   }
@@ -110,6 +110,8 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
 
     export interface Client {
         wsClient?: WSClient
+        fetcherInstance?: AxiosInstance | unknown | undefined
+        fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: AxiosRequestConfig | unknown) => Promise<any>
         ${interfaceContent}
     }
     `;

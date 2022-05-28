@@ -7,8 +7,9 @@ import { everything } from "@genqlx/runtime";
 const URL = "https://hasura-2334534.herokuapp.com/v1/graphql";
 
 describe("use fetcher", () => {
-  const fetcher = (op) =>
-    fetch(URL, {
+  const fetcherInstance = fetch;
+  const fetcherMethod = (op) =>
+    fetcherInstance(URL, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -19,7 +20,8 @@ describe("use fetcher", () => {
     }).then((response) => response.json());
 
   const client = createClient({
-    fetcher,
+    fetcherInstance,
+    fetcherMethod,
   });
   it("query with fetcher", async () => {
     const res = await client.query({
@@ -33,7 +35,8 @@ describe("use fetcher", () => {
 });
 
 describe("batch queries", () => {
-  const fetcher = (batchedQuery) => {
+  const fetcherInstance = fetch;
+  const fetcherMethod = (batchedQuery) => {
     assert(batchedQuery.length === 3);
     return fetch(URL, {
       method: "POST",
@@ -46,12 +49,13 @@ describe("batch queries", () => {
     }).then((response) => response.json());
   };
 
-  const batcher = new QueryBatcher(fetcher, {
+  const batcher = new QueryBatcher(fetcherMethod, {
     maxBatchSize: 10,
     batchInterval: 100,
   });
   const client = createClient({
-    fetcher: ({ query, variables }: any) => {
+    fetcherInstance,
+    fetcherMethod: ({ query, variables }: any) => {
       return batcher.fetch(query, variables);
     },
   });

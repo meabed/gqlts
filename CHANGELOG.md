@@ -1,3 +1,21 @@
+## 3.2.0
+Expose axios client outside the library to enable adding interceptors
+Replace fetch with axios
+Fix tests
+Fix integration tests and try clients
+Remove chaining
+Adding ability to pass config to axios in requests
+Fix batcher to use axios
+
+## 3.1.10
+Change response format to be {data: {}, errors: [], extensions: {}}
+Replace fetch with axios
+Fix tests
+Fix integration tests and try clients
+Remove chaining
+Adding ability to pass config to axios in requests
+Fix batcher to use axios
+
 ## 3.0.0
 Upgrade all dependency packages
 Migrate from graphql-subscriptions-transport-ws to graphql-ws

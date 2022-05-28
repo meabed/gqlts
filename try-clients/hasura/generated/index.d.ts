@@ -5,7 +5,7 @@ import {
   Observable,
 } from '@genqlx/runtime'
 import { Client as WSClient } from 'graphql-ws'
-import { AxiosRequestConfig } from 'axios'
+import { AxiosRequestConfig, AxiosInstance } from 'axios'
 export * from './schema'
 import {
   query_rootRequest,
@@ -51,15 +51,20 @@ export interface GraphqlResponse<D = any, E = GraphQLError[], X = Extensions> {
 
 export interface Client {
   wsClient?: WSClient
+  fetcherInstance?: AxiosInstance | unknown | undefined
+  fetcherMethod: (
+    operation: GraphqlOperation | GraphqlOperation[],
+    config?: AxiosRequestConfig | unknown,
+  ) => Promise<any>
 
   query<R extends query_rootRequest>(
     request: R & { __name?: string },
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig | unknown,
   ): Promise<GraphqlResponse<FieldsSelection<query_root, R>>>
 
   mutation<R extends mutation_rootRequest>(
     request: R & { __name?: string },
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig | unknown,
   ): Promise<GraphqlResponse<FieldsSelection<mutation_root, R>>>
 
   subscription<R extends subscription_rootRequest>(

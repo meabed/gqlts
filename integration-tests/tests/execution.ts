@@ -463,7 +463,7 @@ describe("execute queries", async function () {
       const client = createClient({
         url: URL,
         batch: true,
-        fetcher: async (body) => {
+        fetcherMethod: async (body) => {
           console.log({ body });
           batchedQueryLength = Array.isArray(body) ? body.length : -1;
           const res = await axios({

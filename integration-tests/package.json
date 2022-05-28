@@ -17,8 +17,8 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@genqlx/cli": "^3.1.12",
-    "@genqlx/runtime": "^3.1.12",
+    "@genqlx/cli": "^3.2.0",
+    "@genqlx/runtime": "^3.2.0",
     "apollo-server-express": "3.8.1",
     "await-sleep": "0.0.1",
     "axios": "^0.27.2",

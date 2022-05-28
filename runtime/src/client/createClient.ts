@@ -4,19 +4,20 @@ import { Observable } from "zen-observable-ts";
 import { BatchOptions, createFetcher } from "../fetcher";
 import { ExecutionResult, LinkedType } from "../types";
 import { generateGraphqlOperation, GraphqlOperation } from "./generateGraphqlOperation";
-import { AxiosRequestConfig, AxiosRequestHeaders } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders } from "axios";
 
 export type Headers = AxiosRequestHeaders | (() => AxiosRequestHeaders) | (() => Promise<AxiosRequestHeaders>);
-export type BaseFetcher = (
-  operation: GraphqlOperation | GraphqlOperation[],
-  config?: AxiosRequestConfig
-) => Promise<any>;
+export type BaseFetcher = {
+  fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: AxiosRequestConfig) => Promise<any>;
+  fetcherInstance: AxiosInstance | unknown | undefined;
+};
 
 export type ClientOptions = Omit<AxiosRequestConfig, "body" | "headers"> & {
   url?: string;
   timeout?: number;
   batch?: BatchOptions | boolean;
-  fetcher?: BaseFetcher;
+  fetcherMethod?: BaseFetcher["fetcherMethod"];
+  fetcherInstance?: BaseFetcher["fetcherInstance"];
   headers?: Headers;
   subscription?: { url?: string; headers?: Headers } & Partial<WSClientOptions>;
 };
@@ -31,27 +32,29 @@ export function createClient({
   mutationRoot?: LinkedType;
   subscriptionRoot?: LinkedType;
 }) {
-  const fetcher = createFetcher(options);
+  const { fetcherMethod, fetcherInstance } = createFetcher(options);
   const client: {
     wsClient?: WSClient;
-    setOption?: Function;
     query?: Function;
     mutation?: Function;
     subscription?: Function;
+    fetcherInstance?: BaseFetcher["fetcherInstance"];
+    fetcherMethod?: BaseFetcher["fetcherMethod"];
   } = {};
-
+  client.fetcherInstance = fetcherInstance;
+  client.fetcherMethod = fetcherMethod;
   if (queryRoot) {
     client.query = (request, config) => {
       if (!queryRoot) throw new Error("queryRoot argument is missing");
 
-      return fetcher(generateGraphqlOperation("query", queryRoot, request), config);
+      return fetcherMethod(generateGraphqlOperation("query", queryRoot, request), config);
     };
   }
   if (mutationRoot) {
     client.mutation = (request, config) => {
       if (!mutationRoot) throw new Error("mutationRoot argument is missing");
 
-      return fetcher(generateGraphqlOperation("mutation", mutationRoot, request), config);
+      return fetcherMethod(generateGraphqlOperation("mutation", mutationRoot, request), config);
     };
   }
   if (subscriptionRoot) {
@@ -79,7 +82,6 @@ export function createClient({
           },
         });
         return () => {
-          console.log("unsubscribed");
           client.wsClient?.terminate();
           client.wsClient?.dispose();
         };
