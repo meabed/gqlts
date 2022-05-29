@@ -1,6 +1,6 @@
 {
   "name": "example-usage",
-  "version": "2.10.0",
+  "version": "3.2.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
