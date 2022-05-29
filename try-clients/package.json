@@ -4,7 +4,7 @@
   "private": true,
   "description": "",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "author": "Meabed <mo@meabed.com>",
   "main": "index.js",
   "scripts": {

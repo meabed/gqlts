@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "gen": "yarn countries && yarn hasura && tsc --noEmit",
+    "gen": "yarn countries && yarn hasura && yarn sub && tsc --noEmit",
     "countries": "yarn --cwd .. play --esm -o example-usage/generated -e https://countries.trevorblades.com",
+    "sub": "yarn --cwd .. play --esm -o example-usage/sub -e http://localhost:4000/graphql",
     "hasura": "yarn --cwd .. play --esm -o example-usage/hasura -e https://hasura-2334534.herokuapp.com/v1/graphql -H \"Authorization: Bearer xxx\"  -H \"Xxx: Bearer xxx\"  "
   },
   "mocha": {

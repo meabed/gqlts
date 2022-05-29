@@ -7,7 +7,7 @@
   "repository": {
     "url": "https://github.com/meabed/genqlx"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "Meabed <mo@meabed.com>",
   "sideEffects": false,
   "main": "dist/index.js",
