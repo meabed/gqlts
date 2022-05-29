@@ -1,7 +1,7 @@
 <div align='center'>
     <br/>
     <br/>
-    <img src='https://genqlx.vercel.app/banner.jpg' width='420px'>
+    <img src='https://gqlts.vercel.app/banner.jpg' width='420px'>
     <br/>
     <br/>
     <h3>Type safe Graphql query builder</h3>
@@ -14,7 +14,7 @@
 > 
 > It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
 
-Read the [quick start guide](https://genqlx.vercel.app/docs) to generate a client locally
+Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client locally
 
 🔥 **Features**
 
@@ -31,9 +31,9 @@ Read the [quick start guide](https://genqlx.vercel.app/docs) to generate a clien
 First generate your client executing
 
 ```sh
-npm i -D @genqlx/cli # cli to generate the client code
-npm i @genqlx/runtime graphql # runtime dependencies
-genqlx --schema ./schema.graphql --output ./generated
+npm i -D @gqlts/cli # cli to generate the client code
+npm i @gqlts/runtime graphql # runtime dependencies
+gqlts --schema ./schema.graphql --output ./generated
 ```
 
 Then you can use your client as follow
@@ -74,7 +74,7 @@ query {
 
 ## Sponsors
 
-[![Vercel](https://genqlx.vercel.app/vercel-logo.svg)](https://vercel.com?utm_source=genqlx)
+[![Vercel](https://gqlts.vercel.app/vercel-logo.svg)](https://vercel.com?utm_source=gqlts)
 
 ---
 

@@ -1,4 +1,4 @@
-import { generate } from "@genqlx/cli/src/main";
+import { generate } from "@gqlts/cli/src/main";
 import { readFileSync } from "fs";
 import { join } from "path";
 

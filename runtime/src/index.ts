@@ -18,7 +18,7 @@ export function assertSameVersion(generatedWithVersion) {
     const { version } = require("../package.json");
     if (generatedWithVersion && generatedWithVersion.trim() != version.trim()) {
       console.error(
-        "[WARNING]: genqlx client library has been generated with a different version of `@genqlx/runtime`, update both packages to have the same version!"
+        "[WARNING]: gqlts client library has been generated with a different version of `@gqlts/runtime`, update both packages to have the same version!"
       );
     }
   } catch {}

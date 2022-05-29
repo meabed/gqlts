@@ -16,8 +16,8 @@ const Page = () => {
   return (
     <Stack spacing="40px" mt="40px">
       <Hero
-        bullet="Genqlx lets you write graphql queries as code"
-        heading="Example use of Genqlx"
+        bullet="Gqlts lets you write graphql queries as code"
+        heading="Example use of Gqlts"
         subheading="Search for countries via https://countries.trevorblades.com"
       />
       <PageContainer>

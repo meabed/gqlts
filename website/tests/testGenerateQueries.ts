@@ -4,7 +4,7 @@ import { generateQueries } from "../support/generateQueries";
 it("generateQueries", async () => {
   const q = generateQueries({
     schema,
-    packageName: "genqlx",
+    packageName: "gqlts",
   });
   console.log(q);
 });

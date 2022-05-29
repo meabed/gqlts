@@ -3,7 +3,7 @@ const {
   createClient: createClientOriginal,
   generateGraphqlOperation,
   assertSameVersion,
-} = require('@genqlx/runtime')
+} = require('@gqlts/runtime')
 var typeMap = linkTypeMap(require('./types.cjs'))
 
 var version = '3.2.3'

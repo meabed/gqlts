@@ -1,17 +1,17 @@
 {
-  "name": "@genqlx/cli",
+  "name": "@gqlts/cli",
   "version": "3.2.3",
   "description": "Generate a client sdk from your GraphQl API",
   "keywords": [],
   "repository": {
-    "url": "https://github.com/meabed/genqlx"
+    "url": "https://github.com/meabed/gqlts"
   },
   "license": "MIT",
   "author": "Meabed <mo@meabed.com>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "genqlx": "./dist/cli.js"
+    "gqlts": "./dist/cli.js"
   },
   "files": [
     "/dist/*",
@@ -59,7 +59,7 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@genqlx/runtime": "^3.2.3",
+    "@gqlts/runtime": "^3.2.3",
     "@graphql-tools/graphql-file-loader": "^7.3.14",
     "@graphql-tools/load": "^7.5.13",
     "chalk": "^4.1.2",

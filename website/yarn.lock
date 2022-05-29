@@ -759,12 +759,12 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.6.1.tgz#0c74724ba6e9ea6ad25a391eab60a79eaba4c556"
   integrity sha512-9FqhNjKQWpQ3fGnSOCovHOm+yhhiorKEqYLAfd525jWavunDJcx8rOW6i6ozAh+FbwcYMkL7b+3j4UR/30MpoQ==
 
-"@genqlx/cli@^3.0.0":
+"@gqlts/cli@^3.0.0":
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@genqlx/cli/-/cli-3.0.0.tgz#d06f275dd6f55f03f3428cbcf52bc87d83e65076"
+  resolved "https://registry.yarnpkg.com/@gqlts/cli/-/cli-3.0.0.tgz#d06f275dd6f55f03f3428cbcf52bc87d83e65076"
   integrity sha512-lvfYY+9Oc2rDs8Ua964QFRp5oIzg9AFL9YH5y52nH63J9pyZjZF6bEtDvYfNeGh6lztVAzeR2IsSjhmJsodGmA==
   dependencies:
-    "@genqlx/runtime" "^3.0.0"
+    "@gqlts/runtime" "^3.0.0"
     "@graphql-tools/graphql-file-loader" "^7.3.11"
     "@graphql-tools/load" "^7.5.10"
     chalk "^5.0.1"
@@ -779,9 +779,9 @@
     rimraf "^3.0.2"
     yargs "^17.4.1"
 
-"@genqlx/runtime@^3.0.0":
+"@gqlts/runtime@^3.0.0":
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@genqlx/runtime/-/runtime-3.0.0.tgz#e213de6ac5665de8a9a1418e880b09e5dea4aec9"
+  resolved "https://registry.yarnpkg.com/@gqlts/runtime/-/runtime-3.0.0.tgz#e213de6ac5665de8a9a1418e880b09e5dea4aec9"
   integrity sha512-cLhPO2Th6Y9Azy429/7kC6UW7RPJ+Fc42jMRynZIzbaNN9+FOAigDoY9sckho4DPAxnQ/LnBtDa04kTHz7djFw==
   dependencies:
     graphql-query-batcher "^1.0.1"

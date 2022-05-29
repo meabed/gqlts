@@ -2,7 +2,7 @@ import assert from "assert";
 import { createClient } from "../hasura/generated";
 import fetch from "isomorphic-unfetch";
 import QueryBatcher from "graphql-query-batcher";
-import { everything } from "@genqlx/runtime";
+import { everything } from "@gqlts/runtime";
 
 const URL = "https://hasura-2334534.herokuapp.com/v1/graphql";
 

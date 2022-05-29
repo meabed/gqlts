@@ -3,7 +3,7 @@ import {
   GraphqlOperation,
   ClientOptions,
   Observable,
-} from '@genqlx/runtime'
+} from '@gqlts/runtime'
 import { Client as WSClient } from 'graphql-ws'
 import { AxiosRequestConfig, AxiosInstance } from 'axios'
 export * from './schema'

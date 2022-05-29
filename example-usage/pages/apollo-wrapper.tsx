@@ -10,7 +10,7 @@ function tuple(data: Array<any>) {
   return data;
 }
 
-function useGenqlxQuery<Q extends QueryRequest>(q: Q, options?: QueryHookOptions) {
+function useGqltsQuery<Q extends QueryRequest>(q: Q, options?: QueryHookOptions) {
   const { query, variables } = generateQueryOp(q);
   return useQuery<QueryResult<typeof q>>(gql(query), {
     variables,
@@ -19,7 +19,7 @@ function useGenqlxQuery<Q extends QueryRequest>(q: Q, options?: QueryHookOptions
 }
 
 const Page = () => {
-  const { data: gqlData = {}, error } = useGenqlxQuery({
+  const { data: gqlData = {}, error } = useGqltsQuery({
     countries: [
       { filter: { continent: { nin: [] } } },
       {
@@ -32,8 +32,8 @@ const Page = () => {
   return (
     <Stack spacing="40px" mt="40px">
       <Hero
-        bullet="Genqlx lets you write graphql queries as code"
-        heading="Example use of Genqlx"
+        bullet="Gqlts lets you write graphql queries as code"
+        heading="Example use of Gqlts"
         subheading="countries fetched via https://countries.trevorblades.com"
       />
       <PageContainer>

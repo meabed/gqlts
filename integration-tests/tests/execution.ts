@@ -195,7 +195,7 @@ describe("execute queries", async function () {
       const { data: res } = await client.query({
         repository: [
           {
-            name: "genqlx",
+            name: "gqlts",
             owner: "remorses",
           },
           {

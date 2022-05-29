@@ -111,7 +111,7 @@ generate(config)
     printHelp({
       dirPath: program.output,
       useYarn: false,
-      dependencies: [`@genqlx/runtime@${version}`, "graphql"],
+      dependencies: [`@gqlts/runtime@${version}`, "graphql"],
     });
   });
 
@@ -123,7 +123,7 @@ export function printHelp({ useYarn, dirPath, dependencies }) {
   console.log();
   console.log(`  ${chalk.cyan(`${useYarn ? "yarn add" : "npm install"} ${dependencies.join(" ")}`)}`);
   console.log();
-  console.log("PS: `@genqlx/runtime` should always have the same version as the cli!");
+  console.log("PS: `@gqlts/runtime` should always have the same version as the cli!");
   console.log();
 }
 

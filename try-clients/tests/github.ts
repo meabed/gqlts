@@ -28,7 +28,7 @@ describe("github", () => {
     const res1 = await client.query({
       repository: [
         {
-          name: "genqlx",
+          name: "gqlts",
           owner: "remorses",
         },
         {

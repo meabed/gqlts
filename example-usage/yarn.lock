@@ -205,12 +205,12 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-1.1.0.tgz#86b0b297f3f1a0f2bdb08eeac9a2f49afd40d0cf"
   integrity sha512-iRLa/Y4Rs5H/f2nimczYmS5kFJEbpiVvgN3XVfZ022IYhuNA1IRSHEizcof88LtCTXtl9S2Cxt32KgaXEu72JQ==
 
-"@genqlx/cli@^3.1.9":
+"@gqlts/cli@^3.1.9":
   version "3.1.12"
-  resolved "https://registry.yarnpkg.com/@genqlx/cli/-/cli-3.1.12.tgz#c7254910cac58960f8ec732421ff0a804927c361"
+  resolved "https://registry.yarnpkg.com/@gqlts/cli/-/cli-3.1.12.tgz#c7254910cac58960f8ec732421ff0a804927c361"
   integrity sha512-u6TPIC/gKJSo2FQtPWAxjohQZWv0G6PMU9R7RDQL5Osn9yFATwKp5cVnB2BRSv077sTpv9hDSh7vVHeHWmrBKw==
   dependencies:
-    "@genqlx/runtime" "^3.1.12"
+    "@gqlts/runtime" "^3.1.12"
     "@graphql-tools/graphql-file-loader" "^7.3.14"
     "@graphql-tools/load" "^7.5.13"
     chalk "^4.1.2"
@@ -225,9 +225,9 @@
     rimraf "^3.0.2"
     yargs "^17.5.1"
 
-"@genqlx/runtime@^3.1.12", "@genqlx/runtime@^3.1.9":
+"@gqlts/runtime@^3.1.12", "@gqlts/runtime@^3.1.9":
   version "3.1.12"
-  resolved "https://registry.yarnpkg.com/@genqlx/runtime/-/runtime-3.1.12.tgz#582801521707d49ec98a8b87064f1291df90e23d"
+  resolved "https://registry.yarnpkg.com/@gqlts/runtime/-/runtime-3.1.12.tgz#582801521707d49ec98a8b87064f1291df90e23d"
   integrity sha512-T89daTt2oVqOFItznr+HH1pa8xdMEW5CLzCbroFyZDvgd79oWjPvAK/UH4ojLsEzbpmlQ0PUahakQd5yK0RrhA==
   dependencies:
     axios "^0.27.2"

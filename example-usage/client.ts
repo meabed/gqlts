@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { useLazyPromise, useObservable, useLazyPromiseOutput } from "react-extra-hooks";
 
-import { FieldsSelection, ClientError } from "@genqlx/runtime";
+import { FieldsSelection, ClientError } from "@gqlts/runtime";
 import {
   mutation_rootRequest as MutationRequest,
   createClient,

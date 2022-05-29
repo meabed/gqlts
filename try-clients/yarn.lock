@@ -19,7 +19,7 @@
   resolved "https://registry.yarnpkg.com/@shitty-scope-name/dsfxxxxxaxaxa/-/dsfxxxxxaxaxa-1.1.0.tgz#e09e6dfe3f298a24e0d5f3e150c273c4a15c6281"
   integrity sha512-7Z5ZNRtMf5FWwuzvcH6Dn5vzu8DWKsgEXFG4d3Rf2KtP/4oDl/P5DZ4FhXYdjTaF4PKQr3uufvoR6CoSvOtv+g==
   dependencies:
-    genqlx-runtime latest
+    gqlts-runtime latest
 
 "@shitty-scope-name/hasura-testing-client-example-for-tests@1.3.0":
   version "1.3.0"
@@ -366,9 +366,9 @@ genql-runtime@latest:
     ws "^6.1.4"
     zen-observable-ts "^0.8.21"
 
-genqlx-runtime@latest:
+gqlts-runtime@latest:
   version "1.0.22"
-  resolved "https://registry.yarnpkg.com/genqlx-runtime/-/genqlx-runtime-1.0.22.tgz#8ae11230e6b8401795d3cbddd3615f721b0fc45e"
+  resolved "https://registry.yarnpkg.com/gqlts-runtime/-/gqlts-runtime-1.0.22.tgz#8ae11230e6b8401795d3cbddd3615f721b0fc45e"
   integrity sha512-aLoP4TBAxOYA046JiHjNy/XOeTGZ7bgA2zaC398c1q1seFqtAYHtGlvQ1AmgPHJSqF7/rl8eX7U2O3A0rYajLw==
   dependencies:
     "@types/graphql" "^14.5.0"

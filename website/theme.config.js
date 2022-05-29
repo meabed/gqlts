@@ -1,9 +1,9 @@
 // theme.config.js
 export default {
-  github: "https://github.com/meabed/genqlx",
-  projectLink: "https://github.com/meabed/genqlx",
-  docsRepositoryBase: "https://github.com/meabed/genqlx/blob/master",
-  titleSuffix: " – Genqlx",
+  github: "https://github.com/meabed/gqlts",
+  projectLink: "https://github.com/meabed/gqlts",
+  docsRepositoryBase: "https://github.com/meabed/gqlts/blob/master",
+  titleSuffix: " – Gqlts",
   nextLinks: true,
   prevLinks: true,
   search: true,
@@ -16,7 +16,7 @@ export default {
   footerEditLink: `Edit this page on GitHub`,
   logo: (
     <>
-      <span>Genqlx - Type safe Graphql query builder</span>
+      <span>Gqlts - Type safe Graphql query builder</span>
     </>
   ),
   head: (

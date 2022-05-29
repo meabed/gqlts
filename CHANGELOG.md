@@ -1,6 +1,8 @@
 
 ## 3.2.3
+Rename library to `gqlts`
 Fix subscription parameters
+Added example usage of subscription with demo graphql server
 
 ## 3.2.2
 Fix optional parameters in client 
@@ -62,20 +64,20 @@ Added `enumGraphqlEnumName` exports to get access to enum strings
 
 ## 2.4.0
 
--   Ability to query interfaces that a union implements https://github.com/remorses/genqlx/issues/44
+-   Ability to query interfaces that a union implements https://github.com/remorses/gqlts/issues/44
 
 ## 2.3.3
 
--   `genqlx-cli` package becomes `@genqlx/cli`
--   `genqlx-runtime` package becomes `@genqlx/runtime`
+-   `gqlts-cli` package becomes `@gqlts/cli`
+-   `gqlts-runtime` package becomes `@gqlts/runtime`
 -   headers can be an async function
 -   you can now add an operation name to a query using `__name`
 -   only generate commonjs code by default (using require and module.exports) to prevent people from importing from `index.esm`, use the `--esm` flag if you want to use esm
 -   response types only include requested fields
--   added built in batching (see https://genqlx.vercel.app/docs/usage/batching-queries)
+-   added built in batching (see https://gqlts.vercel.app/docs/usage/batching-queries)
 -   `--sort` flag
 -   generated `types.json` now is `types.js`
 -   smaller `types.js` and hence smaller bundle size
--   made the website page converter to convert from graphql queries to genqlx code: https://genqlx.vercel.app/converter
+-   made the website page converter to convert from graphql queries to gqlts code: https://gqlts.vercel.app/converter
 -   custom `fetcher` now has type `(operation: GraphqlOperation | GraphqlOperation[], ) => Promise<ExecutionResult>` to support built in batching
--   added a `@genqlx/cli/printer` module to print a graphql query AST to genqlx code
+-   added a `@gqlts/cli/printer` module to print a graphql query AST to gqlts code

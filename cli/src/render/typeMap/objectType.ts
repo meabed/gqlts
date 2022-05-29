@@ -8,7 +8,7 @@ import {
   isInterfaceType,
 } from "graphql";
 import { RenderContext } from "../common/RenderContext";
-import { ArgMap, Field, FieldMap } from "@genqlx/runtime/dist/types";
+import { ArgMap, Field, FieldMap } from "@gqlts/runtime/dist/types";
 import { isEmpty } from "./support";
 
 export function objectType(

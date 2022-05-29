@@ -2,7 +2,7 @@
 name: Quick Start
 ---
 
-> Introducing Genqlx
+> Introducing Gqlts
 # Type safe Graphql query builder
 
 Genql generates a typed graphql client for your graphql api to use in browser or node.
@@ -10,12 +10,12 @@ Genql generates a typed graphql client for your graphql api to use in browser or
 > This package is forked version from [genql](https://github.com/remorses/genql/)
 > It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
 
-To use genqlx you first need to generate a sdk client for your graphql api.
+To use gqlts you first need to generate a sdk client for your graphql api.
 
-Genqlx comes with built-in axios client and typed graphql query builder, file upload, subscription, batching, and more.
+Gqlts comes with built-in axios client and typed graphql query builder, file upload, subscription, batching, and more.
 
 ```ts
-import { createClient, everything } from '@genql/my-lib'
+import { createClient, everything } from '@gqlts/my-lib'
 await createClient().query({
     User: {
         name: true,
@@ -31,10 +31,10 @@ await createClient().query({
 
 ## Graphql queries written in code
 
-### Genqlx generates a graphql client with typescript types, giving you type safety and auto-completion
+### Gqlts generates a graphql client with typescript types, giving you type safety and auto-completion
 
 ```ts
-import { createClient, everything } from '@genqlx/my-lib'
+import { createClient, everything } from '@gqlts/my-lib'
 
 await createClient().query({
     User: {

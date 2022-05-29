@@ -2,12 +2,12 @@
 
 Some differences are
 
--   Genqlx has subscriptions: https://genqlx.vercel.app/docs/usage/subscriptions
--   Genqlx has batching built in: https://genqlx.vercel.app/docs/usage/batching-queries
--   Genqlx has a dependency on `@genqlx/runtime`, graphql zeus does not
--   Genqlx does not support aliases
--   Genqlx will have a big bundle size for large graphql schemas because it needs to store some schema information, this information is really compressed but it can be a problem for large schemas (see an example of this data [here](https://github.com/meabed/genqlx/blob/master/example-usage/generated/types.esm.js))
--   With genqlx you can easily fetch all scalar fields of a type: https://genqlx.vercel.app/docs/usage/selecting-fields#querying-all-fields
+-   Gqlts has subscriptions: https://gqlts.vercel.app/docs/usage/subscriptions
+-   Gqlts has batching built in: https://gqlts.vercel.app/docs/usage/batching-queries
+-   Gqlts has a dependency on `@gqlts/runtime`, graphql zeus does not
+-   Gqlts does not support aliases
+-   Gqlts will have a big bundle size for large graphql schemas because it needs to store some schema information, this information is really compressed but it can be a problem for large schemas (see an example of this data [here](https://github.com/meabed/gqlts/blob/master/example-usage/generated/types.esm.js))
+-   With gqlts you can easily fetch all scalar fields of a type: https://gqlts.vercel.app/docs/usage/selecting-fields#querying-all-fields
 -   Easier variables passing
 
 graphql zeus
@@ -35,7 +35,7 @@ const test = await Gql.mutation(
 )
 ```
 
-Genqlx
+Gqlts
 
 ```ts
 await client.mutation({

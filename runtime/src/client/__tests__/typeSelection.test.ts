@@ -1,4 +1,4 @@
-import { FieldsSelection } from "@genqlx/runtime/src/client/typeSelection";
+import { FieldsSelection } from "@gqlts/runtime/src/client/typeSelection";
 import { NoExtraProperties } from "../../";
 
 // types requirements

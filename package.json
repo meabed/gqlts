@@ -1,5 +1,5 @@
 {
-  "name": "genqlx",
+  "name": "gqlts",
   "version": "3.0.0",
   "private": true,
   "workspaces": [
@@ -11,7 +11,7 @@
     "integration-tests"
   ],
   "scripts": {
-    "buildall": "ultra -r --filter '@genqlx/*' --topology build",
+    "buildall": "ultra -r --filter '@gqlts/*' --topology build",
     "examplecli": "yarn play -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
     "genall": "ultra -r gen",
     "integration": "cd integration-tests && yarn gen && tsc && yarn test",
@@ -19,7 +19,7 @@
     "publ": "yarn buildall && lerna publish minor",
     "runexample": "node -r sucrase/register example/example.ts",
     "test": "ultra -r test",
-    "tscall": "ultra -r --filter '@genqlx/*' tsc",
+    "tscall": "ultra -r --filter '@gqlts/*' tsc",
     "watch": "ultra -r watch"
   },
   "devDependencies": {
