@@ -1,0 +1,30 @@
+type Image {
+  id: Int
+  title: String
+  category: String
+  owner: String
+  url: String
+}
+
+type User {
+  id: ID
+  name: String
+  age: Int
+  friends(a: Int): [User]
+}
+
+type Query {
+  hello: String
+  image(id: Int!): Image
+  images(category: String): [Image]
+  user: User
+  users: [User]
+}
+
+type Mutation {
+  addUser(id: ID, name: String!, age: Int): User
+}
+
+type Subscription {
+  userAdded: User
+}
