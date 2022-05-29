@@ -2,7 +2,7 @@
 export default {
   github: "https://github.com/meabed/gqlts",
   projectLink: "https://github.com/meabed/gqlts",
-  docsRepositoryBase: "https://github.com/meabed/gqlts/blob/master",
+  docsRepositoryBase: "https://github.com/meabed/gqlts/tree/master/website",
   titleSuffix: " – Gqlts",
   nextLinks: true,
   prevLinks: true,
@@ -16,14 +16,14 @@ export default {
   footerEditLink: `Edit this page on GitHub`,
   logo: (
     <>
-      <span>Gqlts - Type safe Graphql query builder</span>
+      <span>Gqlts - Type safe graphql query builder</span>
     </>
   ),
   head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="Nextra: the next docs builder" />
-      <meta name="og:title" content="Nextra: the next docs builder" />
+      <meta name="description" content="Gqlts: Type safe graphql query builder" />
+      <meta name="og:title" content="Gqlts: Type safe graphql query builder" />
     </>
   ),
 };
