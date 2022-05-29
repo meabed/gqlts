@@ -5,10 +5,9 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "../../sub";
 
 const client = createClient({
-  url: "http://localhost:4000/graphql",
+  url: "https://graphql-server-moon.herokuapp.com/graphql",
   subscription: {
-    // url: "wss://hasura-2334534.herokuapp.com/v1/graphql",
-    url: "ws://localhost:4000/graphql",
+    url: "ws://graphql-server-moon.herokuapp.com/graphql",
     shouldRetry: () => false,
   },
 });
@@ -78,7 +77,7 @@ const Page = () => {
       <Hero
         bullet="Genqlx lets you write graphql queries as code"
         heading="Example use of Genqlx"
-        subheading="Add Users via https://countries.trevorblades.com"
+        subheading="Add Users via https://graphql-server-moon.herokuapp.com/graphql"
       />
       <PageContainer>
         <SectionTitle heading="Users" />
@@ -87,14 +86,15 @@ const Page = () => {
             <Spinner />
           </Stack>
         )}
-        {addedUser.length}
-        {addedUser && (
+        {addedUser.length > 0 && (
           <Stack spacing="20px">
-            {addedUser?.map((x: any) => (
-              <Box borderRadius="10px" p="20px" borderWidth="1px">
-                {x.id} - {x.name} - {x.age}
-              </Box>
-            ))}
+            {addedUser?.map((x: any) => {
+              return (
+                <Box borderRadius="10px" p="20px" borderWidth="1px">
+                  {x.id} - {x.name} - {x.age}
+                </Box>
+              );
+            })}
           </Stack>
         )}
         {error && <Box color="red">{error.message}</Box>}

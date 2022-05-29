@@ -14,7 +14,7 @@ assertSameVersion(version)
 export var createClient = function (options) {
   options = options || {}
   var optionsCopy = {
-    url: 'http://localhost:4000/graphql',
+    url: 'https://graphql-server-moon.herokuapp.com/graphql',
     queryRoot: typeMap.Query,
     mutationRoot: typeMap.Mutation,
     subscriptionRoot: typeMap.Subscription,
