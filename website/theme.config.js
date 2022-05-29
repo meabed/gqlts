@@ -2,7 +2,7 @@
 export default {
   github: "https://github.com/meabed/gqlts",
   projectLink: "https://github.com/meabed/gqlts",
-  docsRepositoryBase: "https://github.com/meabed/gqlts/tree/master/website",
+  docsRepositoryBase: "https://github.com/meabed/gqlts/tree/master/website/pages",
   titleSuffix: " – Gqlts",
   nextLinks: true,
   prevLinks: true,
