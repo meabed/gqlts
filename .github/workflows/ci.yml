@@ -48,11 +48,10 @@ jobs:
       #     version_file: VERSION
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - run: yarn buildall
       # - name: Publish
       #   run: |
-      #     cd gqlts-cli && npm publish --verbose --access public --tag beta
-      #     cd ../gqlts-runtime && npm publish --verbose --access public --tag beta
+      #     cd cli && npm publish --verbose --access public --tag beta
+      #     cd ../runtime && npm publish --verbose --access public --tag beta
       #   if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/fields-selection'
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
