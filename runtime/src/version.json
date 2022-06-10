@@ -1,8 +1,22 @@
 {
   "name": "@gqlts/runtime",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "description": "Gqlts runtime client",
-  "keywords": [],
+  "keywords": [
+    "gqlts",
+    "graphql",
+    "axios",
+    "typescript",
+    "graphql-sdk",
+    "graphql-sdk-generator",
+    "graphql-sdk-cli",
+    "graphql-subscriptions",
+    "graphql-subscriptions-client",
+    "graphql-typescript",
+    "graphql-axios-client",
+    "graphql-typescript-client",
+    "graphql-typescript-sdk"
+  ],
   "homepage": "https://gqlts.vercel.app",
   "repository": {
     "url": "https://github.com/meabed/gqlts"

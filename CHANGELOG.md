@@ -1,4 +1,12 @@
 
+## 3.2.4
+Update packages
+  - graphql-ws
+  - ws
+Update readme
+Update website docs
+Update keywords in package.json
+
 ## 3.2.3
 Rename library to `gqlts`
 Fix subscription parameters

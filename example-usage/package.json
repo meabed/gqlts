@@ -1,6 +1,6 @@
 {
   "name": "example-usage",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -21,17 +21,17 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "4.0.0",
-    "@chakra-ui/react": "^2.1.2",
+    "@chakra-ui/react": "^2.2.1",
     "@emotion/core": "11.0.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@gqlts/cli": "^3.2.3",
-    "@gqlts/runtime": "^3.2.3",
+    "@gqlts/cli": "^3.2.4",
+    "@gqlts/runtime": "^3.2.4",
     "@types/js-cookie": "3.0.2",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.11",
     "emotion-theming": "11.0.0",
-    "framer-motion": "^6.3.4",
+    "framer-motion": "^6.3.11",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
     "react": "18.1.0",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/mocha": "9.1.1",
-    "@types/node": "17.0.35",
+    "@types/node": "17.0.41",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
     "mocha": "10.0.0",

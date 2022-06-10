@@ -14,9 +14,25 @@ To use gqlts you first need to generate a sdk client for your graphql api.
 
 Gqlts comes with built-in axios client and typed graphql query builder, file upload, subscription, batching, and more.
 
+## Features
+
+- Type completion
+- Type validation
+- Easily fetch all fields in a type
+- Support subscription
+- Graphql Client built in
+- Works with any client
+- Works in node and the browser
+- Built in Axios Client, and exported to extend with interceptors.
+- Client Operation support for Axios configuration, such as headers, timeout, cancelToken, abortSignal, etc.
+- Support batching queries
+- Consistent response format { data, errors, extensions }
+
+> Find more server-client examples in the [examples repo](https://github.com/meabed/graphql-examples)
+
 ```ts
 import { createClient, everything } from '@gqlts/my-lib'
-await createClient().query({
+const { data, errors, extensions } = await createClient().query({
     User: {
         name: true,
         surname: true,
@@ -36,7 +52,7 @@ await createClient().query({
 ```ts
 import { createClient, everything } from '@gqlts/my-lib'
 
-await createClient().query({
+const { data, errors, extensions } = await createClient().query({
     User: {
         name: true,
         surname: true,
