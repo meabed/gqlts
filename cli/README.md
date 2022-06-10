@@ -31,6 +31,7 @@ Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client
 - Consistent response format { data, errors, extensions }
 
 > Find more server-client examples in the [examples repo](https://github.com/meabed/graphql-examples)
+> You will find multiple examples with different tools of building schema, query, mutation, websocket subscriptions and more.
 
 ## Example usage
 
@@ -49,16 +50,16 @@ import { createClient, everything } from './generated'
 const client = createClient()
 
 client
-  .query({
-    countries: {
-      name: true,
-      code: true,
-      nestedField: {
-        ...everything, // same as __scalar: true
-      },
-    },
-  })
-  .then(console.log)
+    .query({
+        countries: {
+            name: true,
+            code: true,
+            nestedField: {
+                ...everything, // same as __scalar: true
+            },
+        },
+    })
+    .then(console.log)
 ```
 
 The code above will fetch the graphql query below
