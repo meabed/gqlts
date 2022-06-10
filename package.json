@@ -1,7 +1,31 @@
 {
   "name": "gqlts",
-  "version": "3.0.0",
+  "version": "3.2.4",
   "private": true,
+  "keywords": [
+    "gqlts",
+    "graphql",
+    "axios",
+    "typescript",
+    "types-graphql",
+    "types-graphql-client",
+    "types-graphql-axios",
+    "graphql-sdk",
+    "graphql-sdk-generator",
+    "graphql-sdk-cli",
+    "graphql-subscriptions",
+    "graphql-subscriptions-client",
+    "graphql-typescript",
+    "graphql-axios-client",
+    "graphql-typescript-client",
+    "graphql-typescript-sdk"
+  ],
+  "homepage": "https://gqlts.vercel.app",
+  "repository": {
+    "url": "https://github.com/meabed/gqlts"
+  },
+  "license": "MIT",
+  "author": "Meabed <mo@meabed.com>",
   "workspaces": [
     "cli",
     "runtime",
@@ -22,13 +46,13 @@
     "tscall": "ultra -r --filter '@gqlts/*' tsc",
     "watch": "ultra -r watch"
   },
+  "resolutions": {
+    "graphql": "^16.5.0",
+    "ws": "^8.8.0"
+  },
   "devDependencies": {
     "lerna": "5.1.1",
     "typescript": "4.7.3",
     "ultra-runner": "3.10.5"
-  },
-  "resolutions": {
-    "graphql": "^16.5.0",
-    "ws": "^8.8.0"
   }
 }
