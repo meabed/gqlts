@@ -42,17 +42,17 @@ export interface GraphqlResponse<D = any, E = GraphQLError[], X = Extensions> {
   extensions?: X
 }
 
-export interface Client {
+export interface Client<FI = AxiosInstance, RC = AxiosRequestConfig> {
   wsClient?: WSClient
-  fetcherInstance?: AxiosInstance | unknown | undefined
+  fetcherInstance?: FI | undefined
   fetcherMethod: (
     operation: GraphqlOperation | GraphqlOperation[],
-    config?: AxiosRequestConfig | unknown,
+    config?: RC,
   ) => Promise<any>
 
   query<R extends QueryRequest>(
     request: R & { __name?: string },
-    config?: AxiosRequestConfig | unknown,
+    config?: RC,
   ): Promise<GraphqlResponse<FieldsSelection<Query, R>>>
 }
 

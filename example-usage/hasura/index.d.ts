@@ -49,22 +49,22 @@ export interface GraphqlResponse<D = any, E = GraphQLError[], X = Extensions> {
   extensions?: X
 }
 
-export interface Client {
+export interface Client<FI = AxiosInstance, RC = AxiosRequestConfig> {
   wsClient?: WSClient
-  fetcherInstance?: AxiosInstance | unknown | undefined
+  fetcherInstance?: FI | undefined
   fetcherMethod: (
     operation: GraphqlOperation | GraphqlOperation[],
-    config?: AxiosRequestConfig | unknown,
+    config?: RC,
   ) => Promise<any>
 
   query<R extends query_rootRequest>(
     request: R & { __name?: string },
-    config?: AxiosRequestConfig | unknown,
+    config?: RC,
   ): Promise<GraphqlResponse<FieldsSelection<query_root, R>>>
 
   mutation<R extends mutation_rootRequest>(
     request: R & { __name?: string },
-    config?: AxiosRequestConfig | unknown,
+    config?: RC,
   ): Promise<GraphqlResponse<FieldsSelection<mutation_root, R>>>
 
   subscription<R extends subscription_rootRequest>(

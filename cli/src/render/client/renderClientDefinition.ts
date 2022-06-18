@@ -62,7 +62,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         query<R extends ${requestTypeName(queryType)}>(
             request: R & { __name?: string },
-            config?: AxiosRequestConfig | unknown,
+            config?: RC,
         ): Promise<GraphqlResponse<FieldsSelection<${queryType.name}, R>>>
         `;
   }
@@ -71,7 +71,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
     interfaceContent += `
         mutation<R extends ${requestTypeName(mutationType)}>(
             request: R & { __name?: string },
-            config?: AxiosRequestConfig | unknown,
+            config?: RC,
         ): Promise<GraphqlResponse<FieldsSelection<${mutationType.name}, R>>>
         `;
   }
@@ -110,10 +110,10 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
       extensions?: X;
     }
 
-    export interface Client {
+    export interface Client<FI =AxiosInstance, RC =AxiosRequestConfig> {
         wsClient?: WSClient
-        fetcherInstance?: AxiosInstance | unknown | undefined
-        fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: AxiosRequestConfig | unknown) => Promise<any>
+        fetcherInstance?: FI | undefined
+        fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: RC) => Promise<any>
         ${interfaceContent}
     }
     `;
