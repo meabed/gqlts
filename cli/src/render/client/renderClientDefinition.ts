@@ -8,6 +8,8 @@ export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext
   const queryType = schema.getQueryType();
   const mutationType = schema.getMutationType();
   const subscriptionType = schema.getSubscriptionType();
+  const prefix = ctx.config?.methodPrefix || "";
+  const suffix = ctx.config?.methodSuffix || "";
 
   ctx.addCodeBlock(`
     import { FieldsSelection, GraphqlOperation, ClientOptions, Observable } from '${RUNTIME_LIB_NAME}'
@@ -15,7 +17,7 @@ export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext
     import { AxiosRequestConfig, AxiosInstance } from 'axios'
     export * from './schema'
     ${renderClientTypesImports({ mutationType, queryType, subscriptionType })}
-    export declare const createClient:(options?: ClientOptions) => Client
+    export declare const ${prefix}createClient${suffix}:(options?: ClientOptions) => Client
     export declare const everything: { __scalar: boolean }
     export declare const version: string
   `);

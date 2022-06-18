@@ -5,7 +5,7 @@
     <br/>
     <br/>
     <h3>Type safe Graphql query builder</h3>
-    <h4>Write Graphql queries with type validation and auto completion</h4>
+    <h4>Write Graphql queries with type validation and auto-completion with batteries included</h4>
     <br/>
     <br/>
 </div>
@@ -16,7 +16,7 @@
 
 Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client locally
 
-🔥 **Features**
+## **Features**
 
 - Type completion
 - Type validation

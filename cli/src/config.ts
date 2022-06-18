@@ -8,6 +8,8 @@ export interface Config {
   schema?: string;
   // the output dir
   output?: string;
+  methodPrefix?: string;
+  methodSuffix?: string;
   // options?: Options
   headers?: Record<string, string>;
   scalarTypes?: { [k: string]: string };

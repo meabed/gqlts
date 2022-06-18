@@ -67,6 +67,8 @@ export function renderEnumsMaps(schema: GraphQLSchema, moduleType: "esm" | "cjs"
 }
 
 export function renderClientCjs(schema: GraphQLSchema, ctx: RenderContext) {
+  const prefix = ctx.config?.methodPrefix || "";
+  const suffix = ctx.config?.methodSuffix || "";
   ctx.addCodeBlock(`
   const {
       linkTypeMap,
@@ -81,7 +83,7 @@ export function renderClientCjs(schema: GraphQLSchema, ctx: RenderContext) {
 
   module.exports.version = version
 
-  module.exports.createClient = ${renderClientCode(ctx)}
+  module.exports.${prefix}createClient${suffix} = ${renderClientCode(ctx)}
 
   ${renderEnumsMaps(schema, "cjs")}
 
@@ -106,6 +108,8 @@ export function renderClientCjs(schema: GraphQLSchema, ctx: RenderContext) {
 }
 
 export function renderClientEsm(schema: GraphQLSchema, ctx: RenderContext) {
+  const prefix = ctx.config?.methodPrefix || "";
+  const suffix = ctx.config?.methodSuffix || "";
   ctx.addCodeBlock(`
   import {
       linkTypeMap,
@@ -120,7 +124,7 @@ export function renderClientEsm(schema: GraphQLSchema, ctx: RenderContext) {
   export var version = ${JSON.stringify(version)}
   assertSameVersion(version)
 
-  export var createClient = ${renderClientCode(ctx)}
+  export var ${prefix}createClient${suffix} = ${renderClientCode(ctx)}
 
   ${renderEnumsMaps(schema, "esm")}
 

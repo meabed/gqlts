@@ -5,18 +5,18 @@
     <br/>
     <br/>
     <h3>Type safe Graphql query builder</h3>
-    <h4>Write Graphql queries with type validation and auto completion</h4>
+    <h4>Write Graphql queries with type validation and auto-completion with batteries included</h4>
     <br/>
     <br/>
 </div>
 
 > This package is forked version from [genql](https://github.com/remorses/genql/)
-> 
+>
 > It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
 
 Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client locally
 
-🔥 **Features**
+## **Features**
 
 - Type completion
 - Type validation
@@ -66,14 +66,14 @@ The code above will fetch the graphql query below
 
 ```graphql
 query {
-    countries {
-        name
-        code
-        nestedField {
-            scalarField1
-            scalarField2
-        }
+  countries {
+    name
+    code
+    nestedField {
+      scalarField1
+      scalarField2
     }
+  }
 }
 ```
 

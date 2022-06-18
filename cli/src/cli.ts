@@ -43,6 +43,20 @@ const program = yargs(process.argv.slice(2))
     string: true,
     description: "map a scalar to a type, for example `-S DateTime:string` ",
   })
+  .option("methodPrefix", {
+    alias: "mp",
+    type: "string",
+    default: "",
+    string: true,
+    description: "prefix for generated methods",
+  })
+  .option("methodSuffix", {
+    alias: "ms",
+    type: "string",
+    default: "",
+    string: true,
+    description: "suffix for generated methods",
+  })
   .option("esm", {
     type: "boolean",
     default: false,
@@ -89,6 +103,8 @@ const config: Config = {
   useGet: program.get,
   schema: program.schema && readFile(program.schema),
   output: program.output,
+  methodPrefix: program.methodPrefix ?? "",
+  methodSuffix: program.methodSuffix ?? "",
   headers: parseColonSeparatedStrings(program.header || []),
   scalarTypes: parseColonSeparatedStrings(program.scalar || []),
   onlyEsModules: program.esm,

@@ -4,6 +4,7 @@
     "noUnusedParameters": false,
     "rootDir": "src",
     "noImplicitAny": false,
+    "isolatedModules": true,
     "strict": true,
     "declaration": true,
     "target": "ES2015",

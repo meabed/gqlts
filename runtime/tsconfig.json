@@ -3,6 +3,7 @@
     "noImplicitReturns": true,
     "noUnusedParameters": true,
     "importHelpers": true,
+    "isolatedModules": true,
     "rootDir": "src",
     "strict": false,
     "declaration": true,

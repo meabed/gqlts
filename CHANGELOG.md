@@ -1,3 +1,7 @@
+## 3.2.5
+- Added 2 parameters to the generator to make it easy when you generate multiple clients ( as sometime typescript mixes types and interfaces ):
+  - '-ms' methodSuffix (default: '') to suffix generated method names ( createClient > createClient_ms )
+  - '-mp' methodPrefix (default: '') to prefix generated method names ( createClient > methodPrefix_createClient )
 
 ## 3.2.4
 Update packages
