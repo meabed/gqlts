@@ -21,7 +21,8 @@ Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client
 - Type completion
 - Type validation
 - Easily fetch all fields in a type
-- Support subscription
+- Support subscription ( ws, graphql-ws, observable, etc )
+- Built in file upload support
 - Graphql Client built in
 - Works with any client
 - Works in node and the browser

@@ -21,7 +21,8 @@ Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client
 - Type completion
 - Type validation
 - Easily fetch all fields in a type
-- Support subscription
+- Support subscription ( ws, graphql-ws, observable, etc )
+- Built in file upload support
 - Graphql Client built in
 - Works with any client
 - Works in node and the browser
@@ -50,16 +51,16 @@ import { createClient, everything } from './generated'
 const client = createClient()
 
 client
-    .query({
-        countries: {
-            name: true,
-            code: true,
-            nestedField: {
-                ...everything, // same as __scalar: true
-            },
-        },
-    })
-    .then(console.log)
+  .query({
+    countries: {
+      name: true,
+      code: true,
+      nestedField: {
+        ...everything, // same as __scalar: true
+      },
+    },
+  })
+  .then(console.log)
 ```
 
 The code above will fetch the graphql query below
