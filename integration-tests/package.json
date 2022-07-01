@@ -26,7 +26,7 @@
     "express": "4.18.1",
     "graphql": "16.5.0",
     "graphql-easy-mocks": "1.1.1",
-    "tsd": "0.21.0",
+    "tsd": "0.22.0",
     "tsdef": "0.0.14"
   },
   "devDependencies": {
