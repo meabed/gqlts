@@ -94,7 +94,7 @@
     "@sucrase/jest-plugin": "2.2.1",
     "@types/common-tags": "1.8.1",
     "@types/jest": "28.1.7",
-    "@types/lodash": "4.14.183",
+    "@types/lodash": "4.14.184",
     "@types/lodash.assign": "4.2.7",
     "@types/lodash.get": "4.4.7",
     "@types/lodash.startswith": "4.2.7",
