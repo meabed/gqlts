@@ -34,7 +34,7 @@ export function linkTypeMap(typeMap: CompressedTypeMap<number>): LinkedTypeMap {
             {},
             ...Object.keys(fields).map((f): PartialLinkedFieldMap => {
               const [typeIndex, args] = fields[f] ?? [];
-              if (!typeIndex) {
+              if (!typeIndex && typeIndex !== 0) {
                 return {};
               }
               return {
