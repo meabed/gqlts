@@ -24,7 +24,7 @@ export function linkTypeMap(typeMap: CompressedTypeMap<number>): LinkedTypeMap {
           // type scalar properties
           scalar: Object.keys(fields).filter((f) => {
             const [type] = fields[f] ?? [];
-            if (!type) {
+            if (!type && type !== 0) {
               return false;
             }
             return typeMap.scalars.includes(type);

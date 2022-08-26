@@ -1,4 +1,7 @@
-## 3.2.7
+## 3.2.8
+- Fix scalarsMap when index is 0
+
+## 3.2.8
 - Fix typemap when index is 0
 - Update package react-query to @tanstack/react-query
 
