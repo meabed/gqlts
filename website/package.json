@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "3.2.6",
+  "version": "3.2.7",
   "private": true,
   "scripts": {
     "build": "yarn --cwd .. buildall && next build",
@@ -41,7 +41,7 @@
     "use-debounce": "8.0.3"
   },
   "devDependencies": {
-    "@gqlts/cli": "^3.2.6",
+    "@gqlts/cli": "^3.2.7",
     "@types/js-cookie": "3.0.2",
     "@types/mocha": "9.1.1",
     "@types/node": "18.0.0",

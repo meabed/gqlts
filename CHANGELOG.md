@@ -1,3 +1,7 @@
+## 3.2.7
+- Fix typemap when index is 0
+- Update package react-query to @tanstack/react-query
+
 ## 3.2.6
 - Add Client Interface Generic for Fetcher Instance ( FI ) and Request Config ( RC )
 

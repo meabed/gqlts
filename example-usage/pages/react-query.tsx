@@ -1,7 +1,7 @@
 import { Box, Input, Spinner } from "@chakra-ui/react";
 import { Hero, PageContainer, SectionTitle } from "landing-blocks";
 import React, { useState } from "react";
-import { useQuery } from "react-query";
+import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { client } from "./_app";
 
 const Component = () => {
@@ -48,7 +48,6 @@ const Component = () => {
     </div>
   );
 };
-import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
 
