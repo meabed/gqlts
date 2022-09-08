@@ -1119,10 +1119,10 @@
   dependencies:
     "@chakra-ui/utils" "2.0.9"
 
-"@chakra-ui/react@2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-2.3.1.tgz#da7e393f48e64d3ae64b6e2370d15729259ebd3a"
-  integrity sha512-ROaIyQqpN5AXhhxDGkrP37QmnPu/ZJnT1nLdzUxHZE1sO7ujBbir3G+zHlj/Hg2DbYClkB3yfAhA08imeiJh8g==
+"@chakra-ui/react@2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-2.3.2.tgz#4ffcd5b79d21d14e240efc37adab7831f2aac37f"
+  integrity sha512-qOcDLbA1x4pnpJPtF4YJ7pZzK/ki6SoQl9Vj7fsR+hJw1lt3y1475NSyYGiA6qgho/8twUgYLhcdrTbQPcmOHg==
   dependencies:
     "@chakra-ui/accordion" "2.0.12"
     "@chakra-ui/alert" "2.0.9"
@@ -1165,8 +1165,8 @@
     "@chakra-ui/tabs" "2.1.1"
     "@chakra-ui/tag" "2.0.9"
     "@chakra-ui/textarea" "2.0.10"
-    "@chakra-ui/theme" "2.1.10"
-    "@chakra-ui/toast" "3.0.9"
+    "@chakra-ui/theme" "2.1.11"
+    "@chakra-ui/toast" "3.0.10"
     "@chakra-ui/tooltip" "2.0.10"
     "@chakra-ui/transition" "2.0.9"
     "@chakra-ui/utils" "2.0.9"
@@ -1290,25 +1290,25 @@
     "@chakra-ui/anatomy" "2.0.6"
     "@ctrl/tinycolor" "^3.4.0"
 
-"@chakra-ui/theme@2.1.10":
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/theme/-/theme-2.1.10.tgz#3bd3e212e50f902d65165ffe408d63c1554b6cf2"
-  integrity sha512-7V1ReVD2B29amMO9LdRrNsyzAacXzC4Xb7P/0RDDSPWo0rZxPPrPtfhiuPi+bYqk6NN9tJ8dApVhSY+hgIH//A==
+"@chakra-ui/theme@2.1.11":
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/theme/-/theme-2.1.11.tgz#cdfca3e84fc6913c5bb1a06e24b7cbb1246e127e"
+  integrity sha512-gI0NLU6wO/5cRq8gbDHuy24Y/ZhJxN4D/2uucNN9is3h+d58/En5jV3fwzZW8PLiLKW/T2CmbYWEZWV2YkcUVA==
   dependencies:
     "@chakra-ui/anatomy" "2.0.6"
     "@chakra-ui/theme-tools" "2.0.11"
 
-"@chakra-ui/toast@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/toast/-/toast-3.0.9.tgz#25d00bb2d205047062c9c111600cef5e858c1003"
-  integrity sha512-FbGiza882r5cseN3MZ6uCjGRgtoE8ZHMckQfkmM9Pbhh80I7WMWkWBlr7TjQo6q+EcZ+/4YRHrAw/TRp78v5uw==
+"@chakra-ui/toast@3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/toast/-/toast-3.0.10.tgz#5918beb208ca592f72a9e24923254341fa38df58"
+  integrity sha512-i/oEtzmarO0hM6fxa55OmA8ZGkZv9b+vIC2xs5kQ/C0rJaC0ycibok8srq2Stjq9309fZNezyzThQp6e9acUYQ==
   dependencies:
     "@chakra-ui/alert" "2.0.9"
     "@chakra-ui/close-button" "2.0.9"
     "@chakra-ui/portal" "2.0.9"
     "@chakra-ui/react-use-timeout" "2.0.1"
     "@chakra-ui/react-use-update-effect" "2.0.3"
-    "@chakra-ui/theme" "2.1.10"
+    "@chakra-ui/theme" "2.1.11"
 
 "@chakra-ui/tooltip@2.0.10":
   version "2.0.10"
@@ -5300,13 +5300,18 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.1.1, chalk@^4.1.2:
+chalk@^4.1.1:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chalk@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.0.1.tgz#ca57d71e82bb534a296df63bbacc4a1c22b2a4b6"
+  integrity sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w==
 
 char-regex@^1.0.2:
   version "1.0.2"
@@ -7023,10 +7028,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-framer-motion@7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.2.1.tgz#0db5992ece791cb58357787ef9c29dd76281720d"
-  integrity sha512-bt2ZqqGpPsW6UojYUa5poWQJu3sDr4Dp3IZsdVBYdKUJ8p+9PxOk1fYRAT8lTGGmaC5HFoKrbDXQeKWGAKZz9g==
+framer-motion@7.3.2:
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.3.2.tgz#9768092cd98cf0ebaf70864f1248f2e703305a15"
+  integrity sha512-BTG0BqJSwxoFBWpwaaxS/954DGZFsluF+dUv9Hfq53VNkwUt5g+wYTEM66oTUhiH/+6R/y0Rq+BmkUBcmzbyMQ==
   dependencies:
     "@motionone/dom" "10.13.1"
     framesync "6.1.2"
