@@ -28,7 +28,7 @@
     "isomorphic-unfetch": "3.1.0"
   },
   "devDependencies": {
-    "@types/mocha": "9.1.1",
+    "@types/mocha": "10.0.0",
     "mocha": "10.0.0",
     "sucrase": "3.27.0",
     "ts-node": "10.9.1"
