@@ -3675,10 +3675,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@29.0.3":
-  version "29.0.3"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.0.3.tgz#b61a5ed100850686b8d3c5e28e3a1926b2001b59"
-  integrity sha512-F6ukyCTwbfsEX5F2YmVYmM5TcTHy1q9P5rWlRbrk56KyMh3v9xRGUO3aa8+SkvMi0SHXtASJv1283enXimC0Og==
+"@types/jest@29.1.0":
+  version "29.1.0"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.1.0.tgz#9cfbe1b0d4408f9732aaf37447460f10f2c71ce6"
+  integrity sha512-CqlKkMNaUhFSRvqVKniNhbcy9fc/Rj2cmFD5t8Jtu4HlHzSit27h7XKfP5kkxBeROQ8WAvQQmy93FIz9or8jKg==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
@@ -7014,10 +7014,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-framer-motion@7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.4.0.tgz#318c52a76517f9f854aa4a298c292be04941521b"
-  integrity sha512-tcvL5L1cASYjIeBG6mQHhzfndm7MdyHjOwqIdOzOetIVa1yUqeYMufAoljgqg69XFgsgZet+c4iuSuFF+Vgbjg==
+framer-motion@7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.5.0.tgz#e61864f9423f8b24ee5d6539e77c5d6571ee5f31"
+  integrity sha512-uz42xPsO5VmoRrT0Q2I1UZBvQ+Px0Is2c+7mum2z/UhC9m2Q1/2DmSR82ncc5qRtO/4OerNEm473ktOEX3unRg==
   dependencies:
     "@motionone/dom" "10.13.1"
     framesync "6.1.2"
@@ -13339,10 +13339,10 @@ ts-invariant@^0.4.0:
   dependencies:
     tslib "^1.9.3"
 
-ts-jest@29.0.2:
-  version "29.0.2"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.0.2.tgz#0c45a1ac45d14f8b3bf89bca9048a2840c7bd5ad"
-  integrity sha512-P03IUItnAjG6RkJXtjjD5pu0TryQFOwcb1YKmW63rO19V0UFqL3wiXZrmR5D7qYjI98btzIOAcYafLZ0GHAcQg==
+ts-jest@29.0.3:
+  version "29.0.3"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.0.3.tgz#63ea93c5401ab73595440733cefdba31fcf9cb77"
+  integrity sha512-Ibygvmuyq1qp/z3yTh9QTwVVAbFdDy/+4BtIQR2sp6baF2SJU/8CKK/hhnGIDY2L90Az2jIqTwZPnN2p+BweiQ==
   dependencies:
     bs-logger "0.x"
     fast-json-stable-stringify "2.x"
