@@ -93,7 +93,7 @@
   "devDependencies": {
     "@sucrase/jest-plugin": "2.2.1",
     "@types/common-tags": "1.8.1",
-    "@types/jest": "29.1.0",
+    "@types/jest": "29.1.1",
     "@types/lodash": "4.14.186",
     "@types/lodash.assign": "4.2.7",
     "@types/lodash.get": "4.4.7",
