@@ -1,6 +1,6 @@
 {
   "name": "integration-tests",
-  "version": "3.2.8",
+  "version": "3.2.9",
   "private": true,
   "license": "MIT",
   "author": "remorses",
@@ -17,8 +17,8 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@gqlts/cli": "^3.2.8",
-    "@gqlts/runtime": "^3.2.8",
+    "@gqlts/cli": "^3.2.9",
+    "@gqlts/runtime": "^3.2.9",
     "apollo-server-express": "3.10.2",
     "await-sleep": "0.0.1",
     "axios": "1.0.0",
@@ -32,9 +32,9 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.1",
     "@types/mocha": "10.0.0",
-    "@types/node": "18.0.0",
+    "@types/node": "18.8.2",
     "mocha": "10.0.0",
     "snap-shot-it": "7.9.6",
-    "sucrase": "3.27.0"
+    "sucrase": "3.28.0"
   }
 }

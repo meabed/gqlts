@@ -1,6 +1,6 @@
 {
   "name": "example-usage",
-  "version": "3.2.8",
+  "version": "3.2.9",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -25,8 +25,8 @@
     "@emotion/core": "11.0.0",
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
-    "@gqlts/cli": "^3.2.8",
-    "@gqlts/runtime": "^3.2.8",
+    "@gqlts/cli": "^3.2.9",
+    "@gqlts/runtime": "^3.2.9",
     "@types/js-cookie": "3.0.2",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.12",
@@ -44,11 +44,11 @@
   },
   "devDependencies": {
     "@types/mocha": "10.0.0",
-    "@types/node": "18.0.0",
+    "@types/node": "18.8.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "mocha": "10.0.0",
     "next-transpile-modules": "9.0.0",
-    "sucrase": "3.27.0"
+    "sucrase": "3.28.0"
   }
 }
