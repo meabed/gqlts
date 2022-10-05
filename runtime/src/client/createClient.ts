@@ -6,7 +6,15 @@ import { LinkedType } from "../types";
 import { generateGraphqlOperation, GraphqlOperation } from "./generateGraphqlOperation";
 import { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders } from "axios";
 
-export type Headers = AxiosRequestHeaders | (() => AxiosRequestHeaders) | (() => Promise<AxiosRequestHeaders>);
+type AxiosHeaderValue = string | string[] | number | boolean | null;
+type RawAxiosHeaders = Record<string, AxiosHeaderValue>;
+
+export type Headers =
+  | AxiosRequestHeaders
+  | RawAxiosHeaders
+  | (() => AxiosRequestHeaders | RawAxiosHeaders)
+  | (() => Promise<AxiosRequestHeaders | RawAxiosHeaders>);
+
 export type BaseFetcher = {
   fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: AxiosRequestConfig) => Promise<any>;
   fetcherInstance: AxiosInstance | unknown | undefined;

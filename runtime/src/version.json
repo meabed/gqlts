@@ -1,6 +1,6 @@
 {
   "name": "@gqlts/runtime",
-  "version": "3.2.8",
+  "version": "3.2.9",
   "description": "Gqlts runtime client",
   "keywords": [
     "gqlts",
