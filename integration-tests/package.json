@@ -19,7 +19,7 @@
   "dependencies": {
     "@gqlts/cli": "^3.2.9",
     "@gqlts/runtime": "^3.2.9",
-    "apollo-server-express": "3.10.2",
+    "apollo-server-express": "3.10.3",
     "await-sleep": "0.0.1",
     "axios": "1.1.2",
     "deep-equal": "2.0.5",
