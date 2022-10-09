@@ -1,3 +1,7 @@
+## 3.2.10
+- Downgrade axios to 0.27.2 as there is some issues: https://github.com/axios/axios/issues/5005
+- Upgrade dependencies
+
 ## 3.2.9
 - Upgrade axios to 1.0.0
 - Upgrade dependencies

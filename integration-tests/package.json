@@ -1,6 +1,6 @@
 {
   "name": "integration-tests",
-  "version": "3.2.9",
+  "version": "3.2.10",
   "private": true,
   "license": "MIT",
   "author": "remorses",
@@ -17,8 +17,8 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@gqlts/cli": "^3.2.9",
-    "@gqlts/runtime": "^3.2.9",
+    "@gqlts/cli": "^3.2.10",
+    "@gqlts/runtime": "^3.2.10",
     "apollo-server-express": "3.10.3",
     "await-sleep": "0.0.1",
     "axios": "1.1.2",
