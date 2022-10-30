@@ -99,7 +99,7 @@
     "@types/listr": "0.14.4",
     "@types/lodash": "4.14.186",
     "@types/mkdirp": "1.0.2",
-    "@types/node": "18.11.7",
+    "@types/node": "18.11.8",
     "@types/prettier": "2.7.1",
     "@types/qs": "6.9.7",
     "@types/rimraf": "3.0.2",
