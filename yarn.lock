@@ -3373,17 +3373,17 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tanstack/query-core@4.13.4":
-  version "4.13.4"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.13.4.tgz#77043e066586359eca40859803acc4a44e2a2dc8"
-  integrity sha512-DMIy6tgGehYoRUFyoR186+pQspOicyZNSGvBWxPc2CinHjWOQ7DPnGr9zmn/kE9xK4Zd3GXd25Nj3X20+TF6Lw==
+"@tanstack/query-core@4.14.0":
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.14.0.tgz#0f66c55dddf4b0b42eac902fd8cb63f74b3f66bb"
+  integrity sha512-k9hG7kFsKoFenHxFBH8GW3F1UP50PkXprSQFEXL+h+Ap/38ssfJUEErGTdulkZVF2cuUils/8Pj4RLo0xG7Fjw==
 
-"@tanstack/react-query@4.13.5":
-  version "4.13.5"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.13.5.tgz#47d4219aebf9e8fbb8ba8d99c69cfd255ca1d320"
-  integrity sha512-p2HcWGuqfvG7Pz04un4phWZeXzlITD7Ue0gMXjD56g8y3rP1r5qEYC/BckffrZLf4dZtQeVPCWOa8RYAqx036g==
+"@tanstack/react-query@4.14.0":
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.14.0.tgz#42fa6e0e8e2e85df19da39894c1e5d8156cb6d42"
+  integrity sha512-avNnxrZudt2Vk9FhElHtE99RNR0mIrPD5lajZmVADyiBctwNcOIy+RiHoF5t6ockCUIMWPhsSCVpGZjVpo3ZyQ==
   dependencies:
-    "@tanstack/query-core" "4.13.4"
+    "@tanstack/query-core" "4.14.0"
     use-sync-external-store "^1.2.0"
 
 "@tootallnate/once@2":
@@ -3854,10 +3854,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.4.tgz#54be907698f40de8a45770b48486aa3cbd3adff7"
   integrity sha512-WdlVphvfR/GJCLEMbNA8lJ0lhFNBj4SW3O+O5/cEGw9oYrv0al9zTwuQsq+myDUXgNx2jgBynoVgZ2MMJ6pbow==
 
-"@types/node@18.11.8":
-  version "18.11.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.8.tgz#16d222a58d4363a2a359656dd20b28414de5d265"
-  integrity sha512-uGwPWlE0Hj972KkHtCDVwZ8O39GmyjfMane1Z3GUBGGnkZ2USDq7SxLpVIiIHpweY9DS0QTDH0Nw7RNBsAAZ5A==
+"@types/node@18.11.9":
+  version "18.11.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.9.tgz#02d013de7058cea16d36168ef2fc653464cfbad4"
+  integrity sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==
 
 "@types/node@>=6":
   version "14.0.27"
@@ -7034,10 +7034,10 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
-framer-motion@7.6.2:
-  version "7.6.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.6.2.tgz#7fb93ebfeda27c8c2cff1895ca7a417229e81bf7"
-  integrity sha512-YRr+KaC+1MlLx7iArVyjZRpc0QXI7H0XIOJrdol+dF1+WLQJwS2sP04KGq808BG+byD36UAmAt4YqObE5YFLtw==
+framer-motion@7.6.3:
+  version "7.6.3"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.6.3.tgz#ab15a9c8ca46381bf6b12d8e8a1a4b133c1eaf9a"
+  integrity sha512-98YezJpKI2z5PKcao59xmxWyU/ZD78LVK6dfhSeal/5cD/KQ/FloAZ0j00qzp0V6F+Me5rwnSgwiO3i+2G4RXg==
   dependencies:
     "@motionone/dom" "10.13.1"
     framesync "6.1.2"
