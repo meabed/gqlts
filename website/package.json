@@ -15,7 +15,7 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "baby-i-am-faded": "4.0.13",
+    "baby-i-am-faded": "4.0.14",
     "dayjs": "1.11.6",
     "final-form": "4.20.7",
     "graphql-tag": "2.12.6",
