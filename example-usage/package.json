@@ -49,6 +49,6 @@
     "@types/react-dom": "18.0.9",
     "mocha": "10.1.0",
     "next-transpile-modules": "10.0.0",
-    "sucrase": "3.28.0"
+    "sucrase": "3.29.0"
   }
 }
