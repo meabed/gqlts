@@ -31,7 +31,7 @@
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
-    "framer-motion": "7.6.17",
+    "framer-motion": "7.6.18",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
     "react": "18.2.0",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/mocha": "10.0.1",
     "@types/node": "18.11.10",
-    "@types/react": "18.0.25",
+    "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "mocha": "10.1.0",
     "next-transpile-modules": "10.0.0",
