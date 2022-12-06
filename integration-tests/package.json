@@ -34,7 +34,7 @@
     "@types/mocha": "10.0.1",
     "@types/node": "18.11.11",
     "mocha": "10.1.0",
-    "snap-shot-it": "7.9.6",
+    "snap-shot-it": "7.9.7",
     "sucrase": "3.29.0"
   }
 }
