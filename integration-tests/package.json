@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.1",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.11.14",
+    "@types/node": "18.11.15",
     "mocha": "10.2.0",
     "snap-shot-it": "7.9.10",
     "sucrase": "3.29.0"
