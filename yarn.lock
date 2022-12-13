@@ -3936,10 +3936,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.4.tgz#54be907698f40de8a45770b48486aa3cbd3adff7"
   integrity sha512-WdlVphvfR/GJCLEMbNA8lJ0lhFNBj4SW3O+O5/cEGw9oYrv0al9zTwuQsq+myDUXgNx2jgBynoVgZ2MMJ6pbow==
 
-"@types/node@18.11.13":
-  version "18.11.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.13.tgz#dff34f226ec1ac0432ae3b136ec5552bd3b9c0fe"
-  integrity sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==
+"@types/node@18.11.14":
+  version "18.11.14"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.14.tgz#a8571b25f3a31e9ded14e3ab9488509adef831d8"
+  integrity sha512-0KXV57tENYmmJMl+FekeW9V3O/rlcqGQQJ/hNh9r8pKIj304pskWuEd8fCyNT86g/TpO0gcOTiLzsHLEURFMIQ==
 
 "@types/node@>=6":
   version "14.0.27"
@@ -6906,15 +6906,13 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
-framer-motion@7.6.19:
-  version "7.6.19"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.6.19.tgz#a24ea890881374f4184be5abb773ce8e4a0d3734"
-  integrity sha512-U+ogwGwNw6Y+pdq6GZB5xvnvLDlq3FTmcKaG5MCUjXuqRLrjKbKTqN4iwZISv3ajwUfgNHM6+tu31LRbYfF9YQ==
+framer-motion@7.7.2:
+  version "7.7.2"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.7.2.tgz#88ae086515ba6d94e2dd8dc7589f8abedf3b5257"
+  integrity sha512-SDq4pansh+UxMtHuApQmyXbbb/oQu3LwhPByiGKXLrKRHxmHiq7VML0/mnFQQRIpWiYR/+wM4q8foFzeoaz8eg==
   dependencies:
     "@motionone/dom" "10.13.1"
-    framesync "6.1.2"
     hey-listen "^1.0.8"
-    style-value-types "5.1.2"
     tslib "2.4.0"
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
@@ -6925,13 +6923,6 @@ framesync@5.3.0:
   integrity sha512-oc5m68HDO/tuK2blj7ZcdEBRx3p1PjrgHazL8GYEpvULhrtGIFbQArN6cQS2QhW8mitffaB+VYzMjDqBxxQeoA==
   dependencies:
     tslib "^2.1.0"
-
-framesync@6.1.2:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/framesync/-/framesync-6.1.2.tgz#755eff2fb5b8f3b4d2b266dd18121b300aefea27"
-  integrity sha512-jBTqhX6KaQVDyus8muwZbBeGGP0XgujBRbQ7gM7BRdS3CadCZIHiawyzYLnafYcvZIh5j8WE7cxZKFn7dXhu9g==
-  dependencies:
-    tslib "2.4.0"
 
 fresh@0.5.2:
   version "0.5.2"
@@ -12633,14 +12624,6 @@ style-to-object@^0.3.0:
   integrity sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==
   dependencies:
     inline-style-parser "0.1.1"
-
-style-value-types@5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-5.1.2.tgz#6be66b237bd546048a764883528072ed95713b62"
-  integrity sha512-Vs9fNreYF9j6W2VvuDTP7kepALi7sk0xtk2Tu8Yxi9UoajJdEVpNpCov0HsLTqXvNGKX+Uv09pkozVITi1jf3Q==
-  dependencies:
-    hey-listen "^1.0.8"
-    tslib "2.4.0"
 
 styled-jsx@5.1.0:
   version "5.1.0"
