@@ -100,7 +100,7 @@
     "@types/lodash": "4.14.191",
     "@types/mkdirp": "1.0.2",
     "@types/node": "18.11.17",
-    "@types/prettier": "2.7.1",
+    "@types/prettier": "2.7.2",
     "@types/qs": "6.9.7",
     "@types/rimraf": "3.0.2",
     "@types/yargs": "17.0.17",
