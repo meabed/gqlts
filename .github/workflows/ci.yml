@@ -42,6 +42,7 @@ jobs:
 
       - name: Test
         run: |
+          yarn genall
           yarn buildall
           yarn test
 

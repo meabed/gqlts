@@ -2,6 +2,24 @@
   "name": "website",
   "version": "3.2.10",
   "private": true,
+  "homepage": "https://gqlts.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meabed/gqlts"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
   "scripts": {
     "build": "yarn --cwd .. buildall && next build",
     "dev": "next dev",
