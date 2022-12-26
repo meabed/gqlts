@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import colors from "colors";
 import { Config } from "../config";
 
 export function validateConfigs(configs: Config[]) {
@@ -20,7 +20,7 @@ export function validateConfigs(configs: Config[]) {
     if (!config.output) errors.push(`you didn't provide an \`output\` option in ${whichConfig}`);
   });
 
-  errors.forEach((error) => console.log(chalk.red(`Error: ${error}`)));
+  errors.forEach((error) => console.log(colors.red(`Error: ${error}`)));
 
   return errors.length === 0;
 }

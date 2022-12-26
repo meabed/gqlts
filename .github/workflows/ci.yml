@@ -45,6 +45,10 @@ jobs:
           yarn buildall
           yarn test
 
+      - name: Integration
+        run: |
+          yarn integration
+
       - name: Release
         run: |
           npm i -g semantic-release @semantic-release/git @semantic-release/github @semantic-release/changelog semantic-release-lerna

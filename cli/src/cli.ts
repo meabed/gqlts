@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import chalk from "chalk";
+import colors from "colors";
 import yargs from "yargs";
 import { generate } from "./main";
 import { validateConfigs } from "./tasks/validateConfigs";
@@ -12,7 +12,7 @@ const program = yargs(process.argv.slice(2))
   .option("output", {
     alias: "o",
     description: "Output directory",
-    required: true,
+    demandOption: true,
     type: "string",
   })
   .option("endpoint", {
@@ -119,7 +119,7 @@ if (!validateConfigs([config])) {
 
 generate(config)
   .catch((e: any) => {
-    console.error(chalk.red("Cannot generate, got an error:"));
+    console.error(colors.red("Cannot generate, got an error:"));
     console.error(e);
     process.exit(1);
   })
@@ -133,11 +133,11 @@ generate(config)
 
 export function printHelp({ useYarn, dirPath, dependencies }) {
   console.log();
-  console.log(`${chalk.green("Success!")} Generated client code inside '${dirPath}'`);
+  console.log(`${colors.green("Success!")} Generated client code inside '${dirPath}'`);
   console.log();
-  console.log(chalk.bold("Remember to install the necessary runtime package with:"));
+  console.log(colors.bold("Remember to install the necessary runtime package with:"));
   console.log();
-  console.log(`  ${chalk.cyan(`${useYarn ? "yarn add" : "npm install"} ${dependencies.join(" ")}`)}`);
+  console.log(`  ${colors.cyan(`${useYarn ? "yarn add" : "npm install"} ${dependencies.join(" ")}`)}`);
   console.log();
   console.log("PS: `@gqlts/runtime` should always have the same version as the cli!");
   console.log();
