@@ -2,7 +2,6 @@
   "index": "Gqlts",
   "quick-start": "Quick Start",
   "usage": "Usage",
-  "cli": "CLI",
-  "library": "Library",
-  "comparison": "Comparison"
+  "generate": "Generate",
+  "comparisons": "Comparisons"
 }
