@@ -47,5 +47,5 @@ jobs:
 
       - name: Release
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/github
+          npm i -g semantic-release @semantic-release/git @semantic-release/github @semantic-release/changelog semantic-release-lerna
           npx semantic-release --no-ci --debug
