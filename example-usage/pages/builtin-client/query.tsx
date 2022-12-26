@@ -10,7 +10,7 @@ const Page = () => {
     user: [
       {
         where: {
-          name: {
+          username: {
             _similar: regex,
           },
         },

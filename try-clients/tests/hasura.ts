@@ -3,7 +3,7 @@ import { createClient, everything } from "../hasura/generated";
 describe("hasura", () => {
   const client = createClient({});
   const name = "John";
-  const id = "4";
+  const id = 4;
   it("simple normal syntax", async () => {
     const res3 = await client.mutation({
       delete_user: [{ where: { id: { _eq: id } } }, { ...everything }],
@@ -36,9 +36,9 @@ describe("hasura", () => {
         {
           objects: [
             {
-              age: 1,
-              id,
-              name,
+              id: 1,
+              username: "John",
+              last_seen: new Date(),
             },
           ],
         },

@@ -1,4 +1,116 @@
 
+var message_possibleTypes = ['message']
+module.exports.ismessage = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage"')
+  return message_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_aggregate_possibleTypes = ['message_aggregate']
+module.exports.ismessage_aggregate = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_aggregate"')
+  return message_aggregate_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_aggregate_fields_possibleTypes = ['message_aggregate_fields']
+module.exports.ismessage_aggregate_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_aggregate_fields"')
+  return message_aggregate_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_avg_fields_possibleTypes = ['message_avg_fields']
+module.exports.ismessage_avg_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_avg_fields"')
+  return message_avg_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_max_fields_possibleTypes = ['message_max_fields']
+module.exports.ismessage_max_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_max_fields"')
+  return message_max_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_min_fields_possibleTypes = ['message_min_fields']
+module.exports.ismessage_min_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_min_fields"')
+  return message_min_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_mutation_response_possibleTypes = ['message_mutation_response']
+module.exports.ismessage_mutation_response = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_mutation_response"')
+  return message_mutation_response_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_stddev_fields_possibleTypes = ['message_stddev_fields']
+module.exports.ismessage_stddev_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_stddev_fields"')
+  return message_stddev_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_stddev_pop_fields_possibleTypes = ['message_stddev_pop_fields']
+module.exports.ismessage_stddev_pop_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_stddev_pop_fields"')
+  return message_stddev_pop_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_stddev_samp_fields_possibleTypes = ['message_stddev_samp_fields']
+module.exports.ismessage_stddev_samp_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_stddev_samp_fields"')
+  return message_stddev_samp_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_sum_fields_possibleTypes = ['message_sum_fields']
+module.exports.ismessage_sum_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_sum_fields"')
+  return message_sum_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_var_pop_fields_possibleTypes = ['message_var_pop_fields']
+module.exports.ismessage_var_pop_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_var_pop_fields"')
+  return message_var_pop_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_var_samp_fields_possibleTypes = ['message_var_samp_fields']
+module.exports.ismessage_var_samp_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_var_samp_fields"')
+  return message_var_samp_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var message_variance_fields_possibleTypes = ['message_variance_fields']
+module.exports.ismessage_variance_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismessage_variance_fields"')
+  return message_variance_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
 var mutation_root_possibleTypes = ['mutation_root']
 module.exports.ismutation_root = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "ismutation_root"')
@@ -79,6 +191,118 @@ module.exports.isuser_mutation_response = function(obj) {
 
 
 
+var user_online_possibleTypes = ['user_online']
+module.exports.isuser_online = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online"')
+  return user_online_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_aggregate_possibleTypes = ['user_online_aggregate']
+module.exports.isuser_online_aggregate = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_aggregate"')
+  return user_online_aggregate_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_aggregate_fields_possibleTypes = ['user_online_aggregate_fields']
+module.exports.isuser_online_aggregate_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_aggregate_fields"')
+  return user_online_aggregate_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_avg_fields_possibleTypes = ['user_online_avg_fields']
+module.exports.isuser_online_avg_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_avg_fields"')
+  return user_online_avg_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_max_fields_possibleTypes = ['user_online_max_fields']
+module.exports.isuser_online_max_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_max_fields"')
+  return user_online_max_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_min_fields_possibleTypes = ['user_online_min_fields']
+module.exports.isuser_online_min_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_min_fields"')
+  return user_online_min_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_mutation_response_possibleTypes = ['user_online_mutation_response']
+module.exports.isuser_online_mutation_response = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_mutation_response"')
+  return user_online_mutation_response_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_stddev_fields_possibleTypes = ['user_online_stddev_fields']
+module.exports.isuser_online_stddev_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_stddev_fields"')
+  return user_online_stddev_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_stddev_pop_fields_possibleTypes = ['user_online_stddev_pop_fields']
+module.exports.isuser_online_stddev_pop_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_stddev_pop_fields"')
+  return user_online_stddev_pop_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_stddev_samp_fields_possibleTypes = ['user_online_stddev_samp_fields']
+module.exports.isuser_online_stddev_samp_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_stddev_samp_fields"')
+  return user_online_stddev_samp_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_sum_fields_possibleTypes = ['user_online_sum_fields']
+module.exports.isuser_online_sum_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_sum_fields"')
+  return user_online_sum_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_var_pop_fields_possibleTypes = ['user_online_var_pop_fields']
+module.exports.isuser_online_var_pop_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_var_pop_fields"')
+  return user_online_var_pop_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_var_samp_fields_possibleTypes = ['user_online_var_samp_fields']
+module.exports.isuser_online_var_samp_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_var_samp_fields"')
+  return user_online_var_samp_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_online_variance_fields_possibleTypes = ['user_online_variance_fields']
+module.exports.isuser_online_variance_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_online_variance_fields"')
+  return user_online_variance_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
 var user_stddev_fields_possibleTypes = ['user_stddev_fields']
 module.exports.isuser_stddev_fields = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_stddev_fields"')
@@ -107,6 +331,118 @@ var user_sum_fields_possibleTypes = ['user_sum_fields']
 module.exports.isuser_sum_fields = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_sum_fields"')
   return user_sum_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_possibleTypes = ['user_typing']
+module.exports.isuser_typing = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing"')
+  return user_typing_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_aggregate_possibleTypes = ['user_typing_aggregate']
+module.exports.isuser_typing_aggregate = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_aggregate"')
+  return user_typing_aggregate_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_aggregate_fields_possibleTypes = ['user_typing_aggregate_fields']
+module.exports.isuser_typing_aggregate_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_aggregate_fields"')
+  return user_typing_aggregate_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_avg_fields_possibleTypes = ['user_typing_avg_fields']
+module.exports.isuser_typing_avg_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_avg_fields"')
+  return user_typing_avg_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_max_fields_possibleTypes = ['user_typing_max_fields']
+module.exports.isuser_typing_max_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_max_fields"')
+  return user_typing_max_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_min_fields_possibleTypes = ['user_typing_min_fields']
+module.exports.isuser_typing_min_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_min_fields"')
+  return user_typing_min_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_mutation_response_possibleTypes = ['user_typing_mutation_response']
+module.exports.isuser_typing_mutation_response = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_mutation_response"')
+  return user_typing_mutation_response_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_stddev_fields_possibleTypes = ['user_typing_stddev_fields']
+module.exports.isuser_typing_stddev_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_stddev_fields"')
+  return user_typing_stddev_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_stddev_pop_fields_possibleTypes = ['user_typing_stddev_pop_fields']
+module.exports.isuser_typing_stddev_pop_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_stddev_pop_fields"')
+  return user_typing_stddev_pop_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_stddev_samp_fields_possibleTypes = ['user_typing_stddev_samp_fields']
+module.exports.isuser_typing_stddev_samp_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_stddev_samp_fields"')
+  return user_typing_stddev_samp_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_sum_fields_possibleTypes = ['user_typing_sum_fields']
+module.exports.isuser_typing_sum_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_sum_fields"')
+  return user_typing_sum_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_var_pop_fields_possibleTypes = ['user_typing_var_pop_fields']
+module.exports.isuser_typing_var_pop_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_var_pop_fields"')
+  return user_typing_var_pop_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_var_samp_fields_possibleTypes = ['user_typing_var_samp_fields']
+module.exports.isuser_typing_var_samp_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_var_samp_fields"')
+  return user_typing_var_samp_fields_possibleTypes.includes(obj.__typename)
+}
+
+
+
+var user_typing_variance_fields_possibleTypes = ['user_typing_variance_fields']
+module.exports.isuser_typing_variance_fields = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isuser_typing_variance_fields"')
+  return user_typing_variance_fields_possibleTypes.includes(obj.__typename)
 }
 
 

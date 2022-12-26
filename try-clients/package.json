@@ -4,13 +4,29 @@
   "private": true,
   "description": "",
   "keywords": [],
+  "homepage": "https://gqlts.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meabed/gqlts"
+  },
   "license": "MIT",
-  "author": "Meabed <mo@meabed.com>",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
   "main": "index.js",
   "scripts": {
     "gen": "yarn hasura && yarn github && yarn simple && tsc --noEmit",
     "github": "yarn --cwd .. play --schema try-clients/github.graphql -o try-clients/github/generated -S HTML:string -S URI:string ",
-    "hasura": "yarn --cwd .. play -e https://hasura-2334534.herokuapp.com/v1/graphql -o try-clients/hasura/generated",
+    "hasura": "yarn --cwd .. play -e https://realtime-chat.hasura.app/v1/graphql -o try-clients/hasura/generated",
     "simple": "yarn --cwd .. play --esm-and-cjs --sort --schema try-clients/simple.graphql -o try-clients/simple/generated",
     "test": "mocha"
   },

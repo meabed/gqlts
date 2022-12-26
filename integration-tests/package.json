@@ -2,8 +2,24 @@
   "name": "integration-tests",
   "version": "3.2.10",
   "private": true,
+  "homepage": "https://gqlts.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meabed/gqlts"
+  },
   "license": "MIT",
-  "author": "remorses",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
   "main": "index.js",
   "scripts": {
     "flame": "node --prof-process --preprocess -j isolate*.log | flamebearer && open flamegraph.html",

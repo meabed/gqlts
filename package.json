@@ -22,10 +22,22 @@
   ],
   "homepage": "https://gqlts.vercel.app",
   "repository": {
+    "type": "git",
     "url": "https://github.com/meabed/gqlts"
   },
   "license": "MIT",
-  "author": "Meabed <mo@meabed.com>",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
   "workspaces": [
     "cli",
     "runtime",

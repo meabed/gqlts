@@ -1,25 +1,31 @@
 name: CI
-
 on:
+  workflow_dispatch:
+  workflow_call:
   push:
     paths:
       - 'cli/**'
-      - 'integration-tests/**'
       - 'runtime/**'
+      - 'integration-tests/**'
       - 'try-clients/**'
-      - 'website/**'
-      - 'yarn.lock'
       - 'package.json'
+      - 'yarn.lock'
+      - 'release.config.js'
     branches:
-      - 'develop'
-      - 'stage'
-      - 'master'
+      - '*'
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  CI: true
 
 jobs:
-  build:
+  CI:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - uses: styfle/cancel-workflow-action@0.11.0
         with:
           workflow_id: ci.yml
@@ -28,39 +34,23 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 30
-          persist-credentials: false
 
-      - name: Yarn install
-        uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn --frozen-lockfile --silent
+      - uses: FranzDiebold/github-env-vars-action@v2
+
+      - name: Yarn
+        run: yarn install --frozen-lockfile
 
       - name: Test
         run: |
+          # yarn genall
           yarn buildall
           yarn test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Bump version and push tag
-#        id: tag_version
-#        uses: mathieudutour/github-tag-action@v6.0
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          tag_prefix: ''
+      - name: Integration
+        run: |
+          yarn integration
 
-      # - name: Bump version
-      #   if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/fields-selection'
-      #   uses: remorses/bump-version@js
-      #   with:
-      #     version_file: VERSION
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Publish
-      #   run: |
-      #     cd cli && npm publish --verbose --access public --tag beta
-      #     cd ../runtime && npm publish --verbose --access public --tag beta
-      #   if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/fields-selection'
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
-
+      - name: Release
+        run: |
+          npm i -g semantic-release @semantic-release/git @semantic-release/github @semantic-release/changelog semantic-release-lerna
+          npx semantic-release --no-ci --debug

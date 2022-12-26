@@ -20,11 +20,24 @@
     "graphql-typescript-client",
     "graphql-typescript-sdk"
   ],
+  "homepage": "https://gqlts.vercel.app",
   "repository": {
+    "type": "git",
     "url": "https://github.com/meabed/gqlts"
   },
   "license": "MIT",
-  "author": "Meabed <mo@meabed.com>",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
@@ -77,19 +90,19 @@
   },
   "dependencies": {
     "@gqlts/runtime": "^3.2.10",
-    "@graphql-tools/graphql-file-loader": "^7.5.5",
-    "@graphql-tools/load": "^7.7.7",
-    "chalk": "^5.0.0",
-    "fs-extra": "^11.0.0",
+    "@graphql-tools/graphql-file-loader": "^7.5.13",
+    "@graphql-tools/load": "^7.8.8",
+    "colors": "^1.4.0",
+    "fs-extra": "^11.1.0",
     "graphql": "*",
     "isomorphic-unfetch": "^3.1.0",
     "listr": "^0.14.3",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.1",
     "qs": "^6.11.0",
     "rimraf": "^3.0.2",
-    "yargs": "^17.6.0"
+    "yargs": "^17.6.2"
   },
   "devDependencies": {
     "@sucrase/jest-plugin": "3.0.0",
@@ -100,7 +113,6 @@
     "@types/lodash": "4.14.191",
     "@types/mkdirp": "1.0.2",
     "@types/node": "18.11.17",
-    "@types/prettier": "2.7.2",
     "@types/qs": "6.9.7",
     "@types/rimraf": "3.0.2",
     "@types/yargs": "17.0.17",

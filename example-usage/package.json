@@ -2,22 +2,40 @@
   "name": "example-usage",
   "version": "3.2.10",
   "private": true,
+  "homepage": "https://gqlts.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meabed/gqlts"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
+  "browser": {
+    "firebase-admin": false
+  },
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "gen": "yarn countries && yarn hasura && yarn sub && tsc --noEmit",
     "countries": "yarn --cwd .. play --esm -o example-usage/generated -e https://countries.trevorblades.com",
-    "sub": "yarn --cwd .. play --esm -o example-usage/sub -e https://graphql-server-moon.herokuapp.com/graphql",
-    "hasura": "yarn --cwd .. play --esm -o example-usage/hasura -e https://hasura-2334534.herokuapp.com/v1/graphql -H \"Authorization: Bearer xxx\"  -H \"Xxx: Bearer xxx\"  "
+    "dev": "next dev",
+    "gen": "yarn countries && yarn hasura && yarn sub && tsc --noEmit",
+    "hasura": "yarn --cwd .. play --esm -o example-usage/hasura -e https://realtime-chat.hasura.app/v1/graphql -H \"Authorization: Bearer xxx\"  -H \"Xxx: Bearer xxx\"  ",
+    "start": "next start",
+    "sub": "yarn --cwd .. play --esm -o example-usage/sub -e https://realtime-poll.hasura.app/v1/graphql"
   },
   "mocha": {
     "require": "tests/init.js",
     "spec": "tests/**.ts",
     "timeout": 9999999999
-  },
-  "browser": {
-    "firebase-admin": false
   },
   "dependencies": {
     "@apollo/react-hooks": "4.0.0",
@@ -27,6 +45,7 @@
     "@emotion/styled": "11.10.5",
     "@gqlts/cli": "^3.2.10",
     "@gqlts/runtime": "^3.2.10",
+    "@tanstack/react-query": "4.20.4",
     "@types/js-cookie": "3.0.2",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
@@ -38,7 +57,6 @@
     "react-dom": "18.2.0",
     "react-extra-hooks": "2.3.4",
     "react-icons": "4.7.1",
-    "@tanstack/react-query": "4.20.4",
     "react-storage-hooks": "4.0.1",
     "swr": "2.0.0"
   },

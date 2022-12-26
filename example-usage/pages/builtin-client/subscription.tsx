@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "../../sub";
 
 const client = createClient({
-  url: "https://graphql-server-moon.herokuapp.com/graphql",
+  url: "https://realtime-poll.hasura.app/v1/graphql",
   subscription: {
-    url: "ws://graphql-server-moon.herokuapp.com/graphql",
+    url: "ws://realtime-poll.hasura.app/v1/graphql",
     shouldRetry: () => false,
   },
 });
@@ -21,17 +21,18 @@ const Page = () => {
   useEffect(() => {
     client
       .subscription({
-        userAdded: {
-          name: true,
-          age: true,
-          id: true,
-        },
+        online_users: [
+          {},
+          {
+            count: true,
+          },
+        ],
       })
       .subscribe({
         next: ({ data }) => {
           console.log("data", data);
           const newData = addedUser;
-          newData.push(data?.userAdded);
+          newData.push(data?.online_users[0].count);
           setAddedUser(newData);
         },
         error: (error) => {
@@ -44,13 +45,28 @@ const Page = () => {
     setInterval(() => {
       client
         .mutation({
-          addUser: [
-            { name: "Test " + new Date().toLocaleString(), age: 10, id: "id" + Math.random().toString() },
-            { age: true, id: true },
+          insert_user: [
+            {
+              objects: [
+                {
+                  created_at: new Date(),
+                  last_seen_at: new Date(),
+                  id: Math.floor(Math.random() * 10000).toFixed(0),
+                },
+              ],
+            },
+            {
+              affected_rows: true,
+              returning: {
+                id: true,
+                created_at: true,
+                last_seen_at: true,
+              },
+            },
           ],
         })
         .then((res) => {
-          setData(res?.data?.addUser);
+          setData(res?.data?.insert_user?.returning);
           setError(res?.errors);
         })
         .catch((err) => {
@@ -77,7 +93,7 @@ const Page = () => {
       <Hero
         bullet="Gqlts lets you write graphql queries as code"
         heading="Example use of Gqlts"
-        subheading="Add Users via https://graphql-server-moon.herokuapp.com/graphql"
+        subheading="Cast Vote via https://realtime-poll.demo.hasura.io/"
       />
       <PageContainer>
         <SectionTitle heading="Users" />
