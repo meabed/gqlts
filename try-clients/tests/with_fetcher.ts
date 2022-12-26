@@ -2,7 +2,6 @@ import assert from "assert";
 import { createClient } from "../hasura/generated";
 import fetch from "isomorphic-unfetch";
 import QueryBatcher from "graphql-query-batcher";
-import { everything } from "@gqlts/runtime";
 
 const URL = "https://realtime-chat.hasura.app/v1/graphql";
 
@@ -26,7 +25,7 @@ describe("use fetcher", () => {
   it("query with fetcher", async () => {
     const res = await client.query({
       user: {
-        ...everything,
+        __scalar: true,
       },
     });
     console.log(res);
