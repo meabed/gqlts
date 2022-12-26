@@ -5,12 +5,11 @@ on:
   push:
     paths:
       - 'cli/**'
-      - 'integration-tests/**'
       - 'runtime/**'
+      - 'integration-tests/**'
       - 'try-clients/**'
-      - 'website/**'
-      - 'yarn.lock'
       - 'package.json'
+      - 'yarn.lock'
       - 'release.config.js'
     branches:
       - '*'
