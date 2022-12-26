@@ -1,30 +1,2126 @@
-type Image {
-  id: Int
-  title: String
-  category: String
-  owner: String
-  url: String
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
 }
 
-type User {
-  id: ID
-  name: String
-  age: Int
-  friends(a: Int): [User]
+"""whether this query should be cached (Hasura Cloud only)"""
+directive @cached(
+  """measured in seconds"""
+  ttl: Int! = 60
+
+  """refresh the cache entry"""
+  refresh: Boolean! = false
+) on QUERY
+
+"""
+Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'.
+"""
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
 }
 
-type Query {
-  hello: String
-  image(id: Int!): Image
-  images(category: String): [Image]
-  user: User
-  users: [User]
+"""
+Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
 }
 
-type Mutation {
-  addUser(id: ID, name: String!, age: Int): User
+"""
+Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'.
+"""
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+
+  """does the column match the given case-insensitive pattern"""
+  _ilike: String
+  _in: [String!]
+
+  """
+  does the column match the given POSIX regular expression, case insensitive
+  """
+  _iregex: String
+  _is_null: Boolean
+
+  """does the column match the given pattern"""
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+
+  """does the column NOT match the given case-insensitive pattern"""
+  _nilike: String
+  _nin: [String!]
+
+  """
+  does the column NOT match the given POSIX regular expression, case insensitive
+  """
+  _niregex: String
+
+  """does the column NOT match the given pattern"""
+  _nlike: String
+
+  """
+  does the column NOT match the given POSIX regular expression, case sensitive
+  """
+  _nregex: String
+
+  """does the column NOT match the given SQL regular expression"""
+  _nsimilar: String
+
+  """
+  does the column match the given POSIX regular expression, case sensitive
+  """
+  _regex: String
+
+  """does the column match the given SQL regular expression"""
+  _similar: String
 }
 
-type Subscription {
-  userAdded: User
+scalar bigint
+
+"""
+Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'.
+"""
+input bigint_comparison_exp {
+  _eq: bigint
+  _gt: bigint
+  _gte: bigint
+  _in: [bigint!]
+  _is_null: Boolean
+  _lt: bigint
+  _lte: bigint
+  _neq: bigint
+  _nin: [bigint!]
+}
+
+"""ordering argument of a cursor"""
+enum cursor_ordering {
+  """ascending ordering of the cursor"""
+  ASC
+
+  """descending ordering of the cursor"""
+  DESC
+}
+
+"""mutation root"""
+type mutation_root {
+  """
+  delete data from the table: "option"
+  """
+  delete_option(
+    """filter the rows which have to be deleted"""
+    where: option_bool_exp!
+  ): option_mutation_response
+
+  """
+  delete single row from the table: "option"
+  """
+  delete_option_by_pk(id: uuid!): option
+
+  """
+  delete data from the table: "poll"
+  """
+  delete_poll(
+    """filter the rows which have to be deleted"""
+    where: poll_bool_exp!
+  ): poll_mutation_response
+
+  """
+  delete single row from the table: "poll"
+  """
+  delete_poll_by_pk(id: uuid!): poll
+
+  """
+  delete data from the table: "user"
+  """
+  delete_user(
+    """filter the rows which have to be deleted"""
+    where: user_bool_exp!
+  ): user_mutation_response
+
+  """
+  delete single row from the table: "user"
+  """
+  delete_user_by_pk(id: uuid!): user
+
+  """
+  delete data from the table: "vote"
+  """
+  delete_vote(
+    """filter the rows which have to be deleted"""
+    where: vote_bool_exp!
+  ): vote_mutation_response
+
+  """
+  delete single row from the table: "vote"
+  """
+  delete_vote_by_pk(id: uuid!): vote
+
+  """
+  insert data into the table: "option"
+  """
+  insert_option(
+    """the rows to be inserted"""
+    objects: [option_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: option_on_conflict
+  ): option_mutation_response
+
+  """
+  insert a single row into the table: "option"
+  """
+  insert_option_one(
+    """the row to be inserted"""
+    object: option_insert_input!
+
+    """upsert condition"""
+    on_conflict: option_on_conflict
+  ): option
+
+  """
+  insert data into the table: "poll"
+  """
+  insert_poll(
+    """the rows to be inserted"""
+    objects: [poll_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: poll_on_conflict
+  ): poll_mutation_response
+
+  """
+  insert a single row into the table: "poll"
+  """
+  insert_poll_one(
+    """the row to be inserted"""
+    object: poll_insert_input!
+
+    """upsert condition"""
+    on_conflict: poll_on_conflict
+  ): poll
+
+  """
+  insert data into the table: "user"
+  """
+  insert_user(
+    """the rows to be inserted"""
+    objects: [user_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: user_on_conflict
+  ): user_mutation_response
+
+  """
+  insert a single row into the table: "user"
+  """
+  insert_user_one(
+    """the row to be inserted"""
+    object: user_insert_input!
+
+    """upsert condition"""
+    on_conflict: user_on_conflict
+  ): user
+
+  """
+  insert data into the table: "vote"
+  """
+  insert_vote(
+    """the rows to be inserted"""
+    objects: [vote_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: vote_on_conflict
+  ): vote_mutation_response
+
+  """
+  insert a single row into the table: "vote"
+  """
+  insert_vote_one(
+    """the row to be inserted"""
+    object: vote_insert_input!
+
+    """upsert condition"""
+    on_conflict: vote_on_conflict
+  ): vote
+
+  """
+  update data of the table: "option"
+  """
+  update_option(
+    """sets the columns of the filtered rows to the given values"""
+    _set: option_set_input
+
+    """filter the rows which have to be updated"""
+    where: option_bool_exp!
+  ): option_mutation_response
+
+  """
+  update single row of the table: "option"
+  """
+  update_option_by_pk(
+    """sets the columns of the filtered rows to the given values"""
+    _set: option_set_input
+    pk_columns: option_pk_columns_input!
+  ): option
+
+  """
+  update multiples rows of table: "option"
+  """
+  update_option_many(
+    """updates to execute, in order"""
+    updates: [option_updates!]!
+  ): [option_mutation_response]
+
+  """
+  update data of the table: "poll"
+  """
+  update_poll(
+    """sets the columns of the filtered rows to the given values"""
+    _set: poll_set_input
+
+    """filter the rows which have to be updated"""
+    where: poll_bool_exp!
+  ): poll_mutation_response
+
+  """
+  update single row of the table: "poll"
+  """
+  update_poll_by_pk(
+    """sets the columns of the filtered rows to the given values"""
+    _set: poll_set_input
+    pk_columns: poll_pk_columns_input!
+  ): poll
+
+  """
+  update multiples rows of table: "poll"
+  """
+  update_poll_many(
+    """updates to execute, in order"""
+    updates: [poll_updates!]!
+  ): [poll_mutation_response]
+
+  """
+  update data of the table: "user"
+  """
+  update_user(
+    """sets the columns of the filtered rows to the given values"""
+    _set: user_set_input
+
+    """filter the rows which have to be updated"""
+    where: user_bool_exp!
+  ): user_mutation_response
+
+  """
+  update single row of the table: "user"
+  """
+  update_user_by_pk(
+    """sets the columns of the filtered rows to the given values"""
+    _set: user_set_input
+    pk_columns: user_pk_columns_input!
+  ): user
+
+  """
+  update multiples rows of table: "user"
+  """
+  update_user_many(
+    """updates to execute, in order"""
+    updates: [user_updates!]!
+  ): [user_mutation_response]
+
+  """
+  update data of the table: "vote"
+  """
+  update_vote(
+    """sets the columns of the filtered rows to the given values"""
+    _set: vote_set_input
+
+    """filter the rows which have to be updated"""
+    where: vote_bool_exp!
+  ): vote_mutation_response
+
+  """
+  update single row of the table: "vote"
+  """
+  update_vote_by_pk(
+    """sets the columns of the filtered rows to the given values"""
+    _set: vote_set_input
+    pk_columns: vote_pk_columns_input!
+  ): vote
+
+  """
+  update multiples rows of table: "vote"
+  """
+  update_vote_many(
+    """updates to execute, in order"""
+    updates: [vote_updates!]!
+  ): [vote_mutation_response]
+}
+
+"""
+columns and relationships of "online_users"
+"""
+type online_users {
+  count: bigint
+}
+
+"""
+aggregated selection of "online_users"
+"""
+type online_users_aggregate {
+  aggregate: online_users_aggregate_fields
+  nodes: [online_users!]!
+}
+
+"""
+aggregate fields of "online_users"
+"""
+type online_users_aggregate_fields {
+  avg: online_users_avg_fields
+  count(columns: [online_users_select_column!], distinct: Boolean): Int!
+  max: online_users_max_fields
+  min: online_users_min_fields
+  stddev: online_users_stddev_fields
+  stddev_pop: online_users_stddev_pop_fields
+  stddev_samp: online_users_stddev_samp_fields
+  sum: online_users_sum_fields
+  var_pop: online_users_var_pop_fields
+  var_samp: online_users_var_samp_fields
+  variance: online_users_variance_fields
+}
+
+"""aggregate avg on columns"""
+type online_users_avg_fields {
+  count: Float
+}
+
+"""
+Boolean expression to filter rows from the table "online_users". All fields are combined with a logical 'AND'.
+"""
+input online_users_bool_exp {
+  _and: [online_users_bool_exp!]
+  _not: online_users_bool_exp
+  _or: [online_users_bool_exp!]
+  count: bigint_comparison_exp
+}
+
+"""aggregate max on columns"""
+type online_users_max_fields {
+  count: bigint
+}
+
+"""aggregate min on columns"""
+type online_users_min_fields {
+  count: bigint
+}
+
+"""Ordering options when selecting data from "online_users"."""
+input online_users_order_by {
+  count: order_by
+}
+
+"""
+select columns of table "online_users"
+"""
+enum online_users_select_column {
+  """column name"""
+  count
+}
+
+"""aggregate stddev on columns"""
+type online_users_stddev_fields {
+  count: Float
+}
+
+"""aggregate stddev_pop on columns"""
+type online_users_stddev_pop_fields {
+  count: Float
+}
+
+"""aggregate stddev_samp on columns"""
+type online_users_stddev_samp_fields {
+  count: Float
+}
+
+"""
+Streaming cursor of the table "online_users"
+"""
+input online_users_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: online_users_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input online_users_stream_cursor_value_input {
+  count: bigint
+}
+
+"""aggregate sum on columns"""
+type online_users_sum_fields {
+  count: bigint
+}
+
+"""aggregate var_pop on columns"""
+type online_users_var_pop_fields {
+  count: Float
+}
+
+"""aggregate var_samp on columns"""
+type online_users_var_samp_fields {
+  count: Float
+}
+
+"""aggregate variance on columns"""
+type online_users_variance_fields {
+  count: Float
+}
+
+"""
+columns and relationships of "option"
+"""
+type option {
+  id: uuid!
+
+  """An object relationship"""
+  poll: poll!
+  poll_id: uuid!
+  text: String!
+}
+
+"""
+aggregated selection of "option"
+"""
+type option_aggregate {
+  aggregate: option_aggregate_fields
+  nodes: [option!]!
+}
+
+input option_aggregate_bool_exp {
+  count: option_aggregate_bool_exp_count
+}
+
+input option_aggregate_bool_exp_count {
+  arguments: [option_select_column!]
+  distinct: Boolean
+  filter: option_bool_exp
+  predicate: Int_comparison_exp!
+}
+
+"""
+aggregate fields of "option"
+"""
+type option_aggregate_fields {
+  count(columns: [option_select_column!], distinct: Boolean): Int!
+  max: option_max_fields
+  min: option_min_fields
+}
+
+"""
+order by aggregate values of table "option"
+"""
+input option_aggregate_order_by {
+  count: order_by
+  max: option_max_order_by
+  min: option_min_order_by
+}
+
+"""
+input type for inserting array relation for remote table "option"
+"""
+input option_arr_rel_insert_input {
+  data: [option_insert_input!]!
+
+  """upsert condition"""
+  on_conflict: option_on_conflict
+}
+
+"""
+Boolean expression to filter rows from the table "option". All fields are combined with a logical 'AND'.
+"""
+input option_bool_exp {
+  _and: [option_bool_exp!]
+  _not: option_bool_exp
+  _or: [option_bool_exp!]
+  id: uuid_comparison_exp
+  poll: poll_bool_exp
+  poll_id: uuid_comparison_exp
+  text: String_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "option"
+"""
+enum option_constraint {
+  """
+  unique or primary key constraint on columns "id"
+  """
+  option_pkey
+}
+
+"""
+input type for inserting data into table "option"
+"""
+input option_insert_input {
+  id: uuid
+  poll: poll_obj_rel_insert_input
+  poll_id: uuid
+  text: String
+}
+
+"""aggregate max on columns"""
+type option_max_fields {
+  id: uuid
+  poll_id: uuid
+  text: String
+}
+
+"""
+order by max() on columns of table "option"
+"""
+input option_max_order_by {
+  id: order_by
+  poll_id: order_by
+  text: order_by
+}
+
+"""aggregate min on columns"""
+type option_min_fields {
+  id: uuid
+  poll_id: uuid
+  text: String
+}
+
+"""
+order by min() on columns of table "option"
+"""
+input option_min_order_by {
+  id: order_by
+  poll_id: order_by
+  text: order_by
+}
+
+"""
+response of any mutation on the table "option"
+"""
+type option_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [option!]!
+}
+
+"""
+input type for inserting object relation for remote table "option"
+"""
+input option_obj_rel_insert_input {
+  data: option_insert_input!
+
+  """upsert condition"""
+  on_conflict: option_on_conflict
+}
+
+"""
+on_conflict condition type for table "option"
+"""
+input option_on_conflict {
+  constraint: option_constraint!
+  update_columns: [option_update_column!]! = []
+  where: option_bool_exp
+}
+
+"""Ordering options when selecting data from "option"."""
+input option_order_by {
+  id: order_by
+  poll: poll_order_by
+  poll_id: order_by
+  text: order_by
+}
+
+"""primary key columns input for table: option"""
+input option_pk_columns_input {
+  id: uuid!
+}
+
+"""
+select columns of table "option"
+"""
+enum option_select_column {
+  """column name"""
+  id
+
+  """column name"""
+  poll_id
+
+  """column name"""
+  text
+}
+
+"""
+input type for updating data in table "option"
+"""
+input option_set_input {
+  id: uuid
+  poll_id: uuid
+  text: String
+}
+
+"""
+Streaming cursor of the table "option"
+"""
+input option_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: option_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input option_stream_cursor_value_input {
+  id: uuid
+  poll_id: uuid
+  text: String
+}
+
+"""
+update columns of table "option"
+"""
+enum option_update_column {
+  """column name"""
+  id
+
+  """column name"""
+  poll_id
+
+  """column name"""
+  text
+}
+
+input option_updates {
+  """sets the columns of the filtered rows to the given values"""
+  _set: option_set_input
+  where: option_bool_exp!
+}
+
+"""column ordering options"""
+enum order_by {
+  """in ascending order, nulls last"""
+  asc
+
+  """in ascending order, nulls first"""
+  asc_nulls_first
+
+  """in ascending order, nulls last"""
+  asc_nulls_last
+
+  """in descending order, nulls first"""
+  desc
+
+  """in descending order, nulls first"""
+  desc_nulls_first
+
+  """in descending order, nulls last"""
+  desc_nulls_last
+}
+
+"""
+columns and relationships of "poll"
+"""
+type poll {
+  created_at: timestamptz!
+  created_by: uuid
+  id: uuid!
+
+  """An array relationship"""
+  options(
+    """distinct select on columns"""
+    distinct_on: [option_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [option_order_by!]
+
+    """filter the rows returned"""
+    where: option_bool_exp
+  ): [option!]!
+
+  """An aggregate relationship"""
+  options_aggregate(
+    """distinct select on columns"""
+    distinct_on: [option_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [option_order_by!]
+
+    """filter the rows returned"""
+    where: option_bool_exp
+  ): option_aggregate!
+  question: String!
+}
+
+"""
+aggregated selection of "poll"
+"""
+type poll_aggregate {
+  aggregate: poll_aggregate_fields
+  nodes: [poll!]!
+}
+
+"""
+aggregate fields of "poll"
+"""
+type poll_aggregate_fields {
+  count(columns: [poll_select_column!], distinct: Boolean): Int!
+  max: poll_max_fields
+  min: poll_min_fields
+}
+
+"""
+Boolean expression to filter rows from the table "poll". All fields are combined with a logical 'AND'.
+"""
+input poll_bool_exp {
+  _and: [poll_bool_exp!]
+  _not: poll_bool_exp
+  _or: [poll_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  created_by: uuid_comparison_exp
+  id: uuid_comparison_exp
+  options: option_bool_exp
+  options_aggregate: option_aggregate_bool_exp
+  question: String_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "poll"
+"""
+enum poll_constraint {
+  """
+  unique or primary key constraint on columns "id"
+  """
+  poll_pkey
+}
+
+"""
+input type for inserting data into table "poll"
+"""
+input poll_insert_input {
+  created_at: timestamptz
+  created_by: uuid
+  id: uuid
+  options: option_arr_rel_insert_input
+  question: String
+}
+
+"""aggregate max on columns"""
+type poll_max_fields {
+  created_at: timestamptz
+  created_by: uuid
+  id: uuid
+  question: String
+}
+
+"""aggregate min on columns"""
+type poll_min_fields {
+  created_at: timestamptz
+  created_by: uuid
+  id: uuid
+  question: String
+}
+
+"""
+response of any mutation on the table "poll"
+"""
+type poll_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [poll!]!
+}
+
+"""
+input type for inserting object relation for remote table "poll"
+"""
+input poll_obj_rel_insert_input {
+  data: poll_insert_input!
+
+  """upsert condition"""
+  on_conflict: poll_on_conflict
+}
+
+"""
+on_conflict condition type for table "poll"
+"""
+input poll_on_conflict {
+  constraint: poll_constraint!
+  update_columns: [poll_update_column!]! = []
+  where: poll_bool_exp
+}
+
+"""Ordering options when selecting data from "poll"."""
+input poll_order_by {
+  created_at: order_by
+  created_by: order_by
+  id: order_by
+  options_aggregate: option_aggregate_order_by
+  question: order_by
+}
+
+"""primary key columns input for table: poll"""
+input poll_pk_columns_input {
+  id: uuid!
+}
+
+"""
+columns and relationships of "poll_results"
+"""
+type poll_results {
+  """An object relationship"""
+  option: option
+  option_id: uuid
+
+  """An object relationship"""
+  poll: poll
+  poll_id: uuid
+  votes: bigint
+}
+
+"""
+aggregated selection of "poll_results"
+"""
+type poll_results_aggregate {
+  aggregate: poll_results_aggregate_fields
+  nodes: [poll_results!]!
+}
+
+"""
+aggregate fields of "poll_results"
+"""
+type poll_results_aggregate_fields {
+  avg: poll_results_avg_fields
+  count(columns: [poll_results_select_column!], distinct: Boolean): Int!
+  max: poll_results_max_fields
+  min: poll_results_min_fields
+  stddev: poll_results_stddev_fields
+  stddev_pop: poll_results_stddev_pop_fields
+  stddev_samp: poll_results_stddev_samp_fields
+  sum: poll_results_sum_fields
+  var_pop: poll_results_var_pop_fields
+  var_samp: poll_results_var_samp_fields
+  variance: poll_results_variance_fields
+}
+
+"""aggregate avg on columns"""
+type poll_results_avg_fields {
+  votes: Float
+}
+
+"""
+Boolean expression to filter rows from the table "poll_results". All fields are combined with a logical 'AND'.
+"""
+input poll_results_bool_exp {
+  _and: [poll_results_bool_exp!]
+  _not: poll_results_bool_exp
+  _or: [poll_results_bool_exp!]
+  option: option_bool_exp
+  option_id: uuid_comparison_exp
+  poll: poll_bool_exp
+  poll_id: uuid_comparison_exp
+  votes: bigint_comparison_exp
+}
+
+"""aggregate max on columns"""
+type poll_results_max_fields {
+  option_id: uuid
+  poll_id: uuid
+  votes: bigint
+}
+
+"""aggregate min on columns"""
+type poll_results_min_fields {
+  option_id: uuid
+  poll_id: uuid
+  votes: bigint
+}
+
+"""Ordering options when selecting data from "poll_results"."""
+input poll_results_order_by {
+  option: option_order_by
+  option_id: order_by
+  poll: poll_order_by
+  poll_id: order_by
+  votes: order_by
+}
+
+"""
+select columns of table "poll_results"
+"""
+enum poll_results_select_column {
+  """column name"""
+  option_id
+
+  """column name"""
+  poll_id
+
+  """column name"""
+  votes
+}
+
+"""aggregate stddev on columns"""
+type poll_results_stddev_fields {
+  votes: Float
+}
+
+"""aggregate stddev_pop on columns"""
+type poll_results_stddev_pop_fields {
+  votes: Float
+}
+
+"""aggregate stddev_samp on columns"""
+type poll_results_stddev_samp_fields {
+  votes: Float
+}
+
+"""
+Streaming cursor of the table "poll_results"
+"""
+input poll_results_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: poll_results_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input poll_results_stream_cursor_value_input {
+  option_id: uuid
+  poll_id: uuid
+  votes: bigint
+}
+
+"""aggregate sum on columns"""
+type poll_results_sum_fields {
+  votes: bigint
+}
+
+"""aggregate var_pop on columns"""
+type poll_results_var_pop_fields {
+  votes: Float
+}
+
+"""aggregate var_samp on columns"""
+type poll_results_var_samp_fields {
+  votes: Float
+}
+
+"""aggregate variance on columns"""
+type poll_results_variance_fields {
+  votes: Float
+}
+
+"""
+select columns of table "poll"
+"""
+enum poll_select_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  created_by
+
+  """column name"""
+  id
+
+  """column name"""
+  question
+}
+
+"""
+input type for updating data in table "poll"
+"""
+input poll_set_input {
+  created_at: timestamptz
+  created_by: uuid
+  id: uuid
+  question: String
+}
+
+"""
+Streaming cursor of the table "poll"
+"""
+input poll_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: poll_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input poll_stream_cursor_value_input {
+  created_at: timestamptz
+  created_by: uuid
+  id: uuid
+  question: String
+}
+
+"""
+update columns of table "poll"
+"""
+enum poll_update_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  created_by
+
+  """column name"""
+  id
+
+  """column name"""
+  question
+}
+
+input poll_updates {
+  """sets the columns of the filtered rows to the given values"""
+  _set: poll_set_input
+  where: poll_bool_exp!
+}
+
+type query_root {
+  """
+  fetch data from the table: "online_users"
+  """
+  online_users(
+    """distinct select on columns"""
+    distinct_on: [online_users_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [online_users_order_by!]
+
+    """filter the rows returned"""
+    where: online_users_bool_exp
+  ): [online_users!]!
+
+  """
+  fetch aggregated fields from the table: "online_users"
+  """
+  online_users_aggregate(
+    """distinct select on columns"""
+    distinct_on: [online_users_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [online_users_order_by!]
+
+    """filter the rows returned"""
+    where: online_users_bool_exp
+  ): online_users_aggregate!
+
+  """
+  fetch data from the table: "option"
+  """
+  option(
+    """distinct select on columns"""
+    distinct_on: [option_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [option_order_by!]
+
+    """filter the rows returned"""
+    where: option_bool_exp
+  ): [option!]!
+
+  """
+  fetch aggregated fields from the table: "option"
+  """
+  option_aggregate(
+    """distinct select on columns"""
+    distinct_on: [option_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [option_order_by!]
+
+    """filter the rows returned"""
+    where: option_bool_exp
+  ): option_aggregate!
+
+  """fetch data from the table: "option" using primary key columns"""
+  option_by_pk(id: uuid!): option
+
+  """
+  fetch data from the table: "poll"
+  """
+  poll(
+    """distinct select on columns"""
+    distinct_on: [poll_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_order_by!]
+
+    """filter the rows returned"""
+    where: poll_bool_exp
+  ): [poll!]!
+
+  """
+  fetch aggregated fields from the table: "poll"
+  """
+  poll_aggregate(
+    """distinct select on columns"""
+    distinct_on: [poll_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_order_by!]
+
+    """filter the rows returned"""
+    where: poll_bool_exp
+  ): poll_aggregate!
+
+  """fetch data from the table: "poll" using primary key columns"""
+  poll_by_pk(id: uuid!): poll
+
+  """
+  fetch data from the table: "poll_results"
+  """
+  poll_results(
+    """distinct select on columns"""
+    distinct_on: [poll_results_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_results_order_by!]
+
+    """filter the rows returned"""
+    where: poll_results_bool_exp
+  ): [poll_results!]!
+
+  """
+  fetch aggregated fields from the table: "poll_results"
+  """
+  poll_results_aggregate(
+    """distinct select on columns"""
+    distinct_on: [poll_results_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_results_order_by!]
+
+    """filter the rows returned"""
+    where: poll_results_bool_exp
+  ): poll_results_aggregate!
+
+  """
+  fetch data from the table: "user"
+  """
+  user(
+    """distinct select on columns"""
+    distinct_on: [user_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [user_order_by!]
+
+    """filter the rows returned"""
+    where: user_bool_exp
+  ): [user!]!
+
+  """
+  fetch aggregated fields from the table: "user"
+  """
+  user_aggregate(
+    """distinct select on columns"""
+    distinct_on: [user_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [user_order_by!]
+
+    """filter the rows returned"""
+    where: user_bool_exp
+  ): user_aggregate!
+
+  """fetch data from the table: "user" using primary key columns"""
+  user_by_pk(id: uuid!): user
+
+  """
+  fetch data from the table: "vote"
+  """
+  vote(
+    """distinct select on columns"""
+    distinct_on: [vote_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [vote_order_by!]
+
+    """filter the rows returned"""
+    where: vote_bool_exp
+  ): [vote!]!
+
+  """
+  fetch aggregated fields from the table: "vote"
+  """
+  vote_aggregate(
+    """distinct select on columns"""
+    distinct_on: [vote_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [vote_order_by!]
+
+    """filter the rows returned"""
+    where: vote_bool_exp
+  ): vote_aggregate!
+
+  """fetch data from the table: "vote" using primary key columns"""
+  vote_by_pk(id: uuid!): vote
+}
+
+type subscription_root {
+  """
+  fetch data from the table: "online_users"
+  """
+  online_users(
+    """distinct select on columns"""
+    distinct_on: [online_users_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [online_users_order_by!]
+
+    """filter the rows returned"""
+    where: online_users_bool_exp
+  ): [online_users!]!
+
+  """
+  fetch aggregated fields from the table: "online_users"
+  """
+  online_users_aggregate(
+    """distinct select on columns"""
+    distinct_on: [online_users_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [online_users_order_by!]
+
+    """filter the rows returned"""
+    where: online_users_bool_exp
+  ): online_users_aggregate!
+
+  """
+  fetch data from the table in a streaming manner: "online_users"
+  """
+  online_users_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [online_users_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: online_users_bool_exp
+  ): [online_users!]!
+
+  """
+  fetch data from the table: "option"
+  """
+  option(
+    """distinct select on columns"""
+    distinct_on: [option_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [option_order_by!]
+
+    """filter the rows returned"""
+    where: option_bool_exp
+  ): [option!]!
+
+  """
+  fetch aggregated fields from the table: "option"
+  """
+  option_aggregate(
+    """distinct select on columns"""
+    distinct_on: [option_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [option_order_by!]
+
+    """filter the rows returned"""
+    where: option_bool_exp
+  ): option_aggregate!
+
+  """fetch data from the table: "option" using primary key columns"""
+  option_by_pk(id: uuid!): option
+
+  """
+  fetch data from the table in a streaming manner: "option"
+  """
+  option_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [option_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: option_bool_exp
+  ): [option!]!
+
+  """
+  fetch data from the table: "poll"
+  """
+  poll(
+    """distinct select on columns"""
+    distinct_on: [poll_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_order_by!]
+
+    """filter the rows returned"""
+    where: poll_bool_exp
+  ): [poll!]!
+
+  """
+  fetch aggregated fields from the table: "poll"
+  """
+  poll_aggregate(
+    """distinct select on columns"""
+    distinct_on: [poll_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_order_by!]
+
+    """filter the rows returned"""
+    where: poll_bool_exp
+  ): poll_aggregate!
+
+  """fetch data from the table: "poll" using primary key columns"""
+  poll_by_pk(id: uuid!): poll
+
+  """
+  fetch data from the table: "poll_results"
+  """
+  poll_results(
+    """distinct select on columns"""
+    distinct_on: [poll_results_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_results_order_by!]
+
+    """filter the rows returned"""
+    where: poll_results_bool_exp
+  ): [poll_results!]!
+
+  """
+  fetch aggregated fields from the table: "poll_results"
+  """
+  poll_results_aggregate(
+    """distinct select on columns"""
+    distinct_on: [poll_results_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [poll_results_order_by!]
+
+    """filter the rows returned"""
+    where: poll_results_bool_exp
+  ): poll_results_aggregate!
+
+  """
+  fetch data from the table in a streaming manner: "poll_results"
+  """
+  poll_results_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [poll_results_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: poll_results_bool_exp
+  ): [poll_results!]!
+
+  """
+  fetch data from the table in a streaming manner: "poll"
+  """
+  poll_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [poll_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: poll_bool_exp
+  ): [poll!]!
+
+  """
+  fetch data from the table: "user"
+  """
+  user(
+    """distinct select on columns"""
+    distinct_on: [user_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [user_order_by!]
+
+    """filter the rows returned"""
+    where: user_bool_exp
+  ): [user!]!
+
+  """
+  fetch aggregated fields from the table: "user"
+  """
+  user_aggregate(
+    """distinct select on columns"""
+    distinct_on: [user_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [user_order_by!]
+
+    """filter the rows returned"""
+    where: user_bool_exp
+  ): user_aggregate!
+
+  """fetch data from the table: "user" using primary key columns"""
+  user_by_pk(id: uuid!): user
+
+  """
+  fetch data from the table in a streaming manner: "user"
+  """
+  user_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [user_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: user_bool_exp
+  ): [user!]!
+
+  """
+  fetch data from the table: "vote"
+  """
+  vote(
+    """distinct select on columns"""
+    distinct_on: [vote_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [vote_order_by!]
+
+    """filter the rows returned"""
+    where: vote_bool_exp
+  ): [vote!]!
+
+  """
+  fetch aggregated fields from the table: "vote"
+  """
+  vote_aggregate(
+    """distinct select on columns"""
+    distinct_on: [vote_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [vote_order_by!]
+
+    """filter the rows returned"""
+    where: vote_bool_exp
+  ): vote_aggregate!
+
+  """fetch data from the table: "vote" using primary key columns"""
+  vote_by_pk(id: uuid!): vote
+
+  """
+  fetch data from the table in a streaming manner: "vote"
+  """
+  vote_stream(
+    """maximum number of rows returned in a single batch"""
+    batch_size: Int!
+
+    """cursor to stream the results returned by the query"""
+    cursor: [vote_stream_cursor_input]!
+
+    """filter the rows returned"""
+    where: vote_bool_exp
+  ): [vote!]!
+}
+
+scalar timestamptz
+
+"""
+Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'.
+"""
+input timestamptz_comparison_exp {
+  _eq: timestamptz
+  _gt: timestamptz
+  _gte: timestamptz
+  _in: [timestamptz!]
+  _is_null: Boolean
+  _lt: timestamptz
+  _lte: timestamptz
+  _neq: timestamptz
+  _nin: [timestamptz!]
+}
+
+"""
+columns and relationships of "user"
+"""
+type user {
+  created_at: timestamptz!
+  id: uuid!
+  last_seen_at: timestamptz
+  online_ping: Boolean
+}
+
+"""
+aggregated selection of "user"
+"""
+type user_aggregate {
+  aggregate: user_aggregate_fields
+  nodes: [user!]!
+}
+
+"""
+aggregate fields of "user"
+"""
+type user_aggregate_fields {
+  count(columns: [user_select_column!], distinct: Boolean): Int!
+  max: user_max_fields
+  min: user_min_fields
+}
+
+"""
+Boolean expression to filter rows from the table "user". All fields are combined with a logical 'AND'.
+"""
+input user_bool_exp {
+  _and: [user_bool_exp!]
+  _not: user_bool_exp
+  _or: [user_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  id: uuid_comparison_exp
+  last_seen_at: timestamptz_comparison_exp
+  online_ping: Boolean_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "user"
+"""
+enum user_constraint {
+  """
+  unique or primary key constraint on columns "id"
+  """
+  user_pkey
+}
+
+"""
+input type for inserting data into table "user"
+"""
+input user_insert_input {
+  created_at: timestamptz
+  id: uuid
+  last_seen_at: timestamptz
+  online_ping: Boolean
+}
+
+"""aggregate max on columns"""
+type user_max_fields {
+  created_at: timestamptz
+  id: uuid
+  last_seen_at: timestamptz
+}
+
+"""aggregate min on columns"""
+type user_min_fields {
+  created_at: timestamptz
+  id: uuid
+  last_seen_at: timestamptz
+}
+
+"""
+response of any mutation on the table "user"
+"""
+type user_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [user!]!
+}
+
+"""
+input type for inserting object relation for remote table "user"
+"""
+input user_obj_rel_insert_input {
+  data: user_insert_input!
+
+  """upsert condition"""
+  on_conflict: user_on_conflict
+}
+
+"""
+on_conflict condition type for table "user"
+"""
+input user_on_conflict {
+  constraint: user_constraint!
+  update_columns: [user_update_column!]! = []
+  where: user_bool_exp
+}
+
+"""Ordering options when selecting data from "user"."""
+input user_order_by {
+  created_at: order_by
+  id: order_by
+  last_seen_at: order_by
+  online_ping: order_by
+}
+
+"""primary key columns input for table: user"""
+input user_pk_columns_input {
+  id: uuid!
+}
+
+"""
+select columns of table "user"
+"""
+enum user_select_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  last_seen_at
+
+  """column name"""
+  online_ping
+}
+
+"""
+input type for updating data in table "user"
+"""
+input user_set_input {
+  created_at: timestamptz
+  id: uuid
+  last_seen_at: timestamptz
+  online_ping: Boolean
+}
+
+"""
+Streaming cursor of the table "user"
+"""
+input user_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: user_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input user_stream_cursor_value_input {
+  created_at: timestamptz
+  id: uuid
+  last_seen_at: timestamptz
+  online_ping: Boolean
+}
+
+"""
+update columns of table "user"
+"""
+enum user_update_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  last_seen_at
+
+  """column name"""
+  online_ping
+}
+
+input user_updates {
+  """sets the columns of the filtered rows to the given values"""
+  _set: user_set_input
+  where: user_bool_exp!
+}
+
+scalar uuid
+
+"""
+Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'.
+"""
+input uuid_comparison_exp {
+  _eq: uuid
+  _gt: uuid
+  _gte: uuid
+  _in: [uuid!]
+  _is_null: Boolean
+  _lt: uuid
+  _lte: uuid
+  _neq: uuid
+  _nin: [uuid!]
+}
+
+"""
+columns and relationships of "vote"
+"""
+type vote {
+  created_at: timestamptz!
+
+  """An object relationship"""
+  created_by_user: user!
+  created_by_user_id: uuid!
+  id: uuid!
+
+  """An object relationship"""
+  option: option!
+  option_id: uuid!
+}
+
+"""
+aggregated selection of "vote"
+"""
+type vote_aggregate {
+  aggregate: vote_aggregate_fields
+  nodes: [vote!]!
+}
+
+"""
+aggregate fields of "vote"
+"""
+type vote_aggregate_fields {
+  count(columns: [vote_select_column!], distinct: Boolean): Int!
+  max: vote_max_fields
+  min: vote_min_fields
+}
+
+"""
+Boolean expression to filter rows from the table "vote". All fields are combined with a logical 'AND'.
+"""
+input vote_bool_exp {
+  _and: [vote_bool_exp!]
+  _not: vote_bool_exp
+  _or: [vote_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  created_by_user: user_bool_exp
+  created_by_user_id: uuid_comparison_exp
+  id: uuid_comparison_exp
+  option: option_bool_exp
+  option_id: uuid_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "vote"
+"""
+enum vote_constraint {
+  """
+  unique or primary key constraint on columns "id"
+  """
+  vote_pkey
+}
+
+"""
+input type for inserting data into table "vote"
+"""
+input vote_insert_input {
+  created_at: timestamptz
+  created_by_user: user_obj_rel_insert_input
+  created_by_user_id: uuid
+  id: uuid
+  option: option_obj_rel_insert_input
+  option_id: uuid
+}
+
+"""aggregate max on columns"""
+type vote_max_fields {
+  created_at: timestamptz
+  created_by_user_id: uuid
+  id: uuid
+  option_id: uuid
+}
+
+"""aggregate min on columns"""
+type vote_min_fields {
+  created_at: timestamptz
+  created_by_user_id: uuid
+  id: uuid
+  option_id: uuid
+}
+
+"""
+response of any mutation on the table "vote"
+"""
+type vote_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [vote!]!
+}
+
+"""
+on_conflict condition type for table "vote"
+"""
+input vote_on_conflict {
+  constraint: vote_constraint!
+  update_columns: [vote_update_column!]! = []
+  where: vote_bool_exp
+}
+
+"""Ordering options when selecting data from "vote"."""
+input vote_order_by {
+  created_at: order_by
+  created_by_user: user_order_by
+  created_by_user_id: order_by
+  id: order_by
+  option: option_order_by
+  option_id: order_by
+}
+
+"""primary key columns input for table: vote"""
+input vote_pk_columns_input {
+  id: uuid!
+}
+
+"""
+select columns of table "vote"
+"""
+enum vote_select_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  created_by_user_id
+
+  """column name"""
+  id
+
+  """column name"""
+  option_id
+}
+
+"""
+input type for updating data in table "vote"
+"""
+input vote_set_input {
+  created_at: timestamptz
+  created_by_user_id: uuid
+  id: uuid
+  option_id: uuid
+}
+
+"""
+Streaming cursor of the table "vote"
+"""
+input vote_stream_cursor_input {
+  """Stream column input with initial value"""
+  initial_value: vote_stream_cursor_value_input!
+
+  """cursor ordering"""
+  ordering: cursor_ordering
+}
+
+"""Initial value of the column from where the streaming should start"""
+input vote_stream_cursor_value_input {
+  created_at: timestamptz
+  created_by_user_id: uuid
+  id: uuid
+  option_id: uuid
+}
+
+"""
+update columns of table "vote"
+"""
+enum vote_update_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  created_by_user_id
+
+  """column name"""
+  id
+
+  """column name"""
+  option_id
+}
+
+input vote_updates {
+  """sets the columns of the filtered rows to the given values"""
+  _set: vote_set_input
+  where: vote_bool_exp!
 }

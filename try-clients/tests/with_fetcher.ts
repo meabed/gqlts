@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 import QueryBatcher from "graphql-query-batcher";
 import { everything } from "@gqlts/runtime";
 
-const URL = "https://hasura-2334534.herokuapp.com/v1/graphql";
+const URL = "https://realtime-chat.hasura.app/v1/graphql";
 
 describe("use fetcher", () => {
   const fetcherInstance = fetch;
@@ -63,7 +63,8 @@ describe("batch queries", () => {
     const res = await Promise.all([
       client.query({
         user: {
-          age: true,
+          last_seen: true,
+          // age: true,
         },
       }),
       client.query({
@@ -73,7 +74,8 @@ describe("batch queries", () => {
       }),
       client.query({
         user: {
-          name: true,
+          username: true,
+          // name: true,
         },
       }),
     ]);

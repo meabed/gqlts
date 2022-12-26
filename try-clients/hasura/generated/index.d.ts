@@ -92,6 +92,29 @@ export declare const generateSubscriptionOp: (
   fields: subscription_rootRequest & { __name?: string },
 ) => GraphqlOperation
 
+export declare const enumcursorOrdering: {
+  readonly ASC: 'ASC'
+  readonly DESC: 'DESC'
+}
+
+export declare const enummessageConstraint: {
+  readonly message_pkey: 'message_pkey'
+}
+
+export declare const enummessageSelectColumn: {
+  readonly id: 'id'
+  readonly text: 'text'
+  readonly timestamp: 'timestamp'
+  readonly username: 'username'
+}
+
+export declare const enummessageUpdateColumn: {
+  readonly id: 'id'
+  readonly text: 'text'
+  readonly timestamp: 'timestamp'
+  readonly username: 'username'
+}
+
 export declare const enumorderBy: {
   readonly asc: 'asc'
   readonly asc_nulls_first: 'asc_nulls_first'
@@ -103,16 +126,33 @@ export declare const enumorderBy: {
 
 export declare const enumuserConstraint: {
   readonly user_pkey: 'user_pkey'
+  readonly user_username_key: 'user_username_key'
+}
+
+export declare const enumuserOnlineSelectColumn: {
+  readonly id: 'id'
+  readonly last_seen: 'last_seen'
+  readonly last_typed: 'last_typed'
+  readonly username: 'username'
 }
 
 export declare const enumuserSelectColumn: {
-  readonly age: 'age'
   readonly id: 'id'
-  readonly name: 'name'
+  readonly last_seen: 'last_seen'
+  readonly last_typed: 'last_typed'
+  readonly username: 'username'
+}
+
+export declare const enumuserTypingSelectColumn: {
+  readonly id: 'id'
+  readonly last_seen: 'last_seen'
+  readonly last_typed: 'last_typed'
+  readonly username: 'username'
 }
 
 export declare const enumuserUpdateColumn: {
-  readonly age: 'age'
   readonly id: 'id'
-  readonly name: 'name'
+  readonly last_seen: 'last_seen'
+  readonly last_typed: 'last_typed'
+  readonly username: 'username'
 }

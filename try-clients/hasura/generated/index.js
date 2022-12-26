@@ -14,7 +14,7 @@ module.exports.version = version
 module.exports.createClient = function (options) {
   options = options || {}
   var optionsCopy = {
-    url: 'https://hasura-2334534.herokuapp.com/v1/graphql',
+    url: 'https://realtime-chat.hasura.app/v1/graphql',
     queryRoot: typeMap.Query,
     mutationRoot: typeMap.Mutation,
     subscriptionRoot: typeMap.Subscription,
@@ -23,6 +23,29 @@ module.exports.createClient = function (options) {
     optionsCopy[name] = options[name]
   }
   return createClientOriginal(optionsCopy)
+}
+
+module.exports.enumcursorOrdering = {
+  ASC: 'ASC',
+  DESC: 'DESC',
+}
+
+module.exports.enummessageConstraint = {
+  message_pkey: 'message_pkey',
+}
+
+module.exports.enummessageSelectColumn = {
+  id: 'id',
+  text: 'text',
+  timestamp: 'timestamp',
+  username: 'username',
+}
+
+module.exports.enummessageUpdateColumn = {
+  id: 'id',
+  text: 'text',
+  timestamp: 'timestamp',
+  username: 'username',
 }
 
 module.exports.enumorderBy = {
@@ -36,18 +59,35 @@ module.exports.enumorderBy = {
 
 module.exports.enumuserConstraint = {
   user_pkey: 'user_pkey',
+  user_username_key: 'user_username_key',
+}
+
+module.exports.enumuserOnlineSelectColumn = {
+  id: 'id',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
 }
 
 module.exports.enumuserSelectColumn = {
-  age: 'age',
   id: 'id',
-  name: 'name',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
+}
+
+module.exports.enumuserTypingSelectColumn = {
+  id: 'id',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
 }
 
 module.exports.enumuserUpdateColumn = {
-  age: 'age',
   id: 'id',
-  name: 'name',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
 }
 
 module.exports.generateQueryOp = function (fields) {

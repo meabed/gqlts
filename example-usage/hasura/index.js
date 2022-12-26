@@ -14,7 +14,7 @@ assertSameVersion(version)
 export var createClient = function (options) {
   options = options || {}
   var optionsCopy = {
-    url: 'https://hasura-2334534.herokuapp.com/v1/graphql',
+    url: 'https://realtime-chat.hasura.app/v1/graphql',
     queryRoot: typeMap.Query,
     mutationRoot: typeMap.Mutation,
     subscriptionRoot: typeMap.Subscription,
@@ -23,6 +23,29 @@ export var createClient = function (options) {
     optionsCopy[name] = options[name]
   }
   return createClientOriginal(optionsCopy)
+}
+
+export const enumcursorOrdering = {
+  ASC: 'ASC',
+  DESC: 'DESC',
+}
+
+export const enummessageConstraint = {
+  message_pkey: 'message_pkey',
+}
+
+export const enummessageSelectColumn = {
+  id: 'id',
+  text: 'text',
+  timestamp: 'timestamp',
+  username: 'username',
+}
+
+export const enummessageUpdateColumn = {
+  id: 'id',
+  text: 'text',
+  timestamp: 'timestamp',
+  username: 'username',
 }
 
 export const enumorderBy = {
@@ -36,18 +59,35 @@ export const enumorderBy = {
 
 export const enumuserConstraint = {
   user_pkey: 'user_pkey',
+  user_username_key: 'user_username_key',
+}
+
+export const enumuserOnlineSelectColumn = {
+  id: 'id',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
 }
 
 export const enumuserSelectColumn = {
-  age: 'age',
   id: 'id',
-  name: 'name',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
+}
+
+export const enumuserTypingSelectColumn = {
+  id: 'id',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
 }
 
 export const enumuserUpdateColumn = {
-  age: 'age',
   id: 'id',
-  name: 'name',
+  last_seen: 'last_seen',
+  last_typed: 'last_typed',
+  username: 'username',
 }
 
 export var generateQueryOp = function (fields) {

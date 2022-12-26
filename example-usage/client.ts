@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR, { SWRResponse } from "swr";
 import { useLazyPromise, useObservable, useLazyPromiseOutput } from "react-extra-hooks";
 
 import { FieldsSelection, ClientError } from "@gqlts/runtime";
@@ -12,7 +12,6 @@ import {
   subscription_root as Subscription,
 } from "./hasura";
 import { UseObservableOutput } from "react-extra-hooks/dist/useLazyObservable";
-import { SWRResponse } from "swr/dist/types";
 
 const client = createClient({
   subscription: {

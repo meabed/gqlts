@@ -16,8 +16,7 @@ const Page = () => {
         {
           objects: [
             {
-              name,
-              id,
+              username: name,
             },
           ],
         },

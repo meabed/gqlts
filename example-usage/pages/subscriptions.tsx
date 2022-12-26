@@ -6,7 +6,7 @@ import { useObservable } from "react-extra-hooks";
 
 const client = createClient({
   subscription: {
-    url: "wss://hasura-2334534.herokuapp.com/v1/graphql",
+    url: "wss://realtime-poll.hasura.app/v1/graphql",
   },
 });
 
@@ -19,9 +19,7 @@ const Page = () => {
     error,
   } = useObservable(() =>
     client.subscription({
-      user: {
-        name: true,
-      },
+      user_online: [{}, { id: 1, username: 1, created_at: 1, last_seen_at: 1 }],
     })
   );
   return (
