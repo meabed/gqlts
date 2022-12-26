@@ -5,7 +5,7 @@ name: Quick Start
 > Introducing Gqlts
 # Type safe Graphql query builder for TypeScript and Node.js
 
-Genql generates a typed graphql client for your graphql api to use in browser or node.
+Gqlts generates a typed graphql client for your graphql api to use in browser or node.
 
 > This package is forked version from [genql](https://github.com/remorses/genql/)
 > It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
@@ -31,7 +31,7 @@ Gqlts comes with built-in axios client and typed graphql query builder, file upl
 
 > Find more server-client examples in the [examples repo](https://github.com/meabed/graphql-examples)
 
-```ts
+```js
 import { createClient, everything } from '@gqlts/my-lib'
 const { data, errors, extensions } = await createClient().query({
     User: {
@@ -51,7 +51,7 @@ const { data, errors, extensions } = await createClient().query({
 
 ### Gqlts generates a graphql client with typescript types, giving you type safety and auto-completion
 
-```ts
+```js
 import { createClient, everything } from '@gqlts/my-lib'
 
 const { data, errors, extensions } = await createClient().query({
@@ -66,7 +66,7 @@ const { data, errors, extensions } = await createClient().query({
 // data.User
 ```
 
-```ts
+```js
 query {
     User {
         name

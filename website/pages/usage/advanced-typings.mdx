@@ -6,7 +6,7 @@ Sometimes you will want to declare the field types separately or use the result 
 
 To declare the fields object separately from the client invocation you can use the `QueryRequest`, `MutationRequest` and `SubscriptionRequest` types
 
-```tsx
+```jsx
 import { createClient, QueryRequest } from './generated'
 
 const client = createClient()
@@ -29,7 +29,7 @@ These types take a query object as argument and give the associated result type 
 
 > You need to use the `tuple` function to tell typescript to use tuple semantics
 
-```tsx
+```jsx
 import { QueryResult } from './generated'
 
 function tuple<T1, T2>(data: [T1, T2]): typeof data

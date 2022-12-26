@@ -4,7 +4,7 @@ To query some fields only on a certain type you can use graphql fragments
 
 In gqlts you can express the fragments for union and interface types using the `on_` prefixed fields in a query
 
-```ts
+```js
 import { createClient } from './generated'
 
 const client = createClient()
@@ -31,7 +31,7 @@ console.log(account?.commonProp)
 
 You can check the value of `__typename` to restrict an union type to one of its sub types and let typescript infer its correct fields
 
-```ts
+```js
 const { account } = await client.query({
     account: {
         __typename: true,
@@ -57,7 +57,7 @@ After you do a query on an union type, you can use the exported typescript guard
 
 > remember to query the `__typename` field when you use type guards or they will throw an error
 
-```ts
+```js
 import { createClient, isUser, isGuest } from './generated'
 
 const client = createClient()
