@@ -22,3 +22,5 @@ try-clients/hasura
 try-clients/simple
 
 integration-tests/generated
+
+cli/src/render/requestTypes/cases/*.case.ts
