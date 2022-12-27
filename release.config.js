@@ -7,6 +7,7 @@ const branchPrefix = branch.split('/')[0];
 const isMaster = branch === 'master' || branch === 'main';
 // semantic-release configuration
 module.exports = {
+  extends: 'semantic-release-monorepo',
   branches: [
     {
       name: 'master',
