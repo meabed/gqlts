@@ -1,9 +1,9 @@
-import { QueryHookOptions } from "@apollo/react-hooks";
-import { Box, Spinner, Stack } from "@chakra-ui/react";
-import { Hero, PageContainer, SectionTitle } from "landing-blocks";
-import React from "react";
-import { generateQueryOp, QueryRequest, QueryResult } from "../generated/";
-import { ApolloClient, ApolloProvider, gql, useQuery, InMemoryCache } from "@apollo/client";
+import { QueryRequest, QueryResult, generateQueryOp } from '../generated/';
+import { ApolloClient, ApolloProvider, InMemoryCache, gql, useQuery } from '@apollo/client';
+import { QueryHookOptions } from '@apollo/react-hooks';
+import { Box, Spinner, Stack } from '@chakra-ui/react';
+import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import React from 'react';
 
 function tuple<T1, T2>(data: [T1, T2]): typeof data;
 function tuple(data: Array<any>) {
@@ -30,36 +30,36 @@ const Page = () => {
   });
   const { data, errors, extensions } = gqlData;
   return (
-    <Stack spacing="40px" mt="40px">
+    <Stack spacing='40px' mt='40px'>
       <Hero
-        bullet="Gqlts lets you write graphql queries as code"
-        heading="Example use of Gqlts"
-        subheading="countries fetched via https://countries.trevorblades.com"
+        bullet='Gqlts lets you write graphql queries as code'
+        heading='Example use of Gqlts'
+        subheading='countries fetched via https://countries.trevorblades.com'
       />
       <PageContainer>
-        <SectionTitle heading="Countries" />
+        <SectionTitle heading='Countries' />
         {!data && (
-          <Stack justify="center" align="center">
+          <Stack justify='center' align='center'>
             <Spinner />
           </Stack>
         )}
         {data && (
-          <Stack spacing="20px">
+          <Stack spacing='20px'>
             {data?.countries?.map((x: any) => (
-              <Box borderRadius="10px" p="20px" borderWidth="1px">
+              <Box borderRadius='10px' p='20px' borderWidth='1px'>
                 {x.name}
               </Box>
             ))}
           </Stack>
         )}
-        {error && <Box color="red">{error.message}</Box>}
+        {error && <Box color='red'>{error.message}</Box>}
       </PageContainer>
     </Stack>
   );
 };
 
 const client = new ApolloClient({
-  uri: "https://countries.trevorblades.com",
+  uri: 'https://countries.trevorblades.com',
   cache: new InMemoryCache(),
 });
 

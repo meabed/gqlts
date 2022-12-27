@@ -1,21 +1,20 @@
-import useSWR, { SWRResponse } from "swr";
-import { useLazyPromise, useObservable, useLazyPromiseOutput } from "react-extra-hooks";
-
-import { FieldsSelection, ClientError } from "@gqlts/runtime";
 import {
-  mutation_rootRequest as MutationRequest,
-  createClient,
-  query_rootRequest as QueryRequest,
-  subscription_rootRequest as SubscriptionRequest,
-  query_root as Query,
   mutation_root as Mutation,
+  mutation_rootRequest as MutationRequest,
+  query_root as Query,
+  query_rootRequest as QueryRequest,
   subscription_root as Subscription,
-} from "./hasura";
-import { UseObservableOutput } from "react-extra-hooks/dist/useLazyObservable";
+  subscription_rootRequest as SubscriptionRequest,
+  createClient,
+} from './hasura';
+import { ClientError, FieldsSelection } from '@gqlts/runtime';
+import { useLazyPromise, useLazyPromiseOutput, useObservable } from 'react-extra-hooks';
+import { UseObservableOutput } from 'react-extra-hooks/dist/useLazyObservable';
+import useSWR, { SWRResponse } from 'swr';
 
 const client = createClient({
   subscription: {
-    url: "wss://hasura-2334534.herokuapp.com/v1/graphql",
+    url: 'wss://hasura-2334534.herokuapp.com/v1/graphql',
   },
 });
 
@@ -36,8 +35,8 @@ export const useMutation = <
 >(
   q: R | ((...arg: ARG) => Promise<R>) // TODO react: the useQuery callback can be a non promise
 ): useLazyPromiseOutput<ARG, FieldsSelection<Mutation, R>> => {
-  const [execute, res, bo] = useLazyPromise<any>(typeof q == "function" ? q : (q) => q && client.mutation(q), {});
-  return [typeof q == "function" ? execute : () => execute(q), res, bo]; // TODO change result to data
+  const [execute, res, bo] = useLazyPromise<any>(typeof q == 'function' ? q : (q) => q && client.mutation(q), {});
+  return [typeof q == 'function' ? execute : () => execute(q), res, bo]; // TODO change result to data
   // TODO react: execute should not throw an error by default, too risky the dev will forget to handle it, just add an option to throw
 };
 

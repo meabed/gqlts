@@ -1,22 +1,22 @@
-import { enumSomeEnum, everything, generateQueryOp, generateSubscriptionOp } from "../generated";
-import assert from "assert";
-import snapshot from "snap-shot-it";
-import { expectType } from "tsd";
+import { enumSomeEnum, everything, generateQueryOp, generateSubscriptionOp } from '../generated';
+import assert from 'assert';
+import snapshot from 'snap-shot-it';
+import { expectType } from 'tsd';
 
-const prettify = (code, parser) => require("prettier").format(code, { parser });
+const prettify = (code, parser) => require('prettier').format(code, { parser });
 
-describe("generate queries", () => {
-  it("enum string is present", () => {
-    expectType<"X">(enumSomeEnum.X);
-    assert.strictEqual(enumSomeEnum.X, "X");
-    assert.strictEqual(enumSomeEnum.Y, "Y");
+describe('generate queries', () => {
+  it('enum string is present', () => {
+    expectType<'X'>(enumSomeEnum.X);
+    assert.strictEqual(enumSomeEnum.X, 'X');
+    assert.strictEqual(enumSomeEnum.Y, 'Y');
   });
-  it("query", () => {
+  it('query', () => {
     const { query } = generateQueryOp({
       repository: [
         {
-          name: "repo",
-          owner: "owner",
+          name: 'repo',
+          owner: 'owner',
         },
         {
           createdAt: true,
@@ -31,9 +31,9 @@ describe("generate queries", () => {
         },
       ],
     });
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
-  it("recursive type", () => {
+  it('recursive type', () => {
     const { query } = generateQueryOp({
       recursiveType: {
         value: 1,
@@ -51,12 +51,12 @@ describe("generate queries", () => {
         },
       },
     });
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
-  it("recursive type with args", () => {
+  it('recursive type with args', () => {
     const { query } = generateQueryOp({
       recursiveType: [
-        { requiredVal: ["ciao"] },
+        { requiredVal: ['ciao'] },
         {
           value: 1,
           recurse: {
@@ -74,11 +74,11 @@ describe("generate queries", () => {
         },
       ],
     });
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
 
-  it("use __name operation name", () => {
-    const NAME = "SomeName";
+  it('use __name operation name', () => {
+    const NAME = 'SomeName';
     const { query } = generateSubscriptionOp({
       __name: NAME,
       user: {
@@ -86,22 +86,22 @@ describe("generate queries", () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
-  it("subscriptions", () => {
+  it('subscriptions', () => {
     const { query } = generateSubscriptionOp({
       user: {
         __scalar: true,
       },
     });
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
-  it("many", () => {
+  it('many', () => {
     const { query } = generateQueryOp({
       repository: [
         {
-          name: "repo",
-          owner: "owner",
+          name: 'repo',
+          owner: 'owner',
         },
         {
           createdAt: true,
@@ -119,9 +119,9 @@ describe("generate queries", () => {
         ...everything,
       },
     });
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
-  it("do not fetch falsy fields", () => {
+  it('do not fetch falsy fields', () => {
     const { query } = generateSubscriptionOp({
       user: {
         common: false,
@@ -129,9 +129,9 @@ describe("generate queries", () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
-  it("do not fetch falsy fields with __scalar", () => {
+  it('do not fetch falsy fields with __scalar', () => {
     const { query } = generateSubscriptionOp({
       user: {
         common: false,
@@ -139,6 +139,6 @@ describe("generate queries", () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(prettify(query, "graphql"));
+    snapshot(prettify(query, 'graphql'));
   });
 });

@@ -1,18 +1,18 @@
-import assert from "assert";
-import { createClient } from "../hasura/generated";
-import fetch from "isomorphic-unfetch";
-import QueryBatcher from "graphql-query-batcher";
+import { createClient } from '../hasura/generated';
+import assert from 'assert';
+import QueryBatcher from 'graphql-query-batcher';
+import fetch from 'isomorphic-unfetch';
 
-const URL = "https://realtime-chat.hasura.app/v1/graphql";
+const URL = 'https://realtime-chat.hasura.app/v1/graphql';
 
-describe("use fetcher", () => {
+describe('use fetcher', () => {
   const fetcherInstance = fetch;
   const fetcherMethod = (op) =>
     fetcherInstance(URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
         // Authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
       },
       body: JSON.stringify(op),
@@ -22,7 +22,7 @@ describe("use fetcher", () => {
     fetcherInstance,
     fetcherMethod,
   });
-  it("query with fetcher", async () => {
+  it('query with fetcher', async () => {
     const res = await client.query({
       user: {
         __scalar: true,
@@ -33,15 +33,15 @@ describe("use fetcher", () => {
   });
 });
 
-describe("batch queries", () => {
+describe('batch queries', () => {
   const fetcherInstance = fetch;
   const fetcherMethod = (batchedQuery) => {
     assert(batchedQuery.length === 3);
     return fetch(URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
         // Authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
       },
       body: JSON.stringify(batchedQuery),
@@ -58,7 +58,7 @@ describe("batch queries", () => {
       return batcher.fetch(query, variables);
     },
   });
-  it("query with fetcher", async () => {
+  it('query with fetcher', async () => {
     const res = await Promise.all([
       client.query({
         user: {

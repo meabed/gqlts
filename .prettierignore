@@ -11,3 +11,14 @@ nodemon.json
 .babelrc
 .yarnrc
 public
+generated
+
+example/generated
+example-usage/hasura
+example-usage/sub
+
+try-clients/github
+try-clients/hasura
+try-clients/simple
+
+integration-tests/generated

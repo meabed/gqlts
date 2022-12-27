@@ -1,43 +1,43 @@
-import { ApolloServer } from "apollo-server-express";
-import { makeExecutableSchema } from "@graphql-tools/schema";
-import { PubSub } from "graphql-subscriptions";
-import sleep from "await-sleep";
-import assert from "assert";
-import fs from "fs";
-import path from "path";
-import { expectType } from "tsd";
-import { DeepPartial } from "tsdef";
-import { Account, createClient, everything, isHouse, isUser, Point, User } from "../generated";
-import { WebSocketServer } from "ws";
-import { useServer } from "graphql-ws/lib/use/ws";
-import { createServer } from "http";
-import express from "express";
-import axios from "axios";
+import { Account, Point, User, createClient, everything, isHouse, isUser } from '../generated';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { ApolloServer } from 'apollo-server-express';
+import assert from 'assert';
+import sleep from 'await-sleep';
+import axios from 'axios';
+import express from 'express';
+import fs from 'fs';
+import { PubSub } from 'graphql-subscriptions';
+import { useServer } from 'graphql-ws/lib/use/ws';
+import { createServer } from 'http';
+import path from 'path';
+import { expectType } from 'tsd';
+import { DeepPartial } from 'tsdef';
+import { WebSocketServer } from 'ws';
 
 const id = () => null;
 
 const PORT = 8099;
-const URL = `http://localhost:` + PORT + "/graphql";
-const SUB_URL = `ws://localhost:` + PORT + "/graphql";
+const URL = `http://localhost:` + PORT + '/graphql';
+const SUB_URL = `ws://localhost:` + PORT + '/graphql';
 type Maybe<T> = T | undefined | null;
 
 async function server({ resolvers, port = PORT }) {
   try {
     const app = express();
     const httpServer = createServer(app);
-    const typeDefs = fs.readFileSync(path.join(__dirname, "..", "schema.graphql")).toString();
+    const typeDefs = fs.readFileSync(path.join(__dirname, '..', 'schema.graphql')).toString();
 
     const schema = makeExecutableSchema({
       typeDefs,
       resolvers,
       resolverValidationOptions: {
-        requireResolversForResolveType: "ignore",
+        requireResolversForResolveType: 'ignore',
       },
     });
 
     const wsServer = new WebSocketServer({
       server: httpServer,
-      path: "/graphql",
+      path: '/graphql',
     });
 
     const subscriptionServer = useServer({ schema }, wsServer);
@@ -57,20 +57,20 @@ async function server({ resolvers, port = PORT }) {
       ],
     });
     await server.start();
-    server.applyMiddleware({ app, path: "/graphql" });
-    await httpServer.listen(port).on("listening", () => {
+    server.applyMiddleware({ app, path: '/graphql' });
+    await httpServer.listen(port).on('listening', () => {
       console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
     return async () => httpServer.close() && (await server.stop());
   } catch (e) {
-    console.error("server had an error: " + e);
+    console.error('server had an error: ' + e);
     return () => null;
   }
 }
 
-describe("execute queries", async function () {
+describe('execute queries', async function () {
   const x: DeepPartial<User> = {
-    name: "John",
+    name: 'John',
   };
 
   const makeServer = () =>
@@ -80,32 +80,32 @@ describe("execute queries", async function () {
           user: () => {
             return x;
           },
-          unionThatImplementsInterface: ({ typename = "" } = {}) => {
+          unionThatImplementsInterface: ({ typename = '' } = {}) => {
             return {
-              message: "A message",
-              ownProp1: "Own prop 1",
-              ownProp2: "Own prop 2",
-              __typename: typename || "ClientErrorNameInvalid",
+              message: 'A message',
+              ownProp1: 'Own prop 1',
+              ownProp2: 'Own prop 2',
+              __typename: typename || 'ClientErrorNameInvalid',
             };
           },
-          someScalarValue: () => "someScalarValue",
+          someScalarValue: () => 'someScalarValue',
           repository: () => {
             return {
-              createdAt: "now",
+              createdAt: 'now',
             };
           },
           account: () => {
             return {
-              __typename: "User",
+              __typename: 'User',
               ...x,
             };
           },
           coordinates: () => {
             return {
-              __typename: "Bank",
-              x: "1",
-              y: "2",
-              address: "3",
+              __typename: 'Bank',
+              x: '1',
+              y: '2',
+              address: '3',
             };
           },
         },
@@ -116,7 +116,7 @@ describe("execute queries", async function () {
     try {
       await func();
     } catch (e) {
-      console.log("catch");
+      console.log('catch');
       console.error({ e });
       throw e;
     } finally {
@@ -126,11 +126,11 @@ describe("execute queries", async function () {
 
   let client = createClient({
     url: URL,
-    headers: () => ({ Auth: "xxx" }),
+    headers: () => ({ Auth: 'xxx' }),
   });
 
   it(
-    "simple ",
+    'simple ',
     withServer(async () => {
       const { data: res } = await client.query({
         user: {
@@ -142,7 +142,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "__typename is not optional",
+    '__typename is not optional',
     withServer(async () => {
       const { data: res } = await client.query({
         user: {
@@ -155,7 +155,7 @@ describe("execute queries", async function () {
   );
 
   it(
-    "scalar value with argument ",
+    'scalar value with argument ',
     withServer(async () => {
       const { data: res } = await client.query({
         someScalarValue: true,
@@ -168,7 +168,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "falsy values are not fetched ",
+    'falsy values are not fetched ',
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -183,7 +183,7 @@ describe("execute queries", async function () {
   );
 
   it(
-    "required field and nested fields",
+    'required field and nested fields',
     withServer(async () => {
       client
         .query({
@@ -195,8 +195,8 @@ describe("execute queries", async function () {
       const { data: res } = await client.query({
         repository: [
           {
-            name: "gqlts",
-            owner: "remorses",
+            name: 'gqlts',
+            owner: 'remorses',
           },
           {
             ...everything,
@@ -217,7 +217,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "chain syntax ",
+    'chain syntax ',
     withServer(async () => {
       const { data: res } = await client.query({
         user: {
@@ -232,7 +232,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "recursive type chain syntax ",
+    'recursive type chain syntax ',
     withServer(async () => {
       const { data: res } = await client.query({
         recursiveType: {
@@ -254,7 +254,7 @@ describe("execute queries", async function () {
   );
 
   it(
-    "union types only 1 on_ normal syntax",
+    'union types only 1 on_ normal syntax',
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -275,7 +275,7 @@ describe("execute queries", async function () {
   );
 
   it(
-    "union types chain syntax",
+    'union types chain syntax',
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -286,16 +286,16 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "chain syntax result type only has requested fields",
+    'chain syntax result type only has requested fields',
     withServer(async () => {
-      const { data: res } = await client.query({ repository: [{ name: "" }, { createdAt: 1 }] });
+      const { data: res } = await client.query({ repository: [{ name: '' }, { createdAt: 1 }] });
       expectType<string | undefined>(res?.repository?.createdAt);
       // @ts-expect-error
       res?.forks;
     })
   );
   it(
-    "union types with chain and ...everything",
+    'union types with chain and ...everything',
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -311,7 +311,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "many union types",
+    'many union types',
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -324,13 +324,13 @@ describe("execute queries", async function () {
       expectType<Maybe<string>>(account?.__typename);
       // common props are on both types
       expectType<Maybe<number>>(account?.common);
-      if (account && "anonymous" in account) {
+      if (account && 'anonymous' in account) {
         account?.anonymous;
       }
     })
   );
   it(
-    "ability to query interfaces that a union implements",
+    'ability to query interfaces that a union implements',
     withServer(async () => {
       const { data: res } = await client.query({
         unionThatImplementsInterface: {
@@ -349,16 +349,16 @@ describe("execute queries", async function () {
       });
       let unionThatImplementsInterface = res?.unionThatImplementsInterface;
 
-      if (unionThatImplementsInterface?.__typename === "ClientErrorNameInvalid") {
+      if (unionThatImplementsInterface?.__typename === 'ClientErrorNameInvalid') {
         assert.ok(unionThatImplementsInterface?.ownProp2);
       }
-      if (unionThatImplementsInterface?.__typename === "ClientErrorWithoutInterface") {
+      if (unionThatImplementsInterface?.__typename === 'ClientErrorWithoutInterface') {
         assert.ok(unionThatImplementsInterface?.ownProp3);
       }
     })
   );
   it(
-    "ability to query interfaces that a union implements, chain syntax",
+    'ability to query interfaces that a union implements, chain syntax',
     withServer(async () => {
       const { data: res } = await client.query({
         unionThatImplementsInterface: [
@@ -370,13 +370,13 @@ describe("execute queries", async function () {
         ],
       });
 
-      if (res?.unionThatImplementsInterface?.__typename === "ClientErrorNameInvalid") {
+      if (res?.unionThatImplementsInterface?.__typename === 'ClientErrorNameInvalid') {
         assert.ok(res?.unionThatImplementsInterface?.ownProp2);
       }
     })
   );
   it(
-    "interface types normal syntax",
+    'interface types normal syntax',
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -391,7 +391,7 @@ describe("execute queries", async function () {
       });
       let coordinates = res?.coordinates;
       expectType<Maybe<string>>(coordinates?.x);
-      if (coordinates && "address" in coordinates) {
+      if (coordinates && 'address' in coordinates) {
         expectType<Maybe<string>>(coordinates?.address);
         assert(coordinates?.address);
       }
@@ -401,7 +401,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "interface types chain syntax",
+    'interface types chain syntax',
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -412,7 +412,7 @@ describe("execute queries", async function () {
       });
       let coordinates = res?.coordinates;
       expectType<Maybe<string>>(coordinates?.x);
-      if (coordinates && "address" in coordinates) {
+      if (coordinates && 'address' in coordinates) {
         expectType<Maybe<string>>(coordinates?.address);
         assert(coordinates?.address);
         assert(coordinates?.x);
@@ -420,7 +420,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "multiple interfaces types normal syntax",
+    'multiple interfaces types normal syntax',
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -446,7 +446,7 @@ describe("execute queries", async function () {
       expectType<Maybe<string>>(coordinates?.__typename);
       assert(coordinates?.x);
       assert(coordinates?.__typename);
-      if ("address" in coordinates) {
+      if ('address' in coordinates) {
         coordinates?.address;
         coordinates?.x;
       } else if (isHouse(coordinates)) {
@@ -457,7 +457,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "batches requests",
+    'batches requests',
     withServer(async () => {
       let batchedQueryLength = -1;
       const client = createClient({
@@ -469,9 +469,9 @@ describe("execute queries", async function () {
           const res = await axios({
             url: URL,
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
-            method: "POST",
+            method: 'POST',
             data: JSON.stringify(body),
           });
           return res.data;
@@ -498,7 +498,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "headers function gets called every time",
+    'headers function gets called every time',
     withServer(async () => {
       let headersCalledNTimes = 0;
       const client = createClient({
@@ -526,7 +526,7 @@ describe("execute queries", async function () {
     })
   );
   it(
-    "async headers function gets called every time",
+    'async headers function gets called every time',
     withServer(async () => {
       let headersCalledNTimes = 0;
       const client = createClient({
@@ -555,12 +555,12 @@ describe("execute queries", async function () {
   );
 });
 
-describe("execute subscriptions", async function () {
+describe('execute subscriptions', async function () {
   const x: DeepPartial<User> = {
-    name: "John",
+    name: 'John',
   };
   const pubsub = new PubSub();
-  const USER_EVENT = "userxxx";
+  const USER_EVENT = 'userxxx';
 
   const makeServer = () =>
     server({
@@ -575,7 +575,7 @@ describe("execute subscriptions", async function () {
       },
     });
 
-  it("simple ", async () => {
+  it('simple ', async () => {
     const client = createClient({
       url: SUB_URL,
     });
@@ -599,7 +599,7 @@ describe("execute subscriptions", async function () {
           expectType<Maybe<number>>(x?.user?.common);
           console.log(x);
         },
-        complete: () => console.log("complete"),
+        complete: () => console.log('complete'),
         error: console.error,
       });
 
@@ -612,7 +612,7 @@ describe("execute subscriptions", async function () {
     // assert(deepEq(res.user, x))
   });
 
-  it("headers function gets called", async () => {
+  it('headers function gets called', async () => {
     let headersCalledNTimes = 0;
 
     const client = createClient({
@@ -644,7 +644,7 @@ describe("execute subscriptions", async function () {
           console.log(x);
           subscribeCalledNTimes++;
         },
-        complete: () => console.log("complete"),
+        complete: () => console.log('complete'),
         error: console.error,
       });
 
@@ -652,7 +652,7 @@ describe("execute subscriptions", async function () {
     await pubsub.publish(USER_EVENT, { user: x });
     await pubsub.publish(USER_EVENT, { user: x });
     await sleep(100);
-    assert.strictEqual(subscribeCalledNTimes, 2, "subscribeCalledNTimes");
+    assert.strictEqual(subscribeCalledNTimes, 2, 'subscribeCalledNTimes');
     // console.log(JSON.stringify(res, null, 2))
     sub.unsubscribe();
     client.wsClient!.dispose();

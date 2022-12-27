@@ -1,4 +1,4 @@
-exports["generate queries query 1"] = `
+exports['generate queries query 1'] = `
 query ($v1: String!, $v2: String) {
   repository(name: $v1, owner: $v2) {
     createdAt
@@ -20,7 +20,7 @@ fragment f1 on Fork {
 
 `;
 
-exports["generate queries recursive type 1"] = `
+exports['generate queries recursive type 1'] = `
 query {
   recursiveType {
     value
@@ -53,7 +53,7 @@ fragment f3 on RecursiveType {
 
 `;
 
-exports["generate queries recursive type with args 1"] = `
+exports['generate queries recursive type with args 1'] = `
 query ($v1: [String!]) {
   recursiveType(requiredVal: $v1) {
     value
@@ -86,7 +86,7 @@ fragment f3 on RecursiveType {
 
 `;
 
-exports["generate queries use __name operation name 1"] = `
+exports['generate queries use __name operation name 1'] = `
 subscription SomeName {
   user {
     ...f1
@@ -100,7 +100,7 @@ fragment f1 on User {
 
 `;
 
-exports["generate queries subscriptions 1"] = `
+exports['generate queries subscriptions 1'] = `
 subscription {
   user {
     ...f1
@@ -114,7 +114,7 @@ fragment f1 on User {
 
 `;
 
-exports["generate queries many 1"] = `
+exports['generate queries many 1'] = `
 query ($v1: String!, $v2: String) {
   repository(name: $v1, owner: $v2) {
     createdAt
@@ -144,7 +144,7 @@ fragment f2 on User {
 
 `;
 
-exports["generate queries do not fetch falsy fields 1"] = `
+exports['generate queries do not fetch falsy fields 1'] = `
 subscription {
   user {
     name
@@ -153,7 +153,7 @@ subscription {
 
 `;
 
-exports["generate queries do not fetch falsy fields with __scalar 1"] = `
+exports['generate queries do not fetch falsy fields with __scalar 1'] = `
 subscription {
   user {
     ...f1
