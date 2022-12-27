@@ -5,10 +5,7 @@
   "description": "",
   "keywords": [],
   "homepage": "https://gqlts.vercel.app",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/meabed/gqlts"
-  },
+  "repository": "github:meabed/gqlts",
   "license": "MIT",
   "author": {
     "name": "Mohamed Meabed",

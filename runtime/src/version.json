@@ -21,9 +21,7 @@
     "graphql-typescript-sdk"
   ],
   "homepage": "https://gqlts.vercel.app",
-  "repository": {
-    "url": "https://github.com/meabed/gqlts"
-  },
+  "repository": "github:meabed/gqlts",
   "license": "MIT",
   "author": "Meabed <mo@meabed.com>",
   "sideEffects": false,
