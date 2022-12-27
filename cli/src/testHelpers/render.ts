@@ -1,14 +1,14 @@
+import { readFileFromPath } from '../helpers/files';
+import { RenderContext } from '../render/common/RenderContext';
 import {
+  GraphQLNamedType,
+  GraphQLSchema,
   buildClientSchema,
   buildSchema,
   getIntrospectionQuery,
   graphql,
-  GraphQLNamedType,
-  GraphQLSchema,
-} from "graphql";
-import { BuiltInParserName } from "prettier";
-import { RenderContext } from "../render/common/RenderContext";
-import { readFileFromPath } from "../helpers/files";
+} from 'graphql';
+import { BuiltInParserName } from 'prettier';
 
 export interface TypeRenderer {
   (type: GraphQLNamedType, ctx: RenderContext): void;
@@ -75,11 +75,11 @@ export async function typeRenderTestCase(
     readFileFromPath([dirName, `cases/${file}.case.ts`]),
   ]);
 
-  const actualTs = await typeRenderTest(gql, renderer, typeNames, "typescript");
+  const actualTs = await typeRenderTest(gql, renderer, typeNames, 'typescript');
 
   if (output) {
     console.log(actualTs);
-    throw new Error("test case did not run");
+    throw new Error('test case did not run');
   } else {
     expect(actualTs).toBe(ts);
   }

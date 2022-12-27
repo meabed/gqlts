@@ -1,3 +1,11 @@
+import { RenderContext } from '../common/RenderContext';
+import { excludedTypes } from '../common/excludedTypes';
+import { sortKeys } from '../common/support';
+import { enumType } from './enumType';
+import { interfaceType } from './interfaceType';
+import { objectType } from './objectType';
+import { renderScalarTypes } from './scalarType';
+import { unionType } from './unionType';
 import {
   GraphQLObjectType,
   GraphQLScalarType,
@@ -7,15 +15,7 @@ import {
   isObjectType,
   isScalarType,
   isUnionType,
-} from "graphql";
-import { excludedTypes } from "../common/excludedTypes";
-import { RenderContext } from "../common/RenderContext";
-import { enumType } from "./enumType";
-import { objectType } from "./objectType";
-import { renderScalarTypes } from "./scalarType";
-import { unionType } from "./unionType";
-import { interfaceType } from "./interfaceType";
-import { sortKeys } from "../common/support";
+} from 'graphql';
 
 export function renderResponseTypes(schema: GraphQLSchema, ctx: RenderContext) {
   let typeMap = schema.getTypeMap();
@@ -40,13 +40,13 @@ export function renderResponseTypes(schema: GraphQLSchema, ctx: RenderContext) {
   }
 
   const aliases = [
-    { type: schema.getQueryType(), name: "Query" },
-    { type: schema.getMutationType(), name: "Mutation" },
-    { type: schema.getSubscriptionType(), name: "Subscription" },
+    { type: schema.getQueryType(), name: 'Query' },
+    { type: schema.getMutationType(), name: 'Mutation' },
+    { type: schema.getSubscriptionType(), name: 'Subscription' },
   ]
     .map(renderAlias)
     .filter(Boolean)
-    .join("\n");
+    .join('\n');
   ctx.addCodeBlock(aliases);
 }
 
@@ -54,5 +54,5 @@ function renderAlias({ type, name }: { type?: GraphQLObjectType | null; name: st
   if (type && type.name !== name) {
     return `export type ${name} = ${type.name}`;
   }
-  return "";
+  return '';
 }

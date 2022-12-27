@@ -1,7 +1,7 @@
 export class ClientError extends Error {
   constructor(errors?: readonly Error[]) {
     const message = ClientError.extractMessage(errors);
-    super(errors ? `${message}\n${errors.map((error) => JSON.stringify(error, null, 2)).join("\n")}` : message);
+    super(errors ? `${message}\n${errors.map((error) => JSON.stringify(error, null, 2)).join('\n')}` : message);
 
     new.target.prototype.name = new.target.name;
     Object.setPrototypeOf(this, new.target.prototype);

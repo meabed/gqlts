@@ -1,8 +1,8 @@
-import { GraphQLUnionType } from "graphql";
-import { flatten, uniq } from "lodash";
-import { typeComment } from "../common/comment";
-import { RenderContext } from "../common/RenderContext";
-import { requestTypeName } from "./requestTypeName";
+import { RenderContext } from '../common/RenderContext';
+import { typeComment } from '../common/comment';
+import { requestTypeName } from './requestTypeName';
+import { GraphQLUnionType } from 'graphql';
+import { flatten, uniq } from 'lodash';
 
 export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
   let types = type.getTypes();
@@ -19,11 +19,11 @@ export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
     })
   );
 
-  fieldStrings.push("__typename?: boolean | number");
+  fieldStrings.push('__typename?: boolean | number');
 
   ctx.addCodeBlock(
     `${typeComment(type)}export interface ${requestTypeName(type)}{\n${fieldStrings
-      .map((x) => "    " + x)
-      .join(",\n")}\n}`
+      .map((x) => '    ' + x)
+      .join(',\n')}\n}`
   );
 }

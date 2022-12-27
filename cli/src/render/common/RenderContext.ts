@@ -1,8 +1,8 @@
-import { GraphQLSchema } from "graphql";
-import { BuiltInParserName } from "prettier";
-import { Config } from "../../config";
-import { prettify } from "../../helpers/prettify";
-import { relativeImportPath } from "./relativeImportPath";
+import { Config } from '../../config';
+import { prettify } from '../../helpers/prettify';
+import { relativeImportPath } from './relativeImportPath';
+import { GraphQLSchema } from 'graphql';
+import { BuiltInParserName } from 'prettier';
 
 interface Import {
   isDefault: boolean;
@@ -56,33 +56,33 @@ export class RenderContext {
       const statements: string[] = [];
 
       if (defaultImport) {
-        statements.push(defaultImport.alias || "");
+        statements.push(defaultImport.alias || '');
       }
 
       if (namedImports.length > 0) {
-        statements.push(`{${namedImports.map((i) => (i.alias ? `${i.module} as ${i.alias}` : i.module)).join(",")}}`);
+        statements.push(`{${namedImports.map((i) => (i.alias ? `${i.module} as ${i.alias}` : i.module)).join(',')}}`);
       }
 
-      imports.push(`import ${statements.join(",")} from '${from}'`);
+      imports.push(`import ${statements.join(',')} from '${from}'`);
     });
 
-    if (imports.length > 0) return imports.join("\n");
+    if (imports.length > 0) return imports.join('\n');
     else return;
   }
 
   toCode(parser?: BuiltInParserName, pretty = false) {
     const blocks = [...this.codeBlocks];
 
-    if (parser && (parser === "typescript" || parser === "babel")) {
+    if (parser && (parser === 'typescript' || parser === 'babel')) {
       const importBlock = this.getImportBlock();
       if (importBlock) blocks.unshift(importBlock);
     }
     if (parser && pretty) {
-      return prettify(blocks.join("\n\n"), parser);
+      return prettify(blocks.join('\n\n'), parser);
     }
     if (parser) {
-      return blocks.join("\n\n");
+      return blocks.join('\n\n');
     }
-    return blocks.join("");
+    return blocks.join('');
   }
 }

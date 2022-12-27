@@ -7,4 +7,4 @@ export const excludedTypes = [
   '__EnumValue',
   '__Directive',
   '__DirectiveLocation',
-]
+];

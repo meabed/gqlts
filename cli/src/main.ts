@@ -1,11 +1,11 @@
-import { Config } from "./config";
-import Listr from "listr";
-import { clientTasks } from "./tasks/clientTasks";
-import { schemaTask } from "./tasks/schemaTask";
+import { Config } from './config';
+import { clientTasks } from './tasks/clientTasks';
+import { schemaTask } from './tasks/schemaTask';
+import Listr from 'listr';
 
 export function generate(config: Config): Promise<void> {
   if (!config.output) {
-    throw new Error("`output` must be defined in the config");
+    throw new Error('`output` must be defined in the config');
   }
 
   return new Listr(
@@ -15,7 +15,7 @@ export function generate(config: Config): Promise<void> {
         task: () => new Listr([schemaTask(config), ...clientTasks(config)]),
       },
     ],
-    { renderer: config.verbose ? "verbose" : "silent", exitOnError: false }
+    { renderer: config.verbose ? 'verbose' : 'silent', exitOnError: false }
   )
     .run()
     .catch((e) => {

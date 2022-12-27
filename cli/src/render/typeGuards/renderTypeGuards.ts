@@ -1,25 +1,25 @@
-import { GraphQLSchema, isInterfaceType, isObjectType, isUnionType } from "graphql";
-import { excludedTypes } from "../common/excludedTypes";
-import { RenderContext } from "../common/RenderContext";
+import { RenderContext } from '../common/RenderContext';
+import { excludedTypes } from '../common/excludedTypes';
+import { GraphQLSchema, isInterfaceType, isObjectType, isUnionType } from 'graphql';
 
 const renderTypeGuard = (target: string, possible: string[], mode) =>
-  mode == "ts"
+  mode == 'ts'
     ? `
-const ${target}_possibleTypes: string[] = [${possible.map((t) => `'${t}'`).join(",")}]
+const ${target}_possibleTypes: string[] = [${possible.map((t) => `'${t}'`).join(',')}]
 export const is${target} = (obj?: { __typename?: any } | null): obj is ${target} => {
   if (!obj?.__typename) throw new Error('__typename is missing in "is${target}"')
   return ${target}_possibleTypes.includes(obj.__typename)
 }
 `
     : `
-var ${target}_possibleTypes = [${possible.map((t) => `'${t}'`).join(",")}]
-${mode === "esm" ? "export var " : "module.exports."}is${target} = function(obj) {
+var ${target}_possibleTypes = [${possible.map((t) => `'${t}'`).join(',')}]
+${mode === 'esm' ? 'export var ' : 'module.exports.'}is${target} = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "is${target}"')
   return ${target}_possibleTypes.includes(obj.__typename)
 }
 `;
 
-export function renderTypeGuards(schema: GraphQLSchema, ctx: RenderContext, isJs: "ts" | "esm" | "cjs" = "ts") {
+export function renderTypeGuards(schema: GraphQLSchema, ctx: RenderContext, isJs: 'ts' | 'esm' | 'cjs' = 'ts') {
   const typeMap = schema.getTypeMap();
   for (const name in typeMap) {
     if (excludedTypes.includes(name)) continue;

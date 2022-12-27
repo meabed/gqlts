@@ -1,9 +1,9 @@
-import { assertValidSchema, lexicographicSortSchema } from "graphql";
-import { ListrTask } from "listr";
-import { Config } from "../config";
-import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
-import { fetchSchema } from "../schema/fetchSchema";
-import { loadSchema } from "@graphql-tools/load";
+import { Config } from '../config';
+import { fetchSchema } from '../schema/fetchSchema';
+import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
+import { loadSchema } from '@graphql-tools/load';
+import { assertValidSchema, lexicographicSortSchema } from 'graphql';
+import { ListrTask } from 'listr';
 
 export function schemaTask(config: Config): ListrTask {
   const processSchema = (schema) => {
@@ -16,7 +16,7 @@ export function schemaTask(config: Config): ListrTask {
   if (config.endpoint) {
     const endpoint = config.endpoint;
     return {
-      title: `fetching schema using ${config.useGet ? "GET" : "POST"} ${endpoint} and headers ${JSON.stringify(
+      title: `fetching schema using ${config.useGet ? 'GET' : 'POST'} ${endpoint} and headers ${JSON.stringify(
         config.headers
       )}`,
       task: async (ctx) => {
@@ -32,7 +32,7 @@ export function schemaTask(config: Config): ListrTask {
   } else if (config.schema) {
     const schema = config.schema;
     return {
-      title: "loading schema",
+      title: 'loading schema',
       task: async (ctx) => {
         // const options = config.options && config.options.schemaBuild
         const document = await loadSchema(schema, {
@@ -43,12 +43,12 @@ export function schemaTask(config: Config): ListrTask {
         try {
           assertValidSchema(ctx.schema);
         } catch (e: any) {
-          if (e.message === "Query root type must be provided.") return;
+          if (e.message === 'Query root type must be provided.') return;
           throw e;
         }
       },
     };
   } else {
-    throw new Error("either `endpoint`, `fetcher` or `schema` must be defined in the config");
+    throw new Error('either `endpoint`, `fetcher` or `schema` must be defined in the config');
   }
 }

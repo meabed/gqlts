@@ -1,28 +1,28 @@
-import Listr, { ListrTask } from "listr";
-import { Config } from "../config";
-import { ensurePath, writeFileToPath } from "../helpers/files";
-import { renderClientCjs, renderClientEsm } from "../render/client/renderClient";
-import { renderClientDefinition } from "../render/client/renderClientDefinition";
-import { RenderContext } from "../render/common/RenderContext";
-import { renderRequestTypes } from "../render/requestTypes/renderRequestTypes";
-import { renderResponseTypes } from "../render/responseTypes/renderResponseTypes";
-import { renderSchema } from "../render/schema/renderSchema";
-import { renderTypeGuards } from "../render/typeGuards/renderTypeGuards";
-import { renderTypeMap } from "../render/typeMap/renderTypeMap";
+import { Config } from '../config';
+import { ensurePath, writeFileToPath } from '../helpers/files';
+import { renderClientCjs, renderClientEsm } from '../render/client/renderClient';
+import { renderClientDefinition } from '../render/client/renderClientDefinition';
+import { RenderContext } from '../render/common/RenderContext';
+import { renderRequestTypes } from '../render/requestTypes/renderRequestTypes';
+import { renderResponseTypes } from '../render/responseTypes/renderResponseTypes';
+import { renderSchema } from '../render/schema/renderSchema';
+import { renderTypeGuards } from '../render/typeGuards/renderTypeGuards';
+import { renderTypeMap } from '../render/typeMap/renderTypeMap';
+import Listr, { ListrTask } from 'listr';
 
-const schemaGqlFile = "schema.graphql";
-const schemaTypesFile = "schema.ts";
-const guardsFileCjs = "guards.cjs.js";
-const guardsFileEsm = "guards.esm.js";
-const typeMapFileCjs = "types.cjs.js";
-const typeMapFileEsm = "types.esm.js";
-const clientFileCjs = "index.js";
-const clientTypesFile = "index.d.ts";
+const schemaGqlFile = 'schema.graphql';
+const schemaTypesFile = 'schema.ts';
+const guardsFileCjs = 'guards.cjs.js';
+const guardsFileEsm = 'guards.esm.js';
+const typeMapFileCjs = 'types.cjs.js';
+const typeMapFileEsm = 'types.esm.js';
+const clientFileCjs = 'index.js';
+const clientTypesFile = 'index.d.ts';
 
 export function clientTasks(config: Config): ListrTask[] {
-  const clientFileEsm = config.onlyEsModules ? "index.js" : "index.esm.js";
+  const clientFileEsm = config.onlyEsModules ? 'index.js' : 'index.esm.js';
 
-  if (!config.output) throw new Error("`output` must be defined in the config");
+  if (!config.output) throw new Error('`output` must be defined in the config');
 
   const output = config.output;
 
@@ -32,7 +32,7 @@ export function clientTasks(config: Config): ListrTask[] {
       task: async (ctx) => {
         const renderCtx = new RenderContext(ctx.schema, config);
         renderSchema(ctx.schema, renderCtx);
-        await writeFileToPath([output, schemaGqlFile], renderCtx.toCode("graphql"));
+        await writeFileToPath([output, schemaGqlFile], renderCtx.toCode('graphql'));
       },
     },
     {
@@ -44,7 +44,7 @@ export function clientTasks(config: Config): ListrTask[] {
         renderRequestTypes(ctx.schema, renderCtx);
         renderTypeGuards(ctx.schema, renderCtx);
 
-        await writeFileToPath([output, schemaTypesFile], renderCtx.toCode("typescript"));
+        await writeFileToPath([output, schemaTypesFile], renderCtx.toCode('typescript'));
       },
     },
     !config.onlyCJSModules && {
@@ -52,9 +52,9 @@ export function clientTasks(config: Config): ListrTask[] {
       task: async (ctx) => {
         const renderCtx = new RenderContext(ctx.schema, config);
 
-        renderTypeGuards(ctx.schema, renderCtx, "esm");
+        renderTypeGuards(ctx.schema, renderCtx, 'esm');
 
-        await writeFileToPath([output, guardsFileEsm], renderCtx.toCode("typescript"));
+        await writeFileToPath([output, guardsFileEsm], renderCtx.toCode('typescript'));
       },
     },
     !config.onlyEsModules && {
@@ -62,9 +62,9 @@ export function clientTasks(config: Config): ListrTask[] {
       task: async (ctx) => {
         const renderCtx = new RenderContext(ctx.schema, config);
 
-        renderTypeGuards(ctx.schema, renderCtx, "cjs");
+        renderTypeGuards(ctx.schema, renderCtx, 'cjs');
 
-        await writeFileToPath([output, guardsFileCjs], renderCtx.toCode("typescript"));
+        await writeFileToPath([output, guardsFileCjs], renderCtx.toCode('typescript'));
       },
     },
     {
@@ -88,7 +88,7 @@ export function clientTasks(config: Config): ListrTask[] {
         const renderCtx = new RenderContext(ctx.schema, config);
 
         renderClientCjs(ctx.schema, renderCtx);
-        await writeFileToPath([output, clientFileCjs], renderCtx.toCode("typescript", true));
+        await writeFileToPath([output, clientFileCjs], renderCtx.toCode('typescript', true));
       },
     },
     !config.onlyCJSModules && {
@@ -96,7 +96,7 @@ export function clientTasks(config: Config): ListrTask[] {
       task: async (ctx) => {
         const renderCtx = new RenderContext(ctx.schema, config);
         renderClientEsm(ctx.schema, renderCtx);
-        await writeFileToPath([output, clientFileEsm], renderCtx.toCode("typescript", true));
+        await writeFileToPath([output, clientFileEsm], renderCtx.toCode('typescript', true));
       },
     },
     {
@@ -106,14 +106,14 @@ export function clientTasks(config: Config): ListrTask[] {
 
         renderClientDefinition(ctx.schema, renderCtx);
 
-        await writeFileToPath([output, clientTypesFile], renderCtx.toCode("typescript", true));
+        await writeFileToPath([output, clientTypesFile], renderCtx.toCode('typescript', true));
       },
     },
   ];
 
   return [
     {
-      title: "preparing client directory",
+      title: 'preparing client directory',
       task: () => ensurePath([output], true),
     },
     {

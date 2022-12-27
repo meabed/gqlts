@@ -54,4 +54,4 @@ jobs:
       - name: Release
         run: |
           # npx semantic-release --no-ci --debug
-          multi-semantic-release --debug --no-ci --dry-run
+          npx multi-semantic-release --debug --no-ci --dry-run

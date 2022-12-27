@@ -1,18 +1,18 @@
+import { RenderContext } from '../common/RenderContext';
+import { fieldComment, typeComment } from '../common/comment';
+import { sortKeys } from '../common/support';
+import { toArgsString } from '../common/toArgsString';
+import { requestTypeName } from './requestTypeName';
 import {
-  getNamedType,
   GraphQLInterfaceType,
   GraphQLObjectType,
+  getNamedType,
   isEnumType,
   isInterfaceType,
   isScalarType,
-} from "graphql";
-import { fieldComment, typeComment } from "../common/comment";
-import { RenderContext } from "../common/RenderContext";
-import { toArgsString } from "../common/toArgsString";
-import { requestTypeName } from "./requestTypeName";
-import { sortKeys } from "../common/support";
+} from 'graphql';
 
-const INDENTATION = "    ";
+const INDENTATION = '    ';
 
 export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: RenderContext) {
   let fields = type.getFields();
@@ -43,11 +43,11 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
       if (resolvable) {
         types.push(`${requestTypeName(resolvedType)}`);
       } else {
-        types.push("boolean | number");
+        types.push('boolean | number');
       }
     }
 
-    return `${fieldComment(field)}${field.name}?: ${types.join(" | ")}`;
+    return `${fieldComment(field)}${field.name}?: ${types.join(' | ')}`;
   });
 
   if (isInterfaceType(type) && ctx.schema) {
@@ -58,17 +58,17 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
     fieldStrings = fieldStrings.concat(interfaceProperties);
   }
 
-  fieldStrings.push("__typename?: boolean | number");
-  fieldStrings.push("__scalar?: boolean | number");
+  fieldStrings.push('__typename?: boolean | number');
+  fieldStrings.push('__scalar?: boolean | number');
 
   // add indentation
   fieldStrings = fieldStrings.map((x) =>
     x
-      .split("\n")
+      .split('\n')
       .filter(Boolean)
       .map((l) => INDENTATION + l)
-      .join("\n")
+      .join('\n')
   );
 
-  ctx.addCodeBlock(`${typeComment(type)}export interface ${requestTypeName(type)}{\n${fieldStrings.join("\n")}\n}`);
+  ctx.addCodeBlock(`${typeComment(type)}export interface ${requestTypeName(type)}{\n${fieldStrings.join('\n')}\n}`);
 }

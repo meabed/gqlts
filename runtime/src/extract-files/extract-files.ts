@@ -1,4 +1,4 @@
-const fs = typeof window !== "undefined" ? null : eval('require("node:fs")');
+const fs = typeof window !== 'undefined' ? null : eval('require("node:fs")');
 const ReadStream = fs ? fs.ReadStream : null;
 
 export class ReactNativeFile {
@@ -15,14 +15,14 @@ export class ReactNativeFile {
 
 export function isExtractableFile(value) {
   return (
-    (typeof File !== "undefined" && value instanceof File) ||
-    (typeof Blob !== "undefined" && value instanceof Blob) ||
-    (ReadStream && typeof ReadStream !== "undefined" && value instanceof ReadStream) ||
+    (typeof File !== 'undefined' && value instanceof File) ||
+    (typeof Blob !== 'undefined' && value instanceof Blob) ||
+    (ReadStream && typeof ReadStream !== 'undefined' && value instanceof ReadStream) ||
     value instanceof ReactNativeFile
   );
 }
 
-export function extractFiles(value, path = "", isExtractableFileMethod = isExtractableFile) {
+export function extractFiles(value, path = '', isExtractableFileMethod = isExtractableFile) {
   // Map of extracted files and their object paths within the input value.
   const files = new Map();
 
@@ -51,7 +51,7 @@ export function extractFiles(value, path = "", isExtractableFileMethod = isExtra
 
       filePaths ? filePaths.push(path) : files.set(value, [path]);
     } else {
-      const isList = Array.isArray(value) || (typeof FileList !== "undefined" && value instanceof FileList);
+      const isList = Array.isArray(value) || (typeof FileList !== 'undefined' && value instanceof FileList);
       const isObject = value && value.constructor === Object;
 
       if (isList || isObject) {
@@ -65,7 +65,7 @@ export function extractFiles(value, path = "", isExtractableFileMethod = isExtra
         }
 
         if (!recursive.has(value)) {
-          const pathPrefix = path ? `${path}.` : "";
+          const pathPrefix = path ? `${path}.` : '';
           const recursiveDeeper = new Set(recursive).add(value);
 
           if (isList) {

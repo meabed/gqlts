@@ -1,2 +1,2 @@
-const { version } = require("../package.json");
+const { version } = require('../package.json');
 export { version };

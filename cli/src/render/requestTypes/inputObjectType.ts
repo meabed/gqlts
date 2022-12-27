@@ -1,8 +1,8 @@
-import { GraphQLInputObjectType } from "graphql";
-import { argumentComment, typeComment } from "../common/comment";
-import { RenderContext } from "../common/RenderContext";
-import { renderTyping } from "../common/renderTyping";
-import { sortKeys } from "../common/support";
+import { RenderContext } from '../common/RenderContext';
+import { argumentComment, typeComment } from '../common/comment';
+import { renderTyping } from '../common/renderTyping';
+import { sortKeys } from '../common/support';
+import { GraphQLInputObjectType } from 'graphql';
 
 export function inputObjectType(type: GraphQLInputObjectType, ctx: RenderContext) {
   let fields = type.getFields();
@@ -16,5 +16,5 @@ export function inputObjectType(type: GraphQLInputObjectType, ctx: RenderContext
     return `${argumentComment(field)}${field.name}${renderTyping(field.type, false, true)}`;
   });
 
-  ctx.addCodeBlock(`${typeComment(type)}export interface ${type.name} {${fieldStrings.join(",")}}`);
+  ctx.addCodeBlock(`${typeComment(type)}export interface ${type.name} {${fieldStrings.join(',')}}`);
 }

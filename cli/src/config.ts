@@ -1,4 +1,4 @@
-export const RUNTIME_LIB_NAME = "@gqlts/runtime";
+export const RUNTIME_LIB_NAME = '@gqlts/runtime';
 
 export interface Config {
   verbose?: boolean;

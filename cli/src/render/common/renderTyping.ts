@@ -6,7 +6,7 @@ import {
   isNamedType,
   isNonNullType,
   isScalarType,
-} from "graphql";
+} from 'graphql';
 
 const render = (
   type: GraphQLOutputType | GraphQLInputType,
@@ -56,7 +56,7 @@ const render = (
     }
   }
 
-  return render((<GraphQLNonNull<any>>type).ofType, true, false, undefinableValues, undefinableFields, wrap);
+  return render((type as GraphQLNonNull<any>).ofType, true, false, undefinableValues, undefinableFields, wrap);
 };
 
 export function renderTyping(

@@ -1,4 +1,8 @@
-import { ArgMap, CompressedField, CompressedFieldMap, CompressedTypeMap, TypeMap } from "@gqlts/runtime/dist/types";
+import { RenderContext } from '../common/RenderContext';
+import { excludedTypes } from '../common/excludedTypes';
+import { objectType } from './objectType';
+import { unionType } from './unionType';
+import { ArgMap, CompressedField, CompressedFieldMap, CompressedTypeMap, TypeMap } from '@gqlts/runtime/dist/types';
 import {
   GraphQLSchema,
   isEnumType,
@@ -7,11 +11,7 @@ import {
   isObjectType,
   isScalarType,
   isUnionType,
-} from "graphql";
-import { excludedTypes } from "../common/excludedTypes";
-import { RenderContext } from "../common/RenderContext";
-import { objectType } from "./objectType";
-import { unionType } from "./unionType";
+} from 'graphql';
 
 export function renderTypeMap(schema: GraphQLSchema, ctx: RenderContext) {
   // remove fields key,
@@ -37,21 +37,21 @@ export function renderTypeMap(schema: GraphQLSchema, ctx: RenderContext) {
 
   // change names of query, mutation on schemas that chose different names (hasura)
   const q = schema.getQueryType();
-  if (q?.name && q?.name !== "Query") {
+  if (q?.name && q?.name !== 'Query') {
     delete result.types[q.name];
     result.types.Query = objectType(q, ctx);
     // result.Query.name = 'Query'
   }
 
   const m = schema.getMutationType();
-  if (m?.name && m.name !== "Mutation") {
+  if (m?.name && m.name !== 'Mutation') {
     delete result.types[m.name];
     result.types.Mutation = objectType(m, ctx);
     // result.Mutation.name = 'Mutation'
   }
 
   const s = schema.getSubscriptionType();
-  if (s?.name && s.name !== "Subscription") {
+  if (s?.name && s.name !== 'Subscription') {
     delete result.types[s.name];
     result.types.Subscription = objectType(s, ctx);
     // result.Subscription.name = 'Subscription'
@@ -77,7 +77,7 @@ export function replaceTypeNamesWithIndexes(typeMap: TypeMap<string>): Compresse
         ...Object.keys(fieldsMap).map((f): CompressedFieldMap<number> => {
           const content = fieldsMap[f] as any;
           if (!content) {
-            throw new Error("no content in field " + f);
+            throw new Error('no content in field ' + f);
           }
           const [typeName, args] = [content.type, content.args];
           const res: CompressedField<number> = [typeName ? nameToIndex[typeName] : -1];
@@ -87,7 +87,7 @@ export function replaceTypeNamesWithIndexes(typeMap: TypeMap<string>): Compresse
               ...Object.keys(args || {}).map((k) => {
                 const arg = args?.[k];
                 if (!arg) {
-                  throw new Error("replaceTypeNamesWithIndexes: no arg for " + k);
+                  throw new Error('replaceTypeNamesWithIndexes: no arg for ' + k);
                 }
                 return {
                   [k]: [nameToIndex[arg[0]], ...arg.slice(1)],

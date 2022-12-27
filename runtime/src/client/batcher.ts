@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from 'axios';
 
 type Variables = Record<string, any>;
 type Query = {
@@ -60,7 +60,7 @@ function dispatchQueueBatch(client: QueryBatcher, queue: Queue, config?: AxiosRe
       queue[0].resolve(responses);
       return;
     } else if (responses.length !== queue.length) {
-      throw new Error("response length did not match query length");
+      throw new Error('response length did not match query length');
     }
 
     for (let i = 0; i < queue.length; i++) {

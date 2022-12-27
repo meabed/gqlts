@@ -1,13 +1,13 @@
-import { GraphQLEnumType, GraphQLSchema, isEnumType } from "graphql";
-import { RenderContext } from "../common/RenderContext";
-import { RUNTIME_LIB_NAME } from "../../config";
-import { excludedTypes } from "../common/excludedTypes";
-import camelCase from "lodash/camelCase";
+import { RUNTIME_LIB_NAME } from '../../config';
+import { RenderContext } from '../common/RenderContext';
+import { excludedTypes } from '../common/excludedTypes';
+import { GraphQLEnumType, GraphQLSchema, isEnumType } from 'graphql';
+import camelCase from 'lodash/camelCase';
 
-const { version } = require("../../../package.json");
+const { version } = require('../../../package.json');
 
 function renderClientCode(ctx: RenderContext) {
-  const url = ctx.config?.endpoint ? `"${ctx.config.endpoint}"` : "undefined";
+  const url = ctx.config?.endpoint ? `"${ctx.config.endpoint}"` : 'undefined';
   return `
 function(options) {
     options = options || {}
@@ -24,7 +24,7 @@ function(options) {
 }`;
 }
 
-export function renderEnumsMaps(schema: GraphQLSchema, moduleType: "esm" | "cjs" | "type") {
+export function renderEnumsMaps(schema: GraphQLSchema, moduleType: 'esm' | 'cjs' | 'type') {
   let typeMap = schema.getTypeMap();
 
   const enums: GraphQLEnumType[] = [];
@@ -37,38 +37,38 @@ export function renderEnumsMaps(schema: GraphQLSchema, moduleType: "esm" | "cjs"
       enums.push(type);
     }
   }
-  if (enums.length === 0) return "";
+  if (enums.length === 0) return '';
   const declaration = (() => {
-    if (moduleType === "esm") {
-      return "export const ";
-    } else if (moduleType === "cjs") {
-      return "module.exports.";
-    } else if (moduleType === "type") {
-      return "export declare const ";
+    if (moduleType === 'esm') {
+      return 'export const ';
+    } else if (moduleType === 'cjs') {
+      return 'module.exports.';
+    } else if (moduleType === 'type') {
+      return 'export declare const ';
     }
-    return "";
+    return '';
   })();
   return enums
     .map(
       (type) =>
-        `${declaration}${camelCase("enum" + type.name)}${moduleType === "type" ? ": " : " = "}{\n` +
+        `${declaration}${camelCase('enum' + type.name)}${moduleType === 'type' ? ': ' : ' = '}{\n` +
         type
           .getValues()
           .map((v) => {
             if (!v?.name) {
-              return "";
+              return '';
             }
-            return `  ${moduleType === "type" ? "readonly " : ""}${v.name}: '${v.name}'`;
+            return `  ${moduleType === 'type' ? 'readonly ' : ''}${v.name}: '${v.name}'`;
           })
-          .join(",\n") +
+          .join(',\n') +
         `\n}\n`
     )
-    .join("\n");
+    .join('\n');
 }
 
 export function renderClientCjs(schema: GraphQLSchema, ctx: RenderContext) {
-  const prefix = ctx.config?.methodPrefix || "";
-  const suffix = ctx.config?.methodSuffix || "";
+  const prefix = ctx.config?.methodPrefix || '';
+  const suffix = ctx.config?.methodSuffix || '';
   ctx.addCodeBlock(`
   const {
       linkTypeMap,
@@ -85,7 +85,7 @@ export function renderClientCjs(schema: GraphQLSchema, ctx: RenderContext) {
 
   module.exports.${prefix}createClient${suffix} = ${renderClientCode(ctx)}
 
-  ${renderEnumsMaps(schema, "cjs")}
+  ${renderEnumsMaps(schema, 'cjs')}
 
   module.exports.generateQueryOp = function(fields) {
     return generateGraphqlOperation('query', typeMap.Query, fields)
@@ -108,8 +108,8 @@ export function renderClientCjs(schema: GraphQLSchema, ctx: RenderContext) {
 }
 
 export function renderClientEsm(schema: GraphQLSchema, ctx: RenderContext) {
-  const prefix = ctx.config?.methodPrefix || "";
-  const suffix = ctx.config?.methodSuffix || "";
+  const prefix = ctx.config?.methodPrefix || '';
+  const suffix = ctx.config?.methodSuffix || '';
   ctx.addCodeBlock(`
   import {
       linkTypeMap,
@@ -126,7 +126,7 @@ export function renderClientEsm(schema: GraphQLSchema, ctx: RenderContext) {
 
   export var ${prefix}createClient${suffix} = ${renderClientCode(ctx)}
 
-  ${renderEnumsMaps(schema, "esm")}
+  ${renderEnumsMaps(schema, 'esm')}
 
   export var generateQueryOp = function(fields) {
     return generateGraphqlOperation('query', typeMap.Query, fields)

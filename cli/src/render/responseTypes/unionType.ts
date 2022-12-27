@@ -1,6 +1,6 @@
-import { GraphQLUnionType } from "graphql";
-import { RenderContext } from "../common/RenderContext";
-import { typeComment } from "../common/comment";
+import { RenderContext } from '../common/RenderContext';
+import { typeComment } from '../common/comment';
+import { GraphQLUnionType } from 'graphql';
 
 // union should produce an object like
 // export type ChangeCard = {
@@ -16,7 +16,7 @@ export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
   if (ctx.config?.sortProperties) {
     typeNames = typeNames.sort();
   }
-  ctx.addCodeBlock(`${typeComment(type)}export type ${type.name} = (${typeNames.join(" | ")}) & { __isUnion?: true }`);
+  ctx.addCodeBlock(`${typeComment(type)}export type ${type.name} = (${typeNames.join(' | ')}) & { __isUnion?: true }`);
 }
 
 // export const unionType = (type: GraphQLUnionType, ctx: RenderContext) => {
