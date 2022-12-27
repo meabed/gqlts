@@ -48,7 +48,7 @@ jobs:
 
       - name: Release Prep
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits semantic-release-monorepo
+          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer semantic-release-monorepo
 
       - name: Release
         run: |
