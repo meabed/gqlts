@@ -52,4 +52,4 @@ jobs:
 
       - name: Release
         run: |
-          npx lerna exec --concurrency 1 -- semantic-release --debug --no-ci --dry-run
+          npx lerna exec --concurrency 1 -- semantic-release -e semantic-release-multi --debug --no-ci

@@ -37,11 +37,7 @@
   ],
   "workspaces": [
     "cli",
-    "runtime",
-    "website",
-    "example-usage",
-    "try-clients",
-    "integration-tests"
+    "runtime"
   ],
   "scripts": {
     "buildall": "ultra -r --filter '@gqlts/*' --topology build",
