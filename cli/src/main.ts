@@ -19,7 +19,7 @@ export function generate(config: Config): Promise<void> {
   )
     .run()
     .catch((e) => {
-      // cconsole.log(e)
+      // console.log(e)
       throw e?.errors?.[0];
     });
 }
