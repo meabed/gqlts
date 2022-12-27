@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
+    permissions:
+      packages: write
+      contents: write
+
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - uses: styfle/cancel-workflow-action@0.11.0
@@ -44,8 +48,10 @@ jobs:
 
       - name: Release Prep
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits
+          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits semantic-release-monorepo
 
       - name: Release
         run: |
-          npx multi-semantic-release --debug --no-ci --dry-run
+          # npx semantic-release --no-ci --debug
+          # npx multi-semantic-release --debug --no-ci --dry-run
+          npx lerna exec --concurrency 1 -- semantic-release -e semantic-release-monorepo --debug --no-ci --dry-run
