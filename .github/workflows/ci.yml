@@ -53,8 +53,8 @@ jobs:
 
       - name: Release Prep
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/npm @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/release-notes-generator semantic-release-monorepo
+          npm i -g semantic-release @semantic-release/git @semantic-release/npm @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/release-notes-generator semantic-release-multi
 
       - name: Release
         run: |
-          npx lerna exec --concurrency 1 -- semantic-release -e semantic-release-monorepo --debug --no-ci --dry-run
+          npx lerna exec --concurrency 1 -- semantic-release --debug --no-ci --dry-run
