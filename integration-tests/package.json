@@ -1,5 +1,5 @@
 {
-  "name": "integration-tests",
+  "name": "@gqlts/integration-tests",
   "version": "3.2.10",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
