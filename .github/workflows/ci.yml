@@ -4,11 +4,12 @@ on:
   workflow_call:
   push:
     paths:
-      - 'src/**'
-      - '__tests__/**'
+      - 'cli/**'
+      - 'runtime/**'
       - 'package.json'
       - 'yarn.lock'
       - 'release.config.js'
+      - '.github/workflows/ci.yml'
     branches:
       - '*'
       - '**'
@@ -46,8 +47,9 @@ jobs:
 
       - name: Release Prep
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits
+          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits multi-semantic-release
 
       - name: Release
         run: |
-          npx semantic-release --no-ci --debug
+          # npx semantic-release --no-ci --debug
+          multi-semantic-release --debug --no-ci --dry-run
