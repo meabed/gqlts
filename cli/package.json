@@ -1,6 +1,6 @@
 {
   "name": "@gqlts/cli",
-  "version": "3.2.10",
+  "version": "3.2.11-beta.1",
   "description": "Generate a client sdk from your GraphQl API",
   "keywords": [
     "gqlts",
