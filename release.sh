@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 releaseFlags=$1
 
 cd ./runtime
@@ -17,7 +19,7 @@ echo "runtimeVersion: $runtimeVersion"
 
 cd ../cli
 echo "Building cli..."
-yarn install @gqlts/runtime@$runtimeVersion
+yarn add @gqlts/runtime@$runtimeVersion
 yarn build
 echo "Cli built."
 yarn test
@@ -31,8 +33,9 @@ echo "cliVersion: $cliVersion"
 echo "Updating repo..."
 cd ../
 # update package.json version to 2.0.0
-npm version $runtimeVersion --no-git-tag-version --allow-same-version --no-commit-hooks
+npm version $runtimeVersion --no-git-tag-version --allow-same-version --no-commit-hooks --workspace-update=false
 lerna version $runtimeVersion --no-git-tag-version --no-push --yes
+rm package-lock.json
 yarn install
 yarn buildall
 yarn test
