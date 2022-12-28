@@ -43,6 +43,12 @@ export interface NexusGenObjects {
   v1AddUserOutput: { // root type
     name?: string | null; // String
   }
+  v1DeleteUserOutput: { // root type
+    name?: string | null; // String
+  }
+  v1SatHelloOutput: { // root type
+    name?: string | null; // String
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -57,12 +63,19 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Mutation: { // field return type
-    v1AddUser: NexusGenRootTypes['v1AddUserOutput'] | null; // v1AddUserOutput
+    v1AddUser: NexusGenRootTypes['v1AddUserOutput']; // v1AddUserOutput!
+    v1DeleteUser: NexusGenRootTypes['v1DeleteUserOutput']; // v1DeleteUserOutput!
   }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    v1SatHello: NexusGenRootTypes['v1SatHelloOutput']; // v1SatHelloOutput!
   }
   v1AddUserOutput: { // field return type
+    name: string | null; // String
+  }
+  v1DeleteUserOutput: { // field return type
+    name: string | null; // String
+  }
+  v1SatHelloOutput: { // field return type
     name: string | null; // String
   }
 }
@@ -70,11 +83,18 @@ export interface NexusGenFieldTypes {
 export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     v1AddUser: 'v1AddUserOutput'
+    v1DeleteUser: 'v1DeleteUserOutput'
   }
   Query: { // field return type name
-    ok: 'Boolean'
+    v1SatHello: 'v1SatHelloOutput'
   }
   v1AddUserOutput: { // field return type name
+    name: 'String'
+  }
+  v1DeleteUserOutput: { // field return type name
+    name: 'String'
+  }
+  v1SatHelloOutput: { // field return type name
     name: 'String'
   }
 }
@@ -82,7 +102,15 @@ export interface NexusGenFieldTypeNames {
 export interface NexusGenArgTypes {
   Mutation: {
     v1AddUser: { // args
-      name?: string | null; // String
+      name: string; // String!
+    }
+    v1DeleteUser: { // args
+      name: string; // String!
+    }
+  }
+  Query: {
+    v1SatHello: { // args
+      name: string; // String!
     }
   }
 }

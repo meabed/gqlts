@@ -1,17 +1,35 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
-    "target": "es2016",
+    "incremental": true,
+    "outDir": "./dist/",
+    "target": "ES6",
+    "lib": [
+      "ESNext"
+    ],
     "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "noEmit": true,
-    "resolveJsonModule": true
+    "skipLibCheck": true,
+    "pretty": true,
+    "declaration": true,
+    "sourceMap": false,
+    "inlineSourceMap": true
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
-    "node_modules",
-    "../node_modules"
-  ]
+    "dist",
+    "node_modules"
+  ],
+  "ts-node": {
+    "transpileOnly": true
+  }
 }

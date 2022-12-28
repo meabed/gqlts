@@ -1,9 +1,9 @@
-import { schema } from './graphql';
+import { appSchema } from './graphql';
 import { createYoga } from 'graphql-yoga';
 import { createServer } from 'node:http';
 
 const yoga = createYoga({
-  schema: schema,
+  schema: appSchema,
   landingPage: false,
   multipart: true,
   parserCache: true,

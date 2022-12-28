@@ -1,31 +1,28 @@
-import { arg, objectType, subscriptionField } from 'nexus';
+import { arg, mutationField, objectType } from 'nexus';
 
 const input = {
   name: arg({ type: 'String', required: true }),
 };
 
 const output = objectType({
-  name: 'v1ListUsersOutput',
+  name: 'v1DeleteUserOutput',
   definition(t) {
     t.field('name', { type: 'String' });
   },
 });
 
-export const field = subscriptionField('v1ListUsers', {
+export const field = mutationField('v1DeleteUser', {
   type: output,
-  args: input,
   required: true,
+  args: input,
   async resolve(_root, args, ctx, _info) {
     const { name } = args;
+
     return {};
-  },
-  async subscribe(_root, args, ctx, _info) {
-    const { name } = args;
-    return undefined;
   },
 });
 
-export const v1ListUsers = {
+export const v1DeleteUser = {
   field,
   input,
   output,

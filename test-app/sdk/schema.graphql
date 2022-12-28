@@ -3,13 +3,22 @@
 
 
 type Mutation {
-  v1AddUser(name: String): v1AddUserOutput
+  v1AddUser(name: String!): v1AddUserOutput!
+  v1DeleteUser(name: String!): v1DeleteUserOutput!
 }
 
 type Query {
-  ok: Boolean!
+  v1SatHello(name: String!): v1SatHelloOutput!
 }
 
 type v1AddUserOutput {
+  name: String
+}
+
+type v1DeleteUserOutput {
+  name: String
+}
+
+type v1SatHelloOutput {
   name: String
 }

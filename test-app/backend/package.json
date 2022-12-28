@@ -1,5 +1,22 @@
 {
   "name": "test-app-backend",
+  "version": "3.2.10",
+  "private": true,
+  "homepage": "https://gqlts.vercel.app",
+  "repository": "github:meabed/gqlts",
+  "license": "MIT",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
   "scripts": {
     "dev": "ts-node src/index.ts"
   },

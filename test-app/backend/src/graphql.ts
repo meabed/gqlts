@@ -1,4 +1,6 @@
 import { v1AddUser } from './mutation/v1-add-user.mutation';
+import { v1DeleteUser } from './mutation/v1-delete-user.mutation';
+import { v1SatHello } from './query/v1-say-hello.query';
 import {
   connectionPlugin,
   declarativeWrappingPlugin,
@@ -7,8 +9,8 @@ import {
   queryComplexityPlugin,
 } from 'nexus';
 
-const allSchemas = [v1AddUser];
-export const schema = makeSchema({
+const allSchemas = [v1SatHello, v1AddUser, v1DeleteUser, v1DeleteUser];
+export const appSchema = makeSchema({
   types: allSchemas,
   outputs: {
     schema: __dirname + `/../../sdk/schema.graphql`,
@@ -29,7 +31,7 @@ export const schema = makeSchema({
   shouldExitAfterGenerateArtifacts: process.argv.includes('--exit-after-generate-schema'),
   plugins: [
     // nexus-plugins
-    declarativeWrappingPlugin({ disable: false }),
+    declarativeWrappingPlugin(),
     connectionPlugin(),
     fieldAuthorizePlugin(),
     queryComplexityPlugin(),
