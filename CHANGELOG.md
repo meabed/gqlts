@@ -1,3 +1,11 @@
+# Changelog
+
+## [3.2.11 (2022-12-28)](/compare/v3.2.10...v3.2.11)
+- Upgrade axios
+- Update dependencies
+- Refactor code ( prettier )
+- Refactor tests
+
 ## 3.2.10
 - Downgrade axios to 0.27.2 as there is some issues: https://github.com/axios/axios/issues/5005
 - Upgrade dependencies

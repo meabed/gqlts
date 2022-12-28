@@ -225,7 +225,7 @@ describe('execute queries', async function () {
           // sdf: true,
         },
       });
-      console.log(JSON.stringify(res, null, 2));
+      // console.log(JSON.stringify(res, null, 2));
       expectType<Maybe<string>>(res?.user?.name);
       expectType<Maybe<number>>(res?.user?.common);
       expectType<Maybe<string>>(res?.user?.__typename);
@@ -246,7 +246,7 @@ describe('execute queries', async function () {
           },
         },
       });
-      console.log(JSON.stringify(res, null, 2));
+      // console.log(JSON.stringify(res, null, 2));
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.value);
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.recurse?.value);
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.value);
@@ -270,7 +270,7 @@ describe('execute queries', async function () {
       let account = res?.account;
       assert(account?.__typename);
       expectType<Maybe<Account>>(account);
-      console.log(account);
+      // console.log(account);
     })
   );
 
@@ -439,7 +439,7 @@ describe('execute queries', async function () {
         },
       });
       let coordinates = res?.coordinates;
-      console.log(coordinates);
+      // console.log(coordinates);
 
       expectType<Maybe<string>>(coordinates?.x);
       expectType<Maybe<Point>>(coordinates);
@@ -492,7 +492,7 @@ describe('execute queries', async function () {
           },
         }),
       ]);
-      console.log(JSON.stringify(res, null, 2));
+      // console.log(JSON.stringify(res, null, 2));
       assert.strictEqual(res?.length, 2);
       assert.strictEqual(batchedQueryLength, 2);
     })
