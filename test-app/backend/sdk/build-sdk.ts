@@ -60,7 +60,7 @@ module.exports.createClient`
     'export interface Client',
     `
 export type ServiceUrlMap = {
-  [serviceName: "local" | "development" | "stage" | "production"]: string
+  [serviceName in "local" | "development" | "stage" | "production"]: string
 }
 export declare const getServiceUrl: (env?: string) => { apiUrl:string, graphqlUrl:string, env: string }
 export interface Client`
