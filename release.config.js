@@ -49,16 +49,12 @@ module.exports = {
         ],
       },
     ],
-    // https://github.com/semantic-release/github
-    publishGitHub && [
-      '@semantic-release/github',
+    [
+      '@semantic-release/exec',
       {
-        successComment: false,
-        failComment: false,
+        publishCmd: './publish.sh ${nextRelease.version} ${branch.name} ${commits.length} ${Date.now()}',
       },
     ],
-    // https://github.com/semantic-release/npm
-    publishNPM && ['@semantic-release/npm'],
     // https://github.com/semantic-release/git
     isMaster && [
       '@semantic-release/git',

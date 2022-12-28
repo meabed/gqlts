@@ -2,10 +2,13 @@
 
 set -e
 
-releaseFlags=$1
+pkgVersion=$1
+branch=$2
+commitLength=$3
+date=$4
 
-semantic-release --debug --no-ci $releaseFlags
-pkgVersion=$(node -p "require('./package.json').version")
+echo "Publishing version $pkgVersion - $branch - $commitLength - $date"
+
 echo "pkgVersion: $pkgVersion"
 npm version $pkgVersion --no-git-tag-version --allow-same-version --no-commit-hooks --workspace-update=false
 lerna version $pkgVersion --no-git-tag-version --no-push --yes
@@ -17,7 +20,6 @@ yarn test
 echo "Updating repo..."
 git add .
 git commit -m "chore(release): update packages to $pkgVersion [skip ci]"
-PUBLISH_GITHUB=true semantic-release --debug --no-ci $releaseFlags
 echo "Repo pushed."
 
 cd ./runtime

@@ -50,8 +50,8 @@ jobs:
 
       - name: Release Prep
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/npm @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/release-notes-generator
+          npm i -g semantic-release @semantic-release/git @semantic-release/npm @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/exec
 
       - name: Release
         run: |
-          bash ./release.sh
+          semantic-release --debug --no-ci
