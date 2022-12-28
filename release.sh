@@ -4,43 +4,32 @@ set -e
 
 releaseFlags=$1
 
-cd ./runtime
-echo "Building runtime..."
-yarn install
-yarn build
-echo "Runtime built."
-yarn test
-echo "Runtime tests passed."
-echo "Publishing runtime..."
 semantic-release --debug --no-ci $releaseFlags
-echo "Runtime published."
-runtimeVersion=$(node -p -e "require('./package.json').version")
-echo "runtimeVersion: $runtimeVersion"
+pkgVersion=$(node -p "require('./package.json').version")
+echo "pkgVersion: $pkgVersion"
+npm version $pkgVersion --no-git-tag-version --allow-same-version --no-commit-hooks --workspace-update=false
+lerna version $pkgVersion --no-git-tag-version --no-push --yes
 
-cd ../cli
-echo "Building cli..."
-yarn add @gqlts/runtime@$runtimeVersion
-yarn build
-echo "Cli built."
+yarn install --frozen-lockfile
+yarn buildall
 yarn test
-echo "Cli tests passed."
-echo "Publishing cli..."
-semantic-release --debug --no-ci $releaseFlags
-echo "Cli published."
-cliVersion=$(node -p -e "require('./package.json').version")
-echo "cliVersion: $cliVersion"
 
 echo "Updating repo..."
 cd ../
-# update package.json version to 2.0.0
-npm version $runtimeVersion --no-git-tag-version --allow-same-version --no-commit-hooks --workspace-update=false
-lerna version $runtimeVersion --no-git-tag-version --no-push --yes
-rm package-lock.json
-yarn install
-yarn buildall
-yarn test
-echo "Repo updated."
 git add .
-git commit -m "chore: update repo to $runtimeVersion [skip ci]"
+git commit -m "chore(release): update repo to $pkgVersion [skip ci]"
 git push
+git push --tags
 echo "Repo pushed."
+
+cd ./runtime
+runtimeVersion=$(node -p -e "require('./package.json').version")
+echo "runtimeVersion: $runtimeVersion"
+npm publish --access public
+
+cd ../cli
+cliVersion=$(node -p -e "require('./package.json').version")
+echo "cliVersion: $cliVersion"
+npm publish --access public
+
+echo "Done."

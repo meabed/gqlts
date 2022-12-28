@@ -3,8 +3,8 @@ const pkg = require('./package.json');
 const branch = process.env.BRANCH || process.env.CI_REF_NAME || '';
 const branchSlug = branch.replace(/\//g, '-');
 const branchPrefix = branch.split('/')[0];
-
 const isMaster = branch === 'master' || branch === 'main';
+const publishNPM = process.env.PUBLISH_NPM === 'true';
 // semantic-release configuration
 module.exports = {
   branches: [
@@ -27,7 +27,6 @@ module.exports = {
     { name: branchSlug, prerelease: 'alpha' },
     { name: `${branchPrefix}/**`, prerelease: 'alpha' },
   ],
-  tagFormat: `${pkg.name}-v\${version}`,
   plugins: [
     [
       '@semantic-release/commit-analyzer',
@@ -49,8 +48,6 @@ module.exports = {
         ],
       },
     ],
-    // https://github.com/semantic-release/npm
-    ['@semantic-release/npm'],
     // https://github.com/semantic-release/github
     [
       '@semantic-release/github',
@@ -59,11 +56,13 @@ module.exports = {
         failComment: false,
       },
     ],
+    // https://github.com/semantic-release/npm
+    publishNPM && ['@semantic-release/npm'],
     // https://github.com/semantic-release/git
     isMaster && [
       '@semantic-release/git',
       {
-        assets: ['package.json', 'package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json', 'CHANGELOG.md'],
+        assets: ['package.json', 'yarn.lock', 'npm-shrinkwrap.json', 'CHANGELOG.md'],
         message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
         GIT_AUTHOR_NAME: pkg.author.name,
         GIT_AUTHOR_EMAIL: pkg.author.email,
