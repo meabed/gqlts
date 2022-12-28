@@ -7,3 +7,4 @@ yarn dev --exit-after-generate-schema
 yarn build
 yarn start --exit-after-generate-schema
 yarn build-sdk
+yarn test
