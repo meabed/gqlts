@@ -7,7 +7,6 @@ const branchPrefix = branch.split('/')[0];
 const isMaster = branch === 'master' || branch === 'main';
 // semantic-release configuration
 module.exports = {
-  extends: 'semantic-release-multi',
   branches: [
     {
       name: 'master',
@@ -25,8 +24,8 @@ module.exports = {
       name: 'develop',
       prerelease: 'beta',
     },
-    // { name: branchSlug, prerelease: 'alpha' },
-    // { name: `${branchPrefix}/**`, prerelease: 'alpha' }
+    { name: branchSlug, prerelease: 'alpha' },
+    { name: `${branchPrefix}/**`, prerelease: 'alpha' },
   ],
   plugins: [
     [
