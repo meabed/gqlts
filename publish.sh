@@ -11,8 +11,9 @@ echo "Publishing version $pkgVersion - $branch - $commitLength - $date"
 
 echo "pkgVersion: $pkgVersion"
 npm version $pkgVersion --no-git-tag-version --allow-same-version --no-commit-hooks --workspace-update=false
-lerna version $pkgVersion --no-git-tag-version --no-push --yes
+npx lerna version $pkgVersion --no-git-tag-version --no-push --yes
 
+yarn install --frozen-lockfile || true
 yarn install --frozen-lockfile
 yarn buildall
 yarn test

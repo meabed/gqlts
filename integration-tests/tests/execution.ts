@@ -464,7 +464,7 @@ describe('execute queries', async function () {
         url: URL,
         batch: true,
         fetcherMethod: async (body) => {
-          console.log({ body });
+          // console.log({ body });
           batchedQueryLength = Array.isArray(body) ? body.length : -1;
           const res = await axios({
             url: URL,
@@ -593,11 +593,11 @@ describe('execute subscriptions', async function () {
       })
       .subscribe({
         next: ({ data: x }) => {
-          console.log(JSON.stringify(x, null, 2));
+          // console.log(JSON.stringify(x, null, 2));
           expectType<Maybe<string>>(x?.user?.name);
           expectType<Maybe<string>>(x?.user?.__typename);
           expectType<Maybe<number>>(x?.user?.common);
-          console.log(x);
+          // console.log(x);
         },
         complete: () => console.log('complete'),
         error: console.error,
@@ -641,7 +641,7 @@ describe('execute subscriptions', async function () {
           expectType<Maybe<string>>(x?.user?.name);
           expectType<Maybe<string>>(x?.user?.__typename);
           expectType<Maybe<number>>(x?.user?.common);
-          console.log(x);
+          // console.log(x);
           subscribeCalledNTimes++;
         },
         complete: () => console.log('complete'),

@@ -1652,41 +1652,6 @@
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.3.tgz"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@gqlts/cli@^3.2.10":
-  version "3.2.10"
-  resolved "https://registry.npmjs.org/@gqlts/cli/-/cli-3.2.10.tgz"
-  integrity sha512-x64LzFiXebfWwuoLdPacgAs9q87LA26evIkHDzd3hJnC2jJqg8EFuTz0ME3PPeCiC+XsNhAu2Ij5xXo/wSDspw==
-  dependencies:
-    "@gqlts/runtime" "^3.2.10"
-    "@graphql-tools/graphql-file-loader" "^7.5.5"
-    "@graphql-tools/load" "^7.7.7"
-    chalk "^4.1.2"
-    fs-extra "^10.1.0"
-    graphql "*"
-    isomorphic-unfetch "^3.1.0"
-    listr "^0.14.3"
-    lodash "^4.17.21"
-    mkdirp "^1.0.4"
-    prettier "^2.7.1"
-    qs "^6.11.0"
-    rimraf "^3.0.2"
-    yargs "^17.6.0"
-
-"@gqlts/runtime@^3.2.10":
-  version "3.2.10"
-  resolved "https://registry.npmjs.org/@gqlts/runtime/-/runtime-3.2.10.tgz"
-  integrity sha512-1tMiEsb4n106wvhMuxEVwxToUfTl2ADftoyaCc6Fp8JIOo9bhDHOH5GvcV+FD0JsuG/D9T2tL4bLGv2xBGu+6g==
-  dependencies:
-    axios "^0.27.2"
-    form-data "^4.0.0"
-    graphql-ws "^5.11.2"
-    is-plain-obj "^4.1.0"
-    lodash.assign "^4.2.0"
-    lodash.get "^4.4.2"
-    lodash.startswith "^4.2.1"
-    ws "^8.9.0"
-    zen-observable-ts "^1.1.0"
-
 "@graphql-toolkit/code-file-loader@0.7.5":
   version "0.7.5"
   resolved "https://registry.npmjs.org/@graphql-toolkit/code-file-loader/-/code-file-loader-0.7.5.tgz"
@@ -1777,7 +1742,7 @@
     tslib "1.10.0"
     valid-url "1.0.9"
 
-"@graphql-tools/graphql-file-loader@^7.5.13", "@graphql-tools/graphql-file-loader@^7.5.5":
+"@graphql-tools/graphql-file-loader@^7.5.13":
   version "7.5.13"
   resolved "https://registry.npmjs.org/@graphql-tools/graphql-file-loader/-/graphql-file-loader-7.5.13.tgz"
   integrity sha512-VWFVnw3aB6sykGfpb/Dn3sxQswqvp2FsVwDy8ubH1pgLuxlDuurhHjRHvMG2+p7IaHC7q8T3Vk/rLtZftrwOBQ==
@@ -1797,7 +1762,7 @@
     resolve-from "5.0.0"
     tslib "^2.4.0"
 
-"@graphql-tools/load@^7.7.7", "@graphql-tools/load@^7.8.8":
+"@graphql-tools/load@^7.8.8":
   version "7.8.8"
   resolved "https://registry.npmjs.org/@graphql-tools/load/-/load-7.8.8.tgz"
   integrity sha512-gMuQdO2jXmI0BNUc1MafxRQTWVMUtuH500pZAQtOdDdNJppV7lJdY6mMhITQ2qnhYDuMrcZPHhIkcftyQfkgUg==
@@ -4905,14 +4870,6 @@ axios@1.2.1, axios@^1.0.0, axios@^1.2.1:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
-axios@^0.27.2:
-  version "0.27.2"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz"
-  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
-  dependencies:
-    follow-redirects "^1.14.9"
-    form-data "^4.0.0"
-
 babel-jest@^29.3.1:
   version "29.3.1"
   resolved "https://registry.npmjs.org/babel-jest/-/babel-jest-29.3.1.tgz"
@@ -5306,7 +5263,7 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^4.0.2, chalk@^4.1.1, chalk@^4.1.2:
+chalk@^4.0.2, chalk@^4.1.1:
   version "4.1.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -6846,7 +6803,7 @@ folktale@2.3.2:
   resolved "https://registry.npmjs.org/folktale/-/folktale-2.3.2.tgz"
   integrity sha512-+8GbtQBwEqutP0v3uajDDoN64K2ehmHd0cjlghhxh0WpcfPzAIjPA03e1VvHlxL02FVGR0A6lwXsNQKn3H1RNQ==
 
-follow-redirects@^1.14.9, follow-redirects@^1.15.0:
+follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -10955,7 +10912,7 @@ postcss@8.4.14:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-prettier@2.8.1, prettier@^2.7.1, prettier@^2.8.1:
+prettier@2.8.1, prettier@^2.8.1:
   version "2.8.1"
   resolved "https://registry.npmjs.org/prettier/-/prettier-2.8.1.tgz"
   integrity sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==
@@ -13655,7 +13612,7 @@ yargs@^17.4.0:
     y18n "^5.0.5"
     yargs-parser "^21.0.0"
 
-yargs@^17.6.0, yargs@^17.6.2:
+yargs@^17.6.2:
   version "17.6.2"
   resolved "https://registry.npmjs.org/yargs/-/yargs-17.6.2.tgz"
   integrity sha512-1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==
