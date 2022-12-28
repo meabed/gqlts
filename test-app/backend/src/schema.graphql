@@ -20,5 +20,5 @@ type v1DeleteUserOutput {
 }
 
 type v1SatHelloOutput {
-  name: String
+  message: String
 }

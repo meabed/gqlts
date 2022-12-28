@@ -47,7 +47,7 @@ export interface NexusGenObjects {
     name?: string | null; // String
   }
   v1SatHelloOutput: { // root type
-    name?: string | null; // String
+    message?: string | null; // String
   }
 }
 
@@ -76,7 +76,7 @@ export interface NexusGenFieldTypes {
     name: string | null; // String
   }
   v1SatHelloOutput: { // field return type
-    name: string | null; // String
+    message: string | null; // String
   }
 }
 
@@ -95,7 +95,7 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
   }
   v1SatHelloOutput: { // field return type name
-    name: 'String'
+    message: 'String'
   }
 }
 

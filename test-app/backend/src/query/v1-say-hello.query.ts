@@ -7,7 +7,7 @@ const input = {
 const output = objectType({
   name: 'v1SatHelloOutput',
   definition(t) {
-    t.field('name', { type: 'String' });
+    t.field('message', { type: 'String' });
   },
 });
 
@@ -18,7 +18,7 @@ export const field = queryField('v1SatHello', {
   async resolve(_root, args, ctx, _info) {
     const { name } = args;
 
-    return {};
+    return { message: `Hello ${name}` };
   },
 });
 

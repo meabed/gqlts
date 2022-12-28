@@ -20,7 +20,8 @@
     "pretty": true,
     "declaration": true,
     "sourceMap": false,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "downlevelIteration": true
   },
   "include": [
     "src"

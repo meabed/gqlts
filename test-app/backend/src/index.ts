@@ -10,8 +10,11 @@ const yoga = createYoga({
   validationCache: true,
 });
 
-const server = createServer(yoga);
+export const server = createServer(yoga);
 
 server.listen(3000, () => {
+  if (process.env.NODE_ENV === 'test') {
+    return;
+  }
   console.log('Visit http://localhost:3000/graphql');
 });
