@@ -59,7 +59,7 @@ async function server({ resolvers, port = PORT }) {
     await server.start();
     server.applyMiddleware({ app, path: '/graphql' });
     await httpServer.listen(port).on('listening', () => {
-      console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
+      // console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
     return async () => httpServer.close() && (await server.stop());
   } catch (e) {
