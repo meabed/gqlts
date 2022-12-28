@@ -52,4 +52,4 @@ jobs:
 
       - name: Release
         run: |
-          lerna exec --concurrency 1 -- semantic-release --debug --no-ci --dry-run
+          bash ./release.sh
