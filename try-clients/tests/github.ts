@@ -16,11 +16,11 @@ describe('github', () => {
   const axiosClient = client.fetcherInstance as AxiosInstance;
   axiosClient.interceptors.request.use(
     (config) => {
-      console.log(config);
+      // console.log(config);
       return config;
     },
     (error) => {
-      console.log(error);
+      // console.log(error);
       return Promise.reject(error);
     }
   );
@@ -39,6 +39,6 @@ describe('github', () => {
         },
       ],
     });
-    console.log(res1);
+    // console.log(res1);
   });
 });

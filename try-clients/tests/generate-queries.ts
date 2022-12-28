@@ -39,7 +39,7 @@ it('generateQueries', async () => {
     schema,
     packageName: 'gqlts',
   });
-  console.log(q);
+  // console.log(q);
 });
 
 const schema = buildSchema(`

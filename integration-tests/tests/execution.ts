@@ -137,7 +137,7 @@ describe('execute queries', async function () {
           name: true,
         },
       });
-      console.log(JSON.stringify(res, null, 2));
+      // console.log(JSON.stringify(res, null, 2));
       assert.deepStrictEqual(res?.user, x);
     })
   );
@@ -176,7 +176,7 @@ describe('execute queries', async function () {
           y: true,
         },
       });
-      console.log(JSON.stringify(res, null, 2));
+      // console.log(JSON.stringify(res, null, 2));
       assert(res?.coordinates?.x === undefined);
       assert(res?.coordinates?.y !== undefined);
     })
@@ -206,7 +206,7 @@ describe('execute queries', async function () {
           },
         ],
       });
-      console.log(JSON.stringify(res, null, 2));
+      // console.log(JSON.stringify(res, null, 2));
       // @ts-expect-error because top level fields are filtered based on query
       res?.account;
       // no optional chaining because repository is non-null

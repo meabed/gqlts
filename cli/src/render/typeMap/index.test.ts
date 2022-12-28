@@ -10,12 +10,12 @@ interface Renderer {
   (type: GraphQLNamedType, ctx: RenderContext): Type<string>;
 }
 
-const testCase = async (
+async function testCase(
   schemaGql: string,
   renderer: Renderer,
   cases: { [type: string]: Type<string> },
   output = false
-) => {
+) {
   const schema = await toClientSchema(schemaGql);
 
   const ctx = new RenderContext(schema);
@@ -36,7 +36,7 @@ const testCase = async (
   }
 
   // if (output) throw new Error('test case did not run') // TODO readd tests
-};
+}
 
 test('scalarType', () =>
   testCase(
@@ -60,7 +60,7 @@ test('scalarType', () =>
       Scalar: {},
       Enum: {},
     },
-    true
+    false
   ));
 
 test('objectType', () =>
@@ -105,21 +105,21 @@ test('objectType', () =>
         interface: { type: 'Interface' },
         optionalArgScalar: {
           type: 'Int',
-          args: { arg: ['Int', 'Int'] },
+          args: { arg: ['Int'] },
         },
         optionalArgObject: {
           type: 'Object',
-          args: { arg: ['Int', 'Int'] },
+          args: { arg: ['Int'] },
         },
         optionalArgInterface: {
           type: 'Interface',
-          args: { arg: ['Int', 'Int'] },
+          args: { arg: ['Int'] },
         },
         nestedArg: {
           type: 'Boolean',
           args: {
-            a: ['[[[Int]]]', 'Int'],
-            b: ['[[[Int!]!]!]!', 'Int'],
+            a: ['Int', '[[[Int]]]'],
+            b: ['Int', '[[[Int!]!]!]!'],
           },
         },
         __typename: { type: 'String' },
@@ -140,7 +140,7 @@ test('objectType', () =>
         object: { type: 'Object' },
       },
     },
-    true
+    false
   ));
 
 test('unionType', () =>
@@ -173,5 +173,5 @@ test('unionType', () =>
         __typename: { type: 'String' },
       },
     },
-    true
+    false
   ));

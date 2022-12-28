@@ -28,7 +28,7 @@ describe('use fetcher', () => {
         __scalar: true,
       },
     });
-    console.log(res);
+    // console.log(res);
     assert(res);
   });
 });
