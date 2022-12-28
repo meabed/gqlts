@@ -27,6 +27,7 @@ module.exports = {
     { name: branchSlug, prerelease: 'alpha' },
     { name: `${branchPrefix}/**`, prerelease: 'alpha' },
   ],
+  tagFormat: `${pkg.name}-v\${version}`,
   plugins: [
     [
       '@semantic-release/commit-analyzer',
