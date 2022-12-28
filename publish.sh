@@ -2,7 +2,7 @@
 
 set -e
 
-pkgVersion=${cat ./next-version.txt}
+pkgVersion=$(cat ./next-version.txt)
 branch=$1
 
 npm config set '//registry.npmjs.org/:_authToken' "$NPM_TOKEN"
@@ -23,8 +23,8 @@ git add .
 git commit -m "chore(release): update packages to $pkgVersion [skip ci]"
 if [[ $branch == "master" ]]; then
   git push
+  echo "Repo pushed."
 fi
-echo "Repo pushed."
 
 cd ./runtime
 runtimeVersion=$(node -p -e "require('./package.json').version")
