@@ -1,5 +1,5 @@
 {
-  "name": "@gqlts/try-clients",
+  "name": "try-clients",
   "version": "3.2.10",
   "private": true,
   "description": "",
@@ -25,6 +25,7 @@
     "github": "yarn --cwd .. play --schema try-clients/github.graphql -o try-clients/github/generated -S HTML:string -S URI:string ",
     "hasura": "yarn --cwd .. play -e https://realtime-chat.hasura.app/v1/graphql -o try-clients/hasura/generated",
     "simple": "yarn --cwd .. play --esm-and-cjs --sort --schema try-clients/simple.graphql -o try-clients/simple/generated",
+    "build": "yarn gen && yarn github && yarn hasura && yarn simple",
     "test": "mocha"
   },
   "mocha": {

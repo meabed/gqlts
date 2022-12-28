@@ -39,6 +39,8 @@
     "cli",
     "runtime",
     "try-clients",
+    "website",
+    "example-usage",
     "integration-tests"
   ],
   "scripts": {

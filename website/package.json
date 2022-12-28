@@ -1,5 +1,5 @@
 {
-  "name": "@gqlts/website",
+  "name": "website",
   "version": "3.2.10",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
