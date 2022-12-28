@@ -50,19 +50,7 @@ module.exports = {
     [
       '@semantic-release/exec',
       {
-        publishCmd: './publish.sh ${nextRelease.version} ${branch.name} ${commits.length} ${Date.now()}',
-      },
-    ],
-    // https://github.com/semantic-release/git
-    isMaster && [
-      '@semantic-release/git',
-      {
-        assets: ['package.json', 'yarn.lock', 'npm-shrinkwrap.json', 'CHANGELOG.md'],
-        message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-        GIT_AUTHOR_NAME: pkg.author.name,
-        GIT_AUTHOR_EMAIL: pkg.author.email,
-        GIT_COMMITTER_NAME: pkg.author.name,
-        GIT_COMMITTER_EMAIL: pkg.author.email,
+        publishCmd: 'echo ${nextRelease.version} > next-version.txt',
       },
     ],
   ].filter(Boolean),

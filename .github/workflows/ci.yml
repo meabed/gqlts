@@ -60,3 +60,4 @@ jobs:
       - name: Release
         run: |
           semantic-release --debug --no-ci
+          ./publish.sh $CI_REF_NAME

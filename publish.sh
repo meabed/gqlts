@@ -2,12 +2,12 @@
 
 set -e
 
-pkgVersion=$1
-branch=$2
-commitLength=$3
-date=$4
+pkgVersion=${cat ./next-version.txt}
+branch=$1
 
-echo "Publishing version $pkgVersion - $branch - $commitLength - $date"
+npm config set '//registry.npmjs.org/:_authToken' "$NPM_TOKEN"
+
+echo "Publishing version $pkgVersion - $branch"
 
 echo "pkgVersion: $pkgVersion"
 npm version $pkgVersion --no-git-tag-version --allow-same-version --no-commit-hooks --workspace-update=false
@@ -21,6 +21,9 @@ yarn test
 echo "Updating repo..."
 git add .
 git commit -m "chore(release): update packages to $pkgVersion [skip ci]"
+if [[ $branch == "master" ]]; then
+  git push
+fi
 echo "Repo pushed."
 
 cd ./runtime

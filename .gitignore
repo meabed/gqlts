@@ -85,3 +85,4 @@ typings/
 .ultra.cache.json
 .idea
 package-lock.json
+next-version.txt
