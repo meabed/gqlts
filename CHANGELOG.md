@@ -6,11 +6,11 @@
 - Refactor code ( prettier )
 - Refactor tests
 
-## 3.2.10
+## [3.2.10](https://github.com/meabed/gqlts/compare/v3.2.9...v3.2.10)
 - Downgrade axios to 0.27.2 as there is some issues: https://github.com/axios/axios/issues/5005
 - Upgrade dependencies
 
-## 3.2.9
+## [3.2.9](https://github.com/meabed/gqlts/compare/v3.2.8...v3.2.9)
 - Upgrade axios to 1.0.0
 - Upgrade dependencies
 
