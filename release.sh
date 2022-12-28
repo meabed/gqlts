@@ -15,11 +15,9 @@ yarn buildall
 yarn test
 
 echo "Updating repo..."
-cd ../
 git add .
-git commit -m "chore(release): update repo to $pkgVersion [skip ci]"
-git push
-git push --tags
+git commit -m "chore(release): update packages to $pkgVersion [skip ci]"
+PUBLISH_GITHUB=true semantic-release --debug --no-ci $releaseFlags
 echo "Repo pushed."
 
 cd ./runtime
