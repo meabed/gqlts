@@ -57,8 +57,9 @@ jobs:
         run: |
           cd test-app/backend
           yarn install --frozen-lockfile
-          yarn
-
+          yarn dev --exit-after-generate-schema
+          yarn build
+          yarn build-sdk
 
       - name: Release Prep
         run: |
