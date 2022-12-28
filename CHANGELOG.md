@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.2.11 (2022-12-28)](/compare/v3.2.10...v3.2.11)
+## [3.2.11 (2022-12-28)](https://github.com/meabed/gqlts/compare/v3.2.10...v3.2.11)
 - Upgrade axios
 - Update dependencies
 - Refactor code ( prettier )
