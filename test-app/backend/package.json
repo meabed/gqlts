@@ -18,9 +18,10 @@
     }
   ],
   "scripts": {
-    "dev": "ts-node src/index.ts",
     "build": "tsc",
     "build-sdk": "cd sdk && yarn && yarn build-sdk",
+    "dev": "ts-node src/index.ts",
+    "start": "NODE_ENV=production node dist/index.js",
     "test": "NODE_ENV=test jest -c ./__tests__/jest.config.js --runInBand --forceExit"
   },
   "dependencies": {
