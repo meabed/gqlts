@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { fileExistsSync } from 'tsconfig-paths/lib/filesystem';
 
 export async function buildSdk({ skipIfExists = false }: { skipIfExists?: boolean } = {}) {
-  let schemaString = readFileSync(join(__dirname, '../schema.graphql')).toString();
+  let schemaString = readFileSync(join(__dirname, '../src/schema.graphql')).toString();
   // remove first 4 lines
   schemaString = schemaString.split('\n').slice(4).join('\n');
   let schemaStringDist: string;

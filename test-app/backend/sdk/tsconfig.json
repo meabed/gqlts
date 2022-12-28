@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "sourceMap": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "*.ts"
+  ],
+  "ts-node": {
+    "transpileOnly": true
+  }
+}

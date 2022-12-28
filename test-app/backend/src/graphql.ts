@@ -13,7 +13,7 @@ const allSchemas = [v1SatHello, v1AddUser, v1DeleteUser, v1DeleteUser];
 export const appSchema = makeSchema({
   types: allSchemas,
   outputs: {
-    schema: __dirname + `/../../sdk/schema.graphql`,
+    schema: __dirname + `/schema.graphql`,
     typegen: __dirname + `/graphql-schema.ts`,
   },
   sourceTypes: {

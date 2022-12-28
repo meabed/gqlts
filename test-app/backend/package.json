@@ -18,7 +18,9 @@
     }
   ],
   "scripts": {
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "build-sdk": "cd sdk && yarn && yarn build-sdk"
   },
   "dependencies": {
     "@graphql-tools/schema": "^9.0.12",
