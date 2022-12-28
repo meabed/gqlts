@@ -4,8 +4,6 @@ const branch = process.env.BRANCH || process.env.CI_REF_NAME || '';
 const branchSlug = branch.replace(/\//g, '-');
 const branchPrefix = branch.split('/')[0];
 const isMaster = branch === 'master' || branch === 'main';
-const publishNPM = process.env.PUBLISH_NPM === 'true';
-const publishGitHub = process.env.PUBLISH_GITHUB === 'true';
 // semantic-release configuration
 module.exports = {
   branches: [
