@@ -15,7 +15,7 @@ generated
 
 example/generated
 example-usage/hasura
-example-usage/sub
+example-usage/subscription
 
 try-clients/github
 try-clients/hasura

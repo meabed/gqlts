@@ -80,11 +80,6 @@
       ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
     }
   },
-  "mocha": {
-    "require": "tests/init.js",
-    "spec": "tests/**.ts",
-    "timeout": 9999999999
-  },
   "dependencies": {
     "@gqlts/runtime": "^3.2.10",
     "@graphql-tools/graphql-file-loader": "^7.5.13",

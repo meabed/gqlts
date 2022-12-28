@@ -1,5 +1,5 @@
 // import { expectType } from "tsd";
-import { createClient } from '../../sub';
+import { createClient } from '../../subscription';
 import { Box, Spinner, Stack } from '@chakra-ui/react';
 import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
 import React, { useEffect, useState } from 'react';
