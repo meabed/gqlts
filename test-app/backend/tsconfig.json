@@ -24,7 +24,8 @@
     "downlevelIteration": true
   },
   "include": [
-    "src"
+    "src",
+    "__tests__"
   ],
   "exclude": [
     "dist",

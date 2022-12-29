@@ -1,4 +1,3 @@
-const { compilerOptions } = require('./../tsconfig');
 module.exports = {
   preset: 'ts-jest',
   testTimeout: 30000,
