@@ -34,7 +34,7 @@
     "@gqlts/runtime": "^3.2.10",
     "apollo-server-express": "3.11.1",
     "await-sleep": "0.0.1",
-    "axios": "1.2.1",
+    "axios": "1.2.2",
     "deep-equal": "2.1.0",
     "express": "4.18.2",
     "graphql": "16.6.0",
