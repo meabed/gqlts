@@ -9,3 +9,10 @@ yarn typecheck
 yarn build
 yarn start --exit-after-generate-schema
 yarn test
+
+
+# test the standalone bundle
+nohup yarn start &
+cd $my_dir/html
+yarn install --frozen-lockfile
+yarn test
