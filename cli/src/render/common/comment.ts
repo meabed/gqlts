@@ -23,12 +23,14 @@ export function typeComment(type: GraphQLNamedType) {
     text: type.description,
   });
 }
+
 export function fieldComment(field: GraphQLEnumValue | GraphQLField<any, any, any>) {
   return comment({
     deprecated: field.deprecationReason,
     text: field.description,
   });
 }
+
 export function argumentComment(arg: GraphQLArgument | GraphQLInputField) {
   return comment({
     text: arg.description,

@@ -1,6 +1,6 @@
 import { prettify } from './helpers/prettify';
 import { ASTNode } from 'graphql/language/ast';
-import { ASTReducer, ASTVisitFn, ASTVisitor, visit } from 'graphql/language/visitor';
+import { visit } from 'graphql/language/visitor';
 
 /**
  * Converts an AST into a string, using one set of reasonable
@@ -97,7 +97,7 @@ function printDocASTReducer({ clientVarName = 'client', transformVariableName = 
     },
 
     InlineFragment: ({ typeCondition, directives, selectionSet }) => {
-      console.log({ selectionSet, directives, typeCondition });
+      // console.log({ selectionSet, directives, typeCondition });
       return join(['', wrap('on_', typeCondition), ':', selectionSet], ' ');
     },
 

@@ -2,7 +2,6 @@ import { RenderContext } from '../common/RenderContext';
 import { isEmpty } from './support';
 import { ArgMap, Field, FieldMap } from '@gqlts/runtime/dist/types';
 import {
-  GraphQLArgument,
   GraphQLField,
   GraphQLInputObjectType,
   GraphQLInterfaceType,
