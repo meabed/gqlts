@@ -1,16 +1,7 @@
-import { appSchema } from './graphql';
-import { createYoga } from 'graphql-yoga';
+import { yogaGraphQL } from './graphql';
 import { createServer } from 'node:http';
 
-const yoga = createYoga({
-  schema: appSchema,
-  landingPage: false,
-  multipart: true,
-  parserCache: true,
-  validationCache: true,
-});
-
-export const server = createServer(yoga);
+export const server = createServer(yogaGraphQL);
 
 server.listen(3000, () => {
   if (process.env.NODE_ENV === 'test') {

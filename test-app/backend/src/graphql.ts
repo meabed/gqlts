@@ -1,6 +1,11 @@
+import { useGraphqlAppExtension } from './graphql/use-graphql-app-extension';
 import { v1AddUser } from './mutation/v1-add-user.mutation';
 import { v1DeleteUser } from './mutation/v1-delete-user.mutation';
 import { v1SatHello } from './query/v1-say-hello.query';
+import { useParserCache } from '@envelop/parser-cache';
+import { useValidationCache } from '@envelop/validation-cache';
+import { Request, Response } from 'express';
+import { createYoga } from 'graphql-yoga';
 import {
   connectionPlugin,
   declarativeWrappingPlugin,
@@ -8,6 +13,13 @@ import {
   makeSchema,
   queryComplexityPlugin,
 } from 'nexus';
+import { join } from 'path';
+
+export interface IGraphQLContext {
+  req: Request;
+  res: Response;
+  startTime: number;
+}
 
 const allSchemas = [v1SatHello, v1AddUser, v1DeleteUser, v1DeleteUser];
 export const appSchema = makeSchema({
@@ -29,6 +41,10 @@ export const appSchema = makeSchema({
     },
   },
   shouldExitAfterGenerateArtifacts: process.argv.includes('--exit-after-generate-schema'),
+  contextType: {
+    module: join(__dirname, `./graphql/graphql-context.ts`),
+    export: 'IGraphQLContext',
+  },
   plugins: [
     // nexus-plugins
     declarativeWrappingPlugin(),
@@ -36,4 +52,23 @@ export const appSchema = makeSchema({
     fieldAuthorizePlugin(),
     queryComplexityPlugin(),
   ],
+});
+
+const plugins = [useParserCache(), useValidationCache(), useGraphqlAppExtension];
+
+export const yogaGraphQL = createYoga<IGraphQLContext>({
+  async context(options) {
+    return {
+      ...options,
+      req: options.req,
+      res: options.res,
+      startTime: Date.now(),
+    };
+  },
+  schema: appSchema,
+  landingPage: false,
+  multipart: true,
+  parserCache: true,
+  validationCache: true,
+  plugins,
 });

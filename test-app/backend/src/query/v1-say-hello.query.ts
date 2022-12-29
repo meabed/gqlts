@@ -16,9 +16,10 @@ export const field = queryField('v1SatHello', {
   required: true,
   args: input,
   async resolve(_root, args, ctx, _info) {
+    const { 'x-my-secret': mySecret } = ctx.req?.headers ?? {};
     const { name } = args;
 
-    return { message: `Hello ${name}` };
+    return { message: `Hello ${name}` + (mySecret ? ` - your secret is ${mySecret}` : '') };
   },
 });
 

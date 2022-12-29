@@ -1,5 +1,6 @@
 import { FileUpload } from "graphql-upload-ts";
 
+import type { IGraphQLContext } from "./graphql/graphql-context"
 import type { core, connectionPluginCore } from "nexus"
 import type { FieldAuthorizeResolver } from "nexus/dist/plugins/fieldAuthorizePlugin"
 import type { QueryComplexity } from "nexus/dist/plugins/queryComplexityPlugin"
@@ -146,7 +147,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: IGraphQLContext;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;
