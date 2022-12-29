@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
+import { IncomingMessage, ServerResponse } from 'node:http';
 
 export interface IGraphQLContext {
-  req: Request;
-  res: Response;
+  req: IncomingMessage;
+  res: ServerResponse;
   startTime: number;
 }
