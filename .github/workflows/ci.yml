@@ -55,7 +55,7 @@ jobs:
 
       - name: Test APP
         run: |
-          ./test-app/run.sh
+          ./test-app/build-and-test.sh
 
       - name: Release Prep
         run: |
