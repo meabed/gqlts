@@ -13,6 +13,7 @@ export interface Config {
   // options?: Options
   headers?: Record<string, string>;
   scalarTypes?: { [k: string]: string };
+  standalone?: string;
   onlyEsModules?: boolean;
   onlyCJSModules?: boolean;
   sortProperties?: boolean;

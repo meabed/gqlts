@@ -8,7 +8,10 @@ import { renderResponseTypes } from '../render/responseTypes/renderResponseTypes
 import { renderSchema } from '../render/schema/renderSchema';
 import { renderTypeGuards } from '../render/typeGuards/renderTypeGuards';
 import { renderTypeMap } from '../render/typeMap/renderTypeMap';
+import browserify from 'browserify';
+import { createWriteStream } from 'fs';
 import Listr, { ListrTask } from 'listr';
+import { resolve } from 'path';
 
 const schemaGqlFile = 'schema.graphql';
 const schemaTypesFile = 'schema.ts';
@@ -107,6 +110,20 @@ export function clientTasks(config: Config): ListrTask[] {
         renderClientDefinition(ctx.schema, renderCtx);
 
         await writeFileToPath([output, clientTypesFile], renderCtx.toCode('typescript', true));
+      },
+    },
+    !!config?.standalone && {
+      title: `writing UMD`,
+      task: async (ctx) => {
+        const b = browserify({
+          standalone: config.standalone,
+        });
+        const inFile = resolve(output, clientFileCjs);
+        const outFile = resolve(output, 'index.standalone.js');
+        b.plugin(require('esmify'));
+        b.add(inFile);
+        b.transform('uglifyify', { global: true });
+        b.bundle().pipe(createWriteStream(outFile));
       },
     },
   ];
