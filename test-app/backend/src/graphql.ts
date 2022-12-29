@@ -13,7 +13,7 @@ import {
   makeSchema,
   queryComplexityPlugin,
 } from 'nexus';
-import { join } from 'path';
+import { fileExistsSync } from 'tsconfig-paths/lib/filesystem';
 
 export interface IGraphQLContext {
   req: Request;
@@ -41,10 +41,12 @@ export const appSchema = makeSchema({
     },
   },
   shouldExitAfterGenerateArtifacts: process.argv.includes('--exit-after-generate-schema'),
-  contextType: {
-    module: join(__dirname, `./graphql/graphql-context.ts`),
-    export: 'IGraphQLContext',
-  },
+  contextType: fileExistsSync(`${__dirname}/graphql/graphql-context.ts`)
+    ? {
+        module: `${__dirname}/graphql/graphql-context.ts`,
+        export: 'IGraphQLContext',
+      }
+    : undefined,
   plugins: [
     // nexus-plugins
     declarativeWrappingPlugin(),
