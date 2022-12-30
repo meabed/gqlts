@@ -53,7 +53,7 @@ jobs:
         run: |
           npm i -g semantic-release @semantic-release/git @semantic-release/npm @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/exec
 
-      - name: Release
+      - name: Test & Release
         run: |
           semantic-release --debug --no-ci
           ./publish.sh master
