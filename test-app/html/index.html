@@ -11,18 +11,15 @@
   const sdkClient = window["testAppBackendSdk"].createClient({
     url: "http://localhost:3000/graphql"
   });
-
-  async function test() {
+  (async () => {
     const { data, errors } = await sdkClient.query(
       {
         v1SatHello: [{ name: "John Connor" }, { message: 1 }]
       },
-      { headers: { "x-my-secret": "Sarah Connor", 'content-type': 'application/json'} }
+      { headers: { "x-my-secret": "Sarah Connor", "content-type": "application/json" } }
     );
     document.getElementById("test1-result").innerHTML = data?.v1SatHello?.message;
-  }
-
-  test().then();
+  })();
 </script>
 </body>
 </html>
