@@ -19,6 +19,8 @@ yarn buildall
 yarn test
 
 echo "Updating repo..."
+command cp -rf CHANGELOG.md LICENSE README.md ./runtime/
+command cp -rf CHANGELOG.md LICENSE README.md ./cli/
 git add .
 git commit -m "chore(release): update packages to $pkgVersion [skip ci]"
 if [[ $branch == "master" ]]; then
