@@ -54,9 +54,9 @@ jobs:
           yarn buildall
           yarn test
 
-      - name: Test APP
+      - name: Build and Test Demo APP
         run: |
-          ./test-app/build-and-test.sh
+          ./demo-app/build-and-test.sh
 
       - name: Release Prep
         run: |
