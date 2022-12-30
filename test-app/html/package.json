@@ -18,7 +18,7 @@
     }
   ],
   "scripts": {
-    "test": "node puppeteer.js"
+    "test": "node puppeteer-test.js"
   },
   "devDependencies": {
     "puppeteer": "^19.4.1"

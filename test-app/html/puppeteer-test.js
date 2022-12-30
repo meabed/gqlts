@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const puppeteerTest = require('puppeteer');
 const assert = require('assert');
 function sleep(millisecondsCount) {
   if (!millisecondsCount) {
@@ -7,7 +7,7 @@ function sleep(millisecondsCount) {
   return new Promise((resolve) => setTimeout(resolve, millisecondsCount)).catch();
 }
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteerTest.launch();
   const page = await browser.newPage();
   await page.goto(`file://${__dirname}/index.html`);
   await sleep(1000);

@@ -19,3 +19,8 @@ cd $my_dir/html
 yarn install --frozen-lockfile
 yarn test
 pkill -f "node dist/index.js" || true
+
+
+# test react nextjs app with sdk ( ssr / csr / api routes )
+cd $my_dir/next
+yarn install --frozen-lockfile
