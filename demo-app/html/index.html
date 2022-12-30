@@ -8,11 +8,11 @@
 <p>Demo App is a Demo App.</p>
 <div id="test1-result"></div>
 <script type="application/javascript">
-  const sdkClient = window["testAppBackendSdk"].createClient({
+  const demoAppBackendSdk = window["testAppBackendSdk"].createClient({
     url: "http://localhost:3000/graphql"
   });
   (async () => {
-    const { data, errors } = await sdkClient.query(
+    const { data, errors } = await demoAppBackendSdk.query(
       {
         v1SatHello: [{ name: "John Connor" }, { message: 1 }]
       },
