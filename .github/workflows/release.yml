@@ -43,6 +43,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           yarn install --frozen-lockfile --ignore-scripts
           yarn buildall
+          yarn install --frozen-lockfile --ignore-scripts
           yarn genall
           yarn test
 
