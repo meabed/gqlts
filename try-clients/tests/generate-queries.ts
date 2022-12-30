@@ -1,4 +1,4 @@
-import { print } from '@gqlts/cli/src/printer';
+import { print } from '@gqlts/cli/dist/printer';
 import { GraphQLSchema, buildSchema } from 'graphql';
 import { generateRandomQuery } from 'ibm-graphql-query-generator';
 
