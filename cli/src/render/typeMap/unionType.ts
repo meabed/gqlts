@@ -1,7 +1,7 @@
-import { GraphQLUnionType } from "graphql";
-import { RenderContext } from "../common/RenderContext";
-import { FieldMap } from "@gqlts/runtime/dist/types";
-import { flatten, uniq } from "lodash";
+import { RenderContext } from '../common/RenderContext';
+import { FieldMap } from '@gqlts/runtime/dist/types';
+import { GraphQLUnionType } from 'graphql';
+import { flatten, uniq } from 'lodash';
 
 export function unionType(type: GraphQLUnionType, _: RenderContext) {
   const types = type.getTypes();
@@ -15,7 +15,7 @@ export function unionType(type: GraphQLUnionType, _: RenderContext) {
     typeObj[`on_${t.name}`] = { type: t.name };
   });
 
-  typeObj.__typename = { type: "String" };
+  typeObj.__typename = { type: 'String' };
 
   return typeObj;
 }

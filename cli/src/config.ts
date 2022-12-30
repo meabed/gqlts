@@ -1,4 +1,4 @@
-export const RUNTIME_LIB_NAME = "@gqlts/runtime";
+export const RUNTIME_LIB_NAME = '@gqlts/runtime';
 
 export interface Config {
   verbose?: boolean;
@@ -13,6 +13,7 @@ export interface Config {
   // options?: Options
   headers?: Record<string, string>;
   scalarTypes?: { [k: string]: string };
+  standalone?: string;
   onlyEsModules?: boolean;
   onlyCJSModules?: boolean;
   sortProperties?: boolean;

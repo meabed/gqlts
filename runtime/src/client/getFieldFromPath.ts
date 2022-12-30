@@ -1,10 +1,10 @@
-import { LinkedField, LinkedType } from "../types";
-import startsWith from "lodash.startswith";
+import { LinkedField, LinkedType } from '../types';
+import startsWith from 'lodash.startswith';
 
 export function getFieldFromPath(root: LinkedType | undefined, path: string[]) {
   let current: LinkedField | undefined;
 
-  if (!root) throw new Error("root type is not provided");
+  if (!root) throw new Error('root type is not provided');
 
   if (path.length === 0) throw new Error(`path is empty`);
 
@@ -14,7 +14,7 @@ export function getFieldFromPath(root: LinkedType | undefined, path: string[]) {
     if (!type.fields) throw new Error(`type \`${type.name}\` does not have fields`);
 
     const possibleTypes = Object.keys(type.fields)
-      .filter((i) => startsWith(i, "on_"))
+      .filter((i) => startsWith(i, 'on_'))
       .reduce(
         (types, fieldName) => {
           const field = type.fields && type.fields[fieldName];
@@ -36,5 +36,5 @@ export function getFieldFromPath(root: LinkedType | undefined, path: string[]) {
     current = field;
   });
 
-  return <LinkedField>current;
+  return current as LinkedField;
 }

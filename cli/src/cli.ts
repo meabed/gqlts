@@ -1,86 +1,91 @@
 #!/usr/bin/env node
-import colors from "colors";
-import yargs from "yargs";
-import { generate } from "./main";
-import { validateConfigs } from "./tasks/validateConfigs";
-import { Config } from "./config";
-import { version } from "./version";
-import { existsSync, readFileSync } from "fs";
-import { parseColonSeparatedStrings } from "./helpers/parse";
+import { Config } from './config';
+import { parseColonSeparatedStrings } from './helpers/parse';
+import { generate } from './main';
+import { validateConfigs } from './tasks/validateConfigs';
+import { version } from './version';
+import colors from 'colors';
+import { existsSync, readFileSync } from 'fs';
+import yargs from 'yargs';
 
 const program = yargs(process.argv.slice(2))
-  .option("output", {
-    alias: "o",
-    description: "Output directory",
+  .option('output', {
+    alias: 'o',
+    description: 'Output directory',
     demandOption: true,
-    type: "string",
+    type: 'string',
   })
-  .option("endpoint", {
-    alias: "e",
-    description: "Graphql endpoint",
-    type: "string",
+  .option('endpoint', {
+    alias: 'e',
+    description: 'Graphql endpoint',
+    type: 'string',
   })
-  .option("get", {
-    alias: "g",
-    description: "use GET for introspection query",
-    type: "boolean",
+  .option('get', {
+    alias: 'g',
+    description: 'use GET for introspection query',
+    type: 'boolean',
   })
-  .option("schema", {
-    alias: "s",
-    type: "string",
-    description: "path to GraphQL schema definition file",
+  .option('schema', {
+    alias: 's',
+    type: 'string',
+    description: 'path to GraphQL schema definition file',
   })
   // .array('header', )
-  .option("header", {
-    alias: "H",
-    type: "array",
+  .option('header', {
+    alias: 'H',
+    type: 'array',
     string: true,
-    description: "header to use in introspection query",
+    description: 'header to use in introspection query',
   })
-  .option("scalar", {
-    alias: "S",
-    type: "array",
+  .option('scalar', {
+    alias: 'S',
+    type: 'array',
     string: true,
-    description: "map a scalar to a type, for example `-S DateTime:string` ",
+    description: 'map a scalar to a type, for example `-S DateTime:string` ',
   })
-  .option("methodPrefix", {
-    alias: "mp",
-    type: "string",
-    default: "",
+  .option('methodPrefix', {
+    alias: 'mp',
+    type: 'string',
+    default: '',
     string: true,
-    description: "prefix for generated methods",
+    description: 'prefix for generated methods',
   })
-  .option("methodSuffix", {
-    alias: "ms",
-    type: "string",
-    default: "",
+  .option('methodSuffix', {
+    alias: 'ms',
+    type: 'string',
+    default: '',
     string: true,
-    description: "suffix for generated methods",
+    description: 'suffix for generated methods',
   })
-  .option("esm", {
-    type: "boolean",
+  .option('esm', {
+    type: 'boolean',
     default: false,
-    description: "generate only ES modules code, ./generated/index.js will use esm exports and imports",
+    description: 'generate only ES modules code, ./generated/index.js will use esm exports and imports',
   })
-  .option("esm-and-cjs", {
-    type: "boolean",
+  .option('standalone', {
+    type: 'string',
+    default: '',
+    description: 'generate only standalone bundle code, ./generated/index.standalone.js',
+  })
+  .option('esm-and-cjs', {
+    type: 'boolean',
     default: false,
     description:
-      "generate both ES modules code and CJS code, useful when publishing a package, ./generated/index.js will use CJS require",
+      'generate both ES modules code and CJS code, useful when publishing a package, ./generated/index.js will use CJS require',
   })
-  .option("sort", {
-    type: "boolean",
+  .option('sort', {
+    type: 'boolean',
     default: false,
-    description: "sort object properties to not create diffs after generations",
+    description: 'sort object properties to not create diffs after generations',
   })
-  .option("verbose", { alias: "v", type: "boolean", default: false })
+  .option('verbose', { alias: 'v', type: 'boolean', default: false })
   .example(
     '$0 --output ./generated --endpoint http://localhost:3000  -H "Authorization: Bearer xxx"',
-    "generate the client from an endpoint"
+    'generate the client from an endpoint'
   )
-  .example("$0 --output ./generated --schema ./schema.graphql", "generate the client from a schema")
-  .help("help")
-  .help("h")
+  .example('$0 --output ./generated --schema ./schema.graphql', 'generate the client from a schema')
+  .help('help')
+  .help('h')
   .parseSync();
 
 // .option('-o, --output <./myClient>', 'output directory')
@@ -103,12 +108,13 @@ const config: Config = {
   useGet: program.get,
   schema: program.schema && readFile(program.schema),
   output: program.output,
-  methodPrefix: program.methodPrefix ?? "",
-  methodSuffix: program.methodSuffix ?? "",
+  methodPrefix: program.methodPrefix ?? '',
+  methodSuffix: program.methodSuffix ?? '',
   headers: parseColonSeparatedStrings(program.header || []),
   scalarTypes: parseColonSeparatedStrings(program.scalar || []),
   onlyEsModules: program.esm,
-  onlyCJSModules: !program["esm-and-cjs"] && !program.esm,
+  onlyCJSModules: !program['esm-and-cjs'] && !program.esm,
+  standalone: program.standalone,
   verbose: program.verbose,
   sortProperties: program.sort,
 };
@@ -119,7 +125,7 @@ if (!validateConfigs([config])) {
 
 generate(config)
   .catch((e: any) => {
-    console.error(colors.red("Cannot generate, got an error:"));
+    console.error(colors.red('Cannot generate, got an error:'));
     console.error(e);
     process.exit(1);
   })
@@ -127,19 +133,19 @@ generate(config)
     printHelp({
       dirPath: program.output,
       useYarn: false,
-      dependencies: [`@gqlts/runtime@${version}`, "graphql"],
+      dependencies: [`@gqlts/runtime@${version}`, 'graphql'],
     });
   });
 
 export function printHelp({ useYarn, dirPath, dependencies }) {
   console.log();
-  console.log(`${colors.green("Success!")} Generated client code inside '${dirPath}'`);
+  console.log(`${colors.green('Success!')} Generated client code inside '${dirPath}'`);
   console.log();
-  console.log(colors.bold("Remember to install the necessary runtime package with:"));
+  console.log(colors.bold('Remember to install the necessary runtime package with:'));
   console.log();
-  console.log(`  ${colors.cyan(`${useYarn ? "yarn add" : "npm install"} ${dependencies.join(" ")}`)}`);
+  console.log(`  ${colors.cyan(`${useYarn ? 'yarn add' : 'npm install'} ${dependencies.join(' ')}`)}`);
   console.log();
-  console.log("PS: `@gqlts/runtime` should always have the same version as the cli!");
+  console.log('PS: `@gqlts/runtime` should always have the same version as the cli!');
   console.log();
 }
 

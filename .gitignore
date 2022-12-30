@@ -84,3 +84,6 @@ typings/
 .now
 .ultra.cache.json
 .idea
+package-lock.json
+next-version.txt
+nohup.out

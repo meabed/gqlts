@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Demo App</title>
+  <script type="application/javascript" src="../backend/sdk/dist/index.standalone.js"></script>
+</head>
+<body>
+<h1>Demo App</h1>
+<p>Demo App is a Demo App.</p>
+<div id="test1-result"></div>
+<script type="application/javascript">
+  const { graphqlUrl } = window["demoAppBackendSdk"].getServiceUrl('local');
+  const demoAppBackendSdk = window["demoAppBackendSdk"].createClient({
+    url: graphqlUrl || "http://localhost:4000/graphql"
+  });
+
+  (async () => {
+    const { data, errors } = await demoAppBackendSdk.query(
+      {
+        v1SatHello: [{ name: "John Connor" }, { message: 1 }]
+      },
+      { headers: { "x-my-secret": "Sarah Connor", "content-type": "application/json" } }
+    );
+    document.getElementById("test1-result").innerHTML = data?.v1SatHello?.message;
+  })();
+</script>
+</body>
+</html>

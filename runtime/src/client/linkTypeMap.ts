@@ -1,5 +1,5 @@
-import { CompressedType, CompressedTypeMap, LinkedArgMap, LinkedType, LinkedTypeMap } from "../types";
-import assign from "lodash.assign";
+import { CompressedType, CompressedTypeMap, LinkedArgMap, LinkedType, LinkedTypeMap } from '../types';
+import assign from 'lodash.assign';
 
 export interface PartialLinkedFieldMap {
   [field: string]: {
@@ -91,25 +91,25 @@ export const resolveConcreteTypes = (linkedTypeMap: LinkedTypeMap) => {
           if (arg) {
             const [typeName] = arg;
 
-            if (typeof typeName === "string") {
+            if (typeof typeName === 'string') {
               if (!linkedTypeMap[typeName]) {
                 linkedTypeMap[typeName] = { name: typeName };
               }
 
-              arg[0] = <LinkedType>linkedTypeMap[typeName];
+              arg[0] = linkedTypeMap[typeName] as LinkedType;
             }
           }
         });
       }
 
-      const typeName = <LinkedType | string>field?.type;
+      const typeName = field?.type as LinkedType | string;
 
-      if (field?.type && typeof typeName === "string") {
+      if (field?.type && typeof typeName === 'string') {
         if (!linkedTypeMap[typeName]) {
           linkedTypeMap[typeName] = { name: typeName };
         }
 
-        field.type = <LinkedType>linkedTypeMap[typeName];
+        field.type = linkedTypeMap[typeName] as LinkedType;
       }
     });
   });

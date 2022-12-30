@@ -1,18 +1,18 @@
-import { Box, Spinner, Stack } from "@chakra-ui/react";
-import { Hero, PageContainer, SectionTitle } from "landing-blocks";
-import React, { useEffect, useState } from "react";
 // import { expectType } from "tsd";
-import { createClient } from "../../sub";
+import { createClient } from '../../subscription';
+import { Box, Spinner, Stack } from '@chakra-ui/react';
+import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import React, { useEffect, useState } from 'react';
 
 const client = createClient({
-  url: "https://realtime-poll.hasura.app/v1/graphql",
+  url: 'https://realtime-poll.hasura.app/v1/graphql',
   subscription: {
-    url: "ws://realtime-poll.hasura.app/v1/graphql",
+    url: 'ws://realtime-poll.hasura.app/v1/graphql',
     shouldRetry: () => false,
   },
 });
 
-console.log("client", client);
+console.log('client', client);
 
 const Page = () => {
   const [data, setData] = useState<any>();
@@ -30,16 +30,16 @@ const Page = () => {
       })
       .subscribe({
         next: ({ data }) => {
-          console.log("data", data);
+          console.log('data', data);
           const newData = addedUser;
           newData.push(data?.online_users[0].count);
           setAddedUser(newData);
         },
         error: (error) => {
-          console.log("error", error);
+          console.log('error', error);
         },
         complete() {
-          console.log("complete");
+          console.log('complete');
         },
       });
     setInterval(() => {
@@ -89,31 +89,31 @@ const Page = () => {
   // );
   // expectType<Partial<user>[] | undefined>(data?.user);
   return (
-    <Stack spacing="40px" mt="40px">
+    <Stack spacing='40px' mt='40px'>
       <Hero
-        bullet="Gqlts lets you write graphql queries as code"
-        heading="Example use of Gqlts"
-        subheading="Cast Vote via https://realtime-poll.demo.hasura.io/"
+        bullet='Gqlts lets you write graphql queries as code'
+        heading='Example use of Gqlts'
+        subheading='Cast Vote via https://realtime-poll.demo.hasura.io/'
       />
       <PageContainer>
-        <SectionTitle heading="Users" />
+        <SectionTitle heading='Users' />
         {!data && (
-          <Stack justify="center" align="center">
+          <Stack justify='center' align='center'>
             <Spinner />
           </Stack>
         )}
         {addedUser.length > 0 && (
-          <Stack spacing="20px">
+          <Stack spacing='20px'>
             {addedUser?.map((x: any) => {
               return (
-                <Box borderRadius="10px" p="20px" borderWidth="1px">
+                <Box borderRadius='10px' p='20px' borderWidth='1px'>
                   {x.id} - {x.name} - {x.age}
                 </Box>
               );
             })}
           </Stack>
         )}
-        {error && <Box color="red">{error.message}</Box>}
+        {error && <Box color='red'>{error.message}</Box>}
       </PageContainer>
     </Stack>
   );

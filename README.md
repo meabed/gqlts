@@ -90,4 +90,6 @@ query {
 
 ---
 
-[Licensed under MIT]().
+## License
+
+This is licensed under an MIT License. [See details](LICENSE)

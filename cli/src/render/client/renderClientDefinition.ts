@@ -1,15 +1,15 @@
-import { GraphQLSchema } from "graphql";
-import { RenderContext } from "../common/RenderContext";
-import { requestTypeName } from "../requestTypes/requestTypeName";
-import { RUNTIME_LIB_NAME } from "../../config";
-import { renderEnumsMaps } from "./renderClient";
+import { RUNTIME_LIB_NAME } from '../../config';
+import { RenderContext } from '../common/RenderContext';
+import { requestTypeName } from '../requestTypes/requestTypeName';
+import { renderEnumsMaps } from './renderClient';
+import { GraphQLSchema } from 'graphql';
 
 export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext) {
   const queryType = schema.getQueryType();
   const mutationType = schema.getMutationType();
   const subscriptionType = schema.getSubscriptionType();
-  const prefix = ctx.config?.methodPrefix || "";
-  const suffix = ctx.config?.methodSuffix || "";
+  const prefix = ctx.config?.methodPrefix || '';
+  const suffix = ctx.config?.methodSuffix || '';
 
   ctx.addCodeBlock(`
     import { FieldsSelection, GraphqlOperation, ClientOptions, Observable } from '${RUNTIME_LIB_NAME}'
@@ -34,7 +34,7 @@ export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext
     })
   );
 
-  ctx.addCodeBlock(renderEnumsMaps(schema, "type"));
+  ctx.addCodeBlock(renderEnumsMaps(schema, 'type'));
 }
 
 function renderClientTypesImports({ queryType, mutationType, subscriptionType }) {
@@ -50,13 +50,13 @@ function renderClientTypesImports({ queryType, mutationType, subscriptionType })
     imports.push(requestTypeName(subscriptionType), subscriptionType.name);
   }
   if (imports.length > 0) {
-    return `import {${imports.join(",")}} from './schema'`;
+    return `import {${imports.join(',')}} from './schema'`;
   }
-  return "";
+  return '';
 }
 
 function renderClientType({ queryType, mutationType, subscriptionType }) {
-  let interfaceContent = "";
+  let interfaceContent = '';
 
   if (queryType) {
     interfaceContent += `
@@ -122,7 +122,7 @@ function renderClientType({ queryType, mutationType, subscriptionType }) {
 // TODO add the close method that closes the ws client
 
 function renderSupportFunctionsTypes({ queryType, mutationType, subscriptionType }) {
-  let code = "";
+  let code = '';
   if (queryType) {
     code += `
         export type QueryResult<fields extends ${requestTypeName(queryType)}> = GraphqlResponse<FieldsSelection<${

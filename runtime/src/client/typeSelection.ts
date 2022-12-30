@@ -22,24 +22,24 @@ export type FieldsSelection<SRC extends Anify<DST> | undefined, DST> = {
   __scalar: Handle__scalar<SRC, DST>;
   never: never;
 }[DST extends Nil
-  ? "never"
+  ? 'never'
   : SRC extends Nil
-  ? "never"
+  ? 'never'
   : DST extends readonly [any, any]
-  ? "tuple"
+  ? 'tuple'
   : DST extends false | 0
-  ? "never"
+  ? 'never'
   : SRC extends Scalar
-  ? "scalar"
+  ? 'scalar'
   : SRC extends any[]
-  ? "array"
+  ? 'array'
   : SRC extends { __isUnion?: any }
-  ? "union"
+  ? 'union'
   : DST extends { __scalar?: any }
-  ? "__scalar"
+  ? '__scalar'
   : DST extends {}
-  ? "object"
-  : "never"];
+  ? 'object'
+  : 'never'];
 
 type HandleObject<SRC extends Anify<DST>, DST> = SRC extends Nil
   ? never
@@ -85,6 +85,6 @@ type Scalar = string | number | Date | boolean | null | undefined;
 
 type Anify<T> = { [P in keyof T]?: any };
 
-type FieldsToRemove = "__isUnion" | "__scalar" | "__name";
+type FieldsToRemove = '__isUnion' | '__scalar' | '__name';
 
 type Nil = undefined | null;

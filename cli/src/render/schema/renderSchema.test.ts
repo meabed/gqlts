@@ -1,8 +1,8 @@
-import { prettify } from "../../helpers/prettify";
-import { schemaRenderTest } from "../../testHelpers/render";
-import { renderSchema } from "./renderSchema";
+import { prettify } from '../../helpers/prettify';
+import { schemaRenderTest } from '../../testHelpers/render';
+import { renderSchema } from './renderSchema';
 
-test("renderSchema", async () => {
+test('renderSchema', async () => {
   expect(
     await schemaRenderTest(
       /* GraphQL */ `
@@ -19,7 +19,7 @@ test("renderSchema", async () => {
         }
       `,
       renderSchema,
-      "graphql"
+      'graphql'
     )
   ).toBe(
     prettify(
@@ -36,7 +36,7 @@ test("renderSchema", async () => {
           _: Boolean
         }
       `,
-      "graphql"
+      'graphql'
     )
   );
 });

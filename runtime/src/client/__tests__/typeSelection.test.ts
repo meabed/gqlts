@@ -1,5 +1,5 @@
-import { FieldsSelection } from "@gqlts/runtime/src/client/typeSelection";
-import { NoExtraProperties } from "../../";
+import { NoExtraProperties } from '../../';
+import { FieldsSelection } from '@gqlts/runtime/src/client/typeSelection';
 
 // types requirements
 /*
@@ -17,7 +17,7 @@ import { NoExtraProperties } from "../../";
 */
 
 type SRC = {
-  literalsUnion: "a" | "b";
+  literalsUnion: 'a' | 'b';
   nullableField: null | { x: boolean; optional?: string };
   list: {
     x: number;
@@ -88,7 +88,7 @@ type SRC = {
   };
 };
 
-describe("pick", () => {
+describe('pick', () => {
   const req = {
     category: {
       a: 1,
@@ -109,7 +109,7 @@ describe("pick", () => {
   };
   const z: FieldsSelection<SRC, NoExtraProperties<typeof req>> = {} as any;
   test(
-    "response type picks from request type",
+    'response type picks from request type',
     dontExecute(() => {
       z.category;
       z.category.a;
@@ -120,7 +120,7 @@ describe("pick", () => {
     })
   );
   test(
-    "response type does not have additional properties",
+    'response type does not have additional properties',
     dontExecute(() => {
       // TODO i can access keys with value type equal never
       // @ts-expect-error
@@ -136,16 +136,16 @@ describe("pick", () => {
     })
   );
   test(
-    "argument syntax",
+    'argument syntax',
     dontExecute(() => {
       z.argumentSyntax.a.toLocaleLowerCase;
     })
   );
 });
 
-describe("__scalar", () => {
+describe('__scalar', () => {
   const req = {
-    __name: "name",
+    __name: 'name',
     category: {
       __scalar: 1,
       nested1: {
@@ -161,7 +161,7 @@ describe("__scalar", () => {
   };
   const z: FieldsSelection<SRC, typeof req> = {} as any;
   test(
-    "response type picks from request type",
+    'response type picks from request type',
     dontExecute(() => {
       z.category;
       z.category.a;
@@ -173,7 +173,7 @@ describe("__scalar", () => {
     })
   );
   test(
-    "response type does not have additional properties",
+    'response type does not have additional properties',
     dontExecute(() => {
       // TODO i can access keys with value type equal never
       // @ts-expect-error
@@ -187,21 +187,21 @@ describe("__scalar", () => {
     })
   );
   test(
-    "__scalar is not present",
+    '__scalar is not present',
     dontExecute(() => {
       // @ts-expect-error
       z.category.__scalar;
     })
   );
   test(
-    "__name is not present",
+    '__name is not present',
     dontExecute(() => {
       // @ts-expect-error __name
       z.__name;
     })
   );
   test(
-    "argument syntax",
+    'argument syntax',
     dontExecute(() => {
       z.argumentSyntax.a.toLocaleLowerCase;
       z.argumentSyntax.optional?.big;
@@ -211,7 +211,7 @@ describe("__scalar", () => {
   );
 });
 
-describe("optional fields", () => {
+describe('optional fields', () => {
   const req = {
     optionalFields: {
       a: 1,
@@ -231,7 +231,7 @@ describe("optional fields", () => {
   };
   const z: FieldsSelection<SRC, typeof req> = {} as any;
   test(
-    "optional fields are preserved",
+    'optional fields are preserved',
     dontExecute(() => {
       // @ts-expect-error
       z.optionalFields.a.toLocaleLowerCase;
@@ -246,7 +246,7 @@ describe("optional fields", () => {
     })
   );
   test(
-    "optional fields are preserved in __scalar",
+    'optional fields are preserved in __scalar',
     dontExecute(() => {
       // @ts-expect-error
       z.optionalFields.a.toLocaleLowerCase;
@@ -260,7 +260,7 @@ describe("optional fields", () => {
     })
   );
   test(
-    "argument syntax",
+    'argument syntax',
     dontExecute(() => {
       // @ts-expect-error optional
       z.argumentSyntax.optional.toLocaleLowerCase;
@@ -269,7 +269,7 @@ describe("optional fields", () => {
   );
 });
 
-describe("unions", () => {
+describe('unions', () => {
   const req = {
     union: {
       onX: {
@@ -298,7 +298,7 @@ describe("unions", () => {
   };
   const z: FieldsSelection<SRC, typeof req> = {} as any;
   test(
-    "pick union fields",
+    'pick union fields',
     dontExecute(() => {
       z.union.a.toLocaleLowerCase;
       z.union.a.toLocaleLowerCase;
@@ -306,7 +306,7 @@ describe("unions", () => {
     })
   );
   test(
-    "does not have __isUnion",
+    'does not have __isUnion',
     dontExecute(() => {
       // @ts-expect-error
       z.union.__isUnion;
@@ -315,7 +315,7 @@ describe("unions", () => {
     })
   );
   test(
-    "argument syntax",
+    'argument syntax',
     dontExecute(() => {
       z.argumentSyntax.union.a.charAt;
       // @ts-expect-error
@@ -324,7 +324,7 @@ describe("unions", () => {
   );
 });
 
-describe("hide fields in request", () => {
+describe('hide fields in request', () => {
   const SKIP: false = false;
   const req = {
     category: {
@@ -346,7 +346,7 @@ describe("hide fields in request", () => {
   // )
 });
 
-describe("arrays", () => {
+describe('arrays', () => {
   const req = {
     list: {
       a: 1,
@@ -373,20 +373,20 @@ describe("arrays", () => {
   };
   const z: FieldsSelection<SRC, typeof req> = {} as any;
   test(
-    "list",
+    'list',
     dontExecute(() => {
       z.list[0].a.charCodeAt;
       z.list[0].x.toFixed;
     })
   );
   test(
-    "nested",
+    'nested',
     dontExecute(() => {
       z.nested?.list?.[0]?.edges?.[0].x?.toFixed;
     })
   );
   test(
-    "maintain optionals",
+    'maintain optionals',
     dontExecute(() => {
       // @ts-expect-error optional
       z.list[0].optional.bold;
@@ -394,7 +394,7 @@ describe("arrays", () => {
     })
   );
   test(
-    "args syntax",
+    'args syntax',
     dontExecute(() => {
       z.argumentSyntax.list[0].x;
       z.argumentSyntax.list[0].optional?.blink;
@@ -404,24 +404,24 @@ describe("arrays", () => {
   );
 });
 
-describe("literals unions", () => {
+describe('literals unions', () => {
   const req = {
     literalsUnion: 1,
   };
   const z: FieldsSelection<SRC, typeof req> = {} as any;
   test(
-    "literals",
+    'literals',
     dontExecute(() => {
       z.literalsUnion.blink;
-      z.literalsUnion === "a";
-      z.literalsUnion === "b";
+      z.literalsUnion === 'a';
+      z.literalsUnion === 'b';
       // @ts-expect-error
-      z.literalsUnion === "x";
+      z.literalsUnion === 'x';
     })
   );
 });
 
-describe("literals unions", () => {
+describe('literals unions', () => {
   const req = {
     nullableField: {
       x: 1,
@@ -430,7 +430,7 @@ describe("literals unions", () => {
   };
   const z: FieldsSelection<SRC, typeof req> = {} as any;
   test(
-    "accessible",
+    'accessible',
     dontExecute(() => {
       z.nullableField.x;
       z.nullableField.optional?.big;
@@ -441,18 +441,18 @@ describe("literals unions", () => {
 });
 
 test(
-  "complex optional type with array",
+  'complex optional type with array',
   dontExecute(() => {
     interface ForkConnection {
       edges?: (ForkEdge | undefined)[];
-      __typename?: "ForkConnection";
+      __typename?: 'ForkConnection';
     }
 
     interface ForkEdge {
       cursor?: string;
       node?: { x: string; y: string };
       nodes?: { x?: string; y?: string }[];
-      __typename?: "ForkEdge";
+      __typename?: 'ForkEdge';
     }
 
     // issue

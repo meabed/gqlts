@@ -1,10 +1,10 @@
-import { GraphQLInterfaceType, GraphQLObjectType, isObjectType } from "graphql";
-import { fieldComment, typeComment } from "../common/comment";
-import { RenderContext } from "../common/RenderContext";
-import { renderTyping } from "../common/renderTyping";
-import { sortKeys } from "../common/support";
+import { RenderContext } from '../common/RenderContext';
+import { fieldComment, typeComment } from '../common/comment';
+import { renderTyping } from '../common/renderTyping';
+import { sortKeys } from '../common/support';
+import { GraphQLInterfaceType, GraphQLObjectType, isObjectType } from 'graphql';
 
-const INDENTATION = "    ";
+const INDENTATION = '    ';
 
 export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: RenderContext) {
   let fieldsMap = type.getFields();
@@ -15,7 +15,7 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
 
   const fields = Object.keys(fieldsMap).map((fieldName) => fieldsMap[fieldName]);
 
-  if (!ctx.schema) throw new Error("no schema provided");
+  if (!ctx.schema) throw new Error('no schema provided');
 
   const typeNames = isObjectType(type) ? [type.name] : ctx.schema.getPossibleTypes(type).map((t) => t.name);
 
@@ -23,14 +23,14 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
     .map((f) => {
       return `${fieldComment(f)}${f.name}${renderTyping(f.type, true, true)}`;
     })
-    .concat([`__typename: ${typeNames.length > 0 ? typeNames.map((t) => `'${t}'`).join("|") : "string"}`]);
+    .concat([`__typename: ${typeNames.length > 0 ? typeNames.map((t) => `'${t}'`).join('|') : 'string'}`]);
   // add indentation
   fieldStrings = fieldStrings.map((x) =>
     x
-      .split("\n")
+      .split('\n')
       .filter(Boolean)
       .map((l) => INDENTATION + l)
-      .join("\n")
+      .join('\n')
   );
 
   // there is no need to add extensions as in graphql the implemented type must explicitly add the fields
@@ -39,5 +39,5 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
   //     : []
   // let extensions =
   //     interfaceNames.length > 0 ? ` extends ${interfaceNames.join(',')}` : ''
-  ctx.addCodeBlock(`${typeComment(type)}export interface ${type.name} {\n${fieldStrings.join("\n")}\n}`);
+  ctx.addCodeBlock(`${typeComment(type)}export interface ${type.name} {\n${fieldStrings.join('\n')}\n}`);
 }

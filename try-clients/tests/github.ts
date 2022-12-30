@@ -1,35 +1,35 @@
-import { createClient, everything } from "../github/generated";
-import { AxiosInstance } from "axios";
+import { createClient, everything } from '../github/generated';
+import { AxiosInstance } from 'axios';
 
-describe("github", () => {
+describe('github', () => {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
-    throw new Error("you need to provide a GITHUB_TOKEN as env to run this test");
+    throw new Error('you need to provide a GITHUB_TOKEN as env to run this test');
   }
   const client = createClient({
-    url: "https://api.github.com/graphql",
+    url: 'https://api.github.com/graphql',
     headers: {
-      Authorization: "Bearer " + token,
+      Authorization: 'Bearer ' + token,
     },
   });
   // example of assigning a custom fetcher and interceptor ( Axios Based )
   const axiosClient = client.fetcherInstance as AxiosInstance;
   axiosClient.interceptors.request.use(
     (config) => {
-      console.log(config);
+      // console.log(config);
       return config;
     },
     (error) => {
-      console.log(error);
+      // console.log(error);
       return Promise.reject(error);
     }
   );
-  it("simple normal syntax", async () => {
+  it('simple normal syntax', async () => {
     const res1 = await client.query({
       repository: [
         {
-          name: "gqlts",
-          owner: "remorses",
+          name: 'gqlts',
+          owner: 'remorses',
         },
         {
           ...everything,
@@ -39,6 +39,6 @@ describe("github", () => {
         },
       ],
     });
-    console.log(res1);
+    // console.log(res1);
   });
 });

@@ -1,7 +1,7 @@
-import prettier from "prettier/standalone";
-import { BuiltInParserName } from "prettier";
-import parserGraphql from "prettier/parser-graphql";
-import parserTS from "prettier/parser-typescript";
+import { BuiltInParserName } from 'prettier';
+import parserGraphql from 'prettier/parser-graphql';
+import parserTS from 'prettier/parser-typescript';
+import prettier from 'prettier/standalone';
 
 export function prettify(code: string, parser?: BuiltInParserName) {
   // return code
@@ -10,7 +10,7 @@ export function prettify(code: string, parser?: BuiltInParserName) {
     plugins: [parserGraphql, parserTS],
     semi: false,
     singleQuote: true,
-    trailingComma: "all",
+    trailingComma: 'all',
     printWidth: 80,
   });
 }

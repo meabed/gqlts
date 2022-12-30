@@ -1,2 +1,2 @@
-require('sucrase/register')
-require('dotenv').config()
+require('sucrase/register');
+require('dotenv').config();

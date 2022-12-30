@@ -1,13 +1,13 @@
-import colors from "colors";
-import { Config } from "../config";
+import { Config } from '../config';
+import colors from 'colors';
 
 export function validateConfigs(configs: Config[]) {
   const errors: string[] = [];
 
-  if (configs.length === 0) errors.push("config array is empty");
+  if (configs.length === 0) errors.push('config array is empty');
 
   configs.forEach((config, i) => {
-    const whichConfig = configs.length === 1 ? "the config" : `config #${i + 1}`;
+    const whichConfig = configs.length === 1 ? 'the config' : `config #${i + 1}`;
 
     if (!config.endpoint && !config.schema)
       errors.push(`you didn't provide either \`endpoint\`, \`schema\` or \`fetcher\` option in ${whichConfig}`);

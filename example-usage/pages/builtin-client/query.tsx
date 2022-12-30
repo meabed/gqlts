@@ -1,11 +1,11 @@
-import { Box, Input, Spinner, Stack } from "@chakra-ui/react";
-import { Hero, PageContainer, SectionTitle } from "landing-blocks";
-import React, { useState } from "react";
-import { everything } from "../../generated";
-import { useQuery } from "../../client";
+import { useQuery } from '../../client';
+import { everything } from '../../generated';
+import { Box, Input, Spinner, Stack } from '@chakra-ui/react';
+import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import React, { useState } from 'react';
 
 const Page = () => {
-  const [regex, setRegex] = useState(".*");
+  const [regex, setRegex] = useState('.*');
   const { data, isValidating, error } = useQuery({
     user: [
       {
@@ -22,33 +22,33 @@ const Page = () => {
   });
 
   return (
-    <Stack spacing="40px" mt="40px">
+    <Stack spacing='40px' mt='40px'>
       <Hero
-        bullet="Gqlts lets you write graphql queries as code"
-        heading="Example use of Gqlts"
-        subheading="Search for countries via https://countries.trevorblades.com"
+        bullet='Gqlts lets you write graphql queries as code'
+        heading='Example use of Gqlts'
+        subheading='Search for countries via https://countries.trevorblades.com'
       />
       <PageContainer>
         <Box>Search a continent</Box>
-        <Input variant="filled" value={regex} onChange={(e: any) => setRegex(e.target.value)} placeholder=".*" />
+        <Input variant='filled' value={regex} onChange={(e: any) => setRegex(e.target.value)} placeholder='.*' />
       </PageContainer>
       <PageContainer>
-        <SectionTitle heading="Countries" />
+        <SectionTitle heading='Countries' />
         {isValidating && (
-          <Stack justify="center" align="center">
+          <Stack justify='center' align='center'>
             <Spinner />
           </Stack>
         )}
         {data && (
-          <Stack spacing="20px">
+          <Stack spacing='20px'>
             {data?.user?.map((x: any) => (
-              <Box borderRadius="10px" p="20px" borderWidth="1px">
+              <Box borderRadius='10px' p='20px' borderWidth='1px'>
                 {x.name}
               </Box>
             ))}
           </Stack>
         )}
-        {error && <Box color="red">{error.message}</Box>}
+        {error && <Box color='red'>{error.message}</Box>}
       </PageContainer>
     </Stack>
   );
