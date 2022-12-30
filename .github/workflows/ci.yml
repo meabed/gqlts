@@ -44,14 +44,16 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
 
       - name: Yarn
-        run: yarn install --frozen-lockfile
+        run: |
+          yarn install --frozen-lockfile
+          yarn buildall
+          yarn install --frozen-lockfile
 
       - name: Test
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          # yarn genall
-          yarn buildall
+          yarn genall
           yarn test
 
       - name: Build and Test Demo APP
