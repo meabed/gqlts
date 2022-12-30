@@ -1,13 +1,9 @@
-import { demoAppBackendSdk } from './demo-app-backend-sdk';
-import Head from 'next/head';
+import { demoAppBackendSdk } from '../src/demo-app-backend-sdk';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Demo App</title>
-      </Head>
       <main>
         <Test1 />
       </main>
