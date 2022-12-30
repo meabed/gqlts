@@ -17,7 +17,7 @@ npx lerna version $pkgVersion --no-git-tag-version --no-push --yes
 echo "Package version updated to $pkgVersion"
 echo "-----------------------------------"
 # replace old versions in files
-find . -type f \( -name '*.js' -or -name '*.ts' -or -name '*.tsx' -or -name '*.json' \) -not -path '*node_modules*' -not -path '*.next*' -exec grep -l "$pkgVersion" {} \; | xargs perl -pi -e "s/$oldVersion/$pkgVersion/g"
+find . -type f \( -name '*.js' -or -name '*.ts' -or -name '*.tsx' -or -name '*.json' \) -not -path '*node_modules*' -not -path '*.next*' -exec grep -l "$oldVersion" {} \; | xargs perl -pi -e "s/$oldVersion/$pkgVersion/g"
 yarn install --frozen-lockfile --ignore-scripts
 ## todo fix this by hoisting the repo https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind
 # yarn examplecli
