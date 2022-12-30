@@ -20,8 +20,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build-sdk": "cd sdk && yarn && yarn build-sdk",
-    "dev": "ts-node src/index.ts",
-    "start": "node dist/index.js",
+    "dev": "PORT=${PORT:-4000} ts-node src/index.ts",
+    "start": "PORT=${PORT:-4000} node dist/index.js",
     "test": "NODE_ENV=test jest -c ./__tests__/jest.config.js --runInBand --forceExit",
     "typecheck": "tsc --pretty --skipLibCheck --noEmit"
   },

@@ -44,7 +44,7 @@ export async function buildSdk({ skipIfExists = false }: { skipIfExists?: boolea
     'module.exports.createClient',
     `
 var serviceUrlMap = {
-  local: "http://localhost:3000",
+  local: "http://localhost:4000",
   development: "https://dev-api.heroku.app"
 }
 

@@ -2,10 +2,10 @@ import { yogaGraphQL } from './graphql';
 import { createServer } from 'node:http';
 
 export const server = createServer(yogaGraphQL);
-
-server.listen(3000, () => {
+const port = process.env.PORT || 4000;
+server.listen(port, () => {
   if (process.env.NODE_ENV === 'test') {
     return;
   }
-  console.log('Visit http://localhost:3000/graphql');
+  console.log(`Server is running on http://localhost:${port}`);
 });
