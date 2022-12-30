@@ -1,6 +1,6 @@
 {
   "name": "integration-tests",
-  "version": "3.2.10",
+  "version": "3.2.11",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "repository": "github:meabed/gqlts",
@@ -30,8 +30,8 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@gqlts/cli": "^3.2.10",
-    "@gqlts/runtime": "^3.2.10",
+    "@gqlts/cli": "^3.2.11",
+    "@gqlts/runtime": "^3.2.11",
     "apollo-server-express": "3.11.1",
     "await-sleep": "0.0.1",
     "axios": "1.2.2",

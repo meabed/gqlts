@@ -10,6 +10,16 @@
     <br/>
 </div>
 
+[![Build Status](https://github.com/meabed/gqlts/actions/workflows/ci.yml/badge.svg)](https://github.com/meabed/gqlts/actions/workflows/ci.yml)
+### @gqlts/cli
+[![NPM version](https://img.shields.io/npm/v/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
+[![Downloads](https://img.shields.io/npm/dm/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
+[![UNPKG](https://img.shields.io/badge/UNPKG-CLI-179BD7.svg)](https://unpkg.com/browse/@gqlts/cli@latest/)
+### @gqlts/runtime
+[![NPM version](https://img.shields.io/npm/v/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
+[![Downloads](https://img.shields.io/npm/dm/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
+[![UNPKG](https://img.shields.io/badge/UNPKG-RUNTIME-179BD7.svg)](https://unpkg.com/browse/@gqlts/runtime@latest/)
+
 > This package is forked version from [genql](https://github.com/remorses/genql/)
 >
 > It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
@@ -51,16 +61,16 @@ import { createClient, everything } from './generated'
 const client = createClient()
 
 client
-  .query({
-    countries: {
-      name: true,
-      code: true,
-      nestedField: {
-        ...everything, // same as __scalar: true
-      },
-    },
-  })
-  .then(console.log)
+    .query({
+        countries: {
+            name: true,
+            code: true,
+            nestedField: {
+                ...everything, // same as __scalar: true
+            },
+        },
+    })
+    .then(console.log)
 ```
 
 The code above will fetch the graphql query below
@@ -80,4 +90,6 @@ query {
 
 ---
 
-[Licensed under MIT]().
+## License
+
+This is licensed under an MIT License. [See details](LICENSE)
