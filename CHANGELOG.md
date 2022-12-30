@@ -1,6 +1,8 @@
 # Changelog
 
-## [3.2.11 - 2022-12-28](https://github.com/meabed/gqlts/compare/v3.2.10...v3.2.11)
+## [3.2.11 - 2022-12-30](https://github.com/meabed/gqlts/compare/v3.2.10...v3.2.11)
+- Added browser standalone bundle using browserify
+- Added e2e demo app to test sdk generation, react integration and browser bundle
 - Upgrade axios
 - Update dependencies
 - Refactor code ( prettier )

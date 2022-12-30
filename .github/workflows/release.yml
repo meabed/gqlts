@@ -48,6 +48,10 @@ jobs:
           yarn buildall
           yarn test
 
+      - name: Build and Test Demo APP
+        run: |
+          ./demo-app/build-and-test.sh
+
       - name: Release Prep
         run: |
           npm i -g semantic-release @semantic-release/git @semantic-release/npm @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/exec
