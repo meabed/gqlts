@@ -17,6 +17,7 @@ async function testElText(page) {
 (async () => {
   const browser = await puppeteerTest.launch();
   const page = await browser.newPage();
+  await sleep(1000);
   // client side rendering
   await page.goto(`http://localhost:3000`);
   await testElText(page);
