@@ -6,7 +6,7 @@ on:
     paths:
       - 'cli/**'
       - 'runtime/**'
-      - 'test-app/**'
+      - 'demo-app/**'
       - 'package.json'
       - 'yarn.lock'
       - 'release.config.js'

@@ -3906,7 +3906,7 @@ terser@^3.7.5:
     source-map "~0.6.1"
     source-map-support "~0.5.10"
 
-"test-app-backend-sdk@file:../backend/sdk":
+"demo-app-backend-sdk@file:../backend/sdk":
   version "1.0.0"
   dependencies:
     "@gqlts/cli" "file:../../../../Library/Caches/Yarn/v6/cli"
