@@ -30,8 +30,8 @@
     "timeout": 9999999999
   },
   "dependencies": {
-    "@gqlts/cli": "^3.2.11",
-    "@gqlts/runtime": "^3.2.11",
+    "@gqlts/cli": "file:../cli",
+    "@gqlts/runtime": "file:../runtime",
     "apollo-server-express": "3.11.1",
     "await-sleep": "0.0.1",
     "axios": "1.2.2",
@@ -49,5 +49,9 @@
     "mocha": "10.2.0",
     "snap-shot-it": "7.9.10",
     "sucrase": "3.29.0"
+  },
+  "resolutions": {
+    "@gqlts/cli": "file:../cli",
+    "@gqlts/runtime": "file:../runtime"
   }
 }

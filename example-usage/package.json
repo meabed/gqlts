@@ -35,8 +35,8 @@
     "@emotion/core": "11.0.0",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
-    "@gqlts/cli": "^3.2.11",
-    "@gqlts/runtime": "^3.2.11",
+    "@gqlts/cli": "file:../cli",
+    "@gqlts/runtime": "file:../runtime",
     "@tanstack/react-query": "4.20.4",
     "@types/js-cookie": "3.0.2",
     "apollo-boost": "0.4.9",
@@ -58,5 +58,9 @@
     "@types/react-dom": "18.0.10",
     "next-transpile-modules": "10.0.0",
     "sucrase": "3.29.0"
+  },
+  "resolutions": {
+    "@gqlts/cli": "file:../cli",
+    "@gqlts/runtime": "file:../runtime"
   }
 }
