@@ -86,3 +86,4 @@ typings/
 .idea
 package-lock.json
 next-version.txt
+nohup.out

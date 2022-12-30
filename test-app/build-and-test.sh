@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
-my_dir="$(dirname "$0")"
+my_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 cd $my_dir/backend
 yarn install --frozen-lockfile
 yarn dev --exit-after-generate-schema
@@ -12,7 +13,9 @@ yarn test
 
 
 # test the standalone bundle
+pkill -f "node dist/index.js" || true
 nohup yarn start &
 cd $my_dir/html
 yarn install --frozen-lockfile
 yarn test
+pkill -f "node dist/index.js" || true

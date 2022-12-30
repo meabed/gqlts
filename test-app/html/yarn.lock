@@ -178,6 +178,11 @@ escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==
 
+expect-puppeteer@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/expect-puppeteer/-/expect-puppeteer-6.1.1.tgz#f446cd2a6f9db895077e4fe591db432b5d7f34b5"
+  integrity sha512-cnQF96qdoEcOD63j5NQMc0RtW9WRMW/WHKXEKsuDQ2tszhVH3qC7zkXXS4D0LTt9qCB3DEExioqylsQXvqPrUw==
+
 extract-zip@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/extract-zip/-/extract-zip-2.0.1.tgz#663dca56fe46df890d5f131ef4a06d22bb8ba13a"

@@ -21,6 +21,7 @@
     "test": "node test.js"
   },
   "devDependencies": {
+    "expect-puppeteer": "^6.1.1",
     "puppeteer": "^19.4.1"
   }
 }

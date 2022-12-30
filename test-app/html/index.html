@@ -6,8 +6,23 @@
 <body>
 <h1>Test App</h1>
 <p>Test App is a test app.</p>
+<div id="test1-result"></div>
 <script type="application/javascript">
-  const sdk = window["testAppBackendSdk"];
+  const sdkClient = window["testAppBackendSdk"].createClient({
+    url: "http://localhost:3000/graphql"
+  });
+
+  async function test() {
+    const { data, errors } = await sdkClient.query(
+      {
+        v1SatHello: [{ name: "John Connor" }, { message: 1 }]
+      },
+      { headers: { "x-my-secret": "Sarah Connor", 'content-type': 'application/json'} }
+    );
+    document.getElementById("test1-result").innerHTML = data?.v1SatHello?.message;
+  }
+
+  test().then();
 </script>
 </body>
 </html>
