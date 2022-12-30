@@ -22,6 +22,7 @@ echo "Updating repo..."
 git add .
 git commit -m "chore(release): update packages to $pkgVersion [skip ci]"
 if [[ $branch == "master" ]]; then
+  git pull origin master --ff-only
   git push
   echo "Repo pushed."
 fi
