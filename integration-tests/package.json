@@ -20,7 +20,7 @@
   "main": "index.js",
   "scripts": {
     "flame": "node --prof-process --preprocess -j isolate*.log | flamebearer && open flamegraph.html",
-    "gen": "node -r sucrase/register generate.ts && tsc --noEmit",
+    "gen": "ts-node -r sucrase/register generate.ts && tsc --noEmit",
     "genprof": "node -r sucrase/register --prof generate.ts",
     "test": "mocha -r ts-node/register"
   },
