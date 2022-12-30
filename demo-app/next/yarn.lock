@@ -255,7 +255,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@gqlts/cli@file:../../cli":
+"@gqlts/cli@file:../../cli", "@gqlts/cli@file:./../../cli":
   version "3.2.10"
   dependencies:
     "@gqlts/runtime" "3.2.10"
@@ -1481,6 +1481,12 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
+
+"demo-app-backend-sdk@file:../backend/sdk":
+  version "1.0.0"
+  dependencies:
+    "@gqlts/cli" "file:../../../../Library/Caches/Yarn/v6/cli"
+    "@gqlts/runtime" "file:../../../../Library/Caches/Yarn/v6/runtime"
 
 deps-sort@^2.0.1:
   version "2.0.1"
@@ -3905,12 +3911,6 @@ terser@^3.7.5:
     commander "^2.19.0"
     source-map "~0.6.1"
     source-map-support "~0.5.10"
-
-"demo-app-backend-sdk@file:../backend/sdk":
-  version "1.0.0"
-  dependencies:
-    "@gqlts/cli" "file:../../../../Library/Caches/Yarn/v6/cli"
-    "@gqlts/runtime" "file:../../../../Library/Caches/Yarn/v6/runtime"
 
 text-table@^0.2.0:
   version "0.2.0"

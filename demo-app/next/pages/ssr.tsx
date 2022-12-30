@@ -4,7 +4,7 @@ export default function Home({ testResult }: { testResult: string }) {
   return (
     <>
       <main>
-        <div id='test1-result'>{testResult}</div>;
+        <div id='test1-result'>{testResult}</div>
       </main>
     </>
   );
