@@ -6,7 +6,7 @@ on:
     paths:
       - 'cli/**'
       - 'runtime/**'
-      - 'demo-app/**'
+      - 'demo-apps/**'
       - 'package.json'
       - 'yarn.lock'
       - 'release.config.js'
@@ -49,13 +49,11 @@ jobs:
           git config --global user.name "github-actions[bot]"
           yarn install --frozen-lockfile --ignore-scripts
           yarn buildall
-          yarn install --frozen-lockfile --ignore-scripts
-          yarn genall
           yarn test
 
       - name: Build and Test Demo APP
         run: |
-          ./demo-app/build-and-test.sh
+          ./demo-apps/build-and-test.sh
 
       - name: Release Prep
         run: |

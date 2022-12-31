@@ -17,19 +17,34 @@ npx lerna version $pkgVersion --no-git-tag-version --no-push --yes
 echo "Package version updated to $pkgVersion"
 echo "-----------------------------------"
 # replace old versions in files
-find . -type f \( -name '*.js' -or -name '*.ts' -or -name '*.tsx' -or -name '*.json' \) -not -path '*node_modules*' -not -path '*.next*' -exec grep -l "$oldVersion" {} \; | xargs perl -pi -e "s/$oldVersion/$pkgVersion/g"
+find . -type f \( -name '*.js' -or -name '*.ts' -or -name '*.tsx' -or -name '*.json' -or -name 'README.md' \) -not -path '*node_modules*' -not -path '*.next*' -exec grep -l "$oldVersion" {} \; | xargs perl -pi -e "s/$oldVersion/$pkgVersion/g"
+
+# test main packages cli and runtime
 yarn install --frozen-lockfile --ignore-scripts
-## todo fix this by hoisting the repo https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind
-# yarn examplecli
-#
 yarn buildall
-#
-yarn genall
 yarn test
 
+#
+# yarn examplecli
+## todo fix this by hoisting the repo https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind
+
+## testing other packages
+allPkgs=( "example-usage" "integration-tests" "try-clients" )
+for pkg in "${allPkgs[@]}"
+do
+  echo "-----------------------------------"
+  echo "Building and Testing $pkg"
+  cd $my_dir/demo-apps/$pkg
+  yarn install --frozen-lockfile --ignore-scripts
+  yarn build
+  yarn gen
+  yarn test
+done
+
+cd $my_dir
 echo "Updating repo..."
-command cp -rf CHANGELOG.md LICENSE README.md ./runtime/
-command cp -rf CHANGELOG.md LICENSE README.md ./cli/
+command cp -rf CHANGELOG.md LICENSE README.md $my_dir/runtime/
+command cp -rf CHANGELOG.md LICENSE README.md $my_dir/cli/
 git add .
 git commit -m "chore(release): update packages to $pkgVersion [skip ci]"
 if [[ $branch == "master" ]]; then

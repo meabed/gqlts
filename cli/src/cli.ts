@@ -62,10 +62,15 @@ const program = yargs(process.argv.slice(2))
     default: false,
     description: 'generate only ES modules code, ./generated/index.js will use esm exports and imports',
   })
-  .option('standalone', {
+  .option('standalone-name', {
     type: 'string',
     default: '',
-    description: 'generate only standalone bundle code, ./generated/index.standalone.js',
+    description: 'generate only standalone bundle code, ./generated/standalone.js',
+  })
+  .option('standalone-compress', {
+    type: 'boolean',
+    default: true,
+    description: 'compress standalone bundle code, ./generated/standalone.js',
   })
   .option('esm-and-cjs', {
     type: 'boolean',
@@ -114,7 +119,8 @@ const config: Config = {
   scalarTypes: parseColonSeparatedStrings(program.scalar || []),
   onlyEsModules: program.esm,
   onlyCJSModules: !program['esm-and-cjs'] && !program.esm,
-  standalone: program.standalone,
+  'standalone-name': program['standalone-name'],
+  'standalone-compress': program['standalone-compress'],
   verbose: program.verbose,
   sortProperties: program.sort,
 };
@@ -138,15 +144,15 @@ generate(config)
   });
 
 export function printHelp({ useYarn, dirPath, dependencies }) {
-  console.log();
-  console.log(`${colors.green('Success!')} Generated client code inside '${dirPath}'`);
-  console.log();
-  console.log(colors.bold('Remember to install the necessary runtime package with:'));
-  console.log();
-  console.log(`  ${colors.cyan(`${useYarn ? 'yarn add' : 'npm install'} ${dependencies.join(' ')}`)}`);
-  console.log();
-  console.log('PS: `@gqlts/runtime` should always have the same version as the cli!');
-  console.log();
+  console.info();
+  console.info(`${colors.green('Success!')} Generated client code inside '${dirPath}'`);
+  console.info();
+  console.info(colors.bold('Remember to install the necessary runtime package with:'));
+  console.info();
+  console.info(`  ${colors.cyan(`${useYarn ? 'yarn add' : 'npm install'} ${dependencies.join(' ')}`)}`);
+  console.info();
+  console.info('PS: `@gqlts/runtime` should always have the same version as the cli!');
+  console.info();
 }
 
 function readFile(p) {

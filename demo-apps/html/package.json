@@ -1,0 +1,26 @@
+{
+  "name": "demo-apps-html",
+  "version": "3.2.12",
+  "private": true,
+  "homepage": "https://gqlts.vercel.app",
+  "repository": "github:meabed/gqlts",
+  "license": "MIT",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
+  "scripts": {
+    "test": "node puppeteer-test.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^19.4.1"
+  }
+}

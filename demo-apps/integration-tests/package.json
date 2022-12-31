@@ -1,0 +1,65 @@
+{
+  "name": "integration-tests",
+  "version": "3.2.12",
+  "private": true,
+  "homepage": "https://gqlts.vercel.app",
+  "repository": "github:meabed/gqlts",
+  "license": "MIT",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'no build needed'",
+    "flame": "node --prof-process --preprocess -j isolate*.log | flamebearer && open flamegraph.html",
+    "gen": "ts-node generate.ts && tsc --noEmit",
+    "genprof": "node --prof generate.ts",
+    "test": "mocha"
+  },
+  "mocha": {
+    "require": [
+      "ts-node/register"
+    ],
+    "spec": "tests/**.ts",
+    "timeout": 9999999999
+  },
+  "resolutions": {
+    "@gqlts/cli": "file:../../cli",
+    "@gqlts/runtime": "file:../../runtime",
+    "graphql": "^16.6.0",
+    "ws": "^8.9.0"
+  },
+  "dependencies": {
+    "@gqlts/cli": "file:../../cli",
+    "@gqlts/runtime": "file:../../runtime",
+    "apollo-server-express": "3.11.1",
+    "await-sleep": "0.0.1",
+    "axios": "1.2.2",
+    "deep-equal": "2.1.0",
+    "express": "4.18.2",
+    "graphql": "16.6.0",
+    "graphql-easy-mocks": "1.1.1",
+    "ts-node": "^10.9.1",
+    "tsd": "0.25.0",
+    "tsdef": "0.0.14"
+  },
+  "devDependencies": {
+    "@types/deep-equal": "1.0.1",
+    "@types/express": "4.17.15",
+    "@types/mocha": "10.0.1",
+    "@types/node": "18.11.18",
+    "@types/ws": "^8.5.4",
+    "mocha": "10.2.0",
+    "snap-shot-it": "7.9.10",
+    "sucrase": "3.29.0"
+  }
+}

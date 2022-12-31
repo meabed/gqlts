@@ -37,29 +37,19 @@
   ],
   "workspaces": [
     "cli",
-    "runtime",
-    "try-clients",
-    "website",
-    "example-usage",
-    "integration-tests"
+    "runtime"
   ],
   "scripts": {
     "buildall": "ultra -r --filter '@gqlts/*' --topology build",
-    "examplecli": "yarn play -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
     "genall": "ultra -r gen",
-    "integration": "cd integration-tests && yarn gen && tsc && yarn test",
-    "play": "node -r sucrase/register cli/src/cli.ts",
-    "prettier": "prettier --write \"cli/**/*.{ts,tsx,js,jsx}\" \"runtime/**/*.{ts,tsx,js,jsx}\" \"example-usage/**/*.{ts,tsx,js,jsx}\" \"integration-tests/**/*.{ts,tsx,js,jsx}\" \"try-clients/**/*.{ts,tsx,js,jsx}\"",
-    "publ": "yarn buildall && lerna publish minor",
-    "runexample": "node -r sucrase/register example/example.ts",
+    "prettier": "prettier --write \"cli/**/*.{ts,tsx,js,jsx}\" \"runtime/**/*.{ts,tsx,js,jsx}\" \"demo-apps/**/*.{ts,tsx,js,jsx}\"",
     "test": "ultra -r test",
     "tscall": "ultra -r --filter '@gqlts/*' tsc",
     "watch": "ultra -r watch"
   },
   "resolutions": {
     "graphql": "^16.6.0",
-    "ws": "^8.9.0",
-    "terser": "> 5.14.2"
+    "ws": "^8.9.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.0.0",
