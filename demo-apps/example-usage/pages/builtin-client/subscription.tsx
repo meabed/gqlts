@@ -12,7 +12,7 @@ const client = createClient({
   },
 });
 
-console.log('client', client);
+// console.log('client', client);
 
 const Page = () => {
   const [data, setData] = useState<any>();
@@ -30,7 +30,7 @@ const Page = () => {
       })
       .subscribe({
         next: ({ data }) => {
-          console.log('data', data);
+          // console.log('data', data);
           const newData = addedUser;
           newData.push(data?.online_users[0].count);
           setAddedUser(newData);

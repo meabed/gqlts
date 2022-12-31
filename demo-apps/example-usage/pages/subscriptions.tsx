@@ -10,7 +10,7 @@ const client = createClient({
   },
 });
 
-console.log('client', client);
+// console.log('client', client);
 
 const Page = () => {
   const {
