@@ -1,2 +1,2 @@
-require('sucrase/register');
+require('ts-node/register');
 require('dotenv').config();

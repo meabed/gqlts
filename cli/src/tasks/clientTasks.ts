@@ -12,6 +12,7 @@ import browserify from 'browserify';
 import { createWriteStream } from 'fs';
 import Listr, { ListrTask } from 'listr';
 import { resolve } from 'path';
+import UglifyJS from 'uglify-js';
 
 const schemaGqlFile = 'schema.graphql';
 const schemaTypesFile = 'schema.ts';
@@ -122,8 +123,13 @@ export function clientTasks(config: Config): ListrTask[] {
         const outFile = resolve(output, 'index.standalone.js');
         b.plugin(require('esmify'));
         b.add(inFile);
-        b.transform('uglifyify', { global: true });
-        b.bundle().pipe(createWriteStream(outFile));
+        b.bundle()
+          .pipe(createWriteStream(outFile))
+          .on('finish', () => {
+            UglifyJS.minify(outFile, {
+              sourceMap: true,
+            });
+          });
       },
     },
   ];
