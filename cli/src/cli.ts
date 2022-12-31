@@ -144,15 +144,15 @@ generate(config)
   });
 
 export function printHelp({ useYarn, dirPath, dependencies }) {
-  console.log();
-  console.log(`${colors.green('Success!')} Generated client code inside '${dirPath}'`);
-  console.log();
-  console.log(colors.bold('Remember to install the necessary runtime package with:'));
-  console.log();
-  console.log(`  ${colors.cyan(`${useYarn ? 'yarn add' : 'npm install'} ${dependencies.join(' ')}`)}`);
-  console.log();
-  console.log('PS: `@gqlts/runtime` should always have the same version as the cli!');
-  console.log();
+  console.info();
+  console.info(`${colors.green('Success!')} Generated client code inside '${dirPath}'`);
+  console.info();
+  console.info(colors.bold('Remember to install the necessary runtime package with:'));
+  console.info();
+  console.info(`  ${colors.cyan(`${useYarn ? 'yarn add' : 'npm install'} ${dependencies.join(' ')}`)}`);
+  console.info();
+  console.info('PS: `@gqlts/runtime` should always have the same version as the cli!');
+  console.info();
 }
 
 function readFile(p) {
