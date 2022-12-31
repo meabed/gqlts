@@ -41,6 +41,7 @@ do
   yarn test
 done
 
+cd $my_dir
 echo "Updating repo..."
 command cp -rf CHANGELOG.md LICENSE README.md $my_dir/runtime/
 command cp -rf CHANGELOG.md LICENSE README.md $my_dir/cli/
