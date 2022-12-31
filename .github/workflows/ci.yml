@@ -50,6 +50,8 @@ jobs:
           yarn install --frozen-lockfile --ignore-scripts
           yarn buildall
           yarn install --frozen-lockfile --ignore-scripts
+          yarn genall || true
+          yarn install --frozen-lockfile --ignore-scripts
           yarn genall
           yarn test
 

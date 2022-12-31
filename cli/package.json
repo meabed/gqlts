@@ -96,7 +96,7 @@
     "prettier": "^2.8.1",
     "qs": "^6.11.0",
     "rimraf": "^3.0.2",
-    "uglifyify": "^5.0.2",
+    "uglify-js": "^3.17.4",
     "yargs": "^17.6.2"
   },
   "devDependencies": {
