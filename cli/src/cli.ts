@@ -62,10 +62,15 @@ const program = yargs(process.argv.slice(2))
     default: false,
     description: 'generate only ES modules code, ./generated/index.js will use esm exports and imports',
   })
-  .option('standalone', {
+  .option('standalone-name', {
     type: 'string',
     default: '',
-    description: 'generate only standalone bundle code, ./generated/index.standalone.js',
+    description: 'generate only standalone bundle code, ./generated/standalone.js',
+  })
+  .option('standalone-compress', {
+    type: 'boolean',
+    default: true,
+    description: 'compress standalone bundle code, ./generated/standalone.js',
   })
   .option('esm-and-cjs', {
     type: 'boolean',
@@ -114,7 +119,8 @@ const config: Config = {
   scalarTypes: parseColonSeparatedStrings(program.scalar || []),
   onlyEsModules: program.esm,
   onlyCJSModules: !program['esm-and-cjs'] && !program.esm,
-  standalone: program.standalone,
+  'standalone-name': program['standalone-name'],
+  'standalone-compress': program['standalone-compress'],
   verbose: program.verbose,
   sortProperties: program.sort,
 };

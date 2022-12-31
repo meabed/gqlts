@@ -41,12 +41,8 @@
   ],
   "scripts": {
     "buildall": "ultra -r --filter '@gqlts/*' --topology build",
-    "examplecli": "yarn play -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
     "genall": "ultra -r gen",
-    "integration": "cd integration-tests && yarn gen && tsc && yarn test",
     "prettier": "prettier --write \"cli/**/*.{ts,tsx,js,jsx}\" \"runtime/**/*.{ts,tsx,js,jsx}\" \"demo-apps/**/*.{ts,tsx,js,jsx}\"",
-    "publ": "yarn buildall && lerna publish minor",
-    "runexample": "node -r sucrase/register example/example.ts",
     "test": "ultra -r test",
     "tscall": "ultra -r --filter '@gqlts/*' tsc",
     "watch": "ultra -r watch"

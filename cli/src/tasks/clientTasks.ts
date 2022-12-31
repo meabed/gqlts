@@ -9,10 +9,10 @@ import { renderSchema } from '../render/schema/renderSchema';
 import { renderTypeGuards } from '../render/typeGuards/renderTypeGuards';
 import { renderTypeMap } from '../render/typeMap/renderTypeMap';
 import browserify from 'browserify';
-import { createWriteStream } from 'fs';
+import { createWriteStream, readFileSync, writeFileSync } from 'fs';
 import Listr, { ListrTask } from 'listr';
 import { resolve } from 'path';
-import UglifyJS from 'uglify-js';
+import { minify } from 'terser';
 
 const schemaGqlFile = 'schema.graphql';
 const schemaTypesFile = 'schema.ts';
@@ -113,22 +113,23 @@ export function clientTasks(config: Config): ListrTask[] {
         await writeFileToPath([output, clientTypesFile], renderCtx.toCode('typescript', true));
       },
     },
-    !!config?.standalone && {
+    !!config?.['standalone-name'] && {
       title: `writing UMD`,
       task: async (ctx) => {
         const b = browserify({
-          standalone: config.standalone,
+          standalone: config['standalone-name'],
         });
         const inFile = resolve(output, clientFileCjs);
-        const outFile = resolve(output, 'index.standalone.js');
+        const outFile = resolve(output, 'standalone.js');
         b.plugin(require('esmify'));
         b.add(inFile);
         b.bundle()
           .pipe(createWriteStream(outFile))
-          .on('finish', () => {
-            UglifyJS.minify(outFile, {
-              sourceMap: true,
+          .on('finish', async () => {
+            const result = await minify(readFileSync(outFile).toString(), {
+              compress: config['standalone-compress'] ?? true,
             });
+            await writeFileSync(outFile, result?.code ?? '');
           });
       },
     },

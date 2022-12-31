@@ -1,0 +1,24 @@
+{
+  "name": "demo-apps-example-cli",
+  "version": "3.2.12",
+  "private": true,
+  "homepage": "https://gqlts.vercel.app",
+  "repository": "github:meabed/gqlts",
+  "license": "MIT",
+  "author": {
+    "name": "Mohamed Meabed",
+    "email": "mo@meabed.com",
+    "url": "https://meabed.com"
+  },
+  "maintainers": [
+    {
+      "name": "Mohamed Meabed",
+      "email": "mo@meabed.com",
+      "url": "https://meabed.com"
+    }
+  ],
+  "scripts": {
+    "examplecli": "yarn play -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
+    "runexample": "node -r sucrase/register example/example.ts"
+  }
+}
