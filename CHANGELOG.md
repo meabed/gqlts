@@ -1,5 +1,8 @@
 # Changelog
 
+## [3.2.13 - 2022-12-30](https://github.com/meabed/gqlts/compare/v3.2.12...v3.2.13)
+- replace uglifyjs with uglify-js
+
 ## [3.2.12 - 2022-12-30](https://github.com/meabed/gqlts/compare/v3.2.11...v3.2.12)
 - Fix security issue with `terser` dependency
 - Improve build test artifacts

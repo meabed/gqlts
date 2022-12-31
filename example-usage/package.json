@@ -27,7 +27,12 @@
     "gen": "yarn countries && yarn hasura && yarn subscription && tsc --noEmit",
     "hasura": "yarn --cwd .. play --esm -o example-usage/hasura -e https://realtime-chat.hasura.app/v1/graphql -H \"Authorization: Bearer xxx\"  -H \"Xxx: Bearer xxx\"  ",
     "start": "next start",
-    "subscription": "yarn --cwd .. play --esm -o example-usage/subscription -e https://realtime-poll.hasura.app/v1/graphql"
+    "subscription": "yarn --cwd .. play --esm -o example-usage/subscription -e https://realtime-poll.hasura.app/v1/graphql",
+    "test": "echo \"no test specified\""
+  },
+  "resolutions": {
+    "@gqlts/cli": "file:../cli",
+    "@gqlts/runtime": "file:../runtime"
   },
   "dependencies": {
     "@apollo/react-hooks": "4.0.0",
@@ -45,6 +50,7 @@
     "framer-motion": "8.0.2",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
+    "next": "^13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-extra-hooks": "2.3.4",
@@ -58,9 +64,5 @@
     "@types/react-dom": "18.0.10",
     "next-transpile-modules": "10.0.0",
     "sucrase": "3.29.0"
-  },
-  "resolutions": {
-    "@gqlts/cli": "file:../cli",
-    "@gqlts/runtime": "file:../runtime"
   }
 }
