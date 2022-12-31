@@ -34,7 +34,7 @@ for pkg in "${allPkgs[@]}"
 do
   echo "-----------------------------------"
   echo "Building and Testing $pkg"
-  cd $my_dir/$pkg
+  cd $my_dir/demo-apps/$pkg
   yarn install --frozen-lockfile --ignore-scripts
   yarn build
   yarn gen
