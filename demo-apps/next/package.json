@@ -1,5 +1,5 @@
 {
-  "name": "demo-app-next",
+  "name": "demo-apps-next",
   "version": "3.2.12",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
@@ -25,7 +25,7 @@
     "test": "node puppeteer-test.js"
   },
   "dependencies": {
-    "demo-app-backend-sdk": "file:./../backend/sdk",
+    "demo-apps-backend-sdk": "file:./../backend/sdk",
     "@gqlts/runtime": "file:./../../runtime",
     "@next/font": "13.1.1",
     "@types/node": "18.11.18",

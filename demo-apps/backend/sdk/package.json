@@ -1,5 +1,5 @@
 {
-  "name": "demo-app-backend-sdk",
+  "name": "demo-apps-backend-sdk",
   "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",

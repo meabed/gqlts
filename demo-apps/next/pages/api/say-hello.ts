@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { demoAppBackendSdk } from '../../src/demo-app-backend-sdk';
+import { demoAppsBackendSdk } from '../../src/demo-apps-backend-sdk';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
@@ -7,7 +7,7 @@ type Data = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const { data, errors } = await demoAppBackendSdk.query(
+  const { data, errors } = await demoAppsBackendSdk.query(
     {
       v1SatHello: [{ name: 'John Connor' }, { message: 1 }],
     },

@@ -35,7 +35,7 @@ export async function buildSdk({ skipIfExists = false }: { skipIfExists?: boolea
     schema: schemaString,
     output: join(__dirname, 'dist'),
     onlyCJSModules: true,
-    standalone: 'demo-app-backend-sdk',
+    standalone: 'demo-apps-backend-sdk',
     // verbose: true,
   });
 

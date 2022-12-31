@@ -47,7 +47,7 @@ jobs:
 
       - name: Build and Test Demo APP
         run: |
-          ./demo-app/build-and-test.sh
+          ./demo-apps/build-and-test.sh
 
       - name: Release Prep
         run: |

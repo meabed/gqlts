@@ -18,18 +18,22 @@ echo "Package version updated to $pkgVersion"
 echo "-----------------------------------"
 # replace old versions in files
 find . -type f \( -name '*.js' -or -name '*.ts' -or -name '*.tsx' -or -name '*.json' -or -name 'README.md' \) -not -path '*node_modules*' -not -path '*.next*' -exec grep -l "$oldVersion" {} \; | xargs perl -pi -e "s/$oldVersion/$pkgVersion/g"
+
+# test main packages cli and runtime
 yarn install --frozen-lockfile --ignore-scripts
-## todo fix this by hoisting the repo https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind
-# yarn examplecli
-#
 yarn buildall
 yarn test
 
+#
+# yarn examplecli
+## todo fix this by hoisting the repo https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind
+
+## testing other packages
 allPkgs=( "example-usage" "integration-tests" "try-clients" )
 for pkg in "${allPkgs[@]}"
 do
   echo "-----------------------------------"
-  echo "Publishing $pkg"
+  echo "Building and Testing $pkg"
   cd $my_dir/$pkg
   yarn install --frozen-lockfile --ignore-scripts
   yarn build

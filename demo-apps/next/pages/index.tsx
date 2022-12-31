@@ -1,4 +1,4 @@
-import { demoAppBackendSdk } from '../src/demo-app-backend-sdk';
+import { demoAppsBackendSdk } from '../src/demo-apps-backend-sdk';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -15,7 +15,7 @@ function Test1() {
   const [testResult, setTestResult] = useState<string | undefined>();
   useEffect(() => {
     const test = async () => {
-      const { data, errors } = await demoAppBackendSdk.query(
+      const { data, errors } = await demoAppsBackendSdk.query(
         {
           v1SatHello: [{ name: 'John Connor' }, { message: 1 }],
         },

@@ -1,4 +1,4 @@
-import { demoAppBackendSdk } from '../src/demo-app-backend-sdk';
+import { demoAppsBackendSdk } from '../src/demo-apps-backend-sdk';
 
 export default function Home({ testResult }: { testResult: string }) {
   return (
@@ -10,7 +10,7 @@ export default function Home({ testResult }: { testResult: string }) {
   );
 }
 Home.getInitialProps = async () => {
-  const { data, errors } = await demoAppBackendSdk.query(
+  const { data, errors } = await demoAppsBackendSdk.query(
     {
       v1SatHello: [{ name: 'John Connor' }, { message: 1 }],
     },

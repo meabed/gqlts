@@ -8,13 +8,13 @@
 <p>Demo App is a Demo App.</p>
 <div id="test1-result"></div>
 <script type="application/javascript">
-  const { graphqlUrl } = window["demoAppBackendSdk"].getServiceUrl('local');
-  const demoAppBackendSdk = window["demoAppBackendSdk"].createClient({
+  const { graphqlUrl } = window["demoAppsBackendSdk"].getServiceUrl('local');
+  const demoAppsBackendSdk = window["demoAppsBackendSdk"].createClient({
     url: graphqlUrl || "http://localhost:4000/graphql"
   });
 
   (async () => {
-    const { data, errors } = await demoAppBackendSdk.query(
+    const { data, errors } = await demoAppsBackendSdk.query(
       {
         v1SatHello: [{ name: "John Connor" }, { message: 1 }]
       },
