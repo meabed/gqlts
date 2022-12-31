@@ -23,9 +23,10 @@
   "scripts": {
     "build": "yarn gen && yarn github && yarn hasura && yarn simple",
     "gen": "yarn hasura && yarn github && yarn simple && tsc --noEmit",
-    "github": "yarn --cwd .. play --schema try-clients/github.graphql -o try-clients/github/generated -S HTML:string -S URI:string ",
-    "hasura": "yarn --cwd .. play -e https://realtime-chat.hasura.app/v1/graphql -o try-clients/hasura/generated",
-    "simple": "yarn --cwd .. play --esm-and-cjs --sort --schema try-clients/simple.graphql -o try-clients/simple/generated",
+    "play": "ts-node ../../cli/src/cli.ts",
+    "github": "yarn play --schema github.graphql -o github/generated -S HTML:string -S URI:string ",
+    "hasura": "yarn play -e https://realtime-chat.hasura.app/v1/graphql -o hasura/generated",
+    "simple": "yarn play --esm-and-cjs --sort --schema simple.graphql -o simple/generated",
     "test": "mocha"
   },
   "mocha": {
@@ -34,12 +35,12 @@
     "timeout": 9999999999
   },
   "resolutions": {
-    "@gqlts/cli": "file:../cli",
-    "@gqlts/runtime": "file:../runtime"
+    "@gqlts/cli": "file:../../cli",
+    "@gqlts/runtime": "file:../../runtime"
   },
   "dependencies": {
-    "@gqlts/cli": "file:../cli",
-    "@gqlts/runtime": "file:../runtime",
+    "@gqlts/cli": "file:../../cli",
+    "@gqlts/runtime": "file:../../runtime",
     "compressed-json": "1.0.16",
     "dotenv": "16.0.3",
     "graphql-query-batcher": "1.0.1",
