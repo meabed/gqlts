@@ -1320,9 +1320,9 @@
   integrity sha512-AHPmaAx+RYfZz0eYu6Gviiagpmiyw98ySSlQvCUhVGDRtDFe4DBS0x1bSjdF3gqUDYOczB+yYvBTtEylYSdRhg==
 
 "@gqlts/cli@file:../../cli":
-  version "3.2.12"
+  version "3.2.13"
   dependencies:
-    "@gqlts/runtime" "^3.2.12"
+    "@gqlts/runtime" "^3.2.13"
     "@graphql-tools/graphql-file-loader" "^7.5.13"
     "@graphql-tools/load" "^7.8.8"
     browserify "^17.0.0"
@@ -1340,8 +1340,8 @@
     terser "^5.16.1"
     yargs "^17.6.2"
 
-"@gqlts/runtime@^3.2.12", "@gqlts/runtime@file:../../runtime":
-  version "3.2.12"
+"@gqlts/runtime@^3.2.13", "@gqlts/runtime@file:../../runtime":
+  version "3.2.13"
   dependencies:
     axios "^1.2.2"
     form-data "^4.0.0"
@@ -3039,14 +3039,14 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.0.2.tgz#212cc4cabfbb90f4eabe5a9e5553ef1b1dc6a598"
-  integrity sha512-xuIiQchVh/cLqUzzu5/8ok4o0nkwYPyIRtkDl8wDvrQUNRhSfRaZu1MMdzN0TjpBtG66oP03PSLO7Qtu1YqPrA==
+framer-motion@8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.1.1.tgz#1f74dffbd29f7d3087e703042fdbd93db6ad0c57"
+  integrity sha512-xp1j5ejI9HcmldcfS1M33GKPWJMzMTNoHBQwOW5IkLbi3vF2Lj2h685l9GEWjrCSwHtdkK2TWp0yc6LqKZhgcg==
   dependencies:
     "@motionone/dom" "^10.15.3"
     hey-listen "^1.0.8"
-    tslib "2.4.0"
+    tslib "^2.4.0"
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
 
