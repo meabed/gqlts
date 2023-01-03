@@ -45,7 +45,7 @@
     "dotenv": "16.0.3",
     "graphql-query-batcher": "1.0.1",
     "ibm-graphql-query-generator": "^1.3.0",
-    "isomorphic-unfetch": "4.0.1"
+    "isomorphic-unfetch": "4.0.2"
   },
   "devDependencies": {
     "@types/mocha": "10.0.1",
