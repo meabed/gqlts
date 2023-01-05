@@ -25,7 +25,7 @@ export const field = subscriptionField('v1ListUsers', {
   },
 });
 
-export const v1ListUsers = {
+export const v1ListUsersSubscription = {
   field,
   input,
   output,

@@ -126,8 +126,11 @@ export function clientTasks(config: Config): ListrTask[] {
         b.bundle()
           .pipe(createWriteStream(outFile))
           .on('finish', async () => {
+            if (!config['standalone-compress']) {
+              return;
+            }
             const result = await minify(readFileSync(outFile).toString(), {
-              compress: config['standalone-compress'] ?? true,
+              compress: config['standalone-compress'],
             });
             await writeFileSync(outFile, result?.code ?? '');
           });

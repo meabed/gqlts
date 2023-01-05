@@ -7,8 +7,17 @@
 <h1>Demo App</h1>
 <p>Demo App is a Demo App.</p>
 <div id="test1-result"></div>
+<hr />
+<div id="file-upload">
+  <input type="file" id="file-upload-input" />
+  <button id="file-upload-button" onclick="uploadFileSDK()">Upload With SDK</button>
+  <button id="file-upload-button2" onclick="uploadFileFetch()">Upload With Fetch</button>
+  <div id="file-upload-result"></div>
+  <div id="file-upload-result2"></div>
+</div>
+<hr />
 <script type="application/javascript">
-  const { graphqlUrl } = window["demoAppsBackendSdk"].getServiceUrl('local');
+  const { graphqlUrl } = window["demoAppsBackendSdk"].getServiceUrl("local");
   const demoAppsBackendSdk = window["demoAppsBackendSdk"].createClient({
     url: graphqlUrl || "http://localhost:4000/graphql"
   });
@@ -22,6 +31,31 @@
     );
     document.getElementById("test1-result").innerHTML = data?.v1SatHello?.message;
   })();
+
+  async function uploadFileSDK() {
+    const file = document.getElementById("file-upload-input").files[0];
+    const { data, errors } = await demoAppsBackendSdk.mutation({
+        v1UpdateProfileImage: [{ image: file }, { success: 1, url: 1 }]
+      },
+      { headers: { "x-my-secret": "Sarah Connor" } }
+    );
+    document.getElementById("file-upload-result").innerHTML = data?.v1UpdateProfileImage?.url;
+  }
+
+  async function uploadFileFetch() {
+    // todo graphql multipart request spec
+    const file = document.getElementById("file-upload-input").files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    fetch("http://localhost:4000/upload", {
+      method: "POST",
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("file-upload-result2").innerHTML = data?.message;
+      });
+  }
 </script>
 </body>
 </html>
