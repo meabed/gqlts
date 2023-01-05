@@ -1,6 +1,6 @@
 {
   "name": "demo-apps-backend",
-  "version": "3.2.13",
+  "version": "3.2.14",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "repository": "github:meabed/gqlts",

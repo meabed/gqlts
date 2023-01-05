@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.2.14 - 2023-01-05](https://github.com/meabed/gqlts/compare/v3.2.13...v3.2.14)
+- Fix terser compress if set to false for standalone build
+- Fix file upload form data headers when files are present in request 
+
 ## [3.2.13 - 2022-12-30](https://github.com/meabed/gqlts/compare/v3.2.12...v3.2.13)
 - replace uglifyjs with terser
 - extend standalone bundle option to support name and compress `standalone-name` and `standalone-compress`
