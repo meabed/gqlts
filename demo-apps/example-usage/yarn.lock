@@ -3039,10 +3039,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@8.1.7:
-  version "8.1.7"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.1.7.tgz#f5b7038b36ef0cb88f50762bedaef5e2da694425"
-  integrity sha512-9ODjhOG1/XEDckJlva+5Ya2dvpBsz1ieX9DhAVGp1/IyrLuO3LSUIhj0vMX3Hr3Ujju0ebsMqFoedy84cz+9LQ==
+framer-motion@8.1.8:
+  version "8.1.8"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.1.8.tgz#900bfde642cae852b23a0a08513f93ef6638b92b"
+  integrity sha512-0Am0ObiOS+CuZhf4p8/Srt5yu+w4fUFGMw7LPzX1HPq5vn85bu4/13jvmZZAjrkf/6rCXZvsT5aZriFuDiLU+w==
   dependencies:
     "@motionone/dom" "^10.15.3"
     hey-listen "^1.0.8"
