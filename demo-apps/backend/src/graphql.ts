@@ -2,20 +2,48 @@ import { IGraphQLContext } from './graphql/graphql-context';
 import { useGraphqlAppExtension } from './graphql/use-graphql-app-extension';
 import { v1AddUser } from './mutation/v1-add-user.mutation';
 import { v1DeleteUser } from './mutation/v1-delete-user.mutation';
+import { v1UpdateProfileImage } from './mutation/v1-update-profile-image';
+import { v1GetUser } from './query/v1-get-user';
 import { v1SatHello } from './query/v1-say-hello.query';
+import { v1ListUsersSubscription } from './subscription/v1-list-users.subscription';
 import { useParserCache } from '@envelop/parser-cache';
 import { useValidationCache } from '@envelop/validation-cache';
+import { GraphQLBigInt, GraphQLDateTime, GraphQLTime, GraphQLUUID } from 'graphql-scalars';
 import { createYoga } from 'graphql-yoga';
 import {
+  asNexusMethod,
   connectionPlugin,
   declarativeWrappingPlugin,
   fieldAuthorizePlugin,
   makeSchema,
   queryComplexityPlugin,
+  scalarType,
 } from 'nexus';
 import { fileExistsSync } from 'tsconfig-paths/lib/filesystem';
 
-const allSchemas = [v1SatHello, v1AddUser, v1DeleteUser, v1DeleteUser];
+const FileScalar = scalarType({
+  name: 'File',
+  asNexusMethod: 'file',
+  description: 'The `File` scalar type represents a file upload.',
+  sourceType: 'File',
+});
+
+const bigIntScalar = asNexusMethod(GraphQLBigInt, 'bigint');
+const DateScalar = asNexusMethod(GraphQLDateTime, 'date');
+const TimeScalar = asNexusMethod(GraphQLTime, 'time');
+const UuidScalar = asNexusMethod(GraphQLUUID, 'uuid');
+
+export const graphqlSharedTypes = [FileScalar, bigIntScalar, DateScalar, TimeScalar, UuidScalar];
+
+const allSchemas = [
+  graphqlSharedTypes,
+  v1SatHello,
+  v1AddUser,
+  v1DeleteUser,
+  v1GetUser,
+  v1ListUsersSubscription,
+  v1UpdateProfileImage,
+];
 export const appSchema = makeSchema({
   types: allSchemas,
   outputs: {

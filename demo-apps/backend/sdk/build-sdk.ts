@@ -36,6 +36,7 @@ export async function buildSdk({ skipIfExists = false }: { skipIfExists?: boolea
     output: join(__dirname, 'dist'),
     onlyCJSModules: true,
     'standalone-name': 'demo-apps-backend-sdk',
+    // 'standalone-compress': false,
     // verbose: true,
   });
 

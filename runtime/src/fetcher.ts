@@ -35,8 +35,9 @@ export function createFetcher(params: ClientOptions): Fetcher {
     fetcherMethod = async (body, config: AxiosRequestConfig) => {
       const { clone, files } = extractFiles(body);
 
+      const hasFiles = files?.size > 0;
       let formData: FormData | undefined = undefined;
-      if (files.size > 0) {
+      if (hasFiles) {
         formData = new FormData();
         // 1. First document is graphql query with variables
         formData.append('operations', JSON.stringify(clone));
@@ -55,11 +56,11 @@ export function createFetcher(params: ClientOptions): Fetcher {
       }
 
       const headersObject = {
-        'Content-Type': 'application/json',
+        ...(hasFiles ? {} : { 'Content-Type': 'application/json' }),
         ...(typeof headers == 'function' ? await headers() : headers),
         ...(!!formData?.getHeaders && formData?.getHeaders()),
       };
-      const fetchBody = files.size && formData ? formData : JSON.stringify(body);
+      const fetchBody = hasFiles && formData ? formData : JSON.stringify(body);
       return (fetcherInstance as AxiosInstance)({
         url,
         data: fetchBody,
