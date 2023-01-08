@@ -253,12 +253,12 @@
     read-json-safe "^1.0.5"
     types-pkg-json "^1.1.0"
 
-"@gqlts/cli@^3.2.13":
-  version "3.2.13"
-  resolved "https://registry.yarnpkg.com/@gqlts/cli/-/cli-3.2.13.tgz#2917de64962428a9f363a5b8da2e9db2c635ffb5"
-  integrity sha512-PFYn53l3nASkmQvaY55z1Tv/RULt7X2hpiNzQF0eIIprpI6GGokCJXArq0dTS2awxiM7k3DEgj7hIIup9APawg==
+"@gqlts/cli@^3.2.14":
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/@gqlts/cli/-/cli-3.2.15.tgz#d84ca18c020e8d44a88396409f7b76bf3c139c29"
+  integrity sha512-3o5JUIheD0QTgikYyj7CSvgJG2yUl3sdPDIV4SZNAZtH/Ln2ZLsKH4Ijxck+rk8IE2YcM6zjWrTJZZPG0Tk++Q==
   dependencies:
-    "@gqlts/runtime" "^3.2.13"
+    "@gqlts/runtime" "^3.2.15"
     "@graphql-tools/graphql-file-loader" "^7.5.13"
     "@graphql-tools/load" "^7.8.8"
     browserify "^17.0.0"
@@ -276,10 +276,10 @@
     terser "^5.16.1"
     yargs "^17.6.2"
 
-"@gqlts/runtime@^3.2.13":
-  version "3.2.13"
-  resolved "https://registry.yarnpkg.com/@gqlts/runtime/-/runtime-3.2.13.tgz#5a088c93efe98ab57134a67d2e7f3302b2d73129"
-  integrity sha512-X3qMJobgOyXIxuTWV0IaiXkBm+o4U9THgqmdfD3mOLnEJ1avSsBf0e0yf5g4CgPAnUuDvAMqbTbUyxSGGFCgiQ==
+"@gqlts/runtime@^3.2.15":
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/@gqlts/runtime/-/runtime-3.2.15.tgz#fabab4f0c4d225f4cd515e9b02a569fd6e0bb602"
+  integrity sha512-tuO1TiWEcqbjrKlEbnibHuNfqScuxmofE4keU5bP7VR+uQlC/WeR2S2LbJKkf8hnC5zyZn4bDpogI9fdz58gow==
   dependencies:
     axios "^1.2.2"
     form-data "^4.0.0"
@@ -346,7 +346,7 @@
   dependencies:
     tslib "^2.4.0"
 
-"@headlessui/react@^1.6.6":
+"@headlessui/react@^1.7.7":
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.7.tgz#d6f8708d8943ae8ebb1a6929108234e4515ac7e8"
   integrity sha512-BqDOd/tB9u2tA0T3Z0fn18ktw+KbVwMnkxxsGPIH2hzssrQhKB5n/6StZOyvLYP/FsYtvuXfi9I0YowKPv2c1w==
@@ -3753,12 +3753,12 @@ next@13.1.1:
     "@next/swc-win32-ia32-msvc" "13.1.1"
     "@next/swc-win32-x64-msvc" "13.1.1"
 
-nextra-theme-docs@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-2.0.3.tgz#bac879e3e7f19890b95864398ca0a5265ac563f7"
-  integrity sha512-BN0NOzYNMQNLU8PMRKVtgOitLC2jFubMA9O8b3gNhr+5/Uny6MTDwuSAVO7G7z830b6dNaRqrMA84iVRS+2LaQ==
+nextra-theme-docs@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-2.1.0.tgz#0d4a7b1cd4e08ad5152c4cf682a57c6352db9415"
+  integrity sha512-0Fn0EsGaKa9We2+CkN9LPtT6F21w4wbihuv0/Vg2YowpAdu5nslsDIhtg66CRET5U5007xE5GG8NLwWaCHQhhg==
   dependencies:
-    "@headlessui/react" "^1.6.6"
+    "@headlessui/react" "^1.7.7"
     "@mdx-js/react" "^2.1.5"
     "@popperjs/core" "^2.11.6"
     clsx "^1.2.1"
@@ -3771,11 +3771,12 @@ nextra-theme-docs@2.0.3:
     next-seo "^5.5.0"
     next-themes "^0.2.1"
     scroll-into-view-if-needed "^3.0.0"
+    zod "^3.20.2"
 
-nextra@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-2.0.3.tgz#9075523d7113e17303881164c108d30832e720aa"
-  integrity sha512-GttZMwfHiVcrnVMnN2PKq2mS6YoQ0zrbzRYS838WYfzUpjIPCR6L8rJbAEd00kcrJNM1MvSCxONOTqGDDjW7YA==
+nextra@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-2.1.0.tgz#11645c294535e46d95815d22bfc3814113612d69"
+  integrity sha512-8bq/TW8wv8H8D6UAokb9WKhnYeoxKG7c8ikWF1n6k3kOO9m0PLG+guTwqkWre28jJyziljc3i/Fnr3k4HiB9Ow==
   dependencies:
     "@mdx-js/mdx" "^2.1.5"
     "@napi-rs/simple-git" "^0.1.8"
@@ -5468,6 +5469,11 @@ zen-observable@0.8.15:
   version "0.8.15"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.15.tgz#96415c512d8e3ffd920afd3889604e30b9eaac15"
   integrity sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
+
+zod@^3.20.2:
+  version "3.20.2"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.20.2.tgz#068606642c8f51b3333981f91c0a8ab37dfc2807"
+  integrity sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==
 
 zwitch@^2.0.0:
   version "2.0.4"
