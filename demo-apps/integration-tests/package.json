@@ -1,6 +1,6 @@
 {
   "name": "integration-tests",
-  "version": "3.2.14",
+  "version": "3.2.15",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "repository": "github:meabed/gqlts",

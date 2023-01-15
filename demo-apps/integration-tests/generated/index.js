@@ -6,7 +6,7 @@ const {
 } = require('@gqlts/runtime')
 var typeMap = linkTypeMap(require('./types.cjs'))
 
-var version = '3.2.14'
+var version = '3.2.15'
 assertSameVersion(version)
 
 module.exports.version = version

@@ -1,6 +1,6 @@
 {
   "name": "@gqlts/runtime",
-  "version": "3.2.14",
+  "version": "3.2.15",
   "description": "Gqlts runtime client",
   "keywords": [
     "gqlts",
@@ -91,7 +91,7 @@
     "lodash.assign": "^4.2.0",
     "lodash.get": "^4.4.2",
     "lodash.startswith": "^4.2.1",
-    "ws": "^8.11.0",
+    "ws": "^8.12.0",
     "zen-observable-ts": "^1.1.0"
   },
   "devDependencies": {

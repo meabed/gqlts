@@ -1,6 +1,6 @@
 {
   "name": "@gqlts/cli",
-  "version": "3.2.14",
+  "version": "3.2.15",
   "description": "Generate a client sdk from your GraphQl API",
   "keywords": [
     "gqlts",
@@ -81,21 +81,21 @@
     }
   },
   "dependencies": {
-    "@gqlts/runtime": "^3.2.14",
-    "@graphql-tools/graphql-file-loader": "^7.5.13",
-    "@graphql-tools/load": "^7.8.8",
+    "@gqlts/runtime": "^3.2.15",
+    "@graphql-tools/graphql-file-loader": "^7.5.14",
+    "@graphql-tools/load": "^7.8.9",
     "browserify": "^17.0.0",
     "colors": "^1.4.0",
     "esmify": "^2.1.1",
     "fs-extra": "^11.1.0",
     "graphql": "*",
-    "isomorphic-unfetch": "^4.0.0",
+    "isomorphic-unfetch": "^4.0.2",
     "listr": "^0.14.3",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
-    "prettier": "^2.8.1",
+    "prettier": "^2.8.3",
     "qs": "^6.11.0",
-    "rimraf": "^4.0.0",
+    "rimraf": "^4.0.5",
     "terser": "^5.16.1",
     "yargs": "^17.6.2"
   },
