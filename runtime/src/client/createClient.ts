@@ -12,16 +12,16 @@ type RawHeaders = Record<string, HeaderValue>;
 
 export type Headers = RawHeaders | (() => RawHeaders) | (() => Promise<RawHeaders>);
 
-export type ClientAxiosRequestConfig = RawAxiosRequestConfig & {
+export interface ClientRequestConfig<D = any> extends RawAxiosRequestConfig<D> {
   headers?: RawHeaders;
-};
+}
 
 export type BaseFetcher = {
-  fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: ClientAxiosRequestConfig) => Promise<any>;
+  fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: ClientRequestConfig) => Promise<any>;
   fetcherInstance: AxiosInstance | unknown | undefined;
 };
 
-export type ClientOptions = Omit<ClientAxiosRequestConfig, 'body' | 'headers'> & {
+export type ClientOptions = Omit<ClientRequestConfig, 'body' | 'headers'> & {
   url?: string;
   timeout?: number;
   batch?: BatchOptions | boolean;
