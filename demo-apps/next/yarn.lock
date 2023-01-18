@@ -269,17 +269,17 @@
     isomorphic-unfetch "^4.0.2"
     listr "^0.14.3"
     lodash "^4.17.21"
-    mkdirp "^1.0.4"
+    mkdirp "^2.1.3"
     prettier "^2.8.3"
     qs "^6.11.0"
-    rimraf "^4.0.5"
+    rimraf "^4.1.1"
     terser "^5.16.1"
     yargs "^17.6.2"
 
 "@gqlts/runtime@^3.2.15", "@gqlts/runtime@file:../../runtime", "@gqlts/runtime@file:./../../runtime":
   version "3.2.15"
   dependencies:
-    axios "^1.2.2"
+    axios "^1.2.3"
     form-data "^4.0.0"
     graphql-ws "^5.11.2"
     is-plain-obj "^4.1.0"
@@ -567,10 +567,19 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.0.26":
+"@types/react@*":
   version "18.0.26"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.26.tgz#8ad59fc01fef8eaf5c74f4ea392621749f0b7917"
   integrity sha512-hCR3PJQsAIXyxhTNSiDFY//LhnMZWpNNr5etoCqx/iUfGc5gXWtQR2Phl908jVR6uPXacojQWTg4qRpkxTuGug==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@18.0.27":
+  version "18.0.27"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.27.tgz#d9425abe187a00f8a5ec182b010d4fd9da703b71"
+  integrity sha512-3vtRKHgVxu3Jp9t718R9BuzoD4NcQ8YJ5XRzsSKxNDiDonD2MXIT1TmSkenxuCycZJoQT5d2vE8LwWJxBC1gmA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -833,10 +842,10 @@ axe-core@^4.4.3:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.1.tgz#79cccdee3e3ab61a8f42c458d4123a6768e6fbce"
   integrity sha512-lCZN5XRuOnpG4bpMq8v0khrWtUOn+i8lZSb6wHZH56ZfbIEv6XwJV84AAueh9/zi7qPVJ/E4yz6fmsiyOmXR4w==
 
-axios@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.2.tgz#72681724c6e6a43a9fea860fc558127dbe32f9f1"
-  integrity sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q==
+axios@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.2.3.tgz#31a3d824c0ebf754a004b585e5f04a5f87e6c4ff"
+  integrity sha512-pdDkMYJeuXLZ6Xj/Q5J3Phpe+jbGdsSzlQaFVkMQzRUL05+6+tetX8TV3p4HrU4kzuO9bt+io/yGQxuyxA/xcw==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
@@ -1498,8 +1507,8 @@ delayed-stream@~1.0.0:
 "demo-apps-backend-sdk@file:../backend/sdk":
   version "1.0.0"
   dependencies:
-    "@gqlts/cli" "file:../../../../home/codespace/.cache/yarn/v6/cli"
-    "@gqlts/runtime" "file:../../../../home/codespace/.cache/yarn/v6/runtime"
+    "@gqlts/cli" "file:../../cli"
+    "@gqlts/runtime" "file:../../runtime"
 
 deps-sort@^2.0.1:
   version "2.0.1"
@@ -2958,10 +2967,10 @@ mkdirp-classic@^0.5.2:
   resolved "https://registry.yarnpkg.com/mkdirp-classic/-/mkdirp-classic-0.5.3.tgz#fa10c9115cc6d8865be221ba47ee9bed78601113"
   integrity sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==
 
-mkdirp@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
-  integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+mkdirp@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-2.1.3.tgz#b083ff37be046fd3d6552468c1f0ff44c1545d1f"
+  integrity sha512-sjAkg21peAG9HS+Dkx7hlG9Ztx7HLeKnvB3NQRcu/mltCVmvkF0pisbiTSfDVYTT86XEfZrTUosLdZLStquZUw==
 
 module-deps@^6.2.3:
   version "6.2.3"
@@ -3570,10 +3579,10 @@ rimraf@3.0.2, rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
-rimraf@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-4.0.5.tgz#c93184b2cc87e78b205f912226320c8515df9cf9"
-  integrity sha512-3gf/WdsBM+ZkuPb76MpXSxNKt00QQ3PdXqDCCBOsHgcoBs8DAhXbqtrGQUAkhxHgXYWzXxuaOsN4s21+at5fBw==
+rimraf@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-4.1.1.tgz#ec29817863e5d82d22bca82f9dc4325be2f1e72b"
+  integrity sha512-Z4Y81w8atcvaJuJuBB88VpADRH66okZAuEm+Jtaufa+s7rZmIz+Hik2G53kGaNytE7lsfXyWktTmfVz0H9xuDg==
 
 ripemd160@^2.0.0, ripemd160@^2.0.1:
   version "2.0.2"
