@@ -1,12 +1,12 @@
 import { QueryBatcher } from './client/batcher';
-import { ClientOptions } from './client/createClient';
+import { ClientAxiosRequestConfig, ClientOptions } from './client/createClient';
 import { GraphqlOperation } from './client/generateGraphqlOperation';
 import { extractFiles } from './extract-files/extract-files';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import FormData from 'form-data';
 
 export interface Fetcher {
-  fetcherMethod: (gql: GraphqlOperation, config?: AxiosRequestConfig) => Promise<any>;
+  fetcherMethod: (gql: GraphqlOperation, config?: ClientAxiosRequestConfig) => Promise<any>;
   fetcherInstance: AxiosInstance | unknown | undefined;
 }
 
@@ -32,7 +32,7 @@ export function createFetcher(params: ClientOptions): Fetcher {
     fetcherInstance = axios.create({});
   }
   if (!fetcherMethod) {
-    fetcherMethod = async (body, config: AxiosRequestConfig) => {
+    fetcherMethod = async (body, config: ClientAxiosRequestConfig) => {
       const { clone, files } = extractFiles(body);
 
       const hasFiles = files?.size > 0;

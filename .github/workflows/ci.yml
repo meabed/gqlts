@@ -42,6 +42,10 @@ jobs:
           fetch-depth: 30
 
       - uses: FranzDiebold/github-env-vars-action@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
 
       - name: Yarn
         run: |
@@ -55,11 +59,7 @@ jobs:
         run: |
           ./demo-apps/build-and-test.sh
 
-      - name: Release Prep
+      - name: Release
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/npm @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/exec
-
-      - name: Test & Release
-        run: |
-          semantic-release --debug --no-ci
-          ./publish.sh $CI_REF_NAME
+          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits
+          npx semantic-release --no-ci --debug
