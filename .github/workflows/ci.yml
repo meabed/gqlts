@@ -61,5 +61,5 @@ jobs:
 
       - name: Release
         run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits
+          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/exec
           npx semantic-release --no-ci --debug
