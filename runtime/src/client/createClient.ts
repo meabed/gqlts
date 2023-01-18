@@ -1,23 +1,19 @@
 import { BatchOptions, createFetcher } from '../fetcher';
 import { LinkedType } from '../types';
 import { GraphqlOperation, generateGraphqlOperation } from './generateGraphqlOperation';
-import { AxiosInstance, AxiosRequestHeaders, RawAxiosRequestConfig } from 'axios';
+import { AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from 'graphql-ws';
 import { Observable } from 'zen-observable-ts';
 
 const WebSocketNode = typeof window !== 'undefined' ? null : eval('require("ws")');
 
-type AxiosHeaderValue = string | string[] | number | boolean | null;
-type RawAxiosHeaders = Record<string, AxiosHeaderValue>;
+type HeaderValue = string | string[] | number | boolean | null;
+type RawHeaders = Record<string, HeaderValue>;
 
-export type Headers =
-  | AxiosRequestHeaders
-  | RawAxiosHeaders
-  | (() => AxiosRequestHeaders | RawAxiosHeaders)
-  | (() => Promise<AxiosRequestHeaders | RawAxiosHeaders>);
+export type Headers = RawHeaders | (() => RawHeaders) | (() => Promise<RawHeaders>);
 
 export type ClientAxiosRequestConfig = RawAxiosRequestConfig & {
-  headers?: Headers;
+  headers?: RawHeaders;
 };
 
 export type BaseFetcher = {
