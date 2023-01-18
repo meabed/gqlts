@@ -1,7 +1,7 @@
 import { BatchOptions, createFetcher } from '../fetcher';
 import { LinkedType } from '../types';
 import { GraphqlOperation, generateGraphqlOperation } from './generateGraphqlOperation';
-import { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders } from 'axios';
+import { AxiosInstance, AxiosRequestHeaders, RawAxiosRequestConfig } from 'axios';
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from 'graphql-ws';
 import { Observable } from 'zen-observable-ts';
 
@@ -17,11 +17,11 @@ export type Headers =
   | (() => Promise<AxiosRequestHeaders | RawAxiosHeaders>);
 
 export type BaseFetcher = {
-  fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: AxiosRequestConfig) => Promise<any>;
+  fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: RawAxiosRequestConfig) => Promise<any>;
   fetcherInstance: AxiosInstance | unknown | undefined;
 };
 
-export type ClientOptions = Omit<AxiosRequestConfig, 'body' | 'headers'> & {
+export type ClientOptions = Omit<RawAxiosRequestConfig, 'body' | 'headers'> & {
   url?: string;
   timeout?: number;
   batch?: BatchOptions | boolean;
