@@ -162,7 +162,7 @@ export class QueryBatcher {
     variables,
     operationName,
     overrides = {},
-    config = {},
+    config = {} as AxiosRequestConfig,
   }: {
     query: string;
     variables?: Variables;
