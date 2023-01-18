@@ -16,12 +16,16 @@ export type Headers =
   | (() => AxiosRequestHeaders | RawAxiosHeaders)
   | (() => Promise<AxiosRequestHeaders | RawAxiosHeaders>);
 
+export type ClientAxiosRequestConfig = RawAxiosRequestConfig & {
+  headers?: Headers;
+};
+
 export type BaseFetcher = {
-  fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: RawAxiosRequestConfig) => Promise<any>;
+  fetcherMethod: (operation: GraphqlOperation | GraphqlOperation[], config?: ClientAxiosRequestConfig) => Promise<any>;
   fetcherInstance: AxiosInstance | unknown | undefined;
 };
 
-export type ClientOptions = Omit<RawAxiosRequestConfig, 'body' | 'headers'> & {
+export type ClientOptions = Omit<ClientAxiosRequestConfig, 'body' | 'headers'> & {
   url?: string;
   timeout?: number;
   batch?: BatchOptions | boolean;

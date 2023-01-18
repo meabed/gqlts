@@ -1,4 +1,4 @@
-import { RawAxiosRequestConfig } from 'axios';
+import { ClientAxiosRequestConfig } from './createClient';
 
 type Variables = Record<string, any>;
 type Query = {
@@ -21,7 +21,7 @@ type Result = {
   data: Record<string, any>;
   errors: QueryError[];
 };
-type Fetcher = (batchedQuery: Query[] | Query, config?: RawAxiosRequestConfig) => Promise<Result[]>;
+type Fetcher = (batchedQuery: Query[] | Query, config?: ClientAxiosRequestConfig) => Promise<Result[]>;
 type Options = {
   batchInterval?: number;
   shouldBatch?: boolean;
@@ -39,9 +39,9 @@ type Queue = {
  * @private
  * @param {QueryBatcher}   client - the client to use
  * @param {Queue} queue  - the list of requests to batch
- * @param {RawAxiosRequestConfig} config  - RawAxiosRequestConfig
+ * @param {ClientAxiosRequestConfig} config  - ClientAxiosRequestConfig
  */
-function dispatchQueueBatch(client: QueryBatcher, queue: Queue, config?: RawAxiosRequestConfig): void {
+function dispatchQueueBatch(client: QueryBatcher, queue: Queue, config?: ClientAxiosRequestConfig): void {
   let batchedQuery = queue.map((item) => item.request);
 
   if (batchedQuery.length === 1) {
@@ -78,9 +78,9 @@ function dispatchQueueBatch(client: QueryBatcher, queue: Queue, config?: RawAxio
  * @private
  * @param {QueryBatcher} client - the client to create list of requests from from
  * @param {Options} options - the options for the batch
- * @param {RawAxiosRequestConfig} config - RawAxiosRequestConfig
+ * @param {ClientAxiosRequestConfig} config - ClientAxiosRequestConfig
  */
-function dispatchQueue(client: QueryBatcher, options: Options, config?: RawAxiosRequestConfig): void {
+function dispatchQueue(client: QueryBatcher, options: Options, config?: ClientAxiosRequestConfig): void {
   const queue = client._queue;
   const maxBatchSize = options.maxBatchSize || 0;
   client._queue = [];
@@ -168,7 +168,7 @@ export class QueryBatcher {
     variables?: Variables;
     operationName?: string;
     overrides?: Options;
-    config?: RawAxiosRequestConfig;
+    config?: ClientAxiosRequestConfig;
   }): Promise<Result[]> {
     const request: Query = {
       query,
