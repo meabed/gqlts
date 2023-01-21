@@ -51,17 +51,17 @@
     "framer-motion": "8.5.0",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
-    "next": "^13.1.2",
+    "next": "^13.1.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-extra-hooks": "2.3.4",
     "react-icons": "4.7.1",
     "react-storage-hooks": "4.0.1",
-    "swr": "2.0.0"
+    "swr": "2.0.1"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
-    "@types/react": "18.0.26",
+    "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "next-transpile-modules": "10.0.0",
     "sucrase": "3.29.0",
