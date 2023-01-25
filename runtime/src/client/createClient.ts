@@ -1,7 +1,7 @@
 import { BatchOptions, createFetcher } from '../fetcher';
 import { LinkedType } from '../types';
 import { GraphqlOperation, generateGraphqlOperation } from './generateGraphqlOperation';
-import { AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from 'graphql-ws';
 import { Observable } from 'zen-observable-ts';
 
@@ -12,7 +12,7 @@ type RawHeaders = Record<string, HeaderValue>;
 
 export type Headers = RawHeaders | (() => RawHeaders) | (() => Promise<RawHeaders>);
 
-export interface ClientRequestConfig<D = any> extends RawAxiosRequestConfig<D> {
+export interface ClientRequestConfig<D = any> extends AxiosRequestConfig<D> {
   headers?: RawHeaders;
 }
 
