@@ -16,15 +16,10 @@ module.exports = {
       prerelease: false,
     },
     {
-      name: 'next',
-      prerelease: 'next',
-    },
-    {
       name: 'develop',
       prerelease: 'beta',
+      channel: 'beta',
     },
-    { name: branchSlug, prerelease: 'alpha' },
-    { name: `${branchPrefix}/**`, prerelease: 'alpha' },
   ],
   plugins: [
     [
