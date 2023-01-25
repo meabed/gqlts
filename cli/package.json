@@ -41,8 +41,8 @@
     "gqlts": "./dist/cli.js"
   },
   "files": [
-    "/dist/*",
-    "/esm/*",
+    "dist",
+    "esm",
     "src"
   ],
   "scripts": {

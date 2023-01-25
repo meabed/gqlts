@@ -40,8 +40,8 @@
   "module": "esm/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "/dist/*",
-    "/esm/*",
+    "dist",
+    "esm",
     "src"
   ],
   "scripts": {
