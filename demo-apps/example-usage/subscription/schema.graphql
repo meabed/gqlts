@@ -723,6 +723,8 @@ enum option_update_column {
 input option_updates {
   """sets the columns of the filtered rows to the given values"""
   _set: option_set_input
+
+  """filter the rows which have to be updated"""
   where: option_bool_exp!
 }
 
@@ -1120,6 +1122,8 @@ enum poll_update_column {
 input poll_updates {
   """sets the columns of the filtered rows to the given values"""
   _set: poll_set_input
+
+  """filter the rows which have to be updated"""
   where: poll_bool_exp!
 }
 
@@ -1915,6 +1919,8 @@ enum user_update_column {
 input user_updates {
   """sets the columns of the filtered rows to the given values"""
   _set: user_set_input
+
+  """filter the rows which have to be updated"""
   where: user_bool_exp!
 }
 
@@ -2122,5 +2128,7 @@ enum vote_update_column {
 input vote_updates {
   """sets the columns of the filtered rows to the given values"""
   _set: vote_set_input
+
+  """filter the rows which have to be updated"""
   where: vote_bool_exp!
 }

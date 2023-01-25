@@ -1103,7 +1103,9 @@ export interface option_stream_cursor_value_input {id?: (Scalars['uuid'] | null)
 
 export interface option_updates {
 /** sets the columns of the filtered rows to the given values */
-_set?: (option_set_input | null),where: option_bool_exp}
+_set?: (option_set_input | null),
+/** filter the rows which have to be updated */
+where: option_bool_exp}
 
 
 /** columns and relationships of "poll" */
@@ -1381,7 +1383,9 @@ export interface poll_stream_cursor_value_input {created_at?: (Scalars['timestam
 
 export interface poll_updates {
 /** sets the columns of the filtered rows to the given values */
-_set?: (poll_set_input | null),where: poll_bool_exp}
+_set?: (poll_set_input | null),
+/** filter the rows which have to be updated */
+where: poll_bool_exp}
 
 export interface query_rootRequest{
     /** fetch data from the table: "online_users" */
@@ -1854,7 +1858,9 @@ export interface user_stream_cursor_value_input {created_at?: (Scalars['timestam
 
 export interface user_updates {
 /** sets the columns of the filtered rows to the given values */
-_set?: (user_set_input | null),where: user_bool_exp}
+_set?: (user_set_input | null),
+/** filter the rows which have to be updated */
+where: user_bool_exp}
 
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
@@ -1965,7 +1971,9 @@ export interface vote_stream_cursor_value_input {created_at?: (Scalars['timestam
 
 export interface vote_updates {
 /** sets the columns of the filtered rows to the given values */
-_set?: (vote_set_input | null),where: vote_bool_exp}
+_set?: (vote_set_input | null),
+/** filter the rows which have to be updated */
+where: vote_bool_exp}
 
 export type QueryRequest = query_rootRequest
 export type MutationRequest = mutation_rootRequest

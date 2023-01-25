@@ -2,10 +2,11 @@ import {
   FieldsSelection,
   GraphqlOperation,
   ClientOptions,
+  ClientRequestConfig,
   Observable,
 } from '@gqlts/runtime'
 import { Client as WSClient } from 'graphql-ws'
-import { AxiosRequestConfig, AxiosInstance } from 'axios'
+import { AxiosInstance } from 'axios'
 export * from './schema'
 import {
   QueryRequest,
@@ -47,7 +48,7 @@ export interface GraphqlResponse<D = any, E = GraphQLError[], X = Extensions> {
   extensions?: X
 }
 
-export interface Client<FI = AxiosInstance, RC = AxiosRequestConfig> {
+export interface Client<FI = AxiosInstance, RC = ClientRequestConfig> {
   wsClient?: WSClient
   fetcherInstance?: FI | undefined
   fetcherMethod: (

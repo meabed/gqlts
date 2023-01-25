@@ -827,7 +827,9 @@ export interface message_updates {
 /** increments the numeric columns with given value of the filtered values */
 _inc?: (message_inc_input | null),
 /** sets the columns of the filtered rows to the given values */
-_set?: (message_set_input | null),where: message_bool_exp}
+_set?: (message_set_input | null),
+/** filter the rows which have to be updated */
+where: message_bool_exp}
 
 
 /** aggregate var_pop on columns */
@@ -1468,7 +1470,9 @@ export interface user_online_updates {
 /** increments the numeric columns with given value of the filtered values */
 _inc?: (user_online_inc_input | null),
 /** sets the columns of the filtered rows to the given values */
-_set?: (user_online_set_input | null),where: user_online_bool_exp}
+_set?: (user_online_set_input | null),
+/** filter the rows which have to be updated */
+where: user_online_bool_exp}
 
 
 /** aggregate var_pop on columns */
@@ -1697,7 +1701,9 @@ export interface user_typing_updates {
 /** increments the numeric columns with given value of the filtered values */
 _inc?: (user_typing_inc_input | null),
 /** sets the columns of the filtered rows to the given values */
-_set?: (user_typing_set_input | null),where: user_typing_bool_exp}
+_set?: (user_typing_set_input | null),
+/** filter the rows which have to be updated */
+where: user_typing_bool_exp}
 
 
 /** aggregate var_pop on columns */
@@ -1727,7 +1733,9 @@ export interface user_updates {
 /** increments the numeric columns with given value of the filtered values */
 _inc?: (user_inc_input | null),
 /** sets the columns of the filtered rows to the given values */
-_set?: (user_set_input | null),where: user_bool_exp}
+_set?: (user_set_input | null),
+/** filter the rows which have to be updated */
+where: user_bool_exp}
 
 
 /** aggregate var_pop on columns */

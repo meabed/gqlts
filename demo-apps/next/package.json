@@ -1,6 +1,6 @@
 {
   "name": "demo-apps-next",
-  "version": "3.2.15",
+  "version": "3.2.16",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "repository": "github:meabed/gqlts",

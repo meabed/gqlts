@@ -308,6 +308,8 @@ input message_updates {
 
   """sets the columns of the filtered rows to the given values"""
   _set: message_set_input
+
+  """filter the rows which have to be updated"""
   where: message_bool_exp!
 }
 
@@ -1285,6 +1287,8 @@ input user_online_updates {
 
   """sets the columns of the filtered rows to the given values"""
   _set: user_online_set_input
+
+  """filter the rows which have to be updated"""
   where: user_online_bool_exp!
 }
 
@@ -1559,6 +1563,8 @@ input user_typing_updates {
 
   """sets the columns of the filtered rows to the given values"""
   _set: user_typing_set_input
+
+  """filter the rows which have to be updated"""
   where: user_typing_bool_exp!
 }
 
@@ -1600,6 +1606,8 @@ input user_updates {
 
   """sets the columns of the filtered rows to the given values"""
   _set: user_set_input
+
+  """filter the rows which have to be updated"""
   where: user_bool_exp!
 }
 
