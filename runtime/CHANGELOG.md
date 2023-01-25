@@ -1,5 +1,8 @@
 # Changelog
 
+## [3.2.17 - 2023-01-25](https://github.com/meabed/gqlts/compare/v3.2.16...v3.2.17)
+- Fix build
+
 ## [3.2.16 - 2023-01-25](https://github.com/meabed/gqlts/compare/v3.2.14...v3.2.16)
 - Update axios to 1.2.4 and make types of axios request config and headers less strict
 - Update dependencies
