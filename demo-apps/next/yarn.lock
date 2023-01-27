@@ -260,7 +260,7 @@
   dependencies:
     "@gqlts/runtime" "^3.2.17"
     "@graphql-tools/graphql-file-loader" "^7.5.14"
-    "@graphql-tools/load" "^7.8.9"
+    "@graphql-tools/load" "^7.8.10"
     browserify "^17.0.0"
     colors "^1.4.0"
     esmify "^2.1.1"
@@ -309,30 +309,30 @@
     resolve-from "5.0.0"
     tslib "^2.4.0"
 
-"@graphql-tools/load@^7.8.9":
-  version "7.8.9"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.8.9.tgz#5f4e523095b6154bac43e6a01acb6b043e9afaca"
-  integrity sha512-/eHRv6OCTI/Ir5XcbtSx0XbW3zOQVscp2MZQFGZKDzqCcGD+NVy4mLCoBwR/OsOUpvWAwMnc+Llb4SDKAYGmjQ==
+"@graphql-tools/load@^7.8.10":
+  version "7.8.10"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.8.10.tgz#c62ccc850e6f846e8214f1ae05e675a864d79b80"
+  integrity sha512-Mc1p7ZSxrW5yGG3BLQnhiL8RPG0HdxFVoHV7fpx2adp4o1V7BzDjKRSbCnAxShA1wA4n8wbA+n7NTC0edi4eNA==
   dependencies:
-    "@graphql-tools/schema" "9.0.13"
+    "@graphql-tools/schema" "9.0.14"
     "@graphql-tools/utils" "9.1.4"
     p-limit "3.1.0"
     tslib "^2.4.0"
 
-"@graphql-tools/merge@8.3.15":
-  version "8.3.15"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.3.15.tgz#9b24ee5e9c36074684515c7d1587cd3e200c8a8f"
-  integrity sha512-hYYOlsqkUlL6oOo7zzuk6hIv7xQzy+x21sgK84d5FWaiWYkLYh9As8myuDd9SD5xovWWQ9m/iRhIOVDEMSyEKA==
+"@graphql-tools/merge@8.3.16":
+  version "8.3.16"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.3.16.tgz#fede610687b148e34ff861e8b038dcd71e20039b"
+  integrity sha512-In0kcOZcPIpYOKaqdrJ3thdLPE7TutFnL9tbrHUy2zCinR2O/blpRC48jPckcs0HHrUQ0pGT4HqvzMkZUeEBAw==
   dependencies:
     "@graphql-tools/utils" "9.1.4"
     tslib "^2.4.0"
 
-"@graphql-tools/schema@9.0.13":
-  version "9.0.13"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-9.0.13.tgz#56b994777df29ac36586a3200fb6397abf7b9d83"
-  integrity sha512-guRA3fwAtv+M1Kh930P4ydH9aKJTWscIkhVFcWpj/cnjYYxj88jkEJ15ZNiJX/2breNY+sbVgmlgLKb6aXi/Jg==
+"@graphql-tools/schema@9.0.14":
+  version "9.0.14"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-9.0.14.tgz#9a658ab82d5a7d4db73f68a44900d4c88a98f0bc"
+  integrity sha512-U6k+HY3Git+dsOEhq+dtWQwYg2CAgue8qBvnBXoKu5eEeH284wymMUoNm0e4IycOgMCJANVhClGEBIkLRu3FQQ==
   dependencies:
-    "@graphql-tools/merge" "8.3.15"
+    "@graphql-tools/merge" "8.3.16"
     "@graphql-tools/utils" "9.1.4"
     tslib "^2.4.0"
     value-or-promise "1.0.12"
@@ -3384,10 +3384,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@19.6.0:
-  version "19.6.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.6.0.tgz#7f1708a66d6901cd71c28f6e105c9aff73d0ec57"
-  integrity sha512-GvqWdHr9eY/MFR5pXf9o0apnrTmG0hhS7/TtCPfeAvCbaUS1bsLMZWxNGvI/QbviRu4xxi6HrR7VW4x/4esq1Q==
+puppeteer-core@19.6.1:
+  version "19.6.1"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.6.1.tgz#952726a364f3acff8cd8df8def798555962dbfe0"
+  integrity sha512-TdbqPYGHRgaqO1XPOM5ThE7uSs5NsYraOUU546okJz7jR9He5wnGuFd6LppoeWt8a4eM5RgzmICxeDUD5QwQtA==
   dependencies:
     cross-fetch "3.1.5"
     debug "4.3.4"
@@ -3400,16 +3400,16 @@ puppeteer-core@19.6.0:
     unbzip2-stream "1.4.3"
     ws "8.11.0"
 
-puppeteer@^19.6.0:
-  version "19.6.0"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.6.0.tgz#89a0bfa7da3db12b40ff9fe6c48cbc0eb149e03b"
-  integrity sha512-KpRjn/bosTWe8xOQ/F5J1UmQ4inR77ADddn8G6MqMPp/y9Tl+7EycXgrjO0/3i/OQfHi5bsvkTKXRkm0ieo/ew==
+puppeteer@^19.6.1:
+  version "19.6.1"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.6.1.tgz#25d0a188d44b99d8ea3870f89ea1931a48def189"
+  integrity sha512-gcqNilThyBPrUMvo2UZNG4KVoMjhCfCV7/84mTVk3oo0k65iO7hEKrB4waiJ15O0MHQpM79+XBHavRgBbRXUWQ==
   dependencies:
     cosmiconfig "8.0.0"
     https-proxy-agent "5.0.1"
     progress "2.0.3"
     proxy-from-env "1.1.0"
-    puppeteer-core "19.6.0"
+    puppeteer-core "19.6.1"
 
 qs@^6.11.0:
   version "6.11.0"
