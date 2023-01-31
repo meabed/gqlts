@@ -111,7 +111,7 @@
     "@types/node": "18.11.18",
     "@types/qs": "6.9.7",
     "@types/rimraf": "3.0.2",
-    "@types/yargs": "17.0.21",
+    "@types/yargs": "17.0.22",
     "common-tags": "1.8.2",
     "dotenv": "16.0.3",
     "husky": "8.0.3",
