@@ -44,7 +44,7 @@
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "@tanstack/react-query": "4.24.6",
-    "@types/js-cookie": "3.0.2",
+    "@types/js-cookie": "3.0.3",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
@@ -60,7 +60,7 @@
     "swr": "2.0.3"
   },
   "devDependencies": {
-    "@types/node": "18.13.0",
+    "@types/node": "18.14.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "next-transpile-modules": "10.0.0",
