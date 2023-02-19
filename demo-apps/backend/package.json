@@ -26,6 +26,8 @@
     "typecheck": "tsc --pretty --skipLibCheck --noEmit"
   },
   "dependencies": {
+    "@envelop/parser-cache": "^5.0.5",
+    "@envelop/validation-cache": "^5.1.1",
     "@graphql-tools/schema": "^9.0.16",
     "graphql": "^16.6.0",
     "graphql-scalars": "^1.20.1",
