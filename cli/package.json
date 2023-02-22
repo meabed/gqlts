@@ -97,7 +97,7 @@
     "qs": "^6.11.0",
     "rimraf": "^4.1.2",
     "terser": "^5.16.4",
-    "yargs": "^17.7.0"
+    "yargs": "^17.7.1"
   },
   "devDependencies": {
     "@sucrase/jest-plugin": "3.0.0",
