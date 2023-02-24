@@ -96,7 +96,7 @@
     "prettier": "^2.8.4",
     "qs": "^6.11.0",
     "rimraf": "^4.1.2",
-    "terser": "^5.16.4",
+    "terser": "^5.16.5",
     "yargs": "^17.7.1"
   },
   "devDependencies": {
