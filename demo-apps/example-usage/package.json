@@ -43,12 +43,12 @@
     "@emotion/styled": "11.10.6",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
-    "@tanstack/react-query": "4.26.0",
+    "@tanstack/react-query": "4.26.1",
     "@types/js-cookie": "3.0.3",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
-    "framer-motion": "10.0.2",
+    "framer-motion": "10.1.0",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
     "next": "^13.2.3",
@@ -57,7 +57,7 @@
     "react-extra-hooks": "2.3.4",
     "react-icons": "4.8.0",
     "react-storage-hooks": "4.0.1",
-    "swr": "2.0.4"
+    "swr": "2.1.0"
   },
   "devDependencies": {
     "@types/node": "18.14.6",
