@@ -286,7 +286,7 @@
   dependencies:
     axios "^1.3.4"
     form-data "^4.0.0"
-    graphql-ws "^5.11.3"
+    graphql-ws "^5.12.0"
     is-plain-obj "^4.1.0"
     lodash.assign "^4.2.0"
     lodash.get "^4.4.2"
@@ -2311,10 +2311,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-graphql-ws@^5.11.3:
-  version "5.11.3"
-  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.11.3.tgz#eaf8e6baf669d167975cff13ad86abca4ecfe82f"
-  integrity sha512-fU8zwSgAX2noXAsuFiCZ8BtXeXZOzXyK5u1LloCdacsVth4skdBMPO74EG51lBoWSIZ8beUocdpV8+cQHBODnQ==
+graphql-ws@^5.12.0:
+  version "5.12.0"
+  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.12.0.tgz#d06fe38916334b4a4c827f73268cbf4359a32ed7"
+  integrity sha512-PA3ImUp8utrpEjoxBMhvxsjkStvFEdU0E1gEBREt8HZIWkxOUymwJBhFnBL7t/iHhUq1GVPeZevPinkZFENxTw==
 
 graphql@*:
   version "16.6.0"
