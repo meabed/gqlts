@@ -1,9 +1,11 @@
 import { Account, Point, User, createClient, everything, isHouse, isUser } from '../generated';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import { ApolloServer } from 'apollo-server-express';
 import assert from 'assert';
 import sleep from 'await-sleep';
 import axios from 'axios';
+import { json } from 'body-parser';
 import express from 'express';
 import fs from 'fs';
 import { PubSub } from 'graphql-subscriptions';
@@ -57,7 +59,15 @@ async function server({ resolvers, port = PORT }) {
       ],
     });
     await server.start();
-    server.applyMiddleware({ app, path: '/graphql' });
+    app.use(
+      '/graphql',
+      json(),
+      expressMiddleware(server, {
+        context: async ({ req }) => ({ token: req.headers.token }),
+      })
+    );
+
+    expressMiddleware(server);
     await httpServer.listen(port).on('listening', () => {
       // console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
