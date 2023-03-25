@@ -1485,7 +1485,7 @@ graceful-fs@^4.2.9:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
-graphql-scalars@^1.20.4:
+graphql-scalars@^1.21.2:
   version "1.21.2"
   resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.21.2.tgz#b6fc7e121c1baca7cb833686f296f3a6ef7a072c"
   integrity sha512-fw2PfNZ5KMeIjO8g7F1vuGhPvyQZfea8C2k532idRsE24bYx57UJZbTmoqRMSeRRlyemuW6RMjtfvbfxSyholA==
