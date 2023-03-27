@@ -811,10 +811,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@18.0.29":
-  version "18.0.29"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.29.tgz#4cead505172c0020c5b51940199e31fc6ff2f63a"
-  integrity sha512-wXHktgUABxplw1+UnljseDq4+uztQyp2tlWZRIxHlpchsCFqiYkvaDS8JR7eKOQm8wziTH/el5qL7D6gYNkYcw==
+"@types/react@18.0.30":
+  version "18.0.30"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.30.tgz#83944e679fc7aeab3f042b76d63c4d755b56b7c4"
+  integrity sha512-AnME2cHDH11Pxt/yYX6r0w448BfTwQOLEhQEjCdwB7QskEI7EKtxhGUsExTQe/MsY3D9D5rMtu62WRocw9A8FA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4919,10 +4919,10 @@ subarg@^1.0.0:
   dependencies:
     minimist "^1.1.0"
 
-sucrase@3.30.0:
-  version "3.30.0"
-  resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.30.0.tgz#ce8f49152913c70945d65d9e5405d66a399cca8a"
-  integrity sha512-7d37d3vLF0IeH2dzvHpzDNDxUqpbDHJXTJOAnQ8jvMW04o2Czps6mxtaSnKWpE+hUS/eczqfWPUgQTrazKZPnQ==
+sucrase@3.31.0:
+  version "3.31.0"
+  resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.31.0.tgz#daae4fd458167c5d4ba1cce6aef57b988b417b33"
+  integrity sha512-6QsHnkqyVEzYcaiHsOKkzOtOgdJcb8i54x6AV2hDwyZcY9ZyykGZVw6L/YN98xC0evwTP6utsWWrKRaa8QlfEQ==
   dependencies:
     commander "^4.0.0"
     glob "7.1.6"
