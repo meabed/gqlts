@@ -303,7 +303,7 @@
 "@gqlts/runtime@^3.2.17", "@gqlts/runtime@file:../../runtime", "@gqlts/runtime@file:./../../runtime":
   version "3.2.17"
   dependencies:
-    axios "^1.3.4"
+    axios "^1.3.5"
     form-data "^4.0.0"
     graphql-ws "^5.12.1"
     is-plain-obj "^4.1.0"
@@ -556,10 +556,10 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@puppeteer/browsers@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-0.3.2.tgz#1e57690943a574c9d7ce823503e048a1df6c67b9"
-  integrity sha512-YAwrqy68PskkCDnSsv0afR8l8u90KhodcIFXCage5NLAoeWm0STGmtVugLBp2wc5PnhnCapCKkMjp9fYjvJl2g==
+"@puppeteer/browsers@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-0.3.3.tgz#6d4aa292ea2e0e17322a4ad8797e88637b853990"
+  integrity sha512-RonqAKLTDgiYpC6uNc5T9EwPFmbmWmi1Cm8Ak0iukEIIVvDwHn8UG2KK6gdkD1snrVCO9Y9nbpJ9c4v/00ztpw==
   dependencies:
     debug "4.3.4"
     extract-zip "2.0.1"
@@ -886,10 +886,10 @@ axe-core@^4.4.3:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.1.tgz#79cccdee3e3ab61a8f42c458d4123a6768e6fbce"
   integrity sha512-lCZN5XRuOnpG4bpMq8v0khrWtUOn+i8lZSb6wHZH56ZfbIEv6XwJV84AAueh9/zi7qPVJ/E4yz6fmsiyOmXR4w==
 
-axios@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.3.4.tgz#f5760cefd9cfb51fd2481acf88c05f67c4523024"
-  integrity sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==
+axios@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.3.5.tgz#e07209b39a0d11848e3e341fa087acd71dadc542"
+  integrity sha512-glL/PvG/E+xCWwV8S6nCHcrfg1exGx7vxyUIivIA1iL7BIh6bePylCfVHwp6k13ao7SATxB6imau2kqY+I67kw==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
@@ -1565,8 +1565,8 @@ delayed-stream@~1.0.0:
 "demo-apps-backend-sdk@file:../backend/sdk":
   version "1.0.0"
   dependencies:
-    "@gqlts/cli" "file:../../../../../home/runner/.cache/yarn/v6/cli"
-    "@gqlts/runtime" "file:../../../../../home/runner/.cache/yarn/v6/runtime"
+    "@gqlts/cli" "file:../../cli"
+    "@gqlts/runtime" "file:../../runtime"
 
 deps-sort@^2.0.1:
   version "2.0.1"
@@ -3476,11 +3476,12 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@19.8.3:
-  version "19.8.3"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.8.3.tgz#5925e849207c7b5de845b2336a6873129e66f5ed"
-  integrity sha512-+gPT43K3trUIr+7+tNjCg95vMgM9RkFIeeyck3SXUTBpGkrf6sxfWckncqY8MnzHfRcyapvztKNmqvJ+Ngukyg==
+puppeteer-core@19.8.4:
+  version "19.8.4"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.8.4.tgz#1681911ea845e6232763c7b5dd58cc44baa3c504"
+  integrity sha512-RhY+wnFi+ppMJtSJera8ie7TaNyQomWXvayEeVbcmDGMVZlNBu2X/Egh+yiUypIUCFmJdvVkN4SP30lYa9zUNw==
   dependencies:
+    "@puppeteer/browsers" "0.3.3"
     chromium-bidi "0.4.6"
     cross-fetch "3.1.5"
     debug "4.3.4"
@@ -3493,16 +3494,16 @@ puppeteer-core@19.8.3:
     ws "8.13.0"
 
 puppeteer@^19.8.3:
-  version "19.8.3"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.8.3.tgz#87a9fe28972cd740a1e42bf8be0f08f669753131"
-  integrity sha512-sKtt3aDRAcWuemeEtRaJqWKRlQ72OyKVcxX3Ur3KyFUEEzb2sEHpFc2mBlTMPmzOiNg5dB4dnxfelV9/xypJrA==
+  version "19.8.4"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.8.4.tgz#af8730ed90c86d3aa678e2fd5e2d6489b5774ea7"
+  integrity sha512-hjdUN20xUNeF/uz8xyWSGUng4FuNLkgPgXl9NTk2YNOFcSSyFj1tFIIvruT+Ts9rDGBIfx5O6SD3YPbspK+s7Q==
   dependencies:
-    "@puppeteer/browsers" "0.3.2"
+    "@puppeteer/browsers" "0.3.3"
     cosmiconfig "8.1.3"
     https-proxy-agent "5.0.1"
     progress "2.0.3"
     proxy-from-env "1.1.0"
-    puppeteer-core "19.8.3"
+    puppeteer-core "19.8.4"
 
 qs@^6.11.1:
   version "6.11.1"

@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@puppeteer/browsers@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-0.3.2.tgz#1e57690943a574c9d7ce823503e048a1df6c67b9"
-  integrity sha512-YAwrqy68PskkCDnSsv0afR8l8u90KhodcIFXCage5NLAoeWm0STGmtVugLBp2wc5PnhnCapCKkMjp9fYjvJl2g==
+"@puppeteer/browsers@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-0.3.3.tgz#6d4aa292ea2e0e17322a4ad8797e88637b853990"
+  integrity sha512-RonqAKLTDgiYpC6uNc5T9EwPFmbmWmi1Cm8Ak0iukEIIVvDwHn8UG2KK6gdkD1snrVCO9Y9nbpJ9c4v/00ztpw==
   dependencies:
     debug "4.3.4"
     extract-zip "2.0.1"
@@ -396,11 +396,12 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
-puppeteer-core@19.8.3:
-  version "19.8.3"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.8.3.tgz#5925e849207c7b5de845b2336a6873129e66f5ed"
-  integrity sha512-+gPT43K3trUIr+7+tNjCg95vMgM9RkFIeeyck3SXUTBpGkrf6sxfWckncqY8MnzHfRcyapvztKNmqvJ+Ngukyg==
+puppeteer-core@19.8.4:
+  version "19.8.4"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.8.4.tgz#1681911ea845e6232763c7b5dd58cc44baa3c504"
+  integrity sha512-RhY+wnFi+ppMJtSJera8ie7TaNyQomWXvayEeVbcmDGMVZlNBu2X/Egh+yiUypIUCFmJdvVkN4SP30lYa9zUNw==
   dependencies:
+    "@puppeteer/browsers" "0.3.3"
     chromium-bidi "0.4.6"
     cross-fetch "3.1.5"
     debug "4.3.4"
@@ -413,16 +414,16 @@ puppeteer-core@19.8.3:
     ws "8.13.0"
 
 puppeteer@^19.8.3:
-  version "19.8.3"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.8.3.tgz#87a9fe28972cd740a1e42bf8be0f08f669753131"
-  integrity sha512-sKtt3aDRAcWuemeEtRaJqWKRlQ72OyKVcxX3Ur3KyFUEEzb2sEHpFc2mBlTMPmzOiNg5dB4dnxfelV9/xypJrA==
+  version "19.8.4"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.8.4.tgz#af8730ed90c86d3aa678e2fd5e2d6489b5774ea7"
+  integrity sha512-hjdUN20xUNeF/uz8xyWSGUng4FuNLkgPgXl9NTk2YNOFcSSyFj1tFIIvruT+Ts9rDGBIfx5O6SD3YPbspK+s7Q==
   dependencies:
-    "@puppeteer/browsers" "0.3.2"
+    "@puppeteer/browsers" "0.3.3"
     cosmiconfig "8.1.3"
     https-proxy-agent "5.0.1"
     progress "2.0.3"
     proxy-from-env "1.1.0"
-    puppeteer-core "19.8.3"
+    puppeteer-core "19.8.4"
 
 readable-stream@^3.1.1, readable-stream@^3.4.0:
   version "3.6.2"
