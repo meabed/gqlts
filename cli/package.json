@@ -109,7 +109,6 @@
     "@types/lodash": "4.14.192",
     "@types/node": "18.15.11",
     "@types/qs": "6.9.7",
-    "@types/rimraf": "3.0.2",
     "@types/yargs": "17.0.24",
     "common-tags": "1.8.2",
     "dotenv": "16.0.3",

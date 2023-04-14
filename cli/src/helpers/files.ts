@@ -1,11 +1,11 @@
 import { promises as fs } from 'fs';
 import { mkdirpSync } from 'mkdirp';
 import { resolve } from 'path';
-import rimraf from 'rimraf';
+import { rimrafSync } from 'rimraf';
 
 export async function ensurePath(path: string[], clear: boolean = false) {
   if (clear) {
-    rimraf.sync(resolve(...path));
+    rimrafSync(resolve(...path));
   }
   mkdirpSync(resolve(...path));
 }
