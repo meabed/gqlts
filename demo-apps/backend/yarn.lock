@@ -1499,7 +1499,7 @@ graphql-upload-ts@^2.0.5:
   dependencies:
     busboy "1.6.0"
 
-graphql-yoga@^3.9.0:
+graphql-yoga@^3.9.1:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-3.9.1.tgz#e35c959fac5c1d81e2244a0665b5da6357d4e637"
   integrity sha512-BB6EkN64VBTXWmf9Kym2OsVZFzBC0mAsQNo9eNB5xIr3t+x7qepQ34xW5A353NWol3Js3xpzxwIKFVF6l9VsPg==
