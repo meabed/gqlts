@@ -27,19 +27,19 @@
   "dependencies": {
     "demo-apps-backend-sdk": "file:./../backend/sdk",
     "@gqlts/runtime": "file:./../../runtime",
-    "@next/font": "13.3.0",
+    "@next/font": "13.3.1",
     "@types/node": "18.15.13",
-    "@types/react": "18.0.37",
+    "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
-    "next": "13.3.0",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
+    "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "puppeteer": "^19.10.0"
+    "puppeteer": "^19.10.1"
   },
   "resolutions": {
     "@gqlts/cli": "file:./../../cli",
