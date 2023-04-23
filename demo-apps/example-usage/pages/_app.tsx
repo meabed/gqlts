@@ -10,9 +10,14 @@ export default function App(props: any) {
   return (
     <DarkMode>
       <LandingProvider minH='100%' h='100%' background={'black'} black='#333'>
-        <Stack h='100%' minH='100vh'>
+        <div
+          style={{
+            height: '100%',
+            minHeight: '100vh',
+          }}
+        >
           <Component {...pageProps} />
-        </Stack>
+        </div>
       </LandingProvider>
     </DarkMode>
   );

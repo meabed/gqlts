@@ -1,13 +1,13 @@
 import { promises as fs } from 'fs';
-import mkdirp from 'mkdirp';
+import { mkdirpSync } from 'mkdirp';
 import { resolve } from 'path';
-import rimraf from 'rimraf';
+import { rimrafSync } from 'rimraf';
 
 export async function ensurePath(path: string[], clear: boolean = false) {
   if (clear) {
-    rimraf.sync(resolve(...path));
+    rimrafSync(resolve(...path));
   }
-  mkdirp.sync(resolve(...path));
+  mkdirpSync(resolve(...path));
 }
 
 export const requireModuleFromPath = (path: string[]) => require(resolve(...path));

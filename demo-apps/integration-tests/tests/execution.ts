@@ -1,9 +1,11 @@
 import { Account, Point, User, createClient, everything, isHouse, isUser } from '../generated';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import { ApolloServer } from 'apollo-server-express';
 import assert from 'assert';
 import sleep from 'await-sleep';
 import axios from 'axios';
+import { json } from 'body-parser';
 import express from 'express';
 import fs from 'fs';
 import { PubSub } from 'graphql-subscriptions';
@@ -44,6 +46,7 @@ async function server({ resolvers, port = PORT }) {
 
     const server = new ApolloServer({
       schema,
+      allowBatchedHttpRequests: true,
       plugins: [
         {
           async serverWillStart() {
@@ -57,7 +60,15 @@ async function server({ resolvers, port = PORT }) {
       ],
     });
     await server.start();
-    server.applyMiddleware({ app, path: '/graphql' });
+    app.use(
+      '/graphql',
+      json(),
+      expressMiddleware(server, {
+        context: async ({ req }) => ({ token: req.headers.token }),
+      })
+    );
+
+    expressMiddleware(server);
     await httpServer.listen(port).on('listening', () => {
       // console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
@@ -116,8 +127,7 @@ describe('execute queries', async function () {
     try {
       await func();
     } catch (e) {
-      console.log('catch');
-      console.error({ e });
+      console.error('error: ', e);
       throw e;
     } finally {
       await stop();
@@ -446,6 +456,7 @@ describe('execute queries', async function () {
       expectType<Maybe<string>>(coordinates?.__typename);
       assert(coordinates?.x);
       assert(coordinates?.__typename);
+
       if ('address' in coordinates) {
         coordinates?.address;
         coordinates?.x;
@@ -464,17 +475,20 @@ describe('execute queries', async function () {
         url: URL,
         batch: true,
         fetcherMethod: async (body) => {
-          // console.log({ body });
           batchedQueryLength = Array.isArray(body) ? body.length : -1;
-          const res = await axios({
-            url: URL,
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            method: 'POST',
-            data: JSON.stringify(body),
-          });
-          return res.data;
+          try {
+            const res = await axios({
+              url: URL,
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              method: 'POST',
+              data: JSON.stringify(body),
+            });
+            return res.data;
+          } catch (e: any) {
+            return e.response?.data;
+          }
         },
       });
 
