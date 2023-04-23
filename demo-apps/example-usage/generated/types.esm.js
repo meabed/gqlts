@@ -1,239 +1,218 @@
 export default {
     "scalars": [
         0,
-        1,
-        3,
-        13
+        5,
+        6,
+        7,
+        12
     ],
     "types": {
         "Boolean": {},
-        "String": {},
-        "Country": {
-            "code": [
-                3
-            ],
-            "name": [
-                1
-            ],
-            "native": [
-                1
-            ],
-            "phone": [
-                1
-            ],
-            "continent": [
-                4
-            ],
-            "capital": [
-                1
-            ],
-            "currency": [
-                1
-            ],
-            "languages": [
-                5
-            ],
-            "emoji": [
-                1
-            ],
-            "emojiU": [
-                1
-            ],
-            "states": [
-                6
-            ],
-            "__typename": [
-                1
-            ]
-        },
-        "ID": {},
         "Continent": {
             "code": [
-                3
-            ],
-            "name": [
-                1
+                6
             ],
             "countries": [
-                2
-            ],
-            "__typename": [
-                1
-            ]
-        },
-        "Language": {
-            "code": [
                 3
             ],
             "name": [
+                12
+            ],
+            "__typename": [
+                12
+            ]
+        },
+        "ContinentFilterInput": {
+            "code": [
+                13
+            ],
+            "__typename": [
+                12
+            ]
+        },
+        "Country": {
+            "awsRegion": [
+                12
+            ],
+            "capital": [
+                12
+            ],
+            "code": [
+                6
+            ],
+            "continent": [
                 1
             ],
+            "currencies": [
+                12
+            ],
+            "currency": [
+                12
+            ],
+            "emoji": [
+                12
+            ],
+            "emojiU": [
+                12
+            ],
+            "languages": [
+                8
+            ],
+            "name": [
+                12,
+                {
+                    "lang": [
+                        12
+                    ]
+                }
+            ],
             "native": [
-                1
+                12
+            ],
+            "phone": [
+                12
+            ],
+            "phones": [
+                12
+            ],
+            "states": [
+                11
+            ],
+            "__typename": [
+                12
+            ]
+        },
+        "CountryFilterInput": {
+            "code": [
+                13
+            ],
+            "continent": [
+                13
+            ],
+            "currency": [
+                13
+            ],
+            "__typename": [
+                12
+            ]
+        },
+        "Float": {},
+        "ID": {},
+        "Int": {},
+        "Language": {
+            "code": [
+                6
+            ],
+            "name": [
+                12
+            ],
+            "native": [
+                12
             ],
             "rtl": [
                 0
             ],
             "__typename": [
-                1
-            ]
-        },
-        "State": {
-            "code": [
-                1
-            ],
-            "name": [
-                1
-            ],
-            "country": [
-                2
-            ],
-            "__typename": [
-                1
-            ]
-        },
-        "StringQueryOperatorInput": {
-            "eq": [
-                1
-            ],
-            "ne": [
-                1
-            ],
-            "in": [
-                1
-            ],
-            "nin": [
-                1
-            ],
-            "regex": [
-                1
-            ],
-            "glob": [
-                1
-            ],
-            "__typename": [
-                1
-            ]
-        },
-        "CountryFilterInput": {
-            "code": [
-                7
-            ],
-            "currency": [
-                7
-            ],
-            "continent": [
-                7
-            ],
-            "__typename": [
-                1
-            ]
-        },
-        "ContinentFilterInput": {
-            "code": [
-                7
-            ],
-            "__typename": [
-                1
+                12
             ]
         },
         "LanguageFilterInput": {
             "code": [
-                7
+                13
             ],
             "__typename": [
-                1
+                12
             ]
         },
         "Query": {
-            "_entities": [
-                12,
-                {
-                    "representations": [
-                        13,
-                        "[_Any!]!"
-                    ]
-                }
-            ],
-            "_service": [
-                14
-            ],
-            "countries": [
-                2,
-                {
-                    "filter": [
-                        8
-                    ]
-                }
-            ],
-            "country": [
-                2,
+            "continent": [
+                1,
                 {
                     "code": [
-                        3,
+                        6,
                         "ID!"
                     ]
                 }
             ],
             "continents": [
-                4,
+                1,
+                {
+                    "filter": [
+                        2
+                    ]
+                }
+            ],
+            "countries": [
+                3,
+                {
+                    "filter": [
+                        4
+                    ]
+                }
+            ],
+            "country": [
+                3,
+                {
+                    "code": [
+                        6,
+                        "ID!"
+                    ]
+                }
+            ],
+            "language": [
+                8,
+                {
+                    "code": [
+                        6,
+                        "ID!"
+                    ]
+                }
+            ],
+            "languages": [
+                8,
                 {
                     "filter": [
                         9
                     ]
                 }
             ],
-            "continent": [
-                4,
-                {
-                    "code": [
-                        3,
-                        "ID!"
-                    ]
-                }
-            ],
-            "languages": [
-                5,
-                {
-                    "filter": [
-                        10
-                    ]
-                }
-            ],
-            "language": [
-                5,
-                {
-                    "code": [
-                        3,
-                        "ID!"
-                    ]
-                }
-            ],
             "__typename": [
-                1
+                12
             ]
         },
-        "_Entity": {
-            "on_Country": [
-                2
+        "State": {
+            "code": [
+                12
             ],
-            "on_Continent": [
-                4
+            "country": [
+                3
             ],
-            "on_Language": [
-                5
+            "name": [
+                12
             ],
             "__typename": [
-                1
+                12
             ]
         },
-        "_Any": {},
-        "_Service": {
-            "sdl": [
-                1
+        "String": {},
+        "StringQueryOperatorInput": {
+            "eq": [
+                12
+            ],
+            "in": [
+                12
+            ],
+            "ne": [
+                12
+            ],
+            "nin": [
+                12
+            ],
+            "regex": [
+                12
             ],
             "__typename": [
-                1
+                12
             ]
         }
     }
