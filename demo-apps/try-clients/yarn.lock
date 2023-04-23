@@ -233,9 +233,9 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@gqlts/cli@file:../../cli":
-  version "3.2.15"
+  version "3.2.17"
   dependencies:
-    "@gqlts/runtime" "^3.2.15"
+    "@gqlts/runtime" "^3.2.17"
     "@graphql-tools/graphql-file-loader" "^7.5.14"
     "@graphql-tools/load" "^7.8.9"
     browserify "^17.0.0"
@@ -253,8 +253,8 @@
     terser "^5.16.1"
     yargs "^17.6.2"
 
-"@gqlts/runtime@^3.2.15", "@gqlts/runtime@file:../../runtime":
-  version "3.2.15"
+"@gqlts/runtime@^3.2.17", "@gqlts/runtime@file:../../runtime":
+  version "3.2.17"
   dependencies:
     axios "^1.2.4"
     form-data "^4.0.0"
@@ -2839,9 +2839,9 @@ thenify-all@^1.0.0:
     thenify ">= 3.1.0 < 4"
 
 "thenify@>= 3.1.0 < 4":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/thenify/-/thenify-3.3.0.tgz#e69e38a1babe969b0108207978b9f62b88604839"
-  integrity sha1-5p44obq+lpsBCCB5eLn2K4hgSDk=
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/thenify/-/thenify-3.3.1.tgz#8932e686a4066038a016dd9e2ca46add9838a95f"
+  integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
 
