@@ -280,9 +280,9 @@
   integrity sha512-kf9RB0Fg7NZfap83B3QOqOGg9QmD9yBudqQXzzOtn3i4y7ZUXe5ONeW34Gwi+TxhH4mvj72R1Zc300KUMa9Bng==
 
 "@gqlts/cli@file:../../cli", "@gqlts/cli@file:./../../cli":
-  version "3.2.17"
+  version "3.2.18"
   dependencies:
-    "@gqlts/runtime" "^3.2.17"
+    "@gqlts/runtime" "^3.2.18"
     "@graphql-tools/graphql-file-loader" "^7.5.17"
     "@graphql-tools/load" "^7.8.14"
     browserify "^17.0.0"
@@ -294,14 +294,14 @@
     listr "^0.14.3"
     lodash "^4.17.21"
     mkdirp "^3.0.0"
-    prettier "^2.8.7"
+    prettier "^2.8.8"
     qs "^6.11.1"
     rimraf "^5.0.0"
     terser "^5.17.1"
     yargs "^17.7.1"
 
-"@gqlts/runtime@^3.2.17", "@gqlts/runtime@file:../../runtime", "@gqlts/runtime@file:./../../runtime":
-  version "3.2.17"
+"@gqlts/runtime@^3.2.18", "@gqlts/runtime@file:../../runtime", "@gqlts/runtime@file:./../../runtime":
+  version "3.2.18"
   dependencies:
     axios "^1.3.6"
     form-data "^4.0.0"
@@ -1557,8 +1557,8 @@ delayed-stream@~1.0.0:
 "demo-apps-backend-sdk@file:../backend/sdk":
   version "1.0.0"
   dependencies:
-    "@gqlts/cli" "file:../../cli"
-    "@gqlts/runtime" "file:../../runtime"
+    "@gqlts/cli" "file:../../../../../home/runner/.cache/yarn/v6/cli"
+    "@gqlts/runtime" "file:../../../../../home/runner/.cache/yarn/v6/runtime"
 
 deps-sort@^2.0.1:
   version "2.0.1"
@@ -3396,10 +3396,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier@^2.8.7:
-  version "2.8.7"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.7.tgz#bb79fc8729308549d28fe3a98fce73d2c0656450"
-  integrity sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==
+prettier@^2.8.8:
+  version "2.8.8"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
+  integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
