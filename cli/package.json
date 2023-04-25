@@ -92,7 +92,7 @@
     "isomorphic-unfetch": "^4.0.2",
     "listr": "^0.14.3",
     "lodash": "^4.17.21",
-    "mkdirp": "^3.0.0",
+    "mkdirp": "^3.0.1",
     "prettier": "^2.8.8",
     "qs": "^6.11.1",
     "rimraf": "^5.0.0",

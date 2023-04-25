@@ -39,7 +39,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "puppeteer": "^19.10.1"
+    "puppeteer": "^19.11.0"
   },
   "resolutions": {
     "@gqlts/cli": "file:./../../cli",
