@@ -760,10 +760,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.31.tgz#a5bb84ecfa27eec5e1c802c6bbf8139bdb163a5d"
   integrity sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==
 
-"@types/node@18.16.0":
-  version "18.16.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.0.tgz#4668bc392bb6938637b47e98b1f2ed5426f33316"
-  integrity sha512-BsAaKhB+7X+H4GnSjGhJG9Qi8Tw+inU9nJDwmD5CgOmBLEI6ArdhikpLX7DjbjDRDTbqZzU2LSQNZg8WGPiSZQ==
+"@types/node@18.16.1":
+  version "18.16.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.1.tgz#5db121e9c5352925bb1f1b892c4ae620e3526799"
+  integrity sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==
 
 "@types/parse5@^6.0.0":
   version "6.0.3"
@@ -780,10 +780,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-dom@18.2.0":
-  version "18.2.0"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.0.tgz#374f28074bb117f56f58c4f3f71753bebb545156"
-  integrity sha512-8yQrvS6sMpSwIovhPOwfyNf2Wz6v/B62LFSVYQ85+Rq3tLsBIG7rP5geMxaijTUxSkrO6RzN/IRuIAADYQsleA==
+"@types/react-dom@18.2.1":
+  version "18.2.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.1.tgz#663b2612feb5f6431a70207430d7c04881b87f29"
+  integrity sha512-8QZEV9+Kwy7tXFmjJrp3XUKQSs9LTnE0KnoUb0YCguWBiNW0Yfb2iBMYZ08WPg35IR6P3Z0s00B15SwZnO26+w==
   dependencies:
     "@types/react" "*"
 
@@ -4223,10 +4223,10 @@ prettier@^2.8.7:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
-prism-react-renderer@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-2.0.1.tgz#5576bfe20704a1cff4e20c8b175f3d5d3effc94e"
-  integrity sha512-GQ825VzLSRbKWqYHd3JFhnXzJ6qzAMiMUStxcB5IzKbuZjmL0ir+Tzldb3pA8JuyoqzeFtRWG4emLvuQww5SIA==
+prism-react-renderer@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-2.0.3.tgz#251c93af94718991f6d4805bae70ac08c37997ce"
+  integrity sha512-KhTfMTznJeSqJkoqh9TUDuvRdyaNWXHCii1Z46sqthQXnMiFzCaWapfsmW5kHcFjRwEUJ92iysrgznv0y9XHlQ==
   dependencies:
     "@types/prismjs" "^1.26.0"
     clsx "^1.2.1"
