@@ -1498,7 +1498,7 @@ graphql-scalars@^1.21.3:
   dependencies:
     tslib "^2.5.0"
 
-graphql-upload-ts@^2.0.5:
+graphql-upload-ts@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/graphql-upload-ts/-/graphql-upload-ts-2.0.6.tgz#ff917e40cdad31aeadb489559a529214eb231c12"
   integrity sha512-8A1k+I9R5MIf7cuOcosDGBMOD+p3/cQ8HHyN9xf8wEDU6Z1O1nYu6zZgSrLHovJ/x1q8r4Ka4hNQCmeSLL7Pew==
