@@ -413,7 +413,7 @@ puppeteer-core@20.1.0:
     unbzip2-stream "1.4.3"
     ws "8.13.0"
 
-puppeteer@^20.0.0:
+puppeteer@^20.1.0:
   version "20.1.0"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.1.0.tgz#30331e2729b235b3306a39cab3ad5b0cf2b90e7d"
   integrity sha512-kZp1eYScK1IpHxkgnDaFSGKKCzt27iZfsxO6Xlv/cklzYrhobxTK9/PxzCacPCrYnxNQwKwHzHLPOCuSyjw1jg==
