@@ -28,10 +28,10 @@
     "demo-apps-backend-sdk": "file:./../backend/sdk",
     "@gqlts/runtime": "file:./../../runtime",
     "@next/font": "13.4.1",
-    "@types/node": "18.16.4",
+    "@types/node": "20.1.0",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.4",
-    "eslint": "8.39.0",
+    "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
     "next": "13.4.1",
     "react": "18.2.0",
@@ -39,7 +39,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "puppeteer": "^20.1.0"
+    "puppeteer": "^20.1.1"
   },
   "resolutions": {
     "@gqlts/cli": "file:./../../cli",
