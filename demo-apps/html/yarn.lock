@@ -423,7 +423,7 @@ puppeteer-core@20.1.2:
     devtools-protocol "0.0.1120988"
     ws "8.13.0"
 
-puppeteer@^20.1.1:
+puppeteer@^20.1.2:
   version "20.1.2"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.1.2.tgz#95ccc111e69be6b71d3fcce960a9971fd8105a90"
   integrity sha512-QYDp+iVMP30TwlkXFOocON9qR3Nac5ez7PdXbY90mfuEgZb9vf3/OXL2vHprxwPtb2hgD4AxXvLZhEIqfD2y8Q==

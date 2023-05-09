@@ -297,7 +297,7 @@
     prettier "^2.8.8"
     qs "^6.11.1"
     rimraf "^5.0.0"
-    terser "^5.17.1"
+    terser "^5.17.2"
     yargs "^17.7.2"
 
 "@gqlts/runtime@^3.2.18", "@gqlts/runtime@file:../../runtime", "@gqlts/runtime@file:./../../runtime":
@@ -580,10 +580,15 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/node@*", "@types/node@20.1.0":
+"@types/node@*":
   version "20.1.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.0.tgz#258805edc37c327cf706e64c6957f241ca4c4c20"
   integrity sha512-O+z53uwx64xY7D6roOi4+jApDGFg0qn6WHcxe5QeqjMaTezBO/mxdfFXIVAVVyNWKx84OmPB3L8kbVYOTeN34A==
+
+"@types/node@20.1.1":
+  version "20.1.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.1.tgz#afc492e8dbe7f672dd3a13674823522b467a45ad"
+  integrity sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A==
 
 "@types/prop-types@*":
   version "15.7.5"
@@ -1558,8 +1563,8 @@ delayed-stream@~1.0.0:
 "demo-apps-backend-sdk@file:../backend/sdk":
   version "1.0.0"
   dependencies:
-    "@gqlts/cli" "file:../../cli"
-    "@gqlts/runtime" "file:../../runtime"
+    "@gqlts/cli" "file:../../../../../home/runner/.cache/yarn/v6/cli"
+    "@gqlts/runtime" "file:../../../../../home/runner/.cache/yarn/v6/runtime"
 
 deps-sort@^2.0.1:
   version "2.0.1"
@@ -3488,7 +3493,7 @@ puppeteer-core@20.1.2:
     devtools-protocol "0.0.1120988"
     ws "8.13.0"
 
-puppeteer@^20.1.1:
+puppeteer@^20.1.2:
   version "20.1.2"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.1.2.tgz#95ccc111e69be6b71d3fcce960a9971fd8105a90"
   integrity sha512-QYDp+iVMP30TwlkXFOocON9qR3Nac5ez7PdXbY90mfuEgZb9vf3/OXL2vHprxwPtb2hgD4AxXvLZhEIqfD2y8Q==
@@ -4056,10 +4061,10 @@ tar-stream@^2.1.4:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
 
-terser@^5.17.1:
-  version "5.17.1"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.1.tgz#948f10830454761e2eeedc6debe45c532c83fd69"
-  integrity sha512-hVl35zClmpisy6oaoKALOpS0rDYLxRFLHhRuDlEGTKey9qHjS1w9GMORjuwIMt70Wan4lwsLYyWDVnWgF+KUEw==
+terser@^5.17.2:
+  version "5.17.2"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.2.tgz#06c9818ae998066234b985abeb57bb7bff29d449"
+  integrity sha512-1D1aGbOF1Mnayq5PvfMc0amAR1y5Z1nrZaGCvI5xsdEfZEVte8okonk02OiaK5fw5hG1GWuuVsakOnpZW8y25A==
   dependencies:
     "@jridgewell/source-map" "^0.3.2"
     acorn "^8.5.0"
