@@ -305,7 +305,7 @@
   dependencies:
     axios "^1.4.0"
     form-data "^4.0.0"
-    graphql-ws "^5.13.0"
+    graphql-ws "^5.13.1"
     is-plain-obj "^4.1.0"
     lodash.assign "^4.2.0"
     lodash.get "^4.4.2"
@@ -536,10 +536,10 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@puppeteer/browsers@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-1.2.0.tgz#bee5ce47a5f55e7d68b884bb288136c5bcccc9aa"
-  integrity sha512-F2ygRTaNKq2HQQGsvypvy2S/Dg7aqqp2zxv4uolkxxTQvdbYfI0DcLPFNdqenaC+rZX5ldSPs/s39yAPpTVZ0A==
+"@puppeteer/browsers@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-1.3.0.tgz#5ad26540ff54e8b8fca8ab50d2da9c60360a21b9"
+  integrity sha512-an3QdbNPkuU6qpxpbssxAbjRLJcF+eP4L8UqIY3+6n0sbaVxw5pz7PiCLy9g32XEZuoamUlV5ZQPnA6FxvkIHA==
   dependencies:
     debug "4.3.4"
     extract-zip "2.0.1"
@@ -581,9 +581,9 @@
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
 "@types/node@*":
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.0.tgz#258805edc37c327cf706e64c6957f241ca4c4c20"
-  integrity sha512-O+z53uwx64xY7D6roOi4+jApDGFg0qn6WHcxe5QeqjMaTezBO/mxdfFXIVAVVyNWKx84OmPB3L8kbVYOTeN34A==
+  version "20.1.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.5.tgz#e94b604c67fc408f215fcbf3bd84d4743bf7f710"
+  integrity sha512-IvGD1CD/nego63ySR7vrAKEX3AJTcmrAN2kn+/sDNLi1Ff5kBzDeEdqWDplK+0HAEoLYej137Sk0cUU8OLOlMg==
 
 "@types/node@20.1.4":
   version "20.1.4"
@@ -1262,10 +1262,10 @@ chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
 
-chromium-bidi@0.4.7:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/chromium-bidi/-/chromium-bidi-0.4.7.tgz#4c022c2b0fb1d1c9b571fadf373042160e71d236"
-  integrity sha512-6+mJuFXwTMU6I3vYLs6IL8A1DyQTPjCfIL971X0aMPVGRbGnNfl6i6Cl0NMbxi2bRYLGESt9T2ZIMRM5PAEcIQ==
+chromium-bidi@0.4.9:
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/chromium-bidi/-/chromium-bidi-0.4.9.tgz#a1c6d7497e2b8ae3d639fd69dacb25025fa0a696"
+  integrity sha512-u3DC6XwgLCA9QJ5ak1voPslCmacQdulZNCPsI3qNXxSnEcZS7DFIbww+5RM2bznMEje7cc0oydavRLRvOIZtHw==
   dependencies:
     mitt "3.0.0"
 
@@ -1563,8 +1563,8 @@ delayed-stream@~1.0.0:
 "demo-apps-backend-sdk@file:../backend/sdk":
   version "1.0.0"
   dependencies:
-    "@gqlts/cli" "file:../../../../../home/runner/.cache/yarn/v6/cli"
-    "@gqlts/runtime" "file:../../../../../home/runner/.cache/yarn/v6/runtime"
+    "@gqlts/cli" "file:../../cli"
+    "@gqlts/runtime" "file:../../runtime"
 
 deps-sort@^2.0.1:
   version "2.0.1"
@@ -2330,10 +2330,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-graphql-ws@^5.13.0:
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.13.0.tgz#92f90858a70112ef8114eaa5e9e50792c3746449"
-  integrity sha512-2VwsecxYZsIZrHDzNOS2R8pIK5kTBRbrV8EVfE0J3pCESx75q+rILxx8oDNYC+HkKU1k6huRcol/vl4C9Co0mA==
+graphql-ws@^5.13.1:
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.13.1.tgz#96ac9963edb1e94c8e7f21af48ce5fcaab91779a"
+  integrity sha512-eiX7ES/ZQr0q7hSM5UBOEIFfaAUmAY9/CSDyAnsETuybByU7l/v46drRg9DQoTvVABEHp3QnrvwgTRMhqy7zxQ==
 
 graphql@*:
   version "16.6.0"
@@ -3481,26 +3481,26 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@20.2.0:
-  version "20.2.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-20.2.0.tgz#9a240f50bbc25d723c5ae9e7e30c73518e41b790"
-  integrity sha512-QKLu4ELW/609vlLqp/NvQA564LzvLaF6x1ZH+4BhPhxPgreoY8WR/AYOzXS12hgtPPjNCqPKiRLxmyXGnlIK8A==
+puppeteer-core@20.2.1:
+  version "20.2.1"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-20.2.1.tgz#e920e06e76ef2d1a1d98ea847611a8d662d3cd97"
+  integrity sha512-HmNMcL+g9ght0nCzS5BmEvom2IVhp1/xhlQ9O+fmihQx0EYwYUqgCQhs8Hbv7IapiqKhahKCC8PKfCNTXXsKbQ==
   dependencies:
-    "@puppeteer/browsers" "1.2.0"
-    chromium-bidi "0.4.7"
+    "@puppeteer/browsers" "1.3.0"
+    chromium-bidi "0.4.9"
     cross-fetch "3.1.5"
     debug "4.3.4"
     devtools-protocol "0.0.1120988"
     ws "8.13.0"
 
 puppeteer@^20.2.0:
-  version "20.2.0"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.2.0.tgz#4655d515dd05b3c7b92afabe7143e2e89865be3e"
-  integrity sha512-mGiCtWGq7S8MRUefZQV0AUiYGSPGmVlL/eYKPB4X9s9x0kuhzJmbSXSoWYFyo8MXaFmjUOqeMNP/3KeLZw207A==
+  version "20.2.1"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.2.1.tgz#e68d92731a5edae90620ad6209292f1c377eef3b"
+  integrity sha512-XWHlNCJf1u+i5AzakXj1PlNOTYcFcAwAunQj/urFKzKaZ7WTChlAo710W+TlEE2SJKshEZTwilMDDkVvwadLTQ==
   dependencies:
-    "@puppeteer/browsers" "1.2.0"
+    "@puppeteer/browsers" "1.3.0"
     cosmiconfig "8.1.3"
-    puppeteer-core "20.2.0"
+    puppeteer-core "20.2.1"
 
 qs@^6.11.2:
   version "6.11.2"
