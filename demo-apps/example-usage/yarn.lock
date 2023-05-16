@@ -1352,7 +1352,7 @@
   dependencies:
     axios "^1.4.0"
     form-data "^4.0.0"
-    graphql-ws "^5.13.0"
+    graphql-ws "^5.13.1"
     is-plain-obj "^4.1.0"
     lodash.assign "^4.2.0"
     lodash.get "^4.4.2"
@@ -2993,10 +2993,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@10.12.11:
-  version "10.12.11"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.12.11.tgz#0ddb928f9819df01ede2ea3106d8bd39f164aba4"
-  integrity sha512-uNsJAc/BQZ9V7tYgzRBXSrEdB+YrdJTtRvgn+8lNAQucGKaINJBL8I4aqXxXdw+HzwJZb/uR955jnOrxBy5sTA==
+framer-motion@10.12.12:
+  version "10.12.12"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.12.12.tgz#24c3620520f225e446972c42cad1c94d6ce70bbc"
+  integrity sha512-DDCqp60U6hR7aUrXj/BXc/t0Sd/U4ep6w/NZQkw898K+u7s+Vv/P8yxq4WTNA86kU9QCsqOgn1Qhz2DpYK0Oag==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -3162,10 +3162,10 @@ graphql-tag@2.12.6, graphql-tag@^2.12.6, graphql-tag@^2.4.2:
   dependencies:
     tslib "^2.1.0"
 
-graphql-ws@^5.13.0:
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.13.0.tgz#92f90858a70112ef8114eaa5e9e50792c3746449"
-  integrity sha512-2VwsecxYZsIZrHDzNOS2R8pIK5kTBRbrV8EVfE0J3pCESx75q+rILxx8oDNYC+HkKU1k6huRcol/vl4C9Co0mA==
+graphql-ws@^5.13.1:
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.13.1.tgz#96ac9963edb1e94c8e7f21af48ce5fcaab91779a"
+  integrity sha512-eiX7ES/ZQr0q7hSM5UBOEIFfaAUmAY9/CSDyAnsETuybByU7l/v46drRg9DQoTvVABEHp3QnrvwgTRMhqy7zxQ==
 
 graphql@*:
   version "15.0.0"
