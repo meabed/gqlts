@@ -250,7 +250,7 @@
     prettier "^2.8.8"
     qs "^6.11.2"
     rimraf "^5.0.0"
-    terser "^5.17.3"
+    terser "^5.17.4"
     yargs "^17.7.2"
 
 "@gqlts/runtime@^3.2.18", "@gqlts/runtime@file:../../runtime":
@@ -258,7 +258,7 @@
   dependencies:
     axios "^1.4.0"
     form-data "^4.0.0"
-    graphql-ws "^5.13.0"
+    graphql-ws "^5.13.1"
     is-plain-obj "^4.1.0"
     lodash.assign "^4.2.0"
     lodash.get "^4.4.2"
@@ -1589,10 +1589,10 @@ graphql-query-batcher@1.0.1:
   resolved "https://registry.yarnpkg.com/graphql-query-batcher/-/graphql-query-batcher-1.0.1.tgz#23a5c68218df16c3a77ed63028acc09eee7485a5"
   integrity sha512-NGntvsC2R6c+yqOiMfKXZL3/PpQUIpy70RgroPXRcuDJ1wxJJFesJAEu3Wv5gLbOpr/xPqXCMw2yTGHbqs8uqQ==
 
-graphql-ws@^5.13.0:
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.13.0.tgz#92f90858a70112ef8114eaa5e9e50792c3746449"
-  integrity sha512-2VwsecxYZsIZrHDzNOS2R8pIK5kTBRbrV8EVfE0J3pCESx75q+rILxx8oDNYC+HkKU1k6huRcol/vl4C9Co0mA==
+graphql-ws@^5.13.1:
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.13.1.tgz#96ac9963edb1e94c8e7f21af48ce5fcaab91779a"
+  integrity sha512-eiX7ES/ZQr0q7hSM5UBOEIFfaAUmAY9/CSDyAnsETuybByU7l/v46drRg9DQoTvVABEHp3QnrvwgTRMhqy7zxQ==
 
 graphql@*:
   version "15.1.0"
@@ -2865,10 +2865,10 @@ syntax-error@^1.1.1:
   dependencies:
     acorn-node "^1.2.0"
 
-terser@^5.17.3:
-  version "5.17.3"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.3.tgz#7f908f16b3cdf3f6c0f8338e6c1c674837f90d25"
-  integrity sha512-AudpAZKmZHkG9jueayypz4duuCFJMMNGRMwaPvQKWfxKedh8Z2x3OCoDqIIi1xx5+iwx1u6Au8XQcc9Lke65Yg==
+terser@^5.17.4:
+  version "5.17.4"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.4.tgz#b0c2d94897dfeba43213ed5f90ed117270a2c696"
+  integrity sha512-jcEKZw6UPrgugz/0Tuk/PVyLAPfMBJf5clnGueo45wTweoV8yh7Q7PEkhkJ5uuUbC7zAxEcG3tqNr1bstkQ8nw==
   dependencies:
     "@jridgewell/source-map" "^0.3.2"
     acorn "^8.5.0"

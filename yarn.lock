@@ -1580,10 +1580,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-18.8.4.tgz"
   integrity sha512-WdlVphvfR/GJCLEMbNA8lJ0lhFNBj4SW3O+O5/cEGw9oYrv0al9zTwuQsq+myDUXgNx2jgBynoVgZ2MMJ6pbow==
 
-"@types/node@20.1.4":
-  version "20.1.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.4.tgz#83f148d2d1f5fe6add4c53358ba00d97fc4cdb71"
-  integrity sha512-At4pvmIOki8yuwLtd7BNHl3CiWNbtclUbNtScGx4OHfBd4/oWoJC8KRCIxXwkdndzhxOsPXihrsOoydxBjlE9Q==
+"@types/node@20.1.7":
+  version "20.1.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.7.tgz#ce10c802f7731909d0a44ac9888e8b3a9125eb62"
+  integrity sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -7603,7 +7603,7 @@ tempy@1.0.0:
     type-fest "^0.16.0"
     unique-string "^2.0.0"
 
-terser@^5.17.3:
+terser@^5.17.4:
   version "5.17.4"
   resolved "https://registry.yarnpkg.com/terser/-/terser-5.17.4.tgz#b0c2d94897dfeba43213ed5f90ed117270a2c696"
   integrity sha512-jcEKZw6UPrgugz/0Tuk/PVyLAPfMBJf5clnGueo45wTweoV8yh7Q7PEkhkJ5uuUbC7zAxEcG3tqNr1bstkQ8nw==
