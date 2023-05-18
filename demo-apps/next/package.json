@@ -28,7 +28,7 @@
     "demo-apps-backend-sdk": "file:./../backend/sdk",
     "@gqlts/runtime": "file:./../../runtime",
     "@next/font": "13.4.2",
-    "@types/node": "20.1.7",
+    "@types/node": "20.2.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "eslint": "8.40.0",

@@ -102,7 +102,7 @@
     "@types/lodash.assign": "4.2.7",
     "@types/lodash.get": "4.4.7",
     "@types/lodash.startswith": "4.2.7",
-    "@types/node": "20.1.7",
+    "@types/node": "20.2.0",
     "@types/qs": "6.9.7",
     "@types/ws": "8.5.4",
     "common-tags": "1.8.2",
@@ -110,7 +110,7 @@
     "jest": "29.5.0",
     "sucrase": "3.32.0",
     "ts-jest": "29.1.0",
-    "tslib": "2.5.0",
+    "tslib": "2.5.1",
     "utility-types": "3.10.0"
   },
   "peerDependencies": {
