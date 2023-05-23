@@ -320,12 +320,12 @@
     "@envelop/types" "3.0.2"
     tslib "^2.5.0"
 
-"@envelop/parser-cache@^5.0.6":
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-5.0.6.tgz#5350505c5272750332582b7ecb77747eee711bc3"
-  integrity sha512-H+A4QdtEt3l9K71/Mko59ws6iGAMS9Qiqbuh5fYa3vcRiAxHlri/ldA//Bvr+OYFBY7DWbR3r/vMaTxehNDx8w==
+"@envelop/parser-cache@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-6.0.0.tgz#c28ee34f0ef6c5b63525dd35719dbae13a0278e2"
+  integrity sha512-LeuFIDKnrzwNKbIgHuK+i92/V3at1zG1dW1U65mozvZ4XYGss1fVtk0CkyI/bxDH83ssfkRjpkhe63AQ429VjA==
   dependencies:
-    lru-cache "^6.0.0"
+    lru-cache "^9.1.1"
     tslib "^2.5.0"
 
 "@envelop/types@3.0.2":
@@ -2145,6 +2145,11 @@ lru-cache@^7.14.1:
   version "7.18.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.18.3.tgz#f793896e0fd0e954a59dfdd82f0773808df6aa89"
   integrity sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==
+
+lru-cache@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-9.1.1.tgz#c58a93de58630b688de39ad04ef02ef26f1902f1"
+  integrity sha512-65/Jky17UwSb0BuB9V+MyDpsOtXKmYwzhyl+cOa9XUiI4uV2Ouy/2voFP3+al0BjZbJgMBD8FojMpAf+Z+qn4A==
 
 make-dir@^3.0.0:
   version "3.1.0"
