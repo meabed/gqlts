@@ -92,7 +92,6 @@ export const yogaGraphQL = createYoga<IGraphQLContext>({
   schema: appSchema,
   landingPage: false,
   multipart: true,
-  parserCache: true,
-  validationCache: true,
+  parserAndValidationCache: true,
   plugins,
 });
