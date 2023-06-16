@@ -595,12 +595,7 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/node@*":
-  version "20.3.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.3.0.tgz#719498898d5defab83c3560f45d8498f58d11938"
-  integrity sha512-cumHmIAf6On83X7yP+LrsEyUOf/YlociZelmpRYaGFydoaPdxdt80MAbu6vWerQT2COCp2nPvHdsbD7tHn/YlQ==
-
-"@types/node@20.3.1":
+"@types/node@*", "@types/node@20.3.1":
   version "20.3.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.3.1.tgz#e8a83f1aa8b649377bb1fb5d7bac5cb90e784dfe"
   integrity sha512-EhcH/wvidPy1WeML3TtYFGR83UzjxeWRen9V402T8aUGYsCHOmfoisV3ZSg03gAFIbLq8TnWOJ0f4cALtnSEUg==
@@ -733,15 +728,20 @@ acorn@^7.0.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-acorn@^8.7.0, acorn@^8.8.2:
-  version "8.8.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
-  integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
+acorn@^8.7.0:
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.9.0.tgz#78a16e3b2bcc198c10822786fa6679e245db5b59"
+  integrity sha512-jaVNAFBHNLXspO543WnNNPZFRtavh3skAkITqD0/2aeMkKZTN+254PyhwxFYrk3vQ1xfY+2wbesJMs/JC8/PwQ==
 
 acorn@^8.8.0:
   version "8.8.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.1.tgz#0a3f9cbecc4ec3bea6f0a80b66ae8dd2da250b73"
   integrity sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==
+
+acorn@^8.8.2:
+  version "8.8.2"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
+  integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
 
 agent-base@^7.0.1, agent-base@^7.0.2, agent-base@^7.1.0:
   version "7.1.0"
@@ -1309,10 +1309,10 @@ chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
 
-chromium-bidi@0.4.11:
-  version "0.4.11"
-  resolved "https://registry.yarnpkg.com/chromium-bidi/-/chromium-bidi-0.4.11.tgz#d3eafb0a99f417406a734b889dacd777be5e227c"
-  integrity sha512-p03ajLhlQ5gebw3cmbDBFmBc2wnJM5dnXS8Phu6mblGn/KQd76yOVL5VwE0VAisa7oazNfKGTaXlIZ8Q5Bb9OA==
+chromium-bidi@0.4.12:
+  version "0.4.12"
+  resolved "https://registry.yarnpkg.com/chromium-bidi/-/chromium-bidi-0.4.12.tgz#54910b6b2c97d1d39c1162237b09e42fe6cdf803"
+  integrity sha512-yl0ngMHtYUGJa2G0lkcbPvbnUZ9WMQyMNSfYmlrGD1nHRNyI9KOGw3dOaofFugXHHToneUaSmF9iUdgCBamCjA==
   dependencies:
     mitt "3.0.0"
 
@@ -3699,26 +3699,26 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@20.7.1:
-  version "20.7.1"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-20.7.1.tgz#fdbb6d4fa6fda4a97e299d2f191fdcfab5832758"
-  integrity sha512-f45j9JxImFaYndQYsFA39CEDKwpn1nAF/Iw7urznatjhaslSB/RfHG7sC7iPpDbmP+CLpPEkHhqNxqpaUDdTLw==
+puppeteer-core@20.7.2:
+  version "20.7.2"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-20.7.2.tgz#e9d527701108693c37d3f9d5980c10b883e00378"
+  integrity sha512-4Sd+v2YLlYMYFP/9SI/spT1joGTePwhmKP89pchUqz7VcWwv/Yh0Atmsybz+7wWT0VPDnw0UhBM6iNEfXEoUvg==
   dependencies:
     "@puppeteer/browsers" "1.4.1"
-    chromium-bidi "0.4.11"
+    chromium-bidi "0.4.12"
     cross-fetch "3.1.6"
     debug "4.3.4"
     devtools-protocol "0.0.1135028"
     ws "8.13.0"
 
 puppeteer@^20.7.1:
-  version "20.7.1"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.7.1.tgz#82819bf88bb1ae7b5ca665684b33b7656dbb3613"
-  integrity sha512-yIkba2PT6rkPw85gCAmbW6KO6VVFTdONnvQp8taeMZaOTUJ193nVajykD1jT3vFbjvwKz8te9nbBVb9ITQqbPA==
+  version "20.7.2"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.7.2.tgz#f3c8db0eb34dc2ddb877bf34b9352e82d160bc38"
+  integrity sha512-SKg9TgUY3TJvnOy0VrkhduSvDQIjBsi+s/Ne6S+qD53MM6emau+oh+kNqySNrT7c4qkg27UrJ9aEnltKDAQTzQ==
   dependencies:
     "@puppeteer/browsers" "1.4.1"
     cosmiconfig "8.2.0"
-    puppeteer-core "20.7.1"
+    puppeteer-core "20.7.2"
 
 qs@^6.11.2:
   version "6.11.2"
