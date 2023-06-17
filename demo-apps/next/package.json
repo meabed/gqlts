@@ -31,7 +31,7 @@
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
-    "eslint": "8.42.0",
+    "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
     "next": "13.4.6",
     "react": "18.2.0",
@@ -39,7 +39,7 @@
     "typescript": "5.1.3"
   },
   "devDependencies": {
-    "puppeteer": "^20.7.1"
+    "puppeteer": "^20.7.2"
   },
   "resolutions": {
     "@gqlts/cli": "file:./../../cli",
