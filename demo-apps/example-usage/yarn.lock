@@ -860,10 +860,10 @@
   dependencies:
     "@chakra-ui/utils" "2.0.15"
 
-"@chakra-ui/react@2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-2.7.0.tgz#0fdeb5d5ec0faf97e143cba94498b055a093f671"
-  integrity sha512-+FcUFQMsPfhWuM9Iu7uqufwwhmHN2IX6FWsBixYGOalO86dpgETsILMZP9PuWfgj7GpWiy2Dum6HXekh0Tk2Mg==
+"@chakra-ui/react@2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-2.7.1.tgz#1419a4856b7dd74a558ced97f148a97d4953109e"
+  integrity sha512-uIYIAg+gnUoRbgdCfSEVvQnrEz0oWWXATGGSQpxmuJovNVyZKnX/Xug7NkWQfBUJPYRSG+VB69ZmsAFpyLSMtA==
   dependencies:
     "@chakra-ui/accordion" "2.2.0"
     "@chakra-ui/alert" "2.1.0"
@@ -899,6 +899,7 @@
     "@chakra-ui/react-env" "3.0.0"
     "@chakra-ui/select" "2.0.19"
     "@chakra-ui/skeleton" "2.0.24"
+    "@chakra-ui/skip-nav" "2.0.15"
     "@chakra-ui/slider" "2.0.25"
     "@chakra-ui/spinner" "2.0.13"
     "@chakra-ui/stat" "2.0.18"
@@ -939,6 +940,11 @@
     "@chakra-ui/media-query" "3.2.12"
     "@chakra-ui/react-use-previous" "2.0.5"
     "@chakra-ui/shared-utils" "2.0.5"
+
+"@chakra-ui/skip-nav@2.0.15":
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/skip-nav/-/skip-nav-2.0.15.tgz#cb3b2ffb9c1bc492e66d6b0a189253aa53014257"
+  integrity sha512-5UtmlnV4BmIgEk6lQ0h81JEYhPX04wJEk5ZMoilQ2zEQYL6TkVVHkhRXyc1Zfq76hmHuZPXZV/yJeTecj6jIrA==
 
 "@chakra-ui/slider@2.0.25":
   version "2.0.25"
@@ -1655,10 +1661,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-dom@18.2.5":
-  version "18.2.5"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.5.tgz#5c5f13548bda23cd98f50ca4a59107238bfe18f3"
-  integrity sha512-sRQsOS/sCLnpQhR4DSKGTtWFE3FZjpQa86KPVbhUqdYMRZ9FEFcfAytKhR/vUG2rH1oFbOOej6cuD7MFSobDRQ==
+"@types/react-dom@18.2.6":
+  version "18.2.6"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.6.tgz#ad621fa71a8db29af7c31b41b2ea3d8a6f4144d1"
+  integrity sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==
   dependencies:
     "@types/react" "*"
 
@@ -1670,10 +1676,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@18.2.12":
-  version "18.2.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.12.tgz#95d584338610b78bb9ba0415e3180fb03debdf97"
-  integrity sha512-ndmBMLCgn38v3SntMeoJaIrO6tGHYKMEBohCUmw8HoLLQdRMOIGXfeYaBTLe2lsFaSB3MOK1VXscYFnmLtTSmw==
+"@types/react@18.2.13":
+  version "18.2.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.13.tgz#a98c09bde8b18f80021935b11d2d29ef5f4dcb2f"
+  integrity sha512-vJ+zElvi/Zn9cVXB5slX2xL8PZodPCwPRDpittQdw43JR2AJ5k3vKdgJJyneV/cYgIbLQUwXa9JVDvUZXGba+Q==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
