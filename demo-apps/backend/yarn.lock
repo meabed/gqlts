@@ -321,11 +321,11 @@
     tslib "^2.5.0"
 
 "@envelop/parser-cache@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-6.0.0.tgz#c28ee34f0ef6c5b63525dd35719dbae13a0278e2"
-  integrity sha512-LeuFIDKnrzwNKbIgHuK+i92/V3at1zG1dW1U65mozvZ4XYGss1fVtk0CkyI/bxDH83ssfkRjpkhe63AQ429VjA==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-6.0.1.tgz#5937756636ca94f71701dcb555267e12e792d3d1"
+  integrity sha512-L1ctETOeA707IsMyoDKBFf+IHtUM+f8/4+Usu+3SwCFCaFCI3xR+IxVwO7MXO2CVsrwsF3/yPOk0LQyCwCWTfA==
   dependencies:
-    lru-cache "^9.1.1"
+    lru-cache "^10.0.0"
     tslib "^2.5.0"
 
 "@envelop/types@4.0.0":
@@ -336,12 +336,12 @@
     tslib "^2.5.0"
 
 "@envelop/validation-cache@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-6.0.0.tgz#61b1a63a0e1fdeed22900b4bccb9820f143e174d"
-  integrity sha512-CFf8+Sqcn0WKutasWSt3SqLpdkEBcvFeJ+k45z9TiL3j1yeyKp0UMPhKbXZu3xjufdbiR+TT9A7lNddVPVjPPw==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-6.0.1.tgz#8fd16dfc881f59d177ac60e223c225ceb4fc215d"
+  integrity sha512-KfA2QeegXhpj5yh1qYhQcVYt/3Zqy23/IpwVomi25Wd1F+11kqxecGYErzQZ3Vds7h27SfCgudkSB9OOeVYx9w==
   dependencies:
     hash-it "^6.0.0"
-    lru-cache "^9.1.1"
+    lru-cache "^10.0.0"
     tslib "^2.5.0"
 
 "@graphql-tools/executor@^1.0.0":
@@ -831,17 +831,17 @@
   integrity sha512-AyQEn5hIPV7Ze+xFoXVU3QTHXVbWPrzaOkxtENMPMuNL6VVHrp4hHfDt9nrQpjO7BgvuM95dMtkycX5M/DZR3w==
 
 "@whatwg-node/fetch@^0.9.0", "@whatwg-node/fetch@^0.9.6":
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.6.tgz#185aaae2378b1c7bdaeb3bade5ab82bf07dab50d"
-  integrity sha512-IyaAIkK5cIOvHUdh5iu6ONCRQyRF8n6Hc2pqzYleGk9KPuRAdS0eqNZm1RJJL652pSCflDaxrxV0XQzlqavkEg==
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.7.tgz#86b5cda576581beea300191d5c1f626fc7abfff7"
+  integrity sha512-heClS5ctTmoEvVbFd+6ztX0SyQduI3/Q+77vtNApDU/+Mwajy6ugxaoDGgSzJUoQ37McSV09kcGCt1Jcc6z9lQ==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.4.5"
+    "@whatwg-node/node-fetch" "^0.4.6"
     urlpattern-polyfill "^9.0.0"
 
-"@whatwg-node/node-fetch@^0.4.5":
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.4.5.tgz#701f2ea7ffb56e2879c580b6799671c8a1c6baad"
-  integrity sha512-J/PJWSa2irO365+Lh9KjATwRVLBG2MFCewS3JVCTIlPjtKFQrkhmL3o9EDp/7vEMyTWIqI0kMvZAudmKei8o0Q==
+"@whatwg-node/node-fetch@^0.4.6":
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.4.6.tgz#97de52731c15420115a31a82b22033bdfc62e17a"
+  integrity sha512-9oLD57yW0WWfu4ZtEmybBrx1JfkO4TzDpD2zXlp2Ue3UJplifQRap+MbE0PxRlVWtR4KWsIRamhn7J44DkwoyA==
   dependencies:
     "@whatwg-node/events" "^0.1.0"
     busboy "^1.6.0"
@@ -1467,9 +1467,9 @@ graphql-upload-ts@^2.0.6:
     busboy "1.6.0"
 
 graphql-yoga@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-4.0.1.tgz#61136d96d2a587820509d0ba1d37b960784d8ace"
-  integrity sha512-J/EXfaitY6sm9CXMBSHxQxFGH7Iv2Fg/kiLzpGPYrVtN6dIYeAOl59EHiXS7yv33pWKZ+cE4VyzCDtj8ncuzNw==
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-4.0.2.tgz#7fa34af1531ddbba144fa1180d701e8d2c0a452d"
+  integrity sha512-frDoqKD+b9JvUY2vgqfeWW5LT1iqibyW4//i7hNBKh7mhA1cSR4eK8C/DT//v0Sado8KQphrVThjDxVH+07wFA==
   dependencies:
     "@envelop/core" "^4.0.0"
     "@graphql-tools/executor" "^1.0.0"
@@ -1484,9 +1484,9 @@ graphql-yoga@^4.0.1:
     tslib "^2.5.2"
 
 graphql@^16.7.0:
-  version "16.7.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.7.0.tgz#717051b8c183fcf8c3ad0a3668aeb5ffd1e9bc33"
-  integrity sha512-kdNG+ZGNf0E4dezSA2N9cRq8UdOMCcz9Wzh1dDSrCzGCz0nj6p8qlE+utY6iqr9y1sh3MZxUb7K794neZ2oT1w==
+  version "16.7.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.7.1.tgz#11475b74a7bff2aefd4691df52a0eca0abd9b642"
+  integrity sha512-DRYR9tf+UGU0KOsMcKAlXeFfX89UiiIZ0dRU3mR0yJfu6OjZqUcp68NnFLnqQU5RexygFoDy1EW+ccOYcPfmHg==
 
 has-flag@^3.0.0:
   version "3.0.0"
@@ -2079,11 +2079,6 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
-
-lru-cache@^9.1.1:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-9.1.1.tgz#c58a93de58630b688de39ad04ef02ef26f1902f1"
-  integrity sha512-65/Jky17UwSb0BuB9V+MyDpsOtXKmYwzhyl+cOa9XUiI4uV2Ouy/2voFP3+al0BjZbJgMBD8FojMpAf+Z+qn4A==
 
 make-dir@^3.0.0:
   version "3.1.0"
