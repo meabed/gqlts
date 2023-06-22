@@ -2,5 +2,7 @@
   "version": "3.2.18",
   "npmClient": "yarn",
   "registry": "https://registry.npmjs.org/",
-  "useWorkspaces": true
-}
+  "packages": [
+    "cli",
+    "runtime"
+  ]}
