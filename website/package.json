@@ -42,7 +42,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-final-form": "6.5.9",
-    "react-icons": "4.9.0",
+    "react-icons": "4.10.1",
     "react-keyframes": "0.2.3",
     "react-runkit": "0.9.0",
     "react-storage-hooks": "4.0.1",
