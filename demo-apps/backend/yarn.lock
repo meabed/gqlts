@@ -320,7 +320,7 @@
     "@envelop/types" "4.0.0"
     tslib "^2.5.0"
 
-"@envelop/parser-cache@^6.0.0":
+"@envelop/parser-cache@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-6.0.1.tgz#5937756636ca94f71701dcb555267e12e792d3d1"
   integrity sha512-L1ctETOeA707IsMyoDKBFf+IHtUM+f8/4+Usu+3SwCFCaFCI3xR+IxVwO7MXO2CVsrwsF3/yPOk0LQyCwCWTfA==
@@ -335,7 +335,7 @@
   dependencies:
     tslib "^2.5.0"
 
-"@envelop/validation-cache@^6.0.0":
+"@envelop/validation-cache@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-6.0.1.tgz#8fd16dfc881f59d177ac60e223c225ceb4fc215d"
   integrity sha512-KfA2QeegXhpj5yh1qYhQcVYt/3Zqy23/IpwVomi25Wd1F+11kqxecGYErzQZ3Vds7h27SfCgudkSB9OOeVYx9w==
@@ -1466,7 +1466,7 @@ graphql-upload-ts@^2.0.6:
   dependencies:
     busboy "1.6.0"
 
-graphql-yoga@^4.0.1:
+graphql-yoga@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-4.0.2.tgz#7fa34af1531ddbba144fa1180d701e8d2c0a452d"
   integrity sha512-frDoqKD+b9JvUY2vgqfeWW5LT1iqibyW4//i7hNBKh7mhA1cSR4eK8C/DT//v0Sado8KQphrVThjDxVH+07wFA==
@@ -1483,7 +1483,7 @@ graphql-yoga@^4.0.1:
     lru-cache "^10.0.0"
     tslib "^2.5.2"
 
-graphql@^16.7.0:
+graphql@^16.7.1:
   version "16.7.1"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.7.1.tgz#11475b74a7bff2aefd4691df52a0eca0abd9b642"
   integrity sha512-DRYR9tf+UGU0KOsMcKAlXeFfX89UiiIZ0dRU3mR0yJfu6OjZqUcp68NnFLnqQU5RexygFoDy1EW+ccOYcPfmHg==
