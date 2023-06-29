@@ -56,7 +56,7 @@
     "lerna": "7.1.1",
     "prettier": "2.8.8",
     "pretty-quick": "3.1.3",
-    "typescript": "5.1.5",
+    "typescript": "5.1.6",
     "ultra-runner": "3.10.5"
   }
 }

@@ -58,7 +58,7 @@
     "react-icons": "4.10.1",
     "react-storage-hooks": "4.0.1",
     "swr": "2.2.0",
-    "typescript": "^5.1.5"
+    "typescript": "^5.1.6"
   },
   "devDependencies": {
     "@types/node": "20.3.2",
