@@ -1616,8 +1616,8 @@ delayed-stream@~1.0.0:
 "demo-apps-backend-sdk@file:../backend/sdk":
   version "1.0.0"
   dependencies:
-    "@gqlts/cli" "file:../../cli"
-    "@gqlts/runtime" "file:../../runtime"
+    "@gqlts/cli" "file:../../../../../home/runner/.cache/yarn/v6/cli"
+    "@gqlts/runtime" "file:../../../../../home/runner/.cache/yarn/v6/runtime"
 
 deps-sort@^2.0.1:
   version "2.0.1"
@@ -3702,7 +3702,7 @@ puppeteer-core@20.7.4:
     devtools-protocol "0.0.1135028"
     ws "8.13.0"
 
-puppeteer@^20.7.3:
+puppeteer@^20.7.4:
   version "20.7.4"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-20.7.4.tgz#6c27aebcd64d4c1f3b1d79bcd370af8f6490acf4"
   integrity sha512-4JLZeRLXQAjQwWa6yv8cpjEgVapgrvDjBBcI/UCJ+EM6na6aR7hQFnQV4ffjFlUKPpvB2Y1vztVqOEhjfC+yUQ==
