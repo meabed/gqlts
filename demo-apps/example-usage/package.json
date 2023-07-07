@@ -51,7 +51,7 @@
     "framer-motion": "10.12.18",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
-    "next": "^13.4.8",
+    "next": "^13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-extra-hooks": "2.3.4",
