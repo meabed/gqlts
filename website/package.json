@@ -57,7 +57,7 @@
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "next-transpile-modules": "10.0.0",
-    "sucrase": "3.32.0",
+    "sucrase": "3.33.0",
     "typescript": "5.1.6"
   }
 }
