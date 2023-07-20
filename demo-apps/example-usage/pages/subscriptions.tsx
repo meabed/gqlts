@@ -20,7 +20,7 @@ const Page = () => {
   } = useObservable(() =>
     client.subscription({
       user_online: [{}, { id: 1, username: 1, created_at: 1, last_seen_at: 1 }],
-    })
+    }),
   );
   return (
     <Stack spacing='40px' mt='40px'>

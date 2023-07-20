@@ -55,15 +55,15 @@ export function linkTypeMap(typeMap: CompressedTypeMap<number>): LinkedTypeMap {
                       return {
                         [k]: [indexToName[argTypeName], argTypeString || indexToName[argTypeName]],
                       };
-                    })
+                    }),
                   ),
                 },
               };
-            })
+            }),
           ),
         },
       };
-    })
+    }),
   );
   const res = resolveConcreteTypes(intermediaryTypeMap);
   return res;

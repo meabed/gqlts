@@ -50,7 +50,7 @@
     "use-debounce": "9.0.4"
   },
   "devDependencies": {
-    "@gqlts/cli": "^3.2.18",
+    "@gqlts/cli": "3.2.18",
     "@types/js-cookie": "3.0.3",
     "@types/node": "20.4.2",
     "@types/prismjs": "1.26.0",

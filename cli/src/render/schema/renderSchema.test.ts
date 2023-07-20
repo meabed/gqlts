@@ -19,10 +19,10 @@ test('renderSchema', async () => {
         }
       `,
       renderSchema,
-      'graphql'
-    )
+      'graphql',
+    ),
   ).toBe(
-    prettify(
+    await prettify(
       /* GraphQL */ `
         type A {
           some: String
@@ -36,7 +36,7 @@ test('renderSchema', async () => {
           _: Boolean
         }
       `,
-      'graphql'
-    )
+      'graphql',
+    ),
   );
 });

@@ -65,7 +65,7 @@ async function server({ resolvers, port = PORT }) {
       json(),
       expressMiddleware(server, {
         context: async ({ req }) => ({ token: req.headers.token }),
-      })
+      }),
     );
 
     expressMiddleware(server);
@@ -149,7 +149,7 @@ describe('execute queries', async function () {
       });
       // console.log(JSON.stringify(res, null, 2));
       assert.deepStrictEqual(res?.user, x);
-    })
+    }),
   );
   it(
     '__typename is not optional',
@@ -161,7 +161,7 @@ describe('execute queries', async function () {
         },
       });
       expectType<string | undefined>(res?.user!.__typename);
-    })
+    }),
   );
 
   it(
@@ -175,7 +175,7 @@ describe('execute queries', async function () {
         someScalarValue: [{ x: 3 }],
       });
       assert(res2?.someScalarValue?.toLocaleLowerCase);
-    })
+    }),
   );
   it(
     'falsy values are not fetched ',
@@ -189,7 +189,7 @@ describe('execute queries', async function () {
       // console.log(JSON.stringify(res, null, 2));
       assert(res?.coordinates?.x === undefined);
       assert(res?.coordinates?.y !== undefined);
-    })
+    }),
   );
 
   it(
@@ -224,7 +224,7 @@ describe('execute queries', async function () {
       expectType<Maybe<string>>(res?.repository.__typename);
       expectType<Maybe<Maybe<string>[]>>(res?.repository?.forks?.edges?.map((x) => x?.node?.name));
       expectType<Maybe<Maybe<number>[]>>(res?.repository?.forks?.edges?.map((x) => x?.node?.number));
-    })
+    }),
   );
   it(
     'chain syntax ',
@@ -239,7 +239,7 @@ describe('execute queries', async function () {
       expectType<Maybe<string>>(res?.user?.name);
       expectType<Maybe<number>>(res?.user?.common);
       expectType<Maybe<string>>(res?.user?.__typename);
-    })
+    }),
   );
   it(
     'recursive type chain syntax ',
@@ -260,7 +260,7 @@ describe('execute queries', async function () {
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.value);
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.recurse?.value);
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.value);
-    })
+    }),
   );
 
   it(
@@ -281,7 +281,7 @@ describe('execute queries', async function () {
       assert(account?.__typename);
       expectType<Maybe<Account>>(account);
       // console.log(account);
-    })
+    }),
   );
 
   it(
@@ -293,7 +293,7 @@ describe('execute queries', async function () {
         },
       });
       expectType<Maybe<Account>>(res?.account);
-    })
+    }),
   );
   it(
     'chain syntax result type only has requested fields',
@@ -302,7 +302,7 @@ describe('execute queries', async function () {
       expectType<string | undefined>(res?.repository?.createdAt);
       // @ts-expect-error
       res?.forks;
-    })
+    }),
   );
   it(
     'union types with chain and ...everything',
@@ -318,7 +318,7 @@ describe('execute queries', async function () {
       if (isUser(account)) {
         expectType<Maybe<string>>(account?.name);
       }
-    })
+    }),
   );
   it(
     'many union types',
@@ -337,7 +337,7 @@ describe('execute queries', async function () {
       if (account && 'anonymous' in account) {
         account?.anonymous;
       }
-    })
+    }),
   );
   it(
     'ability to query interfaces that a union implements',
@@ -365,7 +365,7 @@ describe('execute queries', async function () {
       if (unionThatImplementsInterface?.__typename === 'ClientErrorWithoutInterface') {
         assert.ok(unionThatImplementsInterface?.ownProp3);
       }
-    })
+    }),
   );
   it(
     'ability to query interfaces that a union implements, chain syntax',
@@ -383,7 +383,7 @@ describe('execute queries', async function () {
       if (res?.unionThatImplementsInterface?.__typename === 'ClientErrorNameInvalid') {
         assert.ok(res?.unionThatImplementsInterface?.ownProp2);
       }
-    })
+    }),
   );
   it(
     'interface types normal syntax',
@@ -408,7 +408,7 @@ describe('execute queries', async function () {
       // common types are accessible without guards
       assert(coordinates?.x);
       assert(coordinates?.__typename);
-    })
+    }),
   );
   it(
     'interface types chain syntax',
@@ -427,7 +427,7 @@ describe('execute queries', async function () {
         assert(coordinates?.address);
         assert(coordinates?.x);
       }
-    })
+    }),
   );
   it(
     'multiple interfaces types normal syntax',
@@ -465,7 +465,7 @@ describe('execute queries', async function () {
         coordinates?.x;
         coordinates?.y;
       }
-    })
+    }),
   );
   it(
     'batches requests',
@@ -509,7 +509,7 @@ describe('execute queries', async function () {
       // console.log(JSON.stringify(res, null, 2));
       assert.strictEqual(res?.length, 2);
       assert.strictEqual(batchedQueryLength, 2);
-    })
+    }),
   );
   it(
     'headers function gets called every time',
@@ -537,7 +537,7 @@ describe('execute queries', async function () {
       });
 
       assert.strictEqual(headersCalledNTimes, 2);
-    })
+    }),
   );
   it(
     'async headers function gets called every time',
@@ -565,7 +565,7 @@ describe('execute queries', async function () {
       });
 
       assert.strictEqual(headersCalledNTimes, 2);
-    })
+    }),
   );
 });
 

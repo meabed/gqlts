@@ -17,7 +17,7 @@ describe('sayHello', () => {
         headers: {
           'x-my-secret': 'Sarah Connor',
         },
-      }
+      },
     );
     expect(errors).toBeUndefined();
     expect(data?.v1SatHello.message).toEqual('Hello John Connor - your secret is Sarah Connor');

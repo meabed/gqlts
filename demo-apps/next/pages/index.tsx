@@ -19,7 +19,7 @@ function Test1() {
         {
           v1SatHello: [{ name: 'John Connor' }, { message: 1 }],
         },
-        { headers: { 'x-my-secret': 'Sarah Connor', 'content-type': 'application/json' } }
+        { headers: { 'x-my-secret': 'Sarah Connor', 'content-type': 'application/json' } },
       );
       if (errors) {
         setTestResult(JSON.stringify(errors));

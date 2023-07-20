@@ -22,7 +22,7 @@ describe('github', () => {
     (error) => {
       // console.log(error);
       return Promise.reject(error);
-    }
+    },
   );
   it('simple normal syntax', async () => {
     const res1 = await client.query({

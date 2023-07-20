@@ -12,7 +12,7 @@ export function interfaceType(type: GraphQLInterfaceType, ctx: RenderContext) {
     objectType(type, ctx);
   } else {
     ctx.addCodeBlock(
-      `${typeComment(type)}export type ${type.name} = (${typeNames.join(' | ')}) & { __isUnion?: true }`
+      `${typeComment(type)}export type ${type.name} = (${typeNames.join(' | ')}) & { __isUnion?: true }`,
     );
   }
 }

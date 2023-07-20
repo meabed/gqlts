@@ -107,7 +107,7 @@ export function createFetcher(params: ClientOptions): Fetcher {
       }
       return fetcherMethod(batchedQuery, config);
     },
-    batch === true ? DEFAULT_BATCH_OPTIONS : batch
+    batch === true ? DEFAULT_BATCH_OPTIONS : batch,
   );
 
   return {

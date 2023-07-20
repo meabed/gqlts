@@ -17,7 +17,7 @@ export function schemaTask(config: Config): ListrTask {
     const endpoint = config.endpoint;
     return {
       title: `fetching schema using ${config.useGet ? 'GET' : 'POST'} ${endpoint} and headers ${JSON.stringify(
-        config.headers
+        config.headers,
       )}`,
       task: async (ctx) => {
         ctx.schema = processSchema(
@@ -25,7 +25,7 @@ export function schemaTask(config: Config): ListrTask {
             endpoint,
             usePost: !config.useGet,
             headers: config.headers,
-          })
+          }),
         );
       },
     };

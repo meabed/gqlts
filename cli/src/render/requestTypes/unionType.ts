@@ -16,7 +16,7 @@ export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
   fieldStrings.push(
     ...commonInterfaces.map((type) => {
       return `on_${type.name}?: ${requestTypeName(type)}`;
-    })
+    }),
   );
 
   fieldStrings.push('__typename?: boolean | number');
@@ -24,6 +24,6 @@ export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
   ctx.addCodeBlock(
     `${typeComment(type)}export interface ${requestTypeName(type)}{\n${fieldStrings
       .map((x) => '    ' + x)
-      .join(',\n')}\n}`
+      .join(',\n')}\n}`,
   );
 }

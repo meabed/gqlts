@@ -86,7 +86,7 @@ const program = yargs(process.argv.slice(2))
   .option('verbose', { alias: 'v', type: 'boolean', default: false })
   .example(
     '$0 --output ./generated --endpoint http://localhost:3000  -H "Authorization: Bearer xxx"',
-    'generate the client from an endpoint'
+    'generate the client from an endpoint',
   )
   .example('$0 --output ./generated --schema ./schema.graphql', 'generate the client from a schema')
   .help('help')
