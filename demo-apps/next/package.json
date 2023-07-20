@@ -24,13 +24,17 @@
     "start": "next start",
     "test": "node puppeteer-test.js"
   },
+  "resolutions": {
+    "@gqlts/cli": "file:./../../cli",
+    "@gqlts/runtime": "file:./../../runtime"
+  },
   "dependencies": {
-    "demo-apps-backend-sdk": "file:./../backend/sdk",
     "@gqlts/runtime": "file:./../../runtime",
     "@next/font": "13.4.10",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "demo-apps-backend-sdk": "file:./../backend/sdk",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
     "next": "13.4.10",
@@ -40,9 +44,5 @@
   },
   "devDependencies": {
     "puppeteer": "20.8.3"
-  },
-  "resolutions": {
-    "@gqlts/cli": "file:./../../cli",
-    "@gqlts/runtime": "file:./../../runtime"
   }
 }
