@@ -32,7 +32,7 @@
     "isomorphic-unfetch": "4.0.2",
     "next": "13.4.12",
     "next-cookies": "2.0.3",
-    "next-transpile-modules": "10.0.0",
+    "next-transpile-modules": "10.0.1",
     "nextra": "2.10.0",
     "nextra-theme-docs": "2.10.0",
     "npm-name": "7.1.0",
@@ -54,9 +54,9 @@
     "@types/js-cookie": "3.0.3",
     "@types/node": "20.4.4",
     "@types/prismjs": "1.26.0",
-    "@types/react": "18.2.15",
+    "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",
-    "next-transpile-modules": "10.0.0",
+    "next-transpile-modules": "10.0.1",
     "sucrase": "3.34.0",
     "typescript": "5.1.6"
   }
