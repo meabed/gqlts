@@ -62,10 +62,10 @@
     "@apollo/utils.keyvaluecache" "^2.1.0"
     "@apollo/utils.logger" "^2.0.0"
 
-"@apollo/server@4.8.1":
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.8.1.tgz#20f6327bb8efec1e0df25963a953cb72c0749253"
-  integrity sha512-gHDYfWXNdo8B6z4z7qs4KLscX7HCFtpG6k744H+y+8IixjNzyGPcSlR+e0CZr42tRjPfi5z0UtHRr6dpTSh+5A==
+"@apollo/server@4.9.0":
+  version "4.9.0"
+  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.9.0.tgz#da7f7af1676616656d0d58e2c0d4bb3278ad403e"
+  integrity sha512-ca1tO5no7PC402ArVP2qDhjpwnZm0ThpEJTfrKoY62mzPaKH0tLjy7Mt909QGyLziwf6c15Q+V+hQYVZKdcUrw==
   dependencies:
     "@apollo/cache-control-types" "^1.0.3"
     "@apollo/server-gateway-interface" "^1.1.1"
