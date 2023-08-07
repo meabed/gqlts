@@ -1,45 +1,47 @@
-const {
-  linkTypeMap,
-  createClient: createClientOriginal,
-  generateGraphqlOperation,
-  assertSameVersion,
-} = require('@gqlts/runtime')
-var typeMap = linkTypeMap(require('./types.cjs'))
 
-var version = '3.2.18'
-assertSameVersion(version)
+  const {
+      linkTypeMap,
+      createClient: createClientOriginal,
+      generateGraphqlOperation,
+      assertSameVersion,
+  } = require('@gqlts/runtime')
+  var typeMap = linkTypeMap(require('./types.cjs'))
 
-module.exports.version = version
+  var version = '3.2.18'
+  assertSameVersion(version)
 
-module.exports.createClient = function (options) {
-  options = options || {}
-  var optionsCopy = {
-    url: undefined,
-    queryRoot: typeMap.Query,
-    mutationRoot: typeMap.Mutation,
-    subscriptionRoot: typeMap.Subscription,
-  }
-  for (var name in options) {
-    optionsCopy[name] = options[name]
-  }
-  return createClientOriginal(optionsCopy)
+  module.exports.version = version
+
+  module.exports.createClient = 
+function(options) {
+    options = options || {}
+    var optionsCopy = {
+      url: undefined,
+      queryRoot: typeMap.Query,
+      mutationRoot: typeMap.Mutation,
+      subscriptionRoot: typeMap.Subscription,
+    }
+    for (var name in options) {
+      optionsCopy[name] = options[name];
+    }
+    return createClientOriginal(optionsCopy)
 }
 
-module.exports.enumActionExecutionCapabilitySetting = {
+  module.exports.enumActionExecutionCapabilitySetting = {
   ALL_ACTIONS: 'ALL_ACTIONS',
   DISABLED: 'DISABLED',
   LOCAL_ACTIONS_ONLY: 'LOCAL_ACTIONS_ONLY',
-  NO_POLICY: 'NO_POLICY',
+  NO_POLICY: 'NO_POLICY'
 }
 
 module.exports.enumAuditLogOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumCheckAnnotationLevel = {
   FAILURE: 'FAILURE',
   NOTICE: 'NOTICE',
-  WARNING: 'WARNING',
+  WARNING: 'WARNING'
 }
 
 module.exports.enumCheckConclusionState = {
@@ -50,25 +52,25 @@ module.exports.enumCheckConclusionState = {
   SKIPPED: 'SKIPPED',
   STALE: 'STALE',
   SUCCESS: 'SUCCESS',
-  TIMED_OUT: 'TIMED_OUT',
+  TIMED_OUT: 'TIMED_OUT'
 }
 
 module.exports.enumCheckRunType = {
   ALL: 'ALL',
-  LATEST: 'LATEST',
+  LATEST: 'LATEST'
 }
 
 module.exports.enumCheckStatusState = {
   COMPLETED: 'COMPLETED',
   IN_PROGRESS: 'IN_PROGRESS',
   QUEUED: 'QUEUED',
-  REQUESTED: 'REQUESTED',
+  REQUESTED: 'REQUESTED'
 }
 
 module.exports.enumCollaboratorAffiliation = {
   ALL: 'ALL',
   DIRECT: 'DIRECT',
-  OUTSIDE: 'OUTSIDE',
+  OUTSIDE: 'OUTSIDE'
 }
 
 module.exports.enumCommentAuthorAssociation = {
@@ -78,7 +80,7 @@ module.exports.enumCommentAuthorAssociation = {
   FIRST_TIME_CONTRIBUTOR: 'FIRST_TIME_CONTRIBUTOR',
   MEMBER: 'MEMBER',
   NONE: 'NONE',
-  OWNER: 'OWNER',
+  OWNER: 'OWNER'
 }
 
 module.exports.enumCommentCannotUpdateReason = {
@@ -88,23 +90,23 @@ module.exports.enumCommentCannotUpdateReason = {
   LOCKED: 'LOCKED',
   LOGIN_REQUIRED: 'LOGIN_REQUIRED',
   MAINTENANCE: 'MAINTENANCE',
-  VERIFIED_EMAIL_REQUIRED: 'VERIFIED_EMAIL_REQUIRED',
+  VERIFIED_EMAIL_REQUIRED: 'VERIFIED_EMAIL_REQUIRED'
 }
 
 module.exports.enumCommitContributionOrderField = {
   COMMIT_COUNT: 'COMMIT_COUNT',
-  OCCURRED_AT: 'OCCURRED_AT',
+  OCCURRED_AT: 'OCCURRED_AT'
 }
 
 module.exports.enumDefaultRepositoryPermissionField = {
   ADMIN: 'ADMIN',
   NONE: 'NONE',
   READ: 'READ',
-  WRITE: 'WRITE',
+  WRITE: 'WRITE'
 }
 
 module.exports.enumDeploymentOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumDeploymentState = {
@@ -116,7 +118,7 @@ module.exports.enumDeploymentState = {
   INACTIVE: 'INACTIVE',
   IN_PROGRESS: 'IN_PROGRESS',
   PENDING: 'PENDING',
-  QUEUED: 'QUEUED',
+  QUEUED: 'QUEUED'
 }
 
 module.exports.enumDeploymentStatusState = {
@@ -126,21 +128,21 @@ module.exports.enumDeploymentStatusState = {
   IN_PROGRESS: 'IN_PROGRESS',
   PENDING: 'PENDING',
   QUEUED: 'QUEUED',
-  SUCCESS: 'SUCCESS',
+  SUCCESS: 'SUCCESS'
 }
 
 module.exports.enumDiffSide = {
   LEFT: 'LEFT',
-  RIGHT: 'RIGHT',
+  RIGHT: 'RIGHT'
 }
 
 module.exports.enumEnterpriseAdministratorInvitationOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumEnterpriseAdministratorRole = {
   BILLING_MANAGER: 'BILLING_MANAGER',
-  OWNER: 'OWNER',
+  OWNER: 'OWNER'
 }
 
 module.exports.enumEnterpriseDefaultRepositoryPermissionSettingValue = {
@@ -148,23 +150,23 @@ module.exports.enumEnterpriseDefaultRepositoryPermissionSettingValue = {
   NONE: 'NONE',
   NO_POLICY: 'NO_POLICY',
   READ: 'READ',
-  WRITE: 'WRITE',
+  WRITE: 'WRITE'
 }
 
 module.exports.enumEnterpriseEnabledDisabledSettingValue = {
   DISABLED: 'DISABLED',
   ENABLED: 'ENABLED',
-  NO_POLICY: 'NO_POLICY',
+  NO_POLICY: 'NO_POLICY'
 }
 
 module.exports.enumEnterpriseEnabledSettingValue = {
   ENABLED: 'ENABLED',
-  NO_POLICY: 'NO_POLICY',
+  NO_POLICY: 'NO_POLICY'
 }
 
 module.exports.enumEnterpriseMemberOrderField = {
   CREATED_AT: 'CREATED_AT',
-  LOGIN: 'LOGIN',
+  LOGIN: 'LOGIN'
 }
 
 module.exports.enumEnterpriseMembersCanCreateRepositoriesSettingValue = {
@@ -172,47 +174,47 @@ module.exports.enumEnterpriseMembersCanCreateRepositoriesSettingValue = {
   DISABLED: 'DISABLED',
   NO_POLICY: 'NO_POLICY',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumEnterpriseMembersCanMakePurchasesSettingValue = {
   DISABLED: 'DISABLED',
-  ENABLED: 'ENABLED',
+  ENABLED: 'ENABLED'
 }
 
 module.exports.enumEnterpriseServerInstallationOrderField = {
   CREATED_AT: 'CREATED_AT',
   CUSTOMER_NAME: 'CUSTOMER_NAME',
-  HOST_NAME: 'HOST_NAME',
+  HOST_NAME: 'HOST_NAME'
 }
 
 module.exports.enumEnterpriseServerUserAccountEmailOrderField = {
-  EMAIL: 'EMAIL',
+  EMAIL: 'EMAIL'
 }
 
 module.exports.enumEnterpriseServerUserAccountOrderField = {
   LOGIN: 'LOGIN',
-  REMOTE_CREATED_AT: 'REMOTE_CREATED_AT',
+  REMOTE_CREATED_AT: 'REMOTE_CREATED_AT'
 }
 
 module.exports.enumEnterpriseServerUserAccountsUploadOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumEnterpriseServerUserAccountsUploadSyncState = {
   FAILURE: 'FAILURE',
   PENDING: 'PENDING',
-  SUCCESS: 'SUCCESS',
+  SUCCESS: 'SUCCESS'
 }
 
 module.exports.enumEnterpriseUserAccountMembershipRole = {
   MEMBER: 'MEMBER',
-  OWNER: 'OWNER',
+  OWNER: 'OWNER'
 }
 
 module.exports.enumEnterpriseUserDeployment = {
   CLOUD: 'CLOUD',
-  SERVER: 'SERVER',
+  SERVER: 'SERVER'
 }
 
 module.exports.enumFundingPlatform = {
@@ -225,19 +227,19 @@ module.exports.enumFundingPlatform = {
   OPEN_COLLECTIVE: 'OPEN_COLLECTIVE',
   OTECHIE: 'OTECHIE',
   PATREON: 'PATREON',
-  TIDELIFT: 'TIDELIFT',
+  TIDELIFT: 'TIDELIFT'
 }
 
 module.exports.enumGistOrderField = {
   CREATED_AT: 'CREATED_AT',
   PUSHED_AT: 'PUSHED_AT',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumGistPrivacy = {
   ALL: 'ALL',
   PUBLIC: 'PUBLIC',
-  SECRET: 'SECRET',
+  SECRET: 'SECRET'
 }
 
 module.exports.enumGitSignatureState = {
@@ -257,34 +259,34 @@ module.exports.enumGitSignatureState = {
   UNKNOWN_SIG_TYPE: 'UNKNOWN_SIG_TYPE',
   UNSIGNED: 'UNSIGNED',
   UNVERIFIED_EMAIL: 'UNVERIFIED_EMAIL',
-  VALID: 'VALID',
+  VALID: 'VALID'
 }
 
 module.exports.enumIdentityProviderConfigurationState = {
   CONFIGURED: 'CONFIGURED',
   ENFORCED: 'ENFORCED',
-  UNCONFIGURED: 'UNCONFIGURED',
+  UNCONFIGURED: 'UNCONFIGURED'
 }
 
 module.exports.enumIpAllowListEnabledSettingValue = {
   DISABLED: 'DISABLED',
-  ENABLED: 'ENABLED',
+  ENABLED: 'ENABLED'
 }
 
 module.exports.enumIpAllowListEntryOrderField = {
   ALLOW_LIST_VALUE: 'ALLOW_LIST_VALUE',
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumIssueOrderField = {
   COMMENTS: 'COMMENTS',
   CREATED_AT: 'CREATED_AT',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumIssueState = {
   CLOSED: 'CLOSED',
-  OPEN: 'OPEN',
+  OPEN: 'OPEN'
 }
 
 module.exports.enumIssueTimelineItemsItemType = {
@@ -317,23 +319,23 @@ module.exports.enumIssueTimelineItemsItemType = {
   UNMARKED_AS_DUPLICATE_EVENT: 'UNMARKED_AS_DUPLICATE_EVENT',
   UNPINNED_EVENT: 'UNPINNED_EVENT',
   UNSUBSCRIBED_EVENT: 'UNSUBSCRIBED_EVENT',
-  USER_BLOCKED_EVENT: 'USER_BLOCKED_EVENT',
+  USER_BLOCKED_EVENT: 'USER_BLOCKED_EVENT'
 }
 
 module.exports.enumLabelOrderField = {
   CREATED_AT: 'CREATED_AT',
-  NAME: 'NAME',
+  NAME: 'NAME'
 }
 
 module.exports.enumLanguageOrderField = {
-  SIZE: 'SIZE',
+  SIZE: 'SIZE'
 }
 
 module.exports.enumLockReason = {
   OFF_TOPIC: 'OFF_TOPIC',
   RESOLVED: 'RESOLVED',
   SPAM: 'SPAM',
-  TOO_HEATED: 'TOO_HEATED',
+  TOO_HEATED: 'TOO_HEATED'
 }
 
 module.exports.enumMergeStateStatus = {
@@ -344,31 +346,31 @@ module.exports.enumMergeStateStatus = {
   DRAFT: 'DRAFT',
   HAS_HOOKS: 'HAS_HOOKS',
   UNKNOWN: 'UNKNOWN',
-  UNSTABLE: 'UNSTABLE',
+  UNSTABLE: 'UNSTABLE'
 }
 
 module.exports.enumMergeableState = {
   CONFLICTING: 'CONFLICTING',
   MERGEABLE: 'MERGEABLE',
-  UNKNOWN: 'UNKNOWN',
+  UNKNOWN: 'UNKNOWN'
 }
 
 module.exports.enumMilestoneOrderField = {
   CREATED_AT: 'CREATED_AT',
   DUE_DATE: 'DUE_DATE',
   NUMBER: 'NUMBER',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumMilestoneState = {
   CLOSED: 'CLOSED',
-  OPEN: 'OPEN',
+  OPEN: 'OPEN'
 }
 
 module.exports.enumOauthApplicationCreateAuditEntryState = {
   ACTIVE: 'ACTIVE',
   PENDING_DELETION: 'PENDING_DELETION',
-  SUSPENDED: 'SUSPENDED',
+  SUSPENDED: 'SUSPENDED'
 }
 
 module.exports.enumOperationType = {
@@ -378,17 +380,17 @@ module.exports.enumOperationType = {
   MODIFY: 'MODIFY',
   REMOVE: 'REMOVE',
   RESTORE: 'RESTORE',
-  TRANSFER: 'TRANSFER',
+  TRANSFER: 'TRANSFER'
 }
 
 module.exports.enumOrderDirection = {
   ASC: 'ASC',
-  DESC: 'DESC',
+  DESC: 'DESC'
 }
 
 module.exports.enumOrgAddMemberAuditEntryPermission = {
   ADMIN: 'ADMIN',
-  READ: 'READ',
+  READ: 'READ'
 }
 
 module.exports.enumOrgCreateAuditEntryBillingPlan = {
@@ -396,15 +398,13 @@ module.exports.enumOrgCreateAuditEntryBillingPlan = {
   BUSINESS_PLUS: 'BUSINESS_PLUS',
   FREE: 'FREE',
   TIERED_PER_SEAT: 'TIERED_PER_SEAT',
-  UNLIMITED: 'UNLIMITED',
+  UNLIMITED: 'UNLIMITED'
 }
 
 module.exports.enumOrgRemoveBillingManagerAuditEntryReason = {
   SAML_EXTERNAL_IDENTITY_MISSING: 'SAML_EXTERNAL_IDENTITY_MISSING',
-  SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY:
-    'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY',
-  TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE:
-    'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
+  SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY: 'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY',
+  TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE: 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE'
 }
 
 module.exports.enumOrgRemoveMemberAuditEntryMembershipType = {
@@ -412,83 +412,79 @@ module.exports.enumOrgRemoveMemberAuditEntryMembershipType = {
   BILLING_MANAGER: 'BILLING_MANAGER',
   DIRECT_MEMBER: 'DIRECT_MEMBER',
   OUTSIDE_COLLABORATOR: 'OUTSIDE_COLLABORATOR',
-  UNAFFILIATED: 'UNAFFILIATED',
+  UNAFFILIATED: 'UNAFFILIATED'
 }
 
 module.exports.enumOrgRemoveMemberAuditEntryReason = {
   SAML_EXTERNAL_IDENTITY_MISSING: 'SAML_EXTERNAL_IDENTITY_MISSING',
-  SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY:
-    'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY',
+  SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY: 'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY',
   TWO_FACTOR_ACCOUNT_RECOVERY: 'TWO_FACTOR_ACCOUNT_RECOVERY',
-  TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE:
-    'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
-  USER_ACCOUNT_DELETED: 'USER_ACCOUNT_DELETED',
+  TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE: 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
+  USER_ACCOUNT_DELETED: 'USER_ACCOUNT_DELETED'
 }
 
 module.exports.enumOrgRemoveOutsideCollaboratorAuditEntryMembershipType = {
   BILLING_MANAGER: 'BILLING_MANAGER',
   OUTSIDE_COLLABORATOR: 'OUTSIDE_COLLABORATOR',
-  UNAFFILIATED: 'UNAFFILIATED',
+  UNAFFILIATED: 'UNAFFILIATED'
 }
 
 module.exports.enumOrgRemoveOutsideCollaboratorAuditEntryReason = {
   SAML_EXTERNAL_IDENTITY_MISSING: 'SAML_EXTERNAL_IDENTITY_MISSING',
-  TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE:
-    'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE',
+  TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE: 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE'
 }
 
 module.exports.enumOrgUpdateDefaultRepositoryPermissionAuditEntryPermission = {
   ADMIN: 'ADMIN',
   NONE: 'NONE',
   READ: 'READ',
-  WRITE: 'WRITE',
+  WRITE: 'WRITE'
 }
 
 module.exports.enumOrgUpdateMemberAuditEntryPermission = {
   ADMIN: 'ADMIN',
-  READ: 'READ',
+  READ: 'READ'
 }
 
-module.exports.enumOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility =
-  {
-    ALL: 'ALL',
-    PUBLIC: 'PUBLIC',
-  }
+module.exports.enumOrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility = {
+  ALL: 'ALL',
+  PUBLIC: 'PUBLIC'
+}
 
 module.exports.enumOrganizationInvitationRole = {
   ADMIN: 'ADMIN',
   BILLING_MANAGER: 'BILLING_MANAGER',
   DIRECT_MEMBER: 'DIRECT_MEMBER',
-  REINSTATE: 'REINSTATE',
+  REINSTATE: 'REINSTATE'
 }
 
 module.exports.enumOrganizationInvitationType = {
   EMAIL: 'EMAIL',
-  USER: 'USER',
+  USER: 'USER'
 }
 
 module.exports.enumOrganizationMemberRole = {
   ADMIN: 'ADMIN',
-  MEMBER: 'MEMBER',
+  MEMBER: 'MEMBER'
 }
 
 module.exports.enumOrganizationMembersCanCreateRepositoriesSettingValue = {
   ALL: 'ALL',
   DISABLED: 'DISABLED',
-  PRIVATE: 'PRIVATE',
+  PRIVATE: 'PRIVATE'
 }
 
 module.exports.enumOrganizationOrderField = {
   CREATED_AT: 'CREATED_AT',
-  LOGIN: 'LOGIN',
+  LOGIN: 'LOGIN'
 }
 
 module.exports.enumPackageFileOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumPackageOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumPackageType = {
@@ -498,11 +494,11 @@ module.exports.enumPackageType = {
   NPM: 'NPM',
   NUGET: 'NUGET',
   PYPI: 'PYPI',
-  RUBYGEMS: 'RUBYGEMS',
+  RUBYGEMS: 'RUBYGEMS'
 }
 
 module.exports.enumPackageVersionOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumPinnableItemType = {
@@ -513,71 +509,71 @@ module.exports.enumPinnableItemType = {
   PULL_REQUEST: 'PULL_REQUEST',
   REPOSITORY: 'REPOSITORY',
   TEAM: 'TEAM',
-  USER: 'USER',
+  USER: 'USER'
 }
 
 module.exports.enumProjectCardArchivedState = {
   ARCHIVED: 'ARCHIVED',
-  NOT_ARCHIVED: 'NOT_ARCHIVED',
+  NOT_ARCHIVED: 'NOT_ARCHIVED'
 }
 
 module.exports.enumProjectCardState = {
   CONTENT_ONLY: 'CONTENT_ONLY',
   NOTE_ONLY: 'NOTE_ONLY',
-  REDACTED: 'REDACTED',
+  REDACTED: 'REDACTED'
 }
 
 module.exports.enumProjectColumnPurpose = {
   DONE: 'DONE',
   IN_PROGRESS: 'IN_PROGRESS',
-  TODO: 'TODO',
+  TODO: 'TODO'
 }
 
 module.exports.enumProjectOrderField = {
   CREATED_AT: 'CREATED_AT',
   NAME: 'NAME',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumProjectState = {
   CLOSED: 'CLOSED',
-  OPEN: 'OPEN',
+  OPEN: 'OPEN'
 }
 
 module.exports.enumProjectTemplate = {
   AUTOMATED_KANBAN_V2: 'AUTOMATED_KANBAN_V2',
   AUTOMATED_REVIEWS_KANBAN: 'AUTOMATED_REVIEWS_KANBAN',
   BASIC_KANBAN: 'BASIC_KANBAN',
-  BUG_TRIAGE: 'BUG_TRIAGE',
+  BUG_TRIAGE: 'BUG_TRIAGE'
 }
 
 module.exports.enumPullRequestMergeMethod = {
   MERGE: 'MERGE',
   REBASE: 'REBASE',
-  SQUASH: 'SQUASH',
+  SQUASH: 'SQUASH'
 }
 
 module.exports.enumPullRequestOrderField = {
   CREATED_AT: 'CREATED_AT',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumPullRequestReviewCommentState = {
   PENDING: 'PENDING',
-  SUBMITTED: 'SUBMITTED',
+  SUBMITTED: 'SUBMITTED'
 }
 
 module.exports.enumPullRequestReviewDecision = {
   APPROVED: 'APPROVED',
   CHANGES_REQUESTED: 'CHANGES_REQUESTED',
-  REVIEW_REQUIRED: 'REVIEW_REQUIRED',
+  REVIEW_REQUIRED: 'REVIEW_REQUIRED'
 }
 
 module.exports.enumPullRequestReviewEvent = {
   APPROVE: 'APPROVE',
   COMMENT: 'COMMENT',
   DISMISS: 'DISMISS',
-  REQUEST_CHANGES: 'REQUEST_CHANGES',
+  REQUEST_CHANGES: 'REQUEST_CHANGES'
 }
 
 module.exports.enumPullRequestReviewState = {
@@ -585,21 +581,20 @@ module.exports.enumPullRequestReviewState = {
   CHANGES_REQUESTED: 'CHANGES_REQUESTED',
   COMMENTED: 'COMMENTED',
   DISMISSED: 'DISMISSED',
-  PENDING: 'PENDING',
+  PENDING: 'PENDING'
 }
 
 module.exports.enumPullRequestState = {
   CLOSED: 'CLOSED',
   MERGED: 'MERGED',
-  OPEN: 'OPEN',
+  OPEN: 'OPEN'
 }
 
 module.exports.enumPullRequestTimelineItemsItemType = {
   ADDED_TO_PROJECT_EVENT: 'ADDED_TO_PROJECT_EVENT',
   ASSIGNED_EVENT: 'ASSIGNED_EVENT',
   AUTOMATIC_BASE_CHANGE_FAILED_EVENT: 'AUTOMATIC_BASE_CHANGE_FAILED_EVENT',
-  AUTOMATIC_BASE_CHANGE_SUCCEEDED_EVENT:
-    'AUTOMATIC_BASE_CHANGE_SUCCEEDED_EVENT',
+  AUTOMATIC_BASE_CHANGE_SUCCEEDED_EVENT: 'AUTOMATIC_BASE_CHANGE_SUCCEEDED_EVENT',
   BASE_REF_CHANGED_EVENT: 'BASE_REF_CHANGED_EVENT',
   BASE_REF_FORCE_PUSHED_EVENT: 'BASE_REF_FORCE_PUSHED_EVENT',
   CLOSED_EVENT: 'CLOSED_EVENT',
@@ -645,12 +640,12 @@ module.exports.enumPullRequestTimelineItemsItemType = {
   UNMARKED_AS_DUPLICATE_EVENT: 'UNMARKED_AS_DUPLICATE_EVENT',
   UNPINNED_EVENT: 'UNPINNED_EVENT',
   UNSUBSCRIBED_EVENT: 'UNSUBSCRIBED_EVENT',
-  USER_BLOCKED_EVENT: 'USER_BLOCKED_EVENT',
+  USER_BLOCKED_EVENT: 'USER_BLOCKED_EVENT'
 }
 
 module.exports.enumPullRequestUpdateState = {
   CLOSED: 'CLOSED',
-  OPEN: 'OPEN',
+  OPEN: 'OPEN'
 }
 
 module.exports.enumReactionContent = {
@@ -661,16 +656,16 @@ module.exports.enumReactionContent = {
   LAUGH: 'LAUGH',
   ROCKET: 'ROCKET',
   THUMBS_DOWN: 'THUMBS_DOWN',
-  THUMBS_UP: 'THUMBS_UP',
+  THUMBS_UP: 'THUMBS_UP'
 }
 
 module.exports.enumReactionOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumRefOrderField = {
   ALPHABETICAL: 'ALPHABETICAL',
-  TAG_COMMIT_DATE: 'TAG_COMMIT_DATE',
+  TAG_COMMIT_DATE: 'TAG_COMMIT_DATE'
 }
 
 module.exports.enumRegistryPackageDependencyType = {
@@ -679,7 +674,7 @@ module.exports.enumRegistryPackageDependencyType = {
   DEV: 'DEV',
   OPTIONAL: 'OPTIONAL',
   PEER: 'PEER',
-  TEST: 'TEST',
+  TEST: 'TEST'
 }
 
 module.exports.enumRegistryPackageType = {
@@ -689,54 +684,54 @@ module.exports.enumRegistryPackageType = {
   NPM: 'NPM',
   NUGET: 'NUGET',
   PYTHON: 'PYTHON',
-  RUBYGEMS: 'RUBYGEMS',
+  RUBYGEMS: 'RUBYGEMS'
 }
 
 module.exports.enumReleaseOrderField = {
   CREATED_AT: 'CREATED_AT',
-  NAME: 'NAME',
+  NAME: 'NAME'
 }
 
 module.exports.enumRepoAccessAuditEntryVisibility = {
   INTERNAL: 'INTERNAL',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumRepoAddMemberAuditEntryVisibility = {
   INTERNAL: 'INTERNAL',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumRepoArchivedAuditEntryVisibility = {
   INTERNAL: 'INTERNAL',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumRepoChangeMergeSettingAuditEntryMergeType = {
   MERGE: 'MERGE',
   REBASE: 'REBASE',
-  SQUASH: 'SQUASH',
+  SQUASH: 'SQUASH'
 }
 
 module.exports.enumRepoCreateAuditEntryVisibility = {
   INTERNAL: 'INTERNAL',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumRepoDestroyAuditEntryVisibility = {
   INTERNAL: 'INTERNAL',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumRepoRemoveMemberAuditEntryVisibility = {
   INTERNAL: 'INTERNAL',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumReportedContentClassifiers = {
@@ -745,13 +740,13 @@ module.exports.enumReportedContentClassifiers = {
   OFF_TOPIC: 'OFF_TOPIC',
   OUTDATED: 'OUTDATED',
   RESOLVED: 'RESOLVED',
-  SPAM: 'SPAM',
+  SPAM: 'SPAM'
 }
 
 module.exports.enumRepositoryAffiliation = {
   COLLABORATOR: 'COLLABORATOR',
   ORGANIZATION_MEMBER: 'ORGANIZATION_MEMBER',
-  OWNER: 'OWNER',
+  OWNER: 'OWNER'
 }
 
 module.exports.enumRepositoryContributionType = {
@@ -759,19 +754,19 @@ module.exports.enumRepositoryContributionType = {
   ISSUE: 'ISSUE',
   PULL_REQUEST: 'PULL_REQUEST',
   PULL_REQUEST_REVIEW: 'PULL_REQUEST_REVIEW',
-  REPOSITORY: 'REPOSITORY',
+  REPOSITORY: 'REPOSITORY'
 }
 
 module.exports.enumRepositoryInvitationOrderField = {
   CREATED_AT: 'CREATED_AT',
-  INVITEE_LOGIN: 'INVITEE_LOGIN',
+  INVITEE_LOGIN: 'INVITEE_LOGIN'
 }
 
 module.exports.enumRepositoryLockReason = {
   BILLING: 'BILLING',
   MIGRATING: 'MIGRATING',
   MOVING: 'MOVING',
-  RENAME: 'RENAME',
+  RENAME: 'RENAME'
 }
 
 module.exports.enumRepositoryOrderField = {
@@ -779,7 +774,7 @@ module.exports.enumRepositoryOrderField = {
   NAME: 'NAME',
   PUSHED_AT: 'PUSHED_AT',
   STARGAZERS: 'STARGAZERS',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumRepositoryPermission = {
@@ -787,48 +782,48 @@ module.exports.enumRepositoryPermission = {
   MAINTAIN: 'MAINTAIN',
   READ: 'READ',
   TRIAGE: 'TRIAGE',
-  WRITE: 'WRITE',
+  WRITE: 'WRITE'
 }
 
 module.exports.enumRepositoryPrivacy = {
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumRepositoryVisibility = {
   INTERNAL: 'INTERNAL',
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumRequestableCheckStatusState = {
   COMPLETED: 'COMPLETED',
   IN_PROGRESS: 'IN_PROGRESS',
-  QUEUED: 'QUEUED',
+  QUEUED: 'QUEUED'
 }
 
 module.exports.enumSamlDigestAlgorithm = {
   SHA1: 'SHA1',
   SHA256: 'SHA256',
   SHA384: 'SHA384',
-  SHA512: 'SHA512',
+  SHA512: 'SHA512'
 }
 
 module.exports.enumSamlSignatureAlgorithm = {
   RSA_SHA1: 'RSA_SHA1',
   RSA_SHA256: 'RSA_SHA256',
   RSA_SHA384: 'RSA_SHA384',
-  RSA_SHA512: 'RSA_SHA512',
+  RSA_SHA512: 'RSA_SHA512'
 }
 
 module.exports.enumSavedReplyOrderField = {
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumSearchType = {
   ISSUE: 'ISSUE',
   REPOSITORY: 'REPOSITORY',
-  USER: 'USER',
+  USER: 'USER'
 }
 
 module.exports.enumSecurityAdvisoryEcosystem = {
@@ -837,46 +832,46 @@ module.exports.enumSecurityAdvisoryEcosystem = {
   NPM: 'NPM',
   NUGET: 'NUGET',
   PIP: 'PIP',
-  RUBYGEMS: 'RUBYGEMS',
+  RUBYGEMS: 'RUBYGEMS'
 }
 
 module.exports.enumSecurityAdvisoryIdentifierType = {
   CVE: 'CVE',
-  GHSA: 'GHSA',
+  GHSA: 'GHSA'
 }
 
 module.exports.enumSecurityAdvisoryOrderField = {
   PUBLISHED_AT: 'PUBLISHED_AT',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumSecurityAdvisorySeverity = {
   CRITICAL: 'CRITICAL',
   HIGH: 'HIGH',
   LOW: 'LOW',
-  MODERATE: 'MODERATE',
+  MODERATE: 'MODERATE'
 }
 
 module.exports.enumSecurityVulnerabilityOrderField = {
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumSponsorsTierOrderField = {
   CREATED_AT: 'CREATED_AT',
-  MONTHLY_PRICE_IN_CENTS: 'MONTHLY_PRICE_IN_CENTS',
+  MONTHLY_PRICE_IN_CENTS: 'MONTHLY_PRICE_IN_CENTS'
 }
 
 module.exports.enumSponsorshipOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumSponsorshipPrivacy = {
   PRIVATE: 'PRIVATE',
-  PUBLIC: 'PUBLIC',
+  PUBLIC: 'PUBLIC'
 }
 
 module.exports.enumStarOrderField = {
-  STARRED_AT: 'STARRED_AT',
+  STARRED_AT: 'STARRED_AT'
 }
 
 module.exports.enumStatusState = {
@@ -884,46 +879,46 @@ module.exports.enumStatusState = {
   EXPECTED: 'EXPECTED',
   FAILURE: 'FAILURE',
   PENDING: 'PENDING',
-  SUCCESS: 'SUCCESS',
+  SUCCESS: 'SUCCESS'
 }
 
 module.exports.enumSubscriptionState = {
   IGNORED: 'IGNORED',
   SUBSCRIBED: 'SUBSCRIBED',
-  UNSUBSCRIBED: 'UNSUBSCRIBED',
+  UNSUBSCRIBED: 'UNSUBSCRIBED'
 }
 
 module.exports.enumTeamDiscussionCommentOrderField = {
-  NUMBER: 'NUMBER',
+  NUMBER: 'NUMBER'
 }
 
 module.exports.enumTeamDiscussionOrderField = {
-  CREATED_AT: 'CREATED_AT',
+  CREATED_AT: 'CREATED_AT'
 }
 
 module.exports.enumTeamMemberOrderField = {
   CREATED_AT: 'CREATED_AT',
-  LOGIN: 'LOGIN',
+  LOGIN: 'LOGIN'
 }
 
 module.exports.enumTeamMemberRole = {
   MAINTAINER: 'MAINTAINER',
-  MEMBER: 'MEMBER',
+  MEMBER: 'MEMBER'
 }
 
 module.exports.enumTeamMembershipType = {
   ALL: 'ALL',
   CHILD_TEAM: 'CHILD_TEAM',
-  IMMEDIATE: 'IMMEDIATE',
+  IMMEDIATE: 'IMMEDIATE'
 }
 
 module.exports.enumTeamOrderField = {
-  NAME: 'NAME',
+  NAME: 'NAME'
 }
 
 module.exports.enumTeamPrivacy = {
   SECRET: 'SECRET',
-  VISIBLE: 'VISIBLE',
+  VISIBLE: 'VISIBLE'
 }
 
 module.exports.enumTeamRepositoryOrderField = {
@@ -932,24 +927,24 @@ module.exports.enumTeamRepositoryOrderField = {
   PERMISSION: 'PERMISSION',
   PUSHED_AT: 'PUSHED_AT',
   STARGAZERS: 'STARGAZERS',
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
 module.exports.enumTeamReviewAssignmentAlgorithm = {
   LOAD_BALANCE: 'LOAD_BALANCE',
-  ROUND_ROBIN: 'ROUND_ROBIN',
+  ROUND_ROBIN: 'ROUND_ROBIN'
 }
 
 module.exports.enumTeamRole = {
   ADMIN: 'ADMIN',
-  MEMBER: 'MEMBER',
+  MEMBER: 'MEMBER'
 }
 
 module.exports.enumTopicSuggestionDeclineReason = {
   NOT_RELEVANT: 'NOT_RELEVANT',
   PERSONAL_PREFERENCE: 'PERSONAL_PREFERENCE',
   TOO_GENERAL: 'TOO_GENERAL',
-  TOO_SPECIFIC: 'TOO_SPECIFIC',
+  TOO_SPECIFIC: 'TOO_SPECIFIC'
 }
 
 module.exports.enumUserBlockDuration = {
@@ -957,27 +952,29 @@ module.exports.enumUserBlockDuration = {
   ONE_MONTH: 'ONE_MONTH',
   ONE_WEEK: 'ONE_WEEK',
   PERMANENT: 'PERMANENT',
-  THREE_DAYS: 'THREE_DAYS',
+  THREE_DAYS: 'THREE_DAYS'
 }
 
 module.exports.enumUserStatusOrderField = {
-  UPDATED_AT: 'UPDATED_AT',
+  UPDATED_AT: 'UPDATED_AT'
 }
 
-module.exports.generateQueryOp = function (fields) {
-  return generateGraphqlOperation('query', typeMap.Query, fields)
-}
-module.exports.generateMutationOp = function (fields) {
-  return generateGraphqlOperation('mutation', typeMap.Mutation, fields)
-}
-module.exports.generateSubscriptionOp = function (fields) {
-  return generateGraphqlOperation('subscription', typeMap.Subscription, fields)
-}
-module.exports.everything = {
-  __scalar: true,
-}
 
-var schemaExports = require('./guards.cjs')
-for (var k in schemaExports) {
-  module.exports[k] = schemaExports[k]
-}
+  module.exports.generateQueryOp = function(fields) {
+    return generateGraphqlOperation('query', typeMap.Query, fields)
+  }
+  module.exports.generateMutationOp = function(fields) {
+    return generateGraphqlOperation('mutation', typeMap.Mutation, fields)
+  }
+  module.exports.generateSubscriptionOp = function(fields) {
+    return generateGraphqlOperation('subscription', typeMap.Subscription, fields)
+  }
+  module.exports.everything = {
+    __scalar: true
+  }
+
+  var schemaExports = require('./guards.cjs')
+  for (var k in schemaExports) {
+    module.exports[k] = schemaExports[k];
+  }
+  
