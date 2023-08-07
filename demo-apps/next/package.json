@@ -22,7 +22,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "test": "node puppeteer-test.js"
+    "test": "cd ./ui-test && node puppeteer-test.js"
   },
   "resolutions": {
     "@gqlts/cli": "file:./../../cli",
@@ -41,8 +41,5 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.1.6"
-  },
-  "devDependencies": {
-    "puppeteer": "21.0.1"
   }
 }
