@@ -22,7 +22,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "test": "cd ./ui-test && node puppeteer-test.js"
+    "test": "cd ./ui-test && yarn && node puppeteer-test.js"
   },
   "resolutions": {
     "@gqlts/cli": "file:./../../cli",
