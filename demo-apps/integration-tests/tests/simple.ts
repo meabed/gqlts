@@ -2,8 +2,9 @@ import { enumSomeEnum, everything, generateQueryOp, generateSubscriptionOp } fro
 import assert from 'assert';
 import snapshot from 'snap-shot-it';
 import { expectType } from 'tsd';
+import { format } from 'prettier';
 
-const prettify = (code, parser) => require('prettier').format(code, { parser });
+const prettify = async (code, parser) => await format(code, { parser });
 
 describe('generate queries', () => {
   it('enum string is present', () => {
@@ -11,7 +12,7 @@ describe('generate queries', () => {
     assert.strictEqual(enumSomeEnum.X, 'X');
     assert.strictEqual(enumSomeEnum.Y, 'Y');
   });
-  it('query', () => {
+  it('query', async () => {
     const { query } = generateQueryOp({
       repository: [
         {
@@ -31,9 +32,9 @@ describe('generate queries', () => {
         },
       ],
     });
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
-  it('recursive type', () => {
+  it('recursive type', async () => {
     const { query } = generateQueryOp({
       recursiveType: {
         value: 1,
@@ -51,9 +52,9 @@ describe('generate queries', () => {
         },
       },
     });
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
-  it('recursive type with args', () => {
+  it('recursive type with args', async () => {
     const { query } = generateQueryOp({
       recursiveType: [
         { requiredVal: ['ciao'] },
@@ -74,10 +75,10 @@ describe('generate queries', () => {
         },
       ],
     });
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
 
-  it('use __name operation name', () => {
+  it('use __name operation name', async () => {
     const NAME = 'SomeName';
     const { query } = generateSubscriptionOp({
       __name: NAME,
@@ -86,17 +87,17 @@ describe('generate queries', () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
-  it('subscriptions', () => {
+  it('subscriptions', async () => {
     const { query } = generateSubscriptionOp({
       user: {
         __scalar: true,
       },
     });
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
-  it('many', () => {
+  it('many', async () => {
     const { query } = generateQueryOp({
       repository: [
         {
@@ -119,9 +120,9 @@ describe('generate queries', () => {
         ...everything,
       },
     });
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
-  it('do not fetch falsy fields', () => {
+  it('do not fetch falsy fields', async () => {
     const { query } = generateSubscriptionOp({
       user: {
         common: false,
@@ -129,9 +130,9 @@ describe('generate queries', () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
-  it('do not fetch falsy fields with __scalar', () => {
+  it('do not fetch falsy fields with __scalar', async () => {
     const { query } = generateSubscriptionOp({
       user: {
         common: false,
@@ -139,6 +140,6 @@ describe('generate queries', () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(prettify(query, 'graphql'));
+    snapshot(await prettify(query, 'graphql'));
   });
 });
