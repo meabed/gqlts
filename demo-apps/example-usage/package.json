@@ -57,11 +57,11 @@
     "react-extra-hooks": "2.3.4",
     "react-icons": "4.10.1",
     "react-storage-hooks": "4.0.1",
-    "swr": "2.2.0",
+    "swr": "2.2.1",
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@types/node": "20.4.9",
+    "@types/node": "20.4.10",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "next-transpile-modules": "10.0.1",
