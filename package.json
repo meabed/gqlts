@@ -48,7 +48,7 @@
     "watch": "ultra -r watch"
   },
   "resolutions": {
-    "graphql": "16.7.1",
+    "graphql": "16.8.0",
     "ws": "8.13.0"
   },
   "devDependencies": {
