@@ -58,10 +58,10 @@
     "react-icons": "4.10.1",
     "react-storage-hooks": "4.0.1",
     "swr": "2.2.1",
-    "typescript": "5.1.6"
+    "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/node": "20.5.4",
+    "@types/node": "20.5.6",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "next-transpile-modules": "10.0.1",
