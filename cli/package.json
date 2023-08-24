@@ -107,13 +107,13 @@
     "@types/jest": "29.5.4",
     "@types/listr": "0.14.4",
     "@types/lodash": "4.14.197",
-    "@types/node": "20.5.4",
+    "@types/node": "20.5.6",
     "@types/qs": "6.9.7",
     "@types/yargs": "17.0.24",
     "common-tags": "1.8.2",
     "dotenv": "16.3.1",
     "husky": "8.0.3",
-    "jest": "29.6.3",
+    "jest": "29.6.4",
     "sucrase": "3.34.0",
     "ts-jest": "29.1.1"
   }
