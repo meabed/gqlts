@@ -57,7 +57,7 @@
     "react-extra-hooks": "2.3.4",
     "react-icons": "4.10.1",
     "react-storage-hooks": "4.0.1",
-    "swr": "2.2.1",
+    "swr": "2.2.2",
     "typescript": "5.2.2"
   },
   "devDependencies": {
