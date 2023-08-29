@@ -93,10 +93,10 @@
     "listr": "0.14.3",
     "lodash": "4.17.21",
     "mkdirp": "3.0.1",
-    "prettier": "3.0.2",
+    "prettier": "3.0.3",
     "qs": "6.11.2",
     "rimraf": "5.0.1",
-    "terser": "5.19.2",
+    "terser": "5.19.3",
     "yargs": "17.7.2"
   },
   "devDependencies": {
