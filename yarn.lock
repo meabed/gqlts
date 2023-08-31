@@ -1670,10 +1670,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/listr@0.14.4":
-  version "0.14.4"
-  resolved "https://registry.npmjs.org/@types/listr/-/listr-0.14.4.tgz"
-  integrity sha512-+MWvidNujBUgJsi4yMVwEQQwaHe6oHedPSy+dwk3akGEeuIbvhWkK+TGsXSwbFup7Y0cCBb+wzzdD+yGKp7sOg==
+"@types/listr@0.14.5":
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/@types/listr/-/listr-0.14.5.tgz#46a422273ce636a33216709f438af2677f09e720"
+  integrity sha512-b0tz04chhBIIiqbo5dF6iV6cRAmQt5Go7tk43yYT5QeVnuKYNvhcvEItNQYKB4tanKBbgXMAQnkqSrCZyA5ZSQ==
   dependencies:
     "@types/node" "*"
     rxjs "^6.5.1"
@@ -1734,10 +1734,10 @@
   resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
 
-"@types/qs@6.9.7":
-  version "6.9.7"
-  resolved "https://registry.npmjs.org/@types/qs/-/qs-6.9.7.tgz"
-  integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
+"@types/qs@6.9.8":
+  version "6.9.8"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.8.tgz#f2a7de3c107b89b441e071d5472e6b726b4adf45"
+  integrity sha512-u95svzDlTysU5xecFNTgfFG5RUWu1A9P0VzgpcIiGZA9iraHOdSzcxMxQ55DyeRaGCSxQi7LxXDI4rzq/MYfdg==
 
 "@types/stack-utils@^2.0.0":
   version "2.0.1"
