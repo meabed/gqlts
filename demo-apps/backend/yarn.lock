@@ -320,10 +320,10 @@
     "@envelop/types" "4.0.0"
     tslib "^2.5.0"
 
-"@envelop/parser-cache@6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-6.0.1.tgz#5937756636ca94f71701dcb555267e12e792d3d1"
-  integrity sha512-L1ctETOeA707IsMyoDKBFf+IHtUM+f8/4+Usu+3SwCFCaFCI3xR+IxVwO7MXO2CVsrwsF3/yPOk0LQyCwCWTfA==
+"@envelop/parser-cache@6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-6.0.2.tgz#2c3fb941692a511228a079fd9c122b81beda0f13"
+  integrity sha512-BAyWnY7ePUMxaSEXOUnsdXPxjescC2TadRlnVzx1HVXvOYr7ZUzVJdTZS1eaWdXPRImsZpYH90R6pjuJsGNWfg==
   dependencies:
     lru-cache "^10.0.0"
     tslib "^2.5.0"
@@ -335,10 +335,10 @@
   dependencies:
     tslib "^2.5.0"
 
-"@envelop/validation-cache@6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-6.0.1.tgz#8fd16dfc881f59d177ac60e223c225ceb4fc215d"
-  integrity sha512-KfA2QeegXhpj5yh1qYhQcVYt/3Zqy23/IpwVomi25Wd1F+11kqxecGYErzQZ3Vds7h27SfCgudkSB9OOeVYx9w==
+"@envelop/validation-cache@6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-6.0.2.tgz#17a3e0890a021f16eddff742743433cd04fe8410"
+  integrity sha512-inQwmtxGCYQpMS9yjRocwFMD2caLFEIntwcdBfP0wlc4GJx4+Z+nJATdOHq2xKlgKini6f5iUeeS3Q5PgBPw5A==
   dependencies:
     hash-it "^6.0.0"
     lru-cache "^10.0.0"
