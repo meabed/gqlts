@@ -31,7 +31,7 @@
   "dependencies": {
     "@gqlts/runtime": "file:./../../runtime",
     "@next/font": "13.4.19",
-    "@types/node": "20.5.8",
+    "@types/node": "20.5.9",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "demo-apps-backend-sdk": "file:./../backend/sdk",
