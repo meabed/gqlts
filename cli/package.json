@@ -101,10 +101,10 @@
   },
   "devDependencies": {
     "@sucrase/jest-plugin": "3.0.0",
-    "@types/browserify": "12.0.37",
+    "@types/browserify": "12.0.38",
     "@types/common-tags": "1.8.2",
     "@types/fs-extra": "11.0.2",
-    "@types/jest": "29.5.4",
+    "@types/jest": "29.5.5",
     "@types/listr": "0.14.5",
     "@types/lodash": "4.14.198",
     "@types/node": "20.6.1",

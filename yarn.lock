@@ -1596,10 +1596,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/browserify@12.0.37":
-  version "12.0.37"
-  resolved "https://registry.yarnpkg.com/@types/browserify/-/browserify-12.0.37.tgz#f08312f17b4a7411441cce3a45434a0ce81c4da3"
-  integrity sha512-rGVZQhqlBMdnU0Wcq/RDO6+I1tppM42SqVq5ZEXiw2ft/A55Ro+dz4aKTy28gniwOIxZhRFqb5N+qnbg7J040g==
+"@types/browserify@12.0.38":
+  version "12.0.38"
+  resolved "https://registry.yarnpkg.com/@types/browserify/-/browserify-12.0.38.tgz#25efeb1d3e7084465bbacc296fbcc0454cc2a885"
+  integrity sha512-OG+80DQ053qt+fk6f3RrkYiYBrOVHteh7SGOcgNhHrX8PQ8RsP94H8DFcI7J4eyy6vQxo9WllEqrBb8VdjaU7w==
   dependencies:
     "@types/insert-module-globals" "*"
     "@types/node" "*"
@@ -1655,10 +1655,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@29.5.4":
-  version "29.5.4"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.4.tgz#9d0a16edaa009a71e6a71a999acd582514dab566"
-  integrity sha512-PhglGmhWeD46FYOVLt3X7TiWjzwuVGW9wG/4qocPevXMjCmrIc5b6db9WjeGE4QYVpUAWMDv3v0IiBwObY289A==
+"@types/jest@29.5.5":
+  version "29.5.5"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.5.tgz#727204e06228fe24373df9bae76b90f3e8236a2a"
+  integrity sha512-ebylz2hnsWR9mYvmBFbXJXr+33UPc4+ZdxyDXh5w0FlPBTfCVN3wPL+kuOiQt3xvrK419v7XWeAs+AeOksafXg==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
