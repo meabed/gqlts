@@ -31,7 +31,7 @@ export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext
       mutationType,
       queryType,
       subscriptionType,
-    })
+    }),
   );
 
   ctx.addCodeBlock(renderEnumsMaps(schema, 'type'));
@@ -126,31 +126,31 @@ function renderSupportFunctionsTypes({ queryType, mutationType, subscriptionType
   if (queryType) {
     code += `
         export type QueryResult<fields extends ${requestTypeName(queryType)}> = GraphqlResponse<FieldsSelection<${
-      queryType.name
-    }, fields>>
+          queryType.name
+        }, fields>>
 
         export declare const generateQueryOp: (fields: ${requestTypeName(
-          queryType
+          queryType,
         )} & { __name?: string }) => GraphqlOperation`;
   }
   if (mutationType) {
     code += `
         export type MutationResult<fields extends ${requestTypeName(mutationType)}> = GraphqlResponse<FieldsSelection<${
-      mutationType.name
-    }, fields>>
+          mutationType.name
+        }, fields>>
 
         export declare const generateMutationOp: (fields: ${requestTypeName(
-          mutationType
+          mutationType,
         )} & { __name?: string }) => GraphqlOperation`;
   }
   if (subscriptionType) {
     code += `
         export type SubscriptionResult<fields extends ${requestTypeName(
-          subscriptionType
+          subscriptionType,
         )}> = GraphqlResponse<FieldsSelection<${subscriptionType.name}, fields>>
 
         export declare const generateSubscriptionOp: (fields: ${requestTypeName(
-          subscriptionType
+          subscriptionType,
         )} & { __name?: string }) => GraphqlOperation`;
   }
 

@@ -1,12 +1,12 @@
 import { readFileFromPath } from '../helpers/files';
 import { RenderContext } from '../render/common/RenderContext';
 import {
-  GraphQLNamedType,
-  GraphQLSchema,
   buildClientSchema,
   buildSchema,
   getIntrospectionQuery,
   graphql,
+  GraphQLNamedType,
+  GraphQLSchema,
 } from 'graphql';
 import { BuiltInParserName } from 'prettier';
 
@@ -44,7 +44,7 @@ export async function typeRenderTest(
   schemaGql: string,
   renderer: TypeRenderer,
   typeNames: string[],
-  parser?: BuiltInParserName
+  parser?: BuiltInParserName,
 ) {
   const schema = await toClientSchema(schemaGql);
 
@@ -68,7 +68,7 @@ export async function typeRenderTestCase(
   file: string,
   renderer: TypeRenderer,
   typeNames: string[],
-  output = false
+  output = false,
 ) {
   const [gql, ts] = await Promise.all([
     readFileFromPath([dirName, `cases/${file}.graphql`]),

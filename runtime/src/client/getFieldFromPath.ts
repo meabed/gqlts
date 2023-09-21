@@ -21,7 +21,7 @@ export function getFieldFromPath(root: LinkedType | undefined, path: string[]) {
           if (field) types.push(field.type);
           return types;
         },
-        [type]
+        [type],
       );
 
     let field: LinkedField | null = null;

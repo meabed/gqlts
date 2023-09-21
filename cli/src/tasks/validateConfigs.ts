@@ -14,7 +14,7 @@ export function validateConfigs(configs: Config[]) {
 
     if ([config.endpoint, config.schema].filter((i) => i).length > 1)
       errors.push(
-        `you provided two or more conflicting options in ${whichConfig}, only one of either \`endpoint\`, \`schema\` or \`fetcher\` is allowed`
+        `you provided two or more conflicting options in ${whichConfig}, only one of either \`endpoint\`, \`schema\` or \`fetcher\` is allowed`,
       );
 
     if (!config.output) errors.push(`you didn't provide an \`output\` option in ${whichConfig}`);

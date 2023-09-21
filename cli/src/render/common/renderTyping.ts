@@ -14,7 +14,7 @@ const render = (
   root: boolean,
   undefinableValues: boolean,
   undefinableFields: boolean,
-  wrap: (x: string) => string = (x) => x
+  wrap: (x: string) => string = (x) => x,
 ): string => {
   if (root) {
     if (undefinableFields) {
@@ -64,7 +64,7 @@ export function renderTyping(
   undefinableValues: boolean,
   undefinableFields: boolean,
   root = true,
-  wrap: any = undefined
+  wrap: any = undefined,
 ) {
   return render(type, false, root, undefinableValues, undefinableFields, wrap);
 }

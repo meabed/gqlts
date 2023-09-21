@@ -67,7 +67,7 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
       .split('\n')
       .filter(Boolean)
       .map((l) => INDENTATION + l)
-      .join('\n')
+      .join('\n'),
   );
 
   ctx.addCodeBlock(`${typeComment(type)}export interface ${requestTypeName(type)}{\n${fieldStrings.join('\n')}\n}`);

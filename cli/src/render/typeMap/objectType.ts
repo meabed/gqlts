@@ -12,7 +12,7 @@ import {
 
 export function objectType(
   type: GraphQLObjectType | GraphQLInterfaceType | GraphQLInputObjectType,
-  ctx: RenderContext
+  ctx: RenderContext,
 ) {
   const typeObj: FieldMap<string> = Object.keys(type.getFields()).reduce((r, f) => {
     const field = type.getFields()[f];

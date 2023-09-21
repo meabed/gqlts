@@ -52,7 +52,7 @@ describe('renderTyping', () => {
       'maybeNested',
       ": ((((Scalars['Int'] | undefined)[] | undefined)[] | undefined)[] | undefined)",
       true,
-      false
+      false,
     );
   });
 

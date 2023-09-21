@@ -52,7 +52,7 @@ var serviceUrlMap = {
 module.exports.getServiceUrl = function(env) {
   return { apiUrl: serviceUrlMap[env], graphqlUrl: serviceUrlMap[env] + "/graphql", env };
 }
-module.exports.createClient`
+module.exports.createClient`,
   );
 
   writeFileSync(join(__dirname, './dist/index.js'), indexContentWithURL);
@@ -65,7 +65,7 @@ export type ServiceUrlMap = {
   [serviceName in "local" | "development" | "stage" | "production"]: string
 }
 export declare const getServiceUrl: (env?: string) => { apiUrl:string, graphqlUrl:string, env: string }
-export interface Client`
+export interface Client`,
   );
 
   writeFileSync(join(__dirname, './dist/index.d.ts'), indexTSContentWithURL);

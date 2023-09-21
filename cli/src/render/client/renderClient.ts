@@ -61,7 +61,7 @@ export function renderEnumsMaps(schema: GraphQLSchema, moduleType: 'esm' | 'cjs'
             return `  ${moduleType === 'type' ? 'readonly ' : ''}${v.name}: '${v.name}'`;
           })
           .join(',\n') +
-        `\n}\n`
+        `\n}\n`,
     )
     .join('\n');
 }

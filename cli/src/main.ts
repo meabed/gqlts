@@ -15,7 +15,7 @@ export function generate(config: Config): Promise<void> {
         task: () => new Listr([schemaTask(config), ...clientTasks(config)]),
       },
     ],
-    { renderer: config.verbose ? 'verbose' : 'silent', exitOnError: false }
+    { renderer: config.verbose ? 'verbose' : 'silent', exitOnError: false },
   )
     .run()
     .catch((e) => {

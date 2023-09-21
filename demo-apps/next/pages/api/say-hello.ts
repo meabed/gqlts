@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     {
       v1SatHello: [{ name: 'John Connor' }, { message: 1 }],
     },
-    { headers: { 'x-my-secret': 'Sarah Connor', 'content-type': 'application/json' } }
+    { headers: { 'x-my-secret': 'Sarah Connor', 'content-type': 'application/json' } },
   );
 
   res.status(200).json({ message: data?.v1SatHello?.message });

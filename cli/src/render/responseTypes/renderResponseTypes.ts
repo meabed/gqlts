@@ -25,8 +25,8 @@ export function renderResponseTypes(schema: GraphQLSchema, ctx: RenderContext) {
   ctx.addCodeBlock(
     renderScalarTypes(
       ctx,
-      Object.values(typeMap).filter((type): type is GraphQLScalarType => isScalarType(type))
-    )
+      Object.values(typeMap).filter((type): type is GraphQLScalarType => isScalarType(type)),
+    ),
   );
   for (const name in typeMap) {
     if (excludedTypes.includes(name)) continue;

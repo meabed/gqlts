@@ -1,6 +1,6 @@
-import { prettify } from './helpers/prettify';
 import { ASTNode } from 'graphql/language/ast';
 import { visit } from 'graphql/language/visitor';
+import { prettify } from './helpers/prettify';
 
 /**
  * Converts an AST into a string, using one set of reasonable

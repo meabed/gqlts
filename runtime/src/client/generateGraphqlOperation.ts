@@ -82,7 +82,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
         ctx.fragments.push(
           `fragment ${scalarFieldsFragment} on ${type.name}{${scalarFields
             .filter((f) => !falsyFieldNames.has(f))
-            .join(',')}}`
+            .join(',')}}`,
         );
       }
     }
@@ -119,7 +119,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
 export function generateGraphqlOperation(
   operation: 'query' | 'mutation' | 'subscription',
   root: LinkedType,
-  fields: Fields
+  fields: Fields,
 ): GraphqlOperation {
   const ctx: Context = {
     root,

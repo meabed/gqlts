@@ -76,12 +76,13 @@ export function createClient({
       if (!client.wsClient) {
         client.wsClient = getSubscriptionClient(options, config);
       }
-      return new Observable((observer) =>
-        client.wsClient?.subscribe(op, {
-          next: (data) => observer.next(data),
-          error: (err) => observer.error(err),
-          complete: () => observer.complete(),
-        })
+      return new Observable(
+        (observer) =>
+          client.wsClient?.subscribe(op, {
+            next: (data) => observer.next(data),
+            error: (err) => observer.error(err),
+            complete: () => observer.complete(),
+          }),
       );
     };
   }

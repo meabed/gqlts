@@ -2,15 +2,15 @@ import { prettify } from '../../../helpers/prettify';
 import { RenderContext } from '../RenderContext';
 
 describe('RenderContext', () => {
-  test('prettify', () => {
+  test('prettify', async () => {
     const ctx = new RenderContext();
     ctx.addCodeBlock('interface A{}');
-    expect(ctx.toCode('typescript', true)).toBe(prettify(`interface A{}`, 'typescript'));
+    expect(await ctx.toCode('typescript', true)).toBe(await prettify(`interface A{}`, 'typescript'));
   });
 
-  test('raw', () => {
+  test('raw', async () => {
     const ctx = new RenderContext();
     ctx.addCodeBlock('raw string');
-    expect(ctx.toCode()).toBe('raw string');
+    expect(await ctx.toCode()).toBe('raw string');
   });
 });

@@ -22,27 +22,24 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "test": "node puppeteer-test.js"
-  },
-  "dependencies": {
-    "demo-apps-backend-sdk": "file:./../backend/sdk",
-    "@gqlts/runtime": "file:./../../runtime",
-    "@next/font": "13.3.1",
-    "@types/node": "18.16.0",
-    "@types/react": "18.0.38",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.39.0",
-    "eslint-config-next": "13.3.1",
-    "next": "13.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.4"
-  },
-  "devDependencies": {
-    "puppeteer": "^19.10.1"
+    "test": "cd ./ui-test && yarn && node puppeteer-test.js"
   },
   "resolutions": {
     "@gqlts/cli": "file:./../../cli",
     "@gqlts/runtime": "file:./../../runtime"
+  },
+  "dependencies": {
+    "@gqlts/runtime": "file:./../../runtime",
+    "@next/font": "13.5.2",
+    "@types/node": "20.6.3",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
+    "demo-apps-backend-sdk": "file:./../backend/sdk",
+    "eslint": "8.49.0",
+    "eslint-config-next": "13.5.2",
+    "next": "13.5.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.2.2"
   }
 }

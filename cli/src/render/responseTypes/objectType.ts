@@ -30,7 +30,7 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
       .split('\n')
       .filter(Boolean)
       .map((l) => INDENTATION + l)
-      .join('\n')
+      .join('\n'),
   );
 
   // there is no need to add extensions as in graphql the implemented type must explicitly add the fields

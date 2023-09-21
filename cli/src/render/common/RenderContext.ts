@@ -1,8 +1,8 @@
 import { Config } from '../../config';
-import { prettify } from '../../helpers/prettify';
 import { relativeImportPath } from './relativeImportPath';
 import { GraphQLSchema } from 'graphql';
 import { BuiltInParserName } from 'prettier';
+import { prettify } from '../../helpers/prettify';
 
 interface Import {
   isDefault: boolean;
@@ -19,7 +19,10 @@ export class RenderContext {
   protected imports: ImportMap = {};
   protected importAliasCounter = 0;
 
-  constructor(public schema?: GraphQLSchema, public config?: Config) {}
+  constructor(
+    public schema?: GraphQLSchema,
+    public config?: Config,
+  ) {}
 
   addCodeBlock(block: string) {
     if (block) {
@@ -70,7 +73,7 @@ export class RenderContext {
     else return;
   }
 
-  toCode(parser?: BuiltInParserName, pretty = false) {
+  async toCode(parser?: BuiltInParserName, pretty = false) {
     const blocks = [...this.codeBlocks];
 
     if (parser && (parser === 'typescript' || parser === 'babel')) {

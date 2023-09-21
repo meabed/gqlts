@@ -28,7 +28,7 @@ export async function fetchSchema({
         }
       : {
           headers,
-        }
+        },
   );
   if (!response.ok) {
     throw new Error('introspection query was not successful, ' + response.statusText);
@@ -38,7 +38,7 @@ export async function fetchSchema({
     const contentType = response.headers.get('Content-Type');
     console.log(`content type is ${contentType}`);
     throw new Error(
-      `endpoint '${endpoint}' did not return valid json, check that your endpoint points to a valid graphql api`
+      `endpoint '${endpoint}' did not return valid json, check that your endpoint points to a valid graphql api`,
     );
   });
   if (!result.data) {

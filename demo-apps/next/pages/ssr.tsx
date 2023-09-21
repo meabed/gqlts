@@ -14,7 +14,7 @@ Home.getInitialProps = async () => {
     {
       v1SatHello: [{ name: 'John Connor' }, { message: 1 }],
     },
-    { headers: { 'x-my-secret': 'Sarah Connor', 'content-type': 'application/json' } }
+    { headers: { 'x-my-secret': 'Sarah Connor', 'content-type': 'application/json' } },
   );
   const message = errors ? JSON.stringify(errors) : data?.v1SatHello?.message;
   return { testResult: message };

@@ -117,7 +117,7 @@ describe('pick', () => {
       // @ts-expect-error
       z.category.c;
       z.category.nested1.a;
-    })
+    }),
   );
   test(
     'response type does not have additional properties',
@@ -133,13 +133,13 @@ describe('pick', () => {
       z.category.nested1.c;
       // @ts-expect-error
       z.category.nested2;
-    })
+    }),
   );
   test(
     'argument syntax',
     dontExecute(() => {
       z.argumentSyntax.a.toLocaleLowerCase;
-    })
+    }),
   );
 });
 
@@ -170,7 +170,7 @@ describe('__scalar', () => {
       z.category.nested1.a;
       z.category.a.getDate;
       z.category.b.getDate;
-    })
+    }),
   );
   test(
     'response type does not have additional properties',
@@ -184,21 +184,21 @@ describe('__scalar', () => {
       z.category.nested1.c;
       // @ts-expect-error
       z.category.nested2;
-    })
+    }),
   );
   test(
     '__scalar is not present',
     dontExecute(() => {
       // @ts-expect-error
       z.category.__scalar;
-    })
+    }),
   );
   test(
     '__name is not present',
     dontExecute(() => {
       // @ts-expect-error __name
       z.__name;
-    })
+    }),
   );
   test(
     'argument syntax',
@@ -207,7 +207,7 @@ describe('__scalar', () => {
       z.argumentSyntax.optional?.big;
       // @ts-expect-error
       z.argumentSyntax.nesting.x;
-    })
+    }),
   );
 });
 
@@ -243,7 +243,7 @@ describe('optional fields', () => {
       z.category.optionalFieldsNested.a;
       // @ts-expect-error
       z.category?.optionalFieldsNested.a;
-    })
+    }),
   );
   test(
     'optional fields are preserved in __scalar',
@@ -257,7 +257,7 @@ describe('optional fields', () => {
       // @ts-expect-error
       z.category.optionalFieldsNested.a;
       z.category.optionalFieldsNested?.a?.toLocaleLowerCase;
-    })
+    }),
   );
   test(
     'argument syntax',
@@ -265,7 +265,7 @@ describe('optional fields', () => {
       // @ts-expect-error optional
       z.argumentSyntax.optional.toLocaleLowerCase;
       z.argumentSyntax.optional?.toLocaleLowerCase;
-    })
+    }),
   );
 });
 
@@ -303,7 +303,7 @@ describe('unions', () => {
       z.union.a.toLocaleLowerCase;
       z.union.a.toLocaleLowerCase;
       z.nesting.nestedUnion.a.toLocaleLowerCase;
-    })
+    }),
   );
   test(
     'does not have __isUnion',
@@ -312,7 +312,7 @@ describe('unions', () => {
       z.union.__isUnion;
       // @ts-expect-error
       z.nesting.nestedUnion.__isUnion;
-    })
+    }),
   );
   test(
     'argument syntax',
@@ -320,7 +320,7 @@ describe('unions', () => {
       z.argumentSyntax.union.a.charAt;
       // @ts-expect-error
       z.argumentSyntax.a;
-    })
+    }),
   );
 });
 
@@ -377,13 +377,13 @@ describe('arrays', () => {
     dontExecute(() => {
       z.list[0].a.charCodeAt;
       z.list[0].x.toFixed;
-    })
+    }),
   );
   test(
     'nested',
     dontExecute(() => {
       z.nested?.list?.[0]?.edges?.[0].x?.toFixed;
-    })
+    }),
   );
   test(
     'maintain optionals',
@@ -391,7 +391,7 @@ describe('arrays', () => {
       // @ts-expect-error optional
       z.list[0].optional.bold;
       z.list[0].optional?.bold;
-    })
+    }),
   );
   test(
     'args syntax',
@@ -400,7 +400,7 @@ describe('arrays', () => {
       z.argumentSyntax.list[0].optional?.blink;
       // @ts-expect-error optional
       z.argumentSyntax.list[0].optional.blink;
-    })
+    }),
   );
 });
 
@@ -417,7 +417,7 @@ describe('literals unions', () => {
       z.literalsUnion === 'b';
       // @ts-expect-error
       z.literalsUnion === 'x';
-    })
+    }),
   );
 });
 
@@ -436,7 +436,7 @@ describe('literals unions', () => {
       z.nullableField.optional?.big;
       // @ts-expect-error optional
       z.nullableField.optional.big;
-    })
+    }),
   );
 });
 
@@ -475,7 +475,7 @@ test(
     x?.edges?.[0]?.node?.y?.toLocaleLowerCase;
     x?.edges?.[0]?.nodes?.[0].x?.toLocaleLowerCase;
     x?.edges?.[0]?.nodes?.[0].y?.toLocaleLowerCase;
-  })
+  }),
 );
 
 ///////////////////////////////////// unions

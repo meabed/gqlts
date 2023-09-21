@@ -14,7 +14,7 @@ async function testCase(
   schemaGql: string,
   renderer: Renderer,
   cases: { [type: string]: Type<string> },
-  output = false
+  output = false,
 ) {
   const schema = await toClientSchema(schemaGql);
 
@@ -60,7 +60,7 @@ test('scalarType', () =>
       Scalar: {},
       Enum: {},
     },
-    false
+    false,
   ));
 
 test('objectType', () =>
@@ -140,7 +140,7 @@ test('objectType', () =>
         object: { type: 'Object' },
       },
     },
-    false
+    false,
   ));
 
 test('unionType', () =>
@@ -173,5 +173,5 @@ test('unionType', () =>
         __typename: { type: 'String' },
       },
     },
-    false
+    false,
   ));

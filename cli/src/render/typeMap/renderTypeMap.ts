@@ -63,7 +63,7 @@ export function renderTypeMap(schema: GraphQLSchema, ctx: RenderContext) {
 export function replaceTypeNamesWithIndexes(typeMap: TypeMap<string>): CompressedTypeMap<number> {
   const nameToIndex: Record<string, number> = Object.assign(
     {},
-    ...Object.keys(typeMap.types).map((k, i) => ({ [k]: i }))
+    ...Object.keys(typeMap.types).map((k, i) => ({ [k]: i })),
   );
   const scalars = typeMap.scalars.map((x) => nameToIndex[x]);
   const types = Object.assign(
@@ -92,21 +92,21 @@ export function replaceTypeNamesWithIndexes(typeMap: TypeMap<string>): Compresse
                 return {
                   [k]: [nameToIndex[arg[0]], ...arg.slice(1)],
                 } as ArgMap<number>;
-              })
+              }),
             );
           }
 
           return {
             [f]: res,
           };
-        })
+        }),
       );
       return {
         [k]: {
           ...fields,
         },
       };
-    })
+    }),
   );
   return {
     scalars,
