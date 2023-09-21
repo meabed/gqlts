@@ -3,6 +3,8 @@
 ## [3.2.18 - 2023-09-21](https://github.com/meabed/gqlts/compare/v3.2.17...v3.2.18)
 - Update dependencies
 - Update prettier to v3 in sdk cli generation
+- Update CI
+- Update tests
 
 ## [3.2.17 - 2023-01-25](https://github.com/meabed/gqlts/compare/v3.2.16...v3.2.17)
 - Fix build
