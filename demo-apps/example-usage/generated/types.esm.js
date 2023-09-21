@@ -78,6 +78,9 @@ export default {
             "states": [
                 11
             ],
+            "subdivisions": [
+                14
+            ],
             "__typename": [
                 12
             ]
@@ -90,6 +93,9 @@ export default {
                 13
             ],
             "currency": [
+                13
+            ],
+            "name": [
                 13
             ],
             "__typename": [
@@ -209,6 +215,20 @@ export default {
                 12
             ],
             "regex": [
+                12
+            ],
+            "__typename": [
+                12
+            ]
+        },
+        "Subdivision": {
+            "code": [
+                6
+            ],
+            "emoji": [
+                12
+            ],
+            "name": [
                 12
             ],
             "__typename": [

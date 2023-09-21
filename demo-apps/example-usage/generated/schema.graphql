@@ -23,12 +23,14 @@ type Country {
   phone: String!
   phones: [String!]!
   states: [State!]!
+  subdivisions: [Subdivision!]!
 }
 
 input CountryFilterInput {
   code: StringQueryOperatorInput
   continent: StringQueryOperatorInput
   currency: StringQueryOperatorInput
+  name: StringQueryOperatorInput
 }
 
 type Language {
@@ -63,4 +65,10 @@ input StringQueryOperatorInput {
   ne: String
   nin: [String!]
   regex: String
+}
+
+type Subdivision {
+  code: ID!
+  emoji: String
+  name: String!
 }

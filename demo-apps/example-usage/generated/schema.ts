@@ -28,6 +28,7 @@ export interface Country {
     phone: Scalars['String']
     phones: Scalars['String'][]
     states: State[]
+    subdivisions: Subdivision[]
     __typename: 'Country'
 }
 
@@ -56,6 +57,13 @@ export interface State {
     __typename: 'State'
 }
 
+export interface Subdivision {
+    code: Scalars['ID']
+    emoji?: Scalars['String']
+    name: Scalars['String']
+    __typename: 'Subdivision'
+}
+
 export interface ContinentRequest{
     code?: boolean | number
     countries?: CountryRequest
@@ -81,11 +89,12 @@ export interface CountryRequest{
     phone?: boolean | number
     phones?: boolean | number
     states?: StateRequest
+    subdivisions?: SubdivisionRequest
     __typename?: boolean | number
     __scalar?: boolean | number
 }
 
-export interface CountryFilterInput {code?: (StringQueryOperatorInput | null),continent?: (StringQueryOperatorInput | null),currency?: (StringQueryOperatorInput | null)}
+export interface CountryFilterInput {code?: (StringQueryOperatorInput | null),continent?: (StringQueryOperatorInput | null),currency?: (StringQueryOperatorInput | null),name?: (StringQueryOperatorInput | null)}
 
 export interface LanguageRequest{
     code?: boolean | number
@@ -118,6 +127,14 @@ export interface StateRequest{
 }
 
 export interface StringQueryOperatorInput {eq?: (Scalars['String'] | null),in?: (Scalars['String'][] | null),ne?: (Scalars['String'] | null),nin?: (Scalars['String'][] | null),regex?: (Scalars['String'] | null)}
+
+export interface SubdivisionRequest{
+    code?: boolean | number
+    emoji?: boolean | number
+    name?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
 
 
 const Continent_possibleTypes: string[] = ['Continent']
@@ -156,4 +173,12 @@ const State_possibleTypes: string[] = ['State']
 export const isState = (obj?: { __typename?: any } | null): obj is State => {
   if (!obj?.__typename) throw new Error('__typename is missing in "isState"')
   return State_possibleTypes.includes(obj.__typename)
+}
+
+
+
+const Subdivision_possibleTypes: string[] = ['Subdivision']
+export const isSubdivision = (obj?: { __typename?: any } | null): obj is Subdivision => {
+  if (!obj?.__typename) throw new Error('__typename is missing in "isSubdivision"')
+  return Subdivision_possibleTypes.includes(obj.__typename)
 }

@@ -36,3 +36,11 @@ export var isState = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isState"')
   return State_possibleTypes.includes(obj.__typename)
 }
+
+
+
+var Subdivision_possibleTypes = ['Subdivision']
+export var isSubdivision = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isSubdivision"')
+  return Subdivision_possibleTypes.includes(obj.__typename)
+}

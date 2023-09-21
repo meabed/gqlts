@@ -1,39 +1,44 @@
-import {
-  linkTypeMap,
-  createClient as createClientOriginal,
-  generateGraphqlOperation,
-  assertSameVersion,
-} from '@gqlts/runtime'
-import types from './types.esm'
-var typeMap = linkTypeMap(types)
-export * from './guards.esm'
 
-export var version = '3.2.18'
-assertSameVersion(version)
+  import {
+      linkTypeMap,
+      createClient as createClientOriginal,
+      generateGraphqlOperation,
+      assertSameVersion,
+  } from '@gqlts/runtime'
+  import types from './types.esm'
+  var typeMap = linkTypeMap(types)
+  export * from './guards.esm'
 
-export var createClient = function (options) {
-  options = options || {}
-  var optionsCopy = {
-    url: 'https://countries.trevorblades.com',
-    queryRoot: typeMap.Query,
-    mutationRoot: typeMap.Mutation,
-    subscriptionRoot: typeMap.Subscription,
+  export var version = "3.2.19"
+  assertSameVersion(version)
+
+  export var createClient = 
+function(options) {
+    options = options || {}
+    var optionsCopy = {
+      url: "https://countries.trevorblades.com",
+      queryRoot: typeMap.Query,
+      mutationRoot: typeMap.Mutation,
+      subscriptionRoot: typeMap.Subscription,
+    }
+    for (var name in options) {
+      optionsCopy[name] = options[name];
+    }
+    return createClientOriginal(optionsCopy)
+}
+
+  
+
+  export var generateQueryOp = function(fields) {
+    return generateGraphqlOperation('query', typeMap.Query, fields)
   }
-  for (var name in options) {
-    optionsCopy[name] = options[name]
+  export var generateMutationOp = function(fields) {
+    return generateGraphqlOperation('mutation', typeMap.Mutation, fields)
   }
-  return createClientOriginal(optionsCopy)
-}
-
-export var generateQueryOp = function (fields) {
-  return generateGraphqlOperation('query', typeMap.Query, fields)
-}
-export var generateMutationOp = function (fields) {
-  return generateGraphqlOperation('mutation', typeMap.Mutation, fields)
-}
-export var generateSubscriptionOp = function (fields) {
-  return generateGraphqlOperation('subscription', typeMap.Subscription, fields)
-}
-export var everything = {
-  __scalar: true,
-}
+  export var generateSubscriptionOp = function(fields) {
+    return generateGraphqlOperation('subscription', typeMap.Subscription, fields)
+  }
+  export var everything = {
+    __scalar: true
+  }
+  

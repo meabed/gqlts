@@ -1,6 +1,6 @@
 {
   "name": "demo-apps-example-cli",
-  "version": "3.2.18",
+  "version": "3.2.19",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "repository": "github:meabed/gqlts",

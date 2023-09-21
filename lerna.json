@@ -1,8 +1,9 @@
 {
-  "version": "3.2.18",
+  "version": "3.2.19",
   "npmClient": "yarn",
   "registry": "https://registry.npmjs.org/",
   "packages": [
     "cli",
     "runtime"
-  ]}
+  ]
+}
