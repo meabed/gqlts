@@ -37,7 +37,7 @@
   "resolutions": {
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
-    "string-width": "4.2.3"
+    "string-width": "6.1.0"
   },
   "dependencies": {
     "@gqlts/cli": "file:../../cli",
