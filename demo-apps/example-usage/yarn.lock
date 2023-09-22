@@ -1200,9 +1200,9 @@
   integrity sha512-EsBwpc7hBUJWAsNPBmJy4hxWx12v6bshQsldrVmjxJoc3isbxhOrF2IcCpaXxfvq03NwkI7sbsOLXbYuqF/8Ww==
 
 "@gqlts/cli@file:../../cli":
-  version "3.2.18"
+  version "3.2.19"
   dependencies:
-    "@gqlts/runtime" "3.2.18"
+    "@gqlts/runtime" "^3.2.19"
     "@graphql-tools/graphql-file-loader" "8.0.0"
     "@graphql-tools/load" "8.0.0"
     browserify "17.0.0"
@@ -1220,8 +1220,8 @@
     terser "5.20.0"
     yargs "17.7.2"
 
-"@gqlts/runtime@3.2.18", "@gqlts/runtime@file:../../runtime":
-  version "3.2.18"
+"@gqlts/runtime@^3.2.19", "@gqlts/runtime@file:../../runtime":
+  version "3.2.19"
   dependencies:
     axios "1.5.0"
     form-data "4.0.0"
