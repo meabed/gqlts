@@ -54,7 +54,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/deep-equal": "1.0.1",
+    "@types/deep-equal": "1.0.2",
     "@types/express": "4.17.17",
     "@types/mocha": "10.0.1",
     "@types/node": "20.6.3",
