@@ -52,7 +52,7 @@
   "devDependencies": {
     "@gqlts/cli": "3.2.19",
     "@types/js-cookie": "3.0.4",
-    "@types/node": "20.6.4",
+    "@types/node": "20.6.5",
     "@types/prismjs": "1.26.1",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
