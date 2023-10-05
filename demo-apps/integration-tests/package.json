@@ -39,7 +39,7 @@
     "ws": "8.14.2"
   },
   "dependencies": {
-    "@apollo/server": "4.9.3",
+    "@apollo/server": "4.9.4",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "await-sleep": "0.0.1",
