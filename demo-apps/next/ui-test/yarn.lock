@@ -548,7 +548,7 @@ puppeteer-core@21.3.8:
     devtools-protocol "0.0.1179426"
     ws "8.14.2"
 
-puppeteer@^21.3.7:
+puppeteer@^21.3.8:
   version "21.3.8"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-21.3.8.tgz#986f95fef0a0f74381053fade8cb7a3595144fbf"
   integrity sha512-4OrInVIAtDgcznENUV4Du4gYSZhRmbCkckvOoPstXrUH4JsQ3atSegY+9f/tOKCDB2qh7sXaszDcFEn+RymY0g==
