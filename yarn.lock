@@ -1756,10 +1756,10 @@
   resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-15.0.0.tgz"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
-"@types/yargs@17.0.27":
-  version "17.0.27"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.27.tgz#a0508217c6a920ff54f272042ed91753480342d7"
-  integrity sha512-J+a6bwjDa0ezk5jBUR/iAHH2xm0gIf4YzsS4QINYTQ42bTiz/Szt5ZSLNLyHospoUAQ6EanoD4NztoJBLACHoQ==
+"@types/yargs@17.0.28":
+  version "17.0.28"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.28.tgz#d106e4301fbacde3d1796ab27374dd16588ec851"
+  integrity sha512-N3e3fkS86hNhtk6BEnc0rj3zcehaxx8QWhCROJkqpl5Zaoi7nAic3jH8q94jVD3zu5LGk+PUB6KAiDmimYOEQw==
   dependencies:
     "@types/yargs-parser" "*"
 
