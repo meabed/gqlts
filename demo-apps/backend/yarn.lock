@@ -327,10 +327,10 @@
   dependencies:
     tslib "^2.5.0"
 
-"@envelop/validation-cache@6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-6.0.4.tgz#4a40dda3344c0ea5a435ee6866b7a5b407a2d839"
-  integrity sha512-yNGi46zD1ES2DmKLnMp0JUy4g7exKrgC4y4C4rRfhZIt3TGy/J0Tae5BJ2vVvsZKX/AVSrPI7iLnIVyCXQQrcg==
+"@envelop/validation-cache@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-7.0.0.tgz#bcd2824311851cebd4d6ae93f515a5db30cab371"
+  integrity sha512-xep61A72uaYPSA6jBhCfo/j0E7TOFKkR2fIAy/ybwS4ALOWUaVsXuCBjJyF0F6D6UTcv3xuqBTgYr8ullVjuhg==
   dependencies:
     hash-it "^6.0.0"
     lru-cache "^10.0.0"

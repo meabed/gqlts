@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@envelop/parser-cache": "6.0.4",
-    "@envelop/validation-cache": "6.0.4",
+    "@envelop/validation-cache": "7.0.0",
     "@graphql-tools/schema": "10.0.0",
     "graphql": "16.8.1",
     "graphql-scalars": "1.22.4",
