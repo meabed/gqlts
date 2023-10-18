@@ -1614,10 +1614,10 @@
   resolved "https://registry.yarnpkg.com/@types/common-tags/-/common-tags-1.8.3.tgz#7bf329bb0e63b3e3a27326cd5b577088d9e4d06a"
   integrity sha512-v3smfzf7umSwpkJrmlUe+apSv6bVnrIFCeBeprnP4f8lIh6pECZxyD50e8yFwfouIt85TdxN5yXiFwS5fnsS3w==
 
-"@types/fs-extra@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-11.0.2.tgz#23dc1ed7b2eba8ccd75568ac34e7a4e48aa2d087"
-  integrity sha512-c0hrgAOVYr21EX8J0jBMXGLMgJqVf/v6yxi0dLaJboW9aQPh16Id+z6w2Tx1hm+piJOLv8xPfVKZCLfjPw/IMQ==
+"@types/fs-extra@11.0.3":
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-11.0.3.tgz#72c3a247c8dd5703c93d900c584e006476146866"
+  integrity sha512-sF59BlXtUdzEAL1u0MSvuzWd7PdZvZEtnaVkzX5mjpdWTJ8brG0jUqve3jPCzSzvAKKMHTG8F8o/WMQLtleZdQ==
   dependencies:
     "@types/jsonfile" "*"
     "@types/node" "*"
@@ -1746,10 +1746,10 @@
   resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.1.tgz"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
-"@types/ws@8.5.7":
-  version "8.5.7"
-  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.7.tgz#1ca585074fe5d2c81dec7a3d451f244a2a6d83cb"
-  integrity sha512-6UrLjiDUvn40CMrAubXuIVtj2PEfKDffJS7ychvnPU44j+KVeXmdHHTgqcM/dxLUTHxlXHiFM8Skmb8ozGdTnQ==
+"@types/ws@8.5.8":
+  version "8.5.8"
+  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.8.tgz#13efec7bd439d0bdf2af93030804a94f163b1430"
+  integrity sha512-flUksGIQCnJd6sZ1l5dqCEG/ksaoAg/eUwiLAGTJQcfgvZJKF++Ta4bJA6A5aPSJmsr+xlseHn4KLgVlNnvPTg==
   dependencies:
     "@types/node" "*"
 
@@ -1758,10 +1758,10 @@
   resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-15.0.0.tgz"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
-"@types/yargs@17.0.28":
-  version "17.0.28"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.28.tgz#d106e4301fbacde3d1796ab27374dd16588ec851"
-  integrity sha512-N3e3fkS86hNhtk6BEnc0rj3zcehaxx8QWhCROJkqpl5Zaoi7nAic3jH8q94jVD3zu5LGk+PUB6KAiDmimYOEQw==
+"@types/yargs@17.0.29":
+  version "17.0.29"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.29.tgz#06aabc72497b798c643c812a8b561537fea760cf"
+  integrity sha512-nacjqA3ee9zRF/++a3FUY1suHTFKZeHba2n8WeDw9cCVdmzmHpIxyzOJBcpHvvEmS8E9KqWlSnWHUkOrkhWcvA==
   dependencies:
     "@types/yargs-parser" "*"
 
