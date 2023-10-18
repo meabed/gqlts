@@ -104,7 +104,7 @@
     "@types/lodash.startswith": "4.2.8",
     "@types/node": "20.8.7",
     "@types/qs": "6.9.9",
-    "@types/ws": "8.5.7",
+    "@types/ws": "8.5.8",
     "common-tags": "1.8.2",
     "dotenv": "16.3.1",
     "jest": "29.7.0",
