@@ -44,7 +44,7 @@
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "@tanstack/react-query": "5.0.0",
-    "@types/js-cookie": "3.0.4",
+    "@types/js-cookie": "3.0.5",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
