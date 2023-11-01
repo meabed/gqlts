@@ -102,7 +102,7 @@
     "@types/lodash.assign": "4.2.8",
     "@types/lodash.get": "4.4.8",
     "@types/lodash.startswith": "4.2.8",
-    "@types/node": "20.8.9",
+    "@types/node": "20.8.10",
     "@types/qs": "6.9.9",
     "@types/ws": "8.5.8",
     "common-tags": "1.8.2",
