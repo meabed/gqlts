@@ -1602,10 +1602,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/browserify@12.0.39":
-  version "12.0.39"
-  resolved "https://registry.yarnpkg.com/@types/browserify/-/browserify-12.0.39.tgz#b5dff7fb61fb429d656a1ae0e31fd40fb2250f12"
-  integrity sha512-10PbToKgqw+thhmttL9zqZtrfaeYn2cIY2MPJLWUYWE6D0SFUFvjc0u4hJAb0qiXM2mMQ14rfTocgozZ+JEsXA==
+"@types/browserify@12.0.40":
+  version "12.0.40"
+  resolved "https://registry.yarnpkg.com/@types/browserify/-/browserify-12.0.40.tgz#5505c783bd6cce0344456614c4495a5226203a7e"
+  integrity sha512-vH5hW7Kt2OoSkCDLzCATlG43lrA2sMIVDvN5PaXsMBPxR4aZSdGJj3de6Z8O8cglnTWp6GuPE0B2HKHi0E4T0w==
   dependencies:
     "@types/insert-module-globals" "*"
     "@types/node" "*"
@@ -1764,10 +1764,10 @@
   resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-15.0.0.tgz"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
-"@types/yargs@17.0.29":
-  version "17.0.29"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.29.tgz#06aabc72497b798c643c812a8b561537fea760cf"
-  integrity sha512-nacjqA3ee9zRF/++a3FUY1suHTFKZeHba2n8WeDw9cCVdmzmHpIxyzOJBcpHvvEmS8E9KqWlSnWHUkOrkhWcvA==
+"@types/yargs@17.0.30":
+  version "17.0.30"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.30.tgz#921094ec92faffd2cd7e5ddb02f95ba158ab5c1d"
+  integrity sha512-3SJLzYk3yz3EgI9I8OLoH06B3PdXIoU2imrBZzaGqUtUXf5iUNDtmAfCGuQrny1bnmyjh/GM/YNts6WK5jR5Rw==
   dependencies:
     "@types/yargs-parser" "*"
 
