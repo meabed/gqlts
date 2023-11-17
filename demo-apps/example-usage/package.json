@@ -51,7 +51,7 @@
     "framer-motion": "10.16.5",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
-    "next": "14.0.2",
+    "next": "14.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-extra-hooks": "2.3.4",
@@ -61,7 +61,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/node": "20.9.0",
+    "@types/node": "20.9.1",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15",
     "next-transpile-modules": "10.0.1",
