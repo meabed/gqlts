@@ -107,7 +107,7 @@
     "@types/jest": "29.5.8",
     "@types/listr": "0.14.8",
     "@types/lodash": "4.14.201",
-    "@types/node": "20.9.1",
+    "@types/node": "20.9.2",
     "@types/qs": "6.9.10",
     "@types/yargs": "17.0.31",
     "common-tags": "1.8.2",
