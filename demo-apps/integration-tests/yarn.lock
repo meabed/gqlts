@@ -1054,10 +1054,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.2.tgz#ee771e2ba4b3dc5b372935d549fd9617bf345b8c"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
-"@types/mocha@10.0.4":
-  version "10.0.4"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-10.0.4.tgz#b5331955ebca216604691fd4fcd2dbdc2bd559a4"
-  integrity sha512-xKU7bUjiFTIttpWaIZ9qvgg+22O1nmbA+HRxdlR+u6TWsGfmFdXrheJoK4fFxrHNVIOBDvDNKZG+LYBpMHpX3w==
+"@types/mocha@10.0.5":
+  version "10.0.5"
+  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-10.0.5.tgz#43c22b06b7616496e4b75b28d9c72aa06b5d96fd"
+  integrity sha512-JUI82qwkRhYJYesuKSeFy46fKbhLaV9RU1gAh2PHmyoEECvlTf5UYeIivYlMszp1WT2CwJ4ziC3zoxsodhsGwg==
 
 "@types/node-fetch@^2.6.1":
   version "2.6.5"
@@ -1072,10 +1072,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.6.3.tgz#5b763b321cd3b80f6b8dde7a37e1a77ff9358dd9"
   integrity sha512-HksnYH4Ljr4VQgEy2lTStbCKv/P590tmPe5HqOnv9Gprffgv5WXAY+Y5Gqniu0GGqeTCUdBnzC3QSrzPkBkAMA==
 
-"@types/node@20.9.2":
-  version "20.9.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.2.tgz#002815c8e87fe0c9369121c78b52e800fadc0ac6"
-  integrity sha512-WHZXKFCEyIUJzAwh3NyyTHYSR35SevJ6mZ1nWwJafKtiQbqRTIKSRcw3Ma3acqgsent3RRDqeVwpHntMk+9irg==
+"@types/node@20.9.3":
+  version "20.9.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.3.tgz#e089e1634436f676ff299596c9531bd2b59fffc6"
+  integrity sha512-nk5wXLAXGBKfrhLB0cyHGbSqopS+nz0BUgZkUQqSHSSgdee0kssp1IAqlQOu333bW+gMNs2QREx7iynm19Abxw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -1116,10 +1116,10 @@
     "@types/mime" "*"
     "@types/node" "*"
 
-"@types/ws@8.5.9":
-  version "8.5.9"
-  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.9.tgz#384c489f99c83225a53f01ebc3eddf3b8e202a8c"
-  integrity sha512-jbdrY0a8lxfdTp/+r7Z4CkycbOFN8WX+IOchLJr3juT/xzbJ8URyTVSJ/hvNdadTgM1mnedb47n+Y31GsFnQlg==
+"@types/ws@8.5.10":
+  version "8.5.10"
+  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.10.tgz#4acfb517970853fa6574a3a6886791d04a396787"
+  integrity sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==
   dependencies:
     "@types/node" "*"
 
