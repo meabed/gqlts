@@ -490,7 +490,7 @@
     lodash.assign "4.2.0"
     lodash.get "4.4.2"
     lodash.startswith "4.2.1"
-    ws "8.15.1"
+    ws "8.16.0"
     zen-observable-ts "1.1.0"
 
 "@graphql-toolkit/code-file-loader@0.7.5":
@@ -5574,10 +5574,10 @@ ts-node@10.9.2:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
-tsd@0.30.0:
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/tsd/-/tsd-0.30.0.tgz#c38b2d36b2fd608c9b5635e7fa7fd59358655c10"
-  integrity sha512-aHL4rEuf3wwRzKCH8yqsE1oMAJYn7SAQ2JfWSgjr1e5/fqr+ggohQazECMpSoRAqSQeM/iIFugoyL/0eFwdTcA==
+tsd@0.30.1:
+  version "0.30.1"
+  resolved "https://registry.yarnpkg.com/tsd/-/tsd-0.30.1.tgz#d590fae513f5f3164af5cb055ca190fd09c7df13"
+  integrity sha512-OKyeWzTGuaidnYPcSCk/Jz6GY+3A4cNe0tLvJXT7V0vyQ8gy4ISNAetex6YodOkJw7b641B5vokmOZFeW/mpmQ==
   dependencies:
     "@tsd/typescript" "~5.3.3"
     eslint-formatter-pretty "^4.1.0"
@@ -5991,10 +5991,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-ws@8.15.1, "ws@^5.2.0 || ^6.0.0 || ^7.0.0":
-  version "8.15.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.15.1.tgz#271ba33a45ca0cc477940f7f200cd7fba7ee1997"
-  integrity sha512-W5OZiCjXEmk0yZ66ZN82beM5Sz7l7coYxpRkzS+p9PP+ToQry8szKh+61eNktr7EA9DOwvFGhfC605jDHbP6QQ==
+ws@8.16.0, "ws@^5.2.0 || ^6.0.0 || ^7.0.0":
+  version "8.16.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.16.0.tgz#d1cd774f36fbc07165066a60e40323eab6446fd4"
+  integrity sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==
 
 xss@^1.0.8:
   version "1.0.14"
