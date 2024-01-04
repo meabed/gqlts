@@ -1526,10 +1526,10 @@ graphql-upload-ts@2.1.0:
   dependencies:
     busboy "1.6.0"
 
-graphql-yoga@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-5.1.0.tgz#27979689b0e8462dad01a1cee01aa04180c93443"
-  integrity sha512-Ee5uJkNSI7ZRS8X79OlPEuF8m2+HCn/dmjvbMNpsz5Yq+sqsLXTEFhKjhjK6hyqrTl1pQwGwJTbl9f886hDMDg==
+graphql-yoga@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-5.1.1.tgz#e47f48217a4c7907290fdf164d9a4c7edb50e30b"
+  integrity sha512-oak5nVKTHpqJgpA1aT3cJPOlCidrW7l6nbc5L6w07VdFul16ielGI2ZnQDAXO+qQih09/4WspD5x0SsSZH+hkg==
   dependencies:
     "@envelop/core" "^5.0.0"
     "@graphql-tools/executor" "^1.0.0"
