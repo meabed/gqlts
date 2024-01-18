@@ -111,7 +111,7 @@
     "sucrase": "3.35.0",
     "ts-jest": "29.1.1",
     "tslib": "2.6.2",
-    "utility-types": "3.10.0"
+    "utility-types": "3.11.0"
   },
   "peerDependencies": {
     "graphql": "*"
