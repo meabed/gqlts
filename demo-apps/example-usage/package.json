@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@types/node": "20.11.16",
-    "@types/react": "18.2.51",
+    "@types/react": "18.2.52",
     "@types/react-dom": "18.2.18",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
