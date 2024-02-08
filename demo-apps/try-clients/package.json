@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@types/mocha": "10.0.6",
-    "mocha": "10.2.0",
+    "mocha": "10.3.0",
     "sucrase": "3.35.0",
     "ts-node": "10.9.2"
   }
