@@ -1495,17 +1495,17 @@
   dependencies:
     tslib "^2.4.0"
 
-"@tanstack/query-core@5.20.2":
-  version "5.20.2"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.20.2.tgz#6ab0c260a42cc8706f6bbe366bd11436d276fba7"
-  integrity sha512-sAILwNiyA1I52e6imOsmNDUA/PuOayOzqz5jcLiIB5wBXqVk+HIiriWouPcAkjS8RqARfHUehuoPwcZ7Uzh0GQ==
+"@tanstack/query-core@5.20.5":
+  version "5.20.5"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.20.5.tgz#12bb02a937cc8f4f158b1428c0ddef5a1f48479b"
+  integrity sha512-T1W28gGgWn0A++tH3lxj3ZuUVZZorsiKcv+R50RwmPYz62YoDEkG4/aXHZELGkRp4DfrW07dyq2K5dvJ4Wl1aA==
 
-"@tanstack/react-query@5.20.2":
-  version "5.20.2"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.20.2.tgz#72f8fc7f9478f75c56443bcd68576b2e5b235a89"
-  integrity sha512-949myvMY77cPqwb71m3wRG2ypgwPijshO5kN9w0CDKWrFC0X8Wh1mwSqst88kIr58tWlWNsGy3U40AK23RgYQA==
+"@tanstack/react-query@5.20.5":
+  version "5.20.5"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.20.5.tgz#ebf57b6d3344478d505ad8db09a8b29262a35dab"
+  integrity sha512-6MHwJ8G9cnOC/XKrwt56QMc91vN7hLlAQNUA0ubP7h9Jj3a/CmkUwT6ALdFbnVP+PsYdhW3WONa8WQ4VcTaSLQ==
   dependencies:
-    "@tanstack/query-core" "5.20.2"
+    "@tanstack/query-core" "5.20.5"
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
@@ -3025,10 +3025,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@11.0.3:
-  version "11.0.3"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.0.3.tgz#b2a87e7ae166a9e27da33da9cfb50a0db5f94fa7"
-  integrity sha512-6x2poQpIWBdbZwLd73w6cKZ1I9IEPIU94C6/Swp1Zt3LJ+sB5bPe1E2wC6EH5hSISXNkMJ4afH7AdwS7MrtkWw==
+framer-motion@11.0.5:
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.0.5.tgz#2ae1341d8605a01c50009d3bb195a67e4e2bfc69"
+  integrity sha512-Lb0EYbQcSK/pgyQUJm+KzsQrKrJRX9sFRyzl9hSr9gFG4Mk8yP7BjhuxvRXzblOM/+JxycrJdCDVmOQBsjpYlw==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
