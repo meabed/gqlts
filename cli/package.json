@@ -82,8 +82,8 @@
   },
   "dependencies": {
     "@gqlts/runtime": "^3.2.19",
-    "@graphql-tools/graphql-file-loader": "8.0.0",
-    "@graphql-tools/load": "8.0.1",
+    "@graphql-tools/graphql-file-loader": "8.0.1",
+    "@graphql-tools/load": "8.0.2",
     "browserify": "17.0.0",
     "colors": "1.4.0",
     "esmify": "2.1.1",
@@ -96,7 +96,7 @@
     "prettier": "3.2.5",
     "qs": "6.11.2",
     "rimraf": "5.0.5",
-    "terser": "5.27.2",
+    "terser": "5.28.1",
     "yargs": "17.7.2"
   },
   "devDependencies": {
@@ -107,7 +107,7 @@
     "@types/jest": "29.5.12",
     "@types/listr": "0.14.9",
     "@types/lodash": "4.14.202",
-    "@types/node": "20.11.19",
+    "@types/node": "20.11.20",
     "@types/qs": "6.9.11",
     "@types/yargs": "17.0.32",
     "common-tags": "1.8.2",
