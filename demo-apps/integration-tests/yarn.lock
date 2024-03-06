@@ -62,10 +62,10 @@
     "@apollo/utils.keyvaluecache" "^2.1.0"
     "@apollo/utils.logger" "^2.0.0"
 
-"@apollo/server@4.10.0":
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.10.0.tgz#fd3c003149b0774903c15a0cfef38e20d05aa096"
-  integrity sha512-pLx//lZ/pvUfWL9G8Np8+y3ujc0pYc8U7dwD6ztt9FAw8NmCPzPaDzlXLBAjGU6WnkqVBOnz8b3dOwRNjLYSUA==
+"@apollo/server@4.10.1":
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.10.1.tgz#0f8efd85c995e0771dafc0ccca40d28def40c28c"
+  integrity sha512-XGMOgTyzV4EBHQq0xQVKFry9hZF7AA/6nxxGLamqdxodhdSdGbU9jrlb5/XDveeGuXP3+5JDdrB2HcziVLJcMA==
   dependencies:
     "@apollo/cache-control-types" "^1.0.3"
     "@apollo/server-gateway-interface" "^1.1.1"
@@ -476,7 +476,7 @@
     prettier "3.2.5"
     qs "6.11.2"
     rimraf "5.0.5"
-    terser "5.28.1"
+    terser "5.29.1"
     yargs "17.7.2"
 
 "@gqlts/runtime@^3.2.19", "@gqlts/runtime@file:../../runtime":
@@ -5494,10 +5494,10 @@ syntax-error@^1.1.1:
   dependencies:
     acorn-node "^1.2.0"
 
-terser@5.28.1:
-  version "5.28.1"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.28.1.tgz#bf00f7537fd3a798c352c2d67d67d65c915d1b28"
-  integrity sha512-wM+bZp54v/E9eRRGXb5ZFDvinrJIOaTapx3WUokyVGZu5ucVCK55zEgGd5Dl2fSr3jUo5sDiERErUWLY6QPFyA==
+terser@5.29.1:
+  version "5.29.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.29.1.tgz#44e58045b70c09792ba14bfb7b4e14ca8755b9fa"
+  integrity sha512-lZQ/fyaIGxsbGxApKmoPTODIzELy3++mXhS5hOqaAWZjQtpq/hFHAc+rm29NND1rYRxRWKcjuARNwULNXa5RtQ==
   dependencies:
     "@jridgewell/source-map" "^0.3.3"
     acorn "^8.8.2"
