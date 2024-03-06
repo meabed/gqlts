@@ -54,8 +54,8 @@
     "@types/js-cookie": "3.0.6",
     "@types/node": "20.11.24",
     "@types/prismjs": "1.26.3",
-    "@types/react": "18.2.62",
-    "@types/react-dom": "18.2.19",
+    "@types/react": "18.2.63",
+    "@types/react-dom": "18.2.20",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
     "typescript": "5.3.3"
