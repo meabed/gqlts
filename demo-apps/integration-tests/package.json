@@ -45,7 +45,7 @@
     "await-sleep": "0.0.1",
     "axios": "1.6.8",
     "deep-equal": "2.2.3",
-    "express": "4.19.0",
+    "express": "4.19.1",
     "graphql": "16.8.1",
     "graphql-easy-mocks": "1.1.1",
     "ts-node": "10.9.2",
