@@ -48,7 +48,7 @@
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
-    "framer-motion": "11.0.20",
+    "framer-motion": "11.0.21",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
     "next": "14.1.4",
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@types/node": "20.11.30",
-    "@types/react": "18.2.70",
+    "@types/react": "18.2.71",
     "@types/react-dom": "18.2.22",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
