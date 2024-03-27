@@ -59,7 +59,7 @@
     "@types/mocha": "10.0.6",
     "@types/node": "20.11.30",
     "@types/ws": "8.5.10",
-    "mocha": "10.3.0",
+    "mocha": "10.4.0",
     "snap-shot-it": "7.9.10",
     "sucrase": "3.35.0"
   }

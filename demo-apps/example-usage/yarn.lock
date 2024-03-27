@@ -1561,13 +1561,12 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@18.2.71":
-  version "18.2.71"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.71.tgz#77c3b97b02014bf351b21b684f80273a3a343f96"
-  integrity sha512-PxEsB9OjmQeYGffoWnYAd/r5FiJuUw2niFQHPc2v2idwh8wGPkkYzOHuinNJJY6NZqfoTCiOIizDOz38gYNsyw==
+"@types/react@18.2.72":
+  version "18.2.72"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.72.tgz#3341a6d0746d1c7d8510810319323850c04bd6ed"
+  integrity sha512-/e7GWxGzXQF7OJAua7UAYqYi/4VpXEfbGtmYQcAQwP3SjjjAXfybTf/JK5S+SaetB/ChXl8Y2g1hCsj7jDXxcg==
   dependencies:
     "@types/prop-types" "*"
-    "@types/scheduler" "*"
     csstype "^3.0.2"
 
 "@types/scheduler@*":
@@ -3036,10 +3035,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@11.0.21:
-  version "11.0.21"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.0.21.tgz#49d19034d9eecf7ca28ab85eb14b30518b26cffa"
-  integrity sha512-blcaJ0LJM2y7AB0c45ijbjtUsoXTga+aJpRWGO/qYLUcpG0dLu2aKBryqfgp5UZ4uXiiZ8UA63q6GLzCK9oZ4Q==
+framer-motion@11.0.22:
+  version "11.0.22"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.0.22.tgz#15fa88138b26d7fed15980b08175b67a6445b3c7"
+  integrity sha512-kWyldNJLyKDvLWjPYFmgngQYLiU8973BtAeVBc83r2cnil/NBUQJb1ff/6/EweNQYb5BW3PaXFjZa4D3pn/W2Q==
   dependencies:
     tslib "^2.4.0"
 
