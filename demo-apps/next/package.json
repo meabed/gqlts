@@ -32,7 +32,7 @@
     "@gqlts/runtime": "file:./../../runtime",
     "@next/font": "14.1.4",
     "@types/node": "20.11.30",
-    "@types/react": "18.2.72",
+    "@types/react": "18.2.73",
     "@types/react-dom": "18.2.22",
     "demo-apps-backend-sdk": "file:./../backend/sdk",
     "eslint": "8.57.0",
