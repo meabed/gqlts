@@ -40,7 +40,7 @@
     "@chakra-ui/react": "2.8.2",
     "@emotion/core": "11.0.0",
     "@emotion/react": "11.11.4",
-    "@emotion/styled": "11.11.0",
+    "@emotion/styled": "11.11.5",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "@tanstack/react-query": "5.28.9",
@@ -48,7 +48,7 @@
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
-    "framer-motion": "11.0.23",
+    "framer-motion": "11.0.24",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
     "next": "14.1.4",
@@ -63,7 +63,7 @@
   "devDependencies": {
     "@types/node": "20.11.30",
     "@types/react": "18.2.73",
-    "@types/react-dom": "18.2.22",
+    "@types/react-dom": "18.2.23",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
     "ts-node": "10.9.2"
