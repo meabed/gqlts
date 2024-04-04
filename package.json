@@ -55,7 +55,7 @@
     "@ianvs/prettier-plugin-sort-imports": "4.2.1",
     "lerna": "8.1.2",
     "prettier": "3.2.5",
-    "typescript": "5.4.3",
+    "typescript": "5.4.4",
     "ultra-runner": "3.10.5"
   }
 }
