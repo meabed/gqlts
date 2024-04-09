@@ -61,8 +61,8 @@
     "typescript": "5.4.4"
   },
   "devDependencies": {
-    "@types/node": "20.12.5",
-    "@types/react": "18.2.74",
+    "@types/node": "20.12.6",
+    "@types/react": "18.2.75",
     "@types/react-dom": "18.2.24",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
