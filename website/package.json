@@ -52,12 +52,12 @@
   "devDependencies": {
     "@gqlts/cli": "3.2.19",
     "@types/js-cookie": "3.0.6",
-    "@types/node": "20.12.6",
+    "@types/node": "20.12.7",
     "@types/prismjs": "1.26.3",
     "@types/react": "18.2.75",
     "@types/react-dom": "18.2.24",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
-    "typescript": "5.4.4"
+    "typescript": "5.4.5"
   }
 }
