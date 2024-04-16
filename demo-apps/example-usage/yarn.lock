@@ -3071,10 +3071,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@11.1.0:
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.1.0.tgz#cffcd4fea127f97634d97487d49a33c9573f3f15"
-  integrity sha512-UVL4D5GvZ4LbwkUyAidMlbnB2b18VbPDITVreBuDULiz5E1sdVvUxNVpVAj4myuyH34LY/rwJEj8GOSG0TsEZg==
+framer-motion@11.1.1:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.1.1.tgz#c897ac9ad650f37e23433b76e9a10dec149df318"
+  integrity sha512-h2Zz95boULAIvow/2y8CQTFv5MHxPQO/98DrAwMe4HoI8/fcU6hUfH+886u8W/5oedp5zCCZ7qUVS46ZWoTEuA==
   dependencies:
     tslib "^2.4.0"
 
