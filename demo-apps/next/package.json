@@ -30,14 +30,14 @@
   },
   "dependencies": {
     "@gqlts/runtime": "file:./../../runtime",
-    "@next/font": "14.2.2",
+    "@next/font": "14.2.3",
     "@types/node": "20.12.7",
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
     "demo-apps-backend-sdk": "file:./../backend/sdk",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.2",
-    "next": "14.2.2",
+    "eslint-config-next": "14.2.3",
+    "next": "14.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.4.5"
