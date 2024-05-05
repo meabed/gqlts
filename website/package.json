@@ -42,7 +42,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-final-form": "6.5.9",
-    "react-icons": "5.1.0",
+    "react-icons": "5.2.0",
     "react-keyframes": "0.2.3",
     "react-runkit": "0.9.0",
     "react-storage-hooks": "4.0.1",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@gqlts/cli": "3.2.19",
     "@types/js-cookie": "3.0.6",
-    "@types/node": "20.12.7",
+    "@types/node": "20.12.8",
     "@types/prismjs": "1.26.3",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
