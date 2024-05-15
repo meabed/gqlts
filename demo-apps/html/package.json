@@ -21,6 +21,6 @@
     "test": "node puppeteer-test.js"
   },
   "devDependencies": {
-    "puppeteer": "22.8.1"
+    "puppeteer": "22.8.2"
   }
 }
