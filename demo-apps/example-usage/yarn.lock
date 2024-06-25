@@ -1510,17 +1510,17 @@
     "@swc/counter" "^0.1.3"
     tslib "^2.4.0"
 
-"@tanstack/query-core@5.45.0":
-  version "5.45.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.45.0.tgz#47a662d311c2588867341238960ec21dc7f0714e"
-  integrity sha512-RVfIZQmFUTdjhSAAblvueimfngYyfN6HlwaJUPK71PKd7yi43Vs1S/rdimmZedPWX/WGppcq/U1HOj7O7FwYxw==
+"@tanstack/query-core@5.47.0":
+  version "5.47.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.47.0.tgz#90b4d1c2d260c751891e9f56f02ee935c8265fbb"
+  integrity sha512-Ql0RBKLsTFcLPKUB/lv+miIjB/OA1c1/JgEQBhXbwOnoHuOoqTWXEWVNJnBeWWGMLbrOnQWgzy7Iwzy/CCKV7g==
 
-"@tanstack/react-query@5.45.1":
-  version "5.45.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.45.1.tgz#a0ac6bb89b4a2c2b0251f6647a0a370d86f05347"
-  integrity sha512-mYYfJujKg2kxmkRRjA6nn4YKG3ITsKuH22f1kteJ5IuVQqgKUgbaSQfYwVP0gBS05mhwxO03HVpD0t7BMN7WOA==
+"@tanstack/react-query@5.47.0":
+  version "5.47.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.47.0.tgz#59d09b01a7bbdb1019ce84966fec185848363eb1"
+  integrity sha512-f1mST6nTxh5to9fhKVTwukbvH/qAoiJFpKK3DyGnpusycukmulb/xfiZbFuP8Y68aPIsIO5I5wC8QkVZKUop+Q==
   dependencies:
-    "@tanstack/query-core" "5.45.0"
+    "@tanstack/query-core" "5.47.0"
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
@@ -3071,10 +3071,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@11.2.11:
-  version "11.2.11"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.2.11.tgz#bbadbb15914d90e54cc5fa52c4b5ba7418f26c04"
-  integrity sha512-n+ozoEzgJu/2h9NoQMokF+CwNqIRVyuRC4RwMPwklfrrTjbVV32k9uBIgqYAwn7Jfpt5LuDVCtT57MWz1FbaLw==
+framer-motion@11.2.12:
+  version "11.2.12"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.2.12.tgz#ca5c49f8a1c70163cbadabcbd318acdcfea569fb"
+  integrity sha512-lCjkV4nA9rWOy2bhR4RZzkp2xpB++kFmUZ6D44V9VQaxk+JDmbDd5lq+u58DjJIIllE8AZEXp9OG/TyDN4FB/w==
   dependencies:
     tslib "^2.4.0"
 
