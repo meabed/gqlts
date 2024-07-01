@@ -1550,10 +1550,10 @@ graphql-upload-ts@2.1.2:
     http-errors "^2.0.0"
     object-path "^0.11.8"
 
-graphql-yoga@5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-5.5.0.tgz#62df520b2b259529cad05e6cea6577674500fc45"
-  integrity sha512-GrF1GfR5RJb/iHEcRQakXSSoqXb2dgGa0UCU0CXsfYnuUstSog6nF5oCUKlXz1UnFbpNAlVhU++rd088S4VAtg==
+graphql-yoga@5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-5.6.0.tgz#2e3e354e33bae5ade1a67c1dc3b8e94274f1bc03"
+  integrity sha512-MqzHRPmiMSilYLDbJtAnXN7oyggd446a4F9dyj/H4gCmM/3YllCYw3vtKcmsykorsfiSKCYpCf5CimNXIVaHHg==
   dependencies:
     "@envelop/core" "^5.0.0"
     "@graphql-tools/executor" "^1.2.5"
