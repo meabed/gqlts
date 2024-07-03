@@ -51,7 +51,7 @@
     "ts-node": "10.9.2",
     "tsd": "0.31.1",
     "tsdef": "0.0.14",
-    "typescript": "5.5.2"
+    "typescript": "5.5.3"
   },
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
@@ -59,7 +59,7 @@
     "@types/mocha": "10.0.7",
     "@types/node": "20.14.9",
     "@types/ws": "8.5.10",
-    "mocha": "10.5.2",
+    "mocha": "10.6.0",
     "snap-shot-it": "7.9.10",
     "sucrase": "3.35.0"
   }
