@@ -95,8 +95,8 @@
     "mkdirp": "3.0.1",
     "prettier": "3.3.2",
     "qs": "6.12.3",
-    "rimraf": "6.0.0",
-    "terser": "5.31.1",
+    "rimraf": "6.0.1",
+    "terser": "5.31.2",
     "yargs": "17.7.2"
   },
   "devDependencies": {
@@ -115,6 +115,6 @@
     "husky": "9.0.11",
     "jest": "29.7.0",
     "sucrase": "3.35.0",
-    "ts-jest": "29.2.0"
+    "ts-jest": "29.2.2"
   }
 }
