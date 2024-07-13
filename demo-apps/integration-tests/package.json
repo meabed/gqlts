@@ -58,7 +58,7 @@
     "@types/express": "4.17.21",
     "@types/mocha": "10.0.7",
     "@types/node": "20.14.10",
-    "@types/ws": "8.5.10",
+    "@types/ws": "8.5.11",
     "mocha": "10.6.0",
     "snap-shot-it": "7.9.10",
     "sucrase": "3.35.0"
