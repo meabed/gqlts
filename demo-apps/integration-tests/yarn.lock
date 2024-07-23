@@ -62,10 +62,10 @@
     "@apollo/utils.keyvaluecache" "^2.1.0"
     "@apollo/utils.logger" "^2.0.0"
 
-"@apollo/server@4.10.4":
-  version "4.10.4"
-  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.10.4.tgz#98590173721b63bdec7ab2fe15179c8a04955233"
-  integrity sha512-HS12CUa1wq8f5zKXOKJRwRdESFp4por9AINecpcsEUV9jsCP/NqPILgx0hCOOFJuKxmnaL7070xO6l5xmOq4Fw==
+"@apollo/server@4.10.5":
+  version "4.10.5"
+  resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.10.5.tgz#acde4f2de52d550e190ab4188dc289d4df9daf3a"
+  integrity sha512-I+Oi1CnphXExSAAsZbclgRDN4k4CEMxyKRzYg3bir5N8OmydEhzXDlIGAOETP/TKblxR7HPXGvwn2cJKzbl46w==
   dependencies:
     "@apollo/cache-control-types" "^1.0.3"
     "@apollo/server-gateway-interface" "^1.1.1"
@@ -78,7 +78,6 @@
     "@apollo/utils.usagereporting" "^2.1.0"
     "@apollo/utils.withrequired" "^2.0.0"
     "@graphql-tools/schema" "^9.0.0"
-    "@josephg/resolvable" "^1.0.0"
     "@types/express" "^4.17.13"
     "@types/express-serve-static-core" "^4.17.30"
     "@types/node-fetch" "^2.6.1"
@@ -5863,10 +5862,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.3.tgz#e1b0a3c394190838a0b168e771b0ad56a0af0faa"
-  integrity sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==
+typescript@5.5.4:
+  version "5.5.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
+  integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
 
 umd@^3.0.0:
   version "3.0.3"
