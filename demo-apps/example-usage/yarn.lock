@@ -1590,10 +1590,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.198.tgz#4d27465257011aedc741a809f1269941fa2c5d4c"
   integrity sha512-trNJ/vtMZYMLhfN45uLq4ShQSw0/S7xCTLLVM+WM1rmFpba/VS42jVUgaO3w/NOLiWR/09lnYk0yMaA/atdIsg==
 
-"@types/node@20.14.11":
-  version "20.14.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.11.tgz#09b300423343460455043ddd4d0ded6ac579b74b"
-  integrity sha512-kprQpL8MMeszbz6ojB5/tU8PLN4kesnN8Gjzw349rDlNgsSzg90lAVj3llK99Dh7JON+t9AuscPPFW6mPbTnSA==
+"@types/node@20.14.12":
+  version "20.14.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.12.tgz#129d7c3a822cb49fc7ff661235f19cfefd422b49"
+  integrity sha512-r7wNXakLeSsGT0H1AU863vS2wa5wBOK4bWMjZz2wj+8nBx+m5PeIn0k8AloSLpRuiwdRQZwarZqHE4FNArPuJQ==
   dependencies:
     undici-types "~5.26.4"
 
@@ -3102,10 +3102,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@11.3.9:
-  version "11.3.9"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.3.9.tgz#79323d5fb186a8ac1b0dc37ff46272fede88d858"
-  integrity sha512-6oW/GDxuLBZqWJJeC8+zkEQeYDe6BYXPaNDUiJNCbzj4KDfVpcScWpM+6A7YoQGCfbtL7Q3ZqAZDYXPUF5r54w==
+framer-motion@11.3.12:
+  version "11.3.12"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.3.12.tgz#28927129824ce2ce52b5da1f7a4930a4063bafa2"
+  integrity sha512-ulc8EHFZpKIj+NAyJv+alLUEUIXZKOQnE+JHkGjfoIcxbZwV+CSvfOoACaOpAW4nVznFMF2y3r+ViUtPtP4qiw==
   dependencies:
     tslib "^2.4.0"
 
