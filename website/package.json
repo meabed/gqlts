@@ -47,12 +47,12 @@
     "react-runkit": "0.9.0",
     "react-storage-hooks": "4.0.1",
     "tmp-promise": "3.0.3",
-    "use-debounce": "10.0.1"
+    "use-debounce": "10.0.2"
   },
   "devDependencies": {
     "@gqlts/cli": "3.2.19",
     "@types/js-cookie": "3.0.6",
-    "@types/node": "20.14.12",
+    "@types/node": "20.14.13",
     "@types/prismjs": "1.26.4",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
