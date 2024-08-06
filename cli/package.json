@@ -109,7 +109,7 @@
     "@types/lodash": "4.17.7",
     "@types/node": "20.14.14",
     "@types/qs": "6.9.15",
-    "@types/yargs": "17.0.32",
+    "@types/yargs": "17.0.33",
     "common-tags": "1.8.2",
     "dotenv": "16.4.5",
     "husky": "9.1.4",
