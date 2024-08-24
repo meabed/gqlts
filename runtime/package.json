@@ -109,8 +109,8 @@
     "dotenv": "16.4.5",
     "jest": "29.7.0",
     "sucrase": "3.35.0",
-    "ts-jest": "29.2.4",
-    "tslib": "2.6.3",
+    "ts-jest": "29.2.5",
+    "tslib": "2.7.0",
     "utility-types": "3.11.0"
   },
   "peerDependencies": {
