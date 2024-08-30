@@ -37,7 +37,7 @@
     "nextra-theme-docs": "2.13.4",
     "npm-name": "8.0.0",
     "p-debounce": "4.0.0",
-    "prism-react-renderer": "2.3.1",
+    "prism-react-renderer": "2.4.0",
     "prismjs": "1.29.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
