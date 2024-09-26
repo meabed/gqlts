@@ -1317,13 +1317,13 @@
     prettier "3.3.3"
     qs "6.13.0"
     rimraf "6.0.1"
-    terser "5.33.0"
+    terser "5.34.0"
     yargs "17.7.2"
 
 "@gqlts/runtime@^3.2.19", "@gqlts/runtime@file:../../runtime":
   version "3.2.19"
   dependencies:
-    axios "1.7.4"
+    axios "1.7.7"
     form-data "4.0.0"
     graphql-ws "5.16.0"
     is-plain-obj "4.1.0"
@@ -1606,10 +1606,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.198.tgz#4d27465257011aedc741a809f1269941fa2c5d4c"
   integrity sha512-trNJ/vtMZYMLhfN45uLq4ShQSw0/S7xCTLLVM+WM1rmFpba/VS42jVUgaO3w/NOLiWR/09lnYk0yMaA/atdIsg==
 
-"@types/node@20.16.7":
-  version "20.16.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.16.7.tgz#0a245bf5805add998a22b8b5adac612ee70190bc"
-  integrity sha512-QkDQjAY3gkvJNcZOWwzy3BN34RweT0OQ9zJyvLCU0kSK22dO2QYh/NHGfbEAYylPYzRB1/iXcojS79wOg5gFSw==
+"@types/node@20.16.9":
+  version "20.16.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.16.9.tgz#1217c6cc77c4f3aaf4a6c76fb56b790e81e48120"
+  integrity sha512-rkvIVJxsOfBejxK7I0FO5sa2WxFmJCzoDwcd88+fq/CUfynNywTo/1/T6hyFz22CyztsnLS9nVlHOnTI36RH5w==
   dependencies:
     undici-types "~6.19.2"
 
@@ -2002,10 +2002,10 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-axios@1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.4.tgz#4c8ded1b43683c8dd362973c393f3ede24052aa2"
-  integrity sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==
+axios@1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.7.tgz#2f554296f9892a72ac8d8e4c5b79c14a91d0a47f"
+  integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.0"
@@ -3118,10 +3118,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@11.7.0:
-  version "11.7.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.7.0.tgz#c721e3e1b7be10d12f6f79f8300148ec288d4166"
-  integrity sha512-m+1E3mMzDIQ5DsVghMvXyC+jSkZSm5RHBLA2gHa/LczcXwW6JbQK4Uz48LsuCTGV8bZFVUezcauHj3M33tY/5w==
+framer-motion@11.8.0:
+  version "11.8.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.8.0.tgz#dc15b9ecf3c52ad2b02f43800e721dd6e106c08a"
+  integrity sha512-q/axN/PFRdKmzPK6PO2OhbLUMWXXZuiejdM1/3FhC2hm4YIetc+qeco2EvWm4u1/UTFmevclE492wGFNfSZ4eQ==
   dependencies:
     tslib "^2.4.0"
 
@@ -5208,10 +5208,10 @@ tapable@^2.2.0:
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.1.tgz#1967a73ef4060a82f12ab96af86d52fdb76eeca0"
   integrity sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==
 
-terser@5.33.0:
-  version "5.33.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.33.0.tgz#8f9149538c7468ffcb1246cfec603c16720d2db1"
-  integrity sha512-JuPVaB7s1gdFKPKTelwUyRq5Sid2A3Gko2S0PncwdBq7kN9Ti9HPWDQ06MPsEDGsZeVESjKEnyGy68quBk1w6g==
+terser@5.34.0:
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.34.0.tgz#62f2496542290bc6d8bf886edaee7fac158e37e4"
+  integrity sha512-y5NUX+U9HhVsK/zihZwoq4r9dICLyV2jXGOriDAVOeKhq3LKVjgJbGO90FisozXLlJfvjHqgckGmJFBb9KYoWQ==
   dependencies:
     "@jridgewell/source-map" "^0.3.3"
     acorn "^8.8.2"
