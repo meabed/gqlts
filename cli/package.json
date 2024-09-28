@@ -96,7 +96,7 @@
     "prettier": "3.3.3",
     "qs": "6.13.0",
     "rimraf": "6.0.1",
-    "terser": "5.34.0",
+    "terser": "5.34.1",
     "yargs": "17.7.2"
   },
   "devDependencies": {
@@ -107,7 +107,7 @@
     "@types/jest": "29.5.13",
     "@types/listr": "0.14.9",
     "@types/lodash": "4.17.9",
-    "@types/node": "20.16.9",
+    "@types/node": "20.16.10",
     "@types/qs": "6.9.16",
     "@types/yargs": "17.0.33",
     "common-tags": "1.8.2",
