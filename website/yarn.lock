@@ -4576,10 +4576,10 @@ next@14.2.14:
     "@next/swc-win32-ia32-msvc" "14.2.14"
     "@next/swc-win32-x64-msvc" "14.2.14"
 
-nextra-theme-docs@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.3.tgz#f03e7cc97433935bc28e2a4f2255b5bd69e50fcb"
-  integrity sha512-zC1mrASoYttM2rjAiUhmftM4gNb6UGtPhOO/oS68ky6ZdqLMp6i9UBgnECrjPRZdfOL3c+VAWRPjBM2B7a80Dw==
+nextra-theme-docs@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.4.tgz#4962f8c9604d02427488beade81e97c81ead4380"
+  integrity sha512-VurRpFV0PEDIFYoFI0w7CiIm8XRwHcI7WGrULoyMXWx19hXU5CR9Hus1175WMeIytDgUWtAHuU6wnDqbbJ+MXA==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.0.0"
@@ -4589,10 +4589,10 @@ nextra-theme-docs@3.0.3:
     scroll-into-view-if-needed "^3.1.0"
     zod "^3.22.3"
 
-nextra@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.3.tgz#966d7decd794ad3e800007cc03f7f8811f148e7f"
-  integrity sha512-14NdEDZCdyZBrihbMBdGon3aq6feYVNonetHQrYXIVcCxuUsh9CNYRUX5bImpE3zQ6cfXDnRJsG70tHDbXdHMQ==
+nextra@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.4.tgz#16e8829e737ad1890b0b72627376235fb53daeb8"
+  integrity sha512-7ozvGHVRBNYe6C2Ssr6KOKvE7bbVTUB+LCxRtYr/p7uvZlLBGcLcFnIxr7OtoPTIn+AsggMHd8foUV7Rbrdsiw==
   dependencies:
     "@headlessui/react" "^2.1.2"
     "@mdx-js/mdx" "^3.0.0"
