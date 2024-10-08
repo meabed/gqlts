@@ -969,10 +969,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@20.16.10":
-  version "20.16.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.16.10.tgz#0cc3fdd3daf114a4776f54ba19726a01c907ef71"
-  integrity sha512-vQUKgWTjEIRFCvK6CyriPH3MZYiYlNy0fKiEYHWbcoWLEgs4opurGGKlebrTLqdSMIbXImH6XExNiIyNUv3WpA==
+"@types/node@20.16.11":
+  version "20.16.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.16.11.tgz#9b544c3e716b1577ac12e70f9145193f32750b33"
+  integrity sha512-y+cTCACu92FyA5fgQSAI8A1H429g7aSK2HsO7K4XYUWc4dY5IUz55JSDIYT6/VsOLfGy8vmvQYC2hfb0iF16Uw==
   dependencies:
     undici-types "~6.19.2"
 
@@ -4576,10 +4576,10 @@ next@14.2.14:
     "@next/swc-win32-ia32-msvc" "14.2.14"
     "@next/swc-win32-x64-msvc" "14.2.14"
 
-nextra-theme-docs@3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.4.tgz#4962f8c9604d02427488beade81e97c81ead4380"
-  integrity sha512-VurRpFV0PEDIFYoFI0w7CiIm8XRwHcI7WGrULoyMXWx19hXU5CR9Hus1175WMeIytDgUWtAHuU6wnDqbbJ+MXA==
+nextra-theme-docs@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.7.tgz#fdf5a7150d6b0e8f0f4c403b114e9229377e6451"
+  integrity sha512-qh3Df6EHbJUK7Z7KBwtXs949Tz+heyAfC+Vu/jxw/guRHW0gTEFSdl3+9eCwaWmjJq9KGly9QOjgi8fcgOy0UA==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.0.0"
@@ -4589,10 +4589,10 @@ nextra-theme-docs@3.0.4:
     scroll-into-view-if-needed "^3.1.0"
     zod "^3.22.3"
 
-nextra@3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.4.tgz#16e8829e737ad1890b0b72627376235fb53daeb8"
-  integrity sha512-7ozvGHVRBNYe6C2Ssr6KOKvE7bbVTUB+LCxRtYr/p7uvZlLBGcLcFnIxr7OtoPTIn+AsggMHd8foUV7Rbrdsiw==
+nextra@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.7.tgz#3abc08bcf5ad0d21ede82c00ca293db54b0ebb9b"
+  integrity sha512-DzDS+hin8Jaqf6a4W/f4+qRNr1wdnzpbdc5szIIcck7g0BC4PX3ritwiH11YeAVGU1TFITnuSlMmu3DhC4aLlQ==
   dependencies:
     "@headlessui/react" "^2.1.2"
     "@mdx-js/mdx" "^3.0.0"
