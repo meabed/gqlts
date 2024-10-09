@@ -822,10 +822,10 @@
   resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.59.4.tgz#2cd0ec74c914ca966092c422f3d3345832cf7387"
   integrity sha512-bpdWtA61/xMUCdjD8EJon9Qd6DHEF8Kp47I/pV/ZzlLQSyy+l0FSILhoLbNbz9m9w5RpTDSDzxyYNzDFV9k6ZQ==
 
-"@tanstack/react-query@5.59.4":
-  version "5.59.4"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.59.4.tgz#9e9587a35cf2ace9ce98bd7bc72613e40b0637cd"
-  integrity sha512-8MCeX+CxcAPKlVUYiUuBNpDgtgdYhbGPDEDN95RwC1SH/hTsbhauhRqUvgi81MYrOGbI6q6Aq6scG94EsLaYlw==
+"@tanstack/react-query@5.59.5":
+  version "5.59.5"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.59.5.tgz#6b7b09ed6c22f8e8647e3cc9b272c7f4b154811a"
+  integrity sha512-Z50KI5f5SyIu5MvlNpA19p3H4qY7lbLj1amopmA8bAvzAmns1O3aCFTw+LWLwuXwR4b6XU9dxULVevttSADCtg==
   dependencies:
     "@tanstack/query-core" "5.59.4"
 
@@ -866,10 +866,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.198.tgz#4d27465257011aedc741a809f1269941fa2c5d4c"
   integrity sha512-trNJ/vtMZYMLhfN45uLq4ShQSw0/S7xCTLLVM+WM1rmFpba/VS42jVUgaO3w/NOLiWR/09lnYk0yMaA/atdIsg==
 
-"@types/node@20.16.11":
-  version "20.16.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.16.11.tgz#9b544c3e716b1577ac12e70f9145193f32750b33"
-  integrity sha512-y+cTCACu92FyA5fgQSAI8A1H429g7aSK2HsO7K4XYUWc4dY5IUz55JSDIYT6/VsOLfGy8vmvQYC2hfb0iF16Uw==
+"@types/node@22.7.5":
+  version "22.7.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.7.5.tgz#cfde981727a7ab3611a481510b473ae54442b92b"
+  integrity sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==
   dependencies:
     undici-types "~6.19.2"
 
@@ -1620,9 +1620,9 @@ callsites@^3.0.0:
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
 caniuse-lite@^1.0.30001517:
-  version "1.0.30001538"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001538.tgz#9dbc6b9af1ff06b5eb12350c2012b3af56744f3f"
-  integrity sha512-HWJnhnID+0YMtGlzcp3T9drmBJUVDchPJ08tpUGFLs9CYlwWPH2uLgpHn8fND5pCgXVtnGS3H4QR9XLMHVNkHw==
+  version "1.0.30001617"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001617.tgz#809bc25f3f5027ceb33142a7d6c40759d7a901eb"
+  integrity sha512-mLyjzNI9I+Pix8zwcrpxEbGlfqOkF9kM3ptzmKNw5tizSyYwMe+nGLTqMK9cO+0E+Bh6TsBxNAaHWEM8xwSsmA==
 
 caniuse-lite@^1.0.30001579:
   version "1.0.30001579"
@@ -2027,9 +2027,9 @@ domain-browser@^1.2.0:
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
 
 dset@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/dset/-/dset-3.1.2.tgz#89c436ca6450398396dc6538ea00abc0c54cd45a"
-  integrity sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/dset/-/dset-3.1.4.tgz#f8eaf5f023f068a036d08cd07dc9ffb7d0065248"
+  integrity sha512-2QF/g9/zTaPDc3BjNcVTGoBbXBgYfMTTceLaYcFJ/W9kggFUkhxD/hMEeuLKbugyef9SqAx8cpgwlIP/jinUTA==
 
 duplexer2@^0.1.2, duplexer2@^0.1.4, duplexer2@~0.1.0, duplexer2@~0.1.2:
   version "0.1.4"

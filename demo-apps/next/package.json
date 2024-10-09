@@ -3,20 +3,7 @@
   "version": "3.2.19",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
-  "repository": "github:meabed/gqlts",
   "license": "MIT",
-  "author": {
-    "name": "Mohamed Meabed",
-    "email": "mo@meabed.com",
-    "url": "https://meabed.com"
-  },
-  "maintainers": [
-    {
-      "name": "Mohamed Meabed",
-      "email": "mo@meabed.com",
-      "url": "https://meabed.com"
-    }
-  ],
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -31,11 +18,11 @@
   "dependencies": {
     "@gqlts/runtime": "file:./../../runtime",
     "@next/font": "14.2.15",
-    "@types/node": "20.16.11",
+    "@types/node": "22.7.5",
     "@types/react": "18.3.11",
     "@types/react-dom": "18.3.0",
     "demo-apps-backend-sdk": "file:./../backend/sdk",
-    "eslint": "9.12.0",
+    "eslint": "8.57.1",
     "eslint-config-next": "14.2.15",
     "next": "14.2.15",
     "react": "18.3.1",

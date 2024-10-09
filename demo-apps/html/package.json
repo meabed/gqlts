@@ -3,20 +3,7 @@
   "version": "3.2.19",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
-  "repository": "github:meabed/gqlts",
   "license": "MIT",
-  "author": {
-    "name": "Mohamed Meabed",
-    "email": "mo@meabed.com",
-    "url": "https://meabed.com"
-  },
-  "maintainers": [
-    {
-      "name": "Mohamed Meabed",
-      "email": "mo@meabed.com",
-      "url": "https://meabed.com"
-    }
-  ],
   "scripts": {
     "test": "node puppeteer-test.js"
   },

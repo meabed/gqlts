@@ -3,20 +3,7 @@
   "version": "3.2.19",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
-  "repository": "github:meabed/gqlts",
   "license": "MIT",
-  "author": {
-    "name": "Mohamed Meabed",
-    "email": "mo@meabed.com",
-    "url": "https://meabed.com"
-  },
-  "maintainers": [
-    {
-      "name": "Mohamed Meabed",
-      "email": "mo@meabed.com",
-      "url": "https://meabed.com"
-    }
-  ],
   "main": "index.js",
   "scripts": {
     "build": "echo 'no build needed'",
@@ -57,7 +44,7 @@
     "@types/deep-equal": "1.0.4",
     "@types/express": "5.0.0",
     "@types/mocha": "10.0.9",
-    "@types/node": "20.16.11",
+    "@types/node": "22.7.5",
     "@types/ws": "8.5.12",
     "mocha": "10.7.3",
     "snap-shot-it": "7.9.10",

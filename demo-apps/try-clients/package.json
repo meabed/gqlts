@@ -1,24 +1,11 @@
 {
-  "name": "try-clients",
+  "name": "demo-apps-try-clients",
   "version": "3.2.19",
   "private": true,
   "description": "",
   "keywords": [],
   "homepage": "https://gqlts.vercel.app",
-  "repository": "github:meabed/gqlts",
   "license": "MIT",
-  "author": {
-    "name": "Mohamed Meabed",
-    "email": "mo@meabed.com",
-    "url": "https://meabed.com"
-  },
-  "maintainers": [
-    {
-      "name": "Mohamed Meabed",
-      "email": "mo@meabed.com",
-      "url": "https://meabed.com"
-    }
-  ],
   "main": "index.js",
   "scripts": {
     "build": "yarn gen && yarn github && yarn hasura && yarn simple",
