@@ -49,7 +49,7 @@ export function linkTypeMap(typeMap: CompressedTypeMap<number>): LinkedTypeMap {
                       }
                       // if argTypeString == argTypeName, argTypeString is missing, need to read it
                       const [argTypeName, argTypeString] = args[k] ?? [];
-                      if (!argTypeName) {
+                      if (!argTypeName && argTypeName !== 0) {
                         return {};
                       }
                       return {
