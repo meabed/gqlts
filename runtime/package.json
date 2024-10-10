@@ -85,7 +85,7 @@
   },
   "dependencies": {
     "axios": "1.7.7",
-    "form-data": "4.0.0",
+    "form-data": "4.0.1",
     "graphql-ws": "5.16.0",
     "is-plain-obj": "4.1.0",
     "lodash.assign": "4.2.0",
