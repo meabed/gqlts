@@ -947,10 +947,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.13.tgz#2af91918ee12d9d32914feb13f5326658461b451"
   integrity sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==
 
-"@types/react-dom@18.3.0":
-  version "18.3.0"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.0.tgz#0cbc818755d87066ab6ca74fbedb2547d74a82b0"
-  integrity sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==
+"@types/react-dom@18.3.1":
+  version "18.3.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.1.tgz#1e4654c08a9cdcfb6594c780ac59b55aad42fe07"
+  integrity sha512-qW1Mfv8taImTthu4KoXgDfLuk4bydU6Q/TkADnDWWHwi4NX4BR+LWfTp2sVmTqRrsHvyDDTelgelxJ+SsejKKQ==
   dependencies:
     "@types/react" "*"
 
@@ -4399,10 +4399,10 @@ next@14.2.15:
     "@next/swc-win32-ia32-msvc" "14.2.15"
     "@next/swc-win32-x64-msvc" "14.2.15"
 
-nextra-theme-docs@3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.8.tgz#d95d74387a9d5e985685f81f48bb6ab55e2f1cc0"
-  integrity sha512-3kCc+01KPDolaUaxQD665a1bdy9ZN1HnC/42/7yL4GspAP7BSprKBvkU4rRz9xCFYIYbxDjq6NYV6FWuOnO94g==
+nextra-theme-docs@3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.9.tgz#2344b620d404b2759569f759361c911601283e09"
+  integrity sha512-cN0sXsh/flBJd22eOn8X1cmyA8dsL2M8aRMmuQM4y3UelNA7YfHRUx+y59enbT/cIe7od42NYfZQcJkZINNsZA==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.0.0"
@@ -4412,10 +4412,10 @@ nextra-theme-docs@3.0.8:
     scroll-into-view-if-needed "^3.1.0"
     zod "^3.22.3"
 
-nextra@3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.8.tgz#ffcfe8f34083e88b7923dd4a002dd5e5b680e09e"
-  integrity sha512-7YceCGQOPnEMtqIoDRuNg+BvUc4GpUTPJeZsuKEeJ9AwVgCFRPhCJZoDuGNkIEw3pKAqHUaWFm9JXFytHeBRUQ==
+nextra@3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.9.tgz#53c7770f5ff5c6e1e602ae61c1fc6efb1ab98f49"
+  integrity sha512-RmCUg2GsBXjOSCdHj2AJPMB1zYWCqSipnOcyF6veM5JQsDw+wCiEUMpaoqsY7PqEkCXRtCLti6q3qiPWVe+kUQ==
   dependencies:
     "@headlessui/react" "^2.1.2"
     "@mdx-js/mdx" "^3.0.0"
