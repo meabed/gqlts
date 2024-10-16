@@ -6,11 +6,11 @@ import useSWR from 'swr';
 
 const Page = () => {
   const [regex, setRegex] = useState('.*');
-  const f = (regex: string) =>
+  const fetcher = (regex: string) =>
     client.query({
       countries: [{ filter: { continent: { regex: regex } } }, { name: 1, code: 1 }],
     });
-  const { data: gqlData = {}, error } = useSWR([regex], f);
+  const { data: gqlData = {}, error } = useSWR(regex, fetcher);
   const { data, errors, extensions } = gqlData;
 
   return (

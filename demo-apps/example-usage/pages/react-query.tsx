@@ -10,8 +10,11 @@ const Component = () => {
     client.query({
       countries: [{ filter: { continent: { regex: regex } } }, { name: 1, code: 1 }],
     });
-  const { data: gqlData = {}, error } = useQuery(['countries', regex], (context) => {
-    return func(context, regex);
+  const { data: gqlData = {}, error } = useQuery({
+    queryKey: ['countries', regex],
+    queryFn: (context) => {
+      return func(context, regex);
+    },
   });
   const { data, errors, extensions } = gqlData;
   return (
