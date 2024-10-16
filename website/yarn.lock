@@ -4411,10 +4411,10 @@ next@14.2.15:
     "@next/swc-win32-ia32-msvc" "14.2.15"
     "@next/swc-win32-x64-msvc" "14.2.15"
 
-nextra-theme-docs@3.0.11:
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.11.tgz#b51cc0a61ee9ca79537e7bfd0a34bbccde3ba404"
-  integrity sha512-yRWVw5d9MDn0olgaZ1mEcMUOIkxtHce4lJLpkYo6YgPnrXvwO3wRLEry5zU4aWUUJGTfxkGOWcOgFqVFcOq7XA==
+nextra-theme-docs@3.0.13:
+  version "3.0.13"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.13.tgz#32be1d863dfc02c214047c13e0f22fc6e635e4a1"
+  integrity sha512-1NEo4NJxXRsNPE2PXlYdVlW7N8ZWe5XssePFKUq0comQaxDNc6SaxfBNw0VoQlwB3T5ifTp9f5wb9xfIjPa6OA==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.0.0"
@@ -4424,10 +4424,10 @@ nextra-theme-docs@3.0.11:
     scroll-into-view-if-needed "^3.1.0"
     zod "^3.22.3"
 
-nextra@3.0.11:
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.11.tgz#bd38e8ce8978a7823c46729570a9ddd3f3e6c796"
-  integrity sha512-P/YidS1aQHrMAHrEbX1skSrOv0T/SFwCaffVt5nSpV+mDgPTUmJXP992GZAarUIAYGKR07mYrfDiEegp6PNQvg==
+nextra@3.0.13:
+  version "3.0.13"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.0.13.tgz#88d78797f28302e7bc5cafbaaab86d1950740cea"
+  integrity sha512-aK5ZEnKGE2lWhJvFfpj7T35JeA4ytvo2zUiXJ5JApIpFrwkzy8IYTa+irGHB0l9sxGiRlss4p+nAM8Kunvmlug==
   dependencies:
     "@formatjs/intl-localematcher" "^0.5.4"
     "@headlessui/react" "^2.1.2"
@@ -6001,10 +6001,10 @@ url@~0.11.0:
     punycode "^1.4.1"
     qs "^6.12.3"
 
-use-debounce@10.0.3:
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-10.0.3.tgz#636094a37f7aa2bcc77b26b961481a0b571bf7ea"
-  integrity sha512-DxQSI9ZKso689WM1mjgGU3ozcxU1TJElBJ3X6S4SMzMNcm2lVH0AHmyXB+K7ewjz2BSUKJTDqTcwtSMRfB89dg==
+use-debounce@10.0.4:
+  version "10.0.4"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-10.0.4.tgz#2135be498ad855416c4495cfd8e0e130bd33bb24"
+  integrity sha512-6Cf7Yr7Wk7Kdv77nnJMf6de4HuDE4dTxKij+RqE9rufDsI6zsbjyAxcH5y2ueJCQAnfgKbzXbZHYlkFwmBlWkw==
 
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"
