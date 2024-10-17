@@ -4411,10 +4411,10 @@ next@14.2.15:
     "@next/swc-win32-ia32-msvc" "14.2.15"
     "@next/swc-win32-x64-msvc" "14.2.15"
 
-nextra-theme-docs@3.0.14:
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.14.tgz#d08526e2b8cf53805d5bfc80fa9a7e826976eae7"
-  integrity sha512-RriKiqD6NoBX4/RMit2vzbGC6cBfvHX805qgGXQQyztLsCZCbYRqFpOtnioO2q//7UDhAzmdDzgprAxfBjGWIQ==
+nextra-theme-docs@3.0.15:
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.0.15.tgz#62a2f57439c903249f075c7cec1b4ba19042a84e"
+  integrity sha512-AhvmgcjFYi7aT5nRjdozqCt1hW39tqCIRKi4+pIR62ri26miB3VxREBYlCTHezcML2VLunyYIjFiiQGUan09gA==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.0.0"
