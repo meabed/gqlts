@@ -29,7 +29,8 @@ yarn test
 ## todo fix this by hoisting the repo https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind
 
 ## testing other packages
-allPkgs=( "example-usage" "integration-tests" "try-clients" )
+# todo fix "example-usage" "try-clients" remote server hasura apps
+allPkgs=( "integration-tests" )
 for pkg in "${allPkgs[@]}"
 do
   echo "-----------------------------------"
