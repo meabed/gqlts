@@ -15,9 +15,9 @@ const paths: Record<any, any> = {
 
 const Page = () => {
   return (
-    <Stack spacing='40px' mt='40px'>
+    <Stack p='40px' mt='40px'>
       <Hero subheading='Example of usage with gqlts' />
-      <PageContainer spacing='40px'>
+      <PageContainer p='40px'>
         {Object.keys(paths).map((k) => (
           <Box color='green.400' borderRadius='10px' p='20px' borderWidth='1px' minW='100%'>
             <NextLink href={paths[k]}>

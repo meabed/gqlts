@@ -1,5 +1,5 @@
-import { QueryResult, generateQueryOp } from '../generated/';
-import { ApolloClient, ApolloProvider, InMemoryCache, gql, useQuery } from '@apollo/client';
+import { generateQueryOp, QueryResult } from '../generated/';
+import { ApolloClient, ApolloProvider, gql, InMemoryCache, useQuery } from '@apollo/client';
 import { Box, Spinner, Stack } from '@chakra-ui/react';
 import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
 import React from 'react';
@@ -25,7 +25,7 @@ const Page = () => {
   });
   const { data, errors, extensions } = gqlData;
   return (
-    <Stack spacing='40px' mt='40px'>
+    <Stack p='40px' mt='40px'>
       <Hero
         bullet='Gqlts lets you write graphql queries as code'
         heading='Example use of Gqlts'
@@ -39,7 +39,7 @@ const Page = () => {
           </Stack>
         )}
         {data && (
-          <Stack spacing='20px'>
+          <Stack p='20px'>
             {data?.countries?.map((x) => (
               <Box borderRadius='10px' p='20px' borderWidth='1px'>
                 {x.name}

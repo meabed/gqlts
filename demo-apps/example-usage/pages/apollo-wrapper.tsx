@@ -1,5 +1,5 @@
-import { QueryRequest, QueryResult, generateQueryOp } from '../generated/';
-import { ApolloClient, ApolloProvider, InMemoryCache, gql, useQuery } from '@apollo/client';
+import { generateQueryOp, QueryRequest, QueryResult } from '../generated/';
+import { ApolloClient, ApolloProvider, gql, InMemoryCache, useQuery } from '@apollo/client';
 import { QueryHookOptions } from '@apollo/react-hooks';
 import { Box } from '@chakra-ui/react';
 import { Hero, PageContainer, SectionTitle } from 'landing-blocks';

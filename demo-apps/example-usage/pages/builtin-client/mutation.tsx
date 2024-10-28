@@ -1,6 +1,6 @@
 import { useMutation } from '../../client';
 import { everything } from '../../generated';
-import { Box, Button, Input, Stack, useToast } from '@chakra-ui/react';
+import { Box, Button, Input, Stack } from '@chakra-ui/react';
 import { Hero, PageContainer } from 'landing-blocks';
 import React, { useState } from 'react';
 
@@ -24,14 +24,13 @@ const Page = () => {
       ],
     };
   });
-  const toast = useToast();
   return (
-    <Stack align='center' spacing='40px' mt='40px'>
+    <Stack align='center' p='40px' mt='40px'>
       <Hero bullet='Mutation' heading='Mutation Example' subheading='' />
-      <PageContainer spacing='10' maxWidth='500px'>
+      <PageContainer p='10' maxWidth='500px'>
         <Input placeholder='Name' value={name} onChange={(e: any) => setName(e.target.value)} />
         <Button
-          isLoading={loading}
+          disabled={loading}
           onClick={() => {
             execute(name).catch(console.error);
           }}
