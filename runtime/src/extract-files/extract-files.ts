@@ -1,13 +1,9 @@
-let fs = null;
-if (typeof window === 'undefined') {
-  // support browser, nodejs, react-native
-  // @ts-ignore
-  try {
-    fs = require('fs');
-  } catch (e) {}
-}
-// @ts-ignore
-const ReadStream = fs ? fs?.ReadStream : null;
+const isReadableStream = (val) =>
+  val !== null &&
+  typeof val === 'object' &&
+  typeof val.pipe === 'function' &&
+  typeof val._read === 'function' &&
+  typeof val._readableState === 'object';
 
 export class ReactNativeFile {
   uri: string;
@@ -21,11 +17,11 @@ export class ReactNativeFile {
   }
 }
 
-export function isExtractableFile(value) {
+export function isExtractableFile(value: File | Blob | ReadableStream | ReactNativeFile) {
   return (
     (typeof File !== 'undefined' && value instanceof File) ||
     (typeof Blob !== 'undefined' && value instanceof Blob) ||
-    (ReadStream && typeof ReadStream !== 'undefined' && value instanceof ReadStream) ||
+    isReadableStream(value) ||
     value instanceof ReactNativeFile
   );
 }
