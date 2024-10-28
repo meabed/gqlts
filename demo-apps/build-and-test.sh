@@ -25,6 +25,7 @@ npx --yes concurrently --no-install --kill-others --success first --names "backe
   "cd $my_dir/backend && yarn start" \
   "cd $my_dir/next && yarn dev" \
   "cd $my_dir/next && yarn test"
+
 # test with production build
 cd $my_dir/next
 yarn build
