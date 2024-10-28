@@ -3,7 +3,6 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import assert from 'assert';
-import sleep from 'await-sleep';
 import axios from 'axios';
 import { json } from 'body-parser';
 import express from 'express';
@@ -17,6 +16,8 @@ import { DeepPartial } from 'tsdef';
 import { WebSocketServer } from 'ws';
 
 const id = () => null;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const PORT = 8099;
 const URL = `http://localhost:` + PORT + '/graphql';
