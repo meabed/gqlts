@@ -9,7 +9,9 @@ let WebSocketNode = null;
 if (typeof window !== 'undefined') {
   // support browser, nodejs, react-native
   // @ts-ignore
-  WebSocketNode = require('ws');
+  try {
+    WebSocketNode = require('ws');
+  } catch (e) {}
 }
 type HeaderValue = string | string[] | number | boolean | null;
 type RawHeaders = Record<string, HeaderValue>;

@@ -2,7 +2,9 @@ let fs = null;
 if (typeof window === 'undefined') {
   // support browser, nodejs, react-native
   // @ts-ignore
-  fs = require('node:fs');
+  try {
+    fs = require('fs');
+  } catch (e) {}
 }
 // @ts-ignore
 const ReadStream = fs ? fs?.ReadStream : null;
