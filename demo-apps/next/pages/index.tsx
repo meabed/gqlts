@@ -3,11 +3,9 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <Test1 />
-      </main>
-    </>
+    <main>
+      <Test1 />
+    </main>
   );
 }
 

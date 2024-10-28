@@ -1,12 +1,18 @@
 import { BatchOptions, createFetcher } from '../fetcher';
 import { LinkedType } from '../types';
-import { GraphqlOperation, generateGraphqlOperation } from './generateGraphqlOperation';
+import { generateGraphqlOperation, GraphqlOperation } from './generateGraphqlOperation';
 import { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from 'graphql-ws';
 import { Observable } from 'zen-observable-ts';
 
-const WebSocketNode = typeof window !== 'undefined' ? null : eval('require("ws")');
-
+let WebSocketNode = null;
+if (typeof window !== 'undefined') {
+  // support browser, nodejs, react-native
+  // @ts-ignore
+  try {
+    WebSocketNode = require('ws');
+  } catch (e) {}
+}
 type HeaderValue = string | string[] | number | boolean | null;
 type RawHeaders = Record<string, HeaderValue>;
 
@@ -76,13 +82,12 @@ export function createClient({
       if (!client.wsClient) {
         client.wsClient = getSubscriptionClient(options, config);
       }
-      return new Observable(
-        (observer) =>
-          client.wsClient?.subscribe(op, {
-            next: (data) => observer.next(data),
-            error: (err) => observer.error(err),
-            complete: () => observer.complete(),
-          }),
+      return new Observable((observer) =>
+        client.wsClient?.subscribe(op, {
+          next: (data) => observer.next(data),
+          error: (err) => observer.error(err),
+          complete: () => observer.complete(),
+        }),
       );
     };
   }

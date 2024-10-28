@@ -2,11 +2,9 @@ import { demoAppsBackendSdk } from '../src/demo-apps-backend-sdk';
 
 export default function Home({ testResult }: { testResult: string }) {
   return (
-    <>
-      <main>
-        <div id='test1-result'>{testResult}</div>
-      </main>
-    </>
+    <main>
+      <div id='test1-result'>{testResult}</div>
+    </main>
   );
 }
 Home.getInitialProps = async () => {
