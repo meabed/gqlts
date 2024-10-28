@@ -1,5 +1,11 @@
-const fs = typeof window !== 'undefined' ? null : eval('require("node:fs")');
-const ReadStream = fs ? fs.ReadStream : null;
+let fs = null;
+if (typeof window === 'undefined') {
+  // support browser, nodejs, react-native
+  // @ts-ignore
+  fs = require('fs');
+}
+// @ts-ignore
+const ReadStream = fs ? fs?.ReadStream : null;
 
 export class ReactNativeFile {
   uri: string;
