@@ -19,12 +19,21 @@ const id = () => null;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const PORT = 8099;
-const URL = `http://localhost:` + PORT + '/graphql';
-const SUB_URL = `ws://localhost:` + PORT + '/graphql';
+let i = 0;
+
+function getUrls() {
+  const PORT = 8099 + i++;
+  const URL = `http://localhost:` + PORT + '/graphql';
+  const SUB_URL = `ws://localhost:` + PORT + '/graphql';
+  return { URL, SUB_URL, PORT };
+}
+
+// const PORT = 8099;
+// const URL = `http://localhost:` + PORT + '/graphql';
+// const SUB_URL = `ws://localhost:` + PORT + '/graphql';
 type Maybe<T> = T | undefined | null;
 
-async function server({ resolvers, port = PORT }) {
+async function server({ resolvers, port }) {
   try {
     const app = express();
     const httpServer = createServer(app);
@@ -68,7 +77,7 @@ async function server({ resolvers, port = PORT }) {
     );
     expressMiddleware(server);
     httpServer.listen(port).on('listening', () => {
-      console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
+      // console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
     return async () => {
       httpServer?.close();
@@ -87,6 +96,7 @@ describe('execute queries', async function () {
     name: 'John',
   };
 
+  const { URL, PORT } = getUrls();
   const makeServer = () => {
     return server({
       port: PORT,
@@ -581,8 +591,11 @@ describe('execute subscriptions', async function () {
   const pubsub = new PubSub();
   const USER_EVENT = 'userxxx';
 
+  const { SUB_URL, PORT } = getUrls();
+
   const makeServer = () =>
     server({
+      port: PORT,
       resolvers: {
         Subscription: {
           user: {
