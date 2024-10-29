@@ -72,7 +72,7 @@ async function server({ resolvers, port = PORT }) {
     });
     return async () => {
       httpServer?.close();
-      await subscriptionServer?.dispose();
+      // await subscriptionServer?.dispose();
       await server.stop();
       await sleep(500);
     };
