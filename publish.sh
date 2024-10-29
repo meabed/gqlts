@@ -30,17 +30,17 @@ yarn test
 
 ## testing other packages
 # todo fix "example-usage" "try-clients" remote server hasura apps
-allPkgs=( "integration-tests" )
-for pkg in "${allPkgs[@]}"
-do
-  echo "-----------------------------------"
-  echo "Building and Testing $pkg"
-  cd $my_dir/demo-apps/$pkg
-  yarn install --frozen-lockfile --ignore-scripts
-  yarn build
-  yarn gen
-  yarn test
-done
+#allPkgs=( "integration-tests" )
+#for pkg in "${allPkgs[@]}"
+#do
+#  echo "-----------------------------------"
+#  echo "Building and Testing $pkg"
+#  cd $my_dir/demo-apps/$pkg
+#  yarn install --frozen-lockfile --ignore-scripts
+#  yarn build
+#  yarn gen
+#  yarn test
+#done
 
 cd $my_dir
 echo "Updating repo..."

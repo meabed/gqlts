@@ -50,8 +50,8 @@ async function server({ resolvers, port = PORT }) {
           async serverWillStart() {
             return {
               async drainServer() {
-                subscriptionServer.dispose();
-                await sleep(300);
+                await subscriptionServer?.dispose();
+                await sleep(200);
               },
             };
           },
@@ -68,12 +68,13 @@ async function server({ resolvers, port = PORT }) {
     );
     expressMiddleware(server);
     httpServer.listen(port).on('listening', () => {
-      // console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
+      console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
     return async () => {
-      httpServer.close();
+      httpServer?.close();
+      await subscriptionServer?.dispose();
       await server.stop();
-      await sleep(300);
+      await sleep(500);
     };
   } catch (e) {
     console.error('server had an error: ' + e);
@@ -86,8 +87,9 @@ describe('execute queries', async function () {
     name: 'John',
   };
 
-  const makeServer = () =>
-    server({
+  const makeServer = () => {
+    return server({
+      port: PORT,
       resolvers: {
         Query: {
           user: () => {
@@ -124,15 +126,16 @@ describe('execute queries', async function () {
         },
       },
     });
+  };
   const withServer = (func: any) => async () => {
-    const stop = await makeServer();
+    const serverStopFunction = await makeServer();
     try {
       await func();
     } catch (e) {
       console.error('error: ', e);
       throw e;
     } finally {
-      await stop();
+      await serverStopFunction();
     }
   };
 
