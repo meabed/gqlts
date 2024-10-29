@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.20 - 2024-10-28](https://github.com/meabed/gqlts/compare/v3.2.19...v3.2.20)
+- Update dependencies 
+- remove fs import from extract-files to support turbopack nextjs 15
+
+## [3.2.19 - 2023-09-21](https://github.com/meabed/gqlts/compare/v3.2.18...v3.2.19)
+- Update dependencies
+
 ## [3.2.18 - 2023-09-21](https://github.com/meabed/gqlts/compare/v3.2.17...v3.2.18)
 - Update dependencies
 - Update prettier to v3 in sdk cli generation
