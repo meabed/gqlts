@@ -6,7 +6,6 @@ on:
     paths:
       - 'cli/**'
       - 'runtime/**'
-      - 'yarn.lock'
     branches:
       - 'master'
 
