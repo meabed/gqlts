@@ -1,4 +1,4 @@
-import { Account, Point, User, createClient, everything, isHouse, isUser } from '../generated';
+import { Account, createClient, everything, isHouse, isUser, Point, User } from '../generated';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { makeExecutableSchema } from '@graphql-tools/schema';
@@ -29,7 +29,6 @@ async function server({ resolvers, port = PORT }) {
     const app = express();
     const httpServer = createServer(app);
     const typeDefs = fs.readFileSync(path.join(__dirname, '..', 'schema.graphql')).toString();
-
     const schema = makeExecutableSchema({
       typeDefs,
       resolvers,
@@ -37,14 +36,11 @@ async function server({ resolvers, port = PORT }) {
         requireResolversForResolveType: 'ignore',
       },
     });
-
     const wsServer = new WebSocketServer({
       server: httpServer,
       path: '/graphql',
     });
-
     const subscriptionServer = useServer({ schema }, wsServer);
-
     const server = new ApolloServer({
       schema,
       allowBatchedHttpRequests: true,
@@ -68,12 +64,15 @@ async function server({ resolvers, port = PORT }) {
         context: async ({ req }) => ({ token: req.headers.token }),
       }),
     );
-
     expressMiddleware(server);
-    await httpServer.listen(port).on('listening', () => {
+    httpServer.listen(port).on('listening', () => {
       // console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
-    return async () => httpServer.close() && (await server.stop());
+    return async () => {
+      httpServer.close();
+      await server.stop();
+      await sleep(300);
+    };
   } catch (e) {
     console.error('server had an error: ' + e);
     return () => null;
