@@ -44,12 +44,14 @@ async function server({ resolvers, port = PORT }) {
     const server = new ApolloServer({
       schema,
       allowBatchedHttpRequests: true,
+      // plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
       plugins: [
         {
           async serverWillStart() {
             return {
               async drainServer() {
                 subscriptionServer.dispose();
+                await sleep(300);
               },
             };
           },
@@ -597,7 +599,7 @@ describe('execute subscriptions', async function () {
     const stop = await makeServer();
     // await pubsub.publish(USER_EVENT, { user: x })
     await sleep(100);
-    const sub = await client
+    const sub = client
       .subscription({
         user: {
           name: true,
