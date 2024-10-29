@@ -5,14 +5,6 @@ import { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from 'graphql-ws';
 import { Observable } from 'zen-observable-ts';
 
-let WebSocketNode = null;
-if (typeof window !== 'undefined') {
-  // support browser, nodejs, react-native
-  // @ts-ignore
-  try {
-    WebSocketNode = require('ws');
-  } catch (e) {}
-}
 type HeaderValue = string | string[] | number | boolean | null;
 type RawHeaders = Record<string, HeaderValue>;
 
@@ -35,6 +27,7 @@ export type ClientOptions = Omit<ClientRequestConfig, 'body' | 'headers'> & {
   fetcherInstance?: BaseFetcher['fetcherInstance'];
   headers?: Headers;
   subscription?: { url?: string; headers?: Headers } & Partial<WSClientOptions>;
+  webSocketImpl?: unknown;
 };
 
 export function createClient({
@@ -96,8 +89,8 @@ export function createClient({
 }
 
 function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
-  const { url: httpClientUrl, subscription = {} } = opts || {};
-  let { url, headers = {}, ...restOpts } = opts.subscription || {};
+  const { url: httpClientUrl, subscription, webSocketImpl = {} } = opts || {};
+  let { url, headers = {}, ...restOpts } = subscription || {};
   // by default use the top level url
   if (!url && httpClientUrl) {
     url = httpClientUrl?.replace(/^http/, 'ws');
@@ -107,8 +100,7 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
     throw new Error('Subscription client error: missing url parameter');
   }
 
-  return createWSClient({
-    ...(typeof window === 'undefined' && { webSocketImpl: WebSocketNode }),
+  const wsOpts: WSClientOptions = {
     url,
     lazy: true,
     shouldRetry: () => true,
@@ -122,5 +114,10 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
     },
     ...restOpts,
     ...config,
-  });
+  };
+
+  if (typeof window !== 'undefined' && !!webSocketImpl) {
+    wsOpts.webSocketImpl = webSocketImpl;
+  }
+  return createWSClient(wsOpts);
 }

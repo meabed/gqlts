@@ -14,7 +14,7 @@ import path from 'path';
 import { expectType } from 'tsd';
 import { DeepPartial } from 'tsdef';
 import { WebSocketServer } from 'ws';
-import { after, afterEach, beforeEach, describe, it } from 'mocha';
+import { afterEach, beforeEach, describe, it } from 'mocha';
 
 const id = () => null;
 
@@ -29,9 +29,6 @@ function getUrls() {
   return { URL, SUB_URL, PORT };
 }
 
-// const PORT = 8099;
-// const URL = `http://localhost:` + PORT + '/graphql';
-// const SUB_URL = `ws://localhost:` + PORT + '/graphql';
 type Maybe<T> = T | undefined | null;
 
 async function server({ resolvers, port }) {
