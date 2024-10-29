@@ -14,17 +14,24 @@ import path from 'path';
 import { expectType } from 'tsd';
 import { DeepPartial } from 'tsdef';
 import { WebSocketServer } from 'ws';
+import { afterEach, beforeEach, describe, it } from 'mocha';
 
 const id = () => null;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const PORT = 8099;
-const URL = `http://localhost:` + PORT + '/graphql';
-const SUB_URL = `ws://localhost:` + PORT + '/graphql';
+let i = 0;
+
+function getUrls() {
+  const PORT = 8099 + i++;
+  const URL = `http://localhost:` + PORT + '/graphql';
+  const SUB_URL = `ws://localhost:` + PORT + '/graphql';
+  return { URL, SUB_URL, PORT };
+}
+
 type Maybe<T> = T | undefined | null;
 
-async function server({ resolvers, port = PORT }) {
+async function server({ resolvers, port }) {
   try {
     const app = express();
     const httpServer = createServer(app);
@@ -50,8 +57,8 @@ async function server({ resolvers, port = PORT }) {
           async serverWillStart() {
             return {
               async drainServer() {
-                subscriptionServer.dispose();
-                await sleep(300);
+                await subscriptionServer?.dispose();
+                await sleep(200);
               },
             };
           },
@@ -71,9 +78,10 @@ async function server({ resolvers, port = PORT }) {
       // console.log(`🚀  Server ready at ${URL} and ${SUB_URL}`);
     });
     return async () => {
-      httpServer.close();
+      httpServer?.close();
+      // await subscriptionServer?.dispose();
       await server.stop();
-      await sleep(300);
+      await sleep(500);
     };
   } catch (e) {
     console.error('server had an error: ' + e);
@@ -86,8 +94,10 @@ describe('execute queries', async function () {
     name: 'John',
   };
 
-  const makeServer = () =>
-    server({
+  const { URL, PORT } = getUrls();
+  const makeServer = () => {
+    return server({
+      port: PORT,
       resolvers: {
         Query: {
           user: () => {
@@ -124,15 +134,16 @@ describe('execute queries', async function () {
         },
       },
     });
+  };
   const withServer = (func: any) => async () => {
-    const stop = await makeServer();
+    const serverStopFunction = await makeServer();
     try {
       await func();
     } catch (e) {
       console.error('error: ', e);
       throw e;
     } finally {
-      await stop();
+      await serverStopFunction();
     }
   };
 
@@ -141,8 +152,7 @@ describe('execute queries', async function () {
     headers: () => ({ Auth: 'xxx' }),
   });
 
-  it(
-    'simple ',
+  it('simple query', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         user: {
@@ -151,10 +161,10 @@ describe('execute queries', async function () {
       });
       // console.log(JSON.stringify(res, null, 2));
       assert.deepStrictEqual(res?.user, x);
-    }),
-  );
-  it(
-    '__typename is not optional',
+    });
+  });
+
+  it('__typename is not optional', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         user: {
@@ -163,11 +173,10 @@ describe('execute queries', async function () {
         },
       });
       expectType<string | undefined>(res?.user!.__typename);
-    }),
-  );
+    });
+  });
 
-  it(
-    'scalar value with argument ',
+  it('scalar value with argument ', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         someScalarValue: true,
@@ -177,10 +186,9 @@ describe('execute queries', async function () {
         someScalarValue: [{ x: 3 }],
       });
       assert(res2?.someScalarValue?.toLocaleLowerCase);
-    }),
-  );
-  it(
-    'falsy values are not fetched ',
+    });
+  });
+  it('falsy values are not fetched ', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -191,11 +199,10 @@ describe('execute queries', async function () {
       // console.log(JSON.stringify(res, null, 2));
       assert(res?.coordinates?.x === undefined);
       assert(res?.coordinates?.y !== undefined);
-    }),
-  );
+    });
+  });
 
-  it(
-    'required field and nested fields',
+  it('required field and nested fields', async function () {
     withServer(async () => {
       client
         .query({
@@ -226,10 +233,9 @@ describe('execute queries', async function () {
       expectType<Maybe<string>>(res?.repository.__typename);
       expectType<Maybe<Maybe<string>[]>>(res?.repository?.forks?.edges?.map((x) => x?.node?.name));
       expectType<Maybe<Maybe<number>[]>>(res?.repository?.forks?.edges?.map((x) => x?.node?.number));
-    }),
-  );
-  it(
-    'chain syntax ',
+    });
+  });
+  it('chain syntax ', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         user: {
@@ -241,10 +247,9 @@ describe('execute queries', async function () {
       expectType<Maybe<string>>(res?.user?.name);
       expectType<Maybe<number>>(res?.user?.common);
       expectType<Maybe<string>>(res?.user?.__typename);
-    }),
-  );
-  it(
-    'recursive type chain syntax ',
+    });
+  });
+  it('recursive type chain syntax ', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         recursiveType: {
@@ -262,11 +267,10 @@ describe('execute queries', async function () {
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.value);
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.recurse?.value);
       expectType<Maybe<string>>(res?.[0]?.recurse?.recurse?.value);
-    }),
-  );
+    });
+  });
 
-  it(
-    'union types only 1 on_ normal syntax',
+  it('union types only 1 on_ normal syntax', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -283,11 +287,10 @@ describe('execute queries', async function () {
       assert(account?.__typename);
       expectType<Maybe<Account>>(account);
       // console.log(account);
-    }),
-  );
+    });
+  });
 
-  it(
-    'union types chain syntax',
+  it('union types chain syntax', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -295,19 +298,17 @@ describe('execute queries', async function () {
         },
       });
       expectType<Maybe<Account>>(res?.account);
-    }),
-  );
-  it(
-    'chain syntax result type only has requested fields',
+    });
+  });
+  it('chain syntax result type only has requested fields', async function () {
     withServer(async () => {
       const { data: res } = await client.query({ repository: [{ name: '' }, { createdAt: 1 }] });
       expectType<string | undefined>(res?.repository?.createdAt);
       // @ts-expect-error
       res?.forks;
-    }),
-  );
-  it(
-    'union types with chain and ...everything',
+    });
+  });
+  it('union types with chain and ...everything', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -320,10 +321,9 @@ describe('execute queries', async function () {
       if (isUser(account)) {
         expectType<Maybe<string>>(account?.name);
       }
-    }),
-  );
-  it(
-    'many union types',
+    });
+  });
+  it('many union types', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         account: {
@@ -339,10 +339,9 @@ describe('execute queries', async function () {
       if (account && 'anonymous' in account) {
         account?.anonymous;
       }
-    }),
-  );
-  it(
-    'ability to query interfaces that a union implements',
+    });
+  });
+  it('ability to query interfaces that a union implements', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         unionThatImplementsInterface: {
@@ -367,10 +366,9 @@ describe('execute queries', async function () {
       if (unionThatImplementsInterface?.__typename === 'ClientErrorWithoutInterface') {
         assert.ok(unionThatImplementsInterface?.ownProp3);
       }
-    }),
-  );
-  it(
-    'ability to query interfaces that a union implements, chain syntax',
+    });
+  });
+  it('ability to query interfaces that a union implements, chain syntax', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         unionThatImplementsInterface: [
@@ -385,10 +383,9 @@ describe('execute queries', async function () {
       if (res?.unionThatImplementsInterface?.__typename === 'ClientErrorNameInvalid') {
         assert.ok(res?.unionThatImplementsInterface?.ownProp2);
       }
-    }),
-  );
-  it(
-    'interface types normal syntax',
+    });
+  });
+  it('interface types normal syntax', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -410,10 +407,9 @@ describe('execute queries', async function () {
       // common types are accessible without guards
       assert(coordinates?.x);
       assert(coordinates?.__typename);
-    }),
-  );
-  it(
-    'interface types chain syntax',
+    });
+  });
+  it('interface types chain syntax', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -429,10 +425,9 @@ describe('execute queries', async function () {
         assert(coordinates?.address);
         assert(coordinates?.x);
       }
-    }),
-  );
-  it(
-    'multiple interfaces types normal syntax',
+    });
+  });
+  it('multiple interfaces types normal syntax', async function () {
     withServer(async () => {
       const { data: res } = await client.query({
         coordinates: {
@@ -467,10 +462,9 @@ describe('execute queries', async function () {
         coordinates?.x;
         coordinates?.y;
       }
-    }),
-  );
-  it(
-    'batches requests',
+    });
+  });
+  it('batches requests', async function () {
     withServer(async () => {
       let batchedQueryLength = -1;
       const client = createClient({
@@ -511,10 +505,9 @@ describe('execute queries', async function () {
       // console.log(JSON.stringify(res, null, 2));
       assert.strictEqual(res?.length, 2);
       assert.strictEqual(batchedQueryLength, 2);
-    }),
-  );
-  it(
-    'headers function gets called every time',
+    });
+  });
+  it('headers function gets called every time', async function () {
     withServer(async () => {
       let headersCalledNTimes = 0;
       const client = createClient({
@@ -539,10 +532,9 @@ describe('execute queries', async function () {
       });
 
       assert.strictEqual(headersCalledNTimes, 2);
-    }),
-  );
-  it(
-    'async headers function gets called every time',
+    });
+  });
+  it('async headers function gets called every time', async function () {
     withServer(async () => {
       let headersCalledNTimes = 0;
       const client = createClient({
@@ -567,8 +559,8 @@ describe('execute queries', async function () {
       });
 
       assert.strictEqual(headersCalledNTimes, 2);
-    }),
-  );
+    });
+  });
 });
 
 describe('execute subscriptions', async function () {
@@ -578,27 +570,37 @@ describe('execute subscriptions', async function () {
   const pubsub = new PubSub();
   const USER_EVENT = 'userxxx';
 
-  const makeServer = () =>
-    server({
-      resolvers: {
-        Subscription: {
-          user: {
-            subscribe: () => {
-              return pubsub.asyncIterator([USER_EVENT]);
+  let stop;
+  let subUrl;
+  beforeEach(async () => {
+    const { SUB_URL, PORT } = getUrls();
+    subUrl = SUB_URL;
+    const makeServer = () =>
+      server({
+        port: PORT,
+        resolvers: {
+          Subscription: {
+            user: {
+              subscribe: () => {
+                return pubsub.asyncIterator([USER_EVENT]);
+              },
             },
           },
         },
-      },
-    });
+      });
+    stop = await makeServer();
+  });
 
-  it('simple ', async () => {
+  afterEach(async () => {
+    subUrl = '';
+    await stop();
+  });
+
+  it('simple subscription', async () => {
     const client = createClient({
-      url: SUB_URL,
+      url: subUrl,
     });
 
-    const stop = await makeServer();
-    // await pubsub.publish(USER_EVENT, { user: x })
-    await sleep(100);
     const sub = client
       .subscription({
         user: {
@@ -632,7 +634,7 @@ describe('execute subscriptions', async function () {
     let headersCalledNTimes = 0;
 
     const client = createClient({
-      url: SUB_URL,
+      url: subUrl,
       subscription: {
         headers: async () => {
           headersCalledNTimes++;
@@ -640,9 +642,7 @@ describe('execute subscriptions', async function () {
         },
       },
     });
-    const stop = await makeServer();
-    // await pubsub.publish(USER_EVENT, { user: x })
-    await sleep(100);
+
     let subscribeCalledNTimes = 0;
     const sub = client
       .subscription({
