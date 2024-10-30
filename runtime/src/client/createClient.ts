@@ -87,6 +87,7 @@ export function createClient({
 
   return client;
 }
+import WS from 'ws';
 
 function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
   const { url: httpClientUrl, subscription, webSocketImpl = {} } = opts || {};
@@ -116,7 +117,15 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
     ...config,
   };
 
-  if (typeof window !== 'undefined' && !!webSocketImpl) {
+  if (
+    typeof window !== 'undefined' &&
+    typeof webSocketImpl === 'function' &&
+    'constructor' in webSocketImpl &&
+    'CLOSED' in webSocketImpl &&
+    'CLOSING' in webSocketImpl &&
+    'CONNECTING' in webSocketImpl &&
+    'OPEN' in webSocketImpl
+  ) {
     wsOpts.webSocketImpl = webSocketImpl;
   }
   return createWSClient(wsOpts);
