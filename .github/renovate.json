@@ -37,6 +37,7 @@
     }
   ],
   "ignoreDeps": [
-    "@chakra-ui/react"
+    "@chakra-ui/react",
+    "strip-ansi"
   ]
 }
