@@ -87,7 +87,6 @@ export function createClient({
 
   return client;
 }
-import WS from 'ws';
 
 function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
   const { url: httpClientUrl, subscription, webSocketImpl = {} } = opts || {};
