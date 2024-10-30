@@ -26,7 +26,7 @@
     "ws": "8.18.0"
   },
   "dependencies": {
-    "@apollo/server": "4.11.0",
+    "@apollo/server": "4.11.2",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "await-sleep": "0.0.1",
@@ -43,9 +43,9 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
     "@types/mocha": "10.0.9",
-    "@types/node": "22.8.1",
+    "@types/node": "22.8.4",
     "@types/ws": "8.5.12",
-    "mocha": "10.7.3",
+    "mocha": "10.8.1",
     "snap-shot-it": "7.9.10",
     "sucrase": "3.35.0"
   }

@@ -3,7 +3,9 @@
     "config:base"
   ],
   "branchPrefix": "renovate-",
-  "baseBranches": ["develop"],
+  "baseBranches": [
+    "develop"
+  ],
   "assigneesFromCodeOwners": true,
   "packageRules": [
     {
@@ -33,5 +35,9 @@
         "breaking"
       ]
     }
+  ],
+  "ignoreDeps": [
+    "@chakra-ui/react",
+    "strip-ansi"
   ]
 }

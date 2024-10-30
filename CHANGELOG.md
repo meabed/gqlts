@@ -1,5 +1,8 @@
 # Changelog
 
+## [3.2.21 - 2024-10-30](https://github.com/meabed/gqlts/compare/v3.2.20...v3.2.21)
+- Fix webscoket client initialization
+
 ## [3.2.20 - 2024-10-28](https://github.com/meabed/gqlts/compare/v3.2.19...v3.2.20)
 - Update dependencies 
 - remove fs import from extract-files to support turbopack nextjs 15
