@@ -256,9 +256,9 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@gqlts/cli@file:../../../cli":
-  version "3.2.19"
+  version "3.2.20"
   dependencies:
-    "@gqlts/runtime" "^3.2.19"
+    "@gqlts/runtime" "^3.2.20"
     "@graphql-tools/graphql-file-loader" "8.0.2"
     "@graphql-tools/load" "8.0.3"
     browserify "17.0.1"
@@ -276,8 +276,8 @@
     terser "5.36.0"
     yargs "17.7.2"
 
-"@gqlts/runtime@^3.2.19", "@gqlts/runtime@file:../../../runtime", "@gqlts/runtime@file:./../../../runtime":
-  version "3.2.19"
+"@gqlts/runtime@^3.2.20", "@gqlts/runtime@file:../../../runtime", "@gqlts/runtime@file:./../../../runtime":
+  version "3.2.20"
   dependencies:
     axios "1.7.7"
     form-data "4.0.1"
