@@ -1,6 +1,6 @@
 {
   "name": "demo-apps-backend",
-  "version": "3.2.20",
+  "version": "3.2.21",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "license": "MIT",
