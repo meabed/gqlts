@@ -304,12 +304,12 @@
   dependencies:
     tslib "^2.7.0"
 
-"@gqlts/cli@3.2.20":
-  version "3.2.20"
-  resolved "https://registry.yarnpkg.com/@gqlts/cli/-/cli-3.2.20.tgz#5e51bb21972960d2cb5b4762ae9ef5447d2d49b4"
-  integrity sha512-3zuJ9kxJP6SE/8a9SvYq0zbd6tTNIRDXTdAGO0A8oacjTkUTpcSYVvGpkQOYPu2ziZmStoERVQVSABIKbxgbMQ==
+"@gqlts/cli@3.2.21":
+  version "3.2.21"
+  resolved "https://registry.yarnpkg.com/@gqlts/cli/-/cli-3.2.21.tgz#bab95219bbeb389fc1c06fb9488726699163fe85"
+  integrity sha512-qhmpZ5iRVBbtkV7+zrObpg/pQ/W2Taj+eYbrY36iDenUj3aJxIx33Eot3QXO7ETxBSat5zaMwoiiSh52Gr4A5g==
   dependencies:
-    "@gqlts/runtime" "^3.2.20"
+    "@gqlts/runtime" "^3.2.21"
     "@graphql-tools/graphql-file-loader" "8.0.2"
     "@graphql-tools/load" "8.0.3"
     browserify "17.0.1"
@@ -327,10 +327,10 @@
     terser "5.36.0"
     yargs "17.7.2"
 
-"@gqlts/runtime@^3.2.20":
-  version "3.2.20"
-  resolved "https://registry.yarnpkg.com/@gqlts/runtime/-/runtime-3.2.20.tgz#7b3ef50b6ca4327d0ae60e27d45d198a529aaafe"
-  integrity sha512-RgW3S4MGBRIWxzowtlzSsasHG0dGjB/8k4fwBJVpgOsTI0aN2tr8GxRTduPPbNv4TsHaabYWgwgAraEwxoulPg==
+"@gqlts/runtime@^3.2.21":
+  version "3.2.21"
+  resolved "https://registry.yarnpkg.com/@gqlts/runtime/-/runtime-3.2.21.tgz#2f48882bea9130ecfa0a151020161350c8f86e49"
+  integrity sha512-5LjSrGLNfiJf0+QOrrTGPmChhDfEr+Q3duX2Ucy0jkfoLOlvGnMLfAq4TaG+4tiwGDtLfQUp543h4c2xIw3eBw==
   dependencies:
     axios "1.7.7"
     form-data "4.0.1"
@@ -1039,10 +1039,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@22.8.4":
-  version "22.8.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.8.4.tgz#ab754f7ac52e1fe74174f761c5b03acaf06da0dc"
-  integrity sha512-SpNNxkftTJOPk0oN+y2bIqurEXHTA2AOZ3EJDDKeJ5VzkvvORSvmQXGQarcOzWV1ac7DCaPBEdMDxBsM+d8jWw==
+"@types/node@22.8.5":
+  version "22.8.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.8.5.tgz#a978fb6755dbb32889b0bc3e37554dbc04f261a6"
+  integrity sha512-5iYk6AMPtsMbkZqCO1UGF9W5L38twq11S2pYWkybGHH2ogPUvXWNlQqJBzuEZWKj/WRH+QTeiv6ySWqJtvIEgA==
   dependencies:
     undici-types "~6.19.8"
 
