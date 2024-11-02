@@ -102,15 +102,15 @@
     "@types/lodash.assign": "4.2.9",
     "@types/lodash.get": "4.4.9",
     "@types/lodash.startswith": "4.2.9",
-    "@types/node": "22.8.5",
+    "@types/node": "22.8.6",
     "@types/qs": "6.9.16",
-    "@types/ws": "8.5.12",
+    "@types/ws": "8.5.13",
     "common-tags": "1.8.2",
     "dotenv": "16.4.5",
     "jest": "29.7.0",
     "sucrase": "3.35.0",
     "ts-jest": "29.2.5",
-    "tslib": "2.8.0",
+    "tslib": "2.8.1",
     "utility-types": "3.11.0"
   },
   "peerDependencies": {
