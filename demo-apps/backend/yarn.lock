@@ -895,30 +895,30 @@
   resolved "https://registry.yarnpkg.com/@whatwg-node/events/-/events-0.1.1.tgz#0ca718508249419587e130da26d40e29d99b5356"
   integrity sha512-AyQEn5hIPV7Ze+xFoXVU3QTHXVbWPrzaOkxtENMPMuNL6VVHrp4hHfDt9nrQpjO7BgvuM95dMtkycX5M/DZR3w==
 
-"@whatwg-node/fetch@^0.9.22":
-  version "0.9.22"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.9.22.tgz#391000e8b9191364d93583477865c02a56e1eaed"
-  integrity sha512-+RIBffgoaRlWV9cKV6wAX71sbeoU2APOI3G13ZRMkabYHwkvDMeZDTyxJcsMXA5CpieJ7NFXF9Xyu72jwvdzqA==
+"@whatwg-node/fetch@^0.10.0", "@whatwg-node/fetch@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/fetch/-/fetch-0.10.1.tgz#ca08b2b9928a465f6e562d6cc460840340c15d14"
+  integrity sha512-gmPOLrsjSZWEZlr9Oe5+wWFBq3CG6fN13rGlM91Jsj/vZ95G9CCvrORGBAxMXy0AJGiC83aYiHXn3JzTzXQmbA==
   dependencies:
-    "@whatwg-node/node-fetch" "^0.5.27"
+    "@whatwg-node/node-fetch" "^0.7.1"
     urlpattern-polyfill "^10.0.0"
 
-"@whatwg-node/node-fetch@^0.5.27":
-  version "0.5.27"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.5.27.tgz#e6e1448029c5fe58eae25a6f8c740434504077f5"
-  integrity sha512-0OaMj5W4fzWimRSFq07qFiWfquaUMNB+695GwE76LYKVuah+jwCdzSgsIOtwPkiyJ35w0XGhXmJPiIJCdLwopg==
+"@whatwg-node/node-fetch@^0.7.1":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/node-fetch/-/node-fetch-0.7.2.tgz#21c5d1c0750eea15acc8c16261739e917d872bdf"
+  integrity sha512-OAAEIbyspvQwkcRGutYN3D0a+hzQogvcZ7I3hf6vg742ZEq52yMJTGtkwjl3KZRmzzUltd/oEMxEGsXFLjnuLQ==
   dependencies:
     "@kamilkisiela/fast-url-parser" "^1.1.4"
     busboy "^1.6.0"
     fast-querystring "^1.1.1"
     tslib "^2.6.3"
 
-"@whatwg-node/server@^0.9.50":
-  version "0.9.50"
-  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.50.tgz#7098890bb674477aa4a4be5ecfd10f22857b65fa"
-  integrity sha512-7Vd8k6iu+ps8bkZT+Y/wPm42EDh8KojAL+APKa79mntgkyPtdq0r1//CO+0eYqQBz6HGrDxHRT4KChSOy4jGIw==
+"@whatwg-node/server@^0.9.54":
+  version "0.9.54"
+  resolved "https://registry.yarnpkg.com/@whatwg-node/server/-/server-0.9.54.tgz#031e31c6a92bb9a29a7c987a19ad534aa2d540bc"
+  integrity sha512-AFwts1RNnnPwpGnbCqyb7fwaE3ROBgkIstpmtXqb2YklFIlQ97Y1rabzeoyKoQqQxX89nMRmfsLAwPzfCpV9pw==
   dependencies:
-    "@whatwg-node/fetch" "^0.9.22"
+    "@whatwg-node/fetch" "^0.10.0"
     tslib "^2.6.3"
 
 acorn-walk@^8.1.1:
@@ -1583,10 +1583,10 @@ graphql-upload-ts@2.1.2:
     http-errors "^2.0.0"
     object-path "^0.11.8"
 
-graphql-yoga@5.10.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-5.10.0.tgz#68fe585e715b2d54ef74543ca3ed8e89b1bda9ad"
-  integrity sha512-OIVwZQQCKg2SeX9lWWycUdCeQOSxPp+1xii2bI4LeLvEsAod2DxZZdWYdigcG/zYJdSFZlYoRhKahdbEEbjoAA==
+graphql-yoga@5.10.1:
+  version "5.10.1"
+  resolved "https://registry.yarnpkg.com/graphql-yoga/-/graphql-yoga-5.10.1.tgz#6c69e9b775a179089deac36f5b62f81c915497b9"
+  integrity sha512-s4ClDpKZxwnP5WxnMbRQhrFYTxRk68xWCxh1vkZhBpUpu2l70vM6S9P9QDbzNaTWZp9KCEON4Q5pb7qXlFwTQw==
   dependencies:
     "@envelop/core" "^5.0.1"
     "@graphql-tools/executor" "^1.3.0"
@@ -1594,8 +1594,8 @@ graphql-yoga@5.10.0:
     "@graphql-tools/utils" "^10.3.2"
     "@graphql-yoga/logger" "^2.0.0"
     "@graphql-yoga/subscription" "^5.0.1"
-    "@whatwg-node/fetch" "^0.9.22"
-    "@whatwg-node/server" "^0.9.50"
+    "@whatwg-node/fetch" "^0.10.1"
+    "@whatwg-node/server" "^0.9.54"
     dset "^3.1.1"
     lru-cache "^10.0.0"
     tslib "^2.5.2"
