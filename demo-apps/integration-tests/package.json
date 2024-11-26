@@ -30,7 +30,7 @@
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "await-sleep": "0.0.1",
-    "axios": "1.7.7",
+    "axios": "1.7.8",
     "deep-equal": "2.2.3",
     "express": "5.0.1",
     "graphql": "16.9.0",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.9.3",
+    "@types/node": "22.9.4",
     "@types/ws": "8.5.13",
     "mocha": "10.8.2",
     "snap-shot-it": "7.9.10",
