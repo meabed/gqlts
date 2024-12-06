@@ -39,8 +39,8 @@
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
     "next": "15.0.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-extra-hooks": "2.3.4",
     "react-icons": "5.4.0",
     "react-storage-hooks": "4.0.1",
@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@types/node": "22.10.1",
-    "@types/react": "18.3.14",
-    "@types/react-dom": "18.3.2",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.1",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
     "ts-node": "10.9.2"
