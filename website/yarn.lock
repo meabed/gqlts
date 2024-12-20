@@ -4590,10 +4590,10 @@ next@15.1.2:
     "@next/swc-win32-x64-msvc" "15.1.2"
     sharp "^0.33.5"
 
-nextra-theme-docs@3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.2.5.tgz#10f4f8cbc3d1a2f210389aae5a98d909f81ea606"
-  integrity sha512-eF0j1VNNS1rFjZOfYqlrXISaCU3+MhZ9hhXY+TUydRlfELrFWpGzrpW6MiL7hq4JvUR7OBtHHs8+A+8AYcETBQ==
+nextra-theme-docs@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-3.3.0.tgz#b81ef08750fec648594ba8d447943327fad56dbf"
+  integrity sha512-4JSbDmsbtaYa2eKHsNymWy6So4/fAAXuNPSkjgQ3S+aLRiC730mR9djdkTd1iRca4+czetzBWaqxu+HwTVSSCA==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.0.0"
@@ -4603,10 +4603,10 @@ nextra-theme-docs@3.2.5:
     scroll-into-view-if-needed "^3.1.0"
     zod "^3.22.3"
 
-nextra@3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.2.5.tgz#d3bd2635095b6962a2b805a3b5fa91f20a299110"
-  integrity sha512-n665DRpI/brjHXM83G5LdlbYA2nOtjaLcWJs7mZS3gkuRDmEXpJj4XJ860xrhkYZW2iYoUMu32zzhPuFByU7VA==
+nextra@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-3.3.0.tgz#fae1a538655b07e3a50dd9a631c42b4320f4e7d5"
+  integrity sha512-//+bQW3oKrpLrrIFD5HJow310+YcNYhGIgdM4y+EjYuIXScJcgp6Q4Upsq8c2s2fQKEJjeuf+hXKusx9fvH/2w==
   dependencies:
     "@formatjs/intl-localematcher" "^0.5.4"
     "@headlessui/react" "^2.1.2"
@@ -4630,6 +4630,7 @@ nextra@3.2.5:
     mdast-util-to-hast "^13.2.0"
     negotiator "^1.0.0"
     p-limit "^6.0.0"
+    react-medium-image-zoom "^5.2.12"
     rehype-katex "^7.0.0"
     rehype-pretty-code "0.14.0"
     rehype-raw "^7.0.0"
@@ -5120,6 +5121,11 @@ react-keyframes@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/react-keyframes/-/react-keyframes-0.2.3.tgz#1dca7e5684b36718f8080c7cf9bf24ce750b1b38"
   integrity sha512-bR5Fc6KbdkB62TYNjMP7otlNP3J+4Pmi9HeHxeETiuo6qZg6cdxUe/ZV1+QVvvFccMCap4C84XpFXP/UMhgq3g==
+
+react-medium-image-zoom@^5.2.12:
+  version "5.2.12"
+  resolved "https://registry.yarnpkg.com/react-medium-image-zoom/-/react-medium-image-zoom-5.2.12.tgz#8dc41a767d9c5ddf27dfea80bb3e559f84373ed3"
+  integrity sha512-BbQ9jLBFxu6z+viH5tzQzAGqHOJQoYUM7iT1KUkamWKOO6vR1pC33os7LGLrHvOcyySMw74rUdoUCXFdeglwCQ==
 
 react-runkit@0.9.0:
   version "0.9.0"
