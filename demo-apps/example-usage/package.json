@@ -30,7 +30,7 @@
     "@emotion/styled": "11.14.0",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
-    "@tanstack/react-query": "5.62.8",
+    "@tanstack/react-query": "5.62.9",
     "@types/js-cookie": "3.0.6",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
@@ -44,7 +44,7 @@
     "react-extra-hooks": "2.3.4",
     "react-icons": "5.4.0",
     "react-storage-hooks": "4.0.1",
-    "swr": "2.2.5",
+    "swr": "2.3.0",
     "typescript": "5.7.2"
   },
   "devDependencies": {
