@@ -4075,10 +4075,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.10.tgz"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
-graphql-ws@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-6.0.1.tgz#a5e9186b68f45716b4282f209d3038a3607dc25c"
-  integrity sha512-ScU+lpgXMVH+BQecv+veIk6eqF8eNZgvRZU+UNaXGvQ1mGq1uEuQRzmrCvMnaZOW1IX+E5PKZvFNXO39LGZU2Q==
+graphql-ws@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-6.0.2.tgz#5ea5b21cdb155cc40d1564b0d51568fccb9d90b2"
+  integrity sha512-9fzn1gacbVA2h8JWQhStEfHiGnrF0lJJJLdAJWvwBVEw8h6khOrQy/WO1cXopLGgnzls4gIeMj+csZVTnsDzrw==
 
 graphql@*, graphql@16.10.0:
   version "16.10.0"
