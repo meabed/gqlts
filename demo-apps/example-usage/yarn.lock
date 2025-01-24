@@ -2507,10 +2507,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@12.0.4:
-  version "12.0.4"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.0.4.tgz#3035ad99b0bd21302b5f54ed84ce5d7b450cdae0"
-  integrity sha512-Y+qeFoOkAo8y9Gh01R0B4Le6Vohkd+O4MEnXbKiN1elLxqmox7im8HyyfUhiEYYKd+jnt1g7UqRJmRqqyUfjVw==
+framer-motion@12.0.5:
+  version "12.0.5"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.0.5.tgz#cd4f2c04b7c7595c36e4983b55e50ab257b69f4e"
+  integrity sha512-OgfUHfL+u80uCf6VzkV7j3+H2W9zPMdV+40bug4ftB0C2+0FpfNca2rbH2Fouq2R7//bjw6tJhOwXsrsM4+LKw==
   dependencies:
     motion-dom "^12.0.0"
     motion-utils "^12.0.0"
