@@ -1039,10 +1039,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@22.10.7":
-  version "22.10.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.10.7.tgz#14a1ca33fd0ebdd9d63593ed8d3fbc882a6d28d7"
-  integrity sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==
+"@types/node@22.10.10":
+  version "22.10.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.10.10.tgz#85fe89f8bf459dc57dfef1689bd5b52ad1af07e6"
+  integrity sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==
   dependencies:
     undici-types "~6.20.0"
 
@@ -1061,10 +1061,10 @@
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.3.tgz#0804dfd279a165d5a0ad8b53a5b9e65f338050a4"
   integrity sha512-0Knk+HJiMP/qOZgMyNFamlIjw9OFCsyC2ZbigmEEyXXixgre6IQpm/4V+r3qH4GC1JPvRJKInw+on2rV6YZLeA==
 
-"@types/react@19.0.7":
-  version "19.0.7"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.7.tgz#c451968b999d1cb2d9207dc5ff56496164cf511d"
-  integrity sha512-MoFsEJKkAtZCrC1r6CM8U22GzhG7u2Wir8ons/aCKH6MBdD1ibV24zOSSkdZVUKqN5i396zG5VKLYZ3yaUZdLA==
+"@types/react@19.0.8":
+  version "19.0.8"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.8.tgz#7098e6159f2a61e4f4cef2c1223c044a9bec590e"
+  integrity sha512-9P/o1IGdfmQxrujGbIMDyYaaCykhLKc0NGCtYcECNUr9UAaDe4gwvV9bR6tvd5Br1SG0j+PBpbKr2UYY8CwqSw==
   dependencies:
     csstype "^3.0.2"
 
@@ -4549,10 +4549,10 @@ next@15.1.6:
     "@next/swc-win32-x64-msvc" "15.1.6"
     sharp "^0.33.5"
 
-nextra-theme-docs@4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.0.5.tgz#f649ae12cece6d8bfb05b0f415bbb4ef66d38261"
-  integrity sha512-aF4HRjbVZvd+VWTssaieXFyJ7xVnGiKlJZ+WfxCG95izoHuYdY3dwibQTc32ERMXWAg//h/t7en5QggF3hKVaA==
+nextra-theme-docs@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.0.7.tgz#47b602a4068afa1158d1a83bee09e8e3ed7ee418"
+  integrity sha512-KZMphMeN8r4mRVczDwlmIfDAzFyfYdJyE4TWqx9OblybazMD8gwHSC7nZAidLZSLzwWEUrf8vnBWN4KcXqyM8w==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.1.0"
@@ -4563,10 +4563,10 @@ nextra-theme-docs@4.0.5:
     zod-validation-error "^3.0.0"
     zustand "^5.0.1"
 
-nextra@4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.0.5.tgz#258cd7c1f288fc74ea630c8404200676a1fefe68"
-  integrity sha512-wv1rzzQJtREGZDjdR7G41z3d7NewHvpmgNmPwEABIlEfgsmyEdMSZbrkn5jna8/2SUBsSio/lcBIGemkvuBtSA==
+nextra@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.0.7.tgz#92164c3238cd904c937ea287624aa9220e4d466e"
+  integrity sha512-jf+jpJoAE//bS0xZn0tn7fAGascdyI4U/JBj0kiI53gUsdcXV3j5/Lw6n/XLoeoPM0ptfb5WbVP2wrKIwNX59g==
   dependencies:
     "@formatjs/intl-localematcher" "^0.5.4"
     "@headlessui/react" "^2.1.2"

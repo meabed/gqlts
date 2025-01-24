@@ -37,8 +37,8 @@
     "next": "15.1.6",
     "next-cookies": "2.0.3",
     "next-transpile-modules": "10.0.1",
-    "nextra": "4.0.5",
-    "nextra-theme-docs": "4.0.5",
+    "nextra": "4.0.7",
+    "nextra-theme-docs": "4.0.7",
     "npm-name": "8.0.0",
     "p-debounce": "4.0.0",
     "prism-react-renderer": "2.4.1",
@@ -56,9 +56,9 @@
   "devDependencies": {
     "@gqlts/cli": "3.2.21",
     "@types/js-cookie": "3.0.6",
-    "@types/node": "22.10.7",
+    "@types/node": "22.10.10",
     "@types/prismjs": "1.26.5",
-    "@types/react": "19.0.7",
+    "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "next-transpile-modules": "10.0.1",
     "typescript": "5.7.3"
