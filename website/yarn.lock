@@ -1053,10 +1053,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@22.10.10":
-  version "22.10.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.10.10.tgz#85fe89f8bf459dc57dfef1689bd5b52ad1af07e6"
-  integrity sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==
+"@types/node@22.12.0":
+  version "22.12.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.12.0.tgz#bf8af3b2af0837b5a62a368756ff2b705ae0048c"
+  integrity sha512-Fll2FZ1riMjNmlmJOdAyY5pUbkftXslB5DgEzlIuNaiWhXd00FhWxVC/r4yV/4wBb9JfImTu+jiSvXTkJ7F/gA==
   dependencies:
     undici-types "~6.20.0"
 
@@ -4568,10 +4568,10 @@ next@15.1.6:
     "@next/swc-win32-x64-msvc" "15.1.6"
     sharp "^0.33.5"
 
-nextra-theme-docs@4.0.9:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.0.9.tgz#26c0a07dcac1c7e3e5a4a5570ff0b89d8b8e6731"
-  integrity sha512-wFgQFZY/uavmqDgTojVSDN3bce3aDpLUcFTCTE/plELp+jbOJryFZSjN+PC5BSqiZA2W4yIbS8vbRfeuoHfIoA==
+nextra-theme-docs@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.2.1.tgz#c59738e4763c99ec110a1ab036114ab0e45a5b3a"
+  integrity sha512-oAib7Gdc9/MnCOg9iJrhDgeYpPykN2InsqZLtwVdKNtKRT4TuJ9cDqCNb27yQRjvxFA7qadp0wUlSeiMplmhHg==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.1.0"
@@ -4582,10 +4582,10 @@ nextra-theme-docs@4.0.9:
     zod-validation-error "^3.0.0"
     zustand "^5.0.1"
 
-nextra@4.0.9:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.0.9.tgz#1e2e75097beb03d1ec700606cc1fd33cf7985152"
-  integrity sha512-Qf9olF140lKl3YBE4xfnOX60mWGqJZvLd/iU99r+XxBUYA+IgJXpWBvRP1KYoygm72+NRmJ89ivAAhbonhdKsw==
+nextra@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.2.1.tgz#bbb4823418a7ff6d36e8b086d5286dcae3804e17"
+  integrity sha512-uXvAG46w3zFtfoSOgtCD2znQsT+FaTmSx48/j4JWkYQKUo3NSfKbbx6/WpWPncOWIlviet/7XCmPhthkZSf3Gg==
   dependencies:
     "@formatjs/intl-localematcher" "^0.5.4"
     "@headlessui/react" "^2.1.2"
@@ -4621,6 +4621,7 @@ nextra@4.0.9:
     title "^4.0.1"
     unist-util-remove "^4.0.0"
     unist-util-visit "^5.0.0"
+    unist-util-visit-children "^3.0.0"
     yaml "^2.3.2"
     zod "^3.22.3"
     zod-validation-error "^3.0.0"
