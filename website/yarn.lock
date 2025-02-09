@@ -1053,10 +1053,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@22.13.0":
-  version "22.13.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.0.tgz#d376dd9a0ee2f9382d86c2d5d7beb4d198b4ea8c"
-  integrity sha512-ClIbNe36lawluuvq3+YYhnIN2CELi+6q8NpnM7PYp4hBn/TatfboPgVSm2rwKRfnV2M+Ty9GWDFI64KEe+kysA==
+"@types/node@22.13.1":
+  version "22.13.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.1.tgz#a2a3fefbdeb7ba6b89f40371842162fac0934f33"
+  integrity sha512-jK8uzQlrvXqEU91UxiK5J7pKHyzgnI1Qnl0QDHIgVGuolJhRb9EEl28Cj9b3rGR8B2lhFCtvIm5os8lFnO/1Ew==
   dependencies:
     undici-types "~6.20.0"
 
@@ -4568,10 +4568,10 @@ next@15.1.6:
     "@next/swc-win32-x64-msvc" "15.1.6"
     sharp "^0.33.5"
 
-nextra-theme-docs@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.2.1.tgz#c59738e4763c99ec110a1ab036114ab0e45a5b3a"
-  integrity sha512-oAib7Gdc9/MnCOg9iJrhDgeYpPykN2InsqZLtwVdKNtKRT4TuJ9cDqCNb27yQRjvxFA7qadp0wUlSeiMplmhHg==
+nextra-theme-docs@4.2.5:
+  version "4.2.5"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.2.5.tgz#057be5467bb5ae6341af7f85110b3f8607eaaafb"
+  integrity sha512-e5t/Q+exTH9ZQkg1asppQw8ti3oxFK9t4PR3C+DnKqzqJWOc7Kx6ZYiBE90L+9gRhl1yj5MXpNsVByAMQQIIyg==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.1.0"
@@ -4582,10 +4582,10 @@ nextra-theme-docs@4.2.1:
     zod-validation-error "^3.0.0"
     zustand "^5.0.1"
 
-nextra@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.2.1.tgz#bbb4823418a7ff6d36e8b086d5286dcae3804e17"
-  integrity sha512-uXvAG46w3zFtfoSOgtCD2znQsT+FaTmSx48/j4JWkYQKUo3NSfKbbx6/WpWPncOWIlviet/7XCmPhthkZSf3Gg==
+nextra@4.2.5:
+  version "4.2.5"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.2.5.tgz#5e1ee3680a2e0a3264c9a9ac91955cfa259da993"
+  integrity sha512-90eVUvVadraQqr4JIKb5jF+er2Cj5bGXQPdXqSj7RixComMpt32XSTdRzDPqZgCDcr01REHI+sRVbhLFDWb4Fg==
   dependencies:
     "@formatjs/intl-localematcher" "^0.5.4"
     "@headlessui/react" "^2.1.2"
