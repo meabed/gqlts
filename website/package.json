@@ -37,8 +37,8 @@
     "next": "15.1.7",
     "next-cookies": "2.0.3",
     "next-transpile-modules": "10.0.1",
-    "nextra": "4.2.11",
-    "nextra-theme-docs": "4.2.11",
+    "nextra": "4.2.13",
+    "nextra-theme-docs": "4.2.13",
     "npm-name": "8.0.0",
     "p-debounce": "4.0.0",
     "prism-react-renderer": "2.4.1",
@@ -58,8 +58,8 @@
     "@types/js-cookie": "3.0.6",
     "@types/node": "22.13.4",
     "@types/prismjs": "1.26.5",
-    "@types/react": "19.0.8",
-    "@types/react-dom": "19.0.3",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "next-transpile-modules": "10.0.1",
     "typescript": "5.7.3"
   }
