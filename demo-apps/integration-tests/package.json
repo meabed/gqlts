@@ -23,7 +23,7 @@
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "graphql": "16.10.0",
-    "ws": "8.18.0"
+    "ws": "8.18.1"
   },
   "dependencies": {
     "@apollo/server": "4.11.3",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.13.4",
+    "@types/node": "22.13.5",
     "@types/ws": "8.5.14",
     "mocha": "11.1.0",
     "snap-shot-it": "7.9.10",
