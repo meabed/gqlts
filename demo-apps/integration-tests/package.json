@@ -38,12 +38,12 @@
     "ts-node": "10.9.2",
     "tsd": "0.31.2",
     "tsdef": "0.0.14",
-    "typescript": "5.7.3"
+    "typescript": "5.8.2"
   },
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.13.5",
+    "@types/node": "22.13.8",
     "@types/ws": "8.5.14",
     "mocha": "11.1.0",
     "snap-shot-it": "7.9.10",
