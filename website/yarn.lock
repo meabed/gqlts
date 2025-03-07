@@ -4568,10 +4568,10 @@ next@15.2.1:
     "@next/swc-win32-x64-msvc" "15.2.1"
     sharp "^0.33.5"
 
-nextra-theme-docs@4.2.15:
-  version "4.2.15"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.2.15.tgz#fe63dde042b00813b9c2174c218061ac23a2d828"
-  integrity sha512-gwrMbkX/7/Jhu2pyoxzp20ChV7PYQMfbGJzo8Nr8MUyvmx7DL9IcqTwRZYKkqUiMvmqh4sOON+2Vi5GT7sp6pw==
+nextra-theme-docs@4.2.16:
+  version "4.2.16"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.2.16.tgz#c237c6398caeca78e89a9de185fa2e89f34e2c58"
+  integrity sha512-IbEf7A7qd2PWYZ8XlwIXNghZRPxbiTw1tbPejH/tNX6nmAHUNpCrDPQO/jraYSnEae2DSb/5ZOBdqMT1c03paQ==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.1.0"
@@ -4582,10 +4582,10 @@ nextra-theme-docs@4.2.15:
     zod-validation-error "^3.0.0"
     zustand "^5.0.1"
 
-nextra@4.2.15:
-  version "4.2.15"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.2.15.tgz#c0bbeff7ea986eeb16eee8e177d555d19fa8effd"
-  integrity sha512-gi92tFu613LTPWiP7U0mIqesb+ybXu6azPNEGXyYC0bVyxgIdAMZHQKuIKJKPxydX/QDrnlHHgH2ypMlFlXDuQ==
+nextra@4.2.16:
+  version "4.2.16"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.2.16.tgz#33593dfffd3414e4809efb1f3de1d7d6b9a944e9"
+  integrity sha512-j0DNAWN1s6nzRtqS5L4PfVIk2BaD12V1nk/Cd1nRSHSF05vio6VmQ9+WZBbSvCrBjbnsRSflPBEP0cTs1y0lmQ==
   dependencies:
     "@formatjs/intl-localematcher" "^0.6.0"
     "@headlessui/react" "^2.1.2"
