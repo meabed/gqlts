@@ -30,7 +30,7 @@
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "await-sleep": "0.0.1",
-    "axios": "1.8.2",
+    "axios": "1.8.3",
     "deep-equal": "2.2.3",
     "express": "5.0.1",
     "graphql": "16.10.0",
