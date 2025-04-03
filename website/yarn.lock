@@ -1053,12 +1053,12 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@22.13.16":
-  version "22.13.16"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.16.tgz#802cff8e4c3b3fc7461c2adcc92d73d89779edad"
-  integrity sha512-15tM+qA4Ypml/N7kyRdvfRjBQT2RL461uF1Bldn06K0Nzn1lY3nAPgHlsVrJxdZ9WhZiW0Fmc1lOYMtDsAuB3w==
+"@types/node@22.14.0":
+  version "22.14.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.14.0.tgz#d3bfa3936fef0dbacd79ea3eb17d521c628bb47e"
+  integrity sha512-Kmpl+z84ILoG+3T/zQFyAJsU6EPTmOCj8/2+83fSN6djd6I4o7uOuGIH6vq3PrjY5BGitSbFuMN18j3iknubbA==
   dependencies:
-    undici-types "~6.20.0"
+    undici-types "~6.21.0"
 
 "@types/prismjs@1.26.5":
   version "1.26.5"
@@ -1070,15 +1070,15 @@
   resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.26.4.tgz#1a9e1074619ce1d7322669e5b46fbe823925103a"
   integrity sha512-rlAnzkW2sZOjbqZ743IHUhFcvzaGbqijwOu8QZnZCjfQzBqFE3s4lOTJEsxikImav9uzz/42I+O7YUs1mWgMlg==
 
-"@types/react-dom@19.0.4":
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.0.4.tgz#bedba97f9346bd4c0fe5d39e689713804ec9ac89"
-  integrity sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==
+"@types/react-dom@19.1.1":
+  version "19.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.1.tgz#a8d097b28247d1129cf56e74d1622c98978c04ed"
+  integrity sha512-jFf/woGTVTjUJsl2O7hcopJ1r0upqoq/vIOoCj0yLh3RIXxWcljlpuZ+vEBRXsymD1jhfeJrlyTy/S1UW+4y1w==
 
-"@types/react@19.0.12":
-  version "19.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.0.12.tgz#338b3f7854adbb784be454b3a83053127af96bd3"
-  integrity sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==
+"@types/react@19.1.0":
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.0.tgz#73c43ad9bc43496ca8184332b111e2aef63fc9da"
+  integrity sha512-UaicktuQI+9UKyA4njtDOGBD/67t8YEBt2xdfqu8+gP9hqPUPsiXlNPcpS2gVdjmis5GKPG3fCxbQLVgxsQZ8w==
   dependencies:
     csstype "^3.0.2"
 
@@ -6010,10 +6010,10 @@ undeclared-identifiers@^1.1.2:
     simple-concat "^1.0.0"
     xtend "^4.0.1"
 
-undici-types@~6.20.0:
-  version "6.20.0"
-  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.20.0.tgz#8171bf22c1f588d1554d55bf204bc624af388433"
-  integrity sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==
+undici-types@~6.21.0:
+  version "6.21.0"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.21.0.tgz#691d00af3909be93a7faa13be61b3a5b50ef12cb"
+  integrity sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==
 
 unfetch@^5.0.0:
   version "5.0.0"

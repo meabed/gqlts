@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@gqlts/runtime": "file:./../../runtime",
-    "@types/node": "22.13.16",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4",
+    "@types/node": "22.14.0",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
     "demo-apps-backend-sdk": "file:./../backend/sdk",
     "next": "15.2.4",
     "react": "19.1.0",
