@@ -481,7 +481,7 @@
 "@gqlts/runtime@^3.2.21", "@gqlts/runtime@file:../../runtime":
   version "3.2.21"
   dependencies:
-    axios "1.8.4"
+    axios "1.9.0"
     form-data "4.0.2"
     graphql-ws "6.0.4"
     is-plain-obj "4.1.0"
@@ -1061,10 +1061,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.6.3.tgz#5b763b321cd3b80f6b8dde7a37e1a77ff9358dd9"
   integrity sha512-HksnYH4Ljr4VQgEy2lTStbCKv/P590tmPe5HqOnv9Gprffgv5WXAY+Y5Gqniu0GGqeTCUdBnzC3QSrzPkBkAMA==
 
-"@types/node@22.14.1":
-  version "22.14.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.14.1.tgz#53b54585cec81c21eee3697521e31312d6ca1e6f"
-  integrity sha512-u0HuPQwe/dHrItgHHpmw3N2fYCR6x4ivMNbPHRkBVP4CvN+kiRrKHWk3i8tXiO/joPwXLMYvF9TTF0eqgHIuOw==
+"@types/node@22.15.0":
+  version "22.15.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.0.tgz#5fcf430c079da64e96028b87cbffc218a02685db"
+  integrity sha512-99S8dWD2DkeE6PBaEDw+In3aar7hdoBvjyJMR6vaKBTzpvR0P00ClzJMOoVrj9D2+Sy/YCwACYHnBTpMhg1UCA==
   dependencies:
     undici-types "~6.21.0"
 
@@ -1565,10 +1565,10 @@ await-sleep@0.0.1:
   resolved "https://registry.yarnpkg.com/await-sleep/-/await-sleep-0.0.1.tgz#044532e49f1f4219d2030d79f517d64569a27d50"
   integrity sha512-H3X3eAxwGpeNIk/yvFOs8g7500Q1YvzrxjSC9TNgLGtjrMFxPwhDdcT34QNs2iGWpZ+5WKkMJdjDoYs+Sw+TaA==
 
-axios@1.8.4:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.8.4.tgz#78990bb4bc63d2cae072952d374835950a82f447"
-  integrity sha512-eBSYY4Y68NNlHbHBMdeDmKNtDgXWhQsJcGqzO3iLUM0GraQFSS9cVgPX5I9b3lbdFKyYoAEGAZF1DwhTaljNAw==
+axios@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.9.0.tgz#25534e3b72b54540077d33046f77e3b8d7081901"
+  integrity sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.0"
