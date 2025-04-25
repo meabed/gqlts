@@ -84,7 +84,7 @@
     }
   },
   "dependencies": {
-    "axios": "1.8.4",
+    "axios": "1.9.0",
     "form-data": "4.0.2",
     "graphql-ws": "6.0.4",
     "is-plain-obj": "4.1.0",
@@ -102,7 +102,7 @@
     "@types/lodash.assign": "4.2.9",
     "@types/lodash.get": "4.4.9",
     "@types/lodash.startswith": "4.2.9",
-    "@types/node": "22.14.1",
+    "@types/node": "22.15.0",
     "@types/qs": "6.9.18",
     "@types/ws": "8.18.1",
     "common-tags": "1.8.2",
