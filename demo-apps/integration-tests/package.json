@@ -22,7 +22,7 @@
   "resolutions": {
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
-    "graphql": "16.10.0",
+    "graphql": "16.11.0",
     "ws": "8.18.1"
   },
   "dependencies": {
@@ -33,7 +33,7 @@
     "axios": "1.9.0",
     "deep-equal": "2.2.3",
     "express": "5.1.0",
-    "graphql": "16.10.0",
+    "graphql": "16.11.0",
     "graphql-easy-mocks": "1.1.1",
     "ts-node": "10.9.2",
     "tsd": "0.32.0",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.15.2",
+    "@types/node": "22.15.3",
     "@types/ws": "8.18.1",
     "mocha": "11.1.0",
     "snap-shot-it": "7.9.10",
