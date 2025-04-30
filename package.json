@@ -48,7 +48,7 @@
     "watch": "ultra -r watch"
   },
   "resolutions": {
-    "graphql": "16.10.0",
+    "graphql": "16.11.0",
     "string-width": "4.2.3",
     "strip-ansi": "6.0.1",
     "ws": "8.18.1"
