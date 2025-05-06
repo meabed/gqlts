@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.15.3",
+    "@types/node": "22.15.9",
     "@types/ws": "8.18.1",
     "mocha": "11.2.2",
     "snap-shot-it": "7.9.10",
