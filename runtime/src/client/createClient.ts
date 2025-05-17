@@ -1,6 +1,6 @@
 import { type BatchOptions, createFetcher } from '../fetcher';
 import { type LinkedType } from '../types';
-import { generateGraphqlOperation, type GraphqlOperation } from './generateGraphqlOperation';
+import { generateGraphqlOperation, type GraphqlOperation, ParseRequestOptions } from './generateGraphqlOperation';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import {
   type Client as WSClient,
@@ -32,6 +32,7 @@ export type ClientOptions = Omit<ClientRequestConfig, 'body' | 'headers'> & {
   headers?: Headers;
   subscription?: { url?: string; headers?: Headers } & Partial<WSClientOptions>;
   webSocketImpl?: unknown;
+  generateGraphqlOperationOptions?: ParseRequestOptions;
 };
 
 export interface GraphQLClient {
@@ -47,6 +48,7 @@ export function createClient({
   queryRoot,
   mutationRoot,
   subscriptionRoot,
+  generateGraphqlOperationOptions,
   ...options
 }: ClientOptions & {
   queryRoot?: LinkedType;
@@ -62,14 +64,20 @@ export function createClient({
   if (queryRoot) {
     client.query = (request, config) => {
       if (!queryRoot) throw new Error('queryRoot argument is missing');
-      return client.fetcherMethod(generateGraphqlOperation('query', queryRoot, request), config);
+      return client.fetcherMethod(
+        generateGraphqlOperation('query', queryRoot, request, generateGraphqlOperationOptions),
+        config,
+      );
     };
   }
 
   if (mutationRoot) {
     client.mutation = (request, config) => {
       if (!mutationRoot) throw new Error('mutationRoot argument is missing');
-      return client.fetcherMethod(generateGraphqlOperation('mutation', mutationRoot, request), config);
+      return client.fetcherMethod(
+        generateGraphqlOperation('mutation', mutationRoot, request, generateGraphqlOperationOptions),
+        config,
+      );
     };
   }
 
@@ -78,7 +86,7 @@ export function createClient({
       if (!subscriptionRoot) {
         throw new Error('subscriptionRoot argument is missing');
       }
-      const op = generateGraphqlOperation('subscription', subscriptionRoot, request);
+      const op = generateGraphqlOperation('subscription', subscriptionRoot, request, generateGraphqlOperationOptions);
       if (!client.wsClient) {
         client.wsClient = getSubscriptionClient(options, config);
       }

@@ -31,13 +31,17 @@ export interface GraphqlOperation {
   variables: Record<string, unknown>;
 }
 
-function parseRequest(request: Request | undefined, ctx: Context, path: string[]): string {
+export interface ParseRequestOptions {
+  skipTypingCheck?: boolean;
+}
+
+function parseRequest(request: Request | undefined, ctx: Context, path: string[], opt?: ParseRequestOptions): string {
   if (Array.isArray(request)) {
     const [args, fields] = request;
     const argNames = Object.keys(args);
 
     if (argNames.length === 0) {
-      return parseRequest(fields, ctx, path);
+      return parseRequest(fields, ctx, path, opt);
     }
 
     const field = getFieldFromPath(ctx.root, path);
@@ -48,7 +52,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
 
       const typing = field.args && field.args[argName];
 
-      if (!typing) {
+      if (!typing && !opt?.skipTypingCheck) {
         throw new Error(`No typing defined for argument \`${argName}\` in path \`${path.join('.')}\``);
       }
 
@@ -58,7 +62,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
       };
 
       return `${argName}:$${varName}`;
-    })})${parseRequest(fields, ctx, path)}`;
+    })})${parseRequest(fields, ctx, path, opt)}`;
   } else if (typeof request === 'object' && request !== null) {
     const fields = request;
     const fieldNames = Object.keys(fields).filter((k) => Boolean(fields[k]));
@@ -89,7 +93,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
     const fieldsSelection = fieldNames
       .filter((f) => !['__scalar', '__name'].includes(f))
       .map((f) => {
-        const parsed = parseRequest(fields[f], ctx, [...path, f]);
+        const parsed = parseRequest(fields[f], ctx, [...path, f], opt);
 
         if (f.startsWith('on_')) {
           ctx.fragmentCounter++;
@@ -119,6 +123,7 @@ export function generateGraphqlOperation(
   operation: 'query' | 'mutation' | 'subscription',
   root: LinkedType,
   fields: Fields,
+  opt?: ParseRequestOptions,
 ): GraphqlOperation {
   const ctx: Context = {
     root,
@@ -127,7 +132,7 @@ export function generateGraphqlOperation(
     fragmentCounter: 0,
     fragments: [],
   };
-  const result = parseRequest(fields, ctx, []);
+  const result = parseRequest(fields, ctx, [], opt);
 
   const varNames = Object.keys(ctx.variables);
 

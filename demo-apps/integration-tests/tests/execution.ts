@@ -17,7 +17,7 @@ import { afterEach, beforeEach, describe, it } from 'mocha';
 
 // replace import useServer with require as https://github.com/enisdenjo/graphql-ws/issues/617
 // import { useServer } from 'graphql-ws/lib/use/ws';
-const { useServer } = require('graphql-ws/lib/use/ws');
+const { useServer } = require('graphql-ws/use/ws');
 
 const id = () => null;
 
