@@ -1,4 +1,4 @@
-import { LinkedType } from '../types';
+import { type LinkedType } from '../types';
 import { getFieldFromPath } from './getFieldFromPath';
 
 export interface Args {

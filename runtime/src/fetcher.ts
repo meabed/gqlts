@@ -1,8 +1,8 @@
 import { QueryBatcher } from './client/batcher';
-import { ClientOptions, ClientRequestConfig } from './client/createClient';
-import { GraphqlOperation } from './client/generateGraphqlOperation';
+import { type ClientOptions, ClientRequestConfig } from './client/createClient';
+import { type GraphqlOperation } from './client/generateGraphqlOperation';
 import { extractFiles } from './extract-files/extract-files';
-import axios, { AxiosInstance, AxiosError } from 'axios';
+import axios, { type AxiosInstance } from 'axios';
 import FormData from 'form-data';
 
 export interface Fetcher {
@@ -73,48 +73,28 @@ export function createFetcher(params: ClientOptions): Fetcher {
       };
 
       const fetchBody = hasFiles && formData ? formData : JSON.stringify(body);
-
-      try {
-        const res = await (fetcherInstance as AxiosInstance)({
-          url,
-          data: fetchBody,
-          method: 'POST',
-          headers: headersObject,
-          timeout,
-          withCredentials: true,
-          ...rest,
-          ...config,
+      return (fetcherInstance as AxiosInstance)({
+        url,
+        data: fetchBody,
+        method: 'POST',
+        headers: headersObject,
+        timeout,
+        withCredentials: true,
+        ...rest,
+        ...config,
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            return res.data;
+          }
+          return {
+            data: null,
+            errors: [{ message: res.statusText, code: res.status, path: ['clientResponseNotOk'] }],
+          };
+        })
+        .catch((err) => {
+          return { data: null, errors: [{ message: err.message, code: err.code, path: ['clientResponseError'] }] };
         });
-
-        if (res.status === 200) {
-          return res.data;
-        }
-
-        return {
-          data: null,
-          errors: [
-            {
-              message: res.statusText || 'Request failed',
-              code: res.status,
-              path: ['clientResponseNotOk'],
-            },
-          ],
-        };
-      } catch (err) {
-        const error = err as Error | AxiosError;
-        const errorCode = 'code' in error ? error.code : 'UNKNOWN_ERROR';
-
-        return {
-          data: null,
-          errors: [
-            {
-              message: error.message || 'Unknown error occurred',
-              code: errorCode,
-              path: ['clientResponseError'],
-            },
-          ],
-        };
-      }
     };
   }
 

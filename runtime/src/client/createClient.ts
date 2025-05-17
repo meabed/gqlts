@@ -1,8 +1,12 @@
-import { BatchOptions, createFetcher } from '../fetcher';
-import { LinkedType } from '../types';
-import { generateGraphqlOperation, GraphqlOperation } from './generateGraphqlOperation';
-import { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Client as WSClient, ClientOptions as WSClientOptions, createClient as createWSClient } from 'graphql-ws';
+import { type BatchOptions, createFetcher } from '../fetcher';
+import { type LinkedType } from '../types';
+import { generateGraphqlOperation, type GraphqlOperation } from './generateGraphqlOperation';
+import type { AxiosInstance, AxiosRequestConfig } from 'axios';
+import {
+  type Client as WSClient,
+  type ClientOptions as WSClientOptions,
+  createClient as createWSClient,
+} from 'graphql-ws';
 import { Observable } from 'zen-observable-ts';
 
 type HeaderValue = string | string[] | number | boolean | null;

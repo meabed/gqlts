@@ -1,4 +1,4 @@
-import { ClientRequestConfig } from './createClient';
+import { type ClientRequestConfig } from './createClient';
 
 type Variables = Record<string, any>;
 type Query = {
