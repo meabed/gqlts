@@ -56,9 +56,45 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
         throw new Error(`No typing defined for argument \`${argName}\` in path \`${path.join('.')}\``);
       }
 
+      let varType = typing;
+      const value = args?.[argName];
+
+      let inferredTypeFromValue: string | undefined;
+      // Check if the value is not undefined and if the type is not defined
+      if (opt?.skipTypingCheck && !typing) {
+        const valueType = typeof value;
+        switch (valueType) {
+          case 'string':
+            inferredTypeFromValue = 'String';
+            break;
+          case 'number':
+            inferredTypeFromValue = 'Int';
+            break;
+          case 'boolean':
+            inferredTypeFromValue = 'Boolean';
+            break;
+          case 'object':
+            if (value === null) {
+              inferredTypeFromValue = 'Null';
+            } else if (Array.isArray(value)) {
+              inferredTypeFromValue = '[String]'; // Assuming array of strings for simplicity
+            } else {
+              inferredTypeFromValue = 'Object';
+            }
+            break;
+        }
+        if (!inferredTypeFromValue) {
+          throw new Error(`No typing defined for argument \`${argName}\` in path \`${path.join('.')}\``);
+        }
+        varType = varType || [{ name: inferredTypeFromValue!, scalar: [], fields: {} }, inferredTypeFromValue];
+        console.warn(
+          `Infer type for argument \`${argName}\` in path \`${path.join('.')}\` as \`${inferredTypeFromValue}\` - consider adding typing and updating the schema`,
+        );
+      }
+
       ctx.variables[varName] = {
-        value: args[argName],
-        typing,
+        value: value,
+        typing: varType!,
       };
 
       return `${argName}:$${varName}`;

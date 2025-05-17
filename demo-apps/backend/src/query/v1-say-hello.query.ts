@@ -2,6 +2,7 @@ import { arg, objectType, queryField } from 'nexus';
 
 const input = {
   name: arg({ type: 'String', required: true }),
+  suffix: arg({ type: 'String' }),
 };
 
 const output = objectType({
