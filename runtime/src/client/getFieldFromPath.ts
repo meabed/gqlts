@@ -1,4 +1,4 @@
-import { LinkedField, LinkedType } from '../types';
+import type { LinkedField, LinkedType } from '../types';
 import startsWith from 'lodash.startswith';
 
 export function getFieldFromPath(root: LinkedType | undefined, path: string[]) {
