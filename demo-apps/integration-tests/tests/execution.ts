@@ -8,13 +8,16 @@ import { json } from 'body-parser';
 import express from 'express';
 import fs from 'fs';
 import { PubSub } from 'graphql-subscriptions';
-import { useServer } from 'graphql-ws/lib/use/ws';
 import { createServer } from 'http';
 import path from 'path';
 import { expectType } from 'tsd';
 import { DeepPartial } from 'tsdef';
 import { WebSocketServer } from 'ws';
 import { afterEach, beforeEach, describe, it } from 'mocha';
+
+// replace import useServer with require as https://github.com/enisdenjo/graphql-ws/issues/617
+// import { useServer } from 'graphql-ws/lib/use/ws';
+const { useServer } = require('graphql-ws/use/ws');
 
 const id = () => null;
 

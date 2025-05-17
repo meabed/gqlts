@@ -11,6 +11,9 @@ export const request = supertest(server);
 // local graphql client
 export const apiFlowGraphQLClient: Client = createClient({
   fetcherInstance: request,
+  generateGraphqlOperationOptions: {
+    skipTypingCheck: true,
+  },
   fetcherMethod: async (operation, config) => {
     const r = request.post('/graphql');
     const { clone, files } = extractFiles(operation);

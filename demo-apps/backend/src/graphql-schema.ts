@@ -207,6 +207,7 @@ export interface NexusGenArgTypes {
   Query: {
     v1SatHello: { // args
       name: string; // String!
+      suffix?: string | null; // String
     }
   }
   Subscription: {

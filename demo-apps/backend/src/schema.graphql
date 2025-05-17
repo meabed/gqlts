@@ -23,7 +23,7 @@ type Mutation {
 }
 
 type Query {
-  v1SatHello(name: String!): v1SatHelloOutput!
+  v1SatHello(name: String!, suffix: String): v1SatHelloOutput!
 }
 
 type Subscription {
