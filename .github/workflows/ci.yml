@@ -55,6 +55,9 @@ jobs:
           yarn buildall
           yarn test
 
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+
       - name: Build and Test Demo APP
         run: |
           ./demo-apps/build-and-test.sh
