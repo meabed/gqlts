@@ -2,7 +2,7 @@ import { QueryBatcher } from './client/batcher';
 import { ClientOptions, ClientRequestConfig } from './client/createClient';
 import { GraphqlOperation } from './client/generateGraphqlOperation';
 import { extractFiles } from './extract-files/extract-files';
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosError } from 'axios';
 import FormData from 'form-data';
 
 export interface Fetcher {
@@ -20,19 +20,30 @@ const DEFAULT_BATCH_OPTIONS = {
   batchInterval: 40,
 };
 
+export interface GraphQLErrorResult {
+  data: null;
+  errors: Array<{
+    message: string;
+    code?: string | number;
+    path?: string[];
+    locations?: Array<{ line: number; column: number }>;
+  }>;
+}
+
 export function createFetcher(params: ClientOptions): Fetcher {
   const { url = '', timeout = 100000, headers = {}, batch = false, ...rest } = params;
   let { fetcherMethod, fetcherInstance } = params;
 
   if (!url && !fetcherMethod) {
-    throw new Error('url or fetcher is required');
+    throw new Error('URL or fetcherMethod is required');
   }
 
   if (!fetcherInstance) {
     fetcherInstance = axios.create({});
   }
+
   if (!fetcherMethod) {
-    fetcherMethod = async (body, config: ClientRequestConfig) => {
+    fetcherMethod = async (body, config: ClientRequestConfig = {}) => {
       const { clone, files } = extractFiles(body);
 
       const hasFiles = files?.size > 0;
@@ -42,7 +53,7 @@ export function createFetcher(params: ClientOptions): Fetcher {
         // 1. First document is graphql query with variables
         formData.append('operations', JSON.stringify(clone));
         // 2. Second document maps files to variable locations
-        const map: any = {};
+        const map: Record<string, string[]> = {};
         let i = 0;
         files.forEach((paths) => {
           map[i++] = paths;
@@ -60,29 +71,50 @@ export function createFetcher(params: ClientOptions): Fetcher {
         ...(typeof headers == 'function' ? await headers() : headers),
         ...(!!formData?.getHeaders && formData?.getHeaders()),
       };
+
       const fetchBody = hasFiles && formData ? formData : JSON.stringify(body);
-      return (fetcherInstance as AxiosInstance)({
-        url,
-        data: fetchBody,
-        method: 'POST',
-        headers: headersObject,
-        timeout,
-        withCredentials: true,
-        ...rest,
-        ...config,
-      })
-        .then((res) => {
-          if (res.status === 200) {
-            return res.data;
-          }
-          return {
-            data: null,
-            errors: [{ message: res.statusText, code: res.status, path: ['clientResponseNotOk'] }],
-          };
-        })
-        .catch((err) => {
-          return { data: null, errors: [{ message: err.message, code: err.code, path: ['clientResponseError'] }] };
+
+      try {
+        const res = await (fetcherInstance as AxiosInstance)({
+          url,
+          data: fetchBody,
+          method: 'POST',
+          headers: headersObject,
+          timeout,
+          withCredentials: true,
+          ...rest,
+          ...config,
         });
+
+        if (res.status === 200) {
+          return res.data;
+        }
+
+        return {
+          data: null,
+          errors: [
+            {
+              message: res.statusText || 'Request failed',
+              code: res.status,
+              path: ['clientResponseNotOk'],
+            },
+          ],
+        };
+      } catch (err) {
+        const error = err as Error | AxiosError;
+        const errorCode = 'code' in error ? error.code : 'UNKNOWN_ERROR';
+
+        return {
+          data: null,
+          errors: [
+            {
+              message: error.message || 'Unknown error occurred',
+              code: errorCode,
+              path: ['clientResponseError'],
+            },
+          ],
+        };
+      }
     };
   }
 
@@ -98,10 +130,8 @@ export function createFetcher(params: ClientOptions): Fetcher {
     };
   }
 
-  // todo test batcher
   const batcher = new QueryBatcher(
     async (batchedQuery: GraphqlOperation[], config) => {
-      // console.log(batchedQuery) // [{ query: 'query{user{age}}', variables: {} }, ...]
       if (!fetcherMethod) {
         throw new Error('fetcher is not defined');
       }

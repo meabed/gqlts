@@ -30,6 +30,15 @@ export type ClientOptions = Omit<ClientRequestConfig, 'body' | 'headers'> & {
   webSocketImpl?: unknown;
 };
 
+export interface GraphQLClient {
+  wsClient?: WSClient;
+  query?: <T = any>(request: any, config?: ClientRequestConfig) => Promise<T>;
+  mutation?: <T = any>(request: any, config?: ClientRequestConfig) => Promise<T>;
+  subscription?: <T = any>(request: any, config?: ClientOptions) => Observable<T>;
+  fetcherInstance: BaseFetcher['fetcherInstance'];
+  fetcherMethod: BaseFetcher['fetcherMethod'];
+}
+
 export function createClient({
   queryRoot,
   mutationRoot,
@@ -39,33 +48,27 @@ export function createClient({
   queryRoot?: LinkedType;
   mutationRoot?: LinkedType;
   subscriptionRoot?: LinkedType;
-}) {
+}): GraphQLClient {
   const { fetcherMethod, fetcherInstance } = createFetcher(options);
-  const client: {
-    wsClient?: WSClient;
-    query?: Function;
-    mutation?: Function;
-    subscription?: Function;
-    fetcherInstance: BaseFetcher['fetcherInstance'];
-    fetcherMethod: BaseFetcher['fetcherMethod'];
-  } = {
+  const client: GraphQLClient = {
     fetcherInstance,
     fetcherMethod,
   };
+
   if (queryRoot) {
     client.query = (request, config) => {
       if (!queryRoot) throw new Error('queryRoot argument is missing');
-
       return client.fetcherMethod(generateGraphqlOperation('query', queryRoot, request), config);
     };
   }
+
   if (mutationRoot) {
     client.mutation = (request, config) => {
       if (!mutationRoot) throw new Error('mutationRoot argument is missing');
-
       return client.fetcherMethod(generateGraphqlOperation('mutation', mutationRoot, request), config);
     };
   }
+
   if (subscriptionRoot) {
     client.subscription = (request, config) => {
       if (!subscriptionRoot) {
@@ -75,13 +78,17 @@ export function createClient({
       if (!client.wsClient) {
         client.wsClient = getSubscriptionClient(options, config);
       }
-      return new Observable((observer) =>
-        client.wsClient?.subscribe(op, {
+      return new Observable<any>((observer) => {
+        const unsubscribe = client.wsClient?.subscribe(op, {
           next: (data) => observer.next(data),
           error: (err) => observer.error(err),
           complete: () => observer.complete(),
-        }),
-      );
+        });
+
+        return () => {
+          unsubscribe?.();
+        };
+      });
     };
   }
 
@@ -89,8 +96,9 @@ export function createClient({
 }
 
 function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions): WSClient {
-  const { url: httpClientUrl, subscription, webSocketImpl = {} } = opts || {};
+  const { url: httpClientUrl, subscription, webSocketImpl } = opts || {};
   let { url, headers = {}, ...restOpts } = subscription || {};
+
   // by default use the top level url
   if (!url && httpClientUrl) {
     url = httpClientUrl?.replace(/^http/, 'ws');
@@ -116,8 +124,10 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
     ...config,
   };
 
+  // Check if we're in a browser environment and have a valid WebSocket implementation
   if (
     typeof window !== 'undefined' &&
+    webSocketImpl &&
     typeof webSocketImpl === 'function' &&
     'constructor' in webSocketImpl &&
     'CLOSED' in webSocketImpl &&
@@ -127,5 +137,6 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
   ) {
     wsOpts.webSocketImpl = webSocketImpl;
   }
+
   return createWSClient(wsOpts);
 }
