@@ -55,6 +55,12 @@
       "import": "./esm/extract-files.extract-files.js",
       "types": "./dist/extract-files/extract-files.d.ts"
     },
+    "./dist/extract-files": {
+      "require": "./dist/extract-files/extract-files.js",
+      "default": "./dist/extract-files.extract-files.js",
+      "import": "./esm/extract-files.extract-files.js",
+      "types": "./dist/extract-files/extract-files.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
