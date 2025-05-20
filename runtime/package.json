@@ -36,9 +36,30 @@
     }
   ],
   "sideEffects": false,
-  "main": "dist/index.js",
-  "module": "esm/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "default": "./dist/index.js",
+      "import": "./esm/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./fetcher": {
+      "require": "./dist/fetcher.js",
+      "default": "./dist/fetcher.js",
+      "import": "./esm/fetcher.js",
+      "types": "./dist/fetcher.d.ts"
+    },
+    "./extract-files": {
+      "require": "./dist/extract-files/extract-files.js",
+      "default": "./dist/extract-files.extract-files.js",
+      "import": "./esm/extract-files.extract-files.js",
+      "types": "./dist/extract-files/extract-files.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./esm/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "esm",
