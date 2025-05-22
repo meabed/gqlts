@@ -16,6 +16,10 @@ on:
       - '**'
       - '!master'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,10 +36,6 @@ jobs:
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - uses: styfle/cancel-workflow-action@0.12.1
-        with:
-          workflow_id: ci.yml
-          access_token: ${{ github.token }}
 
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -54,6 +54,9 @@ jobs:
           yarn install --frozen-lockfile --ignore-scripts
           yarn buildall
           yarn test
+
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 
       - name: Build and Test Demo APP
         run: |

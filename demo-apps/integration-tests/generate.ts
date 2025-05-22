@@ -1,4 +1,4 @@
-import { generate } from '@gqlts/cli/dist/main';
+import { generate } from '@gqlts/cli';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 

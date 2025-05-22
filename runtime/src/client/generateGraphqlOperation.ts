@@ -1,4 +1,4 @@
-import { LinkedType } from '../types';
+import { type LinkedType } from '../types';
 import { getFieldFromPath } from './getFieldFromPath';
 
 export interface Args {
@@ -28,16 +28,20 @@ export interface Context {
 
 export interface GraphqlOperation {
   query: string;
-  variables: { [name: string]: any };
+  variables: Record<string, unknown>;
 }
 
-function parseRequest(request: Request | undefined, ctx: Context, path: string[]): string {
+export interface ParseRequestOptions {
+  skipTypingCheck?: boolean;
+}
+
+function parseRequest(request: Request | undefined, ctx: Context, path: string[], opt?: ParseRequestOptions): string {
   if (Array.isArray(request)) {
     const [args, fields] = request;
     const argNames = Object.keys(args);
 
     if (argNames.length === 0) {
-      return parseRequest(fields, ctx, path);
+      return parseRequest(fields, ctx, path, opt);
     }
 
     const field = getFieldFromPath(ctx.root, path);
@@ -46,26 +50,61 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
       ctx.varCounter++;
       const varName = `v${ctx.varCounter}`;
 
-      const typing = field.args && field.args[argName]; // typeMap used here, .args
+      const typing = field.args && field.args[argName];
 
-      if (!typing) {
-        throw new Error(`no typing defined for argument \`${argName}\` in path \`${path.join('.')}\``);
+      if (!typing && !opt?.skipTypingCheck) {
+        throw new Error(`No typing defined for argument \`${argName}\` in path \`${path.join('.')}\``);
+      }
+
+      let varType = typing;
+      const value = args?.[argName];
+
+      let inferredTypeFromValue: string | undefined;
+      // Check if the value is not undefined and if the type is not defined
+      if (opt?.skipTypingCheck && !typing) {
+        const valueType = typeof value;
+        switch (valueType) {
+          case 'string':
+            inferredTypeFromValue = 'String';
+            break;
+          case 'number':
+            inferredTypeFromValue = 'Int';
+            break;
+          case 'boolean':
+            inferredTypeFromValue = 'Boolean';
+            break;
+          case 'object':
+            if (value === null) {
+              inferredTypeFromValue = 'Null';
+            } else if (Array.isArray(value)) {
+              inferredTypeFromValue = '[String]'; // Assuming array of strings for simplicity
+            } else {
+              inferredTypeFromValue = 'Object';
+            }
+            break;
+        }
+        if (!inferredTypeFromValue) {
+          throw new Error(`No typing defined for argument \`${argName}\` in path \`${path.join('.')}\``);
+        }
+        varType = varType || [{ name: inferredTypeFromValue!, scalar: [], fields: {} }, inferredTypeFromValue];
+        console.warn(
+          `Infer type for argument \`${argName}\` in path \`${path.join('.')}\` as \`${inferredTypeFromValue}\` - consider adding typing and updating the schema`,
+        );
       }
 
       ctx.variables[varName] = {
-        value: args[argName],
-        typing,
+        value: value,
+        typing: varType!,
       };
 
       return `${argName}:$${varName}`;
-    })})${parseRequest(fields, ctx, path)}`;
-  } else if (typeof request === 'object') {
+    })})${parseRequest(fields, ctx, path, opt)}`;
+  } else if (typeof request === 'object' && request !== null) {
     const fields = request;
     const fieldNames = Object.keys(fields).filter((k) => Boolean(fields[k]));
 
     if (fieldNames.length === 0) {
-      // TODO if fields are empty just return?
-      throw new Error('field selection should not be empty');
+      throw new Error('Field selection should not be empty');
     }
 
     const type = path.length > 0 ? getFieldFromPath(ctx.root, path).type : ctx.root;
@@ -90,7 +129,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
     const fieldsSelection = fieldNames
       .filter((f) => !['__scalar', '__name'].includes(f))
       .map((f) => {
-        const parsed = parseRequest(fields[f], ctx, [...path, f]);
+        const parsed = parseRequest(fields[f], ctx, [...path, f], opt);
 
         if (f.startsWith('on_')) {
           ctx.fragmentCounter++;
@@ -98,7 +137,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
 
           const typeMatch = f.match(/^on_(.+)/);
 
-          if (!typeMatch || !typeMatch[1]) throw new Error('match failed');
+          if (!typeMatch || !typeMatch[1]) throw new Error(`Invalid fragment type in field: ${f}`);
 
           ctx.fragments.push(`fragment ${implementationFragment} on ${typeMatch[1]}${parsed}`);
 
@@ -120,6 +159,7 @@ export function generateGraphqlOperation(
   operation: 'query' | 'mutation' | 'subscription',
   root: LinkedType,
   fields: Fields,
+  opt?: ParseRequestOptions,
 ): GraphqlOperation {
   const ctx: Context = {
     root,
@@ -128,7 +168,7 @@ export function generateGraphqlOperation(
     fragmentCounter: 0,
     fragments: [],
   };
-  const result = parseRequest(fields, ctx, []);
+  const result = parseRequest(fields, ctx, [], opt);
 
   const varNames = Object.keys(ctx.variables);
 
@@ -136,16 +176,15 @@ export function generateGraphqlOperation(
     varNames.length > 0
       ? `(${varNames.map((v) => {
           const variableType = ctx.variables[v].typing[1];
-          //   console.log('variableType', variableType)
           return `$${v}:${variableType}`;
         })})`
       : '';
 
-  const operationName = fields?.__name || '';
+  const operationName = fields.__name || '';
 
   return {
     query: [`${operation} ${operationName}${varsString}${result}`, ...ctx.fragments].join(','),
-    variables: Object.keys(ctx.variables).reduce<{ [name: string]: any }>((r, v) => {
+    variables: Object.keys(ctx.variables).reduce<Record<string, unknown>>((r, v) => {
       r[v] = ctx.variables[v].value;
       return r;
     }, {}),
