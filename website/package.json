@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "3.2.21",
+  "version": "3.3.0",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "repository": "github:meabed/gqlts",
@@ -54,7 +54,7 @@
     "use-debounce": "10.0.4"
   },
   "devDependencies": {
-    "@gqlts/cli": "3.2.21",
+    "@gqlts/cli": "3.3.0",
     "@types/js-cookie": "3.0.6",
     "@types/node": "22.15.21",
     "@types/prismjs": "1.26.5",

@@ -1,6 +1,6 @@
 {
   "name": "@gqlts/cli",
-  "version": "3.2.21",
+  "version": "3.3.0",
   "description": "Generate a client sdk from your GraphQl API",
   "keywords": [
     "gqlts",
@@ -90,7 +90,7 @@
     }
   },
   "dependencies": {
-    "@gqlts/runtime": "^3.2.21",
+    "@gqlts/runtime": "^3.3.0",
     "@graphql-tools/graphql-file-loader": "8.0.19",
     "@graphql-tools/load": "8.1.0",
     "browserify": "17.0.1",
