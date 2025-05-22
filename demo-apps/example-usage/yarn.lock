@@ -295,11 +295,9 @@
     "@babel/helper-simple-access" "^7.22.5"
 
 "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3":
-  version "7.22.15"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.22.15.tgz#38f46494ccf6cf020bd4eed7124b425e83e523b8"
-  integrity sha512-T0O+aa+4w0u06iNmapipJXMV4HoUir03hpx3/YqXXhu9xim3w+dVphjFWl1OH8NbZHw5Lbm9k45drDkgq2VNNA==
-  dependencies:
-    regenerator-runtime "^0.14.0"
+  version "7.27.1"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.27.1.tgz#9fce313d12c9a77507f264de74626e87fd0dc541"
+  integrity sha512-1x3D2xEk2fRo3PAhwQwu5UubzgiVWSXTBfWpVd2Mx2AzRqJuDJCsgaDVZ7HB5iGzDW1Hl1sWN2mFyKjmR9uAog==
 
 "@babel/template@^7.22.15":
   version "7.22.15"
@@ -589,9 +587,9 @@
   integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
 "@gqlts/cli@file:../../cli":
-  version "3.2.21"
+  version "3.3.0"
   dependencies:
-    "@gqlts/runtime" "^3.2.21"
+    "@gqlts/runtime" "^3.3.0"
     "@graphql-tools/graphql-file-loader" "8.0.19"
     "@graphql-tools/load" "8.1.0"
     browserify "17.0.1"
@@ -609,8 +607,8 @@
     terser "5.39.2"
     yargs "17.7.2"
 
-"@gqlts/runtime@^3.2.21", "@gqlts/runtime@file:../../runtime":
-  version "3.2.21"
+"@gqlts/runtime@^3.3.0", "@gqlts/runtime@file:../../runtime":
+  version "3.3.0"
   dependencies:
     axios "1.9.0"
     form-data "4.0.2"
@@ -4767,11 +4765,6 @@ regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
-
-regenerator-runtime@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.0.tgz#5e19d68eb12d486f797e15a3c6a918f7cec5eb45"
-  integrity sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==
 
 regexp.prototype.flags@^1.5.1:
   version "1.5.1"
