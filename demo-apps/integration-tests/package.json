@@ -26,11 +26,11 @@
     "ws": "8.18.2"
   },
   "dependencies": {
-    "@apollo/server": "4.12.1",
+    "@apollo/server": "4.12.2",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "await-sleep": "0.0.1",
-    "axios": "1.9.0",
+    "axios": "1.10.0",
     "deep-equal": "2.2.3",
     "express": "5.1.0",
     "graphql": "16.11.0",
@@ -43,9 +43,9 @@
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.15.20",
+    "@types/node": "22.15.33",
     "@types/ws": "8.18.1",
-    "mocha": "11.4.0",
+    "mocha": "11.7.1",
     "snap-shot-it": "7.9.10",
     "sucrase": "3.35.0"
   }
