@@ -27,7 +27,7 @@
     "@chakra-ui/react": "3.19.1",
     "@emotion/core": "11.0.0",
     "@emotion/react": "11.14.0",
-    "@emotion/styled": "11.14.0",
+    "@emotion/styled": "11.14.1",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "@tanstack/react-query": "5.81.2",
