@@ -124,7 +124,7 @@
     "lodash.assign": "4.2.0",
     "lodash.get": "4.4.2",
     "lodash.startswith": "4.2.1",
-    "ws": "8.18.2",
+    "ws": "8.18.3",
     "zen-observable-ts": "1.1.0"
   },
   "devDependencies": {
@@ -135,11 +135,11 @@
     "@types/lodash.assign": "4.2.9",
     "@types/lodash.get": "4.4.9",
     "@types/lodash.startswith": "4.2.9",
-    "@types/node": "22.15.33",
+    "@types/node": "22.15.34",
     "@types/qs": "6.14.0",
     "@types/ws": "8.18.1",
     "common-tags": "1.8.2",
-    "dotenv": "16.6.0",
+    "dotenv": "16.6.1",
     "jest": "30.0.3",
     "sucrase": "3.35.0",
     "ts-jest": "29.4.0",

@@ -30,7 +30,7 @@
     "@emotion/styled": "11.14.1",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
-    "@tanstack/react-query": "5.81.2",
+    "@tanstack/react-query": "5.81.5",
     "@types/js-cookie": "3.0.6",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
@@ -48,7 +48,7 @@
     "typescript": "5.8.3"
   },
   "devDependencies": {
-    "@types/node": "22.15.33",
+    "@types/node": "22.15.34",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "next-transpile-modules": "10.0.1",
