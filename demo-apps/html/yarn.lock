@@ -559,10 +559,10 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
-puppeteer-core@24.11.0:
-  version "24.11.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-24.11.0.tgz#5de9aa946ad7171989969c315d09d18660e65c6b"
-  integrity sha512-ncLty0wRjCX67UxzXemmD1mOxb6y1Xzrx1nym8SAQ6cYrcypOVf77CfcZru6P+EiMA9gNDeQNscowKSE9xvhMw==
+puppeteer-core@24.11.1:
+  version "24.11.1"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-24.11.1.tgz#5340a20f09237e2a5793551e8b29ad26dd7f4da1"
+  integrity sha512-I0Gv3jWBRY9E3NTBElp7br7Gaid5RbFTxCRRMHym1kCf0ompO0Pel4REGsGDwMWkg3uwFzIH7t7qXs3T4DKRWA==
   dependencies:
     "@puppeteer/browsers" "2.10.5"
     chromium-bidi "5.1.0"
@@ -571,16 +571,16 @@ puppeteer-core@24.11.0:
     typed-query-selector "^2.12.0"
     ws "^8.18.2"
 
-puppeteer@24.11.0:
-  version "24.11.0"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-24.11.0.tgz#b44d6256e2c8344217b64f0167f9d0ce0b4db149"
-  integrity sha512-7XFpexeYIMen/pfGiDjUpIV7BB9EuVQBtXeQ0cUOmVJTkAuQD3oPHVU7iYeA/mrIJyk79sfOmT20a6SEDwGTLQ==
+puppeteer@24.11.1:
+  version "24.11.1"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-24.11.1.tgz#e1b0e53e162200906df16f2f4e0f0bee67463615"
+  integrity sha512-QbccB/LgxX4tSZRzr9KQ1Jajdvu3n35Dlf/Otjz0QfR+6mDoZdMWLcWF94uQoC3OJerCyYm5hlU2Ru4nBoId2A==
   dependencies:
     "@puppeteer/browsers" "2.10.5"
     chromium-bidi "5.1.0"
     cosmiconfig "^9.0.0"
     devtools-protocol "0.0.1464554"
-    puppeteer-core "24.11.0"
+    puppeteer-core "24.11.1"
     typed-query-selector "^2.12.0"
 
 queue-tick@^1.0.1:
