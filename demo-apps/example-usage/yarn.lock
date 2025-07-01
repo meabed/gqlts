@@ -1016,10 +1016,10 @@
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-3.0.6.tgz#a04ca19e877687bd449f5ad37d33b104b71fdf95"
   integrity sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==
 
-"@types/node@22.15.34":
-  version "22.15.34"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.34.tgz#3995a6461d2cfc51c81907da0065fc328f6a459e"
-  integrity sha512-8Y6E5WUupYy1Dd0II32BsWAx5MWdcnRd8L84Oys3veg1YrYtNtzgO4CFhiBg6MDSjk7Ay36HYOnU7/tuOzIzcw==
+"@types/node@22.16.0":
+  version "22.16.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.16.0.tgz#352bc4951fd089df32f2b6412a61d339b67ded8b"
+  integrity sha512-B2egV9wALML1JCpv3VQoQ+yesQKAmNMBIAY7OteVrikcOcAkWm+dGL6qpeCktPjAv6N1JLnhbNiqS35UpFyBsQ==
   dependencies:
     undici-types "~6.21.0"
 
@@ -3203,12 +3203,12 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@12.19.2:
-  version "12.19.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.19.2.tgz#19e7f0ccff98c769ba2cafff24ba97d1bb6701a5"
-  integrity sha512-0cWMLkYr+i0emeXC4hkLF+5aYpzo32nRdQ0D/5DI460B3O7biQ3l2BpDzIGsAHYuZ0fpBP0DC8XBkVf6RPAlZw==
+framer-motion@12.22.0:
+  version "12.22.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.22.0.tgz#646fc06f1032454a5bbe09eb100f71cacafe0adf"
+  integrity sha512-qG07rR8/mboCNU34nORbrIbBXbJzP4aDqBdr67TAIVlMryDEOwh7LXjylWovlnPCMg78ExoY0Gn2F1fV+3DNIw==
   dependencies:
-    motion-dom "^12.19.0"
+    motion-dom "^12.22.0"
     motion-utils "^12.19.0"
     tslib "^2.4.0"
 
@@ -4176,10 +4176,10 @@ module-deps@^6.2.3:
     through2 "^2.0.0"
     xtend "^4.0.0"
 
-motion-dom@^12.19.0:
-  version "12.19.0"
-  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.19.0.tgz#c31c943bd1e9a48a641f2e57e2ed96d5f48f3d8e"
-  integrity sha512-m96uqq8VbwxFLU0mtmlsIVe8NGGSdpBvBSHbnnOJQxniPaabvVdGgxSamhuDwBsRhwX7xPxdICgVJlOpzn/5bw==
+motion-dom@^12.22.0:
+  version "12.22.0"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.22.0.tgz#aeb06948fa306590ece081af5a73a79476ce85e2"
+  integrity sha512-ooH7+/BPw9gOsL9VtPhEJHE2m4ltnhMlcGMhEqA0YGNhKof7jdaszvsyThXI6LVIKshJUZ9/CP6HNqQhJfV7kw==
   dependencies:
     motion-utils "^12.19.0"
 
