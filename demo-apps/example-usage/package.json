@@ -35,7 +35,7 @@
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
-    "framer-motion": "12.22.0",
+    "framer-motion": "12.23.0",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
     "next": "15.3.4",
@@ -44,7 +44,7 @@
     "react-extra-hooks": "2.3.4",
     "react-icons": "5.5.0",
     "react-storage-hooks": "4.0.1",
-    "swr": "2.3.3",
+    "swr": "2.3.4",
     "typescript": "5.8.3"
   },
   "devDependencies": {
