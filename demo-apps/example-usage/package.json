@@ -35,10 +35,10 @@
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
-    "framer-motion": "12.23.5",
+    "framer-motion": "12.23.6",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
-    "next": "15.3.5",
+    "next": "15.4.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-extra-hooks": "2.3.4",
@@ -48,7 +48,7 @@
     "typescript": "5.8.3"
   },
   "devDependencies": {
-    "@types/node": "22.16.3",
+    "@types/node": "22.16.4",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "next-transpile-modules": "10.0.1",
