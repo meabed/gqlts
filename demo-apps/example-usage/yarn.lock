@@ -612,7 +612,7 @@
 "@gqlts/runtime@^3.2.21", "@gqlts/runtime@file:../../runtime":
   version "3.2.21"
   dependencies:
-    axios "1.10.0"
+    axios "1.11.0"
     form-data "4.0.4"
     graphql-ws "6.0.6"
     is-plain-obj "4.1.0"
@@ -2079,13 +2079,13 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-axios@1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.10.0.tgz#af320aee8632eaf2a400b6a1979fa75856f38d54"
-  integrity sha512-/1xYAC4MP/HEG+3duIhFr4ZQXR4sQXOIe+o6sdqzeykGLx6Upp/1p8MHqhINOvGeP7xyNHe7tsiJByc4SSVUxw==
+axios@1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.11.0.tgz#c2ec219e35e414c025b2095e8b8280278478fdb6"
+  integrity sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==
   dependencies:
     follow-redirects "^1.15.6"
-    form-data "^4.0.0"
+    form-data "^4.0.4"
     proxy-from-env "^1.1.0"
 
 babel-code-frame@^6.26.0:
@@ -3203,7 +3203,7 @@ foreground-child@^3.1.0:
     cross-spawn "^7.0.0"
     signal-exit "^4.0.1"
 
-form-data@4.0.4:
+form-data@4.0.4, form-data@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.4.tgz#784cdcce0669a9d68e94d11ac4eea98088edd2c4"
   integrity sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==
@@ -3214,15 +3214,6 @@ form-data@4.0.4:
     hasown "^2.0.2"
     mime-types "^2.1.12"
 
-form-data@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
-  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
-  dependencies:
-    asynckit "^0.4.0"
-    combined-stream "^1.0.8"
-    mime-types "^2.1.12"
-
 formdata-polyfill@^4.0.10:
   version "4.0.10"
   resolved "https://registry.yarnpkg.com/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz#24807c31c9d402e002ab3d8c720144ceb8848423"
@@ -3230,12 +3221,12 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@12.23.6:
-  version "12.23.6"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.6.tgz#29a78d0b05081fda3fdfd2f3eb4f570d7989d2e8"
-  integrity sha512-dsJ389QImVE3lQvM8Mnk99/j8tiZDM/7706PCqvkQ8sSCnpmWxsgX+g0lj7r5OBVL0U36pIecCTBoIWcM2RuKw==
+framer-motion@12.23.7:
+  version "12.23.7"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.7.tgz#a2eb40f9ea482b935f3636aeb5e6cf71c174a891"
+  integrity sha512-Qs+zNG9D/3c9C0riom1iXVVOOOaY3T32LIofgbQJz9APY/CUE5v6G41WkcZl2lVhaAgQDQcNq94f8qzLf3rTZA==
   dependencies:
-    motion-dom "^12.23.6"
+    motion-dom "^12.23.7"
     motion-utils "^12.23.6"
     tslib "^2.4.0"
 
@@ -4215,10 +4206,10 @@ module-deps@^6.2.3:
     through2 "^2.0.0"
     xtend "^4.0.0"
 
-motion-dom@^12.23.6:
-  version "12.23.6"
-  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.6.tgz#03856178d92a3b460797b57fa3b20e06847f8dab"
-  integrity sha512-G2w6Nw7ZOVSzcQmsdLc0doMe64O/Sbuc2bVAbgMz6oP/6/pRStKRiVRV4bQfHp5AHYAKEGhEdVHTM+R3FDgi5w==
+motion-dom@^12.23.7:
+  version "12.23.7"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.7.tgz#e638964e1f3e78ea4875c6043cd6a2e6db4832d0"
+  integrity sha512-AyJR07/YxObtK3NyGLCfebUe0k9UZGhik+2eIPUoKz76cKRRSkMeifmIxfztIvOaKb/Smu9IfVHkmx+mV+iFmQ==
   dependencies:
     motion-utils "^12.23.6"
 
