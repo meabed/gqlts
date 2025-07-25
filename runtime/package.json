@@ -139,7 +139,7 @@
     "@types/qs": "6.14.0",
     "@types/ws": "8.18.1",
     "common-tags": "1.8.2",
-    "dotenv": "17.2.0",
+    "dotenv": "17.2.1",
     "jest": "30.0.5",
     "sucrase": "3.35.0",
     "ts-jest": "29.4.0",
