@@ -38,7 +38,7 @@
     "ts-node": "10.9.2",
     "tsd": "0.32.0",
     "tsdef": "0.0.14",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   },
   "devDependencies": {
     "@types/deep-equal": "1.0.4",
