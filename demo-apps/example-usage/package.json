@@ -30,7 +30,7 @@
     "@emotion/styled": "11.14.1",
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
-    "@tanstack/react-query": "5.84.1",
+    "@tanstack/react-query": "5.84.2",
     "@types/js-cookie": "3.0.6",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
@@ -38,7 +38,7 @@
     "framer-motion": "12.23.12",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
-    "next": "15.4.5",
+    "next": "15.4.6",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "react-extra-hooks": "2.3.4",
@@ -48,7 +48,7 @@
     "typescript": "5.9.2"
   },
   "devDependencies": {
-    "@types/node": "22.17.0",
+    "@types/node": "22.17.1",
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.7",
     "next-transpile-modules": "10.0.1",
