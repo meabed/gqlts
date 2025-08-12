@@ -58,7 +58,7 @@
     "@types/js-cookie": "3.0.6",
     "@types/node": "22.17.1",
     "@types/prismjs": "1.26.5",
-    "@types/react": "19.1.9",
+    "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7",
     "next-transpile-modules": "10.0.1",
     "typescript": "5.9.2"
