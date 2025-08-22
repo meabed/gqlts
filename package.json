@@ -49,7 +49,7 @@
   },
   "resolutions": {
     "graphql": "16.11.0",
-    "string-width": "4.2.3",
+    "string-width": "8.0.0",
     "strip-ansi": "6.0.1",
     "ws": "8.18.3"
   },
