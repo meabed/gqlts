@@ -1106,10 +1106,10 @@
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-19.1.7.tgz#2863f2aa89e023592b981204ef92c5221b286410"
   integrity sha512-i5ZzwYpqjmrKenzkoLM2Ibzt6mAsM7pxB6BCIouEVVmgiqaMj1TjaK7hnA36hbW5aZv20kx7Lw6hWzPWg0Rurw==
 
-"@types/react@19.1.10":
-  version "19.1.10"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.10.tgz#a05015952ef328e1b85579c839a71304b07d21d9"
-  integrity sha512-EhBeSYX0Y6ye8pNebpKrwFJq7BoQ8J5SO6NlvNwwHjSj6adXJViPQrKlsyPw7hLBLvckEMO1yxeGdR82YBBlDg==
+"@types/react@19.1.11":
+  version "19.1.11"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-19.1.11.tgz#a64d8ec1769fc861d22f54e6e9f360ed67b54dc8"
+  integrity sha512-lr3jdBw/BGj49Eps7EvqlUaoeA0xpj3pc0RoJkHpYaCHkVK7i28dKyImLQb3JVlqs3aYSXf7qYuWOW/fgZnTXQ==
   dependencies:
     csstype "^3.0.2"
 
@@ -4689,10 +4689,10 @@ next@15.5.0:
     "@next/swc-win32-x64-msvc" "15.5.0"
     sharp "^0.34.3"
 
-nextra-theme-docs@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.3.0.tgz#674818630f3dfeee65a500186dc95c18e2cb512f"
-  integrity sha512-f8QDU2ZDp6um0yn9VyejcDRBAMWeeM1EYAknZjclkNArXQMc7n/Z+P60EEjUz79eZQKEo7Bk8kKa9X2fU8FsHQ==
+nextra-theme-docs@4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/nextra-theme-docs/-/nextra-theme-docs-4.4.0.tgz#7bd3338e06b785786d6ba92ecf4893961789ac52"
+  integrity sha512-DqcP1rns1RP1mkvfw5cf/L2eho+Qg40FzqLCTm6kfSEafewwYNfdRotvk7Sa0Bzsr1FbOulIxxgAR4cXDdoZPQ==
   dependencies:
     "@headlessui/react" "^2.1.2"
     clsx "^2.1.0"
@@ -4702,10 +4702,10 @@ nextra-theme-docs@4.3.0:
     zod "4.0.0-beta.20250424T163858"
     zustand "^5.0.1"
 
-nextra@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.3.0.tgz#80234c9b25a3e46cf322066ab312f17e1b94348c"
-  integrity sha512-hMVd8oyr9ee3h0rWkM0JWx5AEiwU5FBYH+Z+TSJ7iWNpaLDt732fUV4nQhfO/8AReuP379S1cDWM1RPnHv112A==
+nextra@4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/nextra/-/nextra-4.4.0.tgz#2700f20990ff7a5f527f119e12c5e59c3dd58b9a"
+  integrity sha512-2PWOxfmtb9Dg46xPLGAva32kHIh1hcLIZyG7kbYKw8EcQ66rcgX9K+/6bkE9Pp1fR+t4+5aPOWlGbzZXdb0nsQ==
   dependencies:
     "@formatjs/intl-localematcher" "^0.6.0"
     "@headlessui/react" "^2.1.2"
