@@ -24,7 +24,7 @@
     "start": "next start"
   },
   "resolutions": {
-    "string-width": "4.2.3",
+    "string-width": "8.0.0",
     "strip-ansi": "6.0.1"
   },
   "dependencies": {
