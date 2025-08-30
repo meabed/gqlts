@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "baby-i-am-faded": "4.0.14",
-    "dayjs": "1.11.15",
+    "dayjs": "1.11.17",
     "final-form": "5.0.0",
     "graphql-tag": "2.12.6",
     "ibm-graphql-query-generator": "1.3.0",
