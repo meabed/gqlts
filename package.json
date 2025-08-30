@@ -54,7 +54,7 @@
     "ws": "8.18.3"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "4.6.3",
+    "@ianvs/prettier-plugin-sort-imports": "4.7.0",
     "lerna": "8.2.3",
     "prettier": "3.6.2",
     "typescript": "5.9.2",
