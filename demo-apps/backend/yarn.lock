@@ -528,12 +528,12 @@
     "@whatwg-node/promise-helpers" "^1.2.1"
     tslib "^2.5.0"
 
-"@envelop/parser-cache@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-9.0.0.tgz#38a3d61526bd9eaca2e894446b0288965b885535"
-  integrity sha512-hHA9keSQRfTQyopfgz8LQkXIDbX/NW0IiLuBc20HPMwBgvLpQRxyEni2YLZvLFVOBB889dVH9RpFVuqXzPB0gg==
+"@envelop/parser-cache@9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-9.0.1.tgz#2338d1986ffbdc47c16d10bb155dcb109c3b5820"
+  integrity sha512-pQjyrJ8WHtexRX7LDAEAjh5QN+uVU27/HlO+neVI4FwQdwjV0IXw9eH0R5o7scq1emQz/uhplsQs4iftbZtcKw==
   dependencies:
-    lru-cache "^10.0.0"
+    lru-cache "^11.0.0"
     tslib "^2.5.0"
 
 "@envelop/types@^5.2.1":
@@ -544,13 +544,13 @@
     "@whatwg-node/promise-helpers" "^1.0.0"
     tslib "^2.5.0"
 
-"@envelop/validation-cache@9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-9.0.0.tgz#1cccf2a8855c3fde1c02ef91b9146a15341f926e"
-  integrity sha512-dcv251EOPCPdOxplNBhukiy72YTPOarMz3NTq5hiFi+hfD072FfpW/HoIVp0zVo+JT6FSCyDbJ2InGhHHbOv5Q==
+"@envelop/validation-cache@9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-9.0.1.tgz#844b73c244c97a2e34763d59eae9ce50c0e190a2"
+  integrity sha512-1FUQSe84vfutyTAPDwxcFGDZH7067CQHEFr03HW84d1Vr+8L/uzfl5DuUew8pvqtng41D6daFRPXaeIdEghPcQ==
   dependencies:
     hash-it "^6.0.0"
-    lru-cache "^10.0.0"
+    lru-cache "^11.0.0"
     tslib "^2.5.0"
 
 "@fastify/busboy@^3.1.1":
@@ -2848,6 +2848,11 @@ lru-cache@^10.2.0:
   version "10.4.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"
   integrity sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==
+
+lru-cache@^11.0.0:
+  version "11.2.1"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.2.1.tgz#d426ac471521729c6c1acda5f7a633eadaa28db2"
+  integrity sha512-r8LA6i4LP4EeWOhqBaZZjDWwehd1xUJPCJd9Sv300H0ZmcUER4+JPh7bqqZeqs1o5pgtgvXm+d9UGrB5zZGDiQ==
 
 lru-cache@^5.1.1:
   version "5.1.1"
