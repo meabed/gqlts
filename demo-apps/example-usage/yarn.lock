@@ -592,7 +592,7 @@
   version "3.2.21"
   dependencies:
     "@gqlts/runtime" "^3.2.21"
-    "@graphql-tools/graphql-file-loader" "8.1.1"
+    "@graphql-tools/graphql-file-loader" "8.1.2"
     "@graphql-tools/load" "8.1.2"
     browserify "17.0.1"
     colors "1.4.0"
@@ -622,24 +622,24 @@
     ws "8.18.3"
     zen-observable-ts "1.1.0"
 
-"@graphql-tools/graphql-file-loader@8.1.1":
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/graphql-file-loader/-/graphql-file-loader-8.1.1.tgz#725da3b58e9c579038c7eb47e7060a87ad481395"
-  integrity sha512-5JaUE3zMHW21Oh3bGSNKcr/Mi6oZ9/QWlBCNYbGy+09U23EOZmhPn9a44zP3gXcnnj0C+YVEr8dsMaoaB3UVGQ==
+"@graphql-tools/graphql-file-loader@8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/graphql-file-loader/-/graphql-file-loader-8.1.2.tgz#d329514cdb3179b633e4139bd27add40f87bb038"
+  integrity sha512-VB6ttpwkqCu0KsA1/Wmev4qsu05Qfw49kgVSKkPjuyDQfVaqtr9ewEQRkX5CqnqHGEeLl6sOlNGEMM5fCVMWGQ==
   dependencies:
-    "@graphql-tools/import" "7.1.1"
+    "@graphql-tools/import" "7.1.2"
     "@graphql-tools/utils" "^10.9.1"
     globby "^11.0.3"
     tslib "^2.4.0"
     unixify "^1.0.0"
 
-"@graphql-tools/import@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/import/-/import-7.1.1.tgz#ea6df07b3c68591bd9b3b152619a84c276be7a56"
-  integrity sha512-zhlhaUmeTfV76vMoLRn9xCVMVc7sLf10ve5GKEhXFFDcWA6+vEZGk9CCm1VlPf2kyKGlF7bwLVzfepb3ZoOU9Q==
+"@graphql-tools/import@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/import/-/import-7.1.2.tgz#b8e623786a2662d21d969da986902cd1f317c5a9"
+  integrity sha512-+tlNQbLEqAA4LdWoLwM1tckx95lo8WIKd8vhj99b9rLwN/KfLwHWzdS3jnUFK7+99vmHmN1oE5v5zmqJz0MTKw==
   dependencies:
     "@graphql-tools/utils" "^10.9.1"
-    "@theguild/federation-composition" "^0.19.0"
+    "@theguild/federation-composition" "^0.20.1"
     resolve-from "5.0.0"
     tslib "^2.4.0"
 
@@ -987,22 +987,22 @@
   dependencies:
     tslib "^2.8.0"
 
-"@tanstack/query-core@5.89.0":
-  version "5.89.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.89.0.tgz#67862fa9aa036942b1906bc51385115a2bbec45a"
-  integrity sha512-joFV1MuPhSLsKfTzwjmPDrp8ENfZ9N23ymFu07nLfn3JCkSHy0CFgsyhHTJOmWaumC/WiNIKM0EJyduCF/Ih/Q==
+"@tanstack/query-core@5.90.1":
+  version "5.90.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.90.1.tgz#53c2e1a59ca2607d2ae0c6403cd13de04c1f161a"
+  integrity sha512-hmi8i+mWP3QnD8yq3+6LWri9IEZAlFbpbM/UVB+TJtp5RIxUfzuARqyW39b+HCfBKKnFKSHWMXNB5YN8lo/E/Q==
 
-"@tanstack/react-query@5.89.0":
-  version "5.89.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.89.0.tgz#ae295ced60d1aee555337a572ad4045e2af3d00a"
-  integrity sha512-SXbtWSTSRXyBOe80mszPxpEbaN4XPRUp/i0EfQK1uyj3KCk/c8FuPJNIRwzOVe/OU3rzxrYtiNabsAmk1l714A==
+"@tanstack/react-query@5.90.1":
+  version "5.90.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.90.1.tgz#46f90bafd0b98fa5e2f3212722c2e8dc171ee93d"
+  integrity sha512-tN7Fx2HuV2SBhl+STgL8enbfSInRoNU1B1+5LIU62klcMElE4lFzol4aReuRSUeD6ntzPayK0KrM6w9+ZlHEkw==
   dependencies:
-    "@tanstack/query-core" "5.89.0"
+    "@tanstack/query-core" "5.90.1"
 
-"@theguild/federation-composition@^0.19.0":
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/@theguild/federation-composition/-/federation-composition-0.19.1.tgz#b3907bfcbdbd69d4628a3b1270936615f56b904f"
-  integrity sha512-E4kllHSRYh+FsY0VR+fwl0rmWhDV8xUgWawLZTXmy15nCWQwj0BDsoEpdEXjPh7xes+75cRaeJcSbZ4jkBuSdg==
+"@theguild/federation-composition@^0.20.1":
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/@theguild/federation-composition/-/federation-composition-0.20.1.tgz#6df18e73d416e062decd502064597e9152254878"
+  integrity sha512-lwYYKCeHmstOtbMtzxC0BQKWsUPYbEVRVdJ3EqR4jSpcF4gvNf3MOJv6yuvq6QsKqgYZURKRBszmg7VEDoi5Aw==
   dependencies:
     constant-case "^3.0.4"
     debug "4.4.1"
@@ -3226,12 +3226,12 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@12.23.16:
-  version "12.23.16"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.16.tgz#a598e23d33c3de666d29034d46e55bac4d010a6f"
-  integrity sha512-N81A8hiHqVsexOzI3wzkibyLURW1nEJsZaRuctPhG4AdbbciYu+bKJq9I2lQFzAO4Bx3h4swI6pBbF/Hu7f7BA==
+framer-motion@12.23.18:
+  version "12.23.18"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.18.tgz#a4cb09c01f84954324b530030fd6e295a97b0f7c"
+  integrity sha512-HBVXBL5x3nk/0WrYM5G4VgjBey99ytVYET5AX17s/pcnlH90cyaxVUqgoN8cpF4+PqZRVOhwWsv28F+hxA9Tzg==
   dependencies:
-    motion-dom "^12.23.12"
+    motion-dom "^12.23.18"
     motion-utils "^12.23.6"
     tslib "^2.4.0"
 
@@ -4216,10 +4216,10 @@ module-deps@^6.2.3:
     through2 "^2.0.0"
     xtend "^4.0.0"
 
-motion-dom@^12.23.12:
-  version "12.23.12"
-  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.12.tgz#87974046e7e61bc4932f36d35e8eab6bb6f3e434"
-  integrity sha512-RcR4fvMCTESQBD/uKQe49D5RUeDOokkGRmz4ceaJKDBgHYtZtntC/s2vLvY38gqGaytinij/yi3hMcWVcEF5Kw==
+motion-dom@^12.23.18:
+  version "12.23.18"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.18.tgz#5a0965010f7378762be32a06a91ba108bb3bdce7"
+  integrity sha512-9piw3uOcP6DpS0qpnDF95bLDzmgMxLOg/jghLnHwYJ0YFizzuvbH/L8106dy39JNgHYmXFUTztoP9JQvUqlBwQ==
   dependencies:
     motion-utils "^12.23.6"
 
