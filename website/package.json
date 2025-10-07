@@ -58,8 +58,8 @@
     "@types/js-cookie": "3.0.6",
     "@types/node": "22.18.8",
     "@types/prismjs": "1.26.5",
-    "@types/react": "19.2.1",
-    "@types/react-dom": "19.2.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.1",
     "next-transpile-modules": "10.0.1",
     "typescript": "5.9.3"
   }
