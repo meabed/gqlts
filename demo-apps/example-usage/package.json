@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@types/node": "22.18.8",
-    "@types/react": "19.2.1",
-    "@types/react-dom": "19.2.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.1",
     "next-transpile-modules": "10.0.1",
     "sucrase": "3.35.0",
     "ts-node": "10.9.2"
