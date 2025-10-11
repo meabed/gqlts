@@ -48,7 +48,7 @@
     "typescript": "5.9.3"
   },
   "devDependencies": {
-    "@types/node": "22.18.9",
+    "@types/node": "22.18.10",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.1",
     "next-transpile-modules": "10.0.1",
