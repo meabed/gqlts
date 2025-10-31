@@ -15,7 +15,7 @@
   "dependencies": {
     "@envelop/parser-cache": "9.0.1",
     "@envelop/validation-cache": "9.0.1",
-    "@graphql-tools/schema": "10.0.25",
+    "@graphql-tools/schema": "10.0.26",
     "graphql": "16.11.0",
     "graphql-scalars": "1.25.0",
     "graphql-upload-ts": "2.1.3",
