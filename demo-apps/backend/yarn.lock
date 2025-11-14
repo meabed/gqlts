@@ -544,10 +544,10 @@
     "@whatwg-node/promise-helpers" "^1.0.0"
     tslib "^2.5.0"
 
-"@envelop/validation-cache@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-9.0.1.tgz#844b73c244c97a2e34763d59eae9ce50c0e190a2"
-  integrity sha512-1FUQSe84vfutyTAPDwxcFGDZH7067CQHEFr03HW84d1Vr+8L/uzfl5DuUew8pvqtng41D6daFRPXaeIdEghPcQ==
+"@envelop/validation-cache@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-10.0.0.tgz#aeb7bf862a193c6ed3c8af2592b0e313fdd225ca"
+  integrity sha512-lRB7U2CAy2HtYguy4FOPKjwE97xGLy3xernN0zZZo5PYqVN1wNZ9OFb7UabGBSXdJp419d/IiLQMDhed4zkU2g==
   dependencies:
     hash-it "^6.0.0"
     lru-cache "^11.0.0"
