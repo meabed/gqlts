@@ -13,7 +13,7 @@
     "typecheck": "tsc --pretty --skipLibCheck --noEmit"
   },
   "dependencies": {
-    "@envelop/parser-cache": "9.0.1",
+    "@envelop/parser-cache": "10.0.0",
     "@envelop/validation-cache": "10.0.0",
     "@graphql-tools/schema": "10.0.29",
     "graphql": "16.12.0",

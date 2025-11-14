@@ -528,10 +528,10 @@
     "@whatwg-node/promise-helpers" "^1.2.1"
     tslib "^2.5.0"
 
-"@envelop/parser-cache@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-9.0.1.tgz#2338d1986ffbdc47c16d10bb155dcb109c3b5820"
-  integrity sha512-pQjyrJ8WHtexRX7LDAEAjh5QN+uVU27/HlO+neVI4FwQdwjV0IXw9eH0R5o7scq1emQz/uhplsQs4iftbZtcKw==
+"@envelop/parser-cache@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-10.0.0.tgz#676933ed3e1a1e54967ef88f07af5e1a9c58db11"
+  integrity sha512-pJiQC9Ir77pid5/9TfJbz+sYH8GSoH3RgIOJTobXxGqvobhUAzgXBuQu0gtVrVm4f2JvFQ5VkxVzDjiYMdyLyA==
   dependencies:
     lru-cache "^11.0.0"
     tslib "^2.5.0"
