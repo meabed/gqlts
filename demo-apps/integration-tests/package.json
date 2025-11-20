@@ -47,6 +47,6 @@
     "@types/ws": "8.18.1",
     "mocha": "11.7.5",
     "snap-shot-it": "7.9.10",
-    "sucrase": "3.35.0"
+    "sucrase": "3.35.1"
   }
 }
