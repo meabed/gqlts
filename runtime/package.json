@@ -118,7 +118,7 @@
   },
   "dependencies": {
     "axios": "1.13.2",
-    "form-data": "4.0.4",
+    "form-data": "4.0.5",
     "graphql-ws": "6.0.6",
     "is-plain-obj": "4.1.0",
     "lodash.assign": "4.2.0",
@@ -141,7 +141,7 @@
     "common-tags": "1.8.2",
     "dotenv": "17.2.3",
     "jest": "30.2.0",
-    "sucrase": "3.35.0",
+    "sucrase": "3.35.1",
     "ts-jest": "29.4.5",
     "tslib": "2.8.1",
     "utility-types": "3.11.0"
