@@ -1089,10 +1089,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/node@24.10.2":
-  version "24.10.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.10.2.tgz#82a57476a19647d8f2c7750d0924788245e39b26"
-  integrity sha512-WOhQTZ4G8xZ1tjJTvKOpyEVSGgOTvJAfDK3FNFgELyaTpzhdgHVHeqW8V+UJvzF5BT+/B54T/1S2K6gd9c7bbA==
+"@types/node@24.10.3":
+  version "24.10.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.10.3.tgz#e0bde7b6bfa2342e88bf158d177dc110e608520e"
+  integrity sha512-gqkrWUsS8hcm0r44yn7/xZeV1ERva/nLgrLxFRUGb7aoNMIJfZJ3AC261zDQuOAKC7MiXai1WCpYc48jAHoShQ==
   dependencies:
     undici-types "~7.16.0"
 
@@ -5208,10 +5208,10 @@ react-compiler-runtime@^19.1.0-rc.2:
   resolved "https://registry.yarnpkg.com/react-compiler-runtime/-/react-compiler-runtime-19.1.0-rc.2.tgz#6fc2ab85bf76138f9458b5c2050728d34cb7740f"
   integrity sha512-852AwyIsbWJ5o1LkQVAZsVK3iLjMxOfKZuxqeGd/RfD+j1GqHb6j3DSHLtpu4HhFbQHsP2DzxjJyKR6luv4D8w==
 
-react-dom@19.2.1:
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.2.1.tgz#ce3527560bda4f997e47d10dab754825b3061f59"
-  integrity sha512-ibrK8llX2a4eOskq1mXKu/TGZj9qzomO+sNfO98M6d9zIPOEhlBkMkBUBLd1vgS0gQsLDBzA+8jJBVXDnfHmJg==
+react-dom@19.2.2:
+  version "19.2.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.2.2.tgz#c62579e8949964e2f9d76d9f7b097be1462e15eb"
+  integrity sha512-fhyD2BLrew6qYf4NNtHff1rLXvzR25rq49p+FeqByOazc6TcSi2n8EYulo5C1PbH+1uBW++5S1SG7FcUU6mlDg==
   dependencies:
     scheduler "^0.27.0"
 
@@ -5252,10 +5252,10 @@ react-storage-hooks@4.0.1:
   resolved "https://registry.yarnpkg.com/react-storage-hooks/-/react-storage-hooks-4.0.1.tgz#e30ed5cda48c77c431ecc02ec3824bd615f5b7fb"
   integrity sha512-fetDkT5RDHGruc2NrdD1iqqoLuXgbx6AUpQSQLLkrCiJf8i97EtwJNXNTy3+GRfsATLG8TZgNc9lGRZOaU5yQA==
 
-react@19.2.1:
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-19.2.1.tgz#8600fa205e58e2e807f6ef431c9f6492591a2700"
-  integrity sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==
+react@19.2.2:
+  version "19.2.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.2.2.tgz#d596d8be169aba32d99c7558cdc4f5aa9cff73f3"
+  integrity sha512-BdOGOY8OKRBcgoDkwqA8Q5XvOIhoNx/Sh6BnGJlet2Abt0X5BK0BDrqGyQgLhAVjD2nAg5f6o01u/OPUhG022Q==
 
 read-only-stream@^2.0.0:
   version "2.0.0"

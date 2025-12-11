@@ -1033,10 +1033,10 @@
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-3.0.6.tgz#a04ca19e877687bd449f5ad37d33b104b71fdf95"
   integrity sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==
 
-"@types/node@24.10.2":
-  version "24.10.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.10.2.tgz#82a57476a19647d8f2c7750d0924788245e39b26"
-  integrity sha512-WOhQTZ4G8xZ1tjJTvKOpyEVSGgOTvJAfDK3FNFgELyaTpzhdgHVHeqW8V+UJvzF5BT+/B54T/1S2K6gd9c7bbA==
+"@types/node@24.10.3":
+  version "24.10.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.10.3.tgz#e0bde7b6bfa2342e88bf158d177dc110e608520e"
+  integrity sha512-gqkrWUsS8hcm0r44yn7/xZeV1ERva/nLgrLxFRUGb7aoNMIJfZJ3AC261zDQuOAKC7MiXai1WCpYc48jAHoShQ==
   dependencies:
     undici-types "~7.16.0"
 
@@ -3162,10 +3162,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@12.23.25:
-  version "12.23.25"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.25.tgz#32d717f8b172c2673f573c0805ecc37d017441b2"
-  integrity sha512-gUHGl2e4VG66jOcH0JHhuJQr6ZNwrET9g31ZG0xdXzT0CznP7fHX4P8Bcvuc4MiUB90ysNnWX2ukHRIggkl6hQ==
+framer-motion@12.23.26:
+  version "12.23.26"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.26.tgz#2a684e9b156118e1c4989d7fc9327def83480391"
+  integrity sha512-cPcIhgR42xBn1Uj+PzOyheMtZ73H927+uWPDVhUMqxy8UHt6Okavb6xIz9J/phFUHUj0OncR6UvMfJTXoc/LKA==
   dependencies:
     motion-dom "^12.23.23"
     motion-utils "^12.23.6"
@@ -4542,10 +4542,10 @@ randomfill@^1.0.3:
     randombytes "^2.0.5"
     safe-buffer "^5.1.0"
 
-react-dom@19.2.1:
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.2.1.tgz#ce3527560bda4f997e47d10dab754825b3061f59"
-  integrity sha512-ibrK8llX2a4eOskq1mXKu/TGZj9qzomO+sNfO98M6d9zIPOEhlBkMkBUBLd1vgS0gQsLDBzA+8jJBVXDnfHmJg==
+react-dom@19.2.2:
+  version "19.2.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.2.2.tgz#c62579e8949964e2f9d76d9f7b097be1462e15eb"
+  integrity sha512-fhyD2BLrew6qYf4NNtHff1rLXvzR25rq49p+FeqByOazc6TcSi2n8EYulo5C1PbH+1uBW++5S1SG7FcUU6mlDg==
   dependencies:
     scheduler "^0.27.0"
 
@@ -4640,10 +4640,10 @@ react-typist@^2.0.5:
   dependencies:
     prop-types "^15.5.10"
 
-react@19.2.1:
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-19.2.1.tgz#8600fa205e58e2e807f6ef431c9f6492591a2700"
-  integrity sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==
+react@19.2.2:
+  version "19.2.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.2.2.tgz#d596d8be169aba32d99c7558cdc4f5aa9cff73f3"
+  integrity sha512-BdOGOY8OKRBcgoDkwqA8Q5XvOIhoNx/Sh6BnGJlet2Abt0X5BK0BDrqGyQgLhAVjD2nAg5f6o01u/OPUhG022Q==
 
 read-only-stream@^2.0.0:
   version "2.0.0"
