@@ -38,9 +38,9 @@
     "framer-motion": "12.23.26",
     "graphql-tag": "2.12.6",
     "landing-blocks": "2.1.0",
-    "next": "16.0.8",
-    "react": "19.2.2",
-    "react-dom": "19.2.2",
+    "next": "16.0.10",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-extra-hooks": "2.3.4",
     "react-icons": "5.5.0",
     "react-storage-hooks": "4.0.1",
@@ -48,7 +48,7 @@
     "typescript": "5.9.3"
   },
   "devDependencies": {
-    "@types/node": "24.10.3",
+    "@types/node": "24.10.4",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "next-transpile-modules": "10.0.1",
