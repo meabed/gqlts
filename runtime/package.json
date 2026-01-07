@@ -124,7 +124,7 @@
     "lodash.assign": "4.2.0",
     "lodash.get": "4.4.2",
     "lodash.startswith": "4.2.1",
-    "ws": "8.18.3",
+    "ws": "8.19.0",
     "zen-observable-ts": "1.1.0"
   },
   "devDependencies": {

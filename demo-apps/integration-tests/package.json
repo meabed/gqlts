@@ -23,7 +23,7 @@
     "@gqlts/cli": "file:../../cli",
     "@gqlts/runtime": "file:../../runtime",
     "graphql": "16.12.0",
-    "ws": "8.18.3"
+    "ws": "8.19.0"
   },
   "dependencies": {
     "@apollo/server": "5.2.0",
