@@ -528,10 +528,10 @@
     "@whatwg-node/promise-helpers" "^1.2.1"
     tslib "^2.5.0"
 
-"@envelop/parser-cache@10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-10.0.0.tgz#676933ed3e1a1e54967ef88f07af5e1a9c58db11"
-  integrity sha512-pJiQC9Ir77pid5/9TfJbz+sYH8GSoH3RgIOJTobXxGqvobhUAzgXBuQu0gtVrVm4f2JvFQ5VkxVzDjiYMdyLyA==
+"@envelop/parser-cache@10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-10.1.0.tgz#28b5caabe9ec55186e128b6facf66bc98deffa0c"
+  integrity sha512-L1MUv8vF+ag1RyK5/FKYEuL9RxVdJO7OpPA3Y5ST8fc9+RoNW/5X3Q1zRiVhaf1DubY/nx7kksA0vWM/LzQgEg==
   dependencies:
     lru-cache "^11.0.0"
     tslib "^2.5.0"
@@ -544,13 +544,13 @@
     "@whatwg-node/promise-helpers" "^1.0.0"
     tslib "^2.5.0"
 
-"@envelop/validation-cache@10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-10.0.0.tgz#aeb7bf862a193c6ed3c8af2592b0e313fdd225ca"
-  integrity sha512-lRB7U2CAy2HtYguy4FOPKjwE97xGLy3xernN0zZZo5PYqVN1wNZ9OFb7UabGBSXdJp419d/IiLQMDhed4zkU2g==
+"@envelop/validation-cache@10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-10.1.0.tgz#ed64b98838905ec2933b00c34b0924c15b577bd7"
+  integrity sha512-Y//9+aHdePxbMxszTSSo2unRgBsL43/Mk+vvM9xTysTGQuSxTAgj2g2JOSdXLoV5O5dNBnfE/Wdw8EyFiBIbsw==
   dependencies:
-    hash-it "^6.0.0"
     lru-cache "^11.0.0"
+    object-hash "^3.0.0"
     tslib "^2.5.0"
 
 "@fastify/busboy@^3.1.1":
@@ -2218,11 +2218,6 @@ has-tostringtag@^1.0.2:
   dependencies:
     has-symbols "^1.0.3"
 
-hash-it@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/hash-it/-/hash-it-6.0.0.tgz#188df5a8ca2f8e036690e35f2ef88bd9417ff334"
-  integrity sha512-KHzmSFx1KwyMPw0kXeeUD752q/Kfbzhy6dAZrjXV9kAIXGqzGvv8vhkUqj+2MGZldTo0IBpw6v7iWE7uxsvH0w==
-
 hasown@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/hasown/-/hasown-2.0.2.tgz#003eaf91be7adc372e84ec59dc37252cedb80003"
@@ -3017,6 +3012,11 @@ npm-run-path@^4.0.1:
   integrity sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
   dependencies:
     path-key "^3.0.0"
+
+object-hash@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-3.0.0.tgz#73f97f753e7baffc0e2cc9d6e079079744ac82e9"
+  integrity sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==
 
 object-inspect@^1.13.3:
   version "1.13.4"
