@@ -117,7 +117,7 @@
     }
   },
   "dependencies": {
-    "axios": "1.9.0",
+    "axios": "1.13.5",
     "form-data": "4.0.4",
     "graphql-ws": "6.0.5",
     "is-plain-obj": "4.1.0",
