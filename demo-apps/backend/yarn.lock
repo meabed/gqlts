@@ -528,10 +528,10 @@
     "@whatwg-node/promise-helpers" "^1.2.1"
     tslib "^2.5.0"
 
-"@envelop/parser-cache@10.1.0":
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-10.1.0.tgz#28b5caabe9ec55186e128b6facf66bc98deffa0c"
-  integrity sha512-L1MUv8vF+ag1RyK5/FKYEuL9RxVdJO7OpPA3Y5ST8fc9+RoNW/5X3Q1zRiVhaf1DubY/nx7kksA0vWM/LzQgEg==
+"@envelop/parser-cache@10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@envelop/parser-cache/-/parser-cache-10.1.1.tgz#6d57871c6e9c262e539d8fc60989d3c0c1c01dde"
+  integrity sha512-VDZp0jszPgBS+jNEAZ7XIlTXpQ0OFS9xkqNwN7TXRYKb5KPwAY7ej/2ik6GQ1rlMdGEa1y8oXqlEudFDzOHz/A==
   dependencies:
     lru-cache "^11.0.0"
     tslib "^2.5.0"
@@ -544,10 +544,10 @@
     "@whatwg-node/promise-helpers" "^1.0.0"
     tslib "^2.5.0"
 
-"@envelop/validation-cache@10.1.0":
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-10.1.0.tgz#ed64b98838905ec2933b00c34b0924c15b577bd7"
-  integrity sha512-Y//9+aHdePxbMxszTSSo2unRgBsL43/Mk+vvM9xTysTGQuSxTAgj2g2JOSdXLoV5O5dNBnfE/Wdw8EyFiBIbsw==
+"@envelop/validation-cache@10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@envelop/validation-cache/-/validation-cache-10.1.1.tgz#20c12cd1ececd44efdc1f9e3736aabcc2816ec3a"
+  integrity sha512-1gNWi9xIyn6DuK7yMKyYK4/8kVZu1En8xsWLDAiFVp2gGLv93Ws43QCcUw+U6Fp0rKOUZ8pv7YSH778U0Sp/vQ==
   dependencies:
     lru-cache "^11.0.0"
     object-hash "^3.0.0"
