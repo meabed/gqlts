@@ -15,11 +15,11 @@
   "dependencies": {
     "@envelop/parser-cache": "10.1.1",
     "@envelop/validation-cache": "10.1.1",
-    "@graphql-tools/schema": "10.0.31",
-    "graphql": "16.13.1",
+    "@graphql-tools/schema": "10.0.32",
+    "graphql": "16.13.2",
     "graphql-scalars": "1.25.0",
     "graphql-upload-ts": "2.1.3",
-    "graphql-yoga": "5.18.1",
+    "graphql-yoga": "5.21.0",
     "nexus": "1.3.0",
     "supertest": "7.2.2",
     "ts-node": "10.9.2",
@@ -30,6 +30,6 @@
     "@types/jest": "30.0.0",
     "@types/supertest": "6.0.3",
     "jest": "30.3.0",
-    "ts-jest": "29.4.6"
+    "ts-jest": "29.4.9"
   }
 }
