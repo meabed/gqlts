@@ -19,7 +19,7 @@
   "devDependencies": {
     "graphql": "16.13.2",
     "ts-node": "10.9.2",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   },
   "resolutions": {
     "@gqlts/runtime": "file:./../../../runtime"
