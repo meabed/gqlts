@@ -24,7 +24,7 @@
     "supertest": "7.2.2",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
-    "uuid": "13.0.0"
+    "uuid": "14.0.0"
   },
   "devDependencies": {
     "@types/jest": "30.0.0",
