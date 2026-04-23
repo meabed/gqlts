@@ -11,7 +11,7 @@
     "build": "yarn gen && yarn github && yarn hasura && yarn simple",
     "gen": "yarn hasura && yarn github && yarn simple && tsc --noEmit",
     "github": "yarn play --schema github.graphql -o github/generated -S HTML:string -S URI:string ",
-    "hasura": "yarn play -e https://realtime-chat.hasura.app/v1/graphql -o hasura/generated",
+    "hasura": "yarn play --schema hasura/generated/schema.graphql -o hasura/generated",
     "play": "ts-node ../../cli/src/cli.ts",
     "simple": "yarn play --esm-and-cjs --sort --schema simple.graphql -o simple/generated",
     "test": "mocha"
@@ -23,8 +23,7 @@
   },
   "resolutions": {
     "@gqlts/cli": "file:../../cli",
-    "@gqlts/runtime": "file:../../runtime",
-    "string-width": "8.2.0"
+    "@gqlts/runtime": "file:../../runtime"
   },
   "dependencies": {
     "@gqlts/cli": "file:../../cli",
@@ -37,6 +36,7 @@
   },
   "devDependencies": {
     "@types/mocha": "10.0.10",
+    "@types/node": "^25.6.0",
     "mocha": "11.7.5",
     "sucrase": "3.35.1",
     "ts-node": "10.9.2"

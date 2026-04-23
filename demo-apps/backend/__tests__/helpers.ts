@@ -38,6 +38,7 @@ export const apiFlowGraphQLClient: Client = createClient({
     const { headers = {} } = config || {};
     r.set('Content-Type', 'application/json').set('Accept', 'application/json');
     Object.entries(headers).forEach(([key, value]) => {
+      if (value == null) return;
       if (key === 'authorization') return r.set(key, value.toString());
 
       r.set(key, value.toString());

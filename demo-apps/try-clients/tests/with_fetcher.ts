@@ -1,22 +1,20 @@
-import { createClient } from '../hasura/generated';
+import { createClient } from '../hasura/generated/index.js';
 import assert from 'assert';
-import QueryBatcher from 'graphql-query-batcher';
-import fetch from 'isomorphic-unfetch';
 
-const URL = 'https://realtime-chat.hasura.app/v1/graphql';
+const QueryBatcher = require('graphql-query-batcher');
+
+const user = {
+  id: 1,
+  username: 'John',
+  last_seen: new Date().toISOString(),
+};
 
 describe('use fetcher', () => {
-  const fetcherInstance = fetch;
-  const fetcherMethod = (op) =>
-    fetcherInstance(URL, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        // Authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
-      },
-      body: JSON.stringify(op),
-    }).then((response) => response.json());
+  const fetcherInstance = {};
+  const fetcherMethod = async (op: any) => {
+    assert.equal(typeof op.query, 'string');
+    return { data: { user: [user] } };
+  };
 
   const client = createClient({
     fetcherInstance,
@@ -28,24 +26,15 @@ describe('use fetcher', () => {
         __scalar: true,
       },
     });
-    // console.log(res);
-    assert(res);
+    assert.deepEqual(res.data?.user, [user]);
   });
 });
 
 describe('batch queries', () => {
-  const fetcherInstance = fetch;
-  const fetcherMethod = (batchedQuery) => {
-    assert(batchedQuery.length === 3);
-    return fetch(URL, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        // Authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
-      },
-      body: JSON.stringify(batchedQuery),
-    }).then((response) => response.json());
+  const fetcherInstance = {};
+  const fetcherMethod = (batchedQuery: any[]) => {
+    assert.equal(batchedQuery.length, 3);
+    return Promise.resolve(batchedQuery.map(() => ({ data: { user: [user] } })));
   };
 
   const batcher = new QueryBatcher(fetcherMethod, {
@@ -78,5 +67,7 @@ describe('batch queries', () => {
         },
       }),
     ]);
+    assert.equal(res.length, 3);
+    res.forEach((response) => assert.deepEqual(response.data?.user, [user]));
   });
 });

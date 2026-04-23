@@ -2,7 +2,7 @@ import { QueryRequest, QueryResult, generateQueryOp } from '../generated/';
 import { ApolloClient, ApolloProvider, InMemoryCache, gql, useQuery } from '@apollo/client';
 import { QueryHookOptions } from '@apollo/react-hooks';
 import { Box } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import { Hero, PageContainer, SectionTitle } from '../components/landing';
 import React from 'react';
 
 function tuple<T1, T2>(data: [T1, T2]): typeof data;

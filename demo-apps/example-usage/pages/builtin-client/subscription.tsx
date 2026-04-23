@@ -1,7 +1,7 @@
 // import { expectType } from "tsd";
 import { createClient } from '../../subscription';
 import { Box, Spinner, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import { Hero, PageContainer, SectionTitle } from '../../components/landing';
 import React, { useEffect, useState } from 'react';
 
 const client = createClient({
@@ -89,7 +89,7 @@ const Page = () => {
   // );
   // expectType<Partial<user>[] | undefined>(data?.user);
   return (
-    <Stack spacing='40px' mt='40px'>
+    <Stack gap='40px' mt='40px'>
       <Hero
         bullet='Gqlts lets you write graphql queries as code'
         heading='Example use of Gqlts'
@@ -103,7 +103,7 @@ const Page = () => {
           </Stack>
         )}
         {addedUser.length > 0 && (
-          <Stack spacing='20px'>
+          <Stack gap='20px'>
             {addedUser?.map((x: any) => {
               return (
                 <Box borderRadius='10px' p='20px' borderWidth='1px'>

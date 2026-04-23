@@ -49,8 +49,6 @@
   },
   "resolutions": {
     "graphql": "16.13.2",
-    "string-width": "8.2.0",
-    "strip-ansi": "6.0.1",
     "ws": "8.20.0"
   },
   "devDependencies": {

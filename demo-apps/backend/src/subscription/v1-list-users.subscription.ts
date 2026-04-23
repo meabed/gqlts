@@ -17,11 +17,15 @@ export const field = subscriptionField('v1ListUsers', {
   required: true,
   async resolve(_root, args, ctx, _info) {
     const { name } = args;
-    return {};
+    return { name };
   },
   async subscribe(_root, args, ctx, _info) {
     const { name } = args;
-    return undefined;
+    async function* listUsers() {
+      yield { name };
+    }
+
+    return listUsers();
   },
 });
 

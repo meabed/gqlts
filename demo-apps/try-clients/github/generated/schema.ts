@@ -1,5 +1,4 @@
 export type Scalars = {
-    String: string,
     ID: string,
     Int: number,
     Boolean: boolean,
@@ -14,6 +13,7 @@ export type Scalars = {
     PreciseDateTime: any,
     URI: string,
     X509Certificate: any,
+    String: string,
 }
 
 

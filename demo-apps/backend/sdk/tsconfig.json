@@ -2,6 +2,7 @@
   "compilerOptions": {
     "incremental": true,
     "target": "es5",
+    "ignoreDeprecations": "6.0",
     "module": "commonjs",
     "lib": [
       "es5",

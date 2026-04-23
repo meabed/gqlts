@@ -1,6 +1,6 @@
 import { client } from './_app';
 import { Box, Input, Spinner, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import { Hero, PageContainer, SectionTitle } from '../components/landing';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 
@@ -14,7 +14,7 @@ const Page = () => {
   const { data, errors, extensions } = gqlData;
 
   return (
-    <Stack spacing='40px' mt='40px'>
+    <Stack gap='40px' mt='40px'>
       <Hero
         bullet='Gqlts lets you write graphql queries as code'
         heading='Example use of Gqlts'
@@ -22,7 +22,7 @@ const Page = () => {
       />
       <PageContainer>
         <Box>Search a continent</Box>
-        <Input variant='filled' value={regex} onChange={(e: any) => setRegex(e.target.value)} placeholder='.*' />
+        <Input variant='subtle' value={regex} onChange={(e: any) => setRegex(e.target.value)} placeholder='.*' />
       </PageContainer>
       <PageContainer>
         <SectionTitle heading='Countries' />
@@ -32,7 +32,7 @@ const Page = () => {
           </Stack>
         )}
         {data && (
-          <Stack spacing='20px'>
+          <Stack gap='20px'>
             {data?.countries?.map((x: any) => (
               <Box borderRadius='10px' p='20px' borderWidth='1px'>
                 {x.name}

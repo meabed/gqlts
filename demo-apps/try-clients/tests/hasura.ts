@@ -1,44 +1,26 @@
-import { createClient, everything } from '../hasura/generated';
+import { createClient, everything, generateSubscriptionOp } from '../hasura/generated/index.js';
+import assert from 'assert';
 
 describe('hasura', () => {
-  const client = createClient({});
-  const name = 'John';
+  const user = {
+    id: 1,
+    username: 'John',
+    last_seen: new Date().toISOString(),
+  };
+  const client = createClient({
+    fetcherInstance: {},
+    fetcherMethod: async (op) => {
+      assert(!Array.isArray(op));
+      assert.equal(typeof op.query, 'string');
+      return { data: { user: [user], insert_user: { returning: [user] }, delete_user: { returning: [user] } } };
+    },
+  });
   const id = 4;
+
   it('simple normal syntax', async () => {
     const res3 = await client.mutation({
-      delete_user: [{ where: { id: { _eq: id } } }, { ...everything }],
+      delete_user: [{ where: { id: { _eq: id } } }, { returning: { ...everything } }],
     });
-    // console.log(res3);
-    const res4 = client
-      .subscription({
-        user: {
-          __scalar: true,
-        },
-      })
-      .subscribe({
-        next: (x) => {
-          // console.log('next1', x);
-        },
-        error: console.error,
-        complete: () => {
-          console.log('complete1');
-        },
-      });
-
-    const res5 = client
-      .subscription({
-        user: [{ limit: 4 }, { ...everything }],
-      })
-      .subscribe({
-        next: (x) => {
-          // console.log('next2', x);
-        },
-        error: console.error,
-        complete: () => {
-          console.log('complete2');
-        },
-      });
-
     const res1 = await client.mutation({
       insert_user: [
         {
@@ -53,17 +35,21 @@ describe('hasura', () => {
         { ...everything, returning: { ...everything } },
       ],
     });
-    // console.log(res1);
 
     const res2 = await client.query({
       user: {
         ...everything,
       },
     });
-    // console.log(res2);
 
-    res4.unsubscribe();
-    res5.unsubscribe();
-    client.wsClient.terminate();
+    const subscriptionOp = generateSubscriptionOp({
+      user: [{ limit: 4 }, { ...everything }],
+    });
+
+    assert.deepEqual(res3.data?.delete_user?.returning, [user]);
+    assert.deepEqual(res1.data?.insert_user?.returning, [user]);
+    assert.deepEqual(res2.data?.user, [user]);
+    assert.match(subscriptionOp.query, /subscription/);
+    assert.match(subscriptionOp.query, /user/);
   });
 });

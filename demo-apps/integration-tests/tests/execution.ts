@@ -1,6 +1,6 @@
-import { Account, createClient, everything, isHouse, isUser, Point, User } from '../generated';
+import { Account, createClient, everything, isHouse, isUser, Point, User } from '../generated/index.js';
 import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import { expressMiddleware } from '@as-integrations/express5';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import assert from 'assert';
 import axios from 'axios';

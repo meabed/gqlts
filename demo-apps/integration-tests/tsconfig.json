@@ -5,6 +5,7 @@
     "noUnusedParameters": false,
     "noImplicitAny": false,
     "strict": true,
+    "ignoreDeprecations": "6.0",
     "declaration": true,
     "target": "ES2015",
     "module": "CommonJS",

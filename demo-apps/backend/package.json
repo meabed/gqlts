@@ -23,10 +23,10 @@
     "nexus": "1.3.0",
     "supertest": "7.2.2",
     "ts-node": "10.9.2",
-    "typescript": "6.0.3",
-    "uuid": "14.0.0"
+    "typescript": "6.0.3"
   },
   "devDependencies": {
+    "@gqlts/runtime": "file:../../runtime",
     "@types/jest": "30.0.0",
     "@types/supertest": "7.2.0",
     "jest": "30.3.0",

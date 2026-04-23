@@ -1,6 +1,6 @@
 import { createClient } from '../hasura';
 import { Box, Spinner, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import { Hero, PageContainer, SectionTitle } from '../components/landing';
 import React from 'react';
 import { useObservable } from 'react-extra-hooks';
 
@@ -23,7 +23,7 @@ const Page = () => {
     }),
   );
   return (
-    <Stack spacing='40px' mt='40px'>
+    <Stack gap='40px' mt='40px'>
       <Hero
         bullet='Gqlts lets you write graphql queries as code'
         heading='Example use of Gqlts'
@@ -37,7 +37,7 @@ const Page = () => {
           </Stack>
         )}
         {data && (
-          <Stack spacing='20px'>
+          <Stack gap='20px'>
             {data?.user?.map((x: any) => (
               <Box borderRadius='10px' p='20px' borderWidth='1px'>
                 {x.name}

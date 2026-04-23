@@ -4,6 +4,7 @@
     "noUnusedParameters": true,
     "importHelpers": true,
     "isolatedModules": true,
+    "ignoreDeprecations": "6.0",
     "rootDir": "src",
     "strict": false,
     "declaration": true,

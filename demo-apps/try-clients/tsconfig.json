@@ -5,6 +5,10 @@
     "sourceMap": true,
     "noEmit": true,
     "resolveJsonModule": true,
+    "types": [
+      "mocha",
+      "node"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
   },

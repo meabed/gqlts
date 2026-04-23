@@ -1,5 +1,5 @@
 import { Box, Link, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer } from 'landing-blocks';
+import { Hero, PageContainer } from '../components/landing';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -15,9 +15,9 @@ const paths: Record<any, any> = {
 
 const Page = () => {
   return (
-    <Stack spacing='40px' mt='40px'>
+    <Stack gap='40px' mt='40px'>
       <Hero subheading='Example of usage with gqlts' />
-      <PageContainer spacing='40px'>
+      <PageContainer gap='40px'>
         {Object.keys(paths).map((k) => (
           <Box color='green.400' borderRadius='10px' p='20px' borderWidth='1px' minW='100%'>
             <NextLink href={paths[k]}>

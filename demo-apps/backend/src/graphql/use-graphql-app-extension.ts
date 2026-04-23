@@ -1,6 +1,7 @@
 import { IGraphQLContext } from './graphql-context';
+import { ExecutionResult } from 'graphql';
 import { Plugin } from 'graphql-yoga';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
 
 export const useGraphqlAppExtension: Plugin<IGraphQLContext> = {
   onExecute() {
@@ -10,15 +11,23 @@ export const useGraphqlAppExtension: Plugin<IGraphQLContext> = {
         const { contextValue: context } = args;
         const { res, req } = context as IGraphQLContext;
         const runtime = Date.now() - context.startTime;
-        const requestId = req.requestId ?? (req.headers['x-request-id'] as string) ?? uuidv4();
+        const requestId = req.requestId ?? (req.headers['x-request-id'] as string) ?? randomUUID();
         res?.setHeader('x-request-id', requestId);
         res?.setHeader('x-runtime', runtime);
 
-        result['extensions'] = result['extensions'] ?? {};
-        result['extensions']['requestId'] = requestId;
-        result['extensions']['runtime'] = runtime;
+        if (Symbol.asyncIterator in Object(result)) {
+          setResult(result);
+          return;
+        }
 
-        setResult(result);
+        const executionResult = result as ExecutionResult;
+        executionResult.extensions = {
+          ...executionResult.extensions,
+          requestId,
+          runtime,
+        };
+
+        setResult(executionResult);
         return;
       },
     };

@@ -16,7 +16,7 @@
 function(options) {
     options = options || {}
     var optionsCopy = {
-      url: "https://realtime-chat.hasura.app/v1/graphql",
+      url: undefined,
       queryRoot: typeMap.Query,
       mutationRoot: typeMap.Mutation,
       subscriptionRoot: typeMap.Subscription,
