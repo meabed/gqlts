@@ -57,11 +57,11 @@ fi
 cd $my_dir/runtime
 runtimeVersion=$(node -p -e "require('./package.json').version")
 echo "runtimeVersion: $runtimeVersion"
-npm publish --access public
+npm publish --access public --tag beta
 
 cd $my_dir/cli
 cliVersion=$(node -p -e "require('./package.json').version")
 echo "cliVersion: $cliVersion"
-npm publish --access public
+npm publish --access public --tag beta
 
 echo "Done."
