@@ -120,6 +120,8 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
     throw new Error('Subscription client error: missing url parameter');
   }
 
+  const explicitWebSocketImpl = config?.webSocketImpl ?? restOpts.webSocketImpl ?? webSocketImpl;
+
   const wsOpts: WSClientOptions = {
     url,
     lazy: true,
@@ -136,18 +138,8 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
     ...config,
   };
 
-  // Check if we're in a browser environment and have a valid WebSocket implementation
-  if (
-    typeof window !== 'undefined' &&
-    webSocketImpl &&
-    typeof webSocketImpl === 'function' &&
-    'constructor' in webSocketImpl &&
-    'CLOSED' in webSocketImpl &&
-    'CLOSING' in webSocketImpl &&
-    'CONNECTING' in webSocketImpl &&
-    'OPEN' in webSocketImpl
-  ) {
-    wsOpts.webSocketImpl = webSocketImpl;
+  if (explicitWebSocketImpl) {
+    wsOpts.webSocketImpl = explicitWebSocketImpl;
   }
 
   return createWSClient(wsOpts);

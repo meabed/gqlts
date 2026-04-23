@@ -6,6 +6,7 @@
     "noImplicitAny": false,
     "strict": true,
     "ignoreDeprecations": "6.0",
+    "rootDir": ".",
     "declaration": true,
     "target": "ES2015",
     "module": "CommonJS",
@@ -17,6 +18,10 @@
     "noImplicitThis": false,
     "resolveJsonModule": true,
     "skipDefaultLibCheck": true,
+    "types": [
+      "mocha",
+      "node"
+    ],
     "lib": [
       "dom",
       "es2017",
@@ -30,6 +35,7 @@
     "dist"
   ],
   "include": [
+    "generate.ts",
     "tests",
     "generated/**/*.json",
     "generated"
