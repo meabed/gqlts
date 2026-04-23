@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "3.2.21",
+  "version": "v3.4.0-beta.0",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "repository": "github:meabed/gqlts",
