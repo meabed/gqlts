@@ -62,10 +62,10 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          branch: changeset-release/${{ github.ref_name }}
-          commit: chore(release): version packages (${{ github.ref_name }})
-          title: Version Packages (${{ github.ref_name }})
-          version: ${{ github.ref_name == 'develop' && 'yarn release:version:beta' || 'yarn release:version:stable' }}
+          branch: "changeset-release/${{ github.ref_name }}"
+          commit: "chore(release): version packages (${{ github.ref_name }})"
+          title: "Version Packages (${{ github.ref_name }})"
+          version: "${{ github.ref_name == 'develop' && 'yarn release:version:beta' || 'yarn release:version:stable' }}"
           publish: yarn release:publish
           createGithubReleases: false
         env:
