@@ -91,6 +91,44 @@ query {
 }
 ```
 
+## Packages
+
+This repo contains two published packages:
+
+- `@gqlts/cli`: reads a GraphQL schema and generates the typed client files.
+- `@gqlts/runtime`: powers generated clients at runtime for queries, mutations, subscriptions, batching, uploads, and custom fetchers.
+
+Generated clients normally contain:
+
+- `schema.graphql`: schema snapshot used for generation.
+- `schema.ts`: generated schema, request, response, and guard types.
+- `index.js` / `index.esm.js`: generated CommonJS and ESM client entrypoints.
+- `index.d.ts`: generated public TypeScript declarations.
+- `types.cjs.js` / `types.esm.js`: compressed runtime type map.
+- `guards.cjs.js` / `guards.esm.js`: generated runtime type guards.
+
+## Development
+
+Install from the repo root with Yarn classic:
+
+```sh
+yarn install --frozen-lockfile
+```
+
+Common commands:
+
+```sh
+yarn buildall
+yarn test
+yarn tscall
+yarn --cwd website build
+./demo-apps/build-and-test.sh
+```
+
+Run `./demo-apps/build-and-test.sh` before pushing generator, runtime, upload, subscription, SDK, or Next.js changes. It runs the backend demo, SDK generation, standalone browser bundle, Next.js dev and production tests, and integration tests.
+
+More details are in [DEVELOPMENT.md](./DEVELOPMENT.md).
+
 ---
 
 ## License
