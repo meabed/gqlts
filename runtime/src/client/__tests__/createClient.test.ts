@@ -47,4 +47,20 @@ describe('createClient subscriptions', () => {
       }),
     );
   });
+
+  it('does not pass invalid explicit WebSocket values during SSR', () => {
+    const client = createClient({
+      url: 'http://example.test/graphql',
+      subscriptionRoot,
+      webSocketImpl: {},
+    });
+
+    client.subscription?.({ ping: true });
+
+    expect(createWSClient).toHaveBeenCalledWith(
+      expect.not.objectContaining({
+        webSocketImpl: expect.anything(),
+      }),
+    );
+  });
 });
