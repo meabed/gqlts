@@ -17,10 +17,13 @@
       "url": "https://meabed.com"
     }
   ],
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "build": "yarn --cwd .. buildall && NODE_OPTIONS=--no-experimental-webstorage next build",
     "dev": "NODE_OPTIONS=--no-experimental-webstorage next dev",
-    "export": "NODE_OPTIONS=--no-experimental-webstorage next build && next export",
+    "export": "NODE_OPTIONS=--no-experimental-webstorage next build",
     "start": "next start"
   },
   "dependencies": {
@@ -50,7 +53,7 @@
     "use-debounce": "10.1.1"
   },
   "devDependencies": {
-    "@gqlts/cli": "3.3.0",
+    "@gqlts/cli": "3.4.0",
     "@types/js-cookie": "3.0.6",
     "@types/node": "25.6.0",
     "@types/prismjs": "1.26.6",

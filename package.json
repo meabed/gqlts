@@ -35,6 +35,9 @@
       "url": "https://meabed.com"
     }
   ],
+  "engines": {
+    "node": "24.x"
+  },
   "workspaces": [
     "cli",
     "runtime"
@@ -58,7 +61,7 @@
     "ws": "8.20.0"
   },
   "devDependencies": {
-    "@changesets/cli": "2.29.7",
+    "@changesets/cli": "2.31.0",
     "@ianvs/prettier-plugin-sort-imports": "4.7.1",
     "prettier": "3.8.3",
     "typescript": "6.0.3",
