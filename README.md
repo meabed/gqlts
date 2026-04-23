@@ -13,12 +13,12 @@
 [![CI](https://github.com/meabed/gqlts/actions/workflows/ci.yml/badge.svg)](https://github.com/meabed/gqlts/actions/workflows/ci.yml)
 [![RELEASE](https://github.com/meabed/gqlts/actions/workflows/release.yml/badge.svg)](https://github.com/meabed/gqlts/actions/workflows/release.yml)
 ### @gqlts/cli
-[![Stable NPM version](https://img.shields.io/badge/NPM-vvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/cli/v/vv3.4.0-beta.0)
+[![Stable NPM version](https://img.shields.io/badge/NPM-vvvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/cli/v/vvv3.4.0-beta.0)
 [![Develop NPM version](https://img.shields.io/npm/v/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
 [![Downloads](https://img.shields.io/npm/dm/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
 [![UNPKG](https://img.shields.io/badge/UNPKG-CLI%20Files-179BD7.svg)](https://unpkg.com/browse/@gqlts/cli@latest/)
 ### @gqlts/runtime
-[![Stable NPM version](https://img.shields.io/badge/NPM-vvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/runtime/v/vv3.4.0-beta.0)
+[![Stable NPM version](https://img.shields.io/badge/NPM-vvvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/runtime/v/vvv3.4.0-beta.0)
 [![Develop NPM version](https://img.shields.io/npm/v/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
 [![Downloads](https://img.shields.io/npm/dm/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
 [![UNPKG](https://img.shields.io/badge/UNPKG-RUNTIME%20Files-179BD7.svg)](https://unpkg.com/browse/@gqlts/runtime@latest/)
