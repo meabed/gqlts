@@ -1,6 +1,6 @@
 {
   "name": "integration-tests",
-  "version": "vvv3.4.0-beta.0",
+  "version": "vv3.4.0-beta.0",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "license": "MIT",
