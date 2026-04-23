@@ -2,6 +2,17 @@ name: CI
 on:
   workflow_dispatch:
   workflow_call:
+  pull_request:
+    branches:
+      - master
+      - develop
+    paths:
+      - 'cli/**'
+      - 'runtime/**'
+      - 'demo-apps/**'
+      - 'package.json'
+      - 'yarn.lock'
+      - '.github/workflows/ci.yml'
   push:
     paths:
       - 'cli/**'
@@ -9,20 +20,19 @@ on:
       - 'demo-apps/**'
       - 'package.json'
       - 'yarn.lock'
-      - 'release.config.js'
+      - 'scripts/release/**'
       - '.github/workflows/ci.yml'
     branches:
       - '*'
       - '**'
       - '!master'
+      - '!develop'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CI: true
 
 jobs:
@@ -31,21 +41,21 @@ jobs:
     timeout-minutes: 20
 
     permissions:
-      packages: write
-      contents: write
+      contents: read
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 30
+          fetch-depth: 0
 
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
+          cache: yarn
 
       - name: Yarn
         run: |
@@ -61,10 +71,3 @@ jobs:
       - name: Build and Test Demo APP
         run: |
           ./demo-apps/build-and-test.sh
-
-      - name: Release
-        if: github.ref == 'refs/heads/develop'
-        run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/exec
-          semantic-release --no-ci --debug
-          ./publish.sh $CI_REF_NAME

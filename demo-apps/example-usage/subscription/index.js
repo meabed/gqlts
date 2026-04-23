@@ -9,10 +9,10 @@
   var typeMap = linkTypeMap(types)
   export * from './guards.esm'
 
-  export var version = "vv3.4.0-beta.0"
+  export var version = "3.4.0"
   assertSameVersion(version)
 
-  export var createClient = 
+  export var createClient =
 function(options) {
     options = options || {}
     var optionsCopy = {
@@ -134,4 +134,4 @@ export const enumvoteUpdateColumn = {
   export var everything = {
     __scalar: true
   }
-  
+
