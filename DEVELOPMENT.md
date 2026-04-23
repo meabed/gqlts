@@ -262,6 +262,39 @@ That script runs the real consumer flow:
 8. Builds the Next.js app and runs tests against production `next start`.
 9. Regenerates and runs integration tests.
 
+## Release Workflow
+
+Gqlts releases are managed with Changesets. `@gqlts/runtime` and `@gqlts/cli` are configured as a fixed package group, so they always receive the same version and publish together.
+
+Useful commands:
+
+```sh
+yarn changeset
+yarn release:version:beta
+yarn release:version:stable
+yarn release:publish
+yarn release:verify
+yarn release:check
+```
+
+Branch behavior:
+
+- `develop` stays in beta prerelease mode and publishes `x.y.z-beta.n` to npm `beta`.
+- `master` exits prerelease mode and publishes stable `x.y.z` releases to npm `latest`.
+- release CI is driven by branch merges and committed `.changeset/*.md` files, not by git tags.
+
+Contributor rules:
+
+- add a changeset with `yarn changeset` when a PR changes published CLI or runtime behavior;
+- docs-only and test-only changes can skip a changeset;
+- release PRs are created on `changeset-release/<branch>` branches and are excluded from the changeset-required PR check.
+
+Recovery flow:
+
+- use the `Release Recovery` GitHub Actions workflow when a publish partially fails or a dist-tag needs repair;
+- choose a git ref, select `beta` or `latest`, and optionally enable dist-tag repair or legacy `develop` tag cleanup;
+- use dry run mode to preview the recovery actions without publishing.
+
 ## Test Coverage Map
 
 Use this map to pick the right tests when changing code.

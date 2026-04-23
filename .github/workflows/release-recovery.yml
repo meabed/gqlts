@@ -1,0 +1,83 @@
+name: Release Recovery
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to publish from
+        required: true
+        default: master
+        type: string
+      channel:
+        description: npm dist-tag to publish or repair
+        required: true
+        default: latest
+        type: choice
+        options:
+          - latest
+          - beta
+      run_checks:
+        description: Run the full release verification suite before recovery publish
+        required: true
+        default: false
+        type: boolean
+      repair_tags:
+        description: Re-apply the selected dist-tag even when versions are already published
+        required: true
+        default: true
+        type: boolean
+      cleanup_legacy_tags:
+        description: Remove the legacy develop dist-tag after publish or repair
+        required: true
+        default: false
+        type: boolean
+      dry_run:
+        description: Print the recovery actions without publishing or changing dist-tags
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: yarn
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Disable AppArmor
+        if: inputs.run_checks
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+
+      - name: Verify release inputs
+        if: inputs.run_checks
+        run: yarn release:verify
+
+      - name: Ensure verification did not modify tracked files
+        if: inputs.run_checks
+        run: git diff --exit-code
+
+      - name: Recover publish or repair dist-tags
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          RELEASE_CHANNEL: ${{ inputs.channel }}
+          RELEASE_TAG_REPAIR: ${{ inputs.repair_tags }}
+          RELEASE_CLEANUP_LEGACY_TAGS: ${{ inputs.cleanup_legacy_tags }}
+          RELEASE_DRY_RUN: ${{ inputs.dry_run }}
+        run: yarn release:publish

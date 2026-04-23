@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+
 import { IGraphQLContext } from './graphql/graphql-context';
 import { useGraphqlAppExtension } from './graphql/use-graphql-app-extension';
 import { v1AddUser } from './mutation/v1-add-user.mutation';
@@ -19,7 +21,6 @@ import {
   queryComplexityPlugin,
   scalarType,
 } from 'nexus';
-import { fileExistsSync } from 'tsconfig-paths/lib/filesystem';
 
 const FileScalar = scalarType({
   name: 'File',
@@ -63,7 +64,7 @@ export const appSchema = makeSchema({
     },
   },
   shouldExitAfterGenerateArtifacts: process.argv.includes('--exit-after-generate-schema'),
-  contextType: fileExistsSync(`${__dirname}/graphql/graphql-context.ts`)
+  contextType: existsSync(`${__dirname}/graphql/graphql-context.ts`)
     ? {
         module: `${__dirname}/graphql/graphql-context.ts`,
         export: 'IGraphQLContext',

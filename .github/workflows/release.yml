@@ -1,13 +1,18 @@
 name: Release
 on:
-  workflow_dispatch:
   workflow_call:
   push:
     paths:
       - 'cli/**'
       - 'runtime/**'
+      - '.changeset/**'
+      - 'package.json'
+      - 'yarn.lock'
+      - 'scripts/release/**'
+      - '.github/workflows/release.yml'
     branches:
       - 'master'
+      - 'develop'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,7 +20,6 @@ concurrency:
 
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   CI: true
 
 jobs:
@@ -24,39 +28,46 @@ jobs:
     timeout-minutes: 20
 
     permissions:
-      packages: write
       contents: write
+      pull-requests: write
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 30
+          fetch-depth: 0
 
-      - uses: FranzDiebold/github-env-vars-action@v2
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
+          cache: yarn
+          registry-url: https://registry.npmjs.org
 
       - name: Yarn
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
           yarn install --frozen-lockfile --ignore-scripts
-          yarn buildall
-          yarn test
 
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 
-      - name: Build and Test Demo APP
-        run: |
-          ./demo-apps/build-and-test.sh
+      - name: Verify release inputs
+        run: yarn release:verify
 
-      - name: Release
-        run: |
-          npm i -g semantic-release @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits @semantic-release/exec
-          semantic-release --no-ci --debug
-          ./publish.sh master
+      - name: Ensure verification did not modify tracked files
+        run: git diff --exit-code
+
+      - name: Create Release Pull Request or Publish Packages
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          branch: changeset-release/${{ github.ref_name }}
+          commit: chore(release): version packages (${{ github.ref_name }})
+          title: Version Packages (${{ github.ref_name }})
+          version: ${{ github.ref_name == 'develop' && 'yarn release:version:beta' || 'yarn release:version:stable' }}
+          publish: yarn release:publish
+          createGithubReleases: false
+        env:
+          RELEASE_CHANNEL: ${{ github.ref_name == 'develop' && 'beta' || 'latest' }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

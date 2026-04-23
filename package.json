@@ -41,8 +41,14 @@
   ],
   "scripts": {
     "buildall": "ultra -r --filter '@gqlts/*' --topology build",
+    "changeset": "changeset",
     "genall": "ultra -r gen",
     "prettier": "prettier --write \"cli/**/*.{ts,tsx,js,jsx}\" \"runtime/**/*.{ts,tsx,js,jsx}\" \"demo-apps/**/*.{ts,tsx,js,jsx}\"",
+    "release:check": "node ./scripts/release/check-changeset.mjs",
+    "release:publish": "node ./scripts/release/publish.mjs",
+    "release:verify": "yarn buildall && yarn test && ./demo-apps/build-and-test.sh",
+    "release:version:beta": "node ./scripts/release/version-beta.mjs",
+    "release:version:stable": "node ./scripts/release/version-stable.mjs",
     "test": "ultra -r test",
     "tscall": "ultra -r --filter '@gqlts/*' tsc",
     "watch": "ultra -r watch"
@@ -52,8 +58,8 @@
     "ws": "8.20.0"
   },
   "devDependencies": {
+    "@changesets/cli": "2.29.7",
     "@ianvs/prettier-plugin-sort-imports": "4.7.1",
-    "lerna": "9.0.7",
     "prettier": "3.8.3",
     "typescript": "6.0.3",
     "ultra-runner": "3.10.5"

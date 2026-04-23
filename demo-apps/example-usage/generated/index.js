@@ -9,10 +9,10 @@
   var typeMap = linkTypeMap(types)
   export * from './guards.esm'
 
-  export var version = "vv3.4.0-beta.0"
+  export var version = "3.4.0"
   assertSameVersion(version)
 
-  export var createClient = 
+  export var createClient =
 function(options) {
     options = options || {}
     var optionsCopy = {
@@ -27,7 +27,7 @@ function(options) {
     return createClientOriginal(optionsCopy)
 }
 
-  
+
 
   export var generateQueryOp = function(fields) {
     return generateGraphqlOperation('query', typeMap.Query, fields)
@@ -41,4 +41,4 @@ function(options) {
   export var everything = {
     __scalar: true
   }
-  
+
