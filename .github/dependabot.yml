@@ -2,6 +2,7 @@ version: 2
 
 updates:
   - package-ecosystem: "npm"
+    target-branch: "develop"
     directories:
       - "/"
       - "/cli"
