@@ -35,6 +35,9 @@
       "url": "https://meabed.com"
     }
   ],
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "workspaces": [
     "cli",
     "runtime"
