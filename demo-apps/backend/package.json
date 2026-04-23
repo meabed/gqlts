@@ -1,12 +1,12 @@
 {
   "name": "demo-apps-backend",
-  "version": "vv3.4.0-beta.0",
+  "version": "3.4.0",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "build-sdk": "cd sdk && yarn && yarn build-sdk",
+    "build-sdk": "cd sdk && yarn install --frozen-lockfile --check-files && yarn build-sdk",
     "dev": "PORT=${PORT:-4000} ts-node src/index.ts",
     "start": "PORT=${PORT:-4000} node dist/index.js",
     "test": "NODE_ENV=test jest -c ./__tests__/jest.config.js --runInBand --forceExit",

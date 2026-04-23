@@ -228,6 +228,38 @@ The script runs:
 6. Next.js production build and tests against `next start`.
 7. Integration generation and tests.
 
+## Release workflow
+
+Gqlts uses Changesets for coordinated releases of `@gqlts/runtime` and `@gqlts/cli`. The two published packages are configured as a fixed group, so they always version and publish together.
+
+Useful commands:
+
+```sh
+yarn changeset
+yarn release:version:beta
+yarn release:version:stable
+yarn release:publish
+yarn release:verify
+yarn release:check
+```
+
+Branch behavior:
+
+- `develop` stays in prerelease mode and publishes `x.y.z-beta.n` to npm `beta`.
+- `master` exits prerelease mode and publishes stable `x.y.z` releases to npm `latest`.
+- release CI is driven by branch merges and committed `.changeset/*.md` files, not by git tags.
+
+Contributor rules:
+
+- add a changeset with `yarn changeset` when a PR changes published CLI or runtime behavior;
+- docs-only and test-only changes can skip a changeset;
+- release PRs are created on `changeset-release/<branch>` branches and are excluded from the PR changeset check.
+
+Recovery flow:
+
+- use the `Release Recovery` GitHub Actions workflow when a publish partially fails or a dist-tag needs repair;
+- select the ref and the channel to recover, then optionally enable tag repair, legacy tag cleanup, or dry run mode.
+
 ## Test coverage map
 
 - `cli/src/helpers/parse.test.ts`: CLI flag parsing helpers.

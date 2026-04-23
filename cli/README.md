@@ -13,13 +13,13 @@
 [![CI](https://github.com/meabed/gqlts/actions/workflows/ci.yml/badge.svg)](https://github.com/meabed/gqlts/actions/workflows/ci.yml)
 [![RELEASE](https://github.com/meabed/gqlts/actions/workflows/release.yml/badge.svg)](https://github.com/meabed/gqlts/actions/workflows/release.yml)
 ### @gqlts/cli
-[![Stable NPM version](https://img.shields.io/badge/NPM-vvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/cli/v/vv3.4.0-beta.0)
-[![Develop NPM version](https://img.shields.io/npm/v/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
+[![Latest NPM version](https://img.shields.io/npm/v/@gqlts/cli/latest.svg?label=latest)](https://www.npmjs.com/package/@gqlts/cli)
+[![Beta NPM version](https://img.shields.io/npm/v/@gqlts/cli/beta.svg?label=beta)](https://www.npmjs.com/package/@gqlts/cli)
 [![Downloads](https://img.shields.io/npm/dm/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
 [![UNPKG](https://img.shields.io/badge/UNPKG-CLI%20Files-179BD7.svg)](https://unpkg.com/browse/@gqlts/cli@latest/)
 ### @gqlts/runtime
-[![Stable NPM version](https://img.shields.io/badge/NPM-vvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/runtime/v/vv3.4.0-beta.0)
-[![Develop NPM version](https://img.shields.io/npm/v/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
+[![Latest NPM version](https://img.shields.io/npm/v/@gqlts/runtime/latest.svg?label=latest)](https://www.npmjs.com/package/@gqlts/runtime)
+[![Beta NPM version](https://img.shields.io/npm/v/@gqlts/runtime/beta.svg?label=beta)](https://www.npmjs.com/package/@gqlts/runtime)
 [![Downloads](https://img.shields.io/npm/dm/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
 [![UNPKG](https://img.shields.io/badge/UNPKG-RUNTIME%20Files-179BD7.svg)](https://unpkg.com/browse/@gqlts/runtime@latest/)
 
@@ -128,6 +128,32 @@ yarn --cwd website build
 Run `./demo-apps/build-and-test.sh` before pushing generator, runtime, upload, subscription, SDK, or Next.js changes. It runs the backend demo, SDK generation, standalone browser bundle, Next.js dev and production tests, and integration tests.
 
 More details are in [DEVELOPMENT.md](./DEVELOPMENT.md).
+
+## Releases
+
+Gqlts uses Changesets for coordinated releases of `@gqlts/cli` and `@gqlts/runtime`.
+
+- `develop` publishes prereleases like `x.y.z-beta.n` to npm `beta`.
+- `master` publishes stable releases like `x.y.z` to npm `latest`.
+- both published packages are intentionally version-locked and release together.
+
+Useful commands:
+
+```sh
+yarn changeset
+yarn release:version:beta
+yarn release:version:stable
+yarn release:publish
+yarn release:verify
+```
+
+Normal flow:
+
+1. Add a changeset in the same PR as runtime or CLI changes.
+2. Merge to `develop` to open or update the beta release PR.
+3. Merge to `master` to open or update the stable release PR.
+
+If a publish partially fails, use the `Release Recovery` GitHub Actions workflow to rerun publish for a specific ref, repair `beta` or `latest` dist-tags, and optionally remove the legacy `develop` dist-tag.
 
 ---
 

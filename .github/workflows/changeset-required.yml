@@ -1,0 +1,43 @@
+name: Changeset Required
+
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+    paths:
+      - 'cli/**'
+      - 'runtime/**'
+      - '.changeset/**'
+      - 'scripts/release/**'
+      - '.github/workflows/changeset-required.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Fetch base branch
+        run: git fetch origin ${{ github.base_ref }} --depth=1
+
+      - name: Ensure release-relevant changes include a changeset
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: yarn release:check
