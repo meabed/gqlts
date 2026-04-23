@@ -1,4 +1,4 @@
-import { print } from '@gqlts/cli/dist/printer';
+import { print } from '../../../cli/dist/printer.js';
 import { GraphQLSchema, buildSchema } from 'graphql';
 import { generateRandomQuery } from 'ibm-graphql-query-generator';
 
@@ -30,7 +30,7 @@ export function generateQueriesHelper(p: { packageName: string; number?: number;
 
 const thenCode = 'x => console.log(JSON.stringify(x, null, 4))';
 
-const transformVariableName = (x) => {
+const transformVariableName = (x: string) => {
   return x.replace('Query__', '').replace('Mutation__', '').replace('Subscription__', '');
 };
 

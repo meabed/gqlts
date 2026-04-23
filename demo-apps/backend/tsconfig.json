@@ -2,8 +2,14 @@
   "compileOnSave": true,
   "compilerOptions": {
     "incremental": true,
+    "rootDir": ".",
     "outDir": "./dist/",
     "target": "ES6",
+    "ignoreDeprecations": "6.0",
+    "types": [
+      "jest",
+      "node"
+    ],
     "lib": [
       "ESNext"
     ],

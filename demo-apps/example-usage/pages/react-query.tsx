@@ -1,7 +1,7 @@
 import { client } from './_app';
 import { Box, Input, Spinner } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
-import { Hero, PageContainer, SectionTitle } from 'landing-blocks';
+import { Hero, PageContainer, SectionTitle } from '../components/landing';
 import React, { useState } from 'react';
 
 const Component = () => {
@@ -26,7 +26,7 @@ const Component = () => {
       />
       <PageContainer>
         <Box>Search a continent</Box>
-        <Input variant='filled' value={regex} onChange={(e: any) => setRegex(e.target.value)} placeholder='.*' />
+        <Input variant='subtle' value={regex} onChange={(e: any) => setRegex(e.target.value)} placeholder='.*' />
       </PageContainer>
       <PageContainer>
         <>

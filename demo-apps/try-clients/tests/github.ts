@@ -1,10 +1,11 @@
-import { createClient, everything } from '../github/generated';
-import { AxiosInstance } from 'axios';
+import { createClient, everything } from '../github/generated/index.js';
+import type { AxiosInstance } from 'axios';
 
 describe('github', () => {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
-    throw new Error('you need to provide a GITHUB_TOKEN as env to run this test');
+    it.skip('requires GITHUB_TOKEN');
+    return;
   }
   const client = createClient({
     url: 'https://api.github.com/graphql',

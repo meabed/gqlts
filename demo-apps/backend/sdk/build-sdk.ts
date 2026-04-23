@@ -1,15 +1,14 @@
 import { generate } from '@gqlts/cli';
 import { buildSchema } from 'graphql';
 import { execSync } from 'node:child_process';
-import { readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { fileExistsSync } from 'tsconfig-paths/lib/filesystem';
 
 export async function buildSdk({ skipIfExists = false }: { skipIfExists?: boolean } = {}) {
   let schemaString = readFileSync(join(__dirname, '../src/schema.graphql')).toString();
   // remove first 4 lines
   schemaString = schemaString.split('\n').slice(4).join('\n');
-  let schemaStringDist: string;
+  let schemaStringDist = '';
   try {
     schemaStringDist = readFileSync(join(__dirname, './dist/schema.graphql')).toString();
   } catch (e) {}
@@ -19,7 +18,7 @@ export async function buildSdk({ skipIfExists = false }: { skipIfExists?: boolea
     return;
   }
   // if no node_modules, run yarn
-  if (!fileExistsSync(`${__dirname}./node_modules/ts-node`)) {
+  if (!existsSync(join(__dirname, 'node_modules/ts-node'))) {
     console.log('No node_modules found, running yarn...');
     await execSync('yarn');
   }

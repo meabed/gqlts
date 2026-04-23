@@ -1,6 +1,6 @@
 {
   "name": "gqlts",
-  "version": "3.3.0",
+  "version": "v3.4.0",
   "private": true,
   "keywords": [
     "gqlts",
@@ -48,16 +48,14 @@
     "watch": "ultra -r watch"
   },
   "resolutions": {
-    "graphql": "16.11.0",
-    "string-width": "4.2.3",
-    "strip-ansi": "6.0.1",
-    "ws": "8.18.2"
+    "graphql": "16.13.2",
+    "ws": "8.20.0"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "4.4.1",
-    "lerna": "8.2.2",
-    "prettier": "3.5.3",
-    "typescript": "5.8.3",
+    "@ianvs/prettier-plugin-sort-imports": "4.7.1",
+    "lerna": "9.0.7",
+    "prettier": "3.8.3",
+    "typescript": "6.0.3",
     "ultra-runner": "3.10.5"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"

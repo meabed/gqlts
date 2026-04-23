@@ -5,6 +5,7 @@
     "rootDir": "src",
     "noImplicitAny": false,
     "isolatedModules": true,
+    "ignoreDeprecations": "6.0",
     "strict": true,
     "declaration": true,
     "target": "ES2015",
@@ -29,7 +30,10 @@
   "exclude": [
     "node_modules",
     "package.json",
+    "**/*.test.ts",
+    "**/*.spec.ts",
     "**/*.case.ts",
+    "src/testHelpers",
     "tests",
     "example",
     "dist",

@@ -1,9 +1,9 @@
 export type Scalars = {
-    Boolean: boolean,
-    Float: number,
-    Int: number,
     String: string,
+    Float: number,
     timestamptz: any,
+    Int: number,
+    Boolean: boolean,
 }
 
 

@@ -13,12 +13,12 @@
 [![CI](https://github.com/meabed/gqlts/actions/workflows/ci.yml/badge.svg)](https://github.com/meabed/gqlts/actions/workflows/ci.yml)
 [![RELEASE](https://github.com/meabed/gqlts/actions/workflows/release.yml/badge.svg)](https://github.com/meabed/gqlts/actions/workflows/release.yml)
 ### @gqlts/cli
-[![Stable NPM version](https://img.shields.io/badge/NPM-v3.3.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/cli/v/3.3.0)
+[![Stable NPM version](https://img.shields.io/badge/NPM-vvvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/cli/v/vvv3.4.0-beta.0)
 [![Develop NPM version](https://img.shields.io/npm/v/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
 [![Downloads](https://img.shields.io/npm/dm/@gqlts/cli.svg)](https://www.npmjs.com/package/@gqlts/cli)
 [![UNPKG](https://img.shields.io/badge/UNPKG-CLI%20Files-179BD7.svg)](https://unpkg.com/browse/@gqlts/cli@latest/)
 ### @gqlts/runtime
-[![Stable NPM version](https://img.shields.io/badge/NPM-v3.3.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/runtime/v/3.3.0)
+[![Stable NPM version](https://img.shields.io/badge/NPM-vvvv3.4.0-beta.0-179BD7.svg)](https://www.npmjs.com/package/@gqlts/runtime/v/vvv3.4.0-beta.0)
 [![Develop NPM version](https://img.shields.io/npm/v/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
 [![Downloads](https://img.shields.io/npm/dm/@gqlts/runtime.svg)](https://www.npmjs.com/package/@gqlts/runtime)
 [![UNPKG](https://img.shields.io/badge/UNPKG-RUNTIME%20Files-179BD7.svg)](https://unpkg.com/browse/@gqlts/runtime@latest/)
@@ -90,6 +90,44 @@ query {
   }
 }
 ```
+
+## Packages
+
+This repo contains two published packages:
+
+- `@gqlts/cli`: reads a GraphQL schema and generates the typed client files.
+- `@gqlts/runtime`: powers generated clients at runtime for queries, mutations, subscriptions, batching, uploads, and custom fetchers.
+
+Generated clients normally contain:
+
+- `schema.graphql`: schema snapshot used for generation.
+- `schema.ts`: generated schema, request, response, and guard types.
+- `index.js` / `index.esm.js`: generated CommonJS and ESM client entrypoints.
+- `index.d.ts`: generated public TypeScript declarations.
+- `types.cjs.js` / `types.esm.js`: compressed runtime type map.
+- `guards.cjs.js` / `guards.esm.js`: generated runtime type guards.
+
+## Development
+
+Install from the repo root with Yarn classic:
+
+```sh
+yarn install --frozen-lockfile
+```
+
+Common commands:
+
+```sh
+yarn buildall
+yarn test
+yarn tscall
+yarn --cwd website build
+./demo-apps/build-and-test.sh
+```
+
+Run `./demo-apps/build-and-test.sh` before pushing generator, runtime, upload, subscription, SDK, or Next.js changes. It runs the backend demo, SDK generation, standalone browser bundle, Next.js dev and production tests, and integration tests.
+
+More details are in [DEVELOPMENT.md](./DEVELOPMENT.md).
 
 ---
 

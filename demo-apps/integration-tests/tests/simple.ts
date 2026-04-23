@@ -1,4 +1,4 @@
-import { enumSomeEnum, everything, generateQueryOp, generateSubscriptionOp } from '../generated';
+import { enumSomeEnum, everything, generateQueryOp, generateSubscriptionOp } from '../generated/index.js';
 import assert from 'assert';
 import snapshot from 'snap-shot-it';
 import { expectType } from 'tsd';

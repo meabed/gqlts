@@ -54,14 +54,22 @@ if [[ $branch == "master" ]]; then
   echo "Repo pushed."
 fi
 
+npm login
+
+# if branch develop tag == --tag beta else empty
+tag=""
+if [[ $branch == "develop" ]]; then
+  tag="--tag beta"
+fi
+echo "Publishing packages to npm with tag: $tag"
 cd $my_dir/runtime
 runtimeVersion=$(node -p -e "require('./package.json').version")
 echo "runtimeVersion: $runtimeVersion"
-npm publish --access public
+npm publish --access public $tag
 
 cd $my_dir/cli
 cliVersion=$(node -p -e "require('./package.json').version")
 echo "cliVersion: $cliVersion"
-npm publish --access public
+npm publish --access public $tag
 
 echo "Done."
