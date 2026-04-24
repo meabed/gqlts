@@ -4,6 +4,8 @@ on:
     secrets:
       NPM_TOKEN:
         required: true
+      RELEASE_GITHUB_TOKEN:
+        required: false
       CHANGESETS_GITHUB_TOKEN:
         required: false
   push:
@@ -35,7 +37,6 @@ jobs:
 
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -43,8 +44,20 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
+          token: ${{ secrets.RELEASE_GITHUB_TOKEN || secrets.CHANGESETS_GITHUB_TOKEN || github.token }}
+
+      - name: Detect release changesets
+        id: release_changesets
+        run: |
+          if find .changeset -maxdepth 1 -type f -name '*.md' ! -name 'README.md' | grep -q .; then
+            echo "has_changesets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changesets=false" >> "$GITHUB_OUTPUT"
+            echo "No release changesets found; skipping version and publish."
+          fi
 
       - name: Setup Node.js
+        if: steps.release_changesets.outputs.has_changesets == 'true'
         uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -52,33 +65,58 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Yarn
+        if: steps.release_changesets.outputs.has_changesets == 'true'
         run: |
           yarn install --frozen-lockfile --ignore-scripts
 
       - name: Verify npm authentication
+        if: steps.release_changesets.outputs.has_changesets == 'true'
         run: npm whoami --registry https://registry.npmjs.org
 
       - name: Disable AppArmor
+        if: steps.release_changesets.outputs.has_changesets == 'true'
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 
       - name: Verify release inputs
+        if: steps.release_changesets.outputs.has_changesets == 'true'
         run: yarn release:verify
 
       - name: Ensure verification did not modify tracked files
+        if: steps.release_changesets.outputs.has_changesets == 'true'
         run: git diff --exit-code
 
-      - name: Create Release Pull Request or Publish Packages
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          github-token: ${{ secrets.CHANGESETS_GITHUB_TOKEN || github.token }}
-          commit: "chore(release): version packages (${{ github.ref_name }})"
-          title: "Version Packages (${{ github.ref_name }})"
-          version: "${{ github.ref_name == 'develop' && 'yarn release:version:beta' || 'yarn release:version:stable' }}"
-          publish: yarn release:publish
-          createGithubReleases: false
+      - name: Configure git author
+        if: steps.release_changesets.outputs.has_changesets == 'true'
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+
+      - name: Version packages
+        if: steps.release_changesets.outputs.has_changesets == 'true'
+        run: ${{ github.ref_name == 'develop' && 'yarn release:version:beta' || 'yarn release:version:stable' }}
+
+      - name: Commit version updates
+        id: version_commit
+        if: steps.release_changesets.outputs.has_changesets == 'true'
+        run: |
+          if git diff --quiet; then
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            echo "No version changes generated; skipping publish."
+            exit 0
+          fi
+
+          git add .
+          git commit -m "chore(release): version packages (${{ github.ref_name }}) [skip ci]"
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push version commit
+        if: steps.version_commit.outputs.committed == 'true'
+        run: git push origin HEAD:${{ github.ref_name }}
+
+      - name: Publish packages
+        if: steps.version_commit.outputs.committed == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_GITHUB_TOKEN || github.token }}
           RELEASE_CHANNEL: ${{ github.ref_name == 'develop' && 'beta' || 'latest' }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn release:publish
