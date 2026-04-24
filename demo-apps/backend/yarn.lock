@@ -2182,10 +2182,10 @@ graphql-scalars@1.25.0:
   dependencies:
     tslib "^2.5.0"
 
-graphql-upload-ts@2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/graphql-upload-ts/-/graphql-upload-ts-2.1.4.tgz#f4365341463312a39584657bb16f9b7a8e369178"
-  integrity sha512-YLyi2K64dz0RGkabY/LTxyxyOVa8uqyE4AQ7meJ5lXBEorBxCmhXJbYHkS+nBBUd7C7qO0EefhjsEZoRQevesQ==
+graphql-upload-ts@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-upload-ts/-/graphql-upload-ts-2.2.0.tgz#16ba5aab33f58111af373bb7f99c2101c1386ae4"
+  integrity sha512-MYbthyhzw245JluSLC7C/bQRN0cJbfUiBJyXizhDTv22n7kyuQTA2eZ5QlUeDXDKMWSw3Fxz/E8Ls1KvLGnyEg==
   dependencies:
     busboy "^1.6.0"
     http-errors "^2.0.1"
