@@ -18,7 +18,7 @@
     "@graphql-tools/schema": "10.0.33",
     "graphql": "16.13.2",
     "graphql-scalars": "1.25.0",
-    "graphql-upload-ts": "2.1.4",
+    "graphql-upload-ts": "2.2.0",
     "graphql-yoga": "5.21.0",
     "nexus": "1.3.0",
     "supertest": "7.2.2",
