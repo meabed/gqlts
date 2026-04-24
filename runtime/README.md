@@ -150,8 +150,8 @@ yarn release:verify
 Normal flow:
 
 1. Add a changeset in the same PR as runtime or CLI changes.
-2. Merge to `develop` to open or update the beta release PR.
-3. Merge to `master` to open or update the stable release PR.
+2. Merge to `develop` to version the packages and publish a beta release directly.
+3. Merge to `master` to version the packages and publish a stable release directly.
 
 If a publish partially fails, use the `Release Recovery` GitHub Actions workflow to rerun publish for a specific ref, repair `beta` or `latest` dist-tags, and optionally remove the legacy `develop` dist-tag.
 
