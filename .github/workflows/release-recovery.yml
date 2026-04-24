@@ -9,7 +9,7 @@ on:
         default: master
         type: string
       channel:
-        description: npm dist-tag to publish or repair
+        description: npm dist-tag to publish to
         required: true
         default: latest
         type: choice
@@ -21,18 +21,8 @@ on:
         required: true
         default: false
         type: boolean
-      repair_tags:
-        description: Re-apply the selected dist-tag even when versions are already published
-        required: true
-        default: true
-        type: boolean
-      cleanup_legacy_tags:
-        description: Remove the legacy develop dist-tag after publish or repair
-        required: true
-        default: false
-        type: boolean
       dry_run:
-        description: Print the recovery actions without publishing or changing dist-tags
+        description: Print the recovery publish actions without publishing
         required: true
         default: false
         type: boolean
@@ -82,12 +72,10 @@ jobs:
         if: inputs.run_checks
         run: git diff --exit-code
 
-      - name: Recover publish or repair dist-tags
+      - name: Recover publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           RELEASE_CHANNEL: ${{ inputs.channel }}
-          RELEASE_TAG_REPAIR: ${{ inputs.repair_tags }}
-          RELEASE_CLEANUP_LEGACY_TAGS: ${{ inputs.cleanup_legacy_tags }}
           RELEASE_DRY_RUN: ${{ inputs.dry_run }}
         run: yarn release:publish

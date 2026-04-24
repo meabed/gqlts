@@ -6,8 +6,6 @@ on:
         required: true
       RELEASE_GITHUB_TOKEN:
         required: false
-      CHANGESETS_GITHUB_TOKEN:
-        required: false
   push:
     paths:
       - 'cli/**'
@@ -44,16 +42,19 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
-          token: ${{ secrets.RELEASE_GITHUB_TOKEN || secrets.CHANGESETS_GITHUB_TOKEN || github.token }}
+          token: ${{ secrets.RELEASE_GITHUB_TOKEN || github.token }}
 
       - name: Detect release changesets
         id: release_changesets
         run: |
           if find .changeset -maxdepth 1 -type f -name '*.md' ! -name 'README.md' | grep -q .; then
             echo "has_changesets=true" >> "$GITHUB_OUTPUT"
+          elif [ -f .changeset/pre.json ]; then
+            echo "has_changesets=true" >> "$GITHUB_OUTPUT"
+            echo "Found Changesets prerelease state; continuing release."
           else
             echo "has_changesets=false" >> "$GITHUB_OUTPUT"
-            echo "No release changesets found; skipping version and publish."
+            echo "No release changesets or prerelease state found; skipping version and publish."
           fi
 
       - name: Setup Node.js

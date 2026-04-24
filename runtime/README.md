@@ -131,11 +131,12 @@ More details are in [DEVELOPMENT.md](./DEVELOPMENT.md).
 
 ## Releases
 
-Gqlts uses Changesets for coordinated releases of `@gqlts/cli` and `@gqlts/runtime`.
+Gqlts uses `@changesets/cli` for coordinated releases of `@gqlts/cli` and `@gqlts/runtime`.
 
 - `develop` publishes prereleases like `x.y.z-beta.n` to npm `beta`.
 - `master` publishes stable releases like `x.y.z` to npm `latest`.
-- both published packages are intentionally version-locked and release together.
+- both published packages are intentionally version-locked with a Changesets fixed group and release together.
+- version scripts read npm dist-tags before bumping, so npm is the source of truth for the current published version.
 
 Useful commands:
 
@@ -153,7 +154,7 @@ Normal flow:
 2. Merge to `develop` to version the packages and publish a beta release directly.
 3. Merge to `master` to version the packages and publish a stable release directly.
 
-If a publish partially fails, use the `Release Recovery` GitHub Actions workflow to rerun publish for a specific ref, repair `beta` or `latest` dist-tags, and optionally remove the legacy `develop` dist-tag.
+If a publish partially fails, use the `Release Recovery` GitHub Actions workflow to rerun publish for a specific ref and npm channel. Already-published package versions are skipped, so the workflow is safe to rerun after a partial failure.
 
 ---
 

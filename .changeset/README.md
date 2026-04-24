@@ -1,6 +1,10 @@
 # Changesets
 
-This repo uses Changesets for coordinated releases of `@gqlts/runtime` and `@gqlts/cli`.
+This repo uses `@changesets/cli` for coordinated releases of `@gqlts/runtime` and `@gqlts/cli`.
+
+The two published packages are listed in the `.changeset/config.json` `fixed` group. That is the Changesets feature that keeps both packages on the same version.
+
+Release version scripts sync package manifests from npm before running `changeset version`. Stable releases use npm `latest`; beta releases use npm `latest` when entering prerelease mode and npm `beta` while continuing an existing beta train.
 
 ## Add a changeset
 

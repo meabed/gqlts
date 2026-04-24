@@ -264,7 +264,7 @@ That script runs the real consumer flow:
 
 ## Release Workflow
 
-Gqlts releases are managed with Changesets. `@gqlts/runtime` and `@gqlts/cli` are configured as a fixed package group, so they always receive the same version and publish together.
+Gqlts releases are managed with `@changesets/cli`. `@gqlts/runtime` and `@gqlts/cli` are configured as a Changesets fixed package group, so they always receive the same version and publish together.
 
 Useful commands:
 
@@ -281,7 +281,12 @@ Branch behavior:
 
 - `develop` stays in beta prerelease mode and publishes `x.y.z-beta.n` to npm `beta`.
 - `master` exits prerelease mode and publishes stable `x.y.z` releases to npm `latest`.
+- stable versioning syncs package manifests from npm `latest` before Changesets calculates the next release.
+- beta versioning syncs from npm `latest` when entering prerelease mode, then from npm `beta` while continuing an existing beta train.
 - release CI is driven by branch merges and committed `.changeset/*.md` files, not by git tags.
+- stable CI can also release from Changesets prerelease state after a beta version commit is merged from `develop` to `master`.
+- the publish script uses `npm publish --tag beta|latest` directly so reruns do not depend on GitHub Releases or git tags.
+- `NPM_TOKEN` is required for npm publish; `RELEASE_GITHUB_TOKEN` is only needed if branch protection blocks the default `GITHUB_TOKEN` from pushing the version commit.
 
 Contributor rules:
 
@@ -291,9 +296,10 @@ Contributor rules:
 
 Recovery flow:
 
-- use the `Release Recovery` GitHub Actions workflow when a publish partially fails or a dist-tag needs repair;
-- choose a git ref, select `beta` or `latest`, and optionally enable dist-tag repair or legacy `develop` tag cleanup;
-- use dry run mode to preview the recovery actions without publishing.
+- use the `Release Recovery` GitHub Actions workflow when a publish partially fails;
+- choose a git ref and select `beta` or `latest`;
+- use dry run mode to preview the recovery actions without publishing;
+- already-published package versions are skipped, so rerunning from the same version commit can finish the package that failed.
 
 ## Test Coverage Map
 

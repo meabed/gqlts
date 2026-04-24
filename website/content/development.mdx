@@ -230,7 +230,7 @@ The script runs:
 
 ## Release workflow
 
-Gqlts uses Changesets for coordinated releases of `@gqlts/runtime` and `@gqlts/cli`. The two published packages are configured as a fixed group, so they always version and publish together.
+Gqlts uses `@changesets/cli` for coordinated releases of `@gqlts/runtime` and `@gqlts/cli`. The two published packages are configured as a fixed group, so they always version and publish together.
 
 Useful commands:
 
@@ -247,7 +247,12 @@ Branch behavior:
 
 - `develop` stays in prerelease mode and publishes `x.y.z-beta.n` to npm `beta`.
 - `master` exits prerelease mode and publishes stable `x.y.z` releases to npm `latest`.
+- stable versioning syncs package manifests from npm `latest` before Changesets calculates the next release.
+- beta versioning syncs from npm `latest` when entering prerelease mode, then from npm `beta` while continuing an existing beta train.
 - release CI is driven by branch merges and committed `.changeset/*.md` files, not by git tags.
+- stable CI can also release from Changesets prerelease state after a beta version commit is merged from `develop` to `master`.
+- the publish script uses `npm publish --tag beta|latest` directly so reruns do not depend on GitHub Releases or git tags.
+- `NPM_TOKEN` is required for npm publish; `RELEASE_GITHUB_TOKEN` is only needed if branch protection blocks the default `GITHUB_TOKEN` from pushing the version commit.
 
 Contributor rules:
 
@@ -257,8 +262,10 @@ Contributor rules:
 
 Recovery flow:
 
-- use the `Release Recovery` GitHub Actions workflow when a publish partially fails or a dist-tag needs repair;
-- select the ref and the channel to recover, then optionally enable tag repair, legacy tag cleanup, or dry run mode.
+- use the `Release Recovery` GitHub Actions workflow when a publish partially fails;
+- choose a git ref and select `beta` or `latest`;
+- use dry run mode to preview the recovery actions without publishing;
+- already-published package versions are skipped, so rerunning from the same version commit can finish the package that failed.
 
 ## Test coverage map
 

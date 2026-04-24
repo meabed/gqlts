@@ -1,5 +1,5 @@
 import { execFileSync, spawnSync } from 'node:child_process';
-import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
@@ -32,6 +32,10 @@ export function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, 'utf8'));
 }
 
+export function writeJson(filePath, value) {
+  writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
+}
+
 export function readPreState() {
   const preStatePath = path.join(repoRoot, '.changeset', 'pre.json');
 
@@ -61,6 +65,7 @@ export function getPackageInfo(packageDir) {
 
   return {
     dir: path.join(repoRoot, packageDir),
+    packageJsonPath,
     name: packageJson.name,
     version: packageJson.version,
   };
@@ -125,6 +130,93 @@ export function isVersionPublished(packageName, version) {
   }
 }
 
+export function getPublishedDistTagVersion(packageName, distTag) {
+  const result = spawnSync('npm', ['view', `${packageName}@${distTag}`, 'version', '--json'], {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+    env: process.env,
+  });
+
+  if (result.status !== 0) {
+    const details = result.stderr.trim() || result.stdout.trim();
+    throw new Error(`Failed to read npm ${distTag} version for ${packageName}${details ? `: ${details}` : ''}`);
+  }
+
+  const output = result.stdout.trim();
+
+  if (!output) {
+    throw new Error(`npm returned no ${distTag} version for ${packageName}`);
+  }
+
+  try {
+    const parsed = JSON.parse(output);
+
+    if (typeof parsed === 'string') {
+      return parsed;
+    }
+  } catch {
+    return output.replaceAll('"', '');
+  }
+
+  throw new Error(`Unexpected npm ${distTag} version response for ${packageName}: ${output}`);
+}
+
+function updateInternalDependencyVersions(packageJson, versionByPackageName) {
+  const dependencySections = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies'];
+
+  for (const dependencySection of dependencySections) {
+    const dependencies = packageJson[dependencySection];
+
+    if (!dependencies) {
+      continue;
+    }
+
+    for (const [packageName, version] of versionByPackageName) {
+      const currentRange = dependencies[packageName];
+
+      if (!currentRange) {
+        continue;
+      }
+
+      const prefix = currentRange.startsWith('^') || currentRange.startsWith('~') ? currentRange[0] : '';
+      dependencies[packageName] = `${prefix}${version}`;
+    }
+  }
+}
+
+export function syncPackageVersionsFromNpmDistTag(distTag) {
+  const packageInfos = packageDirs.map(getPackageInfo);
+  const versionByPackageName = new Map(
+    packageInfos.map((packageInfo) => [
+      packageInfo.name,
+      getPublishedDistTagVersion(packageInfo.name, distTag),
+    ]),
+  );
+  const versions = new Set(versionByPackageName.values());
+
+  if (versions.size !== 1) {
+    throw new Error(
+      `npm ${distTag} versions do not match for the fixed package group: ${Array.from(versionByPackageName)
+        .map(([packageName, version]) => `${packageName}@${version}`)
+        .join(', ')}`,
+    );
+  }
+
+  const [sourceVersion] = versions;
+
+  for (const packageInfo of packageInfos) {
+    const packageJson = readJson(packageInfo.packageJsonPath);
+    packageJson.version = sourceVersion;
+    updateInternalDependencyVersions(packageJson, versionByPackageName);
+    writeJson(packageInfo.packageJsonPath, packageJson);
+  }
+
+  console.log(`Synced fixed package group from npm ${distTag}: ${sourceVersion}`);
+
+  return sourceVersion;
+}
+
 export function publishPackage(packageInfo, channel) {
   const args = ['publish', '--access', 'public'];
 
@@ -133,31 +225,4 @@ export function publishPackage(packageInfo, channel) {
   }
 
   run('npm', args, { cwd: packageInfo.dir });
-}
-
-export function addDistTag(packageInfo, channel) {
-  run('npm', ['dist-tag', 'add', `${packageInfo.name}@${packageInfo.version}`, channel]);
-}
-
-export function removeDistTag(packageInfo, channel) {
-  const result = spawnSync('npm', ['dist-tag', 'rm', packageInfo.name, channel], {
-    cwd: repoRoot,
-    encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'pipe'],
-    env: process.env,
-  });
-
-  if (result.status === 0) {
-    process.stdout.write(result.stdout);
-    process.stderr.write(result.stderr);
-    return;
-  }
-
-  const stderr = result.stderr.trim();
-  if (stderr.includes('is not a dist-tag')) {
-    console.log(`No ${channel} dist-tag found for ${packageInfo.name}, skipping.`);
-    return;
-  }
-
-  throw new Error(stderr || `Failed to remove ${channel} dist-tag from ${packageInfo.name}`);
 }
