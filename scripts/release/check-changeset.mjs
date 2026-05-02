@@ -2,9 +2,7 @@ import process from 'node:process';
 
 import { capture, logStep } from './lib.mjs';
 
-const releaseBranchPrefix = 'changeset-release/';
 const baseRef = process.env.GITHUB_BASE_REF || process.env.BASE_REF || 'master';
-const headRef = process.env.GITHUB_HEAD_REF || process.env.HEAD_REF || '';
 
 function isReleaseRelevantFile(filePath) {
   if (!/^(cli|runtime)\//.test(filePath)) {
@@ -38,11 +36,6 @@ function getChangedFiles() {
     .split('\n')
     .map((file) => file.trim())
     .filter(Boolean);
-}
-
-if (headRef.startsWith(releaseBranchPrefix)) {
-  logStep(`Skipping changeset check for release branch ${headRef}`);
-  process.exit(0);
 }
 
 const changedFiles = getChangedFiles();

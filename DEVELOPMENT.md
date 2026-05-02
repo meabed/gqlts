@@ -287,7 +287,7 @@ Contributor rules:
 
 - add a changeset with `yarn changeset` when a PR changes published CLI or runtime behavior;
 - docs-only and test-only changes can skip a changeset;
-- release PRs are created on `changeset-release/<branch>` branches and are excluded from the changeset-required PR check.
+- release CI versions packages directly on the target branch, commits the version bump with `[skip ci]`, and then publishes.
 
 Recovery flow:
 

@@ -521,9 +521,9 @@
   integrity sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==
 
 "@gqlts/cli@file:../../cli":
-  version "3.4.0"
+  version "3.4.1-beta.0"
   dependencies:
-    "@gqlts/runtime" "^3.4.0"
+    "@gqlts/runtime" "^3.4.1-beta.0"
     "@graphql-tools/graphql-file-loader" "8.1.14"
     "@graphql-tools/load" "8.1.10"
     browserify "17.0.1"
@@ -541,8 +541,8 @@
     terser "5.46.2"
     yargs "18.0.0"
 
-"@gqlts/runtime@^3.4.0", "@gqlts/runtime@file:../../runtime":
-  version "3.4.0"
+"@gqlts/runtime@^3.4.1-beta.0", "@gqlts/runtime@file:../../runtime":
+  version "3.4.1-beta.0"
   dependencies:
     axios "1.15.2"
     form-data "4.0.5"
@@ -917,17 +917,17 @@
   dependencies:
     tslib "^2.8.0"
 
-"@tanstack/query-core@5.100.1":
-  version "5.100.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.100.1.tgz#40f49bd5df2f02e80505d74f841c14ff2cbffbe6"
-  integrity sha512-awvQhOO/2TrSCHE5LKKsXcvvj6WSBncwEcMFCB/ez0Qs0b17iyyivoGArNV3HFfXryZwCpnb/olsaBBKrIbtSw==
+"@tanstack/query-core@5.100.8":
+  version "5.100.8"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.100.8.tgz#934082269e09f788599823416216ffda39203469"
+  integrity sha512-ceYwSFOqjPwET5TA6IOYxzxlGc0ekyH/gfOtWkP0PX43rzX9bxW48Iuw8KAduKCToi4rJAQ6nRy2kAe8gszdmg==
 
-"@tanstack/react-query@5.100.1":
-  version "5.100.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.100.1.tgz#1de964feced97910397e216dd50015f47a98f5d3"
-  integrity sha512-UgWRLhQKprC37SsO6y1zRabOqDmM2gsdTNPbqTT35yl7kOOhwXU4nyfOiGHXPwoEFJV1IpSk85hjIFjNFWVpzw==
+"@tanstack/react-query@5.100.8":
+  version "5.100.8"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.100.8.tgz#eb968cc9d92ee4b38aa80cc331c01b49d332e073"
+  integrity sha512-iNNEekixXU5vtAGKKZX2lx3jTooG5yNY+kv0wSgEdEYG0Mj0JM5bcuQtC35ZAP3nDopT6jciUK3xeX65U7AnfA==
   dependencies:
-    "@tanstack/query-core" "5.100.1"
+    "@tanstack/query-core" "5.100.8"
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"

@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@gqlts/cli": "3.4.0",
+    "@gqlts/runtime": "3.4.0"
+  },
+  "changesets": [
+    "tiny-cli-dependencies"
+  ]
+}

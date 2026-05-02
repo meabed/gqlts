@@ -17,4 +17,4 @@ Docs-only and test-only changes can skip this if they do not change the publishe
 - `develop` publishes prereleases like `x.y.z-beta.n` to the `beta` dist-tag.
 - `master` publishes stable releases like `x.y.z` to the `latest` dist-tag.
 
-The GitHub release workflow handles versioning and publishing after merge.
+The GitHub release workflow versions packages directly on the branch after merge, commits the version bump with `[skip ci]`, and publishes to the branch's npm dist-tag.
