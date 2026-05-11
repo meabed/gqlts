@@ -217,11 +217,15 @@ export function syncPackageVersionsFromNpmDistTag(distTag) {
   return sourceVersion;
 }
 
-export function publishPackage(packageInfo, channel) {
+export function publishPackage(packageInfo, channel, options = {}) {
   const args = ['publish', '--access', 'public'];
 
   if (channel) {
     args.push('--tag', channel);
+  }
+
+  if (options.provenance) {
+    args.push('--provenance');
   }
 
   run('npm', args, { cwd: packageInfo.dir });

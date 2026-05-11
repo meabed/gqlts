@@ -12,6 +12,7 @@ import {
 
 const channel = getReleaseChannel();
 const dryRun = isTruthy(process.env.RELEASE_DRY_RUN);
+const provenance = isTruthy(process.env.RELEASE_PROVENANCE);
 const npmToken = process.env.NODE_AUTH_TOKEN || process.env.NPM_TOKEN;
 
 if (!dryRun && !npmToken) {
@@ -23,7 +24,9 @@ if (npmToken) {
   process.env.NPM_TOKEN = npmToken;
 }
 
-logStep(`Preparing npm publish for channel "${channel}"${dryRun ? ' (dry run)' : ''}`);
+logStep(
+  `Preparing npm publish for channel "${channel}"${dryRun ? ' (dry run)' : ''}${provenance ? ' (with provenance)' : ''}`,
+);
 
 const packageInfos = packageDirs.map(getPackageInfo);
 const versions = new Set(packageInfos.map((packageInfo) => packageInfo.version));
@@ -44,6 +47,6 @@ for (const packageInfo of packageInfos) {
   } else if (dryRun) {
     console.log(`[dry-run] Would publish ${packageInfo.name}@${packageInfo.version} to ${channel}.`);
   } else {
-    publishPackage(packageInfo, channel);
+    publishPackage(packageInfo, channel, { provenance });
   }
 }

@@ -48,6 +48,7 @@
     "genall": "ultra -r gen",
     "prettier": "prettier --write \"cli/**/*.{ts,tsx,js,jsx}\" \"runtime/**/*.{ts,tsx,js,jsx}\" \"demo-apps/**/*.{ts,tsx,js,jsx}\"",
     "release:check": "node ./scripts/release/check-changeset.mjs",
+    "release:local": "node ./scripts/release/release-local.mjs",
     "release:publish": "node ./scripts/release/publish.mjs",
     "release:verify": "yarn buildall && yarn test && ./demo-apps/build-and-test.sh",
     "release:version:beta": "node ./scripts/release/version-beta.mjs",
