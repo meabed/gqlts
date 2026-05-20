@@ -117,14 +117,14 @@
     }
   },
   "dependencies": {
-    "axios": "1.15.2",
+    "axios": "1.16.1",
     "form-data": "4.0.5",
     "graphql-ws": "6.0.8",
     "is-plain-obj": "4.1.0",
     "lodash.assign": "4.2.0",
     "lodash.get": "4.4.2",
     "lodash.startswith": "4.2.1",
-    "ws": "8.20.0",
+    "ws": "8.20.1",
     "zen-observable-ts": "1.1.0"
   },
   "devDependencies": {
@@ -135,14 +135,14 @@
     "@types/lodash.assign": "4.2.9",
     "@types/lodash.get": "4.4.9",
     "@types/lodash.startswith": "4.2.9",
-    "@types/node": "25.6.0",
-    "@types/qs": "6.15.0",
+    "@types/node": "25.9.1",
+    "@types/qs": "6.15.1",
     "@types/ws": "8.18.1",
     "common-tags": "1.8.2",
     "dotenv": "17.4.2",
-    "jest": "30.3.0",
+    "jest": "30.4.2",
     "sucrase": "3.35.1",
-    "ts-jest": "29.4.9",
+    "ts-jest": "29.4.10",
     "tslib": "2.8.1",
     "utility-types": "3.11.0"
   },
