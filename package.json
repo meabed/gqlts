@@ -58,8 +58,8 @@
     "watch": "ultra -r watch"
   },
   "resolutions": {
-    "graphql": "16.13.2",
-    "ws": "8.20.0"
+    "graphql": "16.14.0",
+    "ws": "8.20.1"
   },
   "devDependencies": {
     "@changesets/cli": "2.31.0",
