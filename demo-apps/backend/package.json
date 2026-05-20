@@ -29,7 +29,7 @@
     "@gqlts/runtime": "file:../../runtime",
     "@types/jest": "30.0.0",
     "@types/supertest": "7.2.0",
-    "jest": "30.3.0",
-    "ts-jest": "29.4.9"
+    "jest": "30.4.2",
+    "ts-jest": "29.4.10"
   }
 }
