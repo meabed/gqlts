@@ -31,7 +31,15 @@
 >
 > It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
 
-Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client locally
+Read the [quick start guide](https://gqlts.vercel.app/quick-start) to generate a client locally.
+
+## Documentation
+
+- [Docs site](https://gqlts.vercel.app): quick start, examples, feature coverage, and usage guides.
+- [Development guide](./DEVELOPMENT.md): local setup, release workflow, and contributor commands.
+- [Architecture](./docs/architecture.md): package map, generation flow, runtime flow, and release diagram.
+- [Testing](./docs/testing.md): test matrix, change checklist, and full demo procedure.
+- [API flow](./docs/api-flow.md): where API behavior coverage lives today.
 
 ## **Features**
 
@@ -133,7 +141,7 @@ bun run --cwd website build
 
 Run `./demo-apps/build-and-test.sh` before pushing generator, runtime, upload, subscription, SDK, or Next.js changes. It runs the backend demo, SDK generation, standalone browser bundle, Next.js dev and production tests, and integration tests.
 
-More details are in [DEVELOPMENT.md](./DEVELOPMENT.md).
+More details are in [DEVELOPMENT.md](./DEVELOPMENT.md), [docs/architecture.md](./docs/architecture.md), and [docs/testing.md](./docs/testing.md).
 
 ## Releases
 

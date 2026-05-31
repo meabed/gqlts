@@ -31,7 +31,15 @@
 >
 > It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
 
-Read the [quick start guide](https://gqlts.vercel.app/docs) to generate a client locally
+Read the [quick start guide](https://gqlts.vercel.app/quick-start) to generate a client locally.
+
+## Documentation
+
+- [Docs site](https://gqlts.vercel.app): quick start, examples, feature coverage, and usage guides.
+- [Development guide](https://github.com/meabed/gqlts/blob/master/DEVELOPMENT.md): local setup, release workflow, and contributor commands.
+- [Architecture](https://github.com/meabed/gqlts/blob/master/docs/architecture.md): package map, generation flow, runtime flow, and release diagram.
+- [Testing](https://github.com/meabed/gqlts/blob/master/docs/testing.md): test matrix, change checklist, and full demo procedure.
+- [API flow](https://github.com/meabed/gqlts/blob/master/docs/api-flow.md): where API behavior coverage lives today.
 
 ## **Features**
 
@@ -133,7 +141,7 @@ bun run --cwd website build
 
 Run `./demo-apps/build-and-test.sh` before pushing generator, runtime, upload, subscription, SDK, or Next.js changes. It runs the backend demo, SDK generation, standalone browser bundle, Next.js dev and production tests, and integration tests.
 
-More details are in [DEVELOPMENT.md](./DEVELOPMENT.md).
+More details are in [DEVELOPMENT.md](https://github.com/meabed/gqlts/blob/master/DEVELOPMENT.md), [docs/architecture.md](https://github.com/meabed/gqlts/blob/master/docs/architecture.md), and [docs/testing.md](https://github.com/meabed/gqlts/blob/master/docs/testing.md).
 
 ## Releases
 

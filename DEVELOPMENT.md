@@ -2,6 +2,8 @@
 
 This guide explains how the repo is organized, how the generated client works, and which build and test commands to run while developing Gqlts.
 
+For diagrams and longer workflow notes, use [docs/architecture.md](./docs/architecture.md), [docs/testing.md](./docs/testing.md), and [docs/api-flow.md](./docs/api-flow.md). Keep agent-only rules in [AGENTS.md](./AGENTS.md).
+
 ## Repository Layout
 
 Gqlts is split into two published workspace packages and several demo apps that exercise the real generated output.
@@ -70,6 +72,15 @@ Generated clients export:
 - `is<TypeName>` guards for unions and interfaces.
 
 ## Code Flow
+
+```mermaid
+flowchart LR
+  schema["Schema file or GraphQL endpoint"] --> cli["@gqlts/cli"]
+  cli --> generated["Generated client files"]
+  generated --> runtime["@gqlts/runtime"]
+  runtime --> app["Consumer app"]
+  generated --> otherClients["Apollo, SWR, React Query, fetch, Axios"]
+```
 
 ### Generation flow
 
@@ -244,6 +255,16 @@ bun run --cwd demo-apps/try-clients test
 ```
 
 ## Full Demo CI Procedure
+
+```mermaid
+flowchart TD
+  install["bun ci"] --> backend["backend schema + SDK"]
+  backend --> backendTests["backend typecheck, build, tests"]
+  backendTests --> html["standalone HTML upload/browser test"]
+  html --> nextDev["Next.js dev SSR/CSR/API tests"]
+  nextDev --> nextProd["Next.js production build + tests"]
+  nextProd --> integration["integration generation + tests"]
+```
 
 Run this before pushing changes that affect generation, runtime behavior, SDK output, uploads, subscriptions, or Next.js usage:
 

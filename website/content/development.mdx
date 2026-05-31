@@ -2,6 +2,8 @@
 
 This page explains how the repository is organized, how generated clients are built, and which commands to run before shipping changes.
 
+The canonical repo-maintainer docs live in [`DEVELOPMENT.md`](https://github.com/meabed/gqlts/blob/master/DEVELOPMENT.md), [`docs/architecture.md`](https://github.com/meabed/gqlts/blob/master/docs/architecture.md), and [`docs/testing.md`](https://github.com/meabed/gqlts/blob/master/docs/testing.md).
+
 ## Repository structure
 
 Gqlts has two published workspace packages and several demo apps that behave like real consumers.
@@ -16,6 +18,17 @@ Gqlts has two published workspace packages and several demo apps that behave lik
 - `demo-apps/integration-tests`: generator and runtime integration tests.
 - `demo-apps/try-clients`: generated-client examples for larger schemas and custom fetchers.
 - `demo-apps/example-usage`: UI examples for SWR, React Query, Apollo, built-in client, and subscriptions.
+
+## Architecture at a glance
+
+```mermaid
+flowchart LR
+  schema["GraphQL schema or endpoint"] --> cli["@gqlts/cli"]
+  cli --> generated["Generated client package"]
+  generated --> runtime["@gqlts/runtime"]
+  runtime --> transport["Axios, custom fetcher, batching, uploads, subscriptions"]
+  generated --> apps["Node.js, Bun, browser, and framework apps"]
+```
 
 ## Published packages
 
@@ -214,6 +227,16 @@ bun run --cwd demo-apps/try-clients test
 ```
 
 ## Full demo CI procedure
+
+```mermaid
+flowchart TD
+  install["bun ci"] --> backend["backend schema + SDK"]
+  backend --> backendTests["backend typecheck, build, tests"]
+  backendTests --> html["standalone HTML upload/browser test"]
+  html --> nextDev["Next.js dev SSR/CSR/API tests"]
+  nextDev --> nextProd["Next.js production build + tests"]
+  nextProd --> integration["integration generation + tests"]
+```
 
 Run this before pushing changes that touch generator output, runtime behavior, uploads, subscriptions, SDK generation, or Next.js behavior:
 
