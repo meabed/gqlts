@@ -1,6 +1,7 @@
-import { RenderContext } from '../common/RenderContext';
-import { excludedTypes } from '../common/excludedTypes';
 import { GraphQLSchema, isInterfaceType, isObjectType, isUnionType } from 'graphql';
+
+import { excludedTypes } from '../common/excludedTypes';
+import { RenderContext } from '../common/RenderContext';
 
 const renderTypeGuard = (target: string, possible: string[], mode) =>
   mode == 'ts'

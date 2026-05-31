@@ -9,24 +9,18 @@
     "strict": true,
     "declaration": true,
     "target": "ES2015",
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "Node16",
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "outDir": "./dist",
     "esModuleInterop": true,
     "allowJs": true,
     "checkJs": false,
     "sourceMap": true,
-    "lib": [
-      "dom",
-      "es2017",
-      "esnext.asynciterable"
-    ],
+    "lib": ["dom", "es2017", "esnext.asynciterable"],
     "skipLibCheck": true
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "package.json",

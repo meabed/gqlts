@@ -5,15 +5,9 @@
     "sourceMap": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "types": [
-      "mocha",
-      "node"
-    ],
+    "types": ["bun", "node"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
   },
-  "exclude": [
-    "node_modules",
-    "../node_modules"
-  ]
+  "exclude": ["node_modules", "../node_modules"]
 }

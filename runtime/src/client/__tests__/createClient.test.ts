@@ -1,12 +1,16 @@
-jest.mock('graphql-ws', () => ({
-  createClient: jest.fn(() => ({
-    subscribe: jest.fn(() => jest.fn()),
-  })),
+import { beforeEach, describe, expect, it, mock } from 'bun:test';
+
+const subscribe = mock(() => mock(() => {}));
+const createClientMock = mock(() => ({ subscribe }));
+
+mock.module('graphql-ws', () => ({
+  createClient: createClientMock,
 }));
 
 import { createClient as createWSClient } from 'graphql-ws';
-import { createClient } from '../createClient';
+
 import type { LinkedType } from '../../types';
+import { createClient } from '../createClient';
 
 class BunLikeWebSocket {
   static CONNECTING = 0;
@@ -28,7 +32,8 @@ const subscriptionRoot: LinkedType = {
 
 describe('createClient subscriptions', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    createClientMock.mockClear();
+    subscribe.mockClear();
   });
 
   it('passes explicit WebSocket implementations outside the browser', () => {

@@ -1,10 +1,4 @@
-import {
-  logStep,
-  readPreState,
-  run,
-  syncPackageDocs,
-  syncPackageVersionsFromNpmDistTag,
-} from './lib.mjs';
+import { logStep, readPreState, run, syncPackageDocs, syncPackageVersionsFromNpmDistTag } from './lib.mjs';
 
 const preState = readPreState();
 
@@ -26,8 +20,8 @@ if (preState?.mode === 'pre' && preState.tag === 'beta') {
   logStep('Prerelease mode already enabled for beta');
 } else {
   logStep('Entering beta prerelease mode');
-  run('yarn', ['changeset', 'pre', 'enter', 'beta']);
+  run('bun', ['run', 'changeset', 'pre', 'enter', 'beta']);
 }
 
 logStep('Versioning packages for beta');
-run('yarn', ['changeset', 'version']);
+run('bun', ['run', 'changeset', 'version']);

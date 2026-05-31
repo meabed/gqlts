@@ -1,8 +1,9 @@
-import { RenderContext } from '../common/RenderContext';
+import { GraphQLInterfaceType, GraphQLObjectType, isObjectType } from 'graphql';
+
 import { fieldComment, typeComment } from '../common/comment';
+import { RenderContext } from '../common/RenderContext';
 import { renderTyping } from '../common/renderTyping';
 import { sortKeys } from '../common/support';
-import { GraphQLInterfaceType, GraphQLObjectType, isObjectType } from 'graphql';
 
 const INDENTATION = '    ';
 

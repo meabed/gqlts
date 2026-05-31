@@ -1,12 +1,15 @@
 #!/usr/bin/env node
+import { existsSync, readFileSync } from 'fs';
+
+import colors from 'colors';
+import yargs from 'yargs';
+
 import { Config } from './config';
 import { parseColonSeparatedStrings } from './helpers/parse';
+import { printHelp } from './helpers/printHelp';
 import { generate } from './main';
 import { validateConfigs } from './tasks/validateConfigs';
 import { version } from './version';
-import colors from 'colors';
-import { existsSync, readFileSync } from 'fs';
-import yargs from 'yargs';
 
 const program = yargs(process.argv.slice(2))
   .option('output', {
@@ -138,22 +141,9 @@ generate(config)
   .then(() => {
     printHelp({
       dirPath: program.output,
-      useYarn: false,
       dependencies: [`@gqlts/runtime@${version}`, 'graphql'],
     });
   });
-
-export function printHelp({ useYarn, dirPath, dependencies }) {
-  console.info();
-  console.info(`${colors.green('Success!')} Generated client code inside '${dirPath}'`);
-  console.info();
-  console.info(colors.bold('Remember to install the necessary runtime package with:'));
-  console.info();
-  console.info(`  ${colors.cyan(`${useYarn ? 'yarn add' : 'npm install'} ${dependencies.join(' ')}`)}`);
-  console.info();
-  console.info('PS: `@gqlts/runtime` should always have the same version as the cli!');
-  console.info();
-}
 
 function readFile(p) {
   if (!existsSync(p)) {

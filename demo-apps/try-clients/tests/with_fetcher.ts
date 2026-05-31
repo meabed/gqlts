@@ -1,5 +1,7 @@
-import { createClient } from '../hasura/generated/index.js';
 import assert from 'assert';
+import { describe, it } from 'bun:test';
+
+import { createClient } from '../hasura/generated/index.js';
 
 const QueryBatcher = require('graphql-query-batcher');
 

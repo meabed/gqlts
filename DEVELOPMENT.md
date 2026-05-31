@@ -178,68 +178,69 @@ In Next.js SSR, create subscription clients only in code paths that actually sub
 
 ## Development Setup
 
-Use Yarn classic from the repo root.
+Use Bun from the repo root.
 
 ```sh
-yarn install --frozen-lockfile
+bun ci
 ```
 
-The repo uses Yarn workspaces for `cli` and `runtime`. Demo apps are mostly independent packages with their own lockfiles because they simulate real consumers.
+The repo uses Bun workspaces for the published packages, website, and demo apps. `bun.lock` is the only committed package-manager lockfile.
 
 ## Common Commands
 
 Root workspace:
 
 ```sh
-yarn buildall
-yarn test
-yarn tscall
+bun run buildall
+bun run test
+bun run typecheck
+bun run lint
 ```
 
 Runtime only:
 
 ```sh
-yarn --cwd runtime build
-yarn --cwd runtime test
+bun run --cwd runtime build
+bun run --cwd runtime test
 ```
 
 CLI only:
 
 ```sh
-yarn --cwd cli build
-yarn --cwd cli test
+bun run --cwd cli build
+bun run --cwd cli test
 ```
 
 Website docs:
 
 ```sh
-yarn --cwd website build
-yarn --cwd website dev
+bun run --cwd website build
+bun run --cwd website dev
 ```
 
 Demo backend and SDK:
 
 ```sh
-yarn --cwd demo-apps/backend dev --exit-after-generate-schema
-yarn --cwd demo-apps/backend build-sdk
-yarn --cwd demo-apps/backend typecheck
-yarn --cwd demo-apps/backend build
-yarn --cwd demo-apps/backend start --exit-after-generate-schema
-yarn --cwd demo-apps/backend test
+bun run --cwd demo-apps/backend dev
+bun run --cwd demo-apps/backend build-sdk
+bun run --cwd demo-apps/backend typecheck
+bun run --cwd demo-apps/backend build
+bun run --cwd demo-apps/backend start
+bun run --cwd demo-apps/backend test
 ```
 
 Integration tests:
 
 ```sh
-yarn --cwd demo-apps/integration-tests gen
-yarn --cwd demo-apps/integration-tests test
+bun run --cwd demo-apps/integration-tests gen
+bun run --cwd demo-apps/integration-tests test
 ```
 
 Try-clients examples:
 
 ```sh
-yarn --cwd demo-apps/try-clients build
-yarn --cwd demo-apps/try-clients test
+bun run --cwd demo-apps/try-clients build
+bun run --cwd demo-apps/try-clients test
 ```
 
 ## Full Demo CI Procedure
@@ -252,8 +253,8 @@ Run this before pushing changes that affect generation, runtime behavior, SDK ou
 
 That script runs the real consumer flow:
 
-1. Installs the backend demo.
-2. Generates backend schema artifacts through `ts-node`.
+1. Installs workspace dependencies with Bun.
+2. Generates backend schema artifacts through Bun's TypeScript runtime.
 3. Builds the backend SDK.
 4. Typechecks and builds the backend.
 5. Runs backend tests.
@@ -269,12 +270,12 @@ Gqlts releases are managed with `@changesets/cli`. `@gqlts/runtime` and `@gqlts/
 Useful commands:
 
 ```sh
-yarn changeset
-yarn release:version:beta
-yarn release:version:stable
-yarn release:publish
-yarn release:verify
-yarn release:check
+bun run changeset
+bun run release:version:beta
+bun run release:version:stable
+bun run release:publish
+bun run release:verify
+bun run release:check
 ```
 
 Branch behavior:
@@ -290,7 +291,7 @@ Branch behavior:
 
 Contributor rules:
 
-- add a changeset with `yarn changeset` when a PR changes published CLI or runtime behavior;
+- add a changeset with `bun run changeset` when a PR changes published CLI or runtime behavior;
 - docs-only and test-only changes can skip a changeset;
 - release CI versions packages directly on the target branch, commits the version bump with `[skip ci]`, and then publishes.
 
@@ -337,13 +338,13 @@ Use this map to pick the right tests when changing code.
 
 Use the smallest checklist that covers your change:
 
-- CLI renderer changes: run `yarn --cwd cli test`, `yarn buildall`, and at least one generation command such as `yarn --cwd demo-apps/integration-tests gen`.
-- Runtime query/fetcher changes: run `yarn --cwd runtime test`, `yarn --cwd demo-apps/integration-tests test`, and `./demo-apps/build-and-test.sh`.
-- Subscription changes: run `yarn --cwd runtime test`, `yarn --cwd demo-apps/integration-tests test`, and a Bun/Node smoke check when touching `webSocketImpl`.
+- CLI renderer changes: run `bun run --cwd cli test`, `bun run buildall`, and at least one generation command such as `bun run --cwd demo-apps/integration-tests gen`.
+- Runtime query/fetcher changes: run `bun run --cwd runtime test`, `bun run --cwd demo-apps/integration-tests test`, and `./demo-apps/build-and-test.sh`.
+- Subscription changes: run `bun run --cwd runtime test`, `bun run --cwd demo-apps/integration-tests test`, and a Bun/Node smoke check when touching `webSocketImpl`.
 - Upload changes: run `./demo-apps/build-and-test.sh` because the HTML bundle test covers browser uploads.
-- Next.js or SSR changes: run `yarn --cwd demo-apps/next build` and `./demo-apps/build-and-test.sh`.
-- Docs changes: run `yarn --cwd website build`.
-- Dependency updates: run `yarn buildall`, `yarn test`, `./demo-apps/build-and-test.sh`, and package-specific builds for changed demo apps.
+- Next.js or SSR changes: run `bun run --cwd demo-apps/next build` and `./demo-apps/build-and-test.sh`.
+- Docs changes: run `bun run --cwd website build`.
+- Dependency updates: run `bun run buildall`, `bun run test`, `bun run typecheck`, `./demo-apps/build-and-test.sh`, and package-specific builds for changed demo apps.
 
 Always finish with:
 
@@ -361,10 +362,10 @@ Keep `@gqlts/cli` and `@gqlts/runtime` versions aligned. Generated clients call 
 
 ## Troubleshooting
 
-TS6 requires explicit `rootDir` when `outDir` is present and the source root can be inferred differently. If `ts-node` fails with `TS5011`, add an explicit `rootDir` to the config that `ts-node` loads.
+tsgo requires explicit `rootDir` when `outDir` is present and the source root can be inferred differently. If a package reports `TS5011`, add an explicit `rootDir` to the package `tsconfig.json`.
 
-If a test package cannot see Node globals like `fs`, `path`, `process`, or `__dirname`, add `"types": ["node"]` to that package's `tsconfig.json` and make sure `@types/node` is installed in the package.
+If a test package cannot see Bun or Node globals like `describe`, `it`, `fs`, `path`, `process`, or `__dirname`, import test helpers from `bun:test`, add `"types": ["bun", "node"]` to that package's `tsconfig.json`, and make sure `@types/bun` plus `@types/node` are installed in the package.
 
-If Next.js warns about multiple lockfiles, it is usually because demo apps intentionally have their own lockfiles. The warning is noisy but not a failure.
+If Next.js warns about multiple lockfiles, verify there is no stray package-manager lockfile under a demo app. The repo should keep `bun.lock` at the root only.
 
 If subscription tests fail in Node, verify that a WebSocket implementation is available. Node and Bun may expose global `WebSocket`; otherwise pass `webSocketImpl` explicitly.

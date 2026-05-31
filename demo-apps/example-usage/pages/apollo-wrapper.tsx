@@ -1,16 +1,17 @@
-import { QueryRequest, QueryResult, generateQueryOp } from '../generated/';
-import { ApolloClient, ApolloProvider, InMemoryCache, gql, useQuery } from '@apollo/client';
-import { QueryHookOptions } from '@apollo/react-hooks';
+import { ApolloClient, HttpLink, InMemoryCache, gql } from '@apollo/client';
+import { ApolloProvider, useQuery, type QueryHookOptions } from '@apollo/client/react';
 import { Box } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from '../components/landing';
 import React from 'react';
+
+import { Hero, PageContainer, SectionTitle } from '../components/landing';
+import { QueryRequest, QueryResult, generateQueryOp } from '../generated/';
 
 function tuple<T1, T2>(data: [T1, T2]): typeof data;
 function tuple(data: Array<any>) {
   return data;
 }
 
-function useGqltsQuery<Q extends QueryRequest>(q: Q, options?: QueryHookOptions) {
+function useGqltsQuery<Q extends QueryRequest>(q: Q, options?: QueryHookOptions<QueryResult<Q>>) {
   const { query, variables } = generateQueryOp(q);
   return useQuery<QueryResult<typeof q>>(gql(query), {
     variables,
@@ -61,7 +62,7 @@ const Page = () => {
               //  spacing='20px'
             }}
           >
-            {data?.countries?.map((x: any) => (
+            {data?.countries?.map((x: { name?: string }) => (
               <Box borderRadius='10px' p='20px' borderWidth='1px'>
                 {x.name}
               </Box>
@@ -75,7 +76,7 @@ const Page = () => {
 };
 
 const client = new ApolloClient({
-  uri: 'https://countries.trevorblades.com',
+  link: new HttpLink({ uri: 'https://countries.trevorblades.com' }),
   cache: new InMemoryCache(),
 });
 

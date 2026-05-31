@@ -1,34 +1,34 @@
 version: 2
 
 updates:
-  - package-ecosystem: "npm"
-    target-branch: "develop"
+  - package-ecosystem: 'npm'
+    target-branch: 'develop'
     directories:
-      - "/"
-      - "/cli"
-      - "/runtime"
-      - "/website"
-      - "/demo-apps/backend"
-      - "/demo-apps/backend/sdk"
-      - "/demo-apps/example-cli"
-      - "/demo-apps/example-usage"
-      - "/demo-apps/html"
-      - "/demo-apps/integration-tests"
-      - "/demo-apps/next"
-      - "/demo-apps/next/ui-test"
-      - "/demo-apps/try-clients"
+      - '/'
+      - '/cli'
+      - '/runtime'
+      - '/website'
+      - '/demo-apps/backend'
+      - '/demo-apps/backend/sdk'
+      - '/demo-apps/example-cli'
+      - '/demo-apps/example-usage'
+      - '/demo-apps/html'
+      - '/demo-apps/integration-tests'
+      - '/demo-apps/next'
+      - '/demo-apps/next/ui-test'
+      - '/demo-apps/try-clients'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 1
     groups:
       all-dependencies:
-        applies-to: "version-updates"
+        applies-to: 'version-updates'
         patterns:
-          - "*"
+          - '*'
       all-security-dependencies:
-        applies-to: "security-updates"
+        applies-to: 'security-updates'
         patterns:
-          - "*"
+          - '*'
     ignore:
-      - dependency-name: "@chakra-ui/react"
-      - dependency-name: "strip-ansi"
+      - dependency-name: '@chakra-ui/react'
+      - dependency-name: 'strip-ansi'

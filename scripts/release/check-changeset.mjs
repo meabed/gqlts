@@ -53,6 +53,6 @@ if (hasChangeset) {
 }
 
 console.error('A changeset is required for release-relevant changes in cli/ or runtime/.');
-console.error('Run `yarn changeset` and commit the generated .changeset/*.md file.');
+console.error('Run `bun run changeset` and commit the generated .changeset/*.md file.');
 console.error('Docs-only and test-only changes are already excluded from this check.');
 process.exit(1);

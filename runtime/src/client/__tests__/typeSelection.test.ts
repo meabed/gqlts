@@ -1,5 +1,8 @@
-import { NoExtraProperties } from '../../';
+import { describe, test } from 'bun:test';
+
 import { FieldsSelection } from '@gqlts/runtime/src/client/typeSelection';
+
+import { NoExtraProperties } from '../../';
 
 // types requirements
 /*
@@ -87,6 +90,53 @@ type SRC = {
     }[];
   };
 };
+
+describe('__alias', () => {
+  const req = {
+    __alias: {
+      featuredCategory: {
+        category: {
+          a: 1,
+          nested1: {
+            a: 1,
+          },
+        },
+      },
+      searched: {
+        argumentSyntax: [
+          { a: 7 },
+          {
+            a: 1,
+            optional: 1,
+          },
+        ] as const,
+      },
+    },
+  };
+  const z: FieldsSelection<SRC, typeof req> = {} as any;
+
+  test(
+    'response type exposes alias names',
+    dontExecute(() => {
+      z.featuredCategory.a.getDate;
+      z.featuredCategory.nested1.a.toLocaleLowerCase;
+      z.searched.a.toLocaleLowerCase;
+      z.searched.optional?.toLocaleLowerCase;
+    }),
+  );
+
+  test(
+    'response type hides original field names when only aliases are selected',
+    dontExecute(() => {
+      // @ts-expect-error original field is not selected
+      z.category;
+      // @ts-expect-error original field is not selected
+      z.argumentSyntax;
+      // @ts-expect-error alias target only selected nested1.a
+      z.featuredCategory.nested1.b;
+    }),
+  );
+});
 
 describe('pick', () => {
   const req = {

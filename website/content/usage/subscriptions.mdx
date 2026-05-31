@@ -1,85 +1,74 @@
 ---
-name: Using Subscriptions
+name: Subscriptions
 ---
 
-# Using Subscriptions
+# Subscriptions
 
-Gqlts has a built-in subscription client that returns an observable, Additional options are passed down to `graphql-ws`
+Generated clients expose `subscription` when the schema has a subscription root. Subscription calls return observables and use `graphql-ws` internally.
 
----
+## Subscribe
 
-
-```js
-import { createClient, everything } from './generated'
+```ts
+import { createClient, everything } from './generated';
 
 const client = createClient({
-    url: 'ws://my-url',
-    headers: {
-        Authorization: 'Bearer ...',
+  url: 'https://api.example.com/graphql',
+  subscription: {
+    url: 'wss://api.example.com/graphql',
+  },
+});
+
+const { unsubscribe } = client
+  .subscription({
+    userUpdated: {
+      ...everything,
     },
-})
-
-const { unsubscribe } = await client
-    .subscription({
-        user: {
-            ...everything,
-        },
-    })
-    .subscribe({
-        next: (x) => console.log('next', x),
-        error: console.error,
-    })
-
+  })
+  .subscribe({
+    next: (event) => console.log(event.data?.userUpdated),
+    error: console.error,
+  });
 ```
 
 ## Subscription URL
 
 If `subscription.url` is omitted, Gqlts derives it from the top-level `url` by replacing the protocol prefix:
 
-```js
+```ts
 const client = createClient({
-    url: 'http://localhost:4000/graphql',
-})
+  url: 'http://localhost:4000/graphql',
+});
 
 // subscriptions use ws://localhost:4000/graphql
 ```
 
-Pass `subscription.url` when the websocket endpoint differs from the HTTP endpoint.
+Pass `subscription.url` when the WebSocket endpoint differs from the HTTP endpoint.
 
-```js
+```ts
 const client = createClient({
-    url: 'https://api.example.com/graphql',
-    subscription: {
-        url: 'wss://ws.example.com/graphql',
-    },
-})
+  url: 'https://api.example.com/graphql',
+  subscription: {
+    url: 'wss://ws.example.com/graphql',
+  },
+});
 ```
 
 ## WebSocket implementation
 
-In browsers, `graphql-ws` can use the global `WebSocket`. In Node or Bun, use the runtime global if one exists, or pass a WebSocket implementation explicitly.
+Browsers usually provide a global `WebSocket`. Node.js and Bun runtimes may also provide one, depending on version and environment. When they do not, pass an implementation explicitly.
 
-```js
-const client = createClient({
-    url: 'http://localhost:4000/graphql',
-    webSocketImpl: WebSocket,
-})
-```
-
-For Node versions or runtimes without a global `WebSocket`, install `ws` and pass it:
-
-```js
-import WebSocket from 'ws'
-import { createClient } from './generated'
+```ts
+import WebSocket from 'ws';
+import { createClient } from './generated';
 
 const client = createClient({
-    url: 'http://localhost:4000/graphql',
-    webSocketImpl: WebSocket,
-})
+  url: 'http://localhost:4000/graphql',
+  webSocketImpl: WebSocket,
+});
 ```
 
-## Next.js and SSR
+## SSR and Next.js
 
-Avoid reading `window.WebSocket` during module initialization. In SSR, only create or subscribe to the websocket client in browser-only paths or in server runtimes that provide a valid WebSocket implementation.
+Avoid reading `window.WebSocket` during module initialization. In SSR, create subscriptions only in browser-only code paths or in server runtimes that provide a valid WebSocket implementation.
 
 The runtime validates explicit `webSocketImpl` values before passing them to `graphql-ws`, so invalid SSR placeholders are ignored instead of breaking client creation.

@@ -8,9 +8,9 @@
     "rootDir": "src",
     "strict": false,
     "declaration": true,
-    "target": "ES5",
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "target": "ES2020",
+    "module": "Node16",
+    "moduleResolution": "node16",
     "outDir": "./dist",
     "declarationMap": true,
     "esModuleInterop": true,
@@ -18,23 +18,9 @@
     "checkJs": false,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "downlevelIteration": true,
-    "lib": [
-      "dom",
-      "esnext.asynciterable"
-    ],
+    "lib": ["dom", "esnext.asynciterable"],
     "skipLibCheck": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.case.ts",
-    "tests",
-    "example",
-    "dist",
-    "**/__tests__",
-    "esm"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.case.ts", "tests", "example", "dist", "**/__tests__", "esm"]
 }

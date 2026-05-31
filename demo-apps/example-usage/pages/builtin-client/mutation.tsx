@@ -1,8 +1,9 @@
-import { useMutation } from '../../client';
-import { everything } from '../../generated';
 import { Box, Button, Input, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer } from '../../components/landing';
 import React, { useState } from 'react';
+
+import { useMutation } from '../../client';
+import { Hero, PageContainer } from '../../components/landing';
+import { everything } from '../../generated';
 
 const Page = () => {
   const [name, setName] = useState('');

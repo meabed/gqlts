@@ -1,6 +1,9 @@
-import { print } from '../../../cli/dist/printer.js';
+import { it } from 'bun:test';
+
 import { GraphQLSchema, buildSchema } from 'graphql';
 import { generateRandomQuery } from 'ibm-graphql-query-generator';
+
+import { print } from '../../../cli/dist/printer.js';
 
 export function generateQueriesHelper(p: { packageName: string; number?: number; schema: GraphQLSchema }) {
   p.number = p.number || 1;

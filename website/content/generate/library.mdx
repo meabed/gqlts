@@ -1,38 +1,60 @@
-# Generate the client
+---
+name: Programmatic generation
+---
 
-You can generate a client from code using the client package
+# Programmatic generation
 
-```js
-import { generate } from '@gqlts/cli'
-import fs from 'fs'
-import path from 'path'
+Use the `generate` function when schema generation belongs inside a custom build script. This is useful for monorepos, generated SDK packages, or backend demos that create a client from a freshly built schema.
 
-generate({
-    schema: fs.readFileSync(path.join(__dirname, 'schema.graphql')).toString(),
-    output: path.join(__dirname, 'generated'),
-    scalarTypes: {
-        MongoID: 'string',
-    },
-}).catch(console.error)
+## Generate from a schema string
+
+```ts
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { generate } from '@gqlts/cli';
+
+await generate({
+  schema: await readFile(join(import.meta.dirname, 'schema.graphql'), 'utf8'),
+  output: join(import.meta.dirname, 'generated'),
+  scalarTypes: {
+    DateTime: 'string',
+    Upload: 'File',
+  },
+});
 ```
 
-The generate function has the following signature
+## Generate from an endpoint
 
-```js
-(config: {
-    endpoint?: string
-    // use get to introspect the schema
-    useGet?: boolean
-    // the schema string
-    schema?: string
-    // the output dir
-    output?: string
-    headers?: Record<string, string>
-    // map graphql scalars to typescript types
-    scalarTypes?: { [k: string]: string }
-    onlyEsModules?: boolean
-    onlyCJSModules?: boolean
-    sortProperties?: boolean
-    verbose?: boolean
-}) => Promise<void>
+```ts
+import { generate } from '@gqlts/cli';
+
+await generate({
+  endpoint: 'https://api.example.com/graphql',
+  output: './generated',
+  headers: {
+    authorization: `Bearer ${process.env.GRAPHQL_TOKEN}`,
+  },
+  sortProperties: true,
+});
 ```
+
+## API shape
+
+```ts
+generate(config: {
+  endpoint?: string;
+  useGet?: boolean;
+  schema?: string;
+  output?: string;
+  headers?: Record<string, string>;
+  scalarTypes?: Record<string, string>;
+  onlyEsModules?: boolean;
+  onlyCJSModules?: boolean;
+  sortProperties?: boolean;
+  verbose?: boolean;
+}): Promise<void>;
+```
+
+## When to prefer the CLI
+
+Prefer the CLI when a package script is enough. Prefer `generate(config)` when another script already knows where the schema is, which headers to use, or which output package should be rebuilt.

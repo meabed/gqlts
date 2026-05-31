@@ -1,56 +1,89 @@
-## [Graphql-zeus](https://github.com/graphql-editor/graphql-zeus)
+---
+name: GraphQL Zeus
+---
 
-Some differences are
+# Gqlts vs GraphQL Zeus
 
--   Gqlts has subscriptions: https://gqlts.vercel.app/docs/usage/subscriptions
--   Gqlts has batching built in: https://gqlts.vercel.app/docs/usage/batching-queries
--   Gqlts has a dependency on `@gqlts/runtime`, graphql zeus does not
--   Gqlts does not support aliases
--   Gqlts will have a big bundle size for large graphql schemas because it needs to store some schema information, this information is really compressed but it can be a problem for large schemas (see an example of this data [here](https://github.com/meabed/gqlts/blob/master/example-usage/generated/types.esm.js))
--   With gqlts you can easily fetch all scalar fields of a type: https://gqlts.vercel.app/docs/usage/selecting-fields#querying-all-fields
--   Easier variables passing
+Both Gqlts and GraphQL Zeus let you write GraphQL selections as TypeScript objects. The main difference is product shape: Gqlts focuses on generated SDK packages plus a small runtime for execution, operation generation, batching, uploads, subscriptions, aliases, and type guards.
 
-graphql zeus
+## Where Gqlts fits
 
-```js
-const test = await Gql.mutation(
-    {
-        addCard: [
-            {
-                card: $`card`,
-            },
-            {
-                id: true,
-            },
-        ],
-    },
-    {
-        card: {
-            Attack: 2,
-            Defense: 3,
-            description: 'Lord of the mountains',
-            name: 'Golrog',
-        },
-    },
-)
-```
+Choose Gqlts when you want:
 
-Gqlts
+- a generated SDK directory or package from a schema;
+- response types derived from the exact selection object;
+- `createClient` for direct execution;
+- `generateQueryOp` and friends for Apollo, SWR, React Query, fetch, or custom clients;
+- `graphql-ws` subscriptions;
+- GraphQL multipart uploads;
+- field aliases through `__alias`;
+- scalar expansion with `everything` / `__scalar`;
+- generated type guards for unions and interfaces.
 
-```js
-await client.mutation({
+Gqlts includes `@gqlts/runtime` in generated clients. That runtime stores a compressed type map so it can validate paths, expand scalars, generate operations, and execute through the built-in fetcher. For very large schemas, review bundle size if the generated client ships directly to browsers.
+
+## Mutation shape
+
+GraphQL Zeus:
+
+```ts
+const result = await Gql.mutation(
+  {
     addCard: [
-        {
-            card: {
-                Attack: 2,
-                Defense: 3,
-                description: 'Lord of the mountains',
-                name: 'Golrog',
-            },
-        },
-        {
-            id: true,
-        },
+      {
+        card: $`card`,
+      },
+      {
+        id: true,
+      },
     ],
-})
+  },
+  {
+    card: {
+      Attack: 2,
+      Defense: 3,
+      description: 'Lord of the mountains',
+      name: 'Golrog',
+    },
+  },
+);
 ```
+
+Gqlts:
+
+```ts
+await client.mutation({
+  addCard: [
+    {
+      card: {
+        Attack: 2,
+        Defense: 3,
+        description: 'Lord of the mountains',
+        name: 'Golrog',
+      },
+    },
+    {
+      id: true,
+    },
+  ],
+});
+```
+
+## Alias shape
+
+```ts
+await client.query({
+  __alias: {
+    firstCard: {
+      card: [{ id: '1' }, { name: true }],
+    },
+    secondCard: {
+      card: [{ id: '2' }, { name: true }],
+    },
+  },
+});
+```
+
+## Choosing between them
+
+Use the tool whose API matches your project. If you want a generated SDK with a runtime client and explicit operation helpers, Gqlts is a good fit. If your team already prefers GraphQL Zeus's API shape and does not need Gqlts runtime features, staying there may be simpler.

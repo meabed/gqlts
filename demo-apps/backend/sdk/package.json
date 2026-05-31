@@ -2,26 +2,26 @@
   "name": "demo-apps-backend-sdk",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "typings": "dist/index.d.ts",
   "files": [
     "dist/index.d.ts",
     "dist/*"
   ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "build-sdk": "ts-node build-sdk.ts --build"
+    "build-sdk": "bun build-sdk.ts --build",
+    "tsgo": "tsgo -p tsconfig.json --noEmit",
+    "typecheck": "tsgo -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@gqlts/cli": "file:./../../../cli",
-    "@gqlts/runtime": "file:./../../../runtime"
+    "@gqlts/cli": "workspace:*",
+    "@gqlts/runtime": "workspace:*"
   },
   "devDependencies": {
+    "@types/bun": "1.3.14",
+    "@types/node": "25.9.1",
     "graphql": "16.14.0",
-    "ts-node": "10.9.2",
     "typescript": "6.0.3"
-  },
-  "resolutions": {
-    "@gqlts/runtime": "file:./../../../runtime"
   }
 }

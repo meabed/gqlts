@@ -1,8 +1,9 @@
-import { RenderContext } from '../common/RenderContext';
+import { GraphQLInputObjectType } from 'graphql';
+
 import { argumentComment, typeComment } from '../common/comment';
+import { RenderContext } from '../common/RenderContext';
 import { renderTyping } from '../common/renderTyping';
 import { sortKeys } from '../common/support';
-import { GraphQLInputObjectType } from 'graphql';
 
 export function inputObjectType(type: GraphQLInputObjectType, ctx: RenderContext) {
   let fields = type.getFields();

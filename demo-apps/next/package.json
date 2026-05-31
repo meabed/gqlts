@@ -7,20 +7,18 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
+    "lint": "oxlint . --react-plugin --jsx-a11y-plugin --nextjs-plugin",
     "start": "next start",
-    "test": "cd ./ui-test && yarn && node puppeteer-test.js"
-  },
-  "resolutions": {
-    "@gqlts/cli": "file:./../../cli",
-    "@gqlts/runtime": "file:./../../runtime"
+    "test": "bun install --cwd ./ui-test && bun run --cwd ./ui-test test",
+    "tsgo": "tsgo -p tsconfig.json --noEmit",
+    "typecheck": "tsgo -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@gqlts/runtime": "file:./../../runtime",
+    "@gqlts/runtime": "workspace:*",
     "@types/node": "25.9.1",
     "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
-    "demo-apps-backend-sdk": "file:./../backend/sdk",
+    "demo-apps-backend-sdk": "workspace:*",
     "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6",

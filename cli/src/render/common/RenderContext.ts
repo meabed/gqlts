@@ -1,8 +1,8 @@
-import { Config } from '../../config';
-import { relativeImportPath } from './relativeImportPath';
 import { GraphQLSchema } from 'graphql';
-import { BuiltInParserName } from 'prettier';
-import { prettify } from '../../helpers/prettify';
+
+import { Config } from '../../config';
+import { FormatterParser, prettify } from '../../helpers/prettify';
+import { relativeImportPath } from './relativeImportPath';
 
 interface Import {
   isDefault: boolean;
@@ -73,7 +73,7 @@ export class RenderContext {
     else return;
   }
 
-  async toCode(parser?: BuiltInParserName, pretty = false) {
+  async toCode(parser?: FormatterParser, pretty = false) {
     const blocks = [...this.codeBlocks];
 
     if (parser && (parser === 'typescript' || parser === 'babel')) {

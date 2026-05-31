@@ -1,3 +1,8 @@
+import { ClientError, FieldsSelection } from '@gqlts/runtime';
+import { useLazyPromise, useLazyPromiseOutput, useObservable } from 'react-extra-hooks';
+import { UseObservableOutput } from 'react-extra-hooks/dist/useLazyObservable';
+import useSWR, { SWRResponse } from 'swr';
+
 import {
   mutation_root as Mutation,
   mutation_rootRequest as MutationRequest,
@@ -7,10 +12,6 @@ import {
   subscription_rootRequest as SubscriptionRequest,
   createClient,
 } from './hasura';
-import { ClientError, FieldsSelection } from '@gqlts/runtime';
-import { useLazyPromise, useLazyPromiseOutput, useObservable } from 'react-extra-hooks';
-import { UseObservableOutput } from 'react-extra-hooks/dist/useLazyObservable';
-import useSWR, { SWRResponse } from 'swr';
 
 const client = createClient({
   subscription: {

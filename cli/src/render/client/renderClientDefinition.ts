@@ -1,8 +1,9 @@
+import { GraphQLSchema } from 'graphql';
+
 import { RUNTIME_LIB_NAME } from '../../config';
 import { RenderContext } from '../common/RenderContext';
 import { requestTypeName } from '../requestTypes/requestTypeName';
 import { renderEnumsMaps } from './renderClient';
-import { GraphQLSchema } from 'graphql';
 
 export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext) {
   const queryType = schema.getQueryType();

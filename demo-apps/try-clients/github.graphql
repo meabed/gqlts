@@ -580,7 +580,20 @@ input AddReactionInput {
   """
   The Node ID of the subject to modify.
   """
-  subjectId: ID! @possibleTypes(concreteTypes: ["CommitComment", "Issue", "IssueComment", "PullRequest", "PullRequestReview", "PullRequestReviewComment", "TeamDiscussion", "TeamDiscussionComment"], abstractType: "Reactable")
+  subjectId: ID!
+    @possibleTypes(
+      concreteTypes: [
+        "CommitComment"
+        "Issue"
+        "IssueComment"
+        "PullRequest"
+        "PullRequestReview"
+        "PullRequestReviewComment"
+        "TeamDiscussion"
+        "TeamDiscussionComment"
+      ]
+      abstractType: "Reactable"
+    )
 }
 
 """
@@ -813,7 +826,8 @@ type AssignedEvent implements Node {
   """
   Identifies the user who was assigned.
   """
-  user: User @deprecated(reason: "Assignees can now be mannequins. Use the `assignee` field instead. Removal on 2020-01-01 UTC.")
+  user: User
+    @deprecated(reason: "Assignees can now be mannequins. Use the `assignee` field instead. Removal on 2020-01-01 UTC.")
 }
 
 """
@@ -2844,7 +2858,7 @@ type Commit implements GitObject & Node & Subscribable & UniformResourceLocatabl
     """
     Ordering options for pull requests.
     """
-    orderBy: PullRequestOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: PullRequestOrder = { field: CREATED_AT, direction: ASC }
   ): PullRequestConnection
 
   """
@@ -2994,7 +3008,7 @@ type Commit implements GitObject & Node & Subscribable & UniformResourceLocatabl
     """
     Ordering options for deployments returned from the connection.
     """
-    orderBy: DeploymentOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: DeploymentOrder = { field: CREATED_AT, direction: ASC }
   ): DeploymentConnection
 
   """
@@ -3600,7 +3614,7 @@ type CommitContributionsByRepository {
     """
     Ordering options for commit contributions returned from the connection.
     """
-    orderBy: CommitContributionOrder = {field: OCCURRED_AT, direction: DESC}
+    orderBy: CommitContributionOrder = { field: OCCURRED_AT, direction: DESC }
   ): CreatedCommitContributionConnection!
 
   """
@@ -3992,7 +4006,7 @@ type ContributionsCollection {
     """
     Ordering options for contributions returned from the connection.
     """
-    orderBy: ContributionOrder = {direction: DESC}
+    orderBy: ContributionOrder = { direction: DESC }
   ): CreatedIssueContributionConnection!
 
   """
@@ -4088,7 +4102,7 @@ type ContributionsCollection {
     """
     Ordering options for contributions returned from the connection.
     """
-    orderBy: ContributionOrder = {direction: DESC}
+    orderBy: ContributionOrder = { direction: DESC }
   ): CreatedPullRequestContributionConnection!
 
   """
@@ -4138,7 +4152,7 @@ type ContributionsCollection {
     """
     Ordering options for contributions returned from the connection.
     """
-    orderBy: ContributionOrder = {direction: DESC}
+    orderBy: ContributionOrder = { direction: DESC }
   ): CreatedPullRequestReviewContributionConnection!
 
   """
@@ -4183,7 +4197,7 @@ type ContributionsCollection {
     """
     Ordering options for contributions returned from the connection.
     """
-    orderBy: ContributionOrder = {direction: DESC}
+    orderBy: ContributionOrder = { direction: DESC }
   ): CreatedRepositoryContributionConnection!
 
   """
@@ -7183,7 +7197,7 @@ type Enterprise implements Node {
     """
     Ordering options for members returned from the connection.
     """
-    orderBy: EnterpriseMemberOrder = {field: LOGIN, direction: ASC}
+    orderBy: EnterpriseMemberOrder = { field: LOGIN, direction: ASC }
 
     """
     Only return members within the organizations with these logins
@@ -7233,7 +7247,7 @@ type Enterprise implements Node {
     """
     Ordering options for organizations returned from the connection.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The search string to look for.
@@ -7495,7 +7509,10 @@ type EnterpriseBillingInfo {
   """
   The number of available seats across all owned organizations based on the unique number of billable users.
   """
-  availableSeats: Int! @deprecated(reason: "`availableSeats` will be replaced with `totalAvailableLicenses` to provide more clarity on the value being returned Use EnterpriseBillingInfo.totalAvailableLicenses instead. Removal on 2020-01-01 UTC.")
+  availableSeats: Int!
+    @deprecated(
+      reason: "`availableSeats` will be replaced with `totalAvailableLicenses` to provide more clarity on the value being returned Use EnterpriseBillingInfo.totalAvailableLicenses instead. Removal on 2020-01-01 UTC."
+    )
 
   """
   The bandwidth quota in GB for all organizations owned by the enterprise.
@@ -7515,7 +7532,10 @@ type EnterpriseBillingInfo {
   """
   The total seats across all organizations owned by the enterprise.
   """
-  seats: Int! @deprecated(reason: "`seats` will be replaced with `totalLicenses` to provide more clarity on the value being returned Use EnterpriseBillingInfo.totalLicenses instead. Removal on 2020-01-01 UTC.")
+  seats: Int!
+    @deprecated(
+      reason: "`seats` will be replaced with `totalLicenses` to provide more clarity on the value being returned Use EnterpriseBillingInfo.totalLicenses instead. Removal on 2020-01-01 UTC."
+    )
 
   """
   The storage quota in GB for all organizations owned by the enterprise.
@@ -7915,7 +7935,7 @@ type EnterpriseOutsideCollaboratorEdge {
     """
     Ordering options for repositories.
     """
-    orderBy: RepositoryOrder = {field: NAME, direction: ASC}
+    orderBy: RepositoryOrder = { field: NAME, direction: ASC }
   ): EnterpriseRepositoryInfoConnection!
 }
 
@@ -7950,7 +7970,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
   ): OrganizationConnection!
 
   """
@@ -7980,7 +8000,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for administrators returned from the connection.
     """
-    orderBy: EnterpriseMemberOrder = {field: LOGIN, direction: ASC}
+    orderBy: EnterpriseMemberOrder = { field: LOGIN, direction: ASC }
 
     """
     The search string to look for.
@@ -8055,7 +8075,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8095,7 +8115,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The permission to find organizations for.
@@ -8135,7 +8155,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for Enterprise Server installations returned.
     """
-    orderBy: EnterpriseServerInstallationOrder = {field: HOST_NAME, direction: ASC}
+    orderBy: EnterpriseServerInstallationOrder = { field: HOST_NAME, direction: ASC }
   ): EnterpriseServerInstallationConnection!
 
   """
@@ -8170,7 +8190,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for IP allow list entries returned.
     """
-    orderBy: IpAllowListEntryOrder = {field: ALLOW_LIST_VALUE, direction: ASC}
+    orderBy: IpAllowListEntryOrder = { field: ALLOW_LIST_VALUE, direction: ASC }
   ): IpAllowListEntryConnection!
 
   """
@@ -8216,7 +8236,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8271,7 +8291,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting to find organizations for.
@@ -8311,7 +8331,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8351,7 +8371,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8391,7 +8411,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8436,7 +8456,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8476,7 +8496,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8516,7 +8536,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8556,7 +8576,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for outside collaborators returned from the connection.
     """
-    orderBy: EnterpriseMemberOrder = {field: LOGIN, direction: ASC}
+    orderBy: EnterpriseMemberOrder = { field: LOGIN, direction: ASC }
 
     """
     The search string to look for.
@@ -8596,7 +8616,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for pending enterprise administrator invitations returned from the connection.
     """
-    orderBy: EnterpriseAdministratorInvitationOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: EnterpriseAdministratorInvitationOrder = { field: CREATED_AT, direction: DESC }
 
     """
     The search string to look for.
@@ -8636,7 +8656,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for pending repository collaborator invitations returned from the connection.
     """
-    orderBy: RepositoryInvitationOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: RepositoryInvitationOrder = { field: CREATED_AT, direction: DESC }
 
     """
     The search string to look for.
@@ -8671,13 +8691,16 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for pending repository collaborator invitations returned from the connection.
     """
-    orderBy: RepositoryInvitationOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: RepositoryInvitationOrder = { field: CREATED_AT, direction: DESC }
 
     """
     The search string to look for.
     """
     query: String
-  ): EnterprisePendingCollaboratorConnection! @deprecated(reason: "Repository invitations can now be associated with an email, not only an invitee. Use the `pendingCollaboratorInvitations` field instead. Removal on 2020-10-01 UTC.")
+  ): EnterprisePendingCollaboratorConnection!
+    @deprecated(
+      reason: "Repository invitations can now be associated with an email, not only an invitee. Use the `pendingCollaboratorInvitations` field instead. Removal on 2020-10-01 UTC."
+    )
 
   """
   A list of pending member invitations for organizations in the enterprise.
@@ -8741,7 +8764,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8781,7 +8804,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8821,7 +8844,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8861,7 +8884,7 @@ type EnterpriseOwnerInfo {
     """
     Ordering options for organizations with this setting.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The setting value to find organizations for.
@@ -8941,7 +8964,7 @@ type EnterprisePendingCollaboratorEdge {
     """
     Ordering options for repositories.
     """
-    orderBy: RepositoryOrder = {field: NAME, direction: ASC}
+    orderBy: RepositoryOrder = { field: NAME, direction: ASC }
   ): EnterpriseRepositoryInfoConnection!
 }
 
@@ -9114,7 +9137,7 @@ type EnterpriseServerInstallation implements Node {
     """
     Ordering options for Enterprise Server user accounts returned from the connection.
     """
-    orderBy: EnterpriseServerUserAccountOrder = {field: LOGIN, direction: ASC}
+    orderBy: EnterpriseServerUserAccountOrder = { field: LOGIN, direction: ASC }
   ): EnterpriseServerUserAccountConnection!
 
   """
@@ -9144,7 +9167,7 @@ type EnterpriseServerInstallation implements Node {
     """
     Ordering options for Enterprise Server user accounts uploads returned from the connection.
     """
-    orderBy: EnterpriseServerUserAccountsUploadOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: EnterpriseServerUserAccountsUploadOrder = { field: CREATED_AT, direction: DESC }
   ): EnterpriseServerUserAccountsUploadConnection!
 }
 
@@ -9259,7 +9282,7 @@ type EnterpriseServerUserAccount implements Node {
     """
     Ordering options for Enterprise Server user account emails returned from the connection.
     """
-    orderBy: EnterpriseServerUserAccountEmailOrder = {field: EMAIL, direction: ASC}
+    orderBy: EnterpriseServerUserAccountEmailOrder = { field: EMAIL, direction: ASC }
   ): EnterpriseServerUserAccountEmailConnection!
 
   """
@@ -9648,7 +9671,7 @@ type EnterpriseUserAccount implements Actor & Node {
     """
     Ordering options for organizations returned from the connection.
     """
-    orderBy: OrganizationOrder = {field: LOGIN, direction: ASC}
+    orderBy: OrganizationOrder = { field: LOGIN, direction: ASC }
 
     """
     The search string to look for.
@@ -11309,7 +11332,7 @@ type Issue implements Assignable & Closable & Comment & Labelable & Lockable & N
     """
     Ordering options for labels returned from the connection.
     """
-    orderBy: LabelOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: LabelOrder = { field: CREATED_AT, direction: ASC }
   ): LabelConnection
 
   """
@@ -11475,7 +11498,8 @@ type Issue implements Assignable & Closable & Comment & Labelable & Lockable & N
     Allows filtering timeline events by a `since` timestamp.
     """
     since: DateTime
-  ): IssueTimelineConnection! @deprecated(reason: "`timeline` will be removed Use Issue.timelineItems instead. Removal on 2020-10-01 UTC.")
+  ): IssueTimelineConnection!
+    @deprecated(reason: "`timeline` will be removed Use Issue.timelineItems instead. Removal on 2020-10-01 UTC.")
 
   """
   A list of events, comments, commits, etc. associated with the issue.
@@ -11886,7 +11910,7 @@ type IssueContributionsByRepository {
     """
     Ordering options for contributions returned from the connection.
     """
-    orderBy: ContributionOrder = {direction: DESC}
+    orderBy: ContributionOrder = { direction: DESC }
   ): CreatedIssueContributionConnection!
 
   """
@@ -12041,7 +12065,26 @@ type IssueTimelineConnection {
 """
 An item in an issue timeline
 """
-union IssueTimelineItem = AssignedEvent | ClosedEvent | Commit | CrossReferencedEvent | DemilestonedEvent | IssueComment | LabeledEvent | LockedEvent | MilestonedEvent | ReferencedEvent | RenamedTitleEvent | ReopenedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnsubscribedEvent | UserBlockedEvent
+union IssueTimelineItem =
+  | AssignedEvent
+  | ClosedEvent
+  | Commit
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MilestonedEvent
+  | ReferencedEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | SubscribedEvent
+  | TransferredEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent
 
 """
 An edge in a connection.
@@ -12061,7 +12104,37 @@ type IssueTimelineItemEdge {
 """
 An item in an issue timeline
 """
-union IssueTimelineItems = AddedToProjectEvent | AssignedEvent | ClosedEvent | CommentDeletedEvent | ConnectedEvent | ConvertedNoteToIssueEvent | CrossReferencedEvent | DemilestonedEvent | DisconnectedEvent | IssueComment | LabeledEvent | LockedEvent | MarkedAsDuplicateEvent | MentionedEvent | MilestonedEvent | MovedColumnsInProjectEvent | PinnedEvent | ReferencedEvent | RemovedFromProjectEvent | RenamedTitleEvent | ReopenedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnmarkedAsDuplicateEvent | UnpinnedEvent | UnsubscribedEvent | UserBlockedEvent
+union IssueTimelineItems =
+  | AddedToProjectEvent
+  | AssignedEvent
+  | ClosedEvent
+  | CommentDeletedEvent
+  | ConnectedEvent
+  | ConvertedNoteToIssueEvent
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | DisconnectedEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MarkedAsDuplicateEvent
+  | MentionedEvent
+  | MilestonedEvent
+  | MovedColumnsInProjectEvent
+  | PinnedEvent
+  | ReferencedEvent
+  | RemovedFromProjectEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | SubscribedEvent
+  | TransferredEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnmarkedAsDuplicateEvent
+  | UnpinnedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent
 
 """
 The connection type for IssueTimelineItems.
@@ -12552,7 +12625,7 @@ interface Labelable {
     """
     Ordering options for labels returned from the connection.
     """
-    orderBy: LabelOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: LabelOrder = { field: CREATED_AT, direction: ASC }
   ): LabelConnection
 }
 
@@ -13410,7 +13483,7 @@ interface MemberStatusable {
     """
     Ordering options for user statuses returned from the connection.
     """
-    orderBy: UserStatusOrder = {field: UPDATED_AT, direction: DESC}
+    orderBy: UserStatusOrder = { field: UPDATED_AT, direction: DESC }
   ): UserStatusConnection!
 }
 
@@ -14298,7 +14371,11 @@ input MinimizeCommentInput {
   """
   The Node ID of the subject to modify.
   """
-  subjectId: ID! @possibleTypes(concreteTypes: ["CommitComment", "GistComment", "IssueComment", "PullRequestReviewComment"], abstractType: "Minimizable")
+  subjectId: ID!
+    @possibleTypes(
+      concreteTypes: ["CommitComment", "GistComment", "IssueComment", "PullRequestReviewComment"]
+      abstractType: "Minimizable"
+    )
 }
 
 """
@@ -14439,7 +14516,9 @@ type Mutation {
   """
   Accepts a pending invitation for a user to become an administrator of an enterprise.
   """
-  acceptEnterpriseAdministratorInvitation(input: AcceptEnterpriseAdministratorInvitationInput!): AcceptEnterpriseAdministratorInvitationPayload
+  acceptEnterpriseAdministratorInvitation(
+    input: AcceptEnterpriseAdministratorInvitationInput!
+  ): AcceptEnterpriseAdministratorInvitationPayload
 
   """
   Applies a suggested topic to the repository.
@@ -14559,7 +14638,8 @@ type Mutation {
   """
   Create a content attachment.
   """
-  createContentAttachment(input: CreateContentAttachmentInput!): CreateContentAttachmentPayload @preview(toggledBy: "corsair-preview")
+  createContentAttachment(input: CreateContentAttachmentInput!): CreateContentAttachmentPayload
+    @preview(toggledBy: "corsair-preview")
 
   """
   Creates a new deployment event.
@@ -14569,7 +14649,8 @@ type Mutation {
   """
   Create a deployment status.
   """
-  createDeploymentStatus(input: CreateDeploymentStatusInput!): CreateDeploymentStatusPayload @preview(toggledBy: "flash-preview")
+  createDeploymentStatus(input: CreateDeploymentStatusInput!): CreateDeploymentStatusPayload
+    @preview(toggledBy: "flash-preview")
 
   """
   Creates an organization as part of an enterprise account.
@@ -14659,7 +14740,8 @@ type Mutation {
   """
   Delete a package version.
   """
-  deletePackageVersion(input: DeletePackageVersionInput!): DeletePackageVersionPayload @preview(toggledBy: "package-deletes-preview")
+  deletePackageVersion(input: DeletePackageVersionInput!): DeletePackageVersionPayload
+    @preview(toggledBy: "package-deletes-preview")
 
   """
   Deletes a project.
@@ -14769,7 +14851,9 @@ type Mutation {
   """
   Regenerates the identity provider recovery codes for an enterprise
   """
-  regenerateEnterpriseIdentityProviderRecoveryCodes(input: RegenerateEnterpriseIdentityProviderRecoveryCodesInput!): RegenerateEnterpriseIdentityProviderRecoveryCodesPayload
+  regenerateEnterpriseIdentityProviderRecoveryCodes(
+    input: RegenerateEnterpriseIdentityProviderRecoveryCodesInput!
+  ): RegenerateEnterpriseIdentityProviderRecoveryCodesPayload
 
   """
   Removes assignees from an assignable object.
@@ -14784,7 +14868,9 @@ type Mutation {
   """
   Removes the identity provider from an enterprise
   """
-  removeEnterpriseIdentityProvider(input: RemoveEnterpriseIdentityProviderInput!): RemoveEnterpriseIdentityProviderPayload
+  removeEnterpriseIdentityProvider(
+    input: RemoveEnterpriseIdentityProviderInput!
+  ): RemoveEnterpriseIdentityProviderPayload
 
   """
   Removes an organization from the enterprise
@@ -14829,7 +14915,8 @@ type Mutation {
   """
   Rerequests an existing check suite.
   """
-  rerequestCheckSuite(input: RerequestCheckSuiteInput!): RerequestCheckSuitePayload @preview(toggledBy: "antiope-preview")
+  rerequestCheckSuite(input: RerequestCheckSuiteInput!): RerequestCheckSuitePayload
+    @preview(toggledBy: "antiope-preview")
 
   """
   Marks a review thread as resolved.
@@ -14904,72 +14991,99 @@ type Mutation {
   """
   Modifies the settings of an existing check suite
   """
-  updateCheckSuitePreferences(input: UpdateCheckSuitePreferencesInput!): UpdateCheckSuitePreferencesPayload @preview(toggledBy: "antiope-preview")
+  updateCheckSuitePreferences(input: UpdateCheckSuitePreferencesInput!): UpdateCheckSuitePreferencesPayload
+    @preview(toggledBy: "antiope-preview")
 
   """
   Sets the action execution capability setting for an enterprise.
   """
-  updateEnterpriseActionExecutionCapabilitySetting(input: UpdateEnterpriseActionExecutionCapabilitySettingInput!): UpdateEnterpriseActionExecutionCapabilitySettingPayload
+  updateEnterpriseActionExecutionCapabilitySetting(
+    input: UpdateEnterpriseActionExecutionCapabilitySettingInput!
+  ): UpdateEnterpriseActionExecutionCapabilitySettingPayload
 
   """
   Updates the role of an enterprise administrator.
   """
-  updateEnterpriseAdministratorRole(input: UpdateEnterpriseAdministratorRoleInput!): UpdateEnterpriseAdministratorRolePayload
+  updateEnterpriseAdministratorRole(
+    input: UpdateEnterpriseAdministratorRoleInput!
+  ): UpdateEnterpriseAdministratorRolePayload
 
   """
   Sets whether private repository forks are enabled for an enterprise.
   """
-  updateEnterpriseAllowPrivateRepositoryForkingSetting(input: UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput!): UpdateEnterpriseAllowPrivateRepositoryForkingSettingPayload
+  updateEnterpriseAllowPrivateRepositoryForkingSetting(
+    input: UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput!
+  ): UpdateEnterpriseAllowPrivateRepositoryForkingSettingPayload
 
   """
   Sets the default repository permission for organizations in an enterprise.
   """
-  updateEnterpriseDefaultRepositoryPermissionSetting(input: UpdateEnterpriseDefaultRepositoryPermissionSettingInput!): UpdateEnterpriseDefaultRepositoryPermissionSettingPayload
+  updateEnterpriseDefaultRepositoryPermissionSetting(
+    input: UpdateEnterpriseDefaultRepositoryPermissionSettingInput!
+  ): UpdateEnterpriseDefaultRepositoryPermissionSettingPayload
 
   """
   Sets whether organization members with admin permissions on a repository can change repository visibility.
   """
-  updateEnterpriseMembersCanChangeRepositoryVisibilitySetting(input: UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput!): UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPayload
+  updateEnterpriseMembersCanChangeRepositoryVisibilitySetting(
+    input: UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput!
+  ): UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPayload
 
   """
   Sets the members can create repositories setting for an enterprise.
   """
-  updateEnterpriseMembersCanCreateRepositoriesSetting(input: UpdateEnterpriseMembersCanCreateRepositoriesSettingInput!): UpdateEnterpriseMembersCanCreateRepositoriesSettingPayload
+  updateEnterpriseMembersCanCreateRepositoriesSetting(
+    input: UpdateEnterpriseMembersCanCreateRepositoriesSettingInput!
+  ): UpdateEnterpriseMembersCanCreateRepositoriesSettingPayload
 
   """
   Sets the members can delete issues setting for an enterprise.
   """
-  updateEnterpriseMembersCanDeleteIssuesSetting(input: UpdateEnterpriseMembersCanDeleteIssuesSettingInput!): UpdateEnterpriseMembersCanDeleteIssuesSettingPayload
+  updateEnterpriseMembersCanDeleteIssuesSetting(
+    input: UpdateEnterpriseMembersCanDeleteIssuesSettingInput!
+  ): UpdateEnterpriseMembersCanDeleteIssuesSettingPayload
 
   """
   Sets the members can delete repositories setting for an enterprise.
   """
-  updateEnterpriseMembersCanDeleteRepositoriesSetting(input: UpdateEnterpriseMembersCanDeleteRepositoriesSettingInput!): UpdateEnterpriseMembersCanDeleteRepositoriesSettingPayload
+  updateEnterpriseMembersCanDeleteRepositoriesSetting(
+    input: UpdateEnterpriseMembersCanDeleteRepositoriesSettingInput!
+  ): UpdateEnterpriseMembersCanDeleteRepositoriesSettingPayload
 
   """
   Sets whether members can invite collaborators are enabled for an enterprise.
   """
-  updateEnterpriseMembersCanInviteCollaboratorsSetting(input: UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput!): UpdateEnterpriseMembersCanInviteCollaboratorsSettingPayload
+  updateEnterpriseMembersCanInviteCollaboratorsSetting(
+    input: UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput!
+  ): UpdateEnterpriseMembersCanInviteCollaboratorsSettingPayload
 
   """
   Sets whether or not an organization admin can make purchases.
   """
-  updateEnterpriseMembersCanMakePurchasesSetting(input: UpdateEnterpriseMembersCanMakePurchasesSettingInput!): UpdateEnterpriseMembersCanMakePurchasesSettingPayload
+  updateEnterpriseMembersCanMakePurchasesSetting(
+    input: UpdateEnterpriseMembersCanMakePurchasesSettingInput!
+  ): UpdateEnterpriseMembersCanMakePurchasesSettingPayload
 
   """
   Sets the members can update protected branches setting for an enterprise.
   """
-  updateEnterpriseMembersCanUpdateProtectedBranchesSetting(input: UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput!): UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingPayload
+  updateEnterpriseMembersCanUpdateProtectedBranchesSetting(
+    input: UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput!
+  ): UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingPayload
 
   """
   Sets the members can view dependency insights for an enterprise.
   """
-  updateEnterpriseMembersCanViewDependencyInsightsSetting(input: UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput!): UpdateEnterpriseMembersCanViewDependencyInsightsSettingPayload
+  updateEnterpriseMembersCanViewDependencyInsightsSetting(
+    input: UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput!
+  ): UpdateEnterpriseMembersCanViewDependencyInsightsSettingPayload
 
   """
   Sets whether organization projects are enabled for an enterprise.
   """
-  updateEnterpriseOrganizationProjectsSetting(input: UpdateEnterpriseOrganizationProjectsSettingInput!): UpdateEnterpriseOrganizationProjectsSettingPayload
+  updateEnterpriseOrganizationProjectsSetting(
+    input: UpdateEnterpriseOrganizationProjectsSettingInput!
+  ): UpdateEnterpriseOrganizationProjectsSettingPayload
 
   """
   Updates an enterprise's profile.
@@ -14979,17 +15093,23 @@ type Mutation {
   """
   Sets whether repository projects are enabled for a enterprise.
   """
-  updateEnterpriseRepositoryProjectsSetting(input: UpdateEnterpriseRepositoryProjectsSettingInput!): UpdateEnterpriseRepositoryProjectsSettingPayload
+  updateEnterpriseRepositoryProjectsSetting(
+    input: UpdateEnterpriseRepositoryProjectsSettingInput!
+  ): UpdateEnterpriseRepositoryProjectsSettingPayload
 
   """
   Sets whether team discussions are enabled for an enterprise.
   """
-  updateEnterpriseTeamDiscussionsSetting(input: UpdateEnterpriseTeamDiscussionsSettingInput!): UpdateEnterpriseTeamDiscussionsSettingPayload
+  updateEnterpriseTeamDiscussionsSetting(
+    input: UpdateEnterpriseTeamDiscussionsSettingInput!
+  ): UpdateEnterpriseTeamDiscussionsSettingPayload
 
   """
   Sets whether two factor authentication is required for all users in an enterprise.
   """
-  updateEnterpriseTwoFactorAuthenticationRequiredSetting(input: UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput!): UpdateEnterpriseTwoFactorAuthenticationRequiredSettingPayload
+  updateEnterpriseTwoFactorAuthenticationRequiredSetting(
+    input: UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput!
+  ): UpdateEnterpriseTwoFactorAuthenticationRequiredSettingPayload
 
   """
   Sets whether an IP allow list is enabled on an owner.
@@ -15096,7 +15216,8 @@ type Mutation {
   """
   Updates team review assignment.
   """
-  updateTeamReviewAssignment(input: UpdateTeamReviewAssignmentInput!): UpdateTeamReviewAssignmentPayload @preview(toggledBy: "stone-crop-preview")
+  updateTeamReviewAssignment(input: UpdateTeamReviewAssignmentInput!): UpdateTeamReviewAssignmentPayload
+    @preview(toggledBy: "stone-crop-preview")
 
   """
   Replaces the repository's topics with the given topics.
@@ -17623,7 +17744,10 @@ type OrgRestoreMemberAuditEntry implements AuditEntry & Node & OrganizationAudit
 """
 Types of memberships that can be restored for an Organization member.
 """
-union OrgRestoreMemberAuditEntryMembership = OrgRestoreMemberMembershipOrganizationAuditEntryData | OrgRestoreMemberMembershipRepositoryAuditEntryData | OrgRestoreMemberMembershipTeamAuditEntryData
+union OrgRestoreMemberAuditEntryMembership =
+  | OrgRestoreMemberMembershipOrganizationAuditEntryData
+  | OrgRestoreMemberMembershipRepositoryAuditEntryData
+  | OrgRestoreMemberMembershipTeamAuditEntryData
 
 """
 Metadata for an organization membership for org.restore_member actions
@@ -18306,7 +18430,7 @@ type Organization implements Actor & MemberStatusable & Node & PackageOwner & Pr
     """
     Ordering options for the returned audit log entries.
     """
-    orderBy: AuditLogOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: AuditLogOrder = { field: CREATED_AT, direction: DESC }
 
     """
     The query string to filter audit entries
@@ -18382,7 +18506,7 @@ type Organization implements Actor & MemberStatusable & Node & PackageOwner & Pr
     """
     Ordering options for IP allow list entries returned.
     """
-    orderBy: IpAllowListEntryOrder = {field: ALLOW_LIST_VALUE, direction: ASC}
+    orderBy: IpAllowListEntryOrder = { field: ALLOW_LIST_VALUE, direction: ASC }
   ): IpAllowListEntryConnection!
 
   """
@@ -18433,7 +18557,7 @@ type Organization implements Actor & MemberStatusable & Node & PackageOwner & Pr
     """
     Ordering options for user statuses returned from the connection.
     """
-    orderBy: UserStatusOrder = {field: UPDATED_AT, direction: DESC}
+    orderBy: UserStatusOrder = { field: UPDATED_AT, direction: DESC }
   ): UserStatusConnection!
 
   """
@@ -18513,7 +18637,7 @@ type Organization implements Actor & MemberStatusable & Node & PackageOwner & Pr
     """
     Ordering of the returned packages.
     """
-    orderBy: PackageOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: PackageOrder = { field: CREATED_AT, direction: DESC }
 
     """
     Find packages in a repository by ID.
@@ -18724,7 +18848,10 @@ type Organization implements Actor & MemberStatusable & Node & PackageOwner & Pr
     Find registry packages in a repository.
     """
     repositoryId: ID
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   A list of registry packages for a particular search query.
@@ -18759,7 +18886,10 @@ type Organization implements Actor & MemberStatusable & Node & PackageOwner & Pr
     Find registry package by search query.
     """
     query: String
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   A list of repositories that the user owns.
@@ -19052,7 +19182,65 @@ type Organization implements Actor & MemberStatusable & Node & PackageOwner & Pr
 """
 An audit entry in an organization audit log.
 """
-union OrganizationAuditEntry = MembersCanDeleteReposClearAuditEntry | MembersCanDeleteReposDisableAuditEntry | MembersCanDeleteReposEnableAuditEntry | OauthApplicationCreateAuditEntry | OrgAddBillingManagerAuditEntry | OrgAddMemberAuditEntry | OrgBlockUserAuditEntry | OrgConfigDisableCollaboratorsOnlyAuditEntry | OrgConfigEnableCollaboratorsOnlyAuditEntry | OrgCreateAuditEntry | OrgDisableOauthAppRestrictionsAuditEntry | OrgDisableSamlAuditEntry | OrgDisableTwoFactorRequirementAuditEntry | OrgEnableOauthAppRestrictionsAuditEntry | OrgEnableSamlAuditEntry | OrgEnableTwoFactorRequirementAuditEntry | OrgInviteMemberAuditEntry | OrgInviteToBusinessAuditEntry | OrgOauthAppAccessApprovedAuditEntry | OrgOauthAppAccessDeniedAuditEntry | OrgOauthAppAccessRequestedAuditEntry | OrgRemoveBillingManagerAuditEntry | OrgRemoveMemberAuditEntry | OrgRemoveOutsideCollaboratorAuditEntry | OrgRestoreMemberAuditEntry | OrgUnblockUserAuditEntry | OrgUpdateDefaultRepositoryPermissionAuditEntry | OrgUpdateMemberAuditEntry | OrgUpdateMemberRepositoryCreationPermissionAuditEntry | OrgUpdateMemberRepositoryInvitationPermissionAuditEntry | PrivateRepositoryForkingDisableAuditEntry | PrivateRepositoryForkingEnableAuditEntry | RepoAccessAuditEntry | RepoAddMemberAuditEntry | RepoAddTopicAuditEntry | RepoArchivedAuditEntry | RepoChangeMergeSettingAuditEntry | RepoConfigDisableAnonymousGitAccessAuditEntry | RepoConfigDisableCollaboratorsOnlyAuditEntry | RepoConfigDisableContributorsOnlyAuditEntry | RepoConfigDisableSockpuppetDisallowedAuditEntry | RepoConfigEnableAnonymousGitAccessAuditEntry | RepoConfigEnableCollaboratorsOnlyAuditEntry | RepoConfigEnableContributorsOnlyAuditEntry | RepoConfigEnableSockpuppetDisallowedAuditEntry | RepoConfigLockAnonymousGitAccessAuditEntry | RepoConfigUnlockAnonymousGitAccessAuditEntry | RepoCreateAuditEntry | RepoDestroyAuditEntry | RepoRemoveMemberAuditEntry | RepoRemoveTopicAuditEntry | RepositoryVisibilityChangeDisableAuditEntry | RepositoryVisibilityChangeEnableAuditEntry | TeamAddMemberAuditEntry | TeamAddRepositoryAuditEntry | TeamChangeParentTeamAuditEntry | TeamRemoveMemberAuditEntry | TeamRemoveRepositoryAuditEntry
+union OrganizationAuditEntry =
+  | MembersCanDeleteReposClearAuditEntry
+  | MembersCanDeleteReposDisableAuditEntry
+  | MembersCanDeleteReposEnableAuditEntry
+  | OauthApplicationCreateAuditEntry
+  | OrgAddBillingManagerAuditEntry
+  | OrgAddMemberAuditEntry
+  | OrgBlockUserAuditEntry
+  | OrgConfigDisableCollaboratorsOnlyAuditEntry
+  | OrgConfigEnableCollaboratorsOnlyAuditEntry
+  | OrgCreateAuditEntry
+  | OrgDisableOauthAppRestrictionsAuditEntry
+  | OrgDisableSamlAuditEntry
+  | OrgDisableTwoFactorRequirementAuditEntry
+  | OrgEnableOauthAppRestrictionsAuditEntry
+  | OrgEnableSamlAuditEntry
+  | OrgEnableTwoFactorRequirementAuditEntry
+  | OrgInviteMemberAuditEntry
+  | OrgInviteToBusinessAuditEntry
+  | OrgOauthAppAccessApprovedAuditEntry
+  | OrgOauthAppAccessDeniedAuditEntry
+  | OrgOauthAppAccessRequestedAuditEntry
+  | OrgRemoveBillingManagerAuditEntry
+  | OrgRemoveMemberAuditEntry
+  | OrgRemoveOutsideCollaboratorAuditEntry
+  | OrgRestoreMemberAuditEntry
+  | OrgUnblockUserAuditEntry
+  | OrgUpdateDefaultRepositoryPermissionAuditEntry
+  | OrgUpdateMemberAuditEntry
+  | OrgUpdateMemberRepositoryCreationPermissionAuditEntry
+  | OrgUpdateMemberRepositoryInvitationPermissionAuditEntry
+  | PrivateRepositoryForkingDisableAuditEntry
+  | PrivateRepositoryForkingEnableAuditEntry
+  | RepoAccessAuditEntry
+  | RepoAddMemberAuditEntry
+  | RepoAddTopicAuditEntry
+  | RepoArchivedAuditEntry
+  | RepoChangeMergeSettingAuditEntry
+  | RepoConfigDisableAnonymousGitAccessAuditEntry
+  | RepoConfigDisableCollaboratorsOnlyAuditEntry
+  | RepoConfigDisableContributorsOnlyAuditEntry
+  | RepoConfigDisableSockpuppetDisallowedAuditEntry
+  | RepoConfigEnableAnonymousGitAccessAuditEntry
+  | RepoConfigEnableCollaboratorsOnlyAuditEntry
+  | RepoConfigEnableContributorsOnlyAuditEntry
+  | RepoConfigEnableSockpuppetDisallowedAuditEntry
+  | RepoConfigLockAnonymousGitAccessAuditEntry
+  | RepoConfigUnlockAnonymousGitAccessAuditEntry
+  | RepoCreateAuditEntry
+  | RepoDestroyAuditEntry
+  | RepoRemoveMemberAuditEntry
+  | RepoRemoveTopicAuditEntry
+  | RepositoryVisibilityChangeDisableAuditEntry
+  | RepositoryVisibilityChangeEnableAuditEntry
+  | TeamAddMemberAuditEntry
+  | TeamAddRepositoryAuditEntry
+  | TeamChangeParentTeamAuditEntry
+  | TeamRemoveMemberAuditEntry
+  | TeamRemoveRepositoryAuditEntry
 
 """
 The connection type for OrganizationAuditEntry.
@@ -19624,7 +19812,7 @@ type Package implements Node @preview(toggledBy: "packages-preview") {
     """
     Ordering of the returned packages.
     """
-    orderBy: PackageVersionOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: PackageVersionOrder = { field: CREATED_AT, direction: DESC }
   ): PackageVersionConnection!
 }
 
@@ -19843,7 +20031,7 @@ interface PackageOwner @preview(toggledBy: "packages-preview") {
     """
     Ordering of the returned packages.
     """
-    orderBy: PackageOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: PackageOrder = { field: CREATED_AT, direction: DESC }
 
     """
     Find packages in a repository by ID.
@@ -19950,7 +20138,7 @@ type PackageVersion implements Node @preview(toggledBy: "packages-preview") {
     """
     Ordering of the returned package files.
     """
-    orderBy: PackageFileOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: PackageFileOrder = { field: CREATED_AT, direction: ASC }
   ): PackageFileConnection!
   id: ID!
 
@@ -21753,7 +21941,7 @@ type PullRequest implements Assignable & Closable & Comment & Labelable & Lockab
     """
     Ordering options for labels returned from the connection.
     """
-    orderBy: LabelOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: LabelOrder = { field: CREATED_AT, direction: ASC }
   ): LabelConnection
 
   """
@@ -22072,7 +22260,8 @@ type PullRequest implements Assignable & Closable & Comment & Labelable & Lockab
     Allows filtering timeline events by a `since` timestamp.
     """
     since: DateTime
-  ): PullRequestTimelineConnection! @deprecated(reason: "`timeline` will be removed Use PullRequest.timelineItems instead. Removal on 2020-10-01 UTC.")
+  ): PullRequestTimelineConnection!
+    @deprecated(reason: "`timeline` will be removed Use PullRequest.timelineItems instead. Removal on 2020-10-01 UTC.")
 
   """
   A list of events, comments, commits, etc. associated with the pull request.
@@ -22428,7 +22617,7 @@ type PullRequestContributionsByRepository {
     """
     Ordering options for contributions returned from the connection.
     """
-    orderBy: ContributionOrder = {direction: DESC}
+    orderBy: ContributionOrder = { direction: DESC }
   ): CreatedPullRequestContributionConnection!
 
   """
@@ -23110,7 +23299,7 @@ type PullRequestReviewContributionsByRepository {
     """
     Ordering options for contributions returned from the connection.
     """
-    orderBy: ContributionOrder = {direction: DESC}
+    orderBy: ContributionOrder = { direction: DESC }
   ): CreatedPullRequestReviewContributionConnection!
 
   """
@@ -23413,7 +23602,39 @@ type PullRequestTimelineConnection {
 """
 An item in an pull request timeline
 """
-union PullRequestTimelineItem = AssignedEvent | BaseRefForcePushedEvent | ClosedEvent | Commit | CommitCommentThread | CrossReferencedEvent | DemilestonedEvent | DeployedEvent | DeploymentEnvironmentChangedEvent | HeadRefDeletedEvent | HeadRefForcePushedEvent | HeadRefRestoredEvent | IssueComment | LabeledEvent | LockedEvent | MergedEvent | MilestonedEvent | PullRequestReview | PullRequestReviewComment | PullRequestReviewThread | ReferencedEvent | RenamedTitleEvent | ReopenedEvent | ReviewDismissedEvent | ReviewRequestRemovedEvent | ReviewRequestedEvent | SubscribedEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnsubscribedEvent | UserBlockedEvent
+union PullRequestTimelineItem =
+  | AssignedEvent
+  | BaseRefForcePushedEvent
+  | ClosedEvent
+  | Commit
+  | CommitCommentThread
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | DeployedEvent
+  | DeploymentEnvironmentChangedEvent
+  | HeadRefDeletedEvent
+  | HeadRefForcePushedEvent
+  | HeadRefRestoredEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MergedEvent
+  | MilestonedEvent
+  | PullRequestReview
+  | PullRequestReviewComment
+  | PullRequestReviewThread
+  | ReferencedEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | ReviewDismissedEvent
+  | ReviewRequestRemovedEvent
+  | ReviewRequestedEvent
+  | SubscribedEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent
 
 """
 An edge in a connection.
@@ -23433,7 +23654,57 @@ type PullRequestTimelineItemEdge {
 """
 An item in a pull request timeline
 """
-union PullRequestTimelineItems = AddedToProjectEvent | AssignedEvent | AutomaticBaseChangeFailedEvent | AutomaticBaseChangeSucceededEvent | BaseRefChangedEvent | BaseRefForcePushedEvent | ClosedEvent | CommentDeletedEvent | ConnectedEvent | ConvertToDraftEvent | ConvertedNoteToIssueEvent | CrossReferencedEvent | DemilestonedEvent | DeployedEvent | DeploymentEnvironmentChangedEvent | DisconnectedEvent | HeadRefDeletedEvent | HeadRefForcePushedEvent | HeadRefRestoredEvent | IssueComment | LabeledEvent | LockedEvent | MarkedAsDuplicateEvent | MentionedEvent | MergedEvent | MilestonedEvent | MovedColumnsInProjectEvent | PinnedEvent | PullRequestCommit | PullRequestCommitCommentThread | PullRequestReview | PullRequestReviewThread | PullRequestRevisionMarker | ReadyForReviewEvent | ReferencedEvent | RemovedFromProjectEvent | RenamedTitleEvent | ReopenedEvent | ReviewDismissedEvent | ReviewRequestRemovedEvent | ReviewRequestedEvent | SubscribedEvent | TransferredEvent | UnassignedEvent | UnlabeledEvent | UnlockedEvent | UnmarkedAsDuplicateEvent | UnpinnedEvent | UnsubscribedEvent | UserBlockedEvent
+union PullRequestTimelineItems =
+  | AddedToProjectEvent
+  | AssignedEvent
+  | AutomaticBaseChangeFailedEvent
+  | AutomaticBaseChangeSucceededEvent
+  | BaseRefChangedEvent
+  | BaseRefForcePushedEvent
+  | ClosedEvent
+  | CommentDeletedEvent
+  | ConnectedEvent
+  | ConvertToDraftEvent
+  | ConvertedNoteToIssueEvent
+  | CrossReferencedEvent
+  | DemilestonedEvent
+  | DeployedEvent
+  | DeploymentEnvironmentChangedEvent
+  | DisconnectedEvent
+  | HeadRefDeletedEvent
+  | HeadRefForcePushedEvent
+  | HeadRefRestoredEvent
+  | IssueComment
+  | LabeledEvent
+  | LockedEvent
+  | MarkedAsDuplicateEvent
+  | MentionedEvent
+  | MergedEvent
+  | MilestonedEvent
+  | MovedColumnsInProjectEvent
+  | PinnedEvent
+  | PullRequestCommit
+  | PullRequestCommitCommentThread
+  | PullRequestReview
+  | PullRequestReviewThread
+  | PullRequestRevisionMarker
+  | ReadyForReviewEvent
+  | ReferencedEvent
+  | RemovedFromProjectEvent
+  | RenamedTitleEvent
+  | ReopenedEvent
+  | ReviewDismissedEvent
+  | ReviewRequestRemovedEvent
+  | ReviewRequestedEvent
+  | SubscribedEvent
+  | TransferredEvent
+  | UnassignedEvent
+  | UnlabeledEvent
+  | UnlockedEvent
+  | UnmarkedAsDuplicateEvent
+  | UnpinnedEvent
+  | UnsubscribedEvent
+  | UserBlockedEvent
 
 """
 The connection type for PullRequestTimelineItems.
@@ -24201,7 +24472,7 @@ type Query {
     """
     Ordering options for the returned topics.
     """
-    orderBy: SecurityAdvisoryOrder = {field: UPDATED_AT, direction: DESC}
+    orderBy: SecurityAdvisoryOrder = { field: UPDATED_AT, direction: DESC }
 
     """
     Filter advisories to those published since a time in the past.
@@ -24256,7 +24527,7 @@ type Query {
     """
     Ordering options for the returned topics.
     """
-    orderBy: SecurityVulnerabilityOrder = {field: UPDATED_AT, direction: DESC}
+    orderBy: SecurityVulnerabilityOrder = { field: UPDATED_AT, direction: DESC }
 
     """
     A package name to filter vulnerabilities by.
@@ -24277,7 +24548,10 @@ type Query {
     Select the Sponsors listing which matches this slug
     """
     slug: String!
-  ): SponsorsListing @deprecated(reason: "`Query.sponsorsListing` will be removed. Use `Sponsorable.sponsorsListing` instead. Removal on 2020-04-01 UTC.")
+  ): SponsorsListing
+    @deprecated(
+      reason: "`Query.sponsorsListing` will be removed. Use `Sponsorable.sponsorsListing` instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Look up a topic by name.
@@ -24917,23 +25191,35 @@ type RegistryPackage implements Node {
   """
   The package type color
   """
-  color: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  color: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
   id: ID!
 
   """
   Find the latest version for the package.
   """
-  latestVersion: RegistryPackageVersion @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  latestVersion: RegistryPackageVersion
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the title of the package.
   """
-  name: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  name: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the title of the package, with the owner prefixed.
   """
-  nameWithOwner: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  nameWithOwner: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Find the package file identified by the guid.
@@ -24943,7 +25229,10 @@ type RegistryPackage implements Node {
     The unique identifier of the package_file
     """
     guid: String!
-  ): RegistryPackageFile @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageFile
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC."
+    )
 
   """
   Find the package file identified by the sha256.
@@ -24953,12 +25242,18 @@ type RegistryPackage implements Node {
     The SHA256 of the package_file
     """
     sha256: String!
-  ): RegistryPackageFile @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageFile
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the type of the package.
   """
-  packageType: RegistryPackageType! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  packageType: RegistryPackageType!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   List the prerelease versions for this package.
@@ -24983,22 +25278,34 @@ type RegistryPackage implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
-  ): RegistryPackageVersionConnection @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageVersionConnection
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   The type of the package.
   """
-  registryPackageType: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  registryPackageType: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   repository that the release is associated with
   """
-  repository: Repository @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  repository: Repository
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Statistics about package activity.
   """
-  statistics: RegistryPackageStatistics @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  statistics: RegistryPackageStatistics
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   list of tags for this package
@@ -25023,7 +25330,10 @@ type RegistryPackage implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
-  ): RegistryPackageTagConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageTagConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC."
+    )
 
   """
   List the topics for this package.
@@ -25048,7 +25358,10 @@ type RegistryPackage implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
-  ): TopicConnection @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC.")
+  ): TopicConnection
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object. Removal on 2020-04-01 UTC."
+    )
 
   """
   Find package version by version string.
@@ -25058,7 +25371,10 @@ type RegistryPackage implements Node {
     The package version.
     """
     version: String!
-  ): RegistryPackageVersion @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageVersion
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Find package version by version string.
@@ -25073,7 +25389,10 @@ type RegistryPackage implements Node {
     The package version.
     """
     version: String!
-  ): RegistryPackageVersion @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageVersion
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Find package version by manifest SHA256.
@@ -25083,7 +25402,10 @@ type RegistryPackage implements Node {
     The package SHA256 digest.
     """
     sha256: String!
-  ): RegistryPackageVersion @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageVersion
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   list of versions for this package
@@ -25108,7 +25430,10 @@ type RegistryPackage implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
-  ): RegistryPackageVersionConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageVersionConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   List package versions with a specific metadatum.
@@ -25138,7 +25463,10 @@ type RegistryPackage implements Node {
     Filter on a specific metadatum.
     """
     metadatum: RegistryPackageMetadatum!
-  ): RegistryPackageVersionConnection @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageVersionConnection
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `Package` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25173,18 +25501,27 @@ type RegistryPackageDependency implements Node {
   """
   Identifies the type of dependency.
   """
-  dependencyType: RegistryPackageDependencyType! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageDependency` object instead. Removal on 2020-04-01 UTC.")
+  dependencyType: RegistryPackageDependencyType!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageDependency` object instead. Removal on 2020-04-01 UTC."
+    )
   id: ID!
 
   """
   Identifies the name of the dependency.
   """
-  name: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageDependency` object instead. Removal on 2020-04-01 UTC.")
+  name: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageDependency` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the version of the dependency.
   """
-  version: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageDependency` object instead. Removal on 2020-04-01 UTC.")
+  version: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageDependency` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25284,43 +25621,67 @@ type RegistryPackageFile implements Node {
   """
   A unique identifier for this file.
   """
-  guid: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  guid: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
   id: ID!
 
   """
   Identifies the md5.
   """
-  md5: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  md5: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   URL to download the asset metadata.
   """
-  metadataUrl: URI! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  metadataUrl: URI!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Name of the file
   """
-  name: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  name: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   The package version this file belongs to.
   """
-  packageVersion: RegistryPackageVersion! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  packageVersion: RegistryPackageVersion!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the sha1.
   """
-  sha1: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  sha1: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the sha256.
   """
-  sha256: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  sha256: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the size.
   """
-  size: Int @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  size: Int
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the date and time when the object was last updated.
@@ -25330,7 +25691,10 @@ type RegistryPackageFile implements Node {
   """
   URL to download the asset.
   """
-  url: URI! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC.")
+  url: URI!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageFile` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25452,7 +25816,10 @@ interface RegistryPackageOwner {
     Find registry packages in a repository.
     """
     repositoryId: ID
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25494,7 +25861,10 @@ interface RegistryPackageSearch {
     Find registry package by search query.
     """
     query: String
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25504,27 +25874,42 @@ type RegistryPackageStatistics {
   """
   Number of times the package was downloaded this month.
   """
-  downloadsThisMonth: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsThisMonth: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded this week.
   """
-  downloadsThisWeek: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsThisWeek: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded this year.
   """
-  downloadsThisYear: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsThisYear: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded today.
   """
-  downloadsToday: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsToday: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded since it was created.
   """
-  downloadsTotalCount: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsTotalCount: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25536,12 +25921,18 @@ type RegistryPackageTag implements Node {
   """
   Identifies the tag name of the version.
   """
-  name: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageTag` object instead. Removal on 2020-04-01 UTC.")
+  name: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageTag` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   version that the tag is associated with
   """
-  version: RegistryPackageVersion @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageTag` object instead. Removal on 2020-04-01 UTC.")
+  version: RegistryPackageVersion
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageTag` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25631,7 +26022,11 @@ type RegistryPackageVersion implements Node {
   """
   Whether or not this version has been deleted.
   """
-  deleted: Boolean! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.") @preview(toggledBy: "package-deletes-preview")
+  deleted: Boolean!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
+    @preview(toggledBy: "package-deletes-preview")
 
   """
   list of dependencies for this package
@@ -25661,7 +26056,10 @@ type RegistryPackageVersion implements Node {
     Find dependencies by type.
     """
     type: RegistryPackageDependencyType
-  ): RegistryPackageDependencyConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageDependencyConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   A file associated with this registry package version
@@ -25671,7 +26069,10 @@ type RegistryPackageVersion implements Node {
     A specific file to find.
     """
     filename: String!
-  ): RegistryPackageFile @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageFile
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   List of files associated with this registry package version
@@ -25696,83 +26097,131 @@ type RegistryPackageVersion implements Node {
     Returns the last _n_ elements from the list.
     """
     last: Int
-  ): RegistryPackageFileConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageFileConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
   id: ID!
 
   """
   A single line of text to install this package version.
   """
-  installationCommand: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  installationCommand: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the package manifest for this package version.
   """
-  manifest: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  manifest: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the platform this version was built for.
   """
-  platform: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  platform: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Indicates whether this version is a pre-release.
   """
-  preRelease: Boolean! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  preRelease: Boolean!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   The README of this package version
   """
-  readme: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  readme: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   The HTML README of this package version
   """
-  readmeHtml: HTML @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  readmeHtml: HTML
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Registry package associated with this version.
   """
-  registryPackage: RegistryPackage @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  registryPackage: RegistryPackage
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Release associated with this package.
   """
-  release: Release @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  release: Release
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the sha256.
   """
-  sha256: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  sha256: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the size.
   """
-  size: Int @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  size: Int
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Statistics about package activity.
   """
-  statistics: RegistryPackageVersionStatistics @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  statistics: RegistryPackageVersionStatistics
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the package version summary.
   """
-  summary: String @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  summary: String
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Time at which the most recent file upload for this package version finished
   """
-  updatedAt: DateTime! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  updatedAt: DateTime!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Identifies the version number.
   """
-  version: String! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  version: String!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Can the current viewer edit this Package version.
   """
-  viewerCanEdit: Boolean! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC.")
+  viewerCanEdit: Boolean!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersion` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -25822,27 +26271,42 @@ type RegistryPackageVersionStatistics {
   """
   Number of times the package was downloaded this month.
   """
-  downloadsThisMonth: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsThisMonth: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded this week.
   """
-  downloadsThisWeek: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsThisWeek: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded this year.
   """
-  downloadsThisYear: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsThisYear: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded today.
   """
-  downloadsToday: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsToday: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Number of times the package was downloaded since it was created.
   """
-  downloadsTotalCount: Int! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC.")
+  downloadsTotalCount: Int!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageVersionStatistics` object instead. Removal on 2020-04-01 UTC."
+    )
 }
 
 """
@@ -26369,7 +26833,20 @@ input RemoveReactionInput {
   """
   The Node ID of the subject to modify.
   """
-  subjectId: ID! @possibleTypes(concreteTypes: ["CommitComment", "Issue", "IssueComment", "PullRequest", "PullRequestReview", "PullRequestReviewComment", "TeamDiscussion", "TeamDiscussionComment"], abstractType: "Reactable")
+  subjectId: ID!
+    @possibleTypes(
+      concreteTypes: [
+        "CommitComment"
+        "Issue"
+        "IssueComment"
+        "PullRequest"
+        "PullRequestReview"
+        "PullRequestReviewComment"
+        "TeamDiscussion"
+        "TeamDiscussionComment"
+      ]
+      abstractType: "Reactable"
+    )
 }
 
 """
@@ -29165,7 +29642,7 @@ type Repository implements Node & PackageOwner & ProjectOwner & RegistryPackageO
     """
     Ordering options for deployments returned from the connection.
     """
-    orderBy: DeploymentOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: DeploymentOrder = { field: CREATED_AT, direction: ASC }
   ): DeploymentConnection!
 
   """
@@ -29405,7 +29882,7 @@ type Repository implements Node & PackageOwner & ProjectOwner & RegistryPackageO
     """
     Ordering options for labels returned from the connection.
     """
-    orderBy: LabelOrder = {field: CREATED_AT, direction: ASC}
+    orderBy: LabelOrder = { field: CREATED_AT, direction: ASC }
 
     """
     If provided, searches labels by name and description.
@@ -29605,7 +30082,7 @@ type Repository implements Node & PackageOwner & ProjectOwner & RegistryPackageO
     """
     Ordering of the returned packages.
     """
-    orderBy: PackageOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: PackageOrder = { field: CREATED_AT, direction: DESC }
 
     """
     Find packages in a repository by ID.
@@ -29887,7 +30364,10 @@ type Repository implements Node & PackageOwner & ProjectOwner & RegistryPackageO
     Find registry packages in a repository.
     """
     repositoryId: ID
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   A list of registry packages for a particular search query.
@@ -29922,7 +30402,10 @@ type Repository implements Node & PackageOwner & ProjectOwner & RegistryPackageO
     Find registry package by search query.
     """
     query: String
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   Lookup a single release given various criteria.
@@ -30599,7 +31082,10 @@ enum RepositoryInvitationOrderField {
   """
   Order repository invitations by invitee login
   """
-  INVITEE_LOGIN @deprecated(reason: "`INVITEE_LOGIN` is no longer a valid field value. Repository invitations can now be associated with an email, not only an invitee. Removal on 2020-10-01 UTC.")
+  INVITEE_LOGIN
+    @deprecated(
+      reason: "`INVITEE_LOGIN` is no longer a valid field value. Repository invitations can now be associated with an email, not only an invitee. Removal on 2020-10-01 UTC."
+    )
 }
 
 """
@@ -31979,7 +32465,7 @@ type SecurityAdvisory implements Node {
     """
     Ordering options for the returned topics.
     """
-    orderBy: SecurityVulnerabilityOrder = {field: UPDATED_AT, direction: DESC}
+    orderBy: SecurityVulnerabilityOrder = { field: UPDATED_AT, direction: DESC }
 
     """
     A package name to filter vulnerabilities by.
@@ -32554,7 +33040,7 @@ type SponsorsListing implements Node {
     """
     Ordering options for Sponsors tiers returned from the connection.
     """
-    orderBy: SponsorsTierOrder = {field: MONTHLY_PRICE_IN_CENTS, direction: ASC}
+    orderBy: SponsorsTierOrder = { field: MONTHLY_PRICE_IN_CENTS, direction: ASC }
   ): SponsorsTierConnection
 }
 
@@ -32733,7 +33219,10 @@ type Sponsorship implements Node {
   """
   The entity that is being sponsored
   """
-  maintainer: User! @deprecated(reason: "`Sponsorship.maintainer` will be removed. Use `Sponsorship.sponsorable` instead. Removal on 2020-04-01 UTC.")
+  maintainer: User!
+    @deprecated(
+      reason: "`Sponsorship.maintainer` will be removed. Use `Sponsorship.sponsorable` instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   The privacy level for this sponsorship.
@@ -32743,7 +33232,10 @@ type Sponsorship implements Node {
   """
   The user that is sponsoring. Returns null if the sponsorship is private or if sponsor is not a user.
   """
-  sponsor: User @deprecated(reason: "`Sponsorship.sponsor` will be removed. Use `Sponsorship.sponsorEntity` instead. Removal on 2020-10-01 UTC.")
+  sponsor: User
+    @deprecated(
+      reason: "`Sponsorship.sponsor` will be removed. Use `Sponsorship.sponsorEntity` instead. Removal on 2020-10-01 UTC."
+    )
 
   """
   The user or organization that is sponsoring. Returns null if the sponsorship is private.
@@ -33649,7 +34141,7 @@ type Team implements MemberStatusable & Node & Subscribable {
     """
     Ordering options for user statuses returned from the connection.
     """
-    orderBy: UserStatusOrder = {field: UPDATED_AT, direction: DESC}
+    orderBy: UserStatusOrder = { field: UPDATED_AT, direction: DESC }
   ): UserStatusConnection!
 
   """
@@ -35809,7 +36301,8 @@ type UnassignedEvent implements Node {
   """
   Identifies the subject (user) who was unassigned.
   """
-  user: User @deprecated(reason: "Assignees can now be mannequins. Use the `assignee` field instead. Removal on 2020-01-01 UTC.")
+  user: User
+    @deprecated(reason: "Assignees can now be mannequins. Use the `assignee` field instead. Removal on 2020-01-01 UTC.")
 }
 
 """
@@ -36083,7 +36576,11 @@ input UnminimizeCommentInput {
   """
   The Node ID of the subject to modify.
   """
-  subjectId: ID! @possibleTypes(concreteTypes: ["CommitComment", "GistComment", "IssueComment", "PullRequestReviewComment"], abstractType: "Minimizable")
+  subjectId: ID!
+    @possibleTypes(
+      concreteTypes: ["CommitComment", "GistComment", "IssueComment", "PullRequestReviewComment"]
+      abstractType: "Minimizable"
+    )
 }
 
 """
@@ -37808,7 +38305,11 @@ input UpdateSubscriptionInput {
   """
   The Node ID of the subscribable object to modify.
   """
-  subscribableId: ID! @possibleTypes(concreteTypes: ["Commit", "Issue", "PullRequest", "Repository", "Team", "TeamDiscussion"], abstractType: "Subscribable")
+  subscribableId: ID!
+    @possibleTypes(
+      concreteTypes: ["Commit", "Issue", "PullRequest", "Repository", "Team", "TeamDiscussion"]
+      abstractType: "Subscribable"
+    )
 }
 
 """
@@ -38451,7 +38952,7 @@ type User implements Actor & Node & PackageOwner & ProfileOwner & ProjectOwner &
     """
     Ordering of the returned packages.
     """
-    orderBy: PackageOrder = {field: CREATED_AT, direction: DESC}
+    orderBy: PackageOrder = { field: CREATED_AT, direction: DESC }
 
     """
     Find packages in a repository by ID.
@@ -38712,7 +39213,10 @@ type User implements Actor & Node & PackageOwner & ProfileOwner & ProjectOwner &
     Find registry packages in a repository.
     """
     repositoryId: ID
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   A list of registry packages for a particular search query.
@@ -38747,7 +39251,10 @@ type User implements Actor & Node & PackageOwner & ProfileOwner & ProjectOwner &
     Find registry package by search query.
     """
     query: String
-  ): RegistryPackageConnection! @deprecated(reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.")
+  ): RegistryPackageConnection!
+    @deprecated(
+      reason: "Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC."
+    )
 
   """
   A list of repositories that the user owns.
@@ -38901,7 +39408,7 @@ type User implements Actor & Node & PackageOwner & ProfileOwner & ProjectOwner &
     """
     The field to order saved replies by.
     """
-    orderBy: SavedReplyOrder = {field: UPDATED_AT, direction: DESC}
+    orderBy: SavedReplyOrder = { field: UPDATED_AT, direction: DESC }
   ): SavedReplyConnection
 
   """

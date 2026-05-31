@@ -1,18 +1,24 @@
-import { BuiltInParserName } from 'prettier';
-import * as parserGraphql from 'prettier/plugins/graphql';
-import * as parserTS from 'prettier/plugins/typescript';
-import { format } from 'prettier/standalone';
-// @ts-ignore
-import * as prettierPluginEstree from 'prettier/plugins/estree';
+import { parse, print } from 'graphql';
 
-export async function prettify(code: string, parser?: BuiltInParserName) {
-  // return code
-  return format(code, {
-    parser,
-    plugins: [parserGraphql, parserTS, prettierPluginEstree],
+export type FormatterParser = 'babel' | 'graphql' | 'typescript';
+
+export async function prettify(code: string, parser: FormatterParser = 'typescript') {
+  if (parser === 'graphql') {
+    return print(parse(code));
+  }
+
+  const { format } = await import('oxfmt');
+  const result = await format(parser === 'babel' ? 'generated.js' : 'generated.ts', code, {
     semi: false,
     singleQuote: true,
     trailingComma: 'all',
     printWidth: 80,
   });
+
+  if (result.errors.length > 0) {
+    const error = result.errors[0];
+    throw new Error(error.codeframe || error.message);
+  }
+
+  return result.code;
 }

@@ -1,0 +1,3 @@
+{
+  "ignorePatterns": ["**/.next/**", "**/dist/**", "**/esm/**", "**/generated/**", "**/node_modules/**"]
+}

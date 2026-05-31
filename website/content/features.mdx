@@ -1,0 +1,122 @@
+---
+name: Feature Coverage
+---
+
+# Feature coverage
+
+Gqlts focuses on generated SDKs: schema-driven TypeScript types, request objects, selected response types, and runtime helpers for common GraphQL app behavior.
+
+<div className='gqlts-matrix'>
+  <div>
+    <strong>Schema inputs</strong>
+    SDL files, introspection endpoints, HTTP headers, GET introspection, scalar overrides.
+  </div>
+  <div>
+    <strong>Operation roots</strong>
+    Query, mutation, and subscription roots are generated when the schema exposes them.
+  </div>
+  <div>
+    <strong>Selections</strong>
+    Nested objects, arrays, scalar expansion, field exclusions, `__typename`, operation names, and aliases.
+  </div>
+  <div>
+    <strong>Polymorphism</strong>
+    Union and interface fragments through generated `on_TypeName` request fields.
+  </div>
+  <div>
+    <strong>Runtime transport</strong>
+    Axios fetcher, custom fetcher methods, batching, uploads, and `graphql-ws` subscriptions.
+  </div>
+  <div>
+    <strong>TypeScript output</strong>
+    Request types, response types, result helpers, generated type guards, ESM, CommonJS, and declarations.
+  </div>
+</div>
+
+## Supported request syntax
+
+| GraphQL need                     | Gqlts request object                                                       |
+| -------------------------------- | -------------------------------------------------------------------------- |
+| Select a scalar field            | `{ name: true }`                                                           |
+| Select nested fields             | `{ country: { name: true } }`                                              |
+| Pass field arguments             | `{ country: [{ code: 'CA' }, { name: true }] }`                            |
+| Name an operation                | `{ __name: 'CountryDashboard', countries: { name: true } }`                |
+| Select scalar fields quickly     | `{ country: { __scalar: true } }`                                          |
+| Exclude a scalar from `__scalar` | `{ country: { __scalar: true, id: false } }`                               |
+| Alias a field                    | `{ __alias: { featured: { country: [{ code: 'CA' }, { name: true }] } } }` |
+| Select a union member            | `{ search: { __typename: true, on_User: { id: true } } }`                  |
+
+## Operation example
+
+```ts
+await client.query({
+  __name: 'CountryDashboard',
+  countries: [
+    { filter: { continent: { eq: 'EU' } } },
+    {
+      code: true,
+      name: true,
+      languages: {
+        name: true,
+      },
+    },
+  ],
+  __alias: {
+    featuredCountry: {
+      country: [{ code: 'CA' }, { name: true, emoji: true }],
+    },
+  },
+});
+```
+
+## Unions and interfaces
+
+```ts
+const { data } = await client.query({
+  search: [
+    { text: 'gqlts' },
+    {
+      __typename: true,
+      on_User: {
+        id: true,
+        name: true,
+      },
+      on_Repository: {
+        id: true,
+        name: true,
+        stars: true,
+      },
+    },
+  ],
+});
+```
+
+## Scalar overrides
+
+Map custom scalars to application types while generating:
+
+```bash
+npx gqlts \
+  --schema ./schema.graphql \
+  --output ./generated \
+  -S DateTime:string \
+  -S Upload:File \
+  -S JSON:Record<string,unknown>
+```
+
+## Generated SDK surface
+
+Generated clients expose:
+
+- `createClient` for runtime execution.
+- `generateQueryOp`, `generateMutationOp`, and `generateSubscriptionOp` for external clients.
+- `QueryRequest`, `MutationRequest`, and `SubscriptionRequest` for reusable request objects.
+- `QueryResult`, `MutationResult`, and `SubscriptionResult` for selection-derived response types.
+- `everything` for selecting scalar fields.
+- `is<TypeName>` helpers for unions and interfaces.
+
+## Intentional boundaries
+
+Gqlts keeps the request-object API small. It does not try to replace every hand-written GraphQL document workflow.
+
+Use an existing GraphQL client or hand-written documents when you need directives, persisted document registries, client-only fields, or fragment documents shared across non-TypeScript clients. You can still use Gqlts beside those workflows by calling `generateQueryOp` and passing the generated operation to the client that owns execution.

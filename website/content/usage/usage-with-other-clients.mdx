@@ -1,75 +1,77 @@
 ---
-name: Usage with other clients
+name: Apollo and custom clients
 ---
 
-# Usage with other clients
+# Apollo and custom clients
 
-Gqlts exposes a `generateQueryOp` and `generateMutationOp` that let you use queries as code with any client.
+Use operation helpers when another GraphQL client should execute the request. Gqlts generates `{ query, variables }`; the other client owns caching, links, retries, or transport.
 
-`generateQueryOp` returns an object with a `query` and `variables` fields, you can pass them to any client
+## Generate an operation
 
-```js
-import { generateQueryOp, generateMutationOp } from './generated'
-const { query, variables } = generateQueryOp({
-    // your query
-    countries: {
-        name: true,
-        code: true,
-    },
-})
+```ts
+import { generateQueryOp } from './generated';
+
+const operation = generateQueryOp({
+  countries: {
+    name: true,
+    code: true,
+  },
+});
+
+operation.query;
+operation.variables;
 ```
 
-## Usage with apollo and react
+## Apollo Client
 
-To use with apollo first generate query and variables with `generateQueryOp`, then pass them to `useQuery`
+```tsx
+import { gql, useQuery } from '@apollo/client';
+import { generateQueryOp, type QueryResult } from './generated';
 
-```jsx
-import React from 'react'
-import { useQuery, ApolloProvider } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-import { generateQueryOp } from '../generated/'
+const countriesRequest = {
+  countries: {
+    name: true,
+    code: true,
+  },
+};
 
-const Page = () => {
-    const { query, variables } = generateQueryOp({
-        countries: {
-            name: 1,
-            code: 1,
-        },
-    })
-    const { data, error } = useQuery(gql(query), {
-        variables,
-    })
-    return <div>{JSON.stringify(data)}</div>
+type CountriesResult = QueryResult<typeof countriesRequest>;
+
+export function CountriesPanel() {
+  const operation = generateQueryOp(countriesRequest);
+
+  const { data, error, loading } = useQuery<CountriesResult>(gql(operation.query), {
+    variables: operation.variables,
+  });
+
+  if (loading) return <p>Loading</p>;
+  if (error) return <p>Failed to load countries</p>;
+
+  return <pre>{JSON.stringify(data?.countries, null, 2)}</pre>;
 }
 ```
 
-If you want you can also apply a type to the resulting data
+## Fetch
 
-```jsx
-import React from 'react'
-import { useQuery, ApolloProvider } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-import { generateQueryOp, QueryResult } from '../generated/'
+```ts
+const operation = generateQueryOp({
+  viewer: {
+    id: true,
+    name: true,
+  },
+});
 
-const Page = () => {
-    const q = {
-        countries: tuple([
-            { argument: 'exampleArgument' },
-            {
-                name: 1,
-                code: 1,
-            },
-        ]), // tell typescript this is a tuple and not an array
-    }
-    const { query, variables } = generateQueryOp(q)
-    const { data, error } = useQuery<QueryResult<typeof q>>(gql(query), {
-        variables,
-    })
-    return <div>{JSON.stringify(data)}</div>
-}
+const response = await fetch('/graphql', {
+  method: 'POST',
+  headers: {
+    'content-type': 'application/json',
+  },
+  body: JSON.stringify(operation),
+});
 
-function tuple<T1, T2>(data: [T1, T2]): typeof data
-function tuple(data: Array<any>) {
-    return data
-}
+const result = await response.json();
 ```
+
+## Any GraphQL client
+
+If the client accepts a GraphQL document string and variables object, it can use Gqlts operation helpers. Keep the request object in TypeScript, then pass the generated operation into the client boundary.

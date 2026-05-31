@@ -1,11 +1,3 @@
-import { RenderContext } from '../common/RenderContext';
-import { excludedTypes } from '../common/excludedTypes';
-import { sortKeys } from '../common/support';
-import { enumType } from './enumType';
-import { interfaceType } from './interfaceType';
-import { objectType } from './objectType';
-import { renderScalarTypes } from './scalarType';
-import { unionType } from './unionType';
 import {
   GraphQLObjectType,
   GraphQLScalarType,
@@ -16,6 +8,15 @@ import {
   isScalarType,
   isUnionType,
 } from 'graphql';
+
+import { excludedTypes } from '../common/excludedTypes';
+import { RenderContext } from '../common/RenderContext';
+import { sortKeys } from '../common/support';
+import { enumType } from './enumType';
+import { interfaceType } from './interfaceType';
+import { objectType } from './objectType';
+import { renderScalarTypes } from './scalarType';
+import { unionType } from './unionType';
 
 export function renderResponseTypes(schema: GraphQLSchema, ctx: RenderContext) {
   let typeMap = schema.getTypeMap();

@@ -3,16 +3,16 @@
 
 type Scalar = string | number | Date | boolean | null | undefined;
 type Anify<T> = { [P in keyof T]?: any };
-type FieldsToRemove = '__isUnion' | '__scalar' | '__name';
+type FieldsToRemove = '__alias' | '__isUnion' | '__scalar' | '__name';
 type Nil = undefined | null;
 
 /**
  * FieldsSelection is a recursive type that creates a response type based on request type and fields
  */
-export type FieldsSelection<SRC extends Anify<DST> | undefined, DST> = {
+export type FieldsSelection<SRC, DST> = {
   tuple: DST extends Nil ? never : DST extends readonly [any, infer PAYLOAD] ? FieldsSelection<SRC, PAYLOAD> : never;
   scalar: SRC;
-  union: Handle__isUnion<SRC, DST>;
+  union: Handle__isUnion<SRC>;
   object: HandleObject<SRC, DST>;
   array: SRC extends Nil ? never : SRC extends (infer T)[] ? Array<FieldsSelection<T, DST>> : never;
   __scalar: Handle__scalar<SRC, DST>;
@@ -40,7 +40,7 @@ export type FieldsSelection<SRC extends Anify<DST> | undefined, DST> = {
 /**
  * HandleObject processes object types in the selection
  */
-type HandleObject<SRC extends Anify<DST>, DST> = SRC extends Nil
+type HandleObject<SRC, DST> = SRC extends Nil
   ? never
   : Pick<
       {
@@ -49,13 +49,26 @@ type HandleObject<SRC extends Anify<DST>, DST> = SRC extends Nil
           ? FieldsSelection<NonNullable<SRC[Key]>, NonNullable<DST[Key]>>
           : SRC[Key];
       },
-      Exclude<keyof DST, FieldsToRemove>
-    >;
+      Extract<Exclude<keyof DST, FieldsToRemove>, keyof SRC>
+    > &
+      HandleAliases<SRC, DST>;
+
+type HandleAliases<SRC, DST> = DST extends { __alias?: infer ALIASES }
+  ? ALIASES extends Record<keyof any, any>
+    ? {
+        [Alias in keyof ALIASES]: HandleAlias<SRC, ALIASES[Alias]>;
+      }
+    : {}
+  : {};
+
+type HandleAlias<SRC, ALIAS> = {
+  [Key in Extract<keyof ALIAS, keyof SRC>]: FieldsSelection<NonNullable<SRC[Key]>, NonNullable<ALIAS[Key]>>;
+}[Extract<keyof ALIAS, keyof SRC>];
 
 /**
  * Handle__scalar adds all scalar properties excluding non-scalar props
  */
-type Handle__scalar<SRC extends Anify<DST>, DST> = SRC extends Nil
+type Handle__scalar<SRC, DST> = SRC extends Nil
   ? never
   : Pick<
       // Continue processing fields that are in DST, directly pass SRC type if not in DST
@@ -79,4 +92,4 @@ type Handle__scalar<SRC extends Anify<DST>, DST> = SRC extends Nil
 /**
  * Handle__isUnion processes union types in the selection
  */
-type Handle__isUnion<SRC extends Anify<DST>, DST> = SRC extends Nil ? never : Omit<SRC, FieldsToRemove>;
+type Handle__isUnion<SRC> = SRC extends Nil ? never : Omit<SRC, FieldsToRemove>;

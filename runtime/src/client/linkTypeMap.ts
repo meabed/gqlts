@@ -1,5 +1,6 @@
-import type { CompressedType, CompressedTypeMap, LinkedArgMap, LinkedType, LinkedTypeMap } from '../types';
 import assign from 'lodash.assign';
+
+import type { CompressedType, CompressedTypeMap, LinkedArgMap, LinkedType, LinkedTypeMap } from '../types';
 
 export interface PartialLinkedFieldMap {
   [field: string]: {

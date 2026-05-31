@@ -6,21 +6,11 @@
     "strictNullChecks": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "downlevelIteration": true,
-    "types": [
-      "jest"
-    ],
-    "baseUrl": "../../..",
+    "types": ["bun-types"],
     "paths": {
-      "@gqlts/runtime/src/*": [
-        "src/*"
-      ]
+      "@gqlts/runtime/src/*": ["../../../src/*"]
     }
   },
-  "include": [
-    "typeSelection.test.ts"
-  ],
-  "exclude": [
-    "../!tests"
-  ]
+  "include": ["typeSelection.test.ts"],
+  "exclude": ["../!tests"]
 }

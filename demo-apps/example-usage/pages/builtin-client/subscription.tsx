@@ -1,8 +1,9 @@
+import { Box, Spinner, Stack } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+
+import { Hero, PageContainer, SectionTitle } from '../../components/landing';
 // import { expectType } from "tsd";
 import { createClient } from '../../subscription';
-import { Box, Spinner, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from '../../components/landing';
-import React, { useEffect, useState } from 'react';
 
 const client = createClient({
   url: 'https://realtime-poll.hasura.app/v1/graphql',

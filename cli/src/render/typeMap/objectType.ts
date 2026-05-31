@@ -1,6 +1,3 @@
-import { RenderContext } from '../common/RenderContext';
-import { isEmpty } from './support';
-import { ArgMap, Field, FieldMap } from '@gqlts/runtime/dist/types';
 import {
   GraphQLField,
   GraphQLInputObjectType,
@@ -9,6 +6,10 @@ import {
   getNamedType,
   isInterfaceType,
 } from 'graphql';
+
+import { RenderContext } from '../common/RenderContext';
+import { isEmpty } from './support';
+import type { ArgMap, Field, FieldMap } from './types';
 
 export function objectType(
   type: GraphQLObjectType | GraphQLInterfaceType | GraphQLInputObjectType,

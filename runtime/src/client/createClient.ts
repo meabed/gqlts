@@ -1,6 +1,3 @@
-import { type BatchOptions, createFetcher } from '../fetcher';
-import { type LinkedType } from '../types';
-import { generateGraphqlOperation, type GraphqlOperation, ParseRequestOptions } from './generateGraphqlOperation';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import {
   type Client as WSClient,
@@ -8,6 +5,10 @@ import {
   createClient as createWSClient,
 } from 'graphql-ws';
 import { Observable } from 'zen-observable-ts';
+
+import { type BatchOptions, createFetcher } from '../fetcher';
+import { type LinkedType } from '../types';
+import { generateGraphqlOperation, type GraphqlOperation, ParseRequestOptions } from './generateGraphqlOperation';
 
 type HeaderValue = string | string[] | number | boolean | null;
 type RawHeaders = Record<string, HeaderValue>;
@@ -120,7 +121,9 @@ function getSubscriptionClient(opts: ClientOptions = {}, config?: ClientOptions)
     throw new Error('Subscription client error: missing url parameter');
   }
 
-  const explicitWebSocketImpl = getExplicitWebSocketImpl(config?.webSocketImpl ?? restOpts.webSocketImpl ?? webSocketImpl);
+  const explicitWebSocketImpl = getExplicitWebSocketImpl(
+    config?.webSocketImpl ?? restOpts.webSocketImpl ?? webSocketImpl,
+  );
 
   const wsOpts: WSClientOptions = {
     url,

@@ -1,69 +1,113 @@
-# Generate the client
+---
+name: CLI generation
+---
 
-## From http endpoint with `--endpoint`
+# CLI generation
+
+Use the CLI when generation is part of your app setup, CI job, or package script. The command accepts either a local schema file or an introspection endpoint.
+
+## Package manager runners
+
+Use whichever runner matches your project:
+
+```bash
+npx gqlts --schema ./schema.graphql --output ./generated
+pnpm dlx gqlts --schema ./schema.graphql --output ./generated
+yarn gqlts --schema ./schema.graphql --output ./generated
+bunx gqlts --schema ./schema.graphql --output ./generated
+```
+
+When `@gqlts/cli` is installed in the project, call it from a package script:
+
+```json
+{
+  "scripts": {
+    "generate:gql": "gqlts --schema ./schema.graphql --output ./generated"
+  }
+}
+```
+
+## Generate from an endpoint
 
 ```bash
 gqlts --endpoint https://countries.trevorblades.com --output ./generated
 ```
 
-You can fetch using get passing the `--get` flag
+Use `--get` when the server expects schema introspection over HTTP GET:
 
 ```bash
 gqlts --get --endpoint https://countries.trevorblades.com --output ./generated
 ```
 
-## From local schema with `--schema`
+## Generate from a schema file
 
 ```bash
 gqlts --schema ./schema.graphql --output ./generated
 ```
 
-## Passing headers with `-H`
+Use this path when your backend already exports SDL in CI or commits a schema snapshot.
+
+## Pass headers
+
+Use `-H` for endpoint introspection that requires auth, tenant, or version headers.
 
 ```bash
-gqlts -H 'Authorization: Bearer myToken' -e https://countries.trevorblades.com -o ./generated
+gqlts \
+  --endpoint https://api.example.com/graphql \
+  --output ./generated \
+  -H 'Authorization: Bearer myToken' \
+  -H 'x-api-version: 2026-05-31'
 ```
 
-## Only generate ES modules with `--esm`
+## Map custom scalars
 
-> If you are using nodejs you probably don't care about this flag
+Use `-S` to map GraphQL scalar names to TypeScript types.
 
-By default gqlts generates commonjs code that use `require` and `module.exports` to handle imports and exports
+```bash
+gqlts \
+  --schema ./schema.graphql \
+  --output ./generated \
+  -S DateTime:string \
+  -S Upload:File \
+  -S JSON:Record<string,unknown>
+```
 
-If you are compiling your code trough a bundler like webpack you can add the `--esm` flag to generate ES modules exports and imports, this way when you do `import { createClient } from './generated'` you are actually importing from an es module
+If a custom scalar is not mapped, the generated type falls back to `any`.
 
-Using ES modules has the advantage of smaller bundle size via tree shaking.
+## Choose module output
+
+By default, Gqlts writes CommonJS output. Use ESM when your app or package is ESM-first:
 
 ```bash
 gqlts --esm --schema ./schema.graphql --output ./generated
 ```
 
-## Generate both commonjs and ESM with `--esm-and-cjs`
+Use both outputs when publishing a generated SDK package for mixed consumers:
 
-If you publish a package with gqlts code you probably want to include both ESM and CJS code for users using browser and nodes respectively
-
-To do that pass the `--esm-and-cjs` flag
-
-```sh
+```bash
 gqlts --esm-and-cjs --schema ./schema.graphql --output ./generated
 ```
 
-## Changing scalar types with `-S`
+## Stabilize generated diffs
 
-This is useful if you want to map from a custom scalar to a type like string, number, etc.
-
-By default custom scalars have type `any`
+Use `--sort` when schema introspection returns fields in an unstable order:
 
 ```bash
-gqlts -S MyScalar:string -S AnotherScalar:number -e https://countries.trevorblades.com -o ./generated
+gqlts --sort --endpoint https://api.example.com/graphql --output ./generated
 ```
 
-## Sort generated code with `--sort`
+Most servers return stable introspection order. Add this flag only when generated diffs are noisy.
 
-If you see a lot of diffs between one generation and another you can use the `--sort` flag to sort object properties
+## Common flags
 
-The order of generated object properties is taken from the schema introspection by default, so you shouldn't need this flag if using popular frameworks like Apollo server
-
-```bash
-gqlts --sort -e https://countries.trevorblades.com -o ./generated
-```
+| Flag                            | Purpose                                            |
+| ------------------------------- | -------------------------------------------------- |
+| `--schema <path>`               | Read SDL from a local file.                        |
+| `--endpoint <url>` / `-e <url>` | Introspect a GraphQL endpoint.                     |
+| `--output <path>` / `-o <path>` | Write the generated client directory.              |
+| `--get`                         | Use HTTP GET for endpoint introspection.           |
+| `-H 'Name: value'`              | Add a request header for endpoint introspection.   |
+| `-S Scalar:Type`                | Map a GraphQL scalar to a TypeScript type.         |
+| `--esm`                         | Generate ESM output only.                          |
+| `--esm-and-cjs`                 | Generate ESM and CommonJS output.                  |
+| `--sort`                        | Sort generated object properties for stable diffs. |

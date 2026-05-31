@@ -1,5 +1,6 @@
-import { comment } from '../comment';
 import { stripIndent } from 'common-tags';
+
+import { comment } from '../comment';
 
 export const stripAndWrap = (tsa: TemplateStringsArray) => `\n${stripIndent(tsa)}\n`;
 

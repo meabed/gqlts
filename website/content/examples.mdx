@@ -1,0 +1,155 @@
+---
+name: Examples and recipes
+---
+
+# Examples and recipes
+
+Use these examples as starting points for real app code. Each one shows the request object, the runtime behavior it unlocks, and the generated type shape you can reuse elsewhere.
+
+## Product screen
+
+Use the built-in client when the screen can fetch directly from your GraphQL endpoint.
+
+```ts
+import { createClient } from './generated';
+
+const client = createClient({
+  url: '/api/graphql',
+  headers: () => ({
+    authorization: `Bearer ${sessionStorage.getItem('token')}`,
+  }),
+});
+
+const { data } = await client.query({
+  viewer: {
+    id: true,
+    name: true,
+    organizations: {
+      id: true,
+      name: true,
+    },
+  },
+});
+
+data?.viewer?.organizations[0]?.name;
+```
+
+## Admin table
+
+Typed request objects work well for dense internal tools because every column is explicit.
+
+```ts
+const { data } = await client.query({
+  users: [
+    { limit: 50, status: 'ACTIVE' },
+    {
+      id: true,
+      email: true,
+      roles: { name: true },
+      lastLoginAt: true,
+    },
+  ],
+});
+```
+
+## Compare two records with aliases
+
+Use `__alias` when one view needs the same field more than once with different arguments.
+
+```ts
+const { data } = await client.query({
+  __alias: {
+    currentPlan: {
+      plan: [{ id: 'current' }, { name: true, seats: true }],
+    },
+    nextPlan: {
+      plan: [{ id: 'next' }, { name: true, seats: true }],
+    },
+  },
+});
+
+data?.currentPlan?.seats;
+data?.nextPlan?.name;
+```
+
+## React Query or SWR cache key
+
+Generate the GraphQL operation and let your data library own caching, retries, and suspense.
+
+```ts
+import { generateQueryOp, type QueryResult } from './generated';
+
+const countriesRequest = {
+  countries: {
+    name: true,
+    code: true,
+  },
+};
+
+const operation = generateQueryOp(countriesRequest);
+
+type CountriesResult = QueryResult<typeof countriesRequest>;
+```
+
+## File upload
+
+The runtime detects file-like values in variables and sends a GraphQL multipart request.
+
+```ts
+await client.mutation({
+  uploadAvatar: [
+    { file },
+    {
+      id: true,
+      url: true,
+    },
+  ],
+});
+```
+
+## Realtime notifications
+
+Subscriptions return observables. The runtime uses `graphql-ws` and accepts an explicit WebSocket implementation when the runtime needs one.
+
+```ts
+const subscription = client.subscription({
+  notificationCreated: {
+    id: true,
+    title: true,
+    createdAt: true,
+  },
+});
+
+const { unsubscribe } = subscription.subscribe({
+  next: (event) => console.log(event.data?.notificationCreated),
+  error: console.error,
+});
+```
+
+## Server job
+
+Generated clients also work in Node.js and Bun scripts. This is useful for migrations, scheduled jobs, and release tooling.
+
+```ts
+const client = createClient({
+  url: process.env.GRAPHQL_ENDPOINT,
+  headers: {
+    authorization: `Bearer ${process.env.GRAPHQL_TOKEN}`,
+  },
+});
+
+await client.mutation({
+  rebuildSearchIndex: [{ dryRun: false }, { jobId: true, status: true }],
+});
+```
+
+## Pick the right entry point
+
+| Need                                   | Use                                                      |
+| -------------------------------------- | -------------------------------------------------------- |
+| Execute GraphQL directly               | `createClient`                                           |
+| Use Apollo, SWR, React Query, or fetch | `generateQueryOp` / `generateMutationOp`                 |
+| Reuse a request object type            | `QueryRequest`, `MutationRequest`, `SubscriptionRequest` |
+| Reuse a selected response type         | `QueryResult<typeof request>`                            |
+| Request the same field twice           | `__alias`                                                |
+| Expand scalar fields quickly           | `everything` or `__scalar: true`                         |

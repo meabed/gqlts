@@ -1,86 +1,174 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-> Introducing Gqlts
-# Type safe Graphql query builder for TypeScript and Node.js
+<section className='gqlts-hero'>
+  <Image
+    src='/banner.jpg'
+    alt='Gqlts generated TypeScript client preview'
+    fill
+    priority
+    sizes='(max-width: 768px) 100vw, 1100px'
+    className='gqlts-hero__image'
+  />
+  <div className='gqlts-hero__shade' />
+  <div className='gqlts-hero__content'>
+    <p className='gqlts-kicker'>GraphQL SDK generation for TypeScript apps</p>
+    <h1>Generate a typed GraphQL client from your schema.</h1>
+    <p className='gqlts-hero__lead'>
+      {
+        'Write GraphQL selections as TypeScript objects. Gqlts turns them into normal GraphQL operations and gives you response types that match the fields you selected.'
+      }
+    </p>
+    <div className='gqlts-actions'>
+      <a className='gqlts-button' href='/quick-start'>
+        Start now
+      </a>
+      <a className='gqlts-button gqlts-button--secondary' href='/usage/selecting-fields'>
+        Learn request objects
+      </a>
+    </div>
+  </div>
+</section>
 
-Gqlts generates a typed graphql client for your graphql api to use in browser or node.
+<div className='gqlts-stat-row'>
+  <div className='gqlts-stat'>
+    <strong>Schema to response types</strong>
+    <span>The generated request object controls the returned TypeScript shape.</span>
+  </div>
+  <div className='gqlts-stat'>
+    <strong>Runtime agnostic output</strong>
+    <span>Generated clients work in Node.js, Bun, browsers, and framework code.</span>
+  </div>
+  <div className='gqlts-stat'>
+    <strong>Practical GraphQL coverage</strong>
+    <span>Queries, mutations, subscriptions, fragments, uploads, batching, aliases, and scalar mapping.</span>
+  </div>
+</div>
 
-> This package is forked version from [genql](https://github.com/remorses/genql/)
-> It has been updated, fixed few bugs, actively adding features and updated dependencies and codebase to the latest packages
+## Why use Gqlts
 
-To use gqlts you first need to generate a sdk client for your graphql api.
+<div className='gqlts-feature-grid'>
+  <div className='gqlts-feature'>
+    <h3>Use TypeScript as the operation builder</h3>
+    <p>Write the fields you need as an object and let Gqlts print the GraphQL document.</p>
+  </div>
+  <div className='gqlts-feature'>
+    <h3>Keep response types honest</h3>
+    <p>Select two fields and the result type exposes those fields, including nested arrays and unions.</p>
+  </div>
+  <div className='gqlts-feature'>
+    <h3>Choose the transport per app</h3>
+    <p>
+      {
+        'Use the built-in Axios fetcher, provide a custom fetcher, or generate operations for Apollo, SWR, React Query, or fetch.'
+      }
+    </p>
+  </div>
+  <div className='gqlts-feature'>
+    <h3>Cover common app features</h3>
+    <p>
+      {
+        'GraphQL multipart uploads, graphql-ws subscriptions, batched queries, scalar overrides, and generated type guards.'
+      }
+    </p>
+  </div>
+</div>
 
-Gqlts comes with built-in axios client and typed graphql query builder, file upload, subscription, batching, and more.
+## Read the docs in this order
 
-## Features
+<div className='gqlts-link-grid'>
+  <a className='gqlts-link-card' href='/quick-start'>
+    <strong>Quick Start</strong>
+    <span>Install with npm, pnpm, Yarn, or Bun, then generate from a schema file or endpoint.</span>
+  </a>
+  <a className='gqlts-link-card' href='/usage/selecting-fields'>
+    <strong>Core Concepts</strong>
+    <span>Learn request objects, arguments, aliases, scalar expansion, unions, subscriptions, and type helpers.</span>
+  </a>
+  <a className='gqlts-link-card' href='/examples'>
+    <strong>Examples and Recipes</strong>
+    <span>See product screens, admin tables, React Query, uploads, realtime updates, and server scripts.</span>
+  </a>
+  <a className='gqlts-link-card' href='/features'>
+    <strong>Feature Coverage</strong>
+    <span>Check what the SDK generator supports and where hand-written GraphQL is still the better tool.</span>
+  </a>
+</div>
 
-- Type completion
-- Type validation
-- Easily fetch all fields in a type
-- Support subscription ( ws, graphql-ws, observable, etc )
-- Built in file upload support
-- Graphql Client built in
-- Works with any client
-- Works in node and the browser
-- Built in Axios Client, and exported to extend with interceptors.
-- Client Operation support for Axios configuration, such as headers, timeout, cancelToken, abortSignal, etc.
-- Support batching queries
-- Consistent response format \{ data, errors, extensions \}
+## Typed GraphQL as code
 
-> Find more server-client examples in the [examples repo](https://github.com/meabed/graphql-examples)
+```ts
+import { createClient, everything } from './generated';
 
-```js
-import { createClient, everything } from '@gqlts/my-lib'
-const { data, errors, extensions } = await createClient().query({
-    User: {
-        name: true,
-        surname: true,
-        address: {
-            ...everything,
-        }
-    }
+const client = createClient({
+  url: 'https://countries.trevorblades.com',
 });
-// data.User
+
+const { data } = await client.query({
+  countries: [
+    { filter: { continent: { eq: 'EU' } } },
+    {
+      code: true,
+      name: true,
+      languages: {
+        ...everything,
+      },
+    },
+  ],
+  __alias: {
+    featuredCountry: {
+      country: [{ code: 'CA' }, { name: true, emoji: true }],
+    },
+  },
+});
+
+data?.countries[0].languages[0].name;
+data?.featuredCountry?.emoji;
 ```
-## works in browser and node
 
+The generated operation stays ordinary GraphQL:
 
-## Graphql queries written in code
-
-### Gqlts generates a graphql client with typescript types, giving you type safety and auto-completion
-
-```js
-import { createClient, everything } from '@gqlts/my-lib'
-
-const { data, errors, extensions } = await createClient().query({
-    User: {
-        name: true,
-        surname: true,
-        address: {
-            ...everything,
-        }
+```graphql
+query ($v1: CountryFilterInput, $v2: ID!) {
+  countries(filter: $v1) {
+    code
+    name
+    languages {
+      code
+      name
+      native
+      rtl
     }
-})`;
-// data.User
+  }
+  featuredCountry: country(code: $v2) {
+    name
+    emoji
+  }
+}
 ```
 
-```js
-query {
-    User {
-        name
-        surname
-        address {
-            city
-            state
-        }
-    }
-}`;
-```
-<Image src="/apollo-logo.svg" width={100} height={100} style={{display:'inline-block'}} />
-<Image src="/nextjs-logo.svg" width={100} height={100} style={{display:'inline-block'}} />
-<Image src="/banner.jpg"/>
+## Feedback while you type
 
-> <video loop autoPlay muted src="../completion.mp4" />
-> <video loop autoPlay muted src="../validation.mp4" />
+<div className='gqlts-media-grid'>
+  <figure className='gqlts-media-panel'>
+    <Image src='/completion.png' width={491} height={417} alt='Generated field completion in an editor' />
+    <figcaption>Generated request types expose schema-aware completions.</figcaption>
+  </figure>
+  <figure className='gqlts-media-panel'>
+    <Image
+      src='/auto-completions.png'
+      width={470}
+      height={351}
+      alt='TypeScript autocomplete for a GraphQL selection object'
+    />
+    <figcaption>Invalid fields fail where developers work: in the editor and in typecheck.</figcaption>
+  </figure>
+</div>
 
+## Works with the GraphQL stack you already use
 
+<div className='gqlts-logo-row'>
+  <Image src='/apollo-logo.svg' width={120} height={40} alt='Apollo' />
+  <Image src='/nextjs-logo.svg' width={120} height={40} alt='Next.js' />
+  <Image src='/hasura-logo.svg' width={120} height={40} alt='Hasura' />
+  <Image src='/vercel-logo.svg' width={120} height={40} alt='Vercel' />
+</div>

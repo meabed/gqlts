@@ -1,5 +1,6 @@
-import { yogaGraphQL } from './graphql';
 import { createServer } from 'node:http';
+
+import { yogaGraphQL } from './graphql';
 
 export const server = createServer(yogaGraphQL);
 const port = process.env.PORT || 4000;

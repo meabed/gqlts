@@ -87,3 +87,4 @@ typings/
 package-lock.json
 next-version.txt
 nohup.out
+.playwright-mcp/

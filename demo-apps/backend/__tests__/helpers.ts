@@ -1,7 +1,8 @@
+import { extractFiles } from '@gqlts/runtime/extract-files';
+import supertest from 'supertest';
+
 import { Client, createClient } from '../sdk';
 import { server } from '../src';
-import { extractFiles } from '@gqlts/runtime/dist/extract-files/extract-files';
-import supertest from 'supertest';
 
 export async function sleep(milliseconds: number): Promise<void> {
   await new Promise((resolve) => setTimeout(resolve, milliseconds));

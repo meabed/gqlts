@@ -1,6 +1,7 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { demoAppsBackendSdk } from '../../src/demo-apps-backend-sdk';
-import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
   message?: string;

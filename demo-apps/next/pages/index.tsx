@@ -1,5 +1,6 @@
-import { demoAppsBackendSdk } from '../src/demo-apps-backend-sdk';
 import { useEffect, useState } from 'react';
+
+import { demoAppsBackendSdk } from '../src/demo-apps-backend-sdk';
 
 export default function Home() {
   return (

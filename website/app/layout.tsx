@@ -1,54 +1,56 @@
-import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
-import { getPageMap } from 'nextra/page-map';
+
 import 'nextra-theme-docs/style.css';
+import './globals.css';
 
 export const metadata = {
   title: {
     default: 'Gqlts',
     template: '%s - Gqlts',
   },
-  description: 'Gqlts: Type safe graphql query builder',
+  description: 'Gqlts generates type-safe GraphQL SDKs for modern TypeScript apps in Node.js, Bun, and browsers.',
   openGraph: {
-    title: 'Gqlts: Type safe graphql query builder',
-    description: 'Gqlts: Type safe graphql query builder',
+    title: 'Gqlts: type-safe GraphQL client generation',
+    description:
+      'Generate typed GraphQL clients with selection-derived response types, aliases, subscriptions, uploads, batching, and custom fetchers.',
   },
 };
 
-const navbar = (
-  <Navbar
-    logo={<span>Gqlts - Type safe graphql query builder</span>}
-    projectLink="https://github.com/meabed/gqlts"
-  />
-);
-
-const footer = <Footer>MIT {new Date().getFullYear()}</Footer>;
+const links = [
+  { href: '/', label: 'Gqlts' },
+  { href: '/quick-start', label: 'Quick Start' },
+  { href: '/examples', label: 'Examples' },
+  { href: '/features', label: 'Features' },
+  { href: '/usage/selecting-fields', label: 'Concepts' },
+  { href: '/generate/cli', label: 'Generation' },
+  { href: '/development', label: 'Contributing' },
+];
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang='en' dir='ltr' suppressHydrationWarning>
       <Head />
       <body>
-        <Layout
-          navbar={navbar}
-          pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/meabed/gqlts/tree/master/website/content"
-          editLink="Edit this page on GitHub"
-          darkMode
-          footer={footer}
-          navigation={{
-            next: true,
-            prev: true,
-          }}
-          sidebar={{
-            defaultOpen: true,
-          }}
-          toc={{
-            float: true,
-          }}
-        >
-          {children}
-        </Layout>
+        <a className='gqlts-skip-link' href='#main-content'>
+          Skip to Content
+        </a>
+        <header className='gqlts-nav'>
+          <a className='gqlts-nav__brand' href='/'>
+            Gqlts
+          </a>
+          <nav aria-label='Documentation'>
+            {links.slice(1).map((link) => (
+              <a key={link.href} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <a className='gqlts-nav__repo' href='https://github.com/meabed/gqlts'>
+            GitHub
+          </a>
+        </header>
+        <div id='main-content'>{children}</div>
+        <footer className='gqlts-footer'>MIT {new Date().getFullYear()}</footer>
       </body>
     </html>
   );

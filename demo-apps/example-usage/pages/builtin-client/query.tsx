@@ -1,8 +1,9 @@
-import { useQuery } from '../../client';
-import { everything } from '../../generated';
 import { Box, Input, Spinner, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from '../../components/landing';
 import React, { useState } from 'react';
+
+import { useQuery } from '../../client';
+import { Hero, PageContainer, SectionTitle } from '../../components/landing';
+import { everything } from '../../generated';
 
 const Page = () => {
   const [regex, setRegex] = useState('.*');

@@ -11,7 +11,7 @@ on:
       - 'runtime/**'
       - 'demo-apps/**'
       - 'package.json'
-      - 'yarn.lock'
+      - 'bun.lock'
       - '.github/workflows/ci.yml'
   push:
     paths:
@@ -19,7 +19,7 @@ on:
       - 'runtime/**'
       - 'demo-apps/**'
       - 'package.json'
-      - 'yarn.lock'
+      - 'bun.lock'
       - 'scripts/release/**'
       - '.github/workflows/ci.yml'
     branches:
@@ -51,19 +51,18 @@ jobs:
           fetch-depth: 0
 
       - uses: FranzDiebold/github-env-vars-action@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 24
-          cache: yarn
+          bun-version: 1.3.14
 
-      - name: Yarn
+      - name: Bun
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          yarn install --frozen-lockfile --ignore-scripts
-          yarn buildall
-          yarn test
+          bun ci
+          bun run buildall
+          bun run test
 
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns

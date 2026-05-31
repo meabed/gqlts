@@ -94,11 +94,7 @@ export function getReleaseChannel() {
     return validateReleaseChannel(explicitChannel);
   }
 
-  const branchName =
-    process.env.GITHUB_REF_NAME ||
-    process.env.CI_REF_NAME ||
-    process.env.BRANCH ||
-    '';
+  const branchName = process.env.GITHUB_REF_NAME || process.env.CI_REF_NAME || process.env.BRANCH || '';
 
   return branchName === 'develop' ? 'beta' : 'latest';
 }
@@ -188,10 +184,7 @@ function updateInternalDependencyVersions(packageJson, versionByPackageName) {
 export function syncPackageVersionsFromNpmDistTag(distTag) {
   const packageInfos = packageDirs.map(getPackageInfo);
   const versionByPackageName = new Map(
-    packageInfos.map((packageInfo) => [
-      packageInfo.name,
-      getPublishedDistTagVersion(packageInfo.name, distTag),
-    ]),
+    packageInfos.map((packageInfo) => [packageInfo.name, getPublishedDistTagVersion(packageInfo.name, distTag)]),
   );
   const versions = new Set(versionByPackageName.values());
 

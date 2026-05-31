@@ -5,7 +5,7 @@
   "homepage": "https://gqlts.vercel.app",
   "license": "MIT",
   "scripts": {
-    "test": "node puppeteer-test.js"
+    "test": "bun puppeteer-test.js"
   },
   "devDependencies": {
     "puppeteer": "25.0.4"

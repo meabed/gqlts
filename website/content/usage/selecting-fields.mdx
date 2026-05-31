@@ -1,96 +1,148 @@
 ---
-name: Selecting fields
+name: Request Objects
 ---
 
-# Selecting fields
+# Request objects
 
-Gqlts queries are similar to graphql queries in structure, to select some fields you pass an object where the keys are the field names.
+Gqlts uses TypeScript objects to describe GraphQL selections. The object shape mirrors the GraphQL response shape, and the generated TypeScript types validate field names as you write.
 
-Here is an example of a query made with the client generated from the Quick start guide
+## Select fields
 
-```js
-import { createClient } from './generated'
+Use `true` to select a field. Nested objects select nested GraphQL fields.
 
-const client = createClient()
+```ts
+import { createClient } from './generated';
 
-client
-    .query({
-        countries: {
-            name: true,
-            code: true,
-            languages: {
-                name: true,
-            },
-        },
-    })
-    .then(console.log)
+const client = createClient();
+
+const { data } = await client.query({
+  countries: {
+    name: true,
+    code: true,
+    languages: {
+      name: true,
+    },
+  },
+});
+
+data?.countries[0].languages[0].name;
 ```
 
-# Passing arguments
+## Pass arguments
 
-If you want to pass arguments to a query you must use an array where the first object represents the arguments and the second object the fields selection.
+Use a two-item tuple when a field needs GraphQL arguments. The first item is the argument object. The second item is the field selection.
 
-```js
-import { createClient } from './generated'
-const client = createClient()
-
-client
-    .query({
-        countries: [
-            {
-                filter: { code: 'BR' },
-            },
-            {
-                name: true,
-                code: true,
-                languages: {
-                    name: true,
-                },
-            },
-        ],
-    })
-    .then(console.log)
-
-client
-    .mutation({
-        createUser: [{ user: { name: 'user' } }, { name: true, age: true }],
-    })
-    .then(console.log)
+```ts
+const { data } = await client.query({
+  countries: [
+    { filter: { continent: { eq: 'EU' } } },
+    {
+      name: true,
+      code: true,
+      languages: {
+        name: true,
+      },
+    },
+  ],
+});
 ```
 
-# Querying all fields
+The same shape works for mutations:
 
-Gqlts let you query all scalar fields in a type by using the `everything` object:
-
-```js
-import { everything } from './generated' // everything is just an object: const everything = { __scalar: true };
-
-client
-    .query({
-        countries: {
-            ...everything, // same as __scalar: true
-            languages: {
-                ...everything,
-            },
-        },
-    })
-    .then((x) => console.log(JSON.stringify(x)))
+```ts
+await client.mutation({
+  createUser: [{ user: { name: 'Ada' } }, { id: true, name: true }],
+});
 ```
 
-> `everything` queries only the leaf types, you have to manually query object types
+## Alias fields
 
-## Excluding fields
+Use `__alias` when you need the same field more than once, or when the response key should be more specific than the schema field name.
 
-You can also exclude some fields from the selection passing falsy values
+```ts
+const { data } = await client.query({
+  __alias: {
+    viewer: {
+      user: [{ login: 'meabed' }, { name: true, avatarUrl: true }],
+    },
+    maintainer: {
+      user: [{ login: 'octocat' }, { name: true }],
+    },
+  },
+});
 
-```js
-client
-    .query({
-        countries: {
-            ...everything, // same as __scalar: true
-            id: false,
-            code: false,
-        },
-    })
-    .then((x) => console.log(JSON.stringify(x)))
+data?.viewer?.avatarUrl;
+data?.maintainer?.name;
 ```
+
+The request above prints normal GraphQL aliases:
+
+```graphql
+query ($v1: String!, $v2: String!) {
+  viewer: user(login: $v1) {
+    name
+    avatarUrl
+  }
+  maintainer: user(login: $v2) {
+    name
+  }
+}
+```
+
+## Name operations
+
+Use `__name` to set the generated GraphQL operation name.
+
+```ts
+generateQueryOp({
+  __name: 'CountryDashboard',
+  countries: {
+    name: true,
+  },
+});
+```
+
+## Select scalar fields quickly
+
+Use `everything` or `__scalar: true` to select scalar fields on a type.
+
+```ts
+import { everything } from './generated';
+
+await client.query({
+  countries: {
+    ...everything,
+    languages: {
+      ...everything,
+    },
+  },
+});
+```
+
+`everything` selects scalar leaf fields only. You still choose object fields manually, which keeps large nested graphs explicit.
+
+## Exclude fields
+
+When using `__scalar`, pass `false` for scalar fields you do not want.
+
+```ts
+await client.query({
+  countries: {
+    ...everything,
+    id: false,
+    code: false,
+  },
+});
+```
+
+## Syntax summary
+
+| Need                   | Syntax                                                                     |
+| ---------------------- | -------------------------------------------------------------------------- |
+| Select a field         | `{ name: true }`                                                           |
+| Select nested fields   | `{ country: { name: true } }`                                              |
+| Pass arguments         | `{ country: [{ code: 'CA' }, { name: true }] }`                            |
+| Alias a field          | `{ __alias: { featured: { country: [{ code: 'CA' }, { name: true }] } } }` |
+| Name an operation      | `{ __name: 'MyQuery', country: { name: true } }`                           |
+| Select scalar fields   | `{ country: { __scalar: true } }`                                          |
+| Exclude a scalar field | `{ country: { __scalar: true, id: false } }`                               |
