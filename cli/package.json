@@ -1,6 +1,6 @@
 {
   "name": "@gqlts/cli",
-  "version": "3.4.0-beta.0",
+  "version": "3.4.1-beta.0",
   "description": "Generate a client sdk from your GraphQl API",
   "keywords": [
     "axios",
@@ -62,7 +62,7 @@
     "watch": "tsgo -p tsconfig.json --watch"
   },
   "dependencies": {
-    "@gqlts/runtime": "^3.4.0-beta.0",
+    "@gqlts/runtime": "^3.4.1-beta.0",
     "@graphql-tools/graphql-file-loader": "8.1.14",
     "@graphql-tools/load": "8.1.10",
     "colors": "1.4.0",

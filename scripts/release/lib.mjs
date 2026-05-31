@@ -181,22 +181,41 @@ function updateInternalDependencyVersions(packageJson, versionByPackageName) {
   }
 }
 
-export function syncPackageVersionsFromNpmDistTag(distTag) {
-  const packageInfos = packageDirs.map(getPackageInfo);
-  const versionByPackageName = new Map(
-    packageInfos.map((packageInfo) => [packageInfo.name, getPublishedDistTagVersion(packageInfo.name, distTag)]),
-  );
+function assertSingleFixedPackageVersion(versionByPackageName, label) {
   const versions = new Set(versionByPackageName.values());
 
   if (versions.size !== 1) {
     throw new Error(
-      `npm ${distTag} versions do not match for the fixed package group: ${Array.from(versionByPackageName)
+      `${label} versions do not match for the fixed package group: ${Array.from(versionByPackageName)
         .map(([packageName, version]) => `${packageName}@${version}`)
         .join(', ')}`,
     );
   }
 
-  const [sourceVersion] = versions;
+  return versions.values().next().value;
+}
+
+export function getCurrentFixedPackageVersion() {
+  const packageInfos = packageDirs.map(getPackageInfo);
+  const versionByPackageName = new Map(packageInfos.map((packageInfo) => [packageInfo.name, packageInfo.version]));
+  const version = assertSingleFixedPackageVersion(versionByPackageName, 'Current package');
+
+  return { packageInfos, version, versionByPackageName };
+}
+
+export function getPublishedFixedPackageDistTagVersion(distTag) {
+  const packageInfos = packageDirs.map(getPackageInfo);
+  const versionByPackageName = new Map(
+    packageInfos.map((packageInfo) => [packageInfo.name, getPublishedDistTagVersion(packageInfo.name, distTag)]),
+  );
+  const version = assertSingleFixedPackageVersion(versionByPackageName, `npm ${distTag}`);
+
+  return { packageInfos, version, versionByPackageName };
+}
+
+export function syncPackageVersionsToFixedVersion(sourceVersion) {
+  const packageInfos = packageDirs.map(getPackageInfo);
+  const versionByPackageName = new Map(packageInfos.map((packageInfo) => [packageInfo.name, sourceVersion]));
 
   for (const packageInfo of packageInfos) {
     const packageJson = readJson(packageInfo.packageJsonPath);
@@ -204,10 +223,108 @@ export function syncPackageVersionsFromNpmDistTag(distTag) {
     updateInternalDependencyVersions(packageJson, versionByPackageName);
     writeJson(packageInfo.packageJsonPath, packageJson);
   }
+}
+
+export function syncPackageVersionsFromNpmDistTag(distTag) {
+  const { version: sourceVersion } = getPublishedFixedPackageDistTagVersion(distTag);
+
+  syncPackageVersionsToFixedVersion(sourceVersion);
 
   console.log(`Synced fixed package group from npm ${distTag}: ${sourceVersion}`);
 
   return sourceVersion;
+}
+
+function parseSemver(version) {
+  const match = version.match(/^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?$/);
+
+  if (!match) {
+    throw new Error(`Invalid semver version: ${version}`);
+  }
+
+  return {
+    major: Number(match[1]),
+    minor: Number(match[2]),
+    patch: Number(match[3]),
+    prerelease: match[4] ? match[4].split('.') : [],
+  };
+}
+
+function compareNumbers(left, right) {
+  return left === right ? 0 : left > right ? 1 : -1;
+}
+
+function comparePrereleaseIdentifier(left, right) {
+  const leftNumber = /^\d+$/.test(left) ? Number(left) : null;
+  const rightNumber = /^\d+$/.test(right) ? Number(right) : null;
+
+  if (leftNumber !== null && rightNumber !== null) {
+    return compareNumbers(leftNumber, rightNumber);
+  }
+
+  if (leftNumber !== null) {
+    return -1;
+  }
+
+  if (rightNumber !== null) {
+    return 1;
+  }
+
+  return left === right ? 0 : left > right ? 1 : -1;
+}
+
+export function compareSemverVersions(leftVersion, rightVersion) {
+  const left = parseSemver(leftVersion);
+  const right = parseSemver(rightVersion);
+
+  for (const key of ['major', 'minor', 'patch']) {
+    const result = compareNumbers(left[key], right[key]);
+
+    if (result !== 0) {
+      return result;
+    }
+  }
+
+  if (left.prerelease.length === 0 && right.prerelease.length === 0) {
+    return 0;
+  }
+
+  if (left.prerelease.length === 0) {
+    return 1;
+  }
+
+  if (right.prerelease.length === 0) {
+    return -1;
+  }
+
+  const maxLength = Math.max(left.prerelease.length, right.prerelease.length);
+
+  for (let index = 0; index < maxLength; index++) {
+    const leftIdentifier = left.prerelease[index];
+    const rightIdentifier = right.prerelease[index];
+
+    if (leftIdentifier === undefined) {
+      return -1;
+    }
+
+    if (rightIdentifier === undefined) {
+      return 1;
+    }
+
+    const result = comparePrereleaseIdentifier(leftIdentifier, rightIdentifier);
+
+    if (result !== 0) {
+      return result;
+    }
+  }
+
+  return 0;
+}
+
+export function isPrereleaseForTag(version, tag) {
+  const { prerelease } = parseSemver(version);
+
+  return prerelease[0] === tag;
 }
 
 export function publishPackage(packageInfo, channel, options = {}) {

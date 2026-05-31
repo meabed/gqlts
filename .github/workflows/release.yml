@@ -111,20 +111,22 @@ jobs:
         run: |
           if git diff --quiet; then
             echo "committed=false" >> "$GITHUB_OUTPUT"
-            echo "No version changes generated; skipping publish."
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+            echo "No version changes generated; publishing current package versions if needed."
             exit 0
           fi
 
           git add .
           git commit -m "chore(release): version packages (${{ github.ref_name }}) [skip ci]"
           echo "committed=true" >> "$GITHUB_OUTPUT"
+          echo "should_publish=true" >> "$GITHUB_OUTPUT"
 
       - name: Push version commit
         if: steps.version_commit.outputs.committed == 'true'
         run: git push origin HEAD:${{ github.ref_name }}
 
       - name: Publish packages
-        if: steps.version_commit.outputs.committed == 'true'
+        if: steps.version_commit.outputs.should_publish == 'true'
         env:
           RELEASE_CHANNEL: ${{ github.ref_name == 'develop' && 'beta' || 'latest' }}
           # npm provenance is supported only from GitHub Actions with id-token: write.

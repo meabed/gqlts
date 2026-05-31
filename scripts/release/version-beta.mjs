@@ -1,4 +1,15 @@
-import { logStep, readPreState, run, syncPackageDocs, syncPackageVersionsFromNpmDistTag } from './lib.mjs';
+import {
+  compareSemverVersions,
+  getCurrentFixedPackageVersion,
+  getPublishedFixedPackageDistTagVersion,
+  isPrereleaseForTag,
+  logStep,
+  readPreState,
+  run,
+  syncPackageDocs,
+  syncPackageVersionsFromNpmDistTag,
+  syncPackageVersionsToFixedVersion,
+} from './lib.mjs';
 
 const preState = readPreState();
 
@@ -10,8 +21,23 @@ if (preState?.mode && !(preState.mode === 'pre' && preState.tag === 'beta')) {
 
 const sourceDistTag = preState?.mode === 'pre' ? 'beta' : 'latest';
 
-logStep(`Syncing package versions from npm ${sourceDistTag}`);
-syncPackageVersionsFromNpmDistTag(sourceDistTag);
+if (preState?.mode === 'pre') {
+  logStep(`Checking package versions against npm ${sourceDistTag}`);
+
+  const { version: currentVersion } = getCurrentFixedPackageVersion();
+  const { version: publishedVersion } = getPublishedFixedPackageDistTagVersion(sourceDistTag);
+
+  if (isPrereleaseForTag(currentVersion, 'beta') && compareSemverVersions(currentVersion, publishedVersion) > 0) {
+    console.log(`Keeping local beta package version ${currentVersion}; npm ${sourceDistTag} is ${publishedVersion}.`);
+    syncPackageVersionsToFixedVersion(currentVersion);
+  } else {
+    logStep(`Syncing package versions from npm ${sourceDistTag}`);
+    syncPackageVersionsFromNpmDistTag(sourceDistTag);
+  }
+} else {
+  logStep(`Syncing package versions from npm ${sourceDistTag}`);
+  syncPackageVersionsFromNpmDistTag(sourceDistTag);
+}
 
 logStep('Syncing package README and LICENSE files');
 syncPackageDocs();
