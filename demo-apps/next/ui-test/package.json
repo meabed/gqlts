@@ -6,6 +6,6 @@
     "test": "bun puppeteer-test.js"
   },
   "dependencies": {
-    "puppeteer": "^24.42.0"
+    "puppeteer": "^25.0.0"
   }
 }
