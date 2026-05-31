@@ -4,37 +4,85 @@ name: Quick Start
 
 # Quick Start
 
-This page gets you from a GraphQL schema to a generated TypeScript SDK. You can use npm, pnpm, Yarn, or Bun in your application.
+This page gets you from a GraphQL schema to a generated TypeScript SDK. Follow the steps in order the first time; after that, use the sections as copy-paste references.
 
-## Install
+<div className='gqlts-callout'>
+  <p>The shortest path is install packages, generate a client, create the client, then write one typed selection.</p>
+</div>
 
-Install the CLI as a dev dependency and the runtime packages as app dependencies:
+<div className='gqlts-step-list'>
+  <div className='gqlts-step'>
+    <span className='gqlts-step__num'>1</span>
+    <div>
+      <h3>Install the packages</h3>
+      <p>Add the CLI as a dev dependency. Add the runtime and GraphQL as app dependencies.</p>
+    </div>
+  </div>
+  <div className='gqlts-step'>
+    <span className='gqlts-step__num'>2</span>
+    <div>
+      <h3>Generate a client</h3>
+      <p>Point Gqlts at either a local schema file or an introspection endpoint.</p>
+    </div>
+  </div>
+  <div className='gqlts-step'>
+    <span className='gqlts-step__num'>3</span>
+    <div>
+      <h3>Create a client</h3>
+      <p>Import from the generated folder and pass your GraphQL endpoint.</p>
+    </div>
+  </div>
+  <div className='gqlts-step'>
+    <span className='gqlts-step__num'>4</span>
+    <div>
+      <h3>Select fields</h3>
+      <p>Write the fields you need as a TypeScript object and let the generated types follow the selection.</p>
+    </div>
+  </div>
+  <div className='gqlts-step'>
+    <span className='gqlts-step__num'>5</span>
+    <div>
+      <h3>Pick the integration path</h3>
+      <p>Use the generated client directly or generate operations for another request layer.</p>
+    </div>
+  </div>
+</div>
+
+## 1. Install the packages
+
+Choose the package manager your app already uses:
 
 ```bash
 npm install -D @gqlts/cli
 npm install @gqlts/runtime graphql
+```
 
+```bash
 pnpm add -D @gqlts/cli
 pnpm add @gqlts/runtime graphql
+```
 
+```bash
 yarn add -D @gqlts/cli
 yarn add @gqlts/runtime graphql
+```
 
+```bash
 bun add -d @gqlts/cli
 bun add @gqlts/runtime graphql
 ```
 
 `@gqlts/cli` generates files. `@gqlts/runtime` and `graphql` are imported by the generated client.
 
-## Generate a client
+## 2. Generate a client
 
-Generate from a local SDL file:
+Generate from a local SDL file when your schema is already in the repo:
 
 ```bash
 npx gqlts --schema ./schema.graphql --output ./generated
 ```
 
-Or introspect an endpoint:
+Introspect an endpoint when your schema lives behind a running GraphQL server:
 
 ```bash
 npx gqlts \
@@ -51,7 +99,9 @@ yarn gqlts --schema ./schema.graphql --output ./generated
 bunx gqlts --schema ./schema.graphql --output ./generated
 ```
 
-## Query with generated types
+## 3. Create a client
+
+Import from the generated folder and configure your endpoint:
 
 ```ts
 import { createClient } from './generated';
@@ -62,7 +112,15 @@ const client = createClient({
     'x-client-name': 'docs-example',
   }),
 });
+```
 
+Use a function for headers when tokens can change while the app is running.
+
+## 4. Select fields
+
+Pass a request object to `client.query`. The response type follows the selected fields:
+
+```ts
 const { data, errors } = await client.query({
   countries: [
     { filter: { continent: { eq: 'EU' } } },
@@ -80,6 +138,36 @@ data?.countries[0].languages[0].name;
 ```
 
 The request object above prints a normal GraphQL operation. The important part is that the `data` type only contains the fields you selected.
+
+## 5. Choose your next page
+
+<div className='gqlts-choice-grid'>
+  <div className='gqlts-choice'>
+    <strong>I want to understand the request shape.</strong>
+    <span>
+      Read <a href='/usage/selecting-fields'>Request Objects</a> for selections, arguments, aliases, and variables.
+    </span>
+  </div>
+  <div className='gqlts-choice'>
+    <strong>I want React patterns.</strong>
+    <span>
+      Read <a href='/usage/usage-in-react'>Usage in React</a> for component-level usage and data fetching patterns.
+    </span>
+  </div>
+  <div className='gqlts-choice'>
+    <strong>I want custom transport.</strong>
+    <span>
+      Read <a href='/usage/usage-with-other-clients'>Use with Other Clients</a> when Apollo, SWR, React Query, or fetch
+      owns the request.
+    </span>
+  </div>
+  <div className='gqlts-choice'>
+    <strong>I want generation options.</strong>
+    <span>
+      Read <a href='/generate/cli'>CLI Generation</a> for schema input, endpoint headers, and output paths.
+    </span>
+  </div>
+</div>
 
 ## Generate operations without executing
 
@@ -100,4 +188,4 @@ await fetch('/graphql', {
 
 ## Next steps
 
-Read [Request Objects](/usage/selecting-fields) when you want to understand selections, aliases, and arguments. Read [Examples and Recipes](/examples) when you want integration patterns. Read [Feature Coverage](/features) when you need to confirm support for a GraphQL feature.
+Read [Examples and Recipes](/examples) when you want integration patterns. Read [Feature Coverage](/features) when you need to confirm support for a GraphQL feature.

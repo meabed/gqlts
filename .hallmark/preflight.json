@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-05-31",
+  "scope": "website docs redesign",
+  "framework": "Next.js 16 with Nextra 4",
+  "fontStack": "No project font package or next/font usage detected; preserve system sans and mono stacks.",
+  "palette": "Hand-written CSS in website/app/globals.css; replace with tokenized light and dark themes.",
+  "motion": "No motion library detected; use restrained CSS transitions only.",
+  "spacing": "No Tailwind or shared spacing token file detected; introduce local CSS spacing tokens.",
+  "preserve": ["Nextra content routing", "Existing public assets", "Existing docs navigation structure"]
+}

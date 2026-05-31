@@ -15,12 +15,12 @@ import Image from 'next/image';
     <h1>Generate a typed GraphQL client from your schema.</h1>
     <p className='gqlts-hero__lead'>
       {
-        'Write GraphQL selections as TypeScript objects. Gqlts turns them into normal GraphQL operations and gives you response types that match the fields you selected.'
+        'Install the CLI, point it at a schema, and write GraphQL selections as TypeScript objects. Gqlts prints normal GraphQL operations and gives you response types that match the fields you selected.'
       }
     </p>
     <div className='gqlts-actions'>
       <a className='gqlts-button' href='/quick-start'>
-        Start now
+        Start in five steps
       </a>
       <a className='gqlts-button gqlts-button--secondary' href='/usage/selecting-fields'>
         Learn request objects
@@ -42,6 +42,31 @@ import Image from 'next/image';
     <strong>Practical GraphQL coverage</strong>
     <span>Queries, mutations, subscriptions, fragments, uploads, batching, aliases, and scalar mapping.</span>
   </div>
+</div>
+
+## Start here
+
+<div className='gqlts-path' aria-label='Recommended developer path'>
+  <a href='/quick-start#1-install-the-packages'>
+    <strong>1. Install</strong>
+    <span>Add the CLI, runtime, and GraphQL to your app.</span>
+  </a>
+  <a href='/quick-start#2-generate-a-client'>
+    <strong>2. Generate</strong>
+    <span>Use a schema file or introspect a GraphQL endpoint.</span>
+  </a>
+  <a href='/quick-start#3-create-a-client'>
+    <strong>3. Connect</strong>
+    <span>Create the generated client with your endpoint and headers.</span>
+  </a>
+  <a href='/quick-start#4-select-fields'>
+    <strong>4. Query</strong>
+    <span>Select fields in TypeScript and get matching result types.</span>
+  </a>
+  <a href='/quick-start#5-choose-your-next-page'>
+    <strong>5. Expand</strong>
+    <span>Add React, custom fetchers, subscriptions, uploads, or batching.</span>
+  </a>
 </div>
 
 ## Why use Gqlts
@@ -150,7 +175,13 @@ query ($v1: CountryFilterInput, $v2: ID!) {
 
 <div className='gqlts-media-grid'>
   <figure className='gqlts-media-panel'>
-    <Image src='/completion.png' width={491} height={417} alt='Generated field completion in an editor' />
+    <Image
+      src='/completion.png'
+      width={491}
+      height={417}
+      alt='Generated field completion in an editor'
+      loading='eager'
+    />
     <figcaption>Generated request types expose schema-aware completions.</figcaption>
   </figure>
   <figure className='gqlts-media-panel'>
@@ -159,6 +190,7 @@ query ($v1: CountryFilterInput, $v2: ID!) {
       width={470}
       height={351}
       alt='TypeScript autocomplete for a GraphQL selection object'
+      loading='eager'
     />
     <figcaption>Invalid fields fail where developers work: in the editor and in typecheck.</figcaption>
   </figure>
@@ -167,7 +199,7 @@ query ($v1: CountryFilterInput, $v2: ID!) {
 ## Works with the GraphQL stack you already use
 
 <div className='gqlts-logo-row'>
-  <Image src='/apollo-logo.svg' width={120} height={40} alt='Apollo' />
-  <Image src='/nextjs-logo.svg' width={120} height={40} alt='Next.js' />
-  <Image src='/hasura-logo.svg' width={120} height={40} alt='Hasura' />
+  <Image src='/apollo-logo.svg' width={120} height={40} alt='Apollo' loading='eager' />
+  <Image src='/nextjs-logo.svg' width={120} height={40} alt='Next.js' loading='eager' />
+  <Image src='/hasura-logo.svg' width={120} height={40} alt='Hasura' loading='eager' />
 </div>
