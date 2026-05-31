@@ -27,7 +27,7 @@
     "express": "5.2.1",
     "graphql": "16.14.0",
     "graphql-easy-mocks": "1.1.1",
-    "graphql-subscriptions": "1.2.1",
+    "graphql-subscriptions": "3.0.0",
     "graphql-ws": "6.0.8",
     "tsd": "0.33.0",
     "tsdef": "0.0.14",
