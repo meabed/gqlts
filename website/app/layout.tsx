@@ -35,19 +35,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           Skip to Content
         </a>
         <header className='gqlts-nav'>
-          <a className='gqlts-nav__brand' href='/'>
-            Gqlts
-          </a>
-          <nav aria-label='Documentation'>
-            {links.slice(1).map((link) => (
-              <a key={link.href} href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <a className='gqlts-nav__repo' href='https://github.com/meabed/gqlts'>
-            GitHub
-          </a>
+          <div className='gqlts-nav__inner'>
+            <a className='gqlts-nav__brand' href='/'>
+              Gqlts
+            </a>
+            <nav aria-label='Documentation'>
+              {links.slice(1).map((link) => (
+                <a key={link.href} href={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <a className='gqlts-nav__repo' href='https://github.com/meabed/gqlts'>
+              GitHub
+            </a>
+          </div>
         </header>
         <div id='main-content'>{children}</div>
         <footer className='gqlts-footer'>MIT {new Date().getFullYear()}</footer>
