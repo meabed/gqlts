@@ -3,7 +3,19 @@
   "tag": "beta",
   "initialVersions": {
     "@gqlts/cli": "3.4.0",
-    "@gqlts/runtime": "3.4.0"
+    "@gqlts/runtime": "3.4.0",
+    "demo-apps-backend": "3.4.0",
+    "demo-apps-backend-sdk": "1.0.0",
+    "demo-apps-example-cli": "3.4.0",
+    "demo-apps-example-usage": "3.4.0",
+    "demo-apps-html": "3.4.0",
+    "integration-tests": "3.4.0",
+    "demo-apps-next": "3.4.0",
+    "demo-apps-next-ui-test": "3.4.0",
+    "demo-apps-try-clients": "3.4.0",
+    "website": "3.4.0"
   },
-  "changesets": ["tiny-cli-dependencies"]
+  "changesets": [
+    "tiny-cli-dependencies"
+  ]
 }
