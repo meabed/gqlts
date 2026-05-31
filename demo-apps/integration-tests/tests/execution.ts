@@ -11,15 +11,12 @@ import axios from 'axios';
 import { json } from 'body-parser';
 import express from 'express';
 import { PubSub } from 'graphql-subscriptions';
+import { useServer } from 'graphql-ws/use/ws';
 import { expectType } from 'tsd';
 import { DeepPartial } from 'tsdef';
 import { WebSocketServer } from 'ws';
 
 import { Account, createClient, everything, isHouse, isUser, Point, User } from '../generated/index.js';
-
-// replace import useServer with require as https://github.com/enisdenjo/graphql-ws/issues/617
-// import { useServer } from 'graphql-ws/lib/use/ws';
-const { useServer } = require('graphql-ws/use/ws');
 
 const id = () => null;
 

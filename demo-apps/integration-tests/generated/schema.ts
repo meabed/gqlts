@@ -130,6 +130,9 @@ export interface QueryRequest{
     InterfaceNotImplemented?: InterfaceNotImplementedRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: QueryRequest
+    }
 }
 
 export interface RecursiveTypeRequest{
@@ -137,6 +140,9 @@ export interface RecursiveTypeRequest{
     recurse?: RecursiveTypeRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: RecursiveTypeRequest
+    }
 }
 
 export interface RepositoryRequest{
@@ -144,12 +150,18 @@ export interface RepositoryRequest{
     forks?: ForkConnectionRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: RepositoryRequest
+    }
 }
 
 export interface ForkConnectionRequest{
     edges?: ForkEdgeRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: ForkConnectionRequest
+    }
 }
 
 export interface ForkEdgeRequest{
@@ -157,6 +169,9 @@ export interface ForkEdgeRequest{
     node?: ForkRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: ForkEdgeRequest
+    }
 }
 
 export interface ForkRequest{
@@ -164,6 +179,9 @@ export interface ForkRequest{
     number?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: ForkRequest
+    }
 }
 
 export interface UserRequest{
@@ -172,12 +190,18 @@ export interface UserRequest{
     common?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: UserRequest
+    }
 }
 
 export interface SubscriptionRequest{
     user?: UserRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: SubscriptionRequest
+    }
 }
 
 export interface AccountRequest{
@@ -191,6 +215,9 @@ export interface GuestRequest{
     common?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: GuestRequest
+    }
 }
 
 export interface HouseRequest{
@@ -199,6 +226,9 @@ export interface HouseRequest{
     y?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: HouseRequest
+    }
 }
 
 export interface BankRequest{
@@ -207,6 +237,9 @@ export interface BankRequest{
     y?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: BankRequest
+    }
 }
 
 export interface PointRequest{
@@ -216,6 +249,9 @@ export interface PointRequest{
     on_Bank?: BankRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: PointRequest
+    }
 }
 
 export interface ClientErrorRequest{
@@ -224,6 +260,9 @@ export interface ClientErrorRequest{
     on_ClientErrorNameInvalid?: ClientErrorNameInvalidRequest
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: ClientErrorRequest
+    }
 }
 
 export interface ClientErrorNameAlreadyTakenRequest{
@@ -231,6 +270,9 @@ export interface ClientErrorNameAlreadyTakenRequest{
     ownProp1?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: ClientErrorNameAlreadyTakenRequest
+    }
 }
 
 export interface ClientErrorNameInvalidRequest{
@@ -238,12 +280,18 @@ export interface ClientErrorNameInvalidRequest{
     ownProp2?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: ClientErrorNameInvalidRequest
+    }
 }
 
 export interface ClientErrorWithoutInterfaceRequest{
     ownProp3?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: ClientErrorWithoutInterfaceRequest
+    }
 }
 
 export interface GenericErrorRequest{
@@ -262,6 +310,9 @@ export interface InterfaceNotImplementedRequest{
     entry_id?: boolean | number
     __typename?: boolean | number
     __scalar?: boolean | number
+    __alias?: {
+      [alias: string]: InterfaceNotImplementedRequest
+    }
 }
 
 

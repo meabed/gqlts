@@ -15,16 +15,13 @@
     "typecheck": "tsgo -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@gqlts/cli": "file:./../../../cli",
-    "@gqlts/runtime": "file:./../../../runtime"
+    "@gqlts/cli": "workspace:*",
+    "@gqlts/runtime": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "1.3.14",
     "@types/node": "25.9.1",
     "graphql": "16.14.0",
     "typescript": "6.0.3"
-  },
-  "resolutions": {
-    "@gqlts/runtime": "file:./../../../runtime"
   }
 }

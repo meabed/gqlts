@@ -1,8 +1,8 @@
-import { createWriteStream, readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 
-import browserify from 'browserify';
+import { build } from 'esbuild';
 import Listr, { ListrTask } from 'listr';
+import camelCase from 'lodash/camelCase';
 
 import { Config } from '../config';
 import { ensurePath, writeFileToPath } from '../helpers/files';
@@ -23,6 +23,12 @@ const typeMapFileCjs = 'types.cjs.js';
 const typeMapFileEsm = 'types.esm.js';
 const clientFileCjs = 'index.js';
 const clientTypesFile = 'index.d.ts';
+
+function toStandaloneGlobalName(packageName: string) {
+  const globalName = camelCase(packageName.replace(/^@/, '').replace('/', '-')) || 'gqltsSdk';
+
+  return /^[A-Za-z_$]/.test(globalName) ? globalName : `_${globalName}`;
+}
 
 export function clientTasks(config: Config): ListrTask[] {
   const clientFileEsm = config.onlyEsModules ? 'index.js' : 'index.esm.js';
@@ -116,26 +122,23 @@ export function clientTasks(config: Config): ListrTask[] {
     },
     !!config?.['standalone-name'] && {
       title: `writing UMD`,
-      task: async (ctx) => {
-        const b = browserify({
-          standalone: config['standalone-name'],
-        });
+      task: async () => {
+        const standaloneName = config['standalone-name'];
+        if (!standaloneName) return;
+
         const inFile = resolve(output, clientFileCjs);
         const outFile = resolve(output, 'standalone.js');
-        b.plugin(require('esmify'));
-        b.add(inFile);
-        b.bundle()
-          .pipe(createWriteStream(outFile))
-          .on('finish', async () => {
-            if (!config['standalone-compress']) {
-              return;
-            }
-            const { minify } = await import('terser');
-            const result = await minify(readFileSync(outFile).toString(), {
-              compress: config['standalone-compress'],
-            });
-            await writeFileSync(outFile, result?.code ?? '');
-          });
+
+        await build({
+          entryPoints: [inFile],
+          outfile: outFile,
+          bundle: true,
+          format: 'iife',
+          globalName: toStandaloneGlobalName(standaloneName),
+          minify: Boolean(config['standalone-compress']),
+          platform: 'browser',
+          target: 'es2018',
+        });
       },
     },
   ];

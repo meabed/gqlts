@@ -26,7 +26,7 @@
     "typescript": "6.0.3"
   },
   "devDependencies": {
-    "@gqlts/runtime": "file:../../runtime",
+    "@gqlts/runtime": "workspace:*",
     "@types/bun": "1.3.14",
     "@types/node": "25.9.1",
     "@types/supertest": "7.2.0"

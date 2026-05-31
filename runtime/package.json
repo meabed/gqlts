@@ -46,34 +46,34 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts",
       "import": "./esm/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./fetcher": {
-      "require": "./dist/fetcher.js",
-      "default": "./dist/fetcher.js",
+      "types": "./dist/fetcher.d.ts",
       "import": "./esm/fetcher.js",
-      "types": "./dist/fetcher.d.ts"
+      "require": "./dist/fetcher.js",
+      "default": "./dist/fetcher.js"
     },
     "./extract-files": {
+      "types": "./dist/extract-files/extract-files.d.ts",
+      "import": "./esm/extract-files/extract-files.js",
       "require": "./dist/extract-files/extract-files.js",
-      "default": "./dist/extract-files.extract-files.js",
-      "import": "./esm/extract-files.extract-files.js",
-      "types": "./dist/extract-files/extract-files.d.ts"
+      "default": "./dist/extract-files/extract-files.js"
     },
     "./dist/extract-files": {
+      "types": "./dist/extract-files/extract-files.d.ts",
+      "import": "./esm/extract-files/extract-files.js",
       "require": "./dist/extract-files/extract-files.js",
-      "default": "./dist/extract-files.extract-files.js",
-      "import": "./esm/extract-files.extract-files.js",
-      "types": "./dist/extract-files/extract-files.d.ts"
+      "default": "./dist/extract-files/extract-files.js"
     },
     "./dist/extract-files/extract-files": {
+      "types": "./dist/extract-files/extract-files.d.ts",
+      "import": "./esm/extract-files/extract-files.js",
       "require": "./dist/extract-files/extract-files.js",
-      "default": "./dist/extract-files.extract-files.js",
-      "import": "./esm/extract-files.extract-files.js",
-      "types": "./dist/extract-files/extract-files.d.ts"
+      "default": "./dist/extract-files/extract-files.js"
     },
     "./package.json": "./package.json"
   },

@@ -17,13 +17,13 @@
     </div>
     <hr />
     <script type="application/javascript">
-      const { graphqlUrl } = window['demoAppsBackendSdk'].getServiceUrl('local');
-      const demoAppsBackendSdk = window['demoAppsBackendSdk'].createClient({
-        url: graphqlUrl || 'http://localhost:4000/graphql',
+      const graphqlUrl = 'http://localhost:4000/graphql';
+      const demoAppsBackendClient = window['demoAppsBackendSdk'].createClient({
+        url: graphqlUrl,
       });
 
       (async () => {
-        const { data, errors } = await demoAppsBackendSdk.query(
+        const { data, errors } = await demoAppsBackendClient.query(
           {
             v1SatHello: [{ name: 'John Connor' }, { message: 1 }],
           },
@@ -34,7 +34,7 @@
 
       async function uploadFileSDK() {
         const file = document.getElementById('file-upload-input').files[0];
-        const { data, errors } = await demoAppsBackendSdk.mutation(
+        const { data, errors } = await demoAppsBackendClient.mutation(
           {
             v1UpdateProfileImage: [{ image: file }, { success: 1, url: 1 }],
           },

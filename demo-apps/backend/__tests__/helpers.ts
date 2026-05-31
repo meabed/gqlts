@@ -1,4 +1,4 @@
-import { extractFiles } from '@gqlts/runtime/dist/extract-files/extract-files';
+import { extractFiles } from '@gqlts/runtime/extract-files';
 import supertest from 'supertest';
 
 import { Client, createClient } from '../sdk';

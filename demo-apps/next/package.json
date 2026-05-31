@@ -14,18 +14,14 @@
     "typecheck": "tsgo -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@gqlts/runtime": "file:./../../runtime",
+    "@gqlts/runtime": "workspace:*",
     "@types/node": "25.9.1",
     "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
-    "demo-apps-backend-sdk": "file:./../backend/sdk",
+    "demo-apps-backend-sdk": "workspace:*",
     "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "typescript": "6.0.3"
-  },
-  "resolutions": {
-    "@gqlts/cli": "file:./../../cli",
-    "@gqlts/runtime": "file:./../../runtime"
   }
 }
