@@ -46,12 +46,32 @@ const allSchemas = [
   v1ListUsersSubscription,
   v1UpdateProfileImage,
 ];
+
+async function formatGeneratedArtifact(content: string, type: 'types' | 'schema') {
+  const { format } = await import('oxfmt');
+  const result = await format(type === 'schema' ? 'schema.graphql' : 'graphql-schema.ts', content, {
+    printWidth: 120,
+    semi: true,
+    singleQuote: true,
+    sortImports: true,
+    trailingComma: 'all',
+  });
+
+  if (result.errors.length > 0) {
+    const error = result.errors[0];
+    throw new Error(error.codeframe || error.message);
+  }
+
+  return result.code;
+}
+
 export const appSchema = makeSchema({
   types: allSchemas,
   outputs: {
     schema: __dirname + `/schema.graphql`,
     typegen: __dirname + `/graphql-schema.ts`,
   },
+  formatTypegen: formatGeneratedArtifact,
   sourceTypes: {
     headers: [`import { FileUpload } from "graphql-upload-ts";`],
     modules: [],
