@@ -584,7 +584,7 @@ describe('execute subscriptions', async function () {
           Subscription: {
             user: {
               subscribe: () => {
-                return pubsub.asyncIterator([USER_EVENT]);
+                return pubsub.asyncIterableIterator([USER_EVENT]);
               },
             },
           },

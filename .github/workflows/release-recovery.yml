@@ -54,6 +54,12 @@ jobs:
       - name: Install dependencies
         run: bun ci
 
+      - name: Configure npm authentication
+        if: ${{ !inputs.dry_run }}
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+
       - name: Verify npm authentication
         if: ${{ !inputs.dry_run }}
         run: npm whoami --registry https://registry.npmjs.org

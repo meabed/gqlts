@@ -4,6 +4,8 @@ on:
     secrets:
       NPM_TOKEN:
         required: true
+      GH_PAT:
+        required: false
       RELEASE_GITHUB_TOKEN:
         required: false
   push:
@@ -45,7 +47,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           fetch-depth: 0
-          token: ${{ secrets.RELEASE_GITHUB_TOKEN || github.token }}
+          token: ${{ secrets.GH_PAT || secrets.RELEASE_GITHUB_TOKEN || github.token }}
 
       - name: Detect release changesets
         id: release_changesets
@@ -70,6 +72,12 @@ jobs:
         if: steps.release_changesets.outputs.has_changesets == 'true'
         run: |
           bun ci
+
+      - name: Configure npm authentication
+        if: steps.release_changesets.outputs.has_changesets == 'true'
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
 
       - name: Verify npm authentication
         if: steps.release_changesets.outputs.has_changesets == 'true'

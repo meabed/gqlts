@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Refresh the Bun lockfile after the latest dependency batch so `bun ci` stays clean with frozen installs on `develop`.
+- Configure normal and recovery release workflows to write npm auth from `NPM_TOKEN` before running `npm whoami` or publishing.
+- Allow the release checkout and version-commit step to use the configured `GH_PAT` secret, with the previous `RELEASE_GITHUB_TOKEN` and `GITHUB_TOKEN` fallbacks still available.
+
 ## [3.2.21 - 2024-10-30](https://github.com/meabed/gqlts/compare/v3.2.20...v3.2.21)
 
 - Fix webscoket client initialization
