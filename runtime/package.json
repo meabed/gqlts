@@ -34,7 +34,11 @@
       "url": "https://meabed.com"
     }
   ],
-  "repository": "github:meabed/gqlts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meabed/gqlts.git",
+    "directory": "runtime"
+  },
   "files": [
     "dist",
     "esm",
@@ -114,6 +118,5 @@
   },
   "peerDependencies": {
     "graphql": "*"
-  },
-  "_": "[bump]"
+  }
 }

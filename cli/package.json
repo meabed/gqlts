@@ -34,9 +34,13 @@
       "url": "https://meabed.com"
     }
   ],
-  "repository": "github:meabed/gqlts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meabed/gqlts.git",
+    "directory": "cli"
+  },
   "bin": {
-    "gqlts": "./dist/cli.js"
+    "gqlts": "dist/cli.js"
   },
   "files": [
     "dist",

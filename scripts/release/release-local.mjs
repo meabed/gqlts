@@ -1,39 +1,30 @@
 #!/usr/bin/env bun
 /**
- * Local release helper: stamp a manual version into cli/ and runtime/,
- * sync README + LICENSE, build, and publish both packages to npm at the
- * same version.
- *
- * For when CI is unavailable or you need a one-off (e.g. an alpha/beta
- * outside the normal Changesets flow). The Changesets-driven path that
- * release.yml uses is unchanged.
+ * Local release helper: stamp one version into root, runtime, and cli; sync
+ * package docs; build both packages; publish both packages to npm at the same
+ * version.
  *
  * Usage:
  *   bun run release:local <semver> [--dry-run] [--tag <dist-tag>]
  *
  * Examples:
+ *   bun run release:local 3.5.0 --dry-run
  *   bun run release:local 3.5.0
  *   bun run release:local 3.5.0-beta.1 --tag beta
- *   bun run release:local 3.5.0 --dry-run
- *
- * dist-tag resolution:
- *   --tag X            -> X
- *   prerelease version -> the prerelease identifier (e.g. 3.5.0-beta.1 -> "beta")
- *   stable version     -> "latest"
- *
- * Prerequisites:
- *   - `npm whoami` must succeed (run `npm login` first).
- *   - You must have publish rights to @gqlts/cli and @gqlts/runtime.
- *
- * Provenance is intentionally NOT requested here. npm provenance requires
- * a GitHub Actions OIDC token and is enabled only for the CI publish.
  */
 
 import { spawnSync } from 'node:child_process';
-import path from 'node:path';
 import process from 'node:process';
 
-import { getPackageInfo, logStep, packageDirs, readJson, repoRoot, syncPackageDocs, writeJson } from './lib.mjs';
+import {
+  getReleaseChannel,
+  logStep,
+  repoRoot,
+  run,
+  stampPackageVersions,
+  syncPackageDocs,
+  validateVersion,
+} from './lib.mjs';
 
 function parseArgs(argv) {
   const args = argv.slice(2);
@@ -41,13 +32,13 @@ function parseArgs(argv) {
   let dryRun = false;
   let distTag;
 
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
+  for (let index = 0; index < args.length; index++) {
+    const arg = args[index];
 
     if (arg === '--dry-run') {
       dryRun = true;
     } else if (arg === '--tag') {
-      distTag = args[++i];
+      distTag = args[++index];
       if (!distTag) {
         throw new Error('--tag requires a value');
       }
@@ -70,9 +61,9 @@ function printUsage() {
   console.error('Usage: bun run release:local <semver> [--dry-run] [--tag <dist-tag>]');
   console.error('');
   console.error('Examples:');
+  console.error('  bun run release:local 3.5.0 --dry-run');
   console.error('  bun run release:local 3.5.0');
   console.error('  bun run release:local 3.5.0-beta.1 --tag beta');
-  console.error('  bun run release:local 3.5.0 --dry-run');
 }
 
 let parsed;
@@ -84,26 +75,17 @@ try {
   process.exit(1);
 }
 
-const { version, dryRun, distTag } = parsed;
+const { dryRun, distTag } = parsed;
+const version = validateVersion(parsed.version);
+const channel = distTag || getReleaseChannel(version);
 
-if (!version || !/^\d+\.\d+\.\d+(-[\w.]+)?$/.test(version)) {
-  console.error(`release-local: invalid version "${version ?? ''}"`);
-  printUsage();
-  process.exit(1);
-}
-
-let channel = distTag;
-if (!channel) {
-  const prereleaseMatch = version.match(/-([a-z0-9]+)/i);
-  channel = prereleaseMatch ? prereleaseMatch[1] : 'latest';
-}
-
-logStep(`Local release v${version} -> npm dist-tag "${channel}"${dryRun ? ' (dry run)' : ''}`);
+logStep(`Local release ${version} -> npm "${channel}"${dryRun ? ' (dry run)' : ''}`);
 
 if (!dryRun) {
   const who = spawnSync('npm', ['whoami', '--registry', 'https://registry.npmjs.org'], {
-    stdio: ['ignore', 'pipe', 'pipe'],
+    cwd: repoRoot,
     encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
   });
 
   if (who.status !== 0) {
@@ -117,52 +99,26 @@ if (!dryRun) {
   console.log(`npm user: ${who.stdout.trim()}`);
 }
 
-logStep('Stamping version into package manifests');
-const versionByPackageName = new Map(packageDirs.map((dir) => [getPackageInfo(dir).name, version]));
-
-function updateCrossDeps(packageJson) {
-  const sections = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies'];
-
-  for (const section of sections) {
-    const deps = packageJson[section];
-    if (!deps) continue;
-
-    for (const [name, ver] of versionByPackageName) {
-      const current = deps[name];
-      if (!current) continue;
-
-      const prefix = current.startsWith('^') || current.startsWith('~') ? current[0] : '';
-      deps[name] = `${prefix}${ver}`;
-    }
-  }
-}
-
-for (const dir of packageDirs) {
-  const { packageJsonPath } = getPackageInfo(dir);
-  const packageJson = readJson(packageJsonPath);
-  packageJson.version = version;
-  updateCrossDeps(packageJson);
-  writeJson(packageJsonPath, packageJson);
-  console.log(`stamped ${packageJson.name}@${version}`);
-}
+logStep('Stamping package manifests');
+stampPackageVersions(version);
 
 logStep('Syncing package README and LICENSE files');
 syncPackageDocs();
 
 logStep('Building packages');
-const build = spawnSync('bun', ['run', 'buildall'], { cwd: repoRoot, stdio: 'inherit' });
-if (build.status !== 0) {
-  console.error('Build failed.');
-  process.exit(build.status ?? 1);
-}
+run('bun', ['run', 'buildall']);
 
 logStep(`Publishing packages with dist-tag "${channel}"${dryRun ? ' (dry run)' : ''}`);
-const publishEnv = { ...process.env, RELEASE_CHANNEL: channel, RELEASE_PROVENANCE: 'false' };
+const publishEnv = {
+  ...process.env,
+  RELEASE_CHANNEL: channel,
+};
+
 if (dryRun) {
   publishEnv.RELEASE_DRY_RUN = 'true';
 }
 
-const publish = spawnSync('bun', [path.join('scripts', 'release', 'publish.mjs')], {
+const publish = spawnSync('bun', ['run', 'release:publish', version], {
   cwd: repoRoot,
   stdio: 'inherit',
   env: publishEnv,
@@ -173,14 +129,8 @@ if (publish.status !== 0) {
   process.exit(publish.status ?? 1);
 }
 
-console.log('');
 if (dryRun) {
-  console.log(`Dry-run complete for v${version}. Re-run without --dry-run to publish.`);
+  console.log(`\nDry-run complete for ${version}. Re-run without --dry-run to publish.`);
 } else {
-  console.log(`Released v${version} for all packages on dist-tag "${channel}".`);
-  console.log('');
-  console.log('Next steps (recommended):');
-  console.log('  git add cli/package.json runtime/package.json');
-  console.log(`  git commit -m "chore(release): v${version}"`);
-  console.log(`  git tag v${version} && git push --follow-tags`);
+  console.log(`\nReleased ${version} for @gqlts/runtime and @gqlts/cli.`);
 }

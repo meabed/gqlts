@@ -34,7 +34,10 @@
       "url": "https://meabed.com"
     }
   ],
-  "repository": "github:meabed/gqlts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meabed/gqlts.git"
+  },
   "workspaces": [
     "cli",
     "runtime",
@@ -52,31 +55,35 @@
   "scripts": {
     "buildall": "bun run --sequential --filter '@gqlts/*' build",
     "check": "bun run format:check && bun run lint && bun run typecheck && bun run test",
-    "changeset": "changeset",
     "format": "oxfmt --write . '!website/next-env.d.ts'",
     "format:check": "oxfmt --check . '!website/next-env.d.ts'",
     "genall": "bun run --parallel --filter '*' --if-present gen",
     "lint": "oxlint . --type-aware --import-plugin --promise-plugin --node-plugin",
-    "release:check": "bun ./scripts/release/check-changeset.mjs",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run --no-ci",
     "release:local": "bun ./scripts/release/release-local.mjs",
-    "release:publish": "bun ./scripts/release/publish.mjs",
+    "release:publish": "bun ./scripts/release/publish-packages.mjs",
+    "release:stamp": "bun ./scripts/release/stamp-version.mjs",
     "release:verify": "bun run buildall && bun run test && ./demo-apps/build-and-test.sh",
-    "release:version:beta": "bun ./scripts/release/version-beta.mjs",
-    "release:version:stable": "bun ./scripts/release/version-stable.mjs",
     "test": "bun run --parallel --filter '@gqlts/*' test",
     "tsgo": "bun run --parallel --filter '*' --if-present tsgo",
     "typecheck": "bun run --parallel --filter '*' --if-present typecheck",
     "watch": "bun run --parallel --filter '@gqlts/*' watch"
   },
   "devDependencies": {
-    "@changesets/cli": "2.31.0",
+    "@semantic-release/commit-analyzer": "13.0.1",
+    "@semantic-release/exec": "7.1.0",
+    "@semantic-release/github": "12.0.8",
+    "@semantic-release/release-notes-generator": "14.1.1",
     "@types/bun": "1.3.14",
     "@typescript/native-preview": "7.0.0-dev.20260527.2",
     "bun-types": "1.3.14",
     "concurrently": "10.0.0",
+    "conventional-changelog-conventionalcommits": "9.3.1",
     "oxfmt": "0.52.0",
     "oxlint": "1.67.0",
     "oxlint-tsgolint": "0.23.0",
+    "semantic-release": "25.0.3",
     "typescript": "6.0.3",
     "ws": "8.21.0"
   },

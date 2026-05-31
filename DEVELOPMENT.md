@@ -265,42 +265,31 @@ That script runs the real consumer flow:
 
 ## Release Workflow
 
-Gqlts releases are managed with `@changesets/cli`. `@gqlts/runtime` and `@gqlts/cli` are configured as a Changesets fixed package group, so they always receive the same version and publish together.
+Gqlts releases are managed with `semantic-release`. One release run computes the next version from conventional commits, stamps the root, runtime, and CLI manifests, builds the packages, and publishes both npm packages at the same version.
 
 Useful commands:
 
 ```sh
-bun run changeset
-bun run release:version:beta
-bun run release:version:stable
-bun run release:publish
 bun run release:verify
-bun run release:check
+bun run release:dry
+bun run release:local 3.5.0-beta.1 --dry-run --tag beta
 ```
 
 Branch behavior:
 
-- `develop` stays in beta prerelease mode and publishes `x.y.z-beta.n` to npm `beta`.
-- `master` exits prerelease mode and publishes stable `x.y.z` releases to npm `latest`.
-- stable versioning syncs package manifests from npm `latest` before Changesets calculates the next release.
-- beta versioning syncs from npm `latest` when entering prerelease mode, then from npm `beta` while continuing an existing beta train.
-- release CI is driven by branch merges and committed `.changeset/*.md` files, not by git tags.
-- stable CI can also release from Changesets prerelease state after a beta version commit is merged from `develop` to `master`.
-- the publish script uses `npm publish --tag beta|latest` directly so reruns do not depend on GitHub Releases or git tags.
-- `NPM_TOKEN` is required for npm publish; `RELEASE_GITHUB_TOKEN` is only needed if branch protection blocks the default `GITHUB_TOKEN` from pushing the version commit.
+- `develop` publishes `x.y.z-beta.n` to npm `beta`.
+- `beta` publishes prereleases to npm `beta`.
+- `alpha` publishes prereleases to npm `alpha`.
+- `master` and `main` publish stable `x.y.z` releases to npm `latest`.
+- release CI is driven by branch merges and semantic-release tags, not committed version files.
+- `NPM_TOKEN` is required for npm publish. The built-in `GITHUB_TOKEN` is used for tags and GitHub releases.
 
 Contributor rules:
 
-- add a changeset with `bun run changeset` when a PR changes published CLI or runtime behavior;
-- docs-only and test-only changes can skip a changeset;
-- release CI versions packages directly on the target branch, commits the version bump with `[skip ci]`, and then publishes.
-
-Recovery flow:
-
-- use the `Release Recovery` GitHub Actions workflow when a publish partially fails;
-- choose a git ref and select `beta` or `latest`;
-- use dry run mode to preview the recovery actions without publishing;
-- already-published package versions are skipped, so rerunning from the same version commit can finish the package that failed.
+- write release-worthy changes with conventional commit types (`feat`, `fix`, `perf`, `refactor`, or `revert`);
+- use non-release types for docs, tests, chores, CI, build-only, and formatting changes;
+- do not edit package versions manually in feature PRs;
+- keep `@gqlts/runtime` and `@gqlts/cli` version-locked. The stamp script also updates the CLI dependency on `@gqlts/runtime`.
 
 ## Test Coverage Map
 

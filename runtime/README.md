@@ -137,30 +137,29 @@ More details are in [DEVELOPMENT.md](./DEVELOPMENT.md).
 
 ## Releases
 
-Gqlts uses `@changesets/cli` for coordinated releases of `@gqlts/cli` and `@gqlts/runtime`.
+Gqlts uses `semantic-release` for coordinated releases of `@gqlts/runtime` and `@gqlts/cli`.
 
 - `develop` publishes prereleases like `x.y.z-beta.n` to npm `beta`.
-- `master` publishes stable releases like `x.y.z` to npm `latest`.
-- both published packages are intentionally version-locked with a Changesets fixed group and release together.
-- version scripts read npm dist-tags before bumping, so npm is the source of truth for the current published version.
+- `master` and `main` publish stable releases like `x.y.z` to npm `latest`.
+- one semantic-release run computes the version for the whole repo.
+- `release:stamp` writes that exact version into the root, runtime, and CLI manifests.
+- `release:publish` publishes `@gqlts/runtime` first, then `@gqlts/cli`, both at the same version.
 
 Useful commands:
 
 ```sh
-bun run changeset
-bun run release:version:beta
-bun run release:version:stable
-bun run release:publish
 bun run release:verify
+bun run release:dry
+bun run release:local 3.5.0-beta.1 --dry-run --tag beta
 ```
 
 Normal flow:
 
-1. Add a changeset in the same PR as runtime or CLI changes.
-2. Merge to `develop` to version the packages and publish a beta release directly.
-3. Merge to `master` to version the packages and publish a stable release directly.
+1. Use conventional commits. `feat`, `fix`, `perf`, `refactor`, and `revert` create releases; `docs`, `test`, `ci`, `build`, `style`, and `chore` do not.
+2. Merge to `develop` to publish the next beta.
+3. Merge to `master` or `main` to publish the next stable release.
 
-If a publish partially fails, use the `Release Recovery` GitHub Actions workflow to rerun publish for a specific ref and npm channel. Already-published package versions are skipped, so the workflow is safe to rerun after a partial failure.
+The release workflow validates first, then lets semantic-release stamp, build, tag, create the GitHub release, and publish both npm packages from the same computed version.
 
 ---
 

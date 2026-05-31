@@ -10,9 +10,12 @@ on:
       - 'cli/**'
       - 'runtime/**'
       - 'demo-apps/**'
+      - 'scripts/release/**'
       - 'package.json'
       - 'bun.lock'
+      - '.releaserc.json'
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
   push:
     paths:
       - 'cli/**'
@@ -22,6 +25,8 @@ on:
       - 'bun.lock'
       - 'scripts/release/**'
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
+      - '.releaserc.json'
     branches:
       - '*'
       - '**'
