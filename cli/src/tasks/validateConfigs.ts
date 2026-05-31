@@ -1,5 +1,6 @@
-import { Config } from '../config';
 import colors from 'colors';
+
+import { Config } from '../config';
 
 export function validateConfigs(configs: Config[]) {
   const errors: string[] = [];

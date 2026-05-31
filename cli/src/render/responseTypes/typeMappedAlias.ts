@@ -1,5 +1,6 @@
-import { RenderContext } from '../common/RenderContext';
 import { GraphQLNamedType } from 'graphql';
+
+import { RenderContext } from '../common/RenderContext';
 
 const knownTypes: {
   [name: string]: string;

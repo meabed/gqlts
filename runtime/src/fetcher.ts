@@ -1,9 +1,10 @@
+import axios, { type AxiosInstance } from 'axios';
+import FormData from 'form-data';
+
 import { QueryBatcher } from './client/batcher';
 import { type ClientOptions, ClientRequestConfig } from './client/createClient';
 import { type GraphqlOperation } from './client/generateGraphqlOperation';
 import { extractFiles } from './extract-files/extract-files';
-import axios, { type AxiosInstance } from 'axios';
-import FormData from 'form-data';
 
 export interface Fetcher {
   fetcherMethod: (gql: GraphqlOperation, config?: ClientRequestConfig) => Promise<any>;

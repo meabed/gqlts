@@ -1,132 +1,129 @@
 enum SomeEnum {
-    X
-    Y
-    Z
+  X
+  Y
+  Z
 }
 enum SomeEnum2 {
-    hello
-    world
+  hello
+  world
 }
 
 # Some comment
 type Query {
-    """
-    Some description
-    """
-    repository(name: String!, owner: String): Repository!
-    user: User
-    someScalarValue(x: Float): String
-    recursiveType(requiredVal: [String!]): [RecursiveType]
+  """
+  Some description
+  """
+  repository(name: String!, owner: String): Repository!
+  user: User
+  someScalarValue(x: Float): String
+  recursiveType(requiredVal: [String!]): [RecursiveType]
 }
 
 type RecursiveType {
-    value: String
-    recurse: RecursiveType
+  value: String
+  recurse: RecursiveType
 }
 
 type Repository {
-    createdAt: String!
-    forks: ForkConnection
+  createdAt: String!
+  forks: ForkConnection
 }
 
 type ForkConnection {
-    edges: [ForkEdge]
+  edges: [ForkEdge]
 }
 
 type ForkEdge {
-    cursor: String
-    node: Fork
+  cursor: String
+  node: Fork
 }
 
 type Fork {
-    name: String
-    number: Int
+  name: String
+  number: Int
 }
 
 type User {
-    """
-    Some description
-    """
-    name: String
-    common: Int
+  """
+  Some description
+  """
+  name: String
+  common: Int
 }
 
 # ---
 
 type Subscription {
-    user: User
+  user: User
 }
 
 ##################
 
 extend type Query {
-    account: Account
+  account: Account
 }
 
 union Account = User | Guest
 
 type Guest {
-    anonymous: Boolean
-    common: Int
+  anonymous: Boolean
+  common: Int
 }
 
 ##################
 
 extend type Query {
-    coordinates: Point
+  coordinates: Point
 }
 
 type House implements Point {
-    owner: User
-    x: String
-    y: String
+  owner: User
+  x: String
+  y: String
 }
 
 type Bank implements Point {
-    address: String
-    x: String
-    y: String
+  address: String
+  x: String
+  y: String
 }
 
 interface Point {
-    x: String
-    y: String
+  x: String
+  y: String
 }
 
 # Ability to query interfaces that a union implements  https://github.com/remorses/gqlts/issues/44
 
 interface ClientError {
-    message: String!
+  message: String!
 }
 
 type ClientErrorNameAlreadyTaken implements ClientError {
-    message: String!
-    ownProp1: String
+  message: String!
+  ownProp1: String
 }
 
 type ClientErrorNameInvalid implements ClientError {
-    message: String!
-    ownProp2: String
+  message: String!
+  ownProp2: String
 }
 
 type ClientErrorWithoutInterface {
-    ownProp3: String
+  ownProp3: String
 }
 
-union GenericError =
-      ClientErrorNameAlreadyTaken
-    | ClientErrorNameInvalid
-    | ClientErrorWithoutInterface
+union GenericError = ClientErrorNameAlreadyTaken | ClientErrorNameInvalid | ClientErrorWithoutInterface
 
 extend type Query {
-    unionThatImplementsInterface(typename: String): GenericError
-    InterfaceNotImplemented: InterfaceNotImplemented
+  unionThatImplementsInterface(typename: String): GenericError
+  InterfaceNotImplemented: InterfaceNotImplemented
 }
 
 interface InterfaceNotImplemented {
-    id: ID!
-    title: String
-    url: String
-    permalink: String
-    entry_id: ID
+  id: ID!
+  title: String
+  url: String
+  permalink: String
+  entry_id: ID
 }

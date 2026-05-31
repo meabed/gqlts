@@ -1,10 +1,11 @@
+import { GraphQLNamedType } from 'graphql';
+
 import { toClientSchema } from '../../testHelpers/render';
 import { RenderContext } from '../common/RenderContext';
 import { objectType } from './objectType';
 import { scalarType } from './scalarType';
+import type { Type } from './types';
 import { unionType } from './unionType';
-import { Type } from '@gqlts/runtime/dist/types';
-import { GraphQLNamedType } from 'graphql';
 
 interface Renderer {
   (type: GraphQLNamedType, ctx: RenderContext): Type<string>;

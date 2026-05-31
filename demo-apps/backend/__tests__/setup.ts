@@ -1,5 +1,7 @@
+import { beforeAll } from 'bun:test';
+
 import { buildSdk } from '../sdk/build-sdk';
 
-export default async () => {
+beforeAll(async () => {
   await buildSdk({ skipIfExists: true });
-};
+});

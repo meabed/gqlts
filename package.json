@@ -3,25 +3,24 @@
   "version": "3.4.0",
   "private": true,
   "keywords": [
+    "axios",
     "gqlts",
     "graphql",
-    "axios",
-    "typescript",
-    "types-graphql",
-    "types-graphql-client",
-    "types-graphql-axios",
+    "graphql-axios-client",
     "graphql-sdk",
-    "graphql-sdk-generator",
     "graphql-sdk-cli",
+    "graphql-sdk-generator",
     "graphql-subscriptions",
     "graphql-subscriptions-client",
     "graphql-typescript",
-    "graphql-axios-client",
     "graphql-typescript-client",
-    "graphql-typescript-sdk"
+    "graphql-typescript-sdk",
+    "types-graphql",
+    "types-graphql-axios",
+    "types-graphql-client",
+    "typescript"
   ],
   "homepage": "https://gqlts.vercel.app",
-  "repository": "github:meabed/gqlts",
   "license": "MIT",
   "author": {
     "name": "Mohamed Meabed",
@@ -35,38 +34,58 @@
       "url": "https://meabed.com"
     }
   ],
-  "engines": {
-    "node": "24.x"
-  },
+  "repository": "github:meabed/gqlts",
   "workspaces": [
     "cli",
-    "runtime"
+    "runtime",
+    "website",
+    "demo-apps/backend",
+    "demo-apps/backend/sdk",
+    "demo-apps/example-cli",
+    "demo-apps/example-usage",
+    "demo-apps/html",
+    "demo-apps/integration-tests",
+    "demo-apps/next",
+    "demo-apps/next/ui-test",
+    "demo-apps/try-clients"
   ],
   "scripts": {
-    "buildall": "ultra -r --filter '@gqlts/*' --topology build",
+    "buildall": "bun run --sequential --filter '@gqlts/*' build",
+    "check": "bun run format:check && bun run lint && bun run typecheck && bun run test",
     "changeset": "changeset",
-    "genall": "ultra -r gen",
-    "prettier": "prettier --write \"cli/**/*.{ts,tsx,js,jsx}\" \"runtime/**/*.{ts,tsx,js,jsx}\" \"demo-apps/**/*.{ts,tsx,js,jsx}\"",
-    "release:check": "node ./scripts/release/check-changeset.mjs",
-    "release:local": "node ./scripts/release/release-local.mjs",
-    "release:publish": "node ./scripts/release/publish.mjs",
-    "release:verify": "yarn buildall && yarn test && ./demo-apps/build-and-test.sh",
-    "release:version:beta": "node ./scripts/release/version-beta.mjs",
-    "release:version:stable": "node ./scripts/release/version-stable.mjs",
-    "test": "ultra -r test",
-    "tscall": "ultra -r --filter '@gqlts/*' tsc",
-    "watch": "ultra -r watch"
+    "format": "oxfmt --write . '!website/next-env.d.ts'",
+    "format:check": "oxfmt --check . '!website/next-env.d.ts'",
+    "genall": "bun run --parallel --filter '*' --if-present gen",
+    "lint": "oxlint . --type-aware --import-plugin --promise-plugin --node-plugin",
+    "release:check": "bun ./scripts/release/check-changeset.mjs",
+    "release:local": "bun ./scripts/release/release-local.mjs",
+    "release:publish": "bun ./scripts/release/publish.mjs",
+    "release:verify": "bun run buildall && bun run test && ./demo-apps/build-and-test.sh",
+    "release:version:beta": "bun ./scripts/release/version-beta.mjs",
+    "release:version:stable": "bun ./scripts/release/version-stable.mjs",
+    "test": "bun run --parallel --filter '@gqlts/*' test",
+    "tsgo": "bun run --parallel --filter '*' --if-present tsgo",
+    "typecheck": "bun run --parallel --filter '*' --if-present typecheck",
+    "watch": "bun run --parallel --filter '@gqlts/*' watch"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.31.0",
+    "@types/bun": "1.3.14",
+    "@typescript/native-preview": "7.0.0-dev.20260527.2",
+    "bun-types": "1.3.14",
+    "concurrently": "10.0.0",
+    "oxfmt": "0.52.0",
+    "oxlint": "1.67.0",
+    "oxlint-tsgolint": "0.23.0",
+    "typescript": "6.0.3",
+    "ws": "8.20.0"
   },
   "resolutions": {
     "graphql": "16.13.2",
     "ws": "8.20.0"
   },
-  "devDependencies": {
-    "@changesets/cli": "2.31.0",
-    "@ianvs/prettier-plugin-sort-imports": "4.7.1",
-    "prettier": "3.8.3",
-    "typescript": "6.0.3",
-    "ultra-runner": "3.10.5"
+  "engines": {
+    "bun": ">=1.3.14"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "bun@1.3.14"
 }

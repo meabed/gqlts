@@ -3,7 +3,6 @@
   "version": "3.4.0",
   "private": true,
   "homepage": "https://gqlts.vercel.app",
-  "repository": "github:meabed/gqlts",
   "license": "MIT",
   "author": {
     "name": "Mohamed Meabed",
@@ -17,14 +16,15 @@
       "url": "https://meabed.com"
     }
   ],
-  "engines": {
-    "node": "24.x"
-  },
+  "repository": "github:meabed/gqlts",
   "scripts": {
-    "build": "yarn --cwd .. buildall && NODE_OPTIONS=--no-experimental-webstorage next build",
+    "build": "bun run --cwd .. buildall && NODE_OPTIONS=--no-experimental-webstorage next build",
     "dev": "NODE_OPTIONS=--no-experimental-webstorage next dev",
     "export": "NODE_OPTIONS=--no-experimental-webstorage next build",
-    "start": "next start"
+    "lint": "oxlint . --react-plugin --jsx-a11y-plugin --nextjs-plugin",
+    "start": "next start",
+    "tsgo": "tsgo -p tsconfig.json --noEmit",
+    "typecheck": "tsgo -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "baby-i-am-faded": "4.0.14",
@@ -61,5 +61,8 @@
     "@types/react-dom": "19.2.3",
     "next-transpile-modules": "10.0.1",
     "typescript": "6.0.3"
+  },
+  "engines": {
+    "bun": ">=1.3.14"
   }
 }

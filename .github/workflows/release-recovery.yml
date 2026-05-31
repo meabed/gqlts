@@ -46,15 +46,13 @@ jobs:
           fetch-depth: 0
           ref: ${{ inputs.ref }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 24
-          cache: yarn
-          registry-url: https://registry.npmjs.org
+          bun-version: 1.3.14
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --ignore-scripts
+        run: bun ci
 
       - name: Verify npm authentication
         if: ${{ !inputs.dry_run }}
@@ -66,7 +64,7 @@ jobs:
 
       - name: Verify release inputs
         if: inputs.run_checks
-        run: yarn release:verify
+        run: bun run release:verify
 
       - name: Ensure verification did not modify tracked files
         if: inputs.run_checks
@@ -78,4 +76,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           RELEASE_CHANNEL: ${{ inputs.channel }}
           RELEASE_DRY_RUN: ${{ inputs.dry_run }}
-        run: yarn release:publish
+        run: bun run release:publish

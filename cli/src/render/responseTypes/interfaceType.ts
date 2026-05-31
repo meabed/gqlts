@@ -1,7 +1,8 @@
-import { RenderContext } from '../common/RenderContext';
-import { typeComment } from '../common/comment';
-import { objectType } from './objectType';
 import { GraphQLInterfaceType } from 'graphql';
+
+import { typeComment } from '../common/comment';
+import { RenderContext } from '../common/RenderContext';
+import { objectType } from './objectType';
 
 export function interfaceType(type: GraphQLInterfaceType, ctx: RenderContext) {
   if (!ctx.schema) {

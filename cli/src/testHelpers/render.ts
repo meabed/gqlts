@@ -1,5 +1,3 @@
-import { readFileFromPath } from '../helpers/files';
-import { RenderContext } from '../render/common/RenderContext';
 import {
   buildClientSchema,
   buildSchema,
@@ -8,7 +6,10 @@ import {
   GraphQLNamedType,
   GraphQLSchema,
 } from 'graphql';
-import { BuiltInParserName } from 'prettier';
+
+import { readFileFromPath } from '../helpers/files';
+import { FormatterParser } from '../helpers/prettify';
+import { RenderContext } from '../render/common/RenderContext';
 
 export interface TypeRenderer {
   (type: GraphQLNamedType, ctx: RenderContext): void;
@@ -30,7 +31,7 @@ export async function toClientSchema(schemaGql: string) {
   return buildClientSchema(introspectionResponse.data as any);
 }
 
-export async function schemaRenderTest(schemaGql: string, renderer: SchemaRenderer, parser?: BuiltInParserName) {
+export async function schemaRenderTest(schemaGql: string, renderer: SchemaRenderer, parser?: FormatterParser) {
   const schema = await toClientSchema(schemaGql);
 
   const ctx = new RenderContext(schema);
@@ -44,7 +45,7 @@ export async function typeRenderTest(
   schemaGql: string,
   renderer: TypeRenderer,
   typeNames: string[],
-  parser?: BuiltInParserName,
+  parser?: FormatterParser,
 ) {
   const schema = await toClientSchema(schemaGql);
 

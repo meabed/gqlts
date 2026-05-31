@@ -1,8 +1,3 @@
-import { RenderContext } from '../common/RenderContext';
-import { fieldComment, typeComment } from '../common/comment';
-import { sortKeys } from '../common/support';
-import { toArgsString } from '../common/toArgsString';
-import { requestTypeName } from './requestTypeName';
 import {
   GraphQLInterfaceType,
   GraphQLObjectType,
@@ -11,6 +6,12 @@ import {
   isInterfaceType,
   isScalarType,
 } from 'graphql';
+
+import { fieldComment, typeComment } from '../common/comment';
+import { RenderContext } from '../common/RenderContext';
+import { sortKeys } from '../common/support';
+import { toArgsString } from '../common/toArgsString';
+import { requestTypeName } from './requestTypeName';
 
 const INDENTATION = '    ';
 
@@ -60,6 +61,7 @@ export function objectType(type: GraphQLObjectType | GraphQLInterfaceType, ctx: 
 
   fieldStrings.push('__typename?: boolean | number');
   fieldStrings.push('__scalar?: boolean | number');
+  fieldStrings.push(`__alias?: {\n  [alias: string]: ${requestTypeName(type)}\n}`);
 
   // add indentation
   fieldStrings = fieldStrings.map((x) =>

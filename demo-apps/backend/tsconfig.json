@@ -6,15 +6,10 @@
     "outDir": "./dist/",
     "target": "ES6",
     "ignoreDeprecations": "6.0",
-    "types": [
-      "jest",
-      "node"
-    ],
-    "lib": [
-      "ESNext"
-    ],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "types": ["bun", "node"],
+    "lib": ["ESNext"],
+    "module": "Node16",
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": false,
@@ -26,18 +21,8 @@
     "pretty": true,
     "declaration": true,
     "sourceMap": false,
-    "inlineSourceMap": true,
-    "downlevelIteration": true
+    "inlineSourceMap": true
   },
-  "include": [
-    "src",
-    "__tests__"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ],
-  "ts-node": {
-    "transpileOnly": true
-  }
+  "include": ["src", "__tests__"],
+  "exclude": ["dist", "node_modules"]
 }

@@ -1,10 +1,13 @@
-import { enumSomeEnum, everything, generateQueryOp, generateSubscriptionOp } from '../generated/index.js';
 import assert from 'assert';
+import { describe, it } from 'bun:test';
+
+import { parse, print } from 'graphql';
 import snapshot from 'snap-shot-it';
 import { expectType } from 'tsd';
-import { format } from 'prettier';
 
-const prettify = async (code, parser) => await format(code, { parser });
+import { enumSomeEnum, everything, generateQueryOp, generateSubscriptionOp } from '../generated/index.js';
+
+const prettifyGraphql = (code: string) => print(parse(code));
 
 describe('generate queries', () => {
   it('enum string is present', () => {
@@ -32,7 +35,7 @@ describe('generate queries', () => {
         },
       ],
     });
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
   it('recursive type', async () => {
     const { query } = generateQueryOp({
@@ -52,7 +55,7 @@ describe('generate queries', () => {
         },
       },
     });
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
   it('recursive type with args', async () => {
     const { query } = generateQueryOp({
@@ -75,7 +78,7 @@ describe('generate queries', () => {
         },
       ],
     });
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
 
   it('use __name operation name', async () => {
@@ -87,7 +90,7 @@ describe('generate queries', () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
   it('subscriptions', async () => {
     const { query } = generateSubscriptionOp({
@@ -95,7 +98,7 @@ describe('generate queries', () => {
         __scalar: true,
       },
     });
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
   it('many', async () => {
     const { query } = generateQueryOp({
@@ -120,7 +123,7 @@ describe('generate queries', () => {
         ...everything,
       },
     });
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
   it('do not fetch falsy fields', async () => {
     const { query } = generateSubscriptionOp({
@@ -130,7 +133,7 @@ describe('generate queries', () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
   it('do not fetch falsy fields with __scalar', async () => {
     const { query } = generateSubscriptionOp({
@@ -140,6 +143,6 @@ describe('generate queries', () => {
       },
     });
     // assert.strictEqual(op.name, NAME)
-    snapshot(await prettify(query, 'graphql'));
+    snapshot(prettifyGraphql(query));
   });
 });

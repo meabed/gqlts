@@ -4,12 +4,18 @@ schema {
   subscription: subscription_root
 }
 
-"""whether this query should be cached (Hasura Cloud only)"""
+"""
+whether this query should be cached (Hasura Cloud only)
+"""
 directive @cached(
-  """measured in seconds"""
+  """
+  measured in seconds
+  """
   ttl: Int! = 60
 
-  """refresh the cache entry"""
+  """
+  refresh the cache entry
+  """
   refresh: Boolean! = false
 ) on QUERY
 
@@ -51,7 +57,9 @@ input String_comparison_exp {
   _gt: String
   _gte: String
 
-  """does the column match the given case-insensitive pattern"""
+  """
+  does the column match the given case-insensitive pattern
+  """
   _ilike: String
   _in: [String!]
 
@@ -61,13 +69,17 @@ input String_comparison_exp {
   _iregex: String
   _is_null: Boolean
 
-  """does the column match the given pattern"""
+  """
+  does the column match the given pattern
+  """
   _like: String
   _lt: String
   _lte: String
   _neq: String
 
-  """does the column NOT match the given case-insensitive pattern"""
+  """
+  does the column NOT match the given case-insensitive pattern
+  """
   _nilike: String
   _nin: [String!]
 
@@ -76,7 +88,9 @@ input String_comparison_exp {
   """
   _niregex: String
 
-  """does the column NOT match the given pattern"""
+  """
+  does the column NOT match the given pattern
+  """
   _nlike: String
 
   """
@@ -84,7 +98,9 @@ input String_comparison_exp {
   """
   _nregex: String
 
-  """does the column NOT match the given SQL regular expression"""
+  """
+  does the column NOT match the given SQL regular expression
+  """
   _nsimilar: String
 
   """
@@ -92,7 +108,9 @@ input String_comparison_exp {
   """
   _regex: String
 
-  """does the column match the given SQL regular expression"""
+  """
+  does the column match the given SQL regular expression
+  """
   _similar: String
 }
 
@@ -113,22 +131,32 @@ input bigint_comparison_exp {
   _nin: [bigint!]
 }
 
-"""ordering argument of a cursor"""
+"""
+ordering argument of a cursor
+"""
 enum cursor_ordering {
-  """ascending ordering of the cursor"""
+  """
+  ascending ordering of the cursor
+  """
   ASC
 
-  """descending ordering of the cursor"""
+  """
+  descending ordering of the cursor
+  """
   DESC
 }
 
-"""mutation root"""
+"""
+mutation root
+"""
 type mutation_root {
   """
   delete data from the table: "option"
   """
   delete_option(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: option_bool_exp!
   ): option_mutation_response
 
@@ -141,7 +169,9 @@ type mutation_root {
   delete data from the table: "poll"
   """
   delete_poll(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: poll_bool_exp!
   ): poll_mutation_response
 
@@ -154,7 +184,9 @@ type mutation_root {
   delete data from the table: "user"
   """
   delete_user(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: user_bool_exp!
   ): user_mutation_response
 
@@ -167,7 +199,9 @@ type mutation_root {
   delete data from the table: "vote"
   """
   delete_vote(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: vote_bool_exp!
   ): vote_mutation_response
 
@@ -180,10 +214,14 @@ type mutation_root {
   insert data into the table: "option"
   """
   insert_option(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [option_insert_input!]!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: option_on_conflict
   ): option_mutation_response
 
@@ -191,10 +229,14 @@ type mutation_root {
   insert a single row into the table: "option"
   """
   insert_option_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: option_insert_input!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: option_on_conflict
   ): option
 
@@ -202,10 +244,14 @@ type mutation_root {
   insert data into the table: "poll"
   """
   insert_poll(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [poll_insert_input!]!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: poll_on_conflict
   ): poll_mutation_response
 
@@ -213,10 +259,14 @@ type mutation_root {
   insert a single row into the table: "poll"
   """
   insert_poll_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: poll_insert_input!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: poll_on_conflict
   ): poll
 
@@ -224,10 +274,14 @@ type mutation_root {
   insert data into the table: "user"
   """
   insert_user(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [user_insert_input!]!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: user_on_conflict
   ): user_mutation_response
 
@@ -235,10 +289,14 @@ type mutation_root {
   insert a single row into the table: "user"
   """
   insert_user_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: user_insert_input!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: user_on_conflict
   ): user
 
@@ -246,10 +304,14 @@ type mutation_root {
   insert data into the table: "vote"
   """
   insert_vote(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [vote_insert_input!]!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: vote_on_conflict
   ): vote_mutation_response
 
@@ -257,10 +319,14 @@ type mutation_root {
   insert a single row into the table: "vote"
   """
   insert_vote_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: vote_insert_input!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: vote_on_conflict
   ): vote
 
@@ -268,10 +334,14 @@ type mutation_root {
   update data of the table: "option"
   """
   update_option(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: option_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: option_bool_exp!
   ): option_mutation_response
 
@@ -279,7 +349,9 @@ type mutation_root {
   update single row of the table: "option"
   """
   update_option_by_pk(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: option_set_input
     pk_columns: option_pk_columns_input!
   ): option
@@ -288,7 +360,9 @@ type mutation_root {
   update multiples rows of table: "option"
   """
   update_option_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [option_updates!]!
   ): [option_mutation_response]
 
@@ -296,10 +370,14 @@ type mutation_root {
   update data of the table: "poll"
   """
   update_poll(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: poll_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: poll_bool_exp!
   ): poll_mutation_response
 
@@ -307,7 +385,9 @@ type mutation_root {
   update single row of the table: "poll"
   """
   update_poll_by_pk(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: poll_set_input
     pk_columns: poll_pk_columns_input!
   ): poll
@@ -316,7 +396,9 @@ type mutation_root {
   update multiples rows of table: "poll"
   """
   update_poll_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [poll_updates!]!
   ): [poll_mutation_response]
 
@@ -324,10 +406,14 @@ type mutation_root {
   update data of the table: "user"
   """
   update_user(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: user_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: user_bool_exp!
   ): user_mutation_response
 
@@ -335,7 +421,9 @@ type mutation_root {
   update single row of the table: "user"
   """
   update_user_by_pk(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: user_set_input
     pk_columns: user_pk_columns_input!
   ): user
@@ -344,7 +432,9 @@ type mutation_root {
   update multiples rows of table: "user"
   """
   update_user_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [user_updates!]!
   ): [user_mutation_response]
 
@@ -352,10 +442,14 @@ type mutation_root {
   update data of the table: "vote"
   """
   update_vote(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: vote_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: vote_bool_exp!
   ): vote_mutation_response
 
@@ -363,7 +457,9 @@ type mutation_root {
   update single row of the table: "vote"
   """
   update_vote_by_pk(
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: vote_set_input
     pk_columns: vote_pk_columns_input!
   ): vote
@@ -372,7 +468,9 @@ type mutation_root {
   update multiples rows of table: "vote"
   """
   update_vote_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [vote_updates!]!
   ): [vote_mutation_response]
 }
@@ -409,7 +507,9 @@ type online_users_aggregate_fields {
   variance: online_users_variance_fields
 }
 
-"""aggregate avg on columns"""
+"""
+aggregate avg on columns
+"""
 type online_users_avg_fields {
   count: Float
 }
@@ -424,17 +524,23 @@ input online_users_bool_exp {
   count: bigint_comparison_exp
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type online_users_max_fields {
   count: bigint
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type online_users_min_fields {
   count: bigint
 }
 
-"""Ordering options when selecting data from "online_users"."""
+"""
+Ordering options when selecting data from "online_users".
+"""
 input online_users_order_by {
   count: order_by
 }
@@ -443,21 +549,29 @@ input online_users_order_by {
 select columns of table "online_users"
 """
 enum online_users_select_column {
-  """column name"""
+  """
+  column name
+  """
   count
 }
 
-"""aggregate stddev on columns"""
+"""
+aggregate stddev on columns
+"""
 type online_users_stddev_fields {
   count: Float
 }
 
-"""aggregate stddev_pop on columns"""
+"""
+aggregate stddev_pop on columns
+"""
 type online_users_stddev_pop_fields {
   count: Float
 }
 
-"""aggregate stddev_samp on columns"""
+"""
+aggregate stddev_samp on columns
+"""
 type online_users_stddev_samp_fields {
   count: Float
 }
@@ -466,34 +580,48 @@ type online_users_stddev_samp_fields {
 Streaming cursor of the table "online_users"
 """
 input online_users_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: online_users_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input online_users_stream_cursor_value_input {
   count: bigint
 }
 
-"""aggregate sum on columns"""
+"""
+aggregate sum on columns
+"""
 type online_users_sum_fields {
   count: bigint
 }
 
-"""aggregate var_pop on columns"""
+"""
+aggregate var_pop on columns
+"""
 type online_users_var_pop_fields {
   count: Float
 }
 
-"""aggregate var_samp on columns"""
+"""
+aggregate var_samp on columns
+"""
 type online_users_var_samp_fields {
   count: Float
 }
 
-"""aggregate variance on columns"""
+"""
+aggregate variance on columns
+"""
 type online_users_variance_fields {
   count: Float
 }
@@ -504,7 +632,9 @@ columns and relationships of "option"
 type option {
   id: uuid!
 
-  """An object relationship"""
+  """
+  An object relationship
+  """
   poll: poll!
   poll_id: uuid!
   text: String!
@@ -553,7 +683,9 @@ input type for inserting array relation for remote table "option"
 input option_arr_rel_insert_input {
   data: [option_insert_input!]!
 
-  """upsert condition"""
+  """
+  upsert condition
+  """
   on_conflict: option_on_conflict
 }
 
@@ -590,7 +722,9 @@ input option_insert_input {
   text: String
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type option_max_fields {
   id: uuid
   poll_id: uuid
@@ -606,7 +740,9 @@ input option_max_order_by {
   text: order_by
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type option_min_fields {
   id: uuid
   poll_id: uuid
@@ -626,10 +762,14 @@ input option_min_order_by {
 response of any mutation on the table "option"
 """
 type option_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [option!]!
 }
 
@@ -639,7 +779,9 @@ input type for inserting object relation for remote table "option"
 input option_obj_rel_insert_input {
   data: option_insert_input!
 
-  """upsert condition"""
+  """
+  upsert condition
+  """
   on_conflict: option_on_conflict
 }
 
@@ -652,7 +794,9 @@ input option_on_conflict {
   where: option_bool_exp
 }
 
-"""Ordering options when selecting data from "option"."""
+"""
+Ordering options when selecting data from "option".
+"""
 input option_order_by {
   id: order_by
   poll: poll_order_by
@@ -660,7 +804,9 @@ input option_order_by {
   text: order_by
 }
 
-"""primary key columns input for table: option"""
+"""
+primary key columns input for table: option
+"""
 input option_pk_columns_input {
   id: uuid!
 }
@@ -669,13 +815,19 @@ input option_pk_columns_input {
 select columns of table "option"
 """
 enum option_select_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   poll_id
 
-  """column name"""
+  """
+  column name
+  """
   text
 }
 
@@ -692,14 +844,20 @@ input option_set_input {
 Streaming cursor of the table "option"
 """
 input option_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: option_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input option_stream_cursor_value_input {
   id: uuid
   poll_id: uuid
@@ -710,42 +868,66 @@ input option_stream_cursor_value_input {
 update columns of table "option"
 """
 enum option_update_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   poll_id
 
-  """column name"""
+  """
+  column name
+  """
   text
 }
 
 input option_updates {
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: option_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: option_bool_exp!
 }
 
-"""column ordering options"""
+"""
+column ordering options
+"""
 enum order_by {
-  """in ascending order, nulls last"""
+  """
+  in ascending order, nulls last
+  """
   asc
 
-  """in ascending order, nulls first"""
+  """
+  in ascending order, nulls first
+  """
   asc_nulls_first
 
-  """in ascending order, nulls last"""
+  """
+  in ascending order, nulls last
+  """
   asc_nulls_last
 
-  """in descending order, nulls first"""
+  """
+  in descending order, nulls first
+  """
   desc
 
-  """in descending order, nulls first"""
+  """
+  in descending order, nulls first
+  """
   desc_nulls_first
 
-  """in descending order, nulls last"""
+  """
+  in descending order, nulls last
+  """
   desc_nulls_last
 }
 
@@ -757,39 +939,63 @@ type poll {
   created_by: uuid
   id: uuid!
 
-  """An array relationship"""
+  """
+  An array relationship
+  """
   options(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [option_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [option_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: option_bool_exp
   ): [option!]!
 
-  """An aggregate relationship"""
+  """
+  An aggregate relationship
+  """
   options_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [option_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [option_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: option_bool_exp
   ): option_aggregate!
   question: String!
@@ -848,7 +1054,9 @@ input poll_insert_input {
   question: String
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type poll_max_fields {
   created_at: timestamptz
   created_by: uuid
@@ -856,7 +1064,9 @@ type poll_max_fields {
   question: String
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type poll_min_fields {
   created_at: timestamptz
   created_by: uuid
@@ -868,10 +1078,14 @@ type poll_min_fields {
 response of any mutation on the table "poll"
 """
 type poll_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [poll!]!
 }
 
@@ -881,7 +1095,9 @@ input type for inserting object relation for remote table "poll"
 input poll_obj_rel_insert_input {
   data: poll_insert_input!
 
-  """upsert condition"""
+  """
+  upsert condition
+  """
   on_conflict: poll_on_conflict
 }
 
@@ -894,7 +1110,9 @@ input poll_on_conflict {
   where: poll_bool_exp
 }
 
-"""Ordering options when selecting data from "poll"."""
+"""
+Ordering options when selecting data from "poll".
+"""
 input poll_order_by {
   created_at: order_by
   created_by: order_by
@@ -903,7 +1121,9 @@ input poll_order_by {
   question: order_by
 }
 
-"""primary key columns input for table: poll"""
+"""
+primary key columns input for table: poll
+"""
 input poll_pk_columns_input {
   id: uuid!
 }
@@ -912,11 +1132,15 @@ input poll_pk_columns_input {
 columns and relationships of "poll_results"
 """
 type poll_results {
-  """An object relationship"""
+  """
+  An object relationship
+  """
   option: option
   option_id: uuid
 
-  """An object relationship"""
+  """
+  An object relationship
+  """
   poll: poll
   poll_id: uuid
   votes: bigint
@@ -947,7 +1171,9 @@ type poll_results_aggregate_fields {
   variance: poll_results_variance_fields
 }
 
-"""aggregate avg on columns"""
+"""
+aggregate avg on columns
+"""
 type poll_results_avg_fields {
   votes: Float
 }
@@ -966,21 +1192,27 @@ input poll_results_bool_exp {
   votes: bigint_comparison_exp
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type poll_results_max_fields {
   option_id: uuid
   poll_id: uuid
   votes: bigint
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type poll_results_min_fields {
   option_id: uuid
   poll_id: uuid
   votes: bigint
 }
 
-"""Ordering options when selecting data from "poll_results"."""
+"""
+Ordering options when selecting data from "poll_results".
+"""
 input poll_results_order_by {
   option: option_order_by
   option_id: order_by
@@ -993,27 +1225,39 @@ input poll_results_order_by {
 select columns of table "poll_results"
 """
 enum poll_results_select_column {
-  """column name"""
+  """
+  column name
+  """
   option_id
 
-  """column name"""
+  """
+  column name
+  """
   poll_id
 
-  """column name"""
+  """
+  column name
+  """
   votes
 }
 
-"""aggregate stddev on columns"""
+"""
+aggregate stddev on columns
+"""
 type poll_results_stddev_fields {
   votes: Float
 }
 
-"""aggregate stddev_pop on columns"""
+"""
+aggregate stddev_pop on columns
+"""
 type poll_results_stddev_pop_fields {
   votes: Float
 }
 
-"""aggregate stddev_samp on columns"""
+"""
+aggregate stddev_samp on columns
+"""
 type poll_results_stddev_samp_fields {
   votes: Float
 }
@@ -1022,36 +1266,50 @@ type poll_results_stddev_samp_fields {
 Streaming cursor of the table "poll_results"
 """
 input poll_results_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: poll_results_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input poll_results_stream_cursor_value_input {
   option_id: uuid
   poll_id: uuid
   votes: bigint
 }
 
-"""aggregate sum on columns"""
+"""
+aggregate sum on columns
+"""
 type poll_results_sum_fields {
   votes: bigint
 }
 
-"""aggregate var_pop on columns"""
+"""
+aggregate var_pop on columns
+"""
 type poll_results_var_pop_fields {
   votes: Float
 }
 
-"""aggregate var_samp on columns"""
+"""
+aggregate var_samp on columns
+"""
 type poll_results_var_samp_fields {
   votes: Float
 }
 
-"""aggregate variance on columns"""
+"""
+aggregate variance on columns
+"""
 type poll_results_variance_fields {
   votes: Float
 }
@@ -1060,16 +1318,24 @@ type poll_results_variance_fields {
 select columns of table "poll"
 """
 enum poll_select_column {
-  """column name"""
+  """
+  column name
+  """
   created_at
 
-  """column name"""
+  """
+  column name
+  """
   created_by
 
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   question
 }
 
@@ -1087,14 +1353,20 @@ input poll_set_input {
 Streaming cursor of the table "poll"
 """
 input poll_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: poll_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input poll_stream_cursor_value_input {
   created_at: timestamptz
   created_by: uuid
@@ -1106,24 +1378,36 @@ input poll_stream_cursor_value_input {
 update columns of table "poll"
 """
 enum poll_update_column {
-  """column name"""
+  """
+  column name
+  """
   created_at
 
-  """column name"""
+  """
+  column name
+  """
   created_by
 
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   question
 }
 
 input poll_updates {
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: poll_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: poll_bool_exp!
 }
 
@@ -1132,19 +1416,29 @@ type query_root {
   fetch data from the table: "online_users"
   """
   online_users(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [online_users_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [online_users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: online_users_bool_exp
   ): [online_users!]!
 
@@ -1152,19 +1446,29 @@ type query_root {
   fetch aggregated fields from the table: "online_users"
   """
   online_users_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [online_users_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [online_users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: online_users_bool_exp
   ): online_users_aggregate!
 
@@ -1172,19 +1476,29 @@ type query_root {
   fetch data from the table: "option"
   """
   option(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [option_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [option_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: option_bool_exp
   ): [option!]!
 
@@ -1192,42 +1506,64 @@ type query_root {
   fetch aggregated fields from the table: "option"
   """
   option_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [option_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [option_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: option_bool_exp
   ): option_aggregate!
 
-  """fetch data from the table: "option" using primary key columns"""
+  """
+  fetch data from the table: "option" using primary key columns
+  """
   option_by_pk(id: uuid!): option
 
   """
   fetch data from the table: "poll"
   """
   poll(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_bool_exp
   ): [poll!]!
 
@@ -1235,42 +1571,64 @@ type query_root {
   fetch aggregated fields from the table: "poll"
   """
   poll_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_bool_exp
   ): poll_aggregate!
 
-  """fetch data from the table: "poll" using primary key columns"""
+  """
+  fetch data from the table: "poll" using primary key columns
+  """
   poll_by_pk(id: uuid!): poll
 
   """
   fetch data from the table: "poll_results"
   """
   poll_results(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_results_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_results_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_results_bool_exp
   ): [poll_results!]!
 
@@ -1278,19 +1636,29 @@ type query_root {
   fetch aggregated fields from the table: "poll_results"
   """
   poll_results_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_results_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_results_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_results_bool_exp
   ): poll_results_aggregate!
 
@@ -1298,19 +1666,29 @@ type query_root {
   fetch data from the table: "user"
   """
   user(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): [user!]!
 
@@ -1318,42 +1696,64 @@ type query_root {
   fetch aggregated fields from the table: "user"
   """
   user_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): user_aggregate!
 
-  """fetch data from the table: "user" using primary key columns"""
+  """
+  fetch data from the table: "user" using primary key columns
+  """
   user_by_pk(id: uuid!): user
 
   """
   fetch data from the table: "vote"
   """
   vote(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [vote_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [vote_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: vote_bool_exp
   ): [vote!]!
 
@@ -1361,23 +1761,35 @@ type query_root {
   fetch aggregated fields from the table: "vote"
   """
   vote_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [vote_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [vote_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: vote_bool_exp
   ): vote_aggregate!
 
-  """fetch data from the table: "vote" using primary key columns"""
+  """
+  fetch data from the table: "vote" using primary key columns
+  """
   vote_by_pk(id: uuid!): vote
 }
 
@@ -1386,19 +1798,29 @@ type subscription_root {
   fetch data from the table: "online_users"
   """
   online_users(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [online_users_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [online_users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: online_users_bool_exp
   ): [online_users!]!
 
@@ -1406,19 +1828,29 @@ type subscription_root {
   fetch aggregated fields from the table: "online_users"
   """
   online_users_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [online_users_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [online_users_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: online_users_bool_exp
   ): online_users_aggregate!
 
@@ -1426,13 +1858,19 @@ type subscription_root {
   fetch data from the table in a streaming manner: "online_users"
   """
   online_users_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [online_users_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: online_users_bool_exp
   ): [online_users!]!
 
@@ -1440,19 +1878,29 @@ type subscription_root {
   fetch data from the table: "option"
   """
   option(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [option_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [option_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: option_bool_exp
   ): [option!]!
 
@@ -1460,36 +1908,54 @@ type subscription_root {
   fetch aggregated fields from the table: "option"
   """
   option_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [option_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [option_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: option_bool_exp
   ): option_aggregate!
 
-  """fetch data from the table: "option" using primary key columns"""
+  """
+  fetch data from the table: "option" using primary key columns
+  """
   option_by_pk(id: uuid!): option
 
   """
   fetch data from the table in a streaming manner: "option"
   """
   option_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [option_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: option_bool_exp
   ): [option!]!
 
@@ -1497,19 +1963,29 @@ type subscription_root {
   fetch data from the table: "poll"
   """
   poll(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_bool_exp
   ): [poll!]!
 
@@ -1517,42 +1993,64 @@ type subscription_root {
   fetch aggregated fields from the table: "poll"
   """
   poll_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_bool_exp
   ): poll_aggregate!
 
-  """fetch data from the table: "poll" using primary key columns"""
+  """
+  fetch data from the table: "poll" using primary key columns
+  """
   poll_by_pk(id: uuid!): poll
 
   """
   fetch data from the table: "poll_results"
   """
   poll_results(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_results_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_results_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_results_bool_exp
   ): [poll_results!]!
 
@@ -1560,19 +2058,29 @@ type subscription_root {
   fetch aggregated fields from the table: "poll_results"
   """
   poll_results_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [poll_results_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [poll_results_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_results_bool_exp
   ): poll_results_aggregate!
 
@@ -1580,13 +2088,19 @@ type subscription_root {
   fetch data from the table in a streaming manner: "poll_results"
   """
   poll_results_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [poll_results_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_results_bool_exp
   ): [poll_results!]!
 
@@ -1594,13 +2108,19 @@ type subscription_root {
   fetch data from the table in a streaming manner: "poll"
   """
   poll_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [poll_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: poll_bool_exp
   ): [poll!]!
 
@@ -1608,19 +2128,29 @@ type subscription_root {
   fetch data from the table: "user"
   """
   user(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): [user!]!
 
@@ -1628,36 +2158,54 @@ type subscription_root {
   fetch aggregated fields from the table: "user"
   """
   user_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): user_aggregate!
 
-  """fetch data from the table: "user" using primary key columns"""
+  """
+  fetch data from the table: "user" using primary key columns
+  """
   user_by_pk(id: uuid!): user
 
   """
   fetch data from the table in a streaming manner: "user"
   """
   user_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [user_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): [user!]!
 
@@ -1665,19 +2213,29 @@ type subscription_root {
   fetch data from the table: "vote"
   """
   vote(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [vote_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [vote_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: vote_bool_exp
   ): [vote!]!
 
@@ -1685,36 +2243,54 @@ type subscription_root {
   fetch aggregated fields from the table: "vote"
   """
   vote_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [vote_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [vote_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: vote_bool_exp
   ): vote_aggregate!
 
-  """fetch data from the table: "vote" using primary key columns"""
+  """
+  fetch data from the table: "vote" using primary key columns
+  """
   vote_by_pk(id: uuid!): vote
 
   """
   fetch data from the table in a streaming manner: "vote"
   """
   vote_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [vote_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: vote_bool_exp
   ): [vote!]!
 }
@@ -1796,14 +2372,18 @@ input user_insert_input {
   online_ping: Boolean
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type user_max_fields {
   created_at: timestamptz
   id: uuid
   last_seen_at: timestamptz
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type user_min_fields {
   created_at: timestamptz
   id: uuid
@@ -1814,10 +2394,14 @@ type user_min_fields {
 response of any mutation on the table "user"
 """
 type user_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [user!]!
 }
 
@@ -1827,7 +2411,9 @@ input type for inserting object relation for remote table "user"
 input user_obj_rel_insert_input {
   data: user_insert_input!
 
-  """upsert condition"""
+  """
+  upsert condition
+  """
   on_conflict: user_on_conflict
 }
 
@@ -1840,7 +2426,9 @@ input user_on_conflict {
   where: user_bool_exp
 }
 
-"""Ordering options when selecting data from "user"."""
+"""
+Ordering options when selecting data from "user".
+"""
 input user_order_by {
   created_at: order_by
   id: order_by
@@ -1848,7 +2436,9 @@ input user_order_by {
   online_ping: order_by
 }
 
-"""primary key columns input for table: user"""
+"""
+primary key columns input for table: user
+"""
 input user_pk_columns_input {
   id: uuid!
 }
@@ -1857,16 +2447,24 @@ input user_pk_columns_input {
 select columns of table "user"
 """
 enum user_select_column {
-  """column name"""
+  """
+  column name
+  """
   created_at
 
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   last_seen_at
 
-  """column name"""
+  """
+  column name
+  """
   online_ping
 }
 
@@ -1884,14 +2482,20 @@ input user_set_input {
 Streaming cursor of the table "user"
 """
 input user_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: user_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input user_stream_cursor_value_input {
   created_at: timestamptz
   id: uuid
@@ -1903,24 +2507,36 @@ input user_stream_cursor_value_input {
 update columns of table "user"
 """
 enum user_update_column {
-  """column name"""
+  """
+  column name
+  """
   created_at
 
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   last_seen_at
 
-  """column name"""
+  """
+  column name
+  """
   online_ping
 }
 
 input user_updates {
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: user_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: user_bool_exp!
 }
 
@@ -1947,12 +2563,16 @@ columns and relationships of "vote"
 type vote {
   created_at: timestamptz!
 
-  """An object relationship"""
+  """
+  An object relationship
+  """
   created_by_user: user!
   created_by_user_id: uuid!
   id: uuid!
 
-  """An object relationship"""
+  """
+  An object relationship
+  """
   option: option!
   option_id: uuid!
 }
@@ -2011,7 +2631,9 @@ input vote_insert_input {
   option_id: uuid
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type vote_max_fields {
   created_at: timestamptz
   created_by_user_id: uuid
@@ -2019,7 +2641,9 @@ type vote_max_fields {
   option_id: uuid
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type vote_min_fields {
   created_at: timestamptz
   created_by_user_id: uuid
@@ -2031,10 +2655,14 @@ type vote_min_fields {
 response of any mutation on the table "vote"
 """
 type vote_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [vote!]!
 }
 
@@ -2047,7 +2675,9 @@ input vote_on_conflict {
   where: vote_bool_exp
 }
 
-"""Ordering options when selecting data from "vote"."""
+"""
+Ordering options when selecting data from "vote".
+"""
 input vote_order_by {
   created_at: order_by
   created_by_user: user_order_by
@@ -2057,7 +2687,9 @@ input vote_order_by {
   option_id: order_by
 }
 
-"""primary key columns input for table: vote"""
+"""
+primary key columns input for table: vote
+"""
 input vote_pk_columns_input {
   id: uuid!
 }
@@ -2066,16 +2698,24 @@ input vote_pk_columns_input {
 select columns of table "vote"
 """
 enum vote_select_column {
-  """column name"""
+  """
+  column name
+  """
   created_at
 
-  """column name"""
+  """
+  column name
+  """
   created_by_user_id
 
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   option_id
 }
 
@@ -2093,14 +2733,20 @@ input vote_set_input {
 Streaming cursor of the table "vote"
 """
 input vote_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: vote_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input vote_stream_cursor_value_input {
   created_at: timestamptz
   created_by_user_id: uuid
@@ -2112,23 +2758,35 @@ input vote_stream_cursor_value_input {
 update columns of table "vote"
 """
 enum vote_update_column {
-  """column name"""
+  """
+  column name
+  """
   created_at
 
-  """column name"""
+  """
+  column name
+  """
   created_by_user_id
 
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   option_id
 }
 
 input vote_updates {
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: vote_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: vote_bool_exp!
 }

@@ -1,9 +1,3 @@
-import { RenderContext } from '../common/RenderContext';
-import { excludedTypes } from '../common/excludedTypes';
-import { sortKeys } from '../common/support';
-import { inputObjectType } from './inputObjectType';
-import { objectType } from './objectType';
-import { unionType } from './unionType';
 import {
   GraphQLObjectType,
   GraphQLSchema,
@@ -12,6 +6,13 @@ import {
   isObjectType,
   isUnionType,
 } from 'graphql';
+
+import { excludedTypes } from '../common/excludedTypes';
+import { RenderContext } from '../common/RenderContext';
+import { sortKeys } from '../common/support';
+import { inputObjectType } from './inputObjectType';
+import { objectType } from './objectType';
+import { unionType } from './unionType';
 
 export function renderRequestTypes(schema: GraphQLSchema, ctx: RenderContext) {
   let typeMap = schema.getTypeMap();

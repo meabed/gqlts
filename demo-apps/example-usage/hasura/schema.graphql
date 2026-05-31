@@ -4,12 +4,18 @@ schema {
   subscription: subscription_root
 }
 
-"""whether this query should be cached (Hasura Cloud only)"""
+"""
+whether this query should be cached (Hasura Cloud only)
+"""
 directive @cached(
-  """measured in seconds"""
+  """
+  measured in seconds
+  """
   ttl: Int! = 60
 
-  """refresh the cache entry"""
+  """
+  refresh the cache entry
+  """
   refresh: Boolean! = false
 ) on QUERY
 
@@ -36,7 +42,9 @@ input String_comparison_exp {
   _gt: String
   _gte: String
 
-  """does the column match the given case-insensitive pattern"""
+  """
+  does the column match the given case-insensitive pattern
+  """
   _ilike: String
   _in: [String!]
 
@@ -46,13 +54,17 @@ input String_comparison_exp {
   _iregex: String
   _is_null: Boolean
 
-  """does the column match the given pattern"""
+  """
+  does the column match the given pattern
+  """
   _like: String
   _lt: String
   _lte: String
   _neq: String
 
-  """does the column NOT match the given case-insensitive pattern"""
+  """
+  does the column NOT match the given case-insensitive pattern
+  """
   _nilike: String
   _nin: [String!]
 
@@ -61,7 +73,9 @@ input String_comparison_exp {
   """
   _niregex: String
 
-  """does the column NOT match the given pattern"""
+  """
+  does the column NOT match the given pattern
+  """
   _nlike: String
 
   """
@@ -69,7 +83,9 @@ input String_comparison_exp {
   """
   _nregex: String
 
-  """does the column NOT match the given SQL regular expression"""
+  """
+  does the column NOT match the given SQL regular expression
+  """
   _nsimilar: String
 
   """
@@ -77,16 +93,24 @@ input String_comparison_exp {
   """
   _regex: String
 
-  """does the column match the given SQL regular expression"""
+  """
+  does the column match the given SQL regular expression
+  """
   _similar: String
 }
 
-"""ordering argument of a cursor"""
+"""
+ordering argument of a cursor
+"""
 enum cursor_ordering {
-  """ascending ordering of the cursor"""
+  """
+  ascending ordering of the cursor
+  """
   ASC
 
-  """descending ordering of the cursor"""
+  """
+  descending ordering of the cursor
+  """
   DESC
 }
 
@@ -125,7 +149,9 @@ type message_aggregate_fields {
   variance: message_variance_fields
 }
 
-"""aggregate avg on columns"""
+"""
+aggregate avg on columns
+"""
 type message_avg_fields {
   id: Float
 }
@@ -170,7 +196,9 @@ input message_insert_input {
   username: String
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type message_max_fields {
   id: Int
   text: String
@@ -178,7 +206,9 @@ type message_max_fields {
   username: String
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type message_min_fields {
   id: Int
   text: String
@@ -190,10 +220,14 @@ type message_min_fields {
 response of any mutation on the table "message"
 """
 type message_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [message!]!
 }
 
@@ -206,7 +240,9 @@ input message_on_conflict {
   where: message_bool_exp
 }
 
-"""Ordering options when selecting data from "message"."""
+"""
+Ordering options when selecting data from "message".
+"""
 input message_order_by {
   id: order_by
   text: order_by
@@ -214,7 +250,9 @@ input message_order_by {
   username: order_by
 }
 
-"""primary key columns input for table: message"""
+"""
+primary key columns input for table: message
+"""
 input message_pk_columns_input {
   id: Int!
 }
@@ -223,16 +261,24 @@ input message_pk_columns_input {
 select columns of table "message"
 """
 enum message_select_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   text
 
-  """column name"""
+  """
+  column name
+  """
   timestamp
 
-  """column name"""
+  """
+  column name
+  """
   username
 }
 
@@ -246,17 +292,23 @@ input message_set_input {
   username: String
 }
 
-"""aggregate stddev on columns"""
+"""
+aggregate stddev on columns
+"""
 type message_stddev_fields {
   id: Float
 }
 
-"""aggregate stddev_pop on columns"""
+"""
+aggregate stddev_pop on columns
+"""
 type message_stddev_pop_fields {
   id: Float
 }
 
-"""aggregate stddev_samp on columns"""
+"""
+aggregate stddev_samp on columns
+"""
 type message_stddev_samp_fields {
   id: Float
 }
@@ -265,14 +317,20 @@ type message_stddev_samp_fields {
 Streaming cursor of the table "message"
 """
 input message_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: message_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input message_stream_cursor_value_input {
   id: Int
   text: String
@@ -280,7 +338,9 @@ input message_stream_cursor_value_input {
   username: String
 }
 
-"""aggregate sum on columns"""
+"""
+aggregate sum on columns
+"""
 type message_sum_fields {
   id: Int
 }
@@ -289,52 +349,76 @@ type message_sum_fields {
 update columns of table "message"
 """
 enum message_update_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   text
 
-  """column name"""
+  """
+  column name
+  """
   timestamp
 
-  """column name"""
+  """
+  column name
+  """
   username
 }
 
 input message_updates {
-  """increments the numeric columns with given value of the filtered values"""
+  """
+  increments the numeric columns with given value of the filtered values
+  """
   _inc: message_inc_input
 
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: message_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: message_bool_exp!
 }
 
-"""aggregate var_pop on columns"""
+"""
+aggregate var_pop on columns
+"""
 type message_var_pop_fields {
   id: Float
 }
 
-"""aggregate var_samp on columns"""
+"""
+aggregate var_samp on columns
+"""
 type message_var_samp_fields {
   id: Float
 }
 
-"""aggregate variance on columns"""
+"""
+aggregate variance on columns
+"""
 type message_variance_fields {
   id: Float
 }
 
-"""mutation root"""
+"""
+mutation root
+"""
 type mutation_root {
   """
   delete data from the table: "message"
   """
   delete_message(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: message_bool_exp!
   ): message_mutation_response
 
@@ -347,7 +431,9 @@ type mutation_root {
   delete data from the table: "user"
   """
   delete_user(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: user_bool_exp!
   ): user_mutation_response
 
@@ -360,7 +446,9 @@ type mutation_root {
   delete data from the table: "user_online"
   """
   delete_user_online(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: user_online_bool_exp!
   ): user_online_mutation_response
 
@@ -368,7 +456,9 @@ type mutation_root {
   delete data from the table: "user_typing"
   """
   delete_user_typing(
-    """filter the rows which have to be deleted"""
+    """
+    filter the rows which have to be deleted
+    """
     where: user_typing_bool_exp!
   ): user_typing_mutation_response
 
@@ -376,10 +466,14 @@ type mutation_root {
   insert data into the table: "message"
   """
   insert_message(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [message_insert_input!]!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: message_on_conflict
   ): message_mutation_response
 
@@ -387,10 +481,14 @@ type mutation_root {
   insert a single row into the table: "message"
   """
   insert_message_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: message_insert_input!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: message_on_conflict
   ): message
 
@@ -398,10 +496,14 @@ type mutation_root {
   insert data into the table: "user"
   """
   insert_user(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [user_insert_input!]!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: user_on_conflict
   ): user_mutation_response
 
@@ -409,10 +511,14 @@ type mutation_root {
   insert a single row into the table: "user"
   """
   insert_user_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: user_insert_input!
 
-    """upsert condition"""
+    """
+    upsert condition
+    """
     on_conflict: user_on_conflict
   ): user
 
@@ -420,7 +526,9 @@ type mutation_root {
   insert data into the table: "user_online"
   """
   insert_user_online(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [user_online_insert_input!]!
   ): user_online_mutation_response
 
@@ -428,7 +536,9 @@ type mutation_root {
   insert a single row into the table: "user_online"
   """
   insert_user_online_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: user_online_insert_input!
   ): user_online
 
@@ -436,7 +546,9 @@ type mutation_root {
   insert data into the table: "user_typing"
   """
   insert_user_typing(
-    """the rows to be inserted"""
+    """
+    the rows to be inserted
+    """
     objects: [user_typing_insert_input!]!
   ): user_typing_mutation_response
 
@@ -444,7 +556,9 @@ type mutation_root {
   insert a single row into the table: "user_typing"
   """
   insert_user_typing_one(
-    """the row to be inserted"""
+    """
+    the row to be inserted
+    """
     object: user_typing_insert_input!
   ): user_typing
 
@@ -452,13 +566,19 @@ type mutation_root {
   update data of the table: "message"
   """
   update_message(
-    """increments the numeric columns with given value of the filtered values"""
+    """
+    increments the numeric columns with given value of the filtered values
+    """
     _inc: message_inc_input
 
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: message_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: message_bool_exp!
   ): message_mutation_response
 
@@ -466,10 +586,14 @@ type mutation_root {
   update single row of the table: "message"
   """
   update_message_by_pk(
-    """increments the numeric columns with given value of the filtered values"""
+    """
+    increments the numeric columns with given value of the filtered values
+    """
     _inc: message_inc_input
 
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: message_set_input
     pk_columns: message_pk_columns_input!
   ): message
@@ -478,7 +602,9 @@ type mutation_root {
   update multiples rows of table: "message"
   """
   update_message_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [message_updates!]!
   ): [message_mutation_response]
 
@@ -486,13 +612,19 @@ type mutation_root {
   update data of the table: "user"
   """
   update_user(
-    """increments the numeric columns with given value of the filtered values"""
+    """
+    increments the numeric columns with given value of the filtered values
+    """
     _inc: user_inc_input
 
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: user_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: user_bool_exp!
   ): user_mutation_response
 
@@ -500,10 +632,14 @@ type mutation_root {
   update single row of the table: "user"
   """
   update_user_by_pk(
-    """increments the numeric columns with given value of the filtered values"""
+    """
+    increments the numeric columns with given value of the filtered values
+    """
     _inc: user_inc_input
 
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: user_set_input
     pk_columns: user_pk_columns_input!
   ): user
@@ -512,7 +648,9 @@ type mutation_root {
   update multiples rows of table: "user"
   """
   update_user_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [user_updates!]!
   ): [user_mutation_response]
 
@@ -520,13 +658,19 @@ type mutation_root {
   update data of the table: "user_online"
   """
   update_user_online(
-    """increments the numeric columns with given value of the filtered values"""
+    """
+    increments the numeric columns with given value of the filtered values
+    """
     _inc: user_online_inc_input
 
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: user_online_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: user_online_bool_exp!
   ): user_online_mutation_response
 
@@ -534,7 +678,9 @@ type mutation_root {
   update multiples rows of table: "user_online"
   """
   update_user_online_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [user_online_updates!]!
   ): [user_online_mutation_response]
 
@@ -542,13 +688,19 @@ type mutation_root {
   update data of the table: "user_typing"
   """
   update_user_typing(
-    """increments the numeric columns with given value of the filtered values"""
+    """
+    increments the numeric columns with given value of the filtered values
+    """
     _inc: user_typing_inc_input
 
-    """sets the columns of the filtered rows to the given values"""
+    """
+    sets the columns of the filtered rows to the given values
+    """
     _set: user_typing_set_input
 
-    """filter the rows which have to be updated"""
+    """
+    filter the rows which have to be updated
+    """
     where: user_typing_bool_exp!
   ): user_typing_mutation_response
 
@@ -556,29 +708,45 @@ type mutation_root {
   update multiples rows of table: "user_typing"
   """
   update_user_typing_many(
-    """updates to execute, in order"""
+    """
+    updates to execute, in order
+    """
     updates: [user_typing_updates!]!
   ): [user_typing_mutation_response]
 }
 
-"""column ordering options"""
+"""
+column ordering options
+"""
 enum order_by {
-  """in ascending order, nulls last"""
+  """
+  in ascending order, nulls last
+  """
   asc
 
-  """in ascending order, nulls first"""
+  """
+  in ascending order, nulls first
+  """
   asc_nulls_first
 
-  """in ascending order, nulls last"""
+  """
+  in ascending order, nulls last
+  """
   asc_nulls_last
 
-  """in descending order, nulls first"""
+  """
+  in descending order, nulls first
+  """
   desc
 
-  """in descending order, nulls first"""
+  """
+  in descending order, nulls first
+  """
   desc_nulls_first
 
-  """in descending order, nulls last"""
+  """
+  in descending order, nulls last
+  """
   desc_nulls_last
 }
 
@@ -587,19 +755,29 @@ type query_root {
   fetch data from the table: "message"
   """
   message(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [message_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [message_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: message_bool_exp
   ): [message!]!
 
@@ -607,42 +785,64 @@ type query_root {
   fetch aggregated fields from the table: "message"
   """
   message_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [message_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [message_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: message_bool_exp
   ): message_aggregate!
 
-  """fetch data from the table: "message" using primary key columns"""
+  """
+  fetch data from the table: "message" using primary key columns
+  """
   message_by_pk(id: Int!): message
 
   """
   fetch data from the table: "user"
   """
   user(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): [user!]!
 
@@ -650,42 +850,64 @@ type query_root {
   fetch aggregated fields from the table: "user"
   """
   user_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): user_aggregate!
 
-  """fetch data from the table: "user" using primary key columns"""
+  """
+  fetch data from the table: "user" using primary key columns
+  """
   user_by_pk(id: Int!): user
 
   """
   fetch data from the table: "user_online"
   """
   user_online(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_online_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_online_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_online_bool_exp
   ): [user_online!]!
 
@@ -693,19 +915,29 @@ type query_root {
   fetch aggregated fields from the table: "user_online"
   """
   user_online_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_online_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_online_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_online_bool_exp
   ): user_online_aggregate!
 
@@ -713,19 +945,29 @@ type query_root {
   fetch data from the table: "user_typing"
   """
   user_typing(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_typing_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_typing_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_typing_bool_exp
   ): [user_typing!]!
 
@@ -733,19 +975,29 @@ type query_root {
   fetch aggregated fields from the table: "user_typing"
   """
   user_typing_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_typing_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_typing_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_typing_bool_exp
   ): user_typing_aggregate!
 }
@@ -755,19 +1007,29 @@ type subscription_root {
   fetch data from the table: "message"
   """
   message(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [message_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [message_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: message_bool_exp
   ): [message!]!
 
@@ -775,36 +1037,54 @@ type subscription_root {
   fetch aggregated fields from the table: "message"
   """
   message_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [message_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [message_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: message_bool_exp
   ): message_aggregate!
 
-  """fetch data from the table: "message" using primary key columns"""
+  """
+  fetch data from the table: "message" using primary key columns
+  """
   message_by_pk(id: Int!): message
 
   """
   fetch data from the table in a streaming manner: "message"
   """
   message_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [message_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: message_bool_exp
   ): [message!]!
 
@@ -812,19 +1092,29 @@ type subscription_root {
   fetch data from the table: "user"
   """
   user(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): [user!]!
 
@@ -832,42 +1122,64 @@ type subscription_root {
   fetch aggregated fields from the table: "user"
   """
   user_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): user_aggregate!
 
-  """fetch data from the table: "user" using primary key columns"""
+  """
+  fetch data from the table: "user" using primary key columns
+  """
   user_by_pk(id: Int!): user
 
   """
   fetch data from the table: "user_online"
   """
   user_online(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_online_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_online_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_online_bool_exp
   ): [user_online!]!
 
@@ -875,19 +1187,29 @@ type subscription_root {
   fetch aggregated fields from the table: "user_online"
   """
   user_online_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_online_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_online_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_online_bool_exp
   ): user_online_aggregate!
 
@@ -895,13 +1217,19 @@ type subscription_root {
   fetch data from the table in a streaming manner: "user_online"
   """
   user_online_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [user_online_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_online_bool_exp
   ): [user_online!]!
 
@@ -909,13 +1237,19 @@ type subscription_root {
   fetch data from the table in a streaming manner: "user"
   """
   user_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [user_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_bool_exp
   ): [user!]!
 
@@ -923,19 +1257,29 @@ type subscription_root {
   fetch data from the table: "user_typing"
   """
   user_typing(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_typing_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_typing_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_typing_bool_exp
   ): [user_typing!]!
 
@@ -943,19 +1287,29 @@ type subscription_root {
   fetch aggregated fields from the table: "user_typing"
   """
   user_typing_aggregate(
-    """distinct select on columns"""
+    """
+    distinct select on columns
+    """
     distinct_on: [user_typing_select_column!]
 
-    """limit the number of rows returned"""
+    """
+    limit the number of rows returned
+    """
     limit: Int
 
-    """skip the first n rows. Use only with order_by"""
+    """
+    skip the first n rows. Use only with order_by
+    """
     offset: Int
 
-    """sort the rows by one or more columns"""
+    """
+    sort the rows by one or more columns
+    """
     order_by: [user_typing_order_by!]
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_typing_bool_exp
   ): user_typing_aggregate!
 
@@ -963,13 +1317,19 @@ type subscription_root {
   fetch data from the table in a streaming manner: "user_typing"
   """
   user_typing_stream(
-    """maximum number of rows returned in a single batch"""
+    """
+    maximum number of rows returned in a single batch
+    """
     batch_size: Int!
 
-    """cursor to stream the results returned by the query"""
+    """
+    cursor to stream the results returned by the query
+    """
     cursor: [user_typing_stream_cursor_input]!
 
-    """filter the rows returned"""
+    """
+    filter the rows returned
+    """
     where: user_typing_bool_exp
   ): [user_typing!]!
 }
@@ -991,7 +1351,9 @@ input timestamptz_comparison_exp {
   _nin: [timestamptz!]
 }
 
-"""This table stores user data"""
+"""
+This table stores user data
+"""
 type user {
   id: Int!
   last_seen: timestamptz
@@ -1024,7 +1386,9 @@ type user_aggregate_fields {
   variance: user_variance_fields
 }
 
-"""aggregate avg on columns"""
+"""
+aggregate avg on columns
+"""
 type user_avg_fields {
   id: Float
 }
@@ -1074,7 +1438,9 @@ input user_insert_input {
   username: String
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type user_max_fields {
   id: Int
   last_seen: timestamptz
@@ -1082,7 +1448,9 @@ type user_max_fields {
   username: String
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type user_min_fields {
   id: Int
   last_seen: timestamptz
@@ -1094,10 +1462,14 @@ type user_min_fields {
 response of any mutation on the table "user"
 """
 type user_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [user!]!
 }
 
@@ -1145,7 +1517,9 @@ type user_online_aggregate_fields {
   variance: user_online_variance_fields
 }
 
-"""aggregate avg on columns"""
+"""
+aggregate avg on columns
+"""
 type user_online_avg_fields {
   id: Float
 }
@@ -1180,7 +1554,9 @@ input user_online_insert_input {
   username: String
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type user_online_max_fields {
   id: Int
   last_seen: timestamptz
@@ -1188,7 +1564,9 @@ type user_online_max_fields {
   username: String
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type user_online_min_fields {
   id: Int
   last_seen: timestamptz
@@ -1200,14 +1578,20 @@ type user_online_min_fields {
 response of any mutation on the table "user_online"
 """
 type user_online_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [user_online!]!
 }
 
-"""Ordering options when selecting data from "user_online"."""
+"""
+Ordering options when selecting data from "user_online".
+"""
 input user_online_order_by {
   id: order_by
   last_seen: order_by
@@ -1219,16 +1603,24 @@ input user_online_order_by {
 select columns of table "user_online"
 """
 enum user_online_select_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   last_seen
 
-  """column name"""
+  """
+  column name
+  """
   last_typed
 
-  """column name"""
+  """
+  column name
+  """
   username
 }
 
@@ -1242,17 +1634,23 @@ input user_online_set_input {
   username: String
 }
 
-"""aggregate stddev on columns"""
+"""
+aggregate stddev on columns
+"""
 type user_online_stddev_fields {
   id: Float
 }
 
-"""aggregate stddev_pop on columns"""
+"""
+aggregate stddev_pop on columns
+"""
 type user_online_stddev_pop_fields {
   id: Float
 }
 
-"""aggregate stddev_samp on columns"""
+"""
+aggregate stddev_samp on columns
+"""
 type user_online_stddev_samp_fields {
   id: Float
 }
@@ -1261,14 +1659,20 @@ type user_online_stddev_samp_fields {
 Streaming cursor of the table "user_online"
 """
 input user_online_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: user_online_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input user_online_stream_cursor_value_input {
   id: Int
   last_seen: timestamptz
@@ -1276,38 +1680,54 @@ input user_online_stream_cursor_value_input {
   username: String
 }
 
-"""aggregate sum on columns"""
+"""
+aggregate sum on columns
+"""
 type user_online_sum_fields {
   id: Int
 }
 
 input user_online_updates {
-  """increments the numeric columns with given value of the filtered values"""
+  """
+  increments the numeric columns with given value of the filtered values
+  """
   _inc: user_online_inc_input
 
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: user_online_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: user_online_bool_exp!
 }
 
-"""aggregate var_pop on columns"""
+"""
+aggregate var_pop on columns
+"""
 type user_online_var_pop_fields {
   id: Float
 }
 
-"""aggregate var_samp on columns"""
+"""
+aggregate var_samp on columns
+"""
 type user_online_var_samp_fields {
   id: Float
 }
 
-"""aggregate variance on columns"""
+"""
+aggregate variance on columns
+"""
 type user_online_variance_fields {
   id: Float
 }
 
-"""Ordering options when selecting data from "user"."""
+"""
+Ordering options when selecting data from "user".
+"""
 input user_order_by {
   id: order_by
   last_seen: order_by
@@ -1315,7 +1735,9 @@ input user_order_by {
   username: order_by
 }
 
-"""primary key columns input for table: user"""
+"""
+primary key columns input for table: user
+"""
 input user_pk_columns_input {
   id: Int!
 }
@@ -1324,16 +1746,24 @@ input user_pk_columns_input {
 select columns of table "user"
 """
 enum user_select_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   last_seen
 
-  """column name"""
+  """
+  column name
+  """
   last_typed
 
-  """column name"""
+  """
+  column name
+  """
   username
 }
 
@@ -1347,17 +1777,23 @@ input user_set_input {
   username: String
 }
 
-"""aggregate stddev on columns"""
+"""
+aggregate stddev on columns
+"""
 type user_stddev_fields {
   id: Float
 }
 
-"""aggregate stddev_pop on columns"""
+"""
+aggregate stddev_pop on columns
+"""
 type user_stddev_pop_fields {
   id: Float
 }
 
-"""aggregate stddev_samp on columns"""
+"""
+aggregate stddev_samp on columns
+"""
 type user_stddev_samp_fields {
   id: Float
 }
@@ -1366,14 +1802,20 @@ type user_stddev_samp_fields {
 Streaming cursor of the table "user"
 """
 input user_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: user_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input user_stream_cursor_value_input {
   id: Int
   last_seen: timestamptz
@@ -1381,7 +1823,9 @@ input user_stream_cursor_value_input {
   username: String
 }
 
-"""aggregate sum on columns"""
+"""
+aggregate sum on columns
+"""
 type user_sum_fields {
   id: Int
 }
@@ -1421,7 +1865,9 @@ type user_typing_aggregate_fields {
   variance: user_typing_variance_fields
 }
 
-"""aggregate avg on columns"""
+"""
+aggregate avg on columns
+"""
 type user_typing_avg_fields {
   id: Float
 }
@@ -1456,7 +1902,9 @@ input user_typing_insert_input {
   username: String
 }
 
-"""aggregate max on columns"""
+"""
+aggregate max on columns
+"""
 type user_typing_max_fields {
   id: Int
   last_seen: timestamptz
@@ -1464,7 +1912,9 @@ type user_typing_max_fields {
   username: String
 }
 
-"""aggregate min on columns"""
+"""
+aggregate min on columns
+"""
 type user_typing_min_fields {
   id: Int
   last_seen: timestamptz
@@ -1476,14 +1926,20 @@ type user_typing_min_fields {
 response of any mutation on the table "user_typing"
 """
 type user_typing_mutation_response {
-  """number of rows affected by the mutation"""
+  """
+  number of rows affected by the mutation
+  """
   affected_rows: Int!
 
-  """data from the rows affected by the mutation"""
+  """
+  data from the rows affected by the mutation
+  """
   returning: [user_typing!]!
 }
 
-"""Ordering options when selecting data from "user_typing"."""
+"""
+Ordering options when selecting data from "user_typing".
+"""
 input user_typing_order_by {
   id: order_by
   last_seen: order_by
@@ -1495,16 +1951,24 @@ input user_typing_order_by {
 select columns of table "user_typing"
 """
 enum user_typing_select_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   last_seen
 
-  """column name"""
+  """
+  column name
+  """
   last_typed
 
-  """column name"""
+  """
+  column name
+  """
   username
 }
 
@@ -1518,17 +1982,23 @@ input user_typing_set_input {
   username: String
 }
 
-"""aggregate stddev on columns"""
+"""
+aggregate stddev on columns
+"""
 type user_typing_stddev_fields {
   id: Float
 }
 
-"""aggregate stddev_pop on columns"""
+"""
+aggregate stddev_pop on columns
+"""
 type user_typing_stddev_pop_fields {
   id: Float
 }
 
-"""aggregate stddev_samp on columns"""
+"""
+aggregate stddev_samp on columns
+"""
 type user_typing_stddev_samp_fields {
   id: Float
 }
@@ -1537,14 +2007,20 @@ type user_typing_stddev_samp_fields {
 Streaming cursor of the table "user_typing"
 """
 input user_typing_stream_cursor_input {
-  """Stream column input with initial value"""
+  """
+  Stream column input with initial value
+  """
   initial_value: user_typing_stream_cursor_value_input!
 
-  """cursor ordering"""
+  """
+  cursor ordering
+  """
   ordering: cursor_ordering
 }
 
-"""Initial value of the column from where the streaming should start"""
+"""
+Initial value of the column from where the streaming should start
+"""
 input user_typing_stream_cursor_value_input {
   id: Int
   last_seen: timestamptz
@@ -1552,33 +2028,47 @@ input user_typing_stream_cursor_value_input {
   username: String
 }
 
-"""aggregate sum on columns"""
+"""
+aggregate sum on columns
+"""
 type user_typing_sum_fields {
   id: Int
 }
 
 input user_typing_updates {
-  """increments the numeric columns with given value of the filtered values"""
+  """
+  increments the numeric columns with given value of the filtered values
+  """
   _inc: user_typing_inc_input
 
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: user_typing_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: user_typing_bool_exp!
 }
 
-"""aggregate var_pop on columns"""
+"""
+aggregate var_pop on columns
+"""
 type user_typing_var_pop_fields {
   id: Float
 }
 
-"""aggregate var_samp on columns"""
+"""
+aggregate var_samp on columns
+"""
 type user_typing_var_samp_fields {
   id: Float
 }
 
-"""aggregate variance on columns"""
+"""
+aggregate variance on columns
+"""
 type user_typing_variance_fields {
   id: Float
 }
@@ -1587,41 +2077,61 @@ type user_typing_variance_fields {
 update columns of table "user"
 """
 enum user_update_column {
-  """column name"""
+  """
+  column name
+  """
   id
 
-  """column name"""
+  """
+  column name
+  """
   last_seen
 
-  """column name"""
+  """
+  column name
+  """
   last_typed
 
-  """column name"""
+  """
+  column name
+  """
   username
 }
 
 input user_updates {
-  """increments the numeric columns with given value of the filtered values"""
+  """
+  increments the numeric columns with given value of the filtered values
+  """
   _inc: user_inc_input
 
-  """sets the columns of the filtered rows to the given values"""
+  """
+  sets the columns of the filtered rows to the given values
+  """
   _set: user_set_input
 
-  """filter the rows which have to be updated"""
+  """
+  filter the rows which have to be updated
+  """
   where: user_bool_exp!
 }
 
-"""aggregate var_pop on columns"""
+"""
+aggregate var_pop on columns
+"""
 type user_var_pop_fields {
   id: Float
 }
 
-"""aggregate var_samp on columns"""
+"""
+aggregate var_samp on columns
+"""
 type user_var_samp_fields {
   id: Float
 }
 
-"""aggregate variance on columns"""
+"""
+aggregate variance on columns
+"""
 type user_variance_fields {
   id: Float
 }

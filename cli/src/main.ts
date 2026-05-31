@@ -1,7 +1,8 @@
+import Listr from 'listr';
+
 import { Config } from './config';
 import { clientTasks } from './tasks/clientTasks';
 import { schemaTask } from './tasks/schemaTask';
-import Listr from 'listr';
 
 export function generate(config: Config): Promise<void> {
   if (!config.output) {

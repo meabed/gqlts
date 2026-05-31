@@ -1,8 +1,9 @@
-import { client } from './_app';
 import { Box, Input, Spinner } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
-import { Hero, PageContainer, SectionTitle } from '../components/landing';
 import React, { useState } from 'react';
+
+import { Hero, PageContainer, SectionTitle } from '../components/landing';
+import { client } from './_app';
 
 const Component = () => {
   const [regex, setRegex] = useState('.*');

@@ -1,8 +1,9 @@
-import { createClient } from '../hasura';
 import { Box, Spinner, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer, SectionTitle } from '../components/landing';
 import React from 'react';
 import { useObservable } from 'react-extra-hooks';
+
+import { Hero, PageContainer, SectionTitle } from '../components/landing';
+import { createClient } from '../hasura';
 
 const client = createClient({
   subscription: {

@@ -5,12 +5,13 @@
   "homepage": "https://gqlts.vercel.app",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "build-sdk": "cd sdk && yarn install --frozen-lockfile --check-files && yarn build-sdk",
-    "dev": "PORT=${PORT:-4000} ts-node src/index.ts",
-    "start": "PORT=${PORT:-4000} node dist/index.js",
-    "test": "NODE_ENV=test jest -c ./__tests__/jest.config.js --runInBand --forceExit",
-    "typecheck": "tsc --pretty --skipLibCheck --noEmit"
+    "build": "tsgo -p tsconfig.build.json",
+    "build-sdk": "bun run --cwd sdk build-sdk",
+    "dev": "PORT=${PORT:-4000} bun --hot src/index.ts",
+    "start": "PORT=${PORT:-4000} bun dist/index.js",
+    "test": "NODE_ENV=test bun test --preload ./__tests__/setup.ts __tests__",
+    "tsgo": "tsgo -p tsconfig.json --noEmit",
+    "typecheck": "tsgo -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@envelop/parser-cache": "10.1.1",
@@ -22,14 +23,12 @@
     "graphql-yoga": "5.21.0",
     "nexus": "1.3.0",
     "supertest": "7.2.2",
-    "ts-node": "10.9.2",
     "typescript": "6.0.3"
   },
   "devDependencies": {
     "@gqlts/runtime": "file:../../runtime",
-    "@types/jest": "30.0.0",
-    "@types/supertest": "7.2.0",
-    "jest": "30.3.0",
-    "ts-jest": "29.4.9"
+    "@types/bun": "1.3.14",
+    "@types/node": "25.6.0",
+    "@types/supertest": "7.2.0"
   }
 }

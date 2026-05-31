@@ -1,7 +1,8 @@
 import { Box, Link, Stack } from '@chakra-ui/react';
-import { Hero, PageContainer } from '../components/landing';
 import NextLink from 'next/link';
 import React from 'react';
+
+import { Hero, PageContainer } from '../components/landing';
 
 const paths: Record<any, any> = {
   'react-query': '/react-query',

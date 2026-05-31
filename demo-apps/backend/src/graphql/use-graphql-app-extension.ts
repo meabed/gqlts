@@ -1,7 +1,9 @@
-import { IGraphQLContext } from './graphql-context';
+import { randomUUID } from 'node:crypto';
+
 import { ExecutionResult } from 'graphql';
 import { Plugin } from 'graphql-yoga';
-import { randomUUID } from 'node:crypto';
+
+import { IGraphQLContext } from './graphql-context';
 
 export const useGraphqlAppExtension: Plugin<IGraphQLContext> = {
   onExecute() {

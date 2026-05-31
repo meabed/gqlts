@@ -1,8 +1,10 @@
 export default {
-  index: 'Gqlts',
+  index: 'Overview',
   'quick-start': 'Quick Start',
-  usage: 'Usage',
-  generate: 'Generate',
-  development: 'Development',
-  comparisons: 'Comparisons',
+  examples: 'Examples',
+  features: 'Feature Coverage',
+  usage: 'Core Concepts',
+  generate: 'Generation',
+  comparisons: 'Compare',
+  development: 'Contributing',
 };

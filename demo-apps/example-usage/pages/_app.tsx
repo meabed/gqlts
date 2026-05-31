@@ -1,6 +1,7 @@
-import { createClient } from '../generated';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import React from 'react';
+
+import { createClient } from '../generated';
 
 export const client = createClient({ withCredentials: false });
 

@@ -1,10 +1,13 @@
+import { describe, it } from 'bun:test';
+
+import type { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from 'axios';
+
 import { createClient, everything } from '../github/generated/index.js';
-import type { AxiosInstance } from 'axios';
 
 describe('github', () => {
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
-    it.skip('requires GITHUB_TOKEN');
+    it.skip('requires GITHUB_TOKEN', () => {});
     return;
   }
   const client = createClient({
@@ -16,11 +19,11 @@ describe('github', () => {
   // example of assigning a custom fetcher and interceptor ( Axios Based )
   const axiosClient = client.fetcherInstance as AxiosInstance;
   axiosClient.interceptors.request.use(
-    (config) => {
+    (config: InternalAxiosRequestConfig) => {
       // console.log(config);
       return config;
     },
-    (error) => {
+    (error: AxiosError) => {
       // console.log(error);
       return Promise.reject(error);
     },

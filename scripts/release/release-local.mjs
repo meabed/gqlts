@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 /**
  * Local release helper: stamp a manual version into cli/ and runtime/,
  * sync README + LICENSE, build, and publish both packages to npm at the
@@ -9,12 +9,12 @@
  * release.yml uses is unchanged.
  *
  * Usage:
- *   yarn release:local <semver> [--dry-run] [--tag <dist-tag>]
+ *   bun run release:local <semver> [--dry-run] [--tag <dist-tag>]
  *
  * Examples:
- *   yarn release:local 3.5.0
- *   yarn release:local 3.5.0-beta.1 --tag beta
- *   yarn release:local 3.5.0 --dry-run
+ *   bun run release:local 3.5.0
+ *   bun run release:local 3.5.0-beta.1 --tag beta
+ *   bun run release:local 3.5.0 --dry-run
  *
  * dist-tag resolution:
  *   --tag X            -> X
@@ -33,15 +33,7 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import process from 'node:process';
 
-import {
-  getPackageInfo,
-  logStep,
-  packageDirs,
-  readJson,
-  repoRoot,
-  syncPackageDocs,
-  writeJson,
-} from './lib.mjs';
+import { getPackageInfo, logStep, packageDirs, readJson, repoRoot, syncPackageDocs, writeJson } from './lib.mjs';
 
 function parseArgs(argv) {
   const args = argv.slice(2);
@@ -75,12 +67,12 @@ function parseArgs(argv) {
 }
 
 function printUsage() {
-  console.error('Usage: yarn release:local <semver> [--dry-run] [--tag <dist-tag>]');
+  console.error('Usage: bun run release:local <semver> [--dry-run] [--tag <dist-tag>]');
   console.error('');
   console.error('Examples:');
-  console.error('  yarn release:local 3.5.0');
-  console.error('  yarn release:local 3.5.0-beta.1 --tag beta');
-  console.error('  yarn release:local 3.5.0 --dry-run');
+  console.error('  bun run release:local 3.5.0');
+  console.error('  bun run release:local 3.5.0-beta.1 --tag beta');
+  console.error('  bun run release:local 3.5.0 --dry-run');
 }
 
 let parsed;
@@ -158,7 +150,7 @@ logStep('Syncing package README and LICENSE files');
 syncPackageDocs();
 
 logStep('Building packages');
-const build = spawnSync('yarn', ['buildall'], { cwd: repoRoot, stdio: 'inherit' });
+const build = spawnSync('bun', ['run', 'buildall'], { cwd: repoRoot, stdio: 'inherit' });
 if (build.status !== 0) {
   console.error('Build failed.');
   process.exit(build.status ?? 1);
@@ -170,7 +162,7 @@ if (dryRun) {
   publishEnv.RELEASE_DRY_RUN = 'true';
 }
 
-const publish = spawnSync('node', [path.join('scripts', 'release', 'publish.mjs')], {
+const publish = spawnSync('bun', [path.join('scripts', 'release', 'publish.mjs')], {
   cwd: repoRoot,
   stdio: 'inherit',
   env: publishEnv,

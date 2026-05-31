@@ -1,3 +1,9 @@
+import { createWriteStream, readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
+
+import browserify from 'browserify';
+import Listr, { ListrTask } from 'listr';
+
 import { Config } from '../config';
 import { ensurePath, writeFileToPath } from '../helpers/files';
 import { renderClientCjs, renderClientEsm } from '../render/client/renderClient';
@@ -8,11 +14,6 @@ import { renderResponseTypes } from '../render/responseTypes/renderResponseTypes
 import { renderSchema } from '../render/schema/renderSchema';
 import { renderTypeGuards } from '../render/typeGuards/renderTypeGuards';
 import { renderTypeMap } from '../render/typeMap/renderTypeMap';
-import browserify from 'browserify';
-import { createWriteStream, readFileSync, writeFileSync } from 'fs';
-import Listr, { ListrTask } from 'listr';
-import { resolve } from 'path';
-import { minify } from 'terser';
 
 const schemaGqlFile = 'schema.graphql';
 const schemaTypesFile = 'schema.ts';
@@ -129,6 +130,7 @@ export function clientTasks(config: Config): ListrTask[] {
             if (!config['standalone-compress']) {
               return;
             }
+            const { minify } = await import('terser');
             const result = await minify(readFileSync(outFile).toString(), {
               compress: config['standalone-compress'],
             });

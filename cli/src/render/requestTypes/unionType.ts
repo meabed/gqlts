@@ -1,8 +1,9 @@
-import { RenderContext } from '../common/RenderContext';
-import { typeComment } from '../common/comment';
-import { requestTypeName } from './requestTypeName';
 import { GraphQLUnionType } from 'graphql';
 import { flatten, uniq } from 'lodash';
+
+import { typeComment } from '../common/comment';
+import { RenderContext } from '../common/RenderContext';
+import { requestTypeName } from './requestTypeName';
 
 export function unionType(type: GraphQLUnionType, ctx: RenderContext) {
   let types = type.getTypes();

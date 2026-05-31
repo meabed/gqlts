@@ -1,62 +1,76 @@
-# Advanced Typings
+---
+name: Type Helpers
+---
 
-Sometimes you will want to declare the field types separately or use the result type of a query in another function, this can be sone in gqlts importing some additional types
+# Type helpers
 
-## The query fields type `QueryRequest`
+Generated clients export request and result helper types. Use them when a request object or response type needs to live outside the `client.query(...)` call.
 
-To declare the fields object separately from the client invocation you can use the `QueryRequest`, `MutationRequest` and `SubscriptionRequest` types
+## Reuse a request object
 
-```jsx
-import { createClient, QueryRequest } from './generated'
+Use `QueryRequest`, `MutationRequest`, or `SubscriptionRequest` when you want TypeScript to validate a reusable request object.
 
-const client = createClient()
+```ts
+import { createClient, type QueryRequest } from './generated';
 
-// these query fields are validated by typescript and have auto completion
-const fields: QueryRequest = {
-    countries: {
-        name: true,
-        code: true,
+const client = createClient();
+
+const countriesRequest = {
+  countries: {
+    name: true,
+    code: true,
+  },
+} satisfies QueryRequest;
+
+const result = await client.query(countriesRequest);
+```
+
+`satisfies` validates the request without widening it to every possible query field.
+
+## Reuse a response type
+
+Use `QueryResult`, `MutationResult`, or `SubscriptionResult` when another function needs the selected response shape.
+
+```ts
+import { type QueryResult } from './generated';
+
+function tuple<TArgs, TFields>(value: [TArgs, TFields]): [TArgs, TFields] {
+  return value;
+}
+
+const countriesRequest = {
+  countries: tuple([
+    { filter: { continent: { eq: 'EU' } } },
+    {
+      name: true,
+      code: true,
     },
-}
+  ]),
+};
 
-const result = await client.query(fields)
+type CountriesResult = QueryResult<typeof countriesRequest>;
+
+function renderCountries(result: CountriesResult) {
+  return result.countries.map((country) => country.name);
+}
 ```
 
-## The query result type `QueryResult`
+Use a tuple helper for fields with arguments so TypeScript keeps tuple semantics.
 
-If you want to reuse the result type of a query in another function you can use the `QueryResult`, `MutationResult` and `SubscriptionResult` generic types.
-These types take a query object as argument and give the associated result type as result.
+## Tuple helper
 
-> You need to use the `tuple` function to tell typescript to use tuple semantics
+If your project prefers helpers over `as const`, define a small tuple helper:
 
-```jsx
-import { QueryResult } from './generated'
-
-function tuple<T1, T2>(data: [T1, T2]): typeof data
-function tuple(data: Array<any>) {
-    return data
+```ts
+function tuple<TArgs, TFields>(value: [TArgs, TFields]): [TArgs, TFields] {
+  return value;
 }
 
-const fields = {
-    countries: tuple([
-        { argument: 'exampleArgument' },
-        {
-            name: 1,
-            code: 1,
-        },
-    ]), // tell typescript this is a tuple and not an array
-}
+const request = {
+  country: tuple([{ code: 'CA' }, { name: true, emoji: true }]),
+};
 
-// you can use this type in other places
-type ReturnedType = QueryResult<typeof fields>
-
-const result: ReturnedType = await client.query(fields)
-
-function takesResultAsArgument(arg: QueryResult<typeof fields>) {
-    // do something with the result
-}
-
-takesResultAsArgument(result)
+type CountryResult = QueryResult<typeof request>;
 ```
 
-> Notice that when using `QueryResult` you cannot use the `QueryRequest` type on the fields object because you would lose the selected fields type
+Do not annotate a request as `QueryRequest` when you need `QueryResult<typeof request>`. The explicit annotation widens the selected fields and TypeScript can no longer infer the exact response.

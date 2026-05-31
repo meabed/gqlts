@@ -4,52 +4,100 @@ name: Quick Start
 
 # Quick Start
 
-Gqlts translate typed code into graphql queries, enabling you to get auto completion and validation for your graphql queries.
+This page gets you from a GraphQL schema to a generated TypeScript SDK. You can use npm, pnpm, Yarn, or Bun in your application.
 
-To use gqlts you first need to generate a sdk client
+## Install
 
-## Generate with the cli
-
-First install the required package from npm
+Install the CLI as a dev dependency and the runtime packages as app dependencies:
 
 ```bash
-npm init -y
-npm i -D @gqlts/cli # cli to generate the client code
-npm i @gqlts/runtime graphql # runtime dependencies
+npm install -D @gqlts/cli
+npm install @gqlts/runtime graphql
+
+pnpm add -D @gqlts/cli
+pnpm add @gqlts/runtime graphql
+
+yarn add -D @gqlts/cli
+yarn add @gqlts/runtime graphql
+
+bun add -d @gqlts/cli
+bun add @gqlts/runtime graphql
 ```
 
-> `@gqlts/cli` is a dev dependency because it is only required to generate the client, `@gqlts/runtime` instead is a direct dependency of the generated code
+`@gqlts/cli` generates files. `@gqlts/runtime` and `graphql` are imported by the generated client.
 
-Then run the gqlts command to generate the client inside a directory
+## Generate a client
+
+Generate from a local SDL file:
 
 ```bash
-gqlts --schema ./schema.graphql --output ./generated
-# or using a graphql api url
-gqlts --endpoint https://countries.trevorblades.com --output ./generated -H 'Authorization: Bearer myToken'
+npx gqlts --schema ./schema.graphql --output ./generated
 ```
 
-## Using the client
+Or introspect an endpoint:
 
-The generated files expose a function `createClient`, this creates a client you can use to send requests
+```bash
+npx gqlts \
+  --endpoint https://countries.trevorblades.com \
+  --output ./generated \
+  -H 'Authorization: Bearer myToken'
+```
 
-```js
-// example client generated with gqlts
-const { createClient } = require('./generated')
+Equivalent runners work too:
+
+```bash
+pnpm dlx gqlts --schema ./schema.graphql --output ./generated
+yarn gqlts --schema ./schema.graphql --output ./generated
+bunx gqlts --schema ./schema.graphql --output ./generated
+```
+
+## Query with generated types
+
+```ts
+import { createClient } from './generated';
 
 const client = createClient({
-    url: 'https://countries.trevorblades.com',
-    headers: {
-        'Some-Header': 'hello',
+  url: 'https://countries.trevorblades.com',
+  headers: () => ({
+    'x-client-name': 'docs-example',
+  }),
+});
+
+const { data, errors } = await client.query({
+  countries: [
+    { filter: { continent: { eq: 'EU' } } },
+    {
+      name: true,
+      code: true,
+      languages: {
+        name: true,
+      },
     },
-})
-client
-    .query({
-        countries: {
-            name: true,
-            code: true,
-        },
-    })
-    .then(console.log)
+  ],
+});
+
+data?.countries[0].languages[0].name;
 ```
 
-Read more about the graphql client methods in the usage section
+The request object above prints a normal GraphQL operation. The important part is that the `data` type only contains the fields you selected.
+
+## Generate operations without executing
+
+Use this when Apollo, SWR, React Query, or a custom transport should own the request:
+
+```ts
+import { generateQueryOp } from './generated';
+
+const operation = generateQueryOp({
+  country: [{ code: 'CA' }, { name: true, emoji: true }],
+});
+
+await fetch('/graphql', {
+  method: 'POST',
+  body: JSON.stringify(operation),
+});
+```
+
+## Next steps
+
+Read [Request Objects](/usage/selecting-fields) when you want to understand selections, aliases, and arguments. Read [Examples and Recipes](/examples) when you want integration patterns. Read [Feature Coverage](/features) when you need to confirm support for a GraphQL feature.

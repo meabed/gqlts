@@ -1,8 +1,9 @@
-import { RUNTIME_LIB_NAME } from '../../config';
-import { RenderContext } from '../common/RenderContext';
-import { excludedTypes } from '../common/excludedTypes';
 import { GraphQLEnumType, GraphQLSchema, isEnumType } from 'graphql';
 import camelCase from 'lodash/camelCase';
+
+import { RUNTIME_LIB_NAME } from '../../config';
+import { excludedTypes } from '../common/excludedTypes';
+import { RenderContext } from '../common/RenderContext';
 
 const { version } = require('../../../package.json');
 

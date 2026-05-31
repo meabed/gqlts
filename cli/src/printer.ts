@@ -1,5 +1,6 @@
 import { ASTNode } from 'graphql/language/ast';
 import { visit } from 'graphql/language/visitor';
+
 import { prettify } from './helpers/prettify';
 
 /**

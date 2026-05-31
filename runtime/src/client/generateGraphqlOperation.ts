@@ -35,6 +35,46 @@ export interface ParseRequestOptions {
   skipTypingCheck?: boolean;
 }
 
+const selectionMetaFields = new Set(['__alias', '__name', '__scalar']);
+
+function parseAliasRequest(
+  aliasName: string,
+  aliasRequest: Request,
+  ctx: Context,
+  path: string[],
+  opt?: ParseRequestOptions,
+): string {
+  if (!aliasRequest || typeof aliasRequest !== 'object' || Array.isArray(aliasRequest)) {
+    throw new Error(`Alias \`${aliasName}\` should select exactly one field`);
+  }
+
+  const aliasFields = aliasRequest as Fields;
+  const selectedFieldNames = Object.keys(aliasFields).filter((fieldName) => Boolean(aliasFields[fieldName]));
+
+  if (selectedFieldNames.length !== 1) {
+    throw new Error(`Alias \`${aliasName}\` should select exactly one field`);
+  }
+
+  const fieldName = selectedFieldNames[0];
+  const parsed = parseRequest(aliasFields[fieldName], ctx, [...path, fieldName], opt);
+
+  return `${aliasName}:${fieldName}${parsed}`;
+}
+
+function parseAliases(aliases: Request | undefined, ctx: Context, path: string[], opt?: ParseRequestOptions): string[] {
+  if (!aliases) {
+    return [];
+  }
+
+  if (typeof aliases !== 'object' || Array.isArray(aliases)) {
+    throw new Error('`__alias` should be an object');
+  }
+
+  return Object.keys(aliases)
+    .filter((aliasName) => Boolean((aliases as Fields)[aliasName]))
+    .map((aliasName) => parseAliasRequest(aliasName, (aliases as Fields)[aliasName], ctx, path, opt));
+}
+
 function parseRequest(request: Request | undefined, ctx: Context, path: string[], opt?: ParseRequestOptions): string {
   if (Array.isArray(request)) {
     const [args, fields] = request;
@@ -127,7 +167,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
     }
 
     const fieldsSelection = fieldNames
-      .filter((f) => !['__scalar', '__name'].includes(f))
+      .filter((f) => !selectionMetaFields.has(f))
       .map((f) => {
         const parsed = parseRequest(fields[f], ctx, [...path, f], opt);
 
@@ -146,6 +186,7 @@ function parseRequest(request: Request | undefined, ctx: Context, path: string[]
           return `${f}${parsed}`;
         }
       })
+      .concat(parseAliases(fields.__alias, ctx, path, opt))
       .concat(scalarFieldsFragment ? [`...${scalarFieldsFragment}`] : [])
       .join(',');
 

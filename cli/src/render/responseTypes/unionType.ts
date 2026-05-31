@@ -1,6 +1,7 @@
-import { RenderContext } from '../common/RenderContext';
-import { typeComment } from '../common/comment';
 import { GraphQLUnionType } from 'graphql';
+
+import { typeComment } from '../common/comment';
+import { RenderContext } from '../common/RenderContext';
 
 // union should produce an object like
 // export type ChangeCard = {

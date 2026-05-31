@@ -1,69 +1,97 @@
 ---
-name: Usage in React
+name: React Query and SWR
 ---
 
-# Usage in React
+# React Query and SWR
 
-Gqlts methods are just functions that return promises, to use gqlts in a react application you need a query manager like `swr` or `react-query`
+Gqlts does not replace your React data library. Use the generated client or operation helpers inside SWR and TanStack Query fetchers.
 
-## Example with swr
+## SWR
 
-First install the packages if missing
+Install SWR with your package manager of choice:
 
+```bash
+npm install swr
+pnpm add swr
+yarn add swr
+bun add swr
 ```
-npm i swr @gqlts/runtime
-```
 
-```jsx
-import React, { useState } from 'react'
-import useSWR from 'swr'
-import { createClient, everything } from './generated'
-const client = createClient()
+Declare the fetcher outside the hook call so TypeScript can infer the generated client result.
 
-const Page = () => {
-    const [filter, setFilter] = useState('.*')
-    // IMPORTANT: you must declare the fetcher function separately or typescript completion will not work, it looks like that typescript has a a bug
-    const fetcher = (filter) =>
-        client.query({
-            countries: [
-                { filter: { continent: { regex: filter } } },
-                { name: 1, code: 1, languages: { ...everything } },
-            ],
-        })
-    const { data, error } = useSWR([filter], fetcher)
-    return <div>{JSON.stringify(data)}</div>
+```tsx
+import useSWR from 'swr';
+import { createClient } from './generated';
+
+const client = createClient({ url: '/api/graphql' });
+
+function fetchCountries(continent: string) {
+  return client.query({
+    countries: [
+      { filter: { continent: { eq: continent } } },
+      {
+        name: true,
+        code: true,
+      },
+    ],
+  });
+}
+
+export function CountriesPanel({ continent }: { continent: string }) {
+  const { data, error, isLoading } = useSWR(['countries', continent], ([, value]) => fetchCountries(value));
+
+  if (isLoading) return <p>Loading</p>;
+  if (error) return <p>Failed to load countries</p>;
+
+  return <pre>{JSON.stringify(data?.data?.countries, null, 2)}</pre>;
 }
 ```
 
-> you must declare the swr fetcher function separately or typescript completion will not work, it looks like typescript has a a bug
+## TanStack Query
 
-## Example with react-query
-
-First install the packages if missing
-
+```bash
+npm install @tanstack/react-query
+pnpm add @tanstack/react-query
+yarn add @tanstack/react-query
+bun add @tanstack/react-query
 ```
-npm i react-query @gqlts/runtime
-```
 
-```jsx
-import React, { useState } from 'react'
-import { useQuery } from 'react-query'
-import { createClient, everything } from './generated'
-const client = createClient()
+```tsx
+import { useQuery } from '@tanstack/react-query';
+import { createClient } from './generated';
 
-const Page = () => {
-    const [regex, setRegex] = useState('.*')
-    // IMPORTANT: you must declare the fetcher function separately or typescript completion will not work, it looks like that typescript has a a bug
-    const fetcher = (_, regex) =>
-        client.query({
-            countries: [
-                { filter: { continent: { regex: regex } } },
-                { name: 1, code: 1 },
-            ],
-        })
-    const { data, error } = useQuery(['countries-key', regex], fetcher)
-    return <div>{JSON.stringify(data)}</div>
+const client = createClient({ url: '/api/graphql' });
+
+export function CountriesPanel({ continent }: { continent: string }) {
+  const countries = useQuery({
+    queryKey: ['countries', continent],
+    queryFn: () =>
+      client.query({
+        countries: [
+          { filter: { continent: { eq: continent } } },
+          {
+            name: true,
+            code: true,
+          },
+        ],
+      }),
+  });
+
+  return <pre>{JSON.stringify(countries.data?.data?.countries, null, 2)}</pre>;
 }
 ```
 
-> you must declare the react-query fetcher function separately or typescript completion will not work, it looks like typescript has a a bug
+## Operation helpers
+
+When the data library or framework owns transport, use `generateQueryOp` and send `{ query, variables }` yourself.
+
+```ts
+import { generateQueryOp } from './generated';
+
+const operation = generateQueryOp({
+  countries: {
+    name: true,
+    code: true,
+  },
+});
+```

@@ -1,6 +1,7 @@
-import { generate } from '@gqlts/cli';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+
+import { generate } from '@gqlts/cli';
 
 generate({
   schema: readFileSync(join(__dirname, 'schema.graphql')).toString(),

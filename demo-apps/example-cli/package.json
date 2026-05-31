@@ -5,7 +5,7 @@
   "homepage": "https://gqlts.vercel.app",
   "license": "MIT",
   "scripts": {
-    "examplecli": "yarn play -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
-    "runexample": "node -r sucrase/register example/example.ts"
+    "examplecli": "bun ../../cli/src/cli.ts -o example/generated -e https://graphql-compose.herokuapp.com/northwind/",
+    "runexample": "bun example/example.ts"
   }
 }

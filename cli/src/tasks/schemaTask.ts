@@ -1,9 +1,10 @@
-import { Config } from '../config';
-import { fetchSchema } from '../schema/fetchSchema';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchema } from '@graphql-tools/load';
 import { assertValidSchema, lexicographicSortSchema } from 'graphql';
 import { ListrTask } from 'listr';
+
+import { Config } from '../config';
+import { fetchSchema } from '../schema/fetchSchema';
 
 export function schemaTask(config: Config): ListrTask {
   const processSchema = (schema) => {

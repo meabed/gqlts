@@ -1,39 +1,54 @@
-# Batching queries
+# Batching
 
-You can minimize network requests and server load fetching queries that are near in time using batching.
+Batching groups GraphQL operations that happen close together into one HTTP request. Use it when your GraphQL server accepts batched request payloads.
 
-> Remember that to use batching you need a graphql server that supports it, for example Apollo and Hasura
+> Apollo Server, Hasura, and many GraphQL gateways can support batching, but it must be enabled server-side.
 
-```js
-import { createClient } from './generated'
+## Enable default batching
 
-const client1 = createClient({
-    batch: true, // use defaults
-})
+```ts
+import { createClient } from './generated';
 
-const client2 = createClient({
-    batch: {
-        batchInterval: 100, // ms
-        maxBatchSize: 10,
-    },
-})
-
-// these queries will trigger only one network request
-await Promise.all([
-    client.query({
-        user: {
-            age: true,
-        },
-    }),
-    client.query({
-        user: {
-            id: true,
-        },
-    }),
-    client.query({
-        user: {
-            name: true,
-        },
-    }),
-])
+const client = createClient({
+  url: '/graphql',
+  batch: true,
+});
 ```
+
+## Tune batching
+
+```ts
+const client = createClient({
+  url: '/graphql',
+  batch: {
+    batchInterval: 100,
+    maxBatchSize: 10,
+  },
+});
+```
+
+## Example
+
+These three queries are sent in one network request when they happen inside the batch interval:
+
+```ts
+await Promise.all([
+  client.query({
+    user: {
+      age: true,
+    },
+  }),
+  client.query({
+    user: {
+      id: true,
+    },
+  }),
+  client.query({
+    user: {
+      name: true,
+    },
+  }),
+]);
+```
+
+Keep the batch interval small for interactive screens. Larger intervals reduce network requests but can delay visible UI updates.

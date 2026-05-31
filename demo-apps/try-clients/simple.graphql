@@ -2,7 +2,9 @@ type Query {
   users: [User!]
 }
 
-"""foobar"""
+"""
+foobar
+"""
 type User {
   id: ID
   name: String

@@ -12,7 +12,7 @@ on:
       - 'runtime/**'
       - '.changeset/**'
       - 'package.json'
-      - 'yarn.lock'
+      - 'bun.lock'
       - 'scripts/release/**'
       - '.github/workflows/release.yml'
     branches:
@@ -60,18 +60,16 @@ jobs:
             echo "No release changesets or prerelease state found; skipping version and publish."
           fi
 
-      - name: Setup Node.js
+      - name: Setup Bun
         if: steps.release_changesets.outputs.has_changesets == 'true'
-        uses: actions/setup-node@v6
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 24
-          cache: yarn
-          registry-url: https://registry.npmjs.org
+          bun-version: 1.3.14
 
-      - name: Yarn
+      - name: Bun
         if: steps.release_changesets.outputs.has_changesets == 'true'
         run: |
-          yarn install --frozen-lockfile --ignore-scripts
+          bun ci
 
       - name: Verify npm authentication
         if: steps.release_changesets.outputs.has_changesets == 'true'
@@ -83,7 +81,7 @@ jobs:
 
       - name: Verify release inputs
         if: steps.release_changesets.outputs.has_changesets == 'true'
-        run: yarn release:verify
+        run: bun run release:verify
 
       - name: Ensure verification did not modify tracked files
         if: steps.release_changesets.outputs.has_changesets == 'true'
@@ -97,7 +95,7 @@ jobs:
 
       - name: Version packages
         if: steps.release_changesets.outputs.has_changesets == 'true'
-        run: ${{ github.ref_name == 'develop' && 'yarn release:version:beta' || 'yarn release:version:stable' }}
+        run: ${{ github.ref_name == 'develop' && 'bun run release:version:beta' || 'bun run release:version:stable' }}
 
       - name: Commit version updates
         id: version_commit
@@ -126,4 +124,4 @@ jobs:
           RELEASE_PROVENANCE: 'true'
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn release:publish
+        run: bun run release:publish

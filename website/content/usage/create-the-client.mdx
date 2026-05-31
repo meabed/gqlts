@@ -1,58 +1,86 @@
 ---
-name: Instantiate the client
+name: Client Setup
 ---
 
-# Create the client
+# Client setup
 
-After generating the client using the cli or the form at [gqlts.now.sh](https://gqlts.vercel.app) you can initialize it passing your options
+Generated clients export `createClient`. Use it when Gqlts should execute GraphQL requests for you.
 
-```js
-import { createClient } from './generated_dir'
-import { createClient, everything } from './generated_dir'
+```ts
+import { createClient, everything } from './generated';
 
 const client = createClient({
-    url: 'http://your-api',
+  url: 'https://api.example.com/graphql',
+  headers: {
+    authorization: 'Bearer static-token',
+  },
+});
+
+const { data } = await client.query({
+  repository: [{ name: 'gqlts', owner: 'meabed' }, { ...everything }],
+});
+```
+
+## Runtime headers
+
+Pass `headers` as a function when auth tokens or tenant values change during the session.
+
+```ts
+const client = createClient({
+  url: 'https://api.example.com/graphql',
+  headers: () => ({
+    authorization: `Bearer ${localStorage.getItem('authToken')}`,
+  }),
+});
+```
+
+Header functions can be async:
+
+```ts
+const client = createClient({
+  url: 'https://api.example.com/graphql',
+  headers: async () => ({
+    authorization: `Bearer ${await getAccessToken()}`,
+  }),
+});
+```
+
+## Custom fetcher
+
+Use `fetcherMethod` when your app already owns HTTP behavior, logging, retries, or auth refresh.
+
+```ts
+const client = createClient({
+  fetcherMethod: async (operation) => {
+    const response = await fetch('https://api.example.com/graphql', {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(operation),
+    });
+
+    return response.json();
+  },
+});
+```
+
+The custom fetcher receives `{ query, variables }` and must return a GraphQL-style object with `data` and optional `errors`.
+
+## Per-request config
+
+Query and mutation calls can receive an Axios-compatible config as the second argument when you use the built-in fetcher.
+
+```ts
+await client.query(
+  {
+    viewer: { id: true },
+  },
+  {
     headers: {
-        Authorization: 'Bearer xxx',
+      'x-request-source': 'settings-page',
     },
-})
-
-await client.query({
-    repository: [{ name: 'gqlts', owner: 'remorses' }, { ...everything }],
-})
-```
-
-## Change headers at runtime
-
-You can pass a function to the headers field to pull the headers at query time, this way you can for example take the auth token from localStorage
-
-```js
-import { createClient } from './generated_dir'
-
-const client = createClient({
-    url: 'http://your-api',
-    headers: () => ({
-        Authorization: localStorage.get('authToken'),
-    }),
-})
-```
-
-## Using a custom fetcher
-
-You can use your own http fetcher function, must be of type `(operation: {query, variables}) => Promise<{data, errors}>`
-
-```js
-import { createClient } from './generated_dir'
-const client = createClient({
-    fetcherMethod: (operation) => {
-        return fetch('http://your-api', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(operation),
-        }).then((response) => response.json())
-    },
-})
+  },
+);
 ```

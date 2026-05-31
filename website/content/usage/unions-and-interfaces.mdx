@@ -1,95 +1,81 @@
 # Unions and interfaces
 
-To query some fields only on a certain type you can use graphql fragments
+Use generated `on_TypeName` fields to select GraphQL union and interface members. Always request `__typename` when you plan to narrow the result at runtime.
 
-In gqlts you can express the fragments for union and interface types using the `on_` prefixed fields in a query
+## Select member fields
 
-```js
-import { createClient } from './generated'
+```ts
+import { createClient } from './generated';
 
-const client = createClient()
+const client = createClient();
 
-const { account } = await client.query({
-    account: {
-        __typename: true,
-        commonProp: true,
-        on_User: {
-            id: true,
-            name: true,
-        },
-        on_Guest: {
-            surname: true,
-        },
+const { data } = await client.query({
+  account: {
+    __typename: true,
+    commonProp: true,
+    on_User: {
+      id: true,
+      name: true,
     },
-})
+    on_Guest: {
+      surname: true,
+    },
+  },
+});
 
-// common prop will be available without type guards
-console.log(account?.commonProp)
+data?.account?.commonProp;
 ```
 
-## Restrict an union to the correct sub type
+## Narrow with `__typename`
 
-You can check the value of `__typename` to restrict an union type to one of its sub types and let typescript infer its correct fields
+TypeScript can narrow the generated union when you compare `__typename`.
 
-```js
-const { account } = await client.query({
-    account: {
-        __typename: true,
-        on_User: {
-            id: true,
-            name: true,
-        },
+```ts
+const { data } = await client.query({
+  account: {
+    __typename: true,
+    on_User: {
+      id: true,
+      name: true,
     },
-})
+  },
+});
 
-if (account.__typename === 'User') {
-    // now account has type User
-    console.log(account.name)
-    console.log(account.id)
+if (data?.account?.__typename === 'User') {
+  data.account.id;
+  data.account.name;
 }
 ```
 
-## Type Guards
+## Use generated type guards
 
-Union and interfaces are translated to typescript using union types
+Generated clients export `is<TypeName>` helpers for union and interface members.
 
-After you do a query on an union type, you can use the exported typescript guards to check the type of an object (remember to query the `__typename` field when you use type guards)
+```ts
+import { createClient, isGuest, isUser } from './generated';
 
-> remember to query the `__typename` field when you use type guards or they will throw an error
+const client = createClient();
 
-```js
-import { createClient, isUser, isGuest } from './generated'
-
-const client = createClient()
-
-const { account } = await client.query({
-    account: {
-        __typename: true,
-        on_User: {
-            id: true,
-            name: true,
-        },
-        on_Guest: {
-            surname: true,
-        },
+const { data } = await client.query({
+  account: {
+    __typename: true,
+    on_User: {
+      id: true,
+      name: true,
     },
-})
+    on_Guest: {
+      surname: true,
+    },
+  },
+});
 
-if (isUser(account)) {
-    // now account has type User
-    console.log(account.name)
-    console.log(account.id)
+if (isUser(data?.account)) {
+  data.account.name;
 }
 
-// another way to do the same without guards, typescript will infer the type to User
-if (account.__typename === 'User') {
-    // now account has type User
-    console.log(account.name)
-    console.log(account.id)
-}
-
-if (isGuest(account)) {
-    // now account has type Guest
-    console.log(account.surname)
+if (isGuest(data?.account)) {
+  data.account.surname;
 }
 ```
+
+Type guards require `__typename`. If the field is missing, the guard cannot know which runtime type it received.

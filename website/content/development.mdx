@@ -1,6 +1,6 @@
-# Development
+# Contributing and architecture
 
-This page explains how the Gqlts repo is organized, what each package owns, and which commands to run while changing the library.
+This page explains how the repository is organized, how generated clients are built, and which commands to run before shipping changes.
 
 ## Repository structure
 
@@ -17,11 +17,11 @@ Gqlts has two published workspace packages and several demo apps that behave lik
 - `demo-apps/try-clients`: generated-client examples for larger schemas and custom fetchers.
 - `demo-apps/example-usage`: UI examples for SWR, React Query, Apollo, built-in client, and subscriptions.
 
-## Library components
+## Published packages
 
 ### CLI
 
-`@gqlts/cli` loads a schema and writes a generated client directory.
+`@gqlts/cli` loads a schema and writes a generated client directory. It is used from `gqlts`, `npx gqlts`, `pnpm dlx gqlts`, `yarn gqlts`, `bunx gqlts`, or the programmatic `generate(config)` API.
 
 - `cli/src/cli.ts`: command-line flags and config parsing.
 - `cli/src/main.ts`: top-level `generate(config)` orchestration.
@@ -31,7 +31,7 @@ Gqlts has two published workspace packages and several demo apps that behave lik
 
 ### Runtime
 
-`@gqlts/runtime` is imported by generated clients.
+`@gqlts/runtime` is imported by generated clients. It handles operation generation, runtime execution, upload detection, batching, subscriptions, and type-map linking.
 
 - `runtime/src/client/createClient.ts`: creates query, mutation, and subscription methods.
 - `runtime/src/client/generateGraphqlOperation.ts`: converts request objects into `{ query, variables }`.
@@ -87,6 +87,7 @@ Generated entrypoints import runtime helpers, link the generated type map, and e
 - `{ field: [{ arg: value }, { nested: true }] }` passes arguments.
 - `{ __scalar: true }` expands scalar fields.
 - `{ __name: 'OperationName' }` names the operation.
+- `{ __alias: { aliasName: { field: selection } } }` renders GraphQL field aliases.
 - `{ on_TypeName: { field: true } }` renders a fragment for unions and interfaces.
 
 Arguments become generated GraphQL variables such as `v1` and `v2`. Operation generators return `{ query, variables }`, which can be executed by the built-in client or passed to Apollo, urql, fetch, Axios, or another client.
@@ -162,52 +163,54 @@ In Next.js SSR, create subscription clients only inside code paths that subscrib
 
 ## Setup
 
-Use Yarn classic from the repo root.
+Use Bun from the repo root.
 
 ```sh
-yarn install --frozen-lockfile
+bun ci
 ```
 
-The root workspace owns `cli` and `runtime`. Demo apps keep their own lockfiles because they test the packages as real downstream projects.
+The repository uses Bun for local development and CI speed. Published packages still work for npm, pnpm, Yarn, and Bun consumers. `bun.lock` is the only committed package-manager lockfile.
 
 ## Build and test commands
 
 Root checks:
 
 ```sh
-yarn buildall
-yarn test
-yarn tscall
+bun run buildall
+bun run test
+bun run typecheck
+bun run lint
+bun run format:check
 ```
 
 Package checks:
 
 ```sh
-yarn --cwd runtime build
-yarn --cwd runtime test
-yarn --cwd cli build
-yarn --cwd cli test
-yarn --cwd website build
+bun run --cwd runtime build
+bun run --cwd runtime test
+bun run --cwd cli build
+bun run --cwd cli test
+bun run --cwd website build
 ```
 
 Backend demo and SDK:
 
 ```sh
-yarn --cwd demo-apps/backend dev --exit-after-generate-schema
-yarn --cwd demo-apps/backend build-sdk
-yarn --cwd demo-apps/backend typecheck
-yarn --cwd demo-apps/backend build
-yarn --cwd demo-apps/backend start --exit-after-generate-schema
-yarn --cwd demo-apps/backend test
+bun run --cwd demo-apps/backend dev
+bun run --cwd demo-apps/backend build-sdk
+bun run --cwd demo-apps/backend typecheck
+bun run --cwd demo-apps/backend build
+bun run --cwd demo-apps/backend start
+bun run --cwd demo-apps/backend test
 ```
 
 Integration and generated-client examples:
 
 ```sh
-yarn --cwd demo-apps/integration-tests gen
-yarn --cwd demo-apps/integration-tests test
-yarn --cwd demo-apps/try-clients build
-yarn --cwd demo-apps/try-clients test
+bun run --cwd demo-apps/integration-tests gen
+bun run --cwd demo-apps/integration-tests test
+bun run --cwd demo-apps/try-clients build
+bun run --cwd demo-apps/try-clients test
 ```
 
 ## Full demo CI procedure
@@ -220,9 +223,9 @@ Run this before pushing changes that touch generator output, runtime behavior, u
 
 The script runs:
 
-1. Backend install and schema generation through `ts-node`.
+1. Workspace install and schema generation through Bun's TypeScript runtime.
 2. Backend SDK generation.
-3. Backend typecheck, build, production schema generation, and Jest tests.
+3. Backend typecheck, build, production schema generation, and Bun tests.
 4. Standalone HTML bundle tests against the backend.
 5. Next.js app tests in dev mode.
 6. Next.js production build and tests against `next start`.
@@ -235,12 +238,12 @@ Gqlts uses `@changesets/cli` for coordinated releases of `@gqlts/runtime` and `@
 Useful commands:
 
 ```sh
-yarn changeset
-yarn release:version:beta
-yarn release:version:stable
-yarn release:publish
-yarn release:verify
-yarn release:check
+bun run changeset
+bun run release:version:beta
+bun run release:version:stable
+bun run release:publish
+bun run release:verify
+bun run release:check
 ```
 
 Branch behavior:
@@ -256,7 +259,7 @@ Branch behavior:
 
 Contributor rules:
 
-- add a changeset with `yarn changeset` when a PR changes published CLI or runtime behavior;
+- add a changeset with `bun run changeset` when a PR changes published CLI or runtime behavior;
 - docs-only and test-only changes can skip a changeset;
 - release CI versions packages directly on the target branch, commits the version bump with `[skip ci]`, and then publishes.
 
@@ -299,13 +302,13 @@ Recovery flow:
 
 ## Change checklist
 
-- CLI renderer changes: run `yarn --cwd cli test`, `yarn buildall`, and `yarn --cwd demo-apps/integration-tests gen`.
-- Runtime fetcher or query changes: run `yarn --cwd runtime test`, `yarn --cwd demo-apps/integration-tests test`, and `./demo-apps/build-and-test.sh`.
+- CLI renderer changes: run `bun run --cwd cli test`, `bun run buildall`, and `bun run --cwd demo-apps/integration-tests gen`.
+- Runtime fetcher or query changes: run `bun run --cwd runtime test`, `bun run --cwd demo-apps/integration-tests test`, and `./demo-apps/build-and-test.sh`.
 - Subscription changes: run runtime tests, integration tests, and a Bun or Node smoke check when changing `webSocketImpl`.
 - Upload changes: run `./demo-apps/build-and-test.sh`; the HTML bundle covers browser uploads.
-- Next.js or SSR changes: run `yarn --cwd demo-apps/next build` and `./demo-apps/build-and-test.sh`.
-- Docs changes: run `yarn --cwd website build`.
-- Dependency updates: run `yarn buildall`, `yarn test`, `./demo-apps/build-and-test.sh`, and package-specific builds for changed demo apps.
+- Next.js or SSR changes: run `bun run --cwd demo-apps/next build` and `./demo-apps/build-and-test.sh`.
+- Docs changes: run `bun run --cwd website build`.
+- Dependency updates: run `bun run buildall`, `bun run test`, `bun run typecheck`, `./demo-apps/build-and-test.sh`, and package-specific builds for changed demo apps.
 
 Always finish with:
 
@@ -315,8 +318,8 @@ git diff --check
 
 ## Troubleshooting
 
-If TypeScript 6 reports `TS5011`, add an explicit `rootDir` to the `tsconfig.json` used by that package or `ts-node` command.
+If tsgo reports `TS5011`, add an explicit `rootDir` to the `tsconfig.json` used by that package.
 
-If `fs`, `path`, `process`, or `__dirname` are missing during `ts-node` or `tsc`, install `@types/node` in that package and add `"types": ["node"]` to its `tsconfig.json`.
+If `describe`, `it`, `fs`, `path`, `process`, or `__dirname` are missing during typecheck, import test helpers from `bun:test`, install `@types/bun` and `@types/node` in that package, and add `"types": ["bun", "node"]` to its `tsconfig.json`.
 
-If Next.js warns about multiple lockfiles, it is usually because demo apps intentionally keep local lockfiles to act like real consumers. The warning is noisy but not a failure.
+If Next.js warns about multiple lockfiles, verify there is no stray package-manager lockfile under a demo app. The repo should keep `bun.lock` at the root only.

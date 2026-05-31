@@ -8,6 +8,9 @@ export interface InterfaceRequest {
   on_Object?: ObjectRequest
   __typename?: boolean | number
   __scalar?: boolean | number
+  __alias?: {
+    [alias: string]: InterfaceRequest
+  }
 }
 
 /** single line description */
@@ -54,10 +57,16 @@ export interface ObjectRequest {
   ]
   __typename?: boolean | number
   __scalar?: boolean | number
+  __alias?: {
+    [alias: string]: ObjectRequest
+  }
 }
 
 export interface InterfaceFieldRequest {
   field?: InterfaceRequest
   __typename?: boolean | number
   __scalar?: boolean | number
+  __alias?: {
+    [alias: string]: InterfaceFieldRequest
+  }
 }

@@ -1,5 +1,7 @@
-import { createClient, everything, generateSubscriptionOp } from '../hasura/generated/index.js';
 import assert from 'assert';
+import { describe, it } from 'bun:test';
+
+import { createClient, everything, generateSubscriptionOp } from '../hasura/generated/index.js';
 
 describe('hasura', () => {
   const user = {

@@ -9,8 +9,8 @@
     "rootDir": ".",
     "declaration": true,
     "target": "ES2015",
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "Node16",
+    "moduleResolution": "node16",
     "outDir": "./dist",
     "esModuleInterop": true,
     "allowJs": true,
@@ -18,26 +18,9 @@
     "noImplicitThis": false,
     "resolveJsonModule": true,
     "skipDefaultLibCheck": true,
-    "types": [
-      "mocha",
-      "node"
-    ],
-    "lib": [
-      "dom",
-      "es2017",
-      "esnext.asynciterable"
-    ]
+    "types": ["bun", "node"],
+    "lib": ["dom", "es2017", "esnext.asynciterable"]
   },
-  "exclude": [
-    "node_modules",
-    "**/*.case.ts",
-    "example",
-    "dist"
-  ],
-  "include": [
-    "generate.ts",
-    "tests",
-    "generated/**/*.json",
-    "generated"
-  ]
+  "exclude": ["node_modules", "**/*.case.ts", "example", "dist"],
+  "include": ["generate.ts", "tests", "generated/**/*.json", "generated"]
 }

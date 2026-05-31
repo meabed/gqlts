@@ -1,8 +1,3 @@
-import { RenderContext } from '../common/RenderContext';
-import { excludedTypes } from '../common/excludedTypes';
-import { objectType } from './objectType';
-import { unionType } from './unionType';
-import { ArgMap, CompressedField, CompressedFieldMap, CompressedTypeMap, TypeMap } from '@gqlts/runtime/dist/types';
 import {
   GraphQLSchema,
   isEnumType,
@@ -12,6 +7,12 @@ import {
   isScalarType,
   isUnionType,
 } from 'graphql';
+
+import { excludedTypes } from '../common/excludedTypes';
+import { RenderContext } from '../common/RenderContext';
+import { objectType } from './objectType';
+import type { ArgMap, CompressedField, CompressedFieldMap, CompressedTypeMap, TypeMap } from './types';
+import { unionType } from './unionType';
 
 export function renderTypeMap(schema: GraphQLSchema, ctx: RenderContext) {
   // remove fields key,
