@@ -15,5 +15,7 @@
     "demo-apps-try-clients": "3.4.0",
     "website": "3.4.0"
   },
-  "changesets": ["tiny-cli-dependencies"]
+  "changesets": [
+    "tiny-cli-dependencies"
+  ]
 }
