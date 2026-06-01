@@ -1,6 +1,12 @@
-import { FieldsSelection, GraphqlOperation, ClientOptions, ClientRequestConfig, Observable } from '@gqlts/runtime';
-import { AxiosInstance } from 'axios';
-import { Client as WSClient } from 'graphql-ws';
+import type {
+  FieldsSelection as RuntimeFieldsSelection,
+  GraphqlOperation as RuntimeGraphqlOperation,
+  ClientOptions as RuntimeClientOptions,
+  ClientRequestConfig as RuntimeClientRequestConfig,
+  Observable as RuntimeObservable,
+} from '@gqlts/runtime';
+import type { AxiosInstance as RuntimeAxiosInstance } from 'axios';
+import type { Client as RuntimeWSClient } from 'graphql-ws';
 export * from './schema';
 import {
   query_rootRequest,
@@ -10,6 +16,13 @@ import {
   subscription_rootRequest,
   subscription_root,
 } from './schema';
+export type FieldsSelection<SRC, DST> = RuntimeFieldsSelection<SRC, DST>;
+export interface GraphqlOperation extends RuntimeGraphqlOperation {}
+export interface ClientOptions extends RuntimeClientOptions {}
+export interface ClientRequestConfig<D = any> extends RuntimeClientRequestConfig<D> {}
+export interface Observable<T> extends RuntimeObservable<T> {}
+export interface WSClient extends RuntimeWSClient {}
+export interface AxiosInstance extends RuntimeAxiosInstance {}
 export declare const createClient: (options?: ClientOptions) => Client;
 export declare const everything: { __scalar: boolean };
 export declare const version: string;

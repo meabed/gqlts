@@ -33,6 +33,7 @@ flowchart TD
 
 - `cli/src/helpers/parse.test.ts`: CLI flag parsing helpers.
 - `cli/src/helpers/printHelp.test.ts`: package-manager install guidance for npm, pnpm, Yarn, and Bun.
+- `cli/src/render/client/renderClientDefinition.test.ts`: generated client declaration portability, including exported inferred clients when runtime dependencies are nested under a generated SDK.
 - `cli/src/render/common/__tests__/**`: render context, comments, and basic typing renderer behavior.
 - `cli/src/render/requestTypes/index.test.ts`: request-object type rendering.
 - `cli/src/render/schema/renderSchema.test.ts`: printed schema output.
@@ -50,6 +51,7 @@ flowchart TD
 ## Change Checklist
 
 - CLI renderer changes: run `bun run --cwd cli test`, `bun run buildall`, and `bun run --cwd demo-apps/integration-tests gen`.
+- Generated declaration changes: run `bun test cli/src/render/client/renderClientDefinition.test.ts`, regenerate affected checked-in `index.d.ts` demo artifacts, and run at least one generated-client typecheck.
 - Runtime fetcher or query changes: run `bun run --cwd runtime test`, `bun run --cwd demo-apps/integration-tests test`, and `./demo-apps/build-and-test.sh`.
 - Subscription changes: run runtime tests, integration tests, and a Bun or Node smoke check when changing `webSocketImpl`.
 - Upload changes: run `./demo-apps/build-and-test.sh`; the HTML bundle covers browser uploads.
@@ -78,6 +80,7 @@ The script runs:
 ## Troubleshooting
 
 - If `tsgo` reports `TS5011`, add an explicit `rootDir` to the `tsconfig.json` used by that package.
+- If `tsgo` reports `TS2883` for an exported inferred generated client, inspect `cli/src/render/client/renderClientDefinition.ts`. Generated SDK declarations should expose local public aliases/interfaces instead of making consumers name nested dependency paths.
 - If `describe`, `it`, `fs`, `path`, `process`, or `__dirname` are missing during typecheck, import test helpers from `bun:test`, install `@types/bun` and `@types/node` in that package, and add `"types": ["bun", "node"]` to its `tsconfig.json`.
 - If Next.js warns about multiple lockfiles, verify there is no stray package-manager lockfile under a demo app. The repo should keep `bun.lock` at the root only.
 - If subscription tests fail in Node, verify that a WebSocket implementation is available. Node and Bun may expose global `WebSocket`; otherwise pass `webSocketImpl` explicitly.

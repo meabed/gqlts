@@ -16,6 +16,7 @@ This is the canonical repo guide for coding agents. Keep it compact. Put durable
 - Prefer the current contract. Do not add legacy shims, compatibility aliases, or pass-through wrappers unless a linked doc explicitly requires them.
 - Keep behavior stable unless the task asks for a behavior change. For generated-output changes, regenerate and commit the affected demo artifacts.
 - Use existing SDK, schema, inferred, and exported types before creating new aliases. Do not duplicate object shapes.
+- Keep generated declaration types portable. Public generated SDK types must be nameable through the SDK package and must not force consumers to reference nested paths like `sdk/node_modules/@gqlts/runtime`.
 - Keep code paths idempotent where repeated execution is possible, especially generation, release, filesystem, and test setup flows.
 - Use early returns, `?.`, and `??` to keep control flow flat. Avoid nested branches when a guard clause is clearer.
 - Use structured parsers and GraphQL/TypeScript APIs instead of string manipulation when the codebase already has a reliable option.
@@ -37,6 +38,7 @@ This is the canonical repo guide for coding agents. Keep it compact. Put durable
 - Rendering code belongs in `cli/src/render/**`. Renderers should add code through `RenderContext`; file writes should stay in task code.
 - Request-object syntax must stay aligned across `cli/src/render/requestTypes/**`, `runtime/src/client/generateGraphqlOperation.ts`, and `runtime/src/client/typeSelection.ts`.
 - Response typing changes usually touch `cli/src/render/responseTypes/**` and type-selection tests.
+- Generated declaration changes live in `cli/src/render/client/renderClientDefinition.ts`; cover package-consumer declaration emit so regressions such as TS2883 do not return.
 - Runtime execution changes usually touch `runtime/src/fetcher.ts`, `runtime/src/client/createClient.ts`, or `runtime/src/extract-files/extract-files.ts`.
 - Keep generated clients normal JavaScript/TypeScript packages that work in Node.js, Bun, browsers, and framework code.
 
@@ -52,7 +54,7 @@ This is the canonical repo guide for coding agents. Keep it compact. Put durable
 ## Release Rules
 
 - Gqlts releases `@gqlts/runtime` and `@gqlts/cli` together at the same version through semantic-release.
-- `develop` publishes beta prereleases; `master` and `main` publish stable releases.
+- Branch release behavior is defined in [.releaserc.json](./.releaserc.json). `develop` and `beta` publish beta prereleases, `alpha` publishes alpha prereleases, and `master` / `main` publish stable releases.
 - Do not edit package versions manually in feature PRs. Let semantic-release run `release:stamp`.
 - `NPM_TOKEN` is required for npm publish. The built-in GitHub token handles tags and GitHub releases.
 

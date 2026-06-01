@@ -13,11 +13,24 @@ export function renderClientDefinition(schema: GraphQLSchema, ctx: RenderContext
   const suffix = ctx.config?.methodSuffix || '';
 
   ctx.addCodeBlock(`
-    import { FieldsSelection, GraphqlOperation, ClientOptions, ClientRequestConfig, Observable } from '${RUNTIME_LIB_NAME}'
-    import { Client as WSClient } from "graphql-ws"
-    import { AxiosInstance } from 'axios'
+    import type {
+      FieldsSelection as RuntimeFieldsSelection,
+      GraphqlOperation as RuntimeGraphqlOperation,
+      ClientOptions as RuntimeClientOptions,
+      ClientRequestConfig as RuntimeClientRequestConfig,
+      Observable as RuntimeObservable,
+    } from '${RUNTIME_LIB_NAME}'
+    import type { Client as RuntimeWSClient } from "graphql-ws"
+    import type { AxiosInstance as RuntimeAxiosInstance } from 'axios'
     export * from './schema'
     ${renderClientTypesImports({ mutationType, queryType, subscriptionType })}
+    export type FieldsSelection<SRC, DST> = RuntimeFieldsSelection<SRC, DST>
+    export interface GraphqlOperation extends RuntimeGraphqlOperation {}
+    export interface ClientOptions extends RuntimeClientOptions {}
+    export interface ClientRequestConfig<D = any> extends RuntimeClientRequestConfig<D> {}
+    export interface Observable<T> extends RuntimeObservable<T> {}
+    export interface WSClient extends RuntimeWSClient {}
+    export interface AxiosInstance extends RuntimeAxiosInstance {}
     export declare const ${prefix}createClient${suffix}:(options?: ClientOptions) => Client
     export declare const everything: { __scalar: boolean }
     export declare const version: string

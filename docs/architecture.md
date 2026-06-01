@@ -78,6 +78,8 @@ A generated client usually contains:
 
 Generated clients export `createClient`, `everything`, operation generators, request/result types, and type guards.
 
+`index.d.ts` is the public package boundary for generated SDKs. It should expose local SDK-owned names for runtime, Axios, WebSocket, and operation types so downstream packages can export inferred clients without TypeScript naming nested dependency paths such as `sdk/node_modules/@gqlts/runtime`.
+
 ## Runtime Flow
 
 ```mermaid
@@ -108,16 +110,18 @@ Runtime entrypoints:
 ```mermaid
 flowchart LR
   commit["Conventional commits"] --> branch{"Branch"}
-  branch -->|develop| beta["semantic-release beta"]
+  branch -->|develop/beta| beta["semantic-release beta"]
+  branch -->|alpha| alpha["semantic-release alpha"]
   branch -->|master/main| stable["semantic-release stable"]
   beta --> stamp["release:stamp same version"]
+  alpha --> stamp
   stable --> stamp
   stamp --> build["build @gqlts/runtime + @gqlts/cli"]
   build --> publish["release:publish both packages"]
   publish --> npm["npm dist-tag beta or latest"]
 ```
 
-One semantic-release run computes the version, stamps the root, runtime, and CLI manifests, builds both packages, and publishes `@gqlts/runtime` plus `@gqlts/cli` at the same version.
+One semantic-release run computes the version, stamps the root, runtime, and CLI manifests, builds both packages, and publishes `@gqlts/runtime` plus `@gqlts/cli` at the same version. Exact branch behavior comes from `.releaserc.json`; keep that file, this diagram, and the release workflow aligned.
 
 ## Where To Change Things
 
@@ -126,7 +130,7 @@ One semantic-release run computes the version, stamps the root, runtime, and CLI
 - Change generated response TypeScript in `cli/src/render/responseTypes/**`.
 - Change request-object syntax in both `cli/src/render/requestTypes/**` and `runtime/src/client/generateGraphqlOperation.ts`.
 - Change generated client entrypoints in `cli/src/render/client/renderClient.ts`.
-- Change generated declaration types in `cli/src/render/client/renderClientDefinition.ts`.
+- Change generated declaration types in `cli/src/render/client/renderClientDefinition.ts`; keep public generated SDK types portable for package consumers.
 - Change runtime query execution in `runtime/src/fetcher.ts`.
 - Change subscription behavior in `runtime/src/client/createClient.ts`.
 - Change upload behavior in `runtime/src/extract-files/extract-files.ts` and `runtime/src/fetcher.ts`.

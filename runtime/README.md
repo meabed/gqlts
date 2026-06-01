@@ -147,7 +147,8 @@ More details are in [DEVELOPMENT.md](https://github.com/meabed/gqlts/blob/master
 
 Gqlts uses `semantic-release` for coordinated releases of `@gqlts/runtime` and `@gqlts/cli`.
 
-- `develop` publishes prereleases like `x.y.z-beta.n` to npm `beta`.
+- `develop` and `beta` publish beta prereleases like `x.y.z-beta.n` to npm `beta`.
+- `alpha` publishes alpha prereleases like `x.y.z-alpha.n` to npm `alpha`.
 - `master` and `main` publish stable releases like `x.y.z` to npm `latest`.
 - one semantic-release run computes the version for the whole repo.
 - `release:stamp` writes that exact version into the root, runtime, and CLI manifests.
@@ -164,8 +165,9 @@ bun run release:local 3.5.0-beta.1 --dry-run --tag beta
 Normal flow:
 
 1. Use conventional commits. `feat`, `fix`, `perf`, `refactor`, and `revert` create releases; `docs`, `test`, `ci`, `build`, `style`, and `chore` do not.
-2. Merge to `develop` to publish the next beta.
-3. Merge to `master` or `main` to publish the next stable release.
+2. Merge to `develop` or `beta` to publish the next beta.
+3. Merge to `alpha` to publish the next alpha.
+4. Merge to `master` or `main` to publish the next stable release.
 
 The release workflow validates first, then lets semantic-release stamp, build, tag, create the GitHub release, and publish both npm packages from the same computed version.
 
