@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Generate portable SDK-owned client declaration types so exported inferred generated clients no longer require TypeScript references to nested dependency paths such as `sdk/node_modules/@gqlts/runtime`, `sdk/node_modules/axios`, or `sdk/node_modules/graphql-ws`.
 - Refresh the Bun lockfile after the latest dependency batch so `bun ci` stays clean with frozen installs on `develop`.
 - Replace Changesets with semantic-release so one release run computes the version, stamps `@gqlts/runtime` and `@gqlts/cli`, and publishes both packages at the same version.
 - Remove the changeset-required and release-recovery workflows, along with the legacy prerelease/versioning scripts.

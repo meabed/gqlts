@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- No runtime code changes. This package will be released with `@gqlts/cli` so package versions stay aligned.
+
 ## 3.4.1-beta.0
 
 ## [3.2.21 - 2024-10-30](https://github.com/meabed/gqlts/compare/v3.2.20...v3.2.21)
