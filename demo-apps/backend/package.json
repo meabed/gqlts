@@ -28,7 +28,7 @@
   "devDependencies": {
     "@gqlts/runtime": "workspace:*",
     "@types/bun": "1.3.14",
-    "@types/node": "25.9.1",
+    "@types/node": "25.9.2",
     "@types/supertest": "7.2.0",
     "oxfmt": "0.53.0"
   }
