@@ -19,7 +19,7 @@
     "@as-integrations/express5": "1.1.2",
     "@gqlts/cli": "workspace:*",
     "@gqlts/runtime": "workspace:*",
-    "@graphql-tools/schema": "10.0.34",
+    "@graphql-tools/schema": "10.0.35",
     "await-sleep": "0.0.1",
     "axios": "1.18.1",
     "body-parser": "2.3.0",
