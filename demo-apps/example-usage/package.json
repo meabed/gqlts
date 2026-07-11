@@ -43,7 +43,7 @@
     "react-storage-hooks": "4.0.1",
     "rxjs": "7.8.2",
     "swr": "2.4.2",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "devDependencies": {
     "@types/node": "26.1.1",
