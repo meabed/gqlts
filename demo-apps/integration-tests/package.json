@@ -31,7 +31,7 @@
     "graphql-ws": "6.1.0",
     "tsd": "0.33.0",
     "tsdef": "0.0.14",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "devDependencies": {
     "@types/body-parser": "1.19.6",

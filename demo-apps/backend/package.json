@@ -23,7 +23,7 @@
     "graphql-yoga": "5.21.2",
     "nexus": "1.3.0",
     "supertest": "7.2.2",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "devDependencies": {
     "@gqlts/runtime": "workspace:*",
