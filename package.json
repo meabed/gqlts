@@ -82,7 +82,7 @@
     "conventional-changelog-conventionalcommits": "10.2.1",
     "oxfmt": "0.59.0",
     "oxlint": "1.74.0",
-    "oxlint-tsgolint": "0.24.0",
+    "oxlint-tsgolint": "0.25.0",
     "semantic-release": "25.0.7",
     "typescript": "7.0.2",
     "ws": "8.21.1"
