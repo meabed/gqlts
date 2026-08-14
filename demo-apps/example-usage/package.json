@@ -21,34 +21,34 @@
     "typecheck": "tsgo -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "4.2.7",
+    "@apollo/client": "4.2.12",
     "@chakra-ui/react": "3.35.0",
     "@emotion/core": "11.0.0",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@gqlts/cli": "workspace:*",
     "@gqlts/runtime": "workspace:*",
-    "@tanstack/react-query": "5.101.3",
+    "@tanstack/react-query": "5.101.4",
     "@types/js-cookie": "3.0.6",
     "apollo-boost": "0.4.9",
     "baby-i-am-faded": "4.0.14",
     "emotion-theming": "11.0.0",
-    "framer-motion": "12.42.2",
+    "framer-motion": "12.43.0",
     "graphql-tag": "2.12.7",
     "next": "16.2.10",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-extra-hooks": "2.3.4",
     "react-icons": "5.7.0",
     "react-storage-hooks": "4.0.1",
     "rxjs": "7.8.2",
-    "swr": "2.4.2",
+    "swr": "2.5.1",
     "typescript": "7.0.2"
   },
   "devDependencies": {
-    "@types/node": "26.1.1",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "next-transpile-modules": "10.0.1"
   }
 }
