@@ -8,6 +8,6 @@
     "test": "bun puppeteer-test.js"
   },
   "devDependencies": {
-    "puppeteer": "25.7.0"
+    "puppeteer": "25.8.0"
   }
 }
