@@ -91,7 +91,7 @@
     "watch": "tsgo -p tsconfig.json --watch"
   },
   "dependencies": {
-    "axios": "1.19.0",
+    "axios": "1.20.0",
     "form-data": "4.0.6",
     "graphql-ws": "6.2.1",
     "is-plain-obj": "4.1.0",
@@ -108,7 +108,7 @@
     "@types/lodash.assign": "4.2.9",
     "@types/lodash.get": "4.4.9",
     "@types/lodash.startswith": "4.2.9",
-    "@types/node": "26.2.0",
+    "@types/node": "26.4.0",
     "@types/qs": "6.15.1",
     "@types/ws": "8.18.1",
     "common-tags": "1.8.2",
