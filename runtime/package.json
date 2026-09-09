@@ -102,13 +102,13 @@
     "zen-observable-ts": "1.1.0"
   },
   "devDependencies": {
-    "@types/bun": "1.4.1",
+    "@types/bun": "1.4.2",
     "@types/common-tags": "1.8.4",
     "@types/lodash": "4.17.25",
     "@types/lodash.assign": "4.2.9",
     "@types/lodash.get": "4.4.9",
     "@types/lodash.startswith": "4.2.9",
-    "@types/node": "26.4.1",
+    "@types/node": "26.5.0",
     "@types/qs": "6.15.1",
     "@types/ws": "8.18.1",
     "common-tags": "1.8.2",

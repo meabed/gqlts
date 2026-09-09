@@ -55,7 +55,7 @@
   "devDependencies": {
     "@gqlts/cli": "workspace:*",
     "@types/js-cookie": "3.0.6",
-    "@types/node": "26.4.1",
+    "@types/node": "26.5.0",
     "@types/prismjs": "1.26.6",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.7",
