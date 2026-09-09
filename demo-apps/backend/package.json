@@ -16,7 +16,7 @@
   "dependencies": {
     "@envelop/parser-cache": "10.2.0",
     "@envelop/validation-cache": "10.2.0",
-    "@graphql-tools/schema": "10.1.0",
+    "@graphql-tools/schema": "10.1.1",
     "graphql": "17.0.2",
     "graphql-scalars": "2.0.0",
     "graphql-upload-ts": "2.2.0",
@@ -27,9 +27,9 @@
   },
   "devDependencies": {
     "@gqlts/runtime": "workspace:*",
-    "@types/bun": "1.4.1",
-    "@types/node": "26.4.1",
+    "@types/bun": "1.4.2",
+    "@types/node": "26.5.0",
     "@types/supertest": "7.2.1",
-    "oxfmt": "0.66.0"
+    "oxfmt": "0.67.0"
   }
 }
