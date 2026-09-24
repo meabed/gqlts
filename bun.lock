@@ -287,7 +287,7 @@
     },
   },
   "overrides": {
-    "graphql": "16.14.2",
+    "graphql": "17.0.2",
     "ws": "8.21.3",
   },
   "packages": {
@@ -1917,7 +1917,7 @@
 
     "graceful-fs": ["graceful-fs@4.2.11", "", {}, "sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ=="],
 
-    "graphql": ["graphql@16.14.2", "", {}, "sha512-Chq1s4CY7jmh8gO2qvLIJyfCDIN+EHLFW/9iShnp1z8FjBQMoodWP1kDC36VAMXXIvAjj4ARa7ntfAV2BrjsbA=="],
+    "graphql": ["graphql@17.0.2", "", {}, "sha512-FRWbddMxfkjiB7z+aQDWIR+E34xo9I8c9mtK2RPv8PmMzKRvrdsreHL/Ui/TmwHJfhHChEtsFPyMHKI+xuarQQ=="],
 
     "graphql-easy-mocks": ["graphql-easy-mocks@1.1.1", "", { "dependencies": { "@types/faker": "^4.1.10", "apollo-link-http": "^1.5.16", "apollo-server": "^2.11.0", "chokidar": "^3.3.1", "faker": "^4.1.0", "graphql-toolkit": "^0.7.5", "graphql-tools": "^4.0.7", "node-fetch": "^2.6.0", "yargs": "^14.2.2" }, "bin": { "graphql-easy-mocks": "bin/index" } }, "sha512-+K4/OnudffIszY1l52TFMPIQHWs3GUWgHHf/2QuMoAjfeY3Q1NIhyUelQ9jKc8gQroNWNxRjqBZmR3eC3HNbaQ=="],
 
