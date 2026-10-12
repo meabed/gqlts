@@ -75,7 +75,7 @@
     "@semantic-release/exec": "7.1.0",
     "@semantic-release/github": "12.0.10",
     "@semantic-release/release-notes-generator": "14.1.1",
-    "@types/bun": "1.4.2",
+    "@types/bun": "1.4.3",
     "@typescript/native-preview": "7.0.0-dev.20260707.2",
     "bun-types": "1.4.3",
     "concurrently": "10.0.6",
