@@ -9,7 +9,7 @@
         "@semantic-release/exec": "7.1.0",
         "@semantic-release/github": "12.0.10",
         "@semantic-release/release-notes-generator": "14.1.1",
-        "@types/bun": "1.4.2",
+        "@types/bun": "1.4.3",
         "@typescript/native-preview": "7.0.0-dev.20260707.2",
         "bun-types": "1.4.3",
         "concurrently": "10.0.6",
@@ -44,7 +44,7 @@
         "yargs": "18.2.0",
       },
       "devDependencies": {
-        "@types/bun": "1.4.2",
+        "@types/bun": "1.4.3",
         "@types/common-tags": "1.8.4",
         "@types/fs-extra": "11.0.4",
         "@types/listr": "0.14.10",
@@ -74,7 +74,7 @@
       },
       "devDependencies": {
         "@gqlts/runtime": "workspace:*",
-        "@types/bun": "1.4.2",
+        "@types/bun": "1.4.3",
         "@types/node": "26.6.5",
         "@types/supertest": "7.2.1",
         "oxfmt": "0.72.0",
@@ -88,7 +88,7 @@
         "@gqlts/runtime": "workspace:*",
       },
       "devDependencies": {
-        "@types/bun": "1.4.2",
+        "@types/bun": "1.4.3",
         "@types/node": "26.6.5",
         "graphql": "17.0.2",
         "typescript": "7.0.2",
@@ -164,7 +164,7 @@
       },
       "devDependencies": {
         "@types/body-parser": "1.19.6",
-        "@types/bun": "1.4.2",
+        "@types/bun": "1.4.3",
         "@types/deep-equal": "1.0.4",
         "@types/node": "26.6.5",
         "@types/ws": "8.18.2",
@@ -207,7 +207,7 @@
         "isomorphic-unfetch": "4.0.2",
       },
       "devDependencies": {
-        "@types/bun": "1.4.2",
+        "@types/bun": "1.4.3",
         "@types/node": "^26.5.1",
         "typescript": "7.0.2",
       },
@@ -227,7 +227,7 @@
         "zen-observable-ts": "1.1.0",
       },
       "devDependencies": {
-        "@types/bun": "1.4.2",
+        "@types/bun": "1.4.3",
         "@types/common-tags": "1.8.4",
         "@types/lodash": "4.17.26",
         "@types/lodash.assign": "4.2.9",
@@ -887,7 +887,7 @@
 
     "@types/body-parser": ["@types/body-parser@1.19.6", "", { "dependencies": { "@types/connect": "*", "@types/node": "*" } }, "sha512-HLFeCYgz89uk22N5Qg3dvGvsv46B8GLvKKo1zKG4NybA8U2DiEO3w9lqGg29t/tfLRJpJ6iQxnVw4OnB7MoM9g=="],
 
-    "@types/bun": ["@types/bun@1.4.2", "", { "dependencies": { "bun-types": "1.4.2" } }, "sha512-GimotNn7+ZV0uVArItBbriZsR1oNf0+WTzPkdcFrzShI7k2norL0uzEaJT8T33dWr7O/c9ZDuAFQrctKCi72oQ=="],
+    "@types/bun": ["@types/bun@1.4.3", "", { "dependencies": { "bun-types": "1.4.3" } }, "sha512-N67Pqy8JXbAY/j0tNraS3V5mubGvc6rrrNDmDCtZLlFzccbUJPDb0tvgUBC5q4m8ybkP93Jcn1QB+RYQ6PvBhw=="],
 
     "@types/common-tags": ["@types/common-tags@1.8.4", "", {}, "sha512-S+1hLDJPjWNDhcGxsxEbepzaxWqURP/o+3cP4aa2w7yBXgdcmKGQtZzP8JbyfOd0m+33nh+8+kvxYE2UJtBDkg=="],
 
@@ -3202,8 +3202,6 @@
     "@types/accepts/@types/node": ["@types/node@25.6.0", "", { "dependencies": { "undici-types": "~7.19.0" } }, "sha512-+qIYRKdNYJwY3vRCZMdJbPLJAtGjQBudzZzdzwQYkEPQd+PJGixUL5QfvCLDaULoLv+RhT3LDkwEfKaAkgSmNQ=="],
 
     "@types/body-parser/@types/node": ["@types/node@25.9.1", "", { "dependencies": { "undici-types": ">=7.24.0 <7.24.7" } }, "sha512-xfrlY7UD5rMJk3ZVJP8BNzS28J36YJg+xp+LPXV1TdWxr8uMH5A860QNxYDGQe/ylDSgjxE52Q9VnO7p75tJxg=="],
-
-    "@types/bun/bun-types": ["bun-types@1.4.2", "", { "dependencies": { "@types/node": "*" } }, "sha512-bxV1FgK7yBIzjRe5zBozIM4Bem11ZJcCXSrjWRG3YWLt8yFDePu4cLjpebO8OvPeIE9trbyPF4fuj3Cia4Fj3w=="],
 
     "@types/connect/@types/node": ["@types/node@25.6.0", "", { "dependencies": { "undici-types": "~7.19.0" } }, "sha512-+qIYRKdNYJwY3vRCZMdJbPLJAtGjQBudzZzdzwQYkEPQd+PJGixUL5QfvCLDaULoLv+RhT3LDkwEfKaAkgSmNQ=="],
 
