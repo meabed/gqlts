@@ -39,7 +39,7 @@
     "nextra": "4.6.1",
     "nextra-theme-docs": "4.6.1",
     "npm-name": "8.1.1",
-    "p-debounce": "5.1.1",
+    "p-debounce": "6.0.0",
     "prism-react-renderer": "2.4.1",
     "prismjs": "1.30.0",
     "react": "19.3.0",
