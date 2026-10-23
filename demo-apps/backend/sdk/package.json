@@ -19,7 +19,7 @@
     "@gqlts/runtime": "workspace:*"
   },
   "devDependencies": {
-    "@types/bun": "1.4.3",
+    "@types/bun": "1.4.4",
     "@types/node": "26.6.5",
     "graphql": "17.0.2",
     "typescript": "7.0.2"
