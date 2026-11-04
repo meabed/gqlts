@@ -88,7 +88,7 @@
     "ws": "8.22.0"
   },
   "resolutions": {
-    "graphql": "16.14.2",
+    "graphql": "17.1.0",
     "ws": "8.22.0"
   },
   "engines": {
