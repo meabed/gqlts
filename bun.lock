@@ -61,7 +61,7 @@
       "name": "demo-apps-backend",
       "version": "3.4.0",
       "dependencies": {
-        "@envelop/parser-cache": "10.2.1",
+        "@envelop/parser-cache": "11.0.0",
         "@envelop/validation-cache": "10.2.1",
         "@graphql-tools/schema": "10.1.4",
         "graphql": "17.0.2",
@@ -417,7 +417,7 @@
 
     "@envelop/instrumentation": ["@envelop/instrumentation@1.0.1", "", { "dependencies": { "@whatwg-node/promise-helpers": "^1.2.1", "tslib": "^2.5.0" } }, "sha512-FuexE2qd3Yc1Kh1DjTliwGxb9kyyv4ySBNnfJOxnQasVmGdcqX6AkkO5sIMxLWFRftp8PErOcIn2dQW/1RwytQ=="],
 
-    "@envelop/parser-cache": ["@envelop/parser-cache@10.2.1", "", { "dependencies": { "lru-cache": "^11.0.0", "tslib": "^2.5.0" }, "peerDependencies": { "@envelop/core": "^5.6.1", "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0" } }, "sha512-CXxRK/vBdZ0ANkg4WQw7bxUrUYOKBC3IRGWwLg88Iik5GeAV1yjxvjlrtD7yAlGA8FKfuvAgS37LEoZM8RyfCQ=="],
+    "@envelop/parser-cache": ["@envelop/parser-cache@11.0.0", "", { "dependencies": { "lru-cache": "^11.0.0", "tslib": "^2.5.0" }, "peerDependencies": { "@envelop/core": "^6.0.0", "graphql": "^16.0.0 || ^17.0.0" } }, "sha512-S3u1vVfTs7x/x2SLSRGshIMWMCcIJvEjaSySfMasdATbzanJ5avBtEf7Ln6DV37pvQFlraCpTVzo9ISXrQyI2g=="],
 
     "@envelop/types": ["@envelop/types@5.2.2", "", { "dependencies": { "@whatwg-node/promise-helpers": "^1.0.0", "tslib": "^2.5.0" } }, "sha512-nl9cmUh8F+2/NNzpcLjzNqtaVn0m8XSzzxrPU2ByHhlz4Hqlc5QBfRsemZkoJMKrMviJXyJYdKZiUP1o70F3Kw=="],
 
