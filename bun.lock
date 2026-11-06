@@ -261,7 +261,7 @@
         "nextra": "4.6.1",
         "nextra-theme-docs": "4.6.1",
         "npm-name": "8.1.1",
-        "p-debounce": "5.1.1",
+        "p-debounce": "6.0.0",
         "prism-react-renderer": "2.4.1",
         "prismjs": "1.30.0",
         "react": "19.3.0",
@@ -2495,7 +2495,7 @@
 
     "oxlint-tsgolint": ["oxlint-tsgolint@7.0.2004", "", { "optionalDependencies": { "@oxlint-tsgolint/darwin-arm64": "7.0.2004", "@oxlint-tsgolint/darwin-x64": "7.0.2004", "@oxlint-tsgolint/linux-arm64": "7.0.2004", "@oxlint-tsgolint/linux-x64": "7.0.2004", "@oxlint-tsgolint/win32-arm64": "7.0.2004", "@oxlint-tsgolint/win32-x64": "7.0.2004" }, "bin": { "tsgolint": "./bin/tsgolint.js" } }, "sha512-vQ9WDF3fiZJvRdSDosNOflerOCOpwol6vWzVDxW76RcU19cjTh7engvkHLvmv+tzedR8fAiJUVUGr6IVZdkzXQ=="],
 
-    "p-debounce": ["p-debounce@5.1.1", "", {}, "sha512-BHp4jJ6t45tLOWzC/m9X2LIbZJz2mlay+pAwQrm/oRJlvLJhxyJrwtTUW6bz/+99coiC+iNpnk1P0s8/RfXd0A=="],
+    "p-debounce": ["p-debounce@6.0.0", "", {}, "sha512-0US2ZjYKL4B24gEBXMUq3LPBGPY+R62s2ZA691BZcXftOqS6nbtQ/IpuP4TjZMacizzdCleR3yyyA4OnZcoHHA=="],
 
     "p-each-series": ["p-each-series@3.0.0", "", {}, "sha512-lastgtAdoH9YaLyDa5i5z64q+kzOcQHsQ5SsZJD3q0VEyI8mq872S3geuNbRUQLVAE9siMfgKrpj7MloKFHruw=="],
 
