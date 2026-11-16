@@ -83,7 +83,7 @@
     "oxfmt": "0.72.0",
     "oxlint": "1.87.0",
     "oxlint-tsgolint": "7.0.2004",
-    "semantic-release": "25.0.9",
+    "semantic-release": "26.0.1",
     "typescript": "7.0.2",
     "ws": "8.22.0"
   },
