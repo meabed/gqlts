@@ -34,7 +34,7 @@
     "typescript": "7.0.2"
   },
   "devDependencies": {
-    "@types/body-parser": "1.19.6",
+    "@types/body-parser": "2.2.0",
     "@types/bun": "1.4.3",
     "@types/deep-equal": "1.0.4",
     "@types/node": "26.6.5",
